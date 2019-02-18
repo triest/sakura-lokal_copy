@@ -1,6 +1,6 @@
 <template>
-    <div id="chat-app">
-        <Conversation :contact="selectedContact" :messages="messages"/>
+    <div class="chat-app">
+        <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
         <ContactsList :contacts="contacts" @selected="startConversationWith"/>
     </div>
 </template>
@@ -10,31 +10,31 @@
     import ContactsList from './ContactsList';
 
     export default {
-        props:{
-            user:{
-                type:Object,
-                request:true
+        props: {
+            user: {
+                type: Object,
+                required: true
             }
         },
-        data(){
-          return {
-              selectedContact:null,
-              messages:[],
-              contacts:[]
-          }
+        data() {
+            return {
+                selectedContact: null,
+                messages: [],
+                contacts: []
+            };
         },
         mounted() {
-            console.log('Component mounted.')
-            console.log(this.user)
-            axios.get('contacts')
-                .then((response)=>{
-                    console.log(response.data)
-                    this.contacts=response.data;
-                })
+         
+
+            axios.get('/contacts')
+                .then((response) => {
+                    this.contacts = response.data;
+                });
         },
         methods: {
             startConversationWith(contact) {
                 this.updateUnreadCount(contact, true);
+
                 axios.get(`/conversation/${contact.id}`)
                     .then((response) => {
                         this.messages = response.data;
@@ -49,6 +49,7 @@
                     this.saveNewMessage(message);
                     return;
                 }
+
                 this.updateUnreadCount(message.from_contact, false);
             },
             updateUnreadCount(contact, reset) {
@@ -56,10 +57,12 @@
                     if (single.id !== contact.id) {
                         return single;
                     }
+
                     if (reset)
                         single.unread = 0;
                     else
                         single.unread += 1;
+
                     return single;
                 })
             }
@@ -67,3 +70,10 @@
         components: {Conversation, ContactsList}
     }
 </script>
+
+
+<style lang="scss" scoped>
+.chat-app {
+    display: flex;
+}
+</style>
