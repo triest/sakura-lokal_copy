@@ -24,7 +24,11 @@
             };
         },
         mounted() {
-         
+            Echo.private(`messages.${this.user.id}`)
+                .listen('NewMessage', (e) => {
+                    console.log(e.message)
+                    this.hanleIncoming(e.message);
+                });
 
             axios.get('/contacts')
                 .then((response) => {
