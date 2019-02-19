@@ -23,3 +23,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/contacts', 'ContactsController@get');
 Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
 Route::post('/conversation/send', 'ContactsController@send');
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/anket', 'GirlsController@index')->name('main');
+Route::get('/createAnketPage', 'AnketController@createGirl')->name('createGirlPage')->middleware('auth');
+
+//создание анкеты
+Route::get('/createAnketPage', 'AnketController@createGirl')->name('createGirlPage')->middleware('auth');;
+
+Route::post('/anket/create', 'AnketController@Store')->name('storeGirl');
