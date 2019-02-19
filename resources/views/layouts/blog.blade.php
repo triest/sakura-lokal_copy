@@ -18,11 +18,10 @@
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
 
+        <!-- galeray -->
+    <link href="{{asset('css/gallery-grid.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
 
-    <!--scripts for table -->
-
-
-    <!--end scripts for table -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 
     <script type="text/javascript" charset="utf8"
@@ -98,5 +97,13 @@
 </div>
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/examples/offcanvas/offcanvas.js"></script>
+<!-- скрипт для галлереи -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+    function relocate_home() {
+        location.href = "www.yoursite.com";
+    }
+</script>
 </body>
 </html>

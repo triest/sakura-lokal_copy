@@ -35,3 +35,4 @@ Route::get('/createAnketPage', 'AnketController@createGirl')->name('createGirlPa
 Route::get('/createAnketPage', 'AnketController@createGirl')->name('createGirlPage')->middleware('auth');;
 
 Route::post('/anket/create', 'AnketController@Store')->name('storeGirl');
+Route::get('/anket/{id}', 'GirlsController@showGirl')->name('showGirl');

@@ -9,6 +9,8 @@ use Storage;
 use DateTime;
 use App\User;
 use App\Girl;
+use App\Photo;
+use DB;
 
 class GirlsController extends Controller
 {
@@ -18,16 +20,16 @@ class GirlsController extends Controller
         if (Auth::check()) {
             $user = Auth::user();  // и если админ
             if ($user->isAdmin == 1) {
-                $girls = Girl::select(['id', 'name', 'login', 'email', 'phone', 'main_image', 'description', 'banned'])
+                $girls = Girl::select(['id', 'name', 'phone', 'main_image', 'description', 'banned'])
                         ->orderBy('created_at', 'DESC')->simplePaginate(9);
             } else {
-                $girls = Girl::select(['id', 'name', 'login', 'email', 'phone', 'main_image', 'description', 'sex'])
+                $girls = Girl::select(['id', 'name', 'phone', 'main_image', 'description', 'sex'])
                         ->where('banned', '=', '0')
                         ->orderBy('created_at', 'DESC')
                         ->Paginate(9);
             }
         } else {
-            $girls = Girl::select(['id', 'name', 'login', 'email', 'phone', 'main_image', 'description', 'sex'])
+            $girls = Girl::select(['id', 'name', 'phone', 'main_image', 'description', 'sex'])
                     ->where('banned', '=', '0')
                     ->orderBy('created_at', 'DESC')
                     ->Paginate(9);
@@ -38,5 +40,69 @@ class GirlsController extends Controller
         return view('index')->with(['girls' => $girls]);
     }
 
+    public function showGirl($id)
+    {
+        $girl = Girl::select([
+                'name',
+                'id',
+                'description',
+                'main_image',
+                'sex',
+                'meet',
+                'weight',
+                'height',
+                'age',
+                'country_id',
+                'region_id',
+                'city_id',
+                'banned',
+                'user_id'
+        ])->where('id', $id)->first();
+        if ($girl == null) {
+            return $this->index();
+        }
+        $images = $girl->photos()->get();
+
+        $AythUser = Auth::user();
+        $privatephoto = null;
+        //проверяем, что просматривающий пользователь зареген.
+     /*   if ($AythUser != null) {
+            //  $girl_user_id=$girl->user_id;
+            $user3 = DB::table('user_user')
+                    ->where('my_id', $AythUser->id)
+                    ->where('other_id', $girl->user_id)->first();
+            if ($user3 != null) {
+                $girl = Girl::select([
+                        'name',
+                        'email',
+                        'password',
+                        'id',
+                        'description',
+                        'enabled',
+                        'payday',
+                        'phone',
+                        'private',
+                        'payed',
+                        'login',
+                        'main_image',
+                        'sex',
+                        'meet',
+                        'weight',
+                        'height',
+                        'age',
+                        'country_id',
+                        'region_id',
+                        'city_id',
+                        'banned'
+                ])->where('id', $id)->first();
+                $privatephoto = $girl->privatephotos()->get();
+            }
+        }*/
+        return view('girlView')->with([
+                'girl' => $girl,
+                'images' => $images,
+                'privatephotos' => $privatephoto
+        ]);
+    }
 
 }
