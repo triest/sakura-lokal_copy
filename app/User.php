@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -25,6 +28,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
+
+    //проверка есть ли анкета
+    public function anketisExsis()
+    {
+
+        $user_id = Auth::user()->id;
+        //  dump($user_id);
+        $girl = Girl::select(['id', 'name', 'main_image', 'banned'])->where('user_id', $user_id)->first();
+        // dump($girl);
+        return $girl;
+    }
 }

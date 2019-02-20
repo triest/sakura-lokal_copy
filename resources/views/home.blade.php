@@ -13,5 +13,6 @@
                 </div>
             </div>
         </div>
+        <a class="button blue" href="{{route('main')}}" role="link" onclick=" relocate_home()">К списку анкет</a>
     </div>
 @endsection

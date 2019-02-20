@@ -2,6 +2,7 @@
     <div class="chat-app">
         <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
         <ContactsList :contacts="contacts" @selected="startConversationWith"/>
+
     </div>
 </template>
 
@@ -20,7 +21,8 @@
             return {
                 selectedContact: null,
                 messages: [],
-                contacts: []
+                contacts: [],
+                unreaded: 0
             };
         },
         mounted() {

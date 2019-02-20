@@ -24,6 +24,7 @@ Vue.component('chat-app', require('./components/ChatApp.vue').default);
 Vue.component('conversation', require('./components/Conversation.vue').default);
 Vue.component('ContactsList', require('./components/ContactsList.vue').default);
 Vue.component('MessagesFeed', require('./components/MessagesFeed.vue').default);
+Vue.component('side-panel', require('./components/SidePanele.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

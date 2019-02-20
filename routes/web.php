@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/messages', 'HomeController@index')->name('home');
 
 
 Route::get('/contacts', 'ContactsController@get');
@@ -36,3 +36,6 @@ Route::get('/createAnketPage', 'AnketController@createGirl')->name('createGirlPa
 
 Route::post('/anket/create', 'AnketController@Store')->name('storeGirl');
 Route::get('/anket/{id}', 'GirlsController@showGirl')->name('showGirl');
+
+//количество непрочитанных сообщений
+Route::get('/getCountUnreaded','ContactsController@getCountUnreadedMessages')->middleware('auth');

@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+
 
 
     <title>{{$title}}</title>
@@ -18,7 +23,7 @@
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- galeray -->
+    <!-- galeray -->
     <link href="{{asset('css/gallery-grid.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
 
@@ -51,12 +56,14 @@
     <meta charset="utf-8">
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+
+
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link rel="icon" href="http://example.com/favicon.png">
-
-
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!--Yandex -->
     <meta name="yandex-verification" content="af4168af7d682a89"/>
@@ -82,8 +89,16 @@
         </div>
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-            <div class="list-group">
-                <a type="button" class="btn btn-primary"  href="{{ route('createGirlPage') }}">Создать анкету</a>
+            <div class="card-body" id="app">
+                @if (Auth::guest())
+                    <b><a href="{{ url('/login') }}">Войти</a></b><br>
+                    <b><a href="{{ url('/join') }}">Зарегистрироваться</a></b>
+
+                @else
+                    <b><a href="{{ url('/logout') }}">Выйти</a></b>
+                    <side-panel  :user="{{auth()->user()}}"></side-panel>
+
+                @endif
             </div>
         </div><!--/span-->
     </div><!--/row-->
@@ -101,6 +116,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 <script>
     baguetteBox.run('.tz-gallery');
+
     function relocate_home() {
         location.href = "www.yoursite.com";
     }
