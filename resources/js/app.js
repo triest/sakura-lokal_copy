@@ -26,6 +26,8 @@ Vue.component('ContactsList', require('./components/ContactsList.vue').default);
 Vue.component('MessagesFeed', require('./components/MessagesFeed.vue').default);
 Vue.component('side-panel', require('./components/SidePanele.vue').default);
 
+//компонент с заявками
+Vue.component('application', require('./components/Application.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

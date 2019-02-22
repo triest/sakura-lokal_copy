@@ -39,3 +39,10 @@ Route::get('/anket/{id}', 'GirlsController@showGirl')->name('showGirl');
 
 //количество непрочитанных сообщений
 Route::get('/getCountUnreaded','ContactsController@getCountUnreadedMessages')->middleware('auth');
+
+
+
+//заявки на открытия
+Route::get('/applications','ContactsController@getApplicationPage')->middleware('auth');
+//получаем сами заявки
+Route::get('/getapplication','ContactsController@getApplication')->middleware('auth');

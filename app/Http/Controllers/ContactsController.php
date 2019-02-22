@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Events\NewMessage;
+use App\Girl;
+use App\MyRequwest;
 use Illuminate\Http\Request;
 use App\User;
 use App\Message;
@@ -23,6 +25,7 @@ class ContactsController extends Controller
 
     public function getMessagesFor($id)
     {
+        Message::where('from', $id)->where('to', auth()->id())->update(['readed' => true]);
         // mark all messages with the selected contact as read
         Message::where('from', $id)->where('to', auth()->id());
         // get all messages between the authenticated user and the selected user
@@ -44,9 +47,35 @@ class ContactsController extends Controller
 
     public function getCountUnreadedMessages(Request $request)
     {
-        $user=Auth::user();
-        $messages = Message::where('to', $user->id)->where('readed',0)->get();
-        $count=count($messages);
+        $user = Auth::user();
+        $messages = Message::where('to', $user->id)->where('readed', 0)->get();
+        $count = count($messages);
         return $count;
     }
+
+    //get application page
+    public function getApplicationPage()
+    {
+        return view('application');
+    }
+
+
+    public function getApplication()
+    {
+        //просмотр запросов
+
+        $user = Auth::user();
+        //  $request = collect(DB::select('select * from requwest where target_id=?', [$user->id]));
+        $request = MyRequwest::select('id',
+            'who_id',
+            'target_id')->where('who_id', $user->id)
+            ->get();
+        $array=[];
+        foreach ($request as $item){
+            $girl=Girl::select(['id','name','main_image'])->where('user_id',$item->target_id)->first();
+            array_push($array,$girl);
+        }
+        return $array;
+    }
+
 }

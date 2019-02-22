@@ -39,7 +39,7 @@ class User extends Authenticatable
         $user_id = Auth::user()->id;
         //  dump($user_id);
         $girl = Girl::select(['id', 'name', 'main_image', 'banned'])->where('user_id', $user_id)->first();
-        // dump($girl);
+
         return $girl;
     }
 }

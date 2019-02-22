@@ -1754,6 +1754,57 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Application.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Application.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    user: {
+      type: Object,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      applications: []
+    };
+  },
+  mounted: function mounted() {
+    this.getApplications();
+  },
+  methods: {
+    getApplications: function getApplications() {
+      var _this = this;
+
+      axios.get('/getapplication').then(function (response) {
+        _this.applications = response.data;
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ChatApp.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ChatApp.vue?vue&type=script&lang=js& ***!
@@ -1794,8 +1845,6 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     Echo.private("messages.".concat(this.user.id)).listen('NewMessage', function (e) {
-      console.log(e.message);
-
       _this.hanleIncoming(e.message);
     });
     axios.get('/contacts').then(function (response) {
@@ -2066,6 +2115,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -2089,7 +2140,8 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    getNumberUnreadedMessages: function getNumberUnreadedMessages() {}
+    getNumberUnreadedMessages: function getNumberUnreadedMessages() {},
+    chechAnketExist: function chechAnketExist() {}
   }
 });
 
@@ -48112,6 +48164,54 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Application.vue?vue&type=template&id=bf784f96&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Application.vue?vue&type=template&id=bf784f96&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "application" },
+    [
+      _vm._v("\n    Заявки:\n    "),
+      _vm._l(_vm.applications, function(application) {
+        return _c("div", [
+          _c("div", { staticClass: "avatar" }, [
+            _c("img", {
+              attrs: {
+                src: "images/upload/" + application.main_image,
+                alt: application.name,
+                height: "150"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contact" }, [
+            _c("p", { staticClass: "name" }, [_vm._v(_vm._s(application.name))])
+          ])
+        ])
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ChatApp.vue?vue&type=template&id=1da0bc8e&scoped=true&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ChatApp.vue?vue&type=template&id=1da0bc8e&scoped=true& ***!
@@ -48375,7 +48475,12 @@ var render = function() {
   return _c("div", [
     _c("b", [
       _c("a", { attrs: { href: "/messages" } }, [_vm._v("Сообщения")]),
-      _vm._v("+" + _vm._s(_vm.numberUnreaded))
+      _vm._v(" "),
+      _vm.numberUnreaded
+        ? _c("div", { attrs: { "!": "0" } }, [
+            _vm._v("+" + _vm._s(_vm.numberUnreaded))
+          ])
+        : _vm._e()
     ]),
     _c("br"),
     _vm._v(" "),
@@ -60486,7 +60591,9 @@ Vue.component('chat-app', __webpack_require__(/*! ./components/ChatApp.vue */ ".
 Vue.component('conversation', __webpack_require__(/*! ./components/Conversation.vue */ "./resources/js/components/Conversation.vue").default);
 Vue.component('ContactsList', __webpack_require__(/*! ./components/ContactsList.vue */ "./resources/js/components/ContactsList.vue").default);
 Vue.component('MessagesFeed', __webpack_require__(/*! ./components/MessagesFeed.vue */ "./resources/js/components/MessagesFeed.vue").default);
-Vue.component('side-panel', __webpack_require__(/*! ./components/SidePanele.vue */ "./resources/js/components/SidePanele.vue").default);
+Vue.component('side-panel', __webpack_require__(/*! ./components/SidePanele.vue */ "./resources/js/components/SidePanele.vue").default); //компонент с заявками
+
+Vue.component('application', __webpack_require__(/*! ./components/Application.vue */ "./resources/js/components/Application.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -60559,6 +60666,75 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   cluster: "eu",
   encrypted: true
 });
+
+/***/ }),
+
+/***/ "./resources/js/components/Application.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/Application.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Application_vue_vue_type_template_id_bf784f96_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Application.vue?vue&type=template&id=bf784f96&scoped=true& */ "./resources/js/components/Application.vue?vue&type=template&id=bf784f96&scoped=true&");
+/* harmony import */ var _Application_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Application.vue?vue&type=script&lang=js& */ "./resources/js/components/Application.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Application_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Application_vue_vue_type_template_id_bf784f96_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Application_vue_vue_type_template_id_bf784f96_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "bf784f96",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Application.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Application.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/Application.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Application_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Application.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Application.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Application_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Application.vue?vue&type=template&id=bf784f96&scoped=true&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/Application.vue?vue&type=template&id=bf784f96&scoped=true& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Application_vue_vue_type_template_id_bf784f96_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Application.vue?vue&type=template&id=bf784f96&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Application.vue?vue&type=template&id=bf784f96&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Application_vue_vue_type_template_id_bf784f96_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Application_vue_vue_type_template_id_bf784f96_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

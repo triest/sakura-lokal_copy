@@ -1,6 +1,8 @@
 <template>
     <div>
-        <b><a href="/messages">Сообщения</a>+{{numberUnreaded}}</b><br>
+        <b><a href="/messages">Сообщения</a>
+            <div v-if="numberUnreaded" !="0">+{{numberUnreaded}}</div>
+        </b><br>
         <b><a href="/applications">Заявки на открытие анкеты</a></b>
         <b><a href="/edit">Редактирование анкеты</a> </b>
 
@@ -23,7 +25,7 @@
         mounted() {
             Echo.private(`messages.${this.user.id}`)
                 .listen('NewMessage', (e) => {
-                 //   console.log('NewMessage');
+                    //   console.log('NewMessage');
                     axios.get('/getCountUnreaded')
                         .then((response) => {
                             this.numberUnreaded = response.data;
@@ -33,6 +35,9 @@
         methods:
             {
                 getNumberUnreadedMessages() {
+
+                },
+                chechAnketExist() {
 
                 }
             }

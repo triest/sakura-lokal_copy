@@ -15,6 +15,8 @@
             <b> Женский</b>
         @endif
 
+
+
         @if($girl->sex=='male')
             <b> Мужской</b>
         @endif

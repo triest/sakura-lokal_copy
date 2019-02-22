@@ -12,7 +12,6 @@
     <meta name="author" content="">
 
 
-
     <title>{{$title}}</title>
     <script src="https://getbootstrap.com/docs/3.3/assets/js/ie-emulation-modes-warning.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -58,7 +57,6 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 
 
-
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -93,11 +91,15 @@
                 @if (Auth::guest())
                     <b><a href="{{ url('/login') }}">Войти</a></b><br>
                     <b><a href="{{ url('/join') }}">Зарегистрироваться</a></b>
-
                 @else
+                    <b>{{auth()->user()->name}}</b><br>
                     <b><a href="{{ url('/logout') }}">Выйти</a></b>
-                    <side-panel  :user="{{auth()->user()}}"></side-panel>
-
+                    <br>
+                    @if($girl=Auth::user()->anketisExsis()!=null)
+                    <!-- {{$girl=Auth::user()->anketisExsis()}} -->
+                        <img height="150" width="150"
+                             src="<?php echo asset("images/upload/$girl->main_image")?>">
+                    @endif
                 @endif
             </div>
         </div><!--/span-->
