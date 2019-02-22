@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Application.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Application.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ContactsController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ContactsController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContactsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="698">
-              <caret line="132" selection-start-line="132" selection-end-line="132" />
+            <state relative-caret-position="743">
+              <caret line="145" column="9" lean-forward="true" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -38,11 +34,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Application.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Application.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/Application.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="760">
-              <caret line="84" column="29" lean-forward="true" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+              <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2019_02_22_203843_create_user_user_table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_22_203843_create_user_user_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="23" column="6" lean-forward="true" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -142,8 +147,9 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_22_190341_add_timestamp_to_requwest.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_22_190811_add_timestamp_to_requwest2.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/Application.vue" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_22_203843_create_user_user_table.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" />
       </list>
     </option>
   </component>
@@ -393,12 +399,12 @@
       <workItem from="1550491806864" duration="19217000" />
       <workItem from="1550554605864" duration="10877000" />
       <workItem from="1550641412273" duration="20896000" />
-      <workItem from="1550814479435" duration="22405000" />
+      <workItem from="1550814479435" duration="23373000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73395000" />
+    <option name="totallyTimeSpent" value="74363000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -446,13 +452,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/routes/channels.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Events/NewMessage.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -774,17 +773,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContactsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="698">
-          <caret line="132" selection-start-line="132" selection-end-line="132" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Application.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="760">
-          <caret line="84" column="29" lean-forward="true" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+          <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_22_203843_create_user_user_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="6" lean-forward="true" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContactsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="743">
+          <caret line="145" column="9" lean-forward="true" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="9" />
         </state>
       </provider>
     </entry>

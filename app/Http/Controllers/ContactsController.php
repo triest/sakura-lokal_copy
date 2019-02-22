@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Message;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Nexmo\Response;
 
 class ContactsController extends Controller
@@ -142,6 +143,8 @@ class ContactsController extends Controller
         $myrequest->readed = 1;
         $myrequest->status = 'confirmed';
         $myrequest->save();
+        DB::table('user_user')
+            ->insert(['other_id' => $auth->id, 'my_id' => $id]);
         return response()->json(['ok']);
     }
 
