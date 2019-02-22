@@ -46,3 +46,10 @@ Route::get('/getCountUnreaded','ContactsController@getCountUnreadedMessages')->m
 Route::get('/applications','ContactsController@getApplicationPage')->middleware('auth');
 //получаем сами заявки
 Route::get('/getapplication','ContactsController@getApplication')->middleware('auth');
+
+Route::get('/getmyapplication','ContactsController@myApplication')->middleware('auth');
+
+//отклонить доступ
+Route::get('/denideaccess','ContactsController@denideAccess')->middleware('auth');
+
+Route::get('/geteaccess','ContactsController@makeAccess')->middleware('auth');

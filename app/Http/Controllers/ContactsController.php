@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Message;
 use Illuminate\Support\Facades\Auth;
+use Nexmo\Response;
 
 class ContactsController extends Controller
 {
@@ -68,14 +69,80 @@ class ContactsController extends Controller
         //  $request = collect(DB::select('select * from requwest where target_id=?', [$user->id]));
         $request = MyRequwest::select('id',
             'who_id',
-            'target_id')->where('who_id', $user->id)
+            'target_id')->where('target_id', $user->id)
+            ->where('readed', 0)
             ->get();
-        $array=[];
-        foreach ($request as $item){
-            $girl=Girl::select(['id','name','main_image'])->where('user_id',$item->target_id)->first();
-            array_push($array,$girl);
+        $array = [];
+        foreach ($request as $item) {
+            $girl = Girl::select(['id', 'name', 'main_image'])->where('user_id', $item->who_id)->first();
+            array_push($array, $girl);
         }
         return $array;
+    }
+
+    //запросы для меня
+    public function myApplication()
+    {
+        //просмотр запросов
+
+        $user = Auth::user();
+        //  $request = collect(DB::select('select * from requwest where target_id=?', [$user->id]));
+        $request = MyRequwest::select('id',
+            'who_id',
+            'target_id')->where('who_id', $user->id)
+            ->where('readed', 0)
+            ->get();
+        $array = [];
+        foreach ($request as $item) {
+            $girl = Girl::select(['id', 'name', 'main_image'])->where('user_id', $item->who_id)->first();
+            array_push($array, $girl);
+        }
+        return $array;
+    }
+
+    public function denideAccess(Request $request)
+    {
+        $id = $request->input('id');
+
+        $auth = Auth::user();
+        $girl = Girl::select(['id', 'user_id'])->where('id', $id)->first();
+
+
+        $user_id = $girl->user_id;
+        //получаем запрос
+       $myrequest = MyRequwest::select('id',
+            'who_id',
+            'target_id', 'status', 'readed')->where('target_id', $auth->id)
+            ->where('who_id', $user_id)
+            ->first();
+
+        //ставим статус закрыто
+        $myrequest->readed = 1;
+        $myrequest->status = 'rejected';
+        $myrequest->save();
+        return response()->json(['ok']);
+    }
+
+    public function makeAccess(Request $request)
+    {
+        $id = $request->input('id');
+        $id = $request->input('id');
+
+        $auth = Auth::user();
+        $girl = Girl::select(['id', 'user_id'])->where('id', $id)->first();
+
+        $id = $girl->user_id;
+        //получаем запрос
+        $myrequest = MyRequwest::select('id',
+            'who_id',
+            'target_id', 'status', 'readed')->where('target_id', $auth->id)
+            ->where('who_id', $id)
+            ->first();
+        //ставим статус закрыто
+        $myrequest->readed = 1;
+        $myrequest->status = 'confirmed';
+        $myrequest->save();
+        return response()->json(['ok']);
     }
 
 }
