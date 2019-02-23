@@ -2215,10 +2215,9 @@ __webpack_require__.r(__webpack_exports__);
     });
     Echo.private("requwests.".concat(this.user.id)).listen('newApplication', function (e) {
       console.log('NewRequwest');
-      /*axios.get('/getCountUnreaded')
-          .then((response) => {
-              this.numberUnreaded = response.data;
-          })*/
+      axios.get('/getCountUnreadedRequwest').then(function (response) {
+        _this.numberApplication = response.data;
+      });
     });
   },
   methods: {
@@ -48636,9 +48635,9 @@ var render = function() {
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
-    _vm.numberUnreaded
+    _vm.numberApplication
       ? _c("div", { attrs: { "!": "0" } }, [
-          _vm._v("+" + _vm._s(_vm.numberUnreaded))
+          _vm._v("+" + _vm._s(_vm.numberApplication))
         ])
       : _vm._e(),
     _vm._v(" "),

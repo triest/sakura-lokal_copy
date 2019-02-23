@@ -40,6 +40,8 @@ Route::get('/anket/{id}', 'GirlsController@showGirl')->name('showGirl');
 //количество непрочитанных сообщений
 Route::get('/getCountUnreaded','ContactsController@getCountUnreadedMessages')->middleware('auth');
 
+//оличество непрочитанных запросов
+Route::get('/getCountUnreadedRequwest','ContactsController@getCountUnreadedRequwest')->middleware('auth');
 
 
 //заявки на открытия

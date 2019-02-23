@@ -113,7 +113,7 @@ class ContactsController extends Controller
 
         $user_id = $girl->user_id;
         //получаем запрос
-       $myrequest = MyRequwest::select('id',
+        $myrequest = MyRequwest::select('id',
             'who_id',
             'target_id', 'status', 'readed')->where('target_id', $auth->id)
             ->where('who_id', $user_id)
@@ -150,15 +150,28 @@ class ContactsController extends Controller
         return response()->json(['ok']);
     }
 
-    public function reqTest(Request $request){
-        $auth=Auth::user();
+    public function reqTest(Request $request)
+    {
+        $auth = Auth::user();
         $myrequest = MyRequwest::select('id',
             'who_id',
             'target_id', 'status', 'readed')->where('target_id', $auth->id)
-           // ->where('who_id', $auth->id)
+            // ->where('who_id', $auth->id)
             ->first();
 
         broadcast(new newApplication($myrequest));
+    }
+
+    public function getCountUnreadedRequwest(Request $request)
+    {
+        $auth = Auth::user();
+        $myrequest = MyRequwest::select('id',
+            'who_id',
+            'target_id', 'status', 'readed')->where('target_id', $auth->id)
+            ->where('readed', 0)
+            ->get();
+        $count = count($myrequest);
+        return $count;
     }
 
 }

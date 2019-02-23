@@ -4,7 +4,7 @@
             <div v-if="numberUnreaded" !="0">+{{numberUnreaded}}</div>
         </b><br>
         <b><a href="/applications">Заявки на открытие анкеты</a></b>
-        <div v-if="numberUnreaded" !="0">+{{numberUnreaded}}</div>
+        <div v-if="numberApplication" !="0">+{{numberApplication}}</div>
         <b><a href="/edit">Редактирование анкеты</a> </b>
 
     </div>
@@ -36,10 +36,10 @@
             Echo.private(`requwests.${this.user.id}`)
                 .listen('newApplication', (e) => {
                        console.log('NewRequwest');
-                    /*axios.get('/getCountUnreaded')
+                    axios.get('/getCountUnreadedRequwest')
                         .then((response) => {
-                            this.numberUnreaded = response.data;
-                        })*/
+                            this.numberApplication = response.data;
+                        })
                 });
 
         },
