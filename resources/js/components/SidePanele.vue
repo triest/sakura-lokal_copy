@@ -1,10 +1,13 @@
 <template>
     <div>
-        <b><a href="/messages">Сообщения</a>
-            <div v-if="numberUnreaded" !="0">+{{numberUnreaded}}</div>
-        </b><br>
-        <b><a href="/applications">Заявки на открытие анкеты</a></b>
-        <div v-if="numberApplication" !="0">+{{numberApplication}}</div>
+        <b><a href="/messages">Сообщения
+            <div v-if="numberUnreaded>0">+{{numberUnreaded}}</div>
+        </a>
+        </b>
+        <b><a href="/applications">Заявки на открытие анкеты
+            <div v-if="numberApplication>0">+{{numberApplication}}</div>
+        </a>
+        </b>
         <b><a href="/edit">Редактирование анкеты</a> </b>
 
     </div>
@@ -35,13 +38,20 @@
                 });
             Echo.private(`requwests.${this.user.id}`)
                 .listen('newApplication', (e) => {
-                       console.log('NewRequwest');
+                    console.log('NewRequwest');
                     axios.get('/getCountUnreadedRequwest')
                         .then((response) => {
                             this.numberApplication = response.data;
                         })
                 });
-
+            axios.get('/getCountUnreaded')
+                .then((response) => {
+                    this.numberUnreaded = response.data;
+                });
+            axios.get('/getCountUnreadedRequwest')
+                .then((response) => {
+                    this.numberApplication = response.data;
+                })
         },
         methods:
             {

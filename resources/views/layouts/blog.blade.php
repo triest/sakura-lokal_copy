@@ -5,14 +5,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-
-    <title>{{$title}}</title>
+  <title>{{$title}}</title>
     <script src="https://getbootstrap.com/docs/3.3/assets/js/ie-emulation-modes-warning.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
@@ -23,13 +16,11 @@
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- galeray -->
-    <link href="{{asset('css/gallery-grid.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 
-    <script type="text/javascript" charset="utf8"
-            src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
 
 
     <!--table CSS -->
@@ -46,21 +37,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
     <!-- Custom styles for this template -->
     <link href="http://bootstrap-3.ru/examples/offcanvas/offcanvas.css" rel="stylesheet">
-    <link rel="icon" href="<?php echo asset("public/images/sakura.jpg")?>">
-
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 
-
-    <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link rel="icon" href="http://example.com/favicon.png">
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!--Yandex -->
@@ -70,7 +54,7 @@
 <body>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <header></header>
+
 
 <div class="container">
 

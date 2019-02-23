@@ -5,9 +5,7 @@
 @section('content')
 
     @foreach($girls as $girl)
-        <!--телефон -col-xs-8 -->
-        <!-- сol-lg-3 компьютер-->
-        <!-- сol-sm-3 планшет в альбомном -->
+
         <div class="col-lg-4 col-md-3 col-sm-5 col-xs-9 ">
             <a href="{{route('showGirl',['id'=>$girl->id])}}">
                 <img height="250" width="350"
