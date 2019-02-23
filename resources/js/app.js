@@ -25,6 +25,7 @@ Vue.component('conversation', require('./components/Conversation.vue').default);
 Vue.component('ContactsList', require('./components/ContactsList.vue').default);
 Vue.component('MessagesFeed', require('./components/MessagesFeed.vue').default);
 Vue.component('side-panel', require('./components/SidePanele.vue').default);
+Vue.component('header', require('./components/Carousel.vue').default);
 
 //компонент с заявками
 Vue.component('application', require('./components/Application.vue').default);

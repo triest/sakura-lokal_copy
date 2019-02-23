@@ -70,6 +70,7 @@
 <body>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <header></header>
 
 <div class="container">
 
@@ -99,7 +100,9 @@
                     <!-- {{$girl=Auth::user()->anketisExsis()}} -->
                         <img height="150" width="150"
                              src="<?php echo asset("images/upload/$girl->main_image")?>">
+                        <side-panel :user="{{auth()->user()}}"></side-panel>
                     @endif
+
                 @endif
             </div>
         </div><!--/span-->

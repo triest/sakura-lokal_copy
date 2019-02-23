@@ -53,3 +53,5 @@ Route::get('/getmyapplication','ContactsController@myApplication')->middleware('
 Route::get('/denideaccess','ContactsController@denideAccess')->middleware('auth');
 
 Route::get('/geteaccess','ContactsController@makeAccess')->middleware('auth');
+
+Route::get('/req','ContactsController@reqTest')->middleware('auth');

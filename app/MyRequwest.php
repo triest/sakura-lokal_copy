@@ -32,4 +32,9 @@ class MyRequwest extends Model
         return $this->hasMany('App\User');
     }
 
+    public function fromContact()
+    {
+        return $this->hasOne(User::class, 'id', 'who_id');
+    }
+
 }

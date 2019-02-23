@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\NewMessage;
+use App\Events\newApplication;
 use App\Girl;
 use App\MyRequwest;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use App\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Nexmo\Response;
+use Symfony\Component\HttpFoundation\Tests\NewRequest;
 
 class ContactsController extends Controller
 {
@@ -146,6 +148,17 @@ class ContactsController extends Controller
         DB::table('user_user')
             ->insert(['other_id' => $auth->id, 'my_id' => $id]);
         return response()->json(['ok']);
+    }
+
+    public function reqTest(Request $request){
+        $auth=Auth::user();
+        $myrequest = MyRequwest::select('id',
+            'who_id',
+            'target_id', 'status', 'readed')->where('target_id', $auth->id)
+           // ->where('who_id', $auth->id)
+            ->first();
+
+        broadcast(new newApplication($myrequest));
     }
 
 }
