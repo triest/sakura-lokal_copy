@@ -4,10 +4,11 @@
             <div v-if="numberUnreaded>0">+{{numberUnreaded}}</div>
         </a>
         </b>
+
         <b><a href="/applications">Заявки на открытие анкеты
             <div v-if="numberApplication>0">+{{numberApplication}}</div>
         </a>
-        </b>
+        </b><br>
         <b><a href="/edit">Редактирование анкеты</a> </b>
 
     </div>

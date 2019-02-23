@@ -39,3 +39,7 @@ Vue.component('application', require('./components/Application.vue').default);
 const app = new Vue({
     el: '#app'
 });
+
+const app2 = new Vue({
+    el: '#app2'
+});

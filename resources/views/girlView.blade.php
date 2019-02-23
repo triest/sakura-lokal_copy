@@ -3,9 +3,16 @@
 
 
 @section('content')
+    @if (Auth::guest())
+    @else
+        <div class="card-body" id="app2">
+            <privatepanel :id="{{$girl->id}}"></privatepanel>
+        </div>
+    @endif
+
     <a href="{{route('showGirl',['id'=>$girl->id])}}">
-        <img height="250" width="350"
-             src="<?php echo asset("/images/upload/$girl->main_image")?>"></a>
+        <img height="250" width="250"
+             src="<?php echo asset("/images/upload/$girl->main_image")?>">
     </a>
     <h4 class="card-title">
         {{$girl->name}}
@@ -15,8 +22,6 @@
     @if($girl->sex=='famele')
         <b> Женский</b>
     @endif
-
-
 
     @if($girl->sex=='male')
         <b> Мужской</b>
@@ -54,6 +59,28 @@
             </div>
         </div>
     </div>
+
+    @if($girl->private!=null)
+        <label>Приватное сообщение:</label>
+        <p class="card-text>"><b>{!!$girl->private  !!}<</b></p>
+        @if (empty($privatephotos))
+        @else
+            <label>Приватные фотографии:</label>
+            <div class="container gallery-container">
+                <div class="tz-gallery">
+                    <div class="row">
+                        @foreach($privatephotos as $image)
+                            <div class="col-sm-6 col-md-4">
+                                <a class="lightbox" href="<?php echo asset("/images/upload/$image->photo_name")?>">
+                                    <img height="250" src="<?php echo asset("/images/upload/$image->photo_name")?>">
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        @endif
+    @endif
 
 
 

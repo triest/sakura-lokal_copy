@@ -66,38 +66,32 @@ class GirlsController extends Controller
         $AythUser = Auth::user();
         $privatephoto = null;
         //проверяем, что просматривающий пользователь зареген.
-     /*   if ($AythUser != null) {
+        if ($AythUser != null) {
             //  $girl_user_id=$girl->user_id;
             $user3 = DB::table('user_user')
                     ->where('my_id', $AythUser->id)
                     ->where('other_id', $girl->user_id)->first();
             if ($user3 != null) {
                 $girl = Girl::select([
-                        'name',
-                        'email',
-                        'password',
-                        'id',
-                        'description',
-                        'enabled',
-                        'payday',
-                        'phone',
-                        'private',
-                        'payed',
-                        'login',
-                        'main_image',
-                        'sex',
-                        'meet',
-                        'weight',
-                        'height',
-                        'age',
-                        'country_id',
-                        'region_id',
-                        'city_id',
-                        'banned'
+                    'name',
+                    'id',
+                    'description',
+                    'main_image',
+                    'sex',
+                    'meet',
+                    'weight',
+                    'height',
+                    'age',
+                    'country_id',
+                    'region_id',
+                    'city_id',
+                    'banned',
+                    'user_id',
+                    'private'
                 ])->where('id', $id)->first();
                 $privatephoto = $girl->privatephotos()->get();
             }
-        }*/
+        }
         return view('girlView')->with([
                 'girl' => $girl,
                 'images' => $images,

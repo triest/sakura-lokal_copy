@@ -2163,9 +2163,90 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    id: {
+      type: '',
+      required: true
+    }
+  },
   mounted: function mounted() {
     console.log('private');
+    console.log(this.id);
+    this.khowHasPrivateOrNot();
+  },
+  data: function data() {
+    return {
+      isOpen: false,
+      showSendRegButton: false,
+      regStatus: null
+    };
+  },
+  methods: {
+    khowHasPrivateOrNot: function khowHasPrivateOrNot() {
+      var _this = this;
+
+      console.log('reg ' + this.id);
+      axios.get('/getisprivaterrnot', {
+        params: {
+          id: this.id
+        }
+      }).then(function (response) {
+        if (!response.data) {
+          _this.isOpen = true;
+        } else {
+          _this.isOpen = false;
+
+          _this.khowSendRequwestOrNot();
+        }
+      });
+    },
+    khowSendRequwestOrNot: function khowSendRequwestOrNot() {
+      var _this2 = this;
+
+      //узнаёт, отправлен запрос или нет
+      console.log("sendor not");
+      axios.get('/getsendregornot', {
+        params: {
+          id: this.id
+        }
+      }).then(function (response) {
+        if (response.data == "not") {
+          _this2.showSendRegButton = true;
+        } else {
+          _this2.showSendRegButton = false; //если отправлен, то надо статус показать
+
+          if (response.data['readed'] == 0) {
+            _this2.regStatus = "notreaded";
+            _this2.showSendRegButton = false;
+          } else {
+            if (response.data['status'] == 'acept') {
+              _this2.regStatus = "acept";
+              _this2.showSendRegButton = false;
+            } else {
+              _this2.regStatus = "denide";
+              _this2.showSendRegButton = false;
+            }
+          }
+        }
+      });
+    },
+    //отправляет запрос на открытие анкеты
+    sendRequwest: function sendRequwest() {
+      var _this3 = this;
+
+      axios.get('/sendreg', {
+        params: {
+          id: this.id
+        }
+      }).then(function (response) {
+        _this3.khowSendRequwestOrNot();
+      });
+    }
   }
 });
 
@@ -2180,6 +2261,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -48607,16 +48689,37 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm.isOpen
+      ? _c("h3", [_vm._v("У вас открыт доступ к приватной информации!")])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.showSendRegButton
+      ? _c(
+          "button",
+          {
+            on: {
+              click: function($event) {
+                return _vm.sendRequwest()
+              }
+            }
+          },
+          [_vm._v("Отправит запрос на открытие анкеты")]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.regStatus == "notreaded"
+      ? _c("h3", [_vm._v("Заявка не рассмотренна")])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.regStatus == "acept" ? _c("h3", [_vm._v("Заявка принята")]) : _vm._e(),
+    _vm._v(" "),
+    _vm.regStatus == "denide"
+      ? _c("h3", [_vm._v("Заявка отклонена")])
+      : _vm._e()
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("p", [_vm._v("Private")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -48656,6 +48759,7 @@ var render = function() {
           : _vm._e()
       ])
     ]),
+    _c("br"),
     _vm._v(" "),
     _vm._m(0)
   ])
@@ -60817,6 +60921,9 @@ Vue.component('application', __webpack_require__(/*! ./components/Application.vu
 
 var app = new Vue({
   el: '#app'
+});
+var app2 = new Vue({
+  el: '#app2'
 });
 
 /***/ }),

@@ -5,10 +5,10 @@
 @section('content')
 
     @foreach($girls as $girl)
-
-        <div class="col-lg-4 col-md-3 col-sm-5 col-xs-9 ">
+<!-- md -комп-->
+        <div class="col-lg-12 col-md-5 col-sm-5 col-xs-9 ">
             <a href="{{route('showGirl',['id'=>$girl->id])}}">
-                <img height="250" width="350"
+                <img height="250" width="250"
                      src="<?php echo asset("/images/upload/$girl->main_image")?>"></a>
             </a>
             <h4 class="card-title">

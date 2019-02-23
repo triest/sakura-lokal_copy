@@ -129,11 +129,8 @@ class ContactsController extends Controller
     public function makeAccess(Request $request)
     {
         $id = $request->input('id');
-        $id = $request->input('id');
-
         $auth = Auth::user();
         $girl = Girl::select(['id', 'user_id'])->where('id', $id)->first();
-
         $id = $girl->user_id;
         //получаем запрос
         $myrequest = MyRequwest::select('id',
@@ -174,4 +171,47 @@ class ContactsController extends Controller
         return $count;
     }
 
+    public function getIsPrivateOrNot(Request $request)
+    {
+        // dump($request);
+        $id = $request->input('id');
+        $auth = Auth::user();
+        $private = DB::table('user_user')
+            ->where('my_id', $auth->id)
+            ->where('other_id', $id)
+            ->first();
+        $private = collect($private);
+        // dump($private);
+        return $private;
+    }
+
+    public function sendornot(Request $request)
+    {
+        $id = $request->input('id');
+
+        $auth = Auth::user();
+        $myrequest = MyRequwest::select('id',
+            'who_id',
+            'target_id', 'status', 'readed')->where('target_id', $id)
+            ->where('who_id', $auth->id)->first();
+        //  dump($myrequest);
+        if ($myrequest != null) {
+            return $myrequest;
+        } else {
+            return response()->json('not');
+        }
+
+    }
+
+    //отправляет запрос на открытие анкеты
+    public function sendreg(Request $request)
+    {
+        $id = $request->input('id');
+        $auth = Auth::user();
+        $myrequest=new MyRequwest();
+        $myrequest->who_id=$auth->id;
+        $myrequest->target_id=$id;
+        $myrequest->save();
+        return response()->json('ok');
+    }
 }

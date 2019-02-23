@@ -57,3 +57,12 @@ Route::get('/denideaccess','ContactsController@denideAccess')->middleware('auth'
 Route::get('/geteaccess','ContactsController@makeAccess')->middleware('auth');
 
 Route::get('/req','ContactsController@reqTest')->middleware('auth');
+
+//проверяем, есть ли доступ к приватной части или нет
+Route::get('/getisprivaterrnot','ContactsController@getIsPrivateOrNot')->middleware('auth');
+
+//проверяем, отправляли ли запрос
+Route::get('/getsendregornot','ContactsController@sendornot')->middleware('auth');
+
+//отправляем запрос:
+Route::get('/sendreg','ContactsController@sendreg')->middleware('auth');
