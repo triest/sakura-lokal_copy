@@ -94,15 +94,16 @@ class ContactsController extends Controller
         //  $request = collect(DB::select('select * from requwest where target_id=?', [$user->id]));
         $request = MyRequwest::select('id',
             'who_id',
-            'target_id')->where('who_id', $user->id)
+            'target_id', 'who_name', 'image','status','readed')->where('who_id', $user->id)
             ->where('readed', 0)
             ->get();
         $array = [];
-        foreach ($request as $item) {
-            $girl = Girl::select(['id', 'name', 'main_image'])->where('user_id', $item->who_id)->first();
-            array_push($array, $girl);
-        }
-        return $array;
+        /*  foreach ($request as $item) {
+              $girl = Girl::select(['id', 'name', 'main_image'])->where('user_id', $item->who_id)->first();
+              array_push($array, $girl);
+          }*/
+        //  return response()->json(, $request);
+        return $request;
     }
 
     public function denideAccess(Request $request)
@@ -211,11 +212,15 @@ class ContactsController extends Controller
     {
         $id = $request->input('id');
         $girl = Girl::select(['id', 'user_id'])->where('id', $id)->first();
+
         $id = $girl->user_id;
         $auth = Auth::user();
+        $girl2 = Girl::select(['name', 'main_imega'])->where(['user_id', $auth->id])->first();
         $myrequest = new MyRequwest();
         $myrequest->who_id = $auth->id;
         $myrequest->target_id = $id;
+        $myrequest->who_name = $girl2->name;
+        $myrequest->image = $girl2->main_image;
         $myrequest->save();
         broadcast(new newApplication($myrequest));
         return response()->json('ok');
@@ -225,11 +230,6 @@ class ContactsController extends Controller
     {
         $auth = Auth::user();
 
-        /*   $request = MyRequwest::select('id',
-               'who_id',
-               'target_id')->where('who_id', $user->id)
-               ->where('readed', 0)
-               ->get();*/
         $users_id = Useruser::select('id', 'my_id', 'other_id')->where(
             'other_id',
             $auth->id

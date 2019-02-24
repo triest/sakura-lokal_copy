@@ -1810,6 +1810,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -48465,11 +48471,25 @@ var render = function() {
           _c("div", { staticClass: "avatar" }, [
             _c("img", {
               attrs: {
-                src: "images/upload/" + application.main_image,
-                alt: application.name,
+                src: "images/upload/" + application.image,
+                alt: application.who_name,
                 height: "150"
               }
-            })
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(application.who_name))]),
+            _vm._v(" "),
+            application.status == null
+              ? _c("div", [_vm._v("Не рассмотрен")])
+              : _vm._e(),
+            _vm._v(" "),
+            application.status == "accept"
+              ? _c("div", [_vm._v("Подтвержден")])
+              : _vm._e(),
+            _vm._v(" "),
+            application.status == "denide"
+              ? _c("div", [_vm._v("Отклонен")])
+              : _vm._e()
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "contact" }, [
@@ -48477,9 +48497,6 @@ var render = function() {
           ])
         ])
       }),
-      _vm._v(" "),
-      _c("br"),
-      _c("br"),
       _vm._v(" "),
       _c(
         "b",
@@ -48490,7 +48507,7 @@ var render = function() {
               _c("div", { staticClass: "avatar" }, [
                 _c("img", {
                   attrs: {
-                    src: "images/upload/" + application.main_image,
+                    src: "images/upload/" + application.image,
                     alt: application.name,
                     height: "150"
                   }
