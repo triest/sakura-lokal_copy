@@ -5,7 +5,7 @@
 @section('content')
     @if (Auth::guest())
     @else
-        <div class="card-body" id="app">
+        <div class="card-body" id="app2">
             <privatepanel :id="{{$girl->id}}"></privatepanel>
         </div>
     @endif

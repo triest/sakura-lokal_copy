@@ -52,6 +52,10 @@ Route::get('/applications','ContactsController@getApplicationPage')->middleware(
 Route::get('/getapplication','ContactsController@getApplication')->middleware('auth');
 
 Route::get('/getmyapplication','ContactsController@myApplication')->middleware('auth');
+//кто имеет доступ к моеё анкете
+Route::get('/whohaveaccesstomyanket','ContactsController@whoHavaAccessToMyAnket')->middleware('auth');
+//закрыть доступ
+Route::get('/clouseaccess','ContactsController@clouseaccess')->middleware('auth');
 
 //отклонить доступ
 Route::get('/denideaccess','ContactsController@denideAccess')->middleware('auth');

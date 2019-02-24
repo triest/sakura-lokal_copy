@@ -1790,6 +1790,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -1800,18 +1820,19 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       applications: [],
-      myapplications: []
+      myapplications: [],
+      whocansee: []
     };
   },
   mounted: function mounted() {
-    this.getApplications(), this.getMyApplications();
+    this.getApplications(), this.getMyApplications(), this.getWhoHavwAccessToMyAnket();
   },
   methods: {
     getApplications: function getApplications() {
       var _this = this;
 
       axios.get('/getapplication').then(function (response) {
-        _this.applications = [];
+        _this.applications = null;
         _this.applications = response.data;
       });
     },
@@ -1819,6 +1840,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get('/getmyapplication').then(function (response) {
+        _this2.myapplications = null;
         _this2.myapplications = response.data;
       });
     },
@@ -1848,6 +1870,28 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         if (response.data == 'ok') {
           _this4.getApplications();
+        }
+      });
+    },
+    getWhoHavwAccessToMyAnket: function getWhoHavwAccessToMyAnket() {
+      var _this5 = this;
+
+      axios.get('/whohaveaccesstomyanket').then(function (response) {
+        _this5.whocansee = null;
+        _this5.whocansee = response.data;
+      });
+    },
+    clouseAccess: function clouseAccess(id) {
+      var _this6 = this;
+
+      console.log(id);
+      axios.get('/clouseaccess', {
+        params: {
+          id: id
+        }
+      }).then(function (response) {
+        if (response.data == 'ok') {
+          _this6.getWhoHavwAccessToMyAnket();
         }
       });
     }
@@ -48366,7 +48410,8 @@ var render = function() {
     "div",
     { staticClass: "application" },
     [
-      _vm._v("\n\n    Просьбы предоставить доступ:\n    "),
+      _c("b", [_vm._v("\n        Просьбы предоставить доступ:\n    ")]),
+      _vm._v(" "),
       _vm._l(_vm.applications, function(application) {
         return _c("div", [
           _c("div", { staticClass: "avatar" }, [
@@ -48410,7 +48455,11 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("br"),
-      _vm._v("\n    Мои запросы на открытие анкеты:\n    "),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("b", [_vm._v("\n        Мои запросы на открытие анкеты:\n    ")]),
+      _vm._v(" "),
       _vm._l(_vm.myapplications, function(application) {
         return _c("div", [
           _c("div", { staticClass: "avatar" }, [
@@ -48427,7 +48476,53 @@ var render = function() {
             _c("p", { staticClass: "name" }, [_vm._v(_vm._s(application.name))])
           ])
         ])
-      })
+      }),
+      _vm._v(" "),
+      _c("br"),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "b",
+        [
+          _vm._v("\n        Кому предоставил доступ:\n        "),
+          _vm._l(_vm.whocansee, function(application) {
+            return _c("div", [
+              _c("div", { staticClass: "avatar" }, [
+                _c("img", {
+                  attrs: {
+                    src: "images/upload/" + application.main_image,
+                    alt: application.name,
+                    height: "150"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "contact" }, [
+                _c("p", { staticClass: "name" }, [
+                  _vm._v(_vm._s(application.name))
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.clouseAccess(application.id)
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "Закрыть доступ к приватной\n                информации\n            "
+                  )
+                ]
+              )
+            ])
+          })
+        ],
+        2
+      )
     ],
     2
   )
@@ -48719,7 +48814,7 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _vm.regStatus == "notreaded"
-      ? _c("h3", [_vm._v("Заявка не рассмотренна")])
+      ? _c("h3", [_vm._v("Заявка не рассмотрена")])
       : _vm._e(),
     _vm._v(" "),
     _vm.regStatus == "acept" ? _c("h3", [_vm._v("Заявка принята")]) : _vm._e(),

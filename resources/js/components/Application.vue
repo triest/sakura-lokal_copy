@@ -1,7 +1,8 @@
 <template>
     <div class="application">
-
-        Просьбы предоставить доступ:
+        <b>
+            Просьбы предоставить доступ:
+        </b>
         <div v-for="application in applications">
             <div class="avatar">
                 <img :src="'images/upload/'+application.main_image" :alt="application.name" height="150">
@@ -13,7 +14,10 @@
             <button v-on:click="denideNewApplication(application.id)">Закрыть доступ</button>
         </div>
         <br>
-        Мои запросы на открытие анкеты:
+        <br>
+        <b>
+            Мои запросы на открытие анкеты:
+        </b>
         <div v-for="application in myapplications">
             <div class="avatar">
                 <img :src="'images/upload/'+application.main_image" :alt="application.name" height="150">
@@ -22,6 +26,22 @@
                 <p class="name">{{ application.name }}</p>
             </div>
         </div>
+        <br><br>
+        <b>
+            Кому предоставил доступ:
+            <div v-for="application in whocansee">
+                <div class="avatar">
+                    <img :src="'images/upload/'+application.main_image" :alt="application.name" height="150">
+                </div>
+                <div class="contact">
+                    <p class="name">{{ application.name }}</p>
+                </div>
+                <button v-on:click="clouseAccess(application.id)">Закрыть доступ к приватной
+                    информации
+                </button>
+            </div>
+        </b>
+
     </div>
 </template>
 
@@ -36,25 +56,29 @@
         data() {
             return {
                 applications: [],
-                myapplications: []
+                myapplications: [],
+                whocansee: [],
             };
         },
         mounted() {
             this.getApplications(),
-                this.getMyApplications()
+                this.getMyApplications(),
+                this.getWhoHavwAccessToMyAnket()
+
         },
         methods:
             {
                 getApplications() {
                     axios.get('/getapplication')
                         .then((response) => {
-                            this.applications=[];
+                            this.applications = null;
                             this.applications = response.data;
                         })
                 },
                 getMyApplications() {
                     axios.get('/getmyapplication')
                         .then((response) => {
+                            this.myapplications = null;
                             this.myapplications = response.data;
                         })
                 },
@@ -68,8 +92,8 @@
                     })
                         .then((response) => {
                             //this.applications = response.data;
-                           // console.log(response.data)
-                            if (response.data=='ok'){
+                            // console.log(response.data)
+                            if (response.data == 'ok') {
                                 this.getApplications();
                             }
                         })
@@ -81,11 +105,31 @@
                         }
                     })
                         .then((response) => {
-                            if (response.data=='ok'){
+                            if (response.data == 'ok') {
                                 this.getApplications();
                             }
                         })
                 },
+                getWhoHavwAccessToMyAnket() {
+                    axios.get('/whohaveaccesstomyanket')
+                        .then((response) => {
+                            this.whocansee = null
+                            this.whocansee = response.data;
+                        })
+                },
+                clouseAccess(id) {
+                    console.log(id);
+                    axios.get('/clouseaccess', {
+                        params: {
+                            id: id,
+                        }
+                    })
+                        .then((response) => {
+                            if (response.data == 'ok') {
+                                this.getWhoHavwAccessToMyAnket();
+                            }
+                        })
+                }
 
 
             }

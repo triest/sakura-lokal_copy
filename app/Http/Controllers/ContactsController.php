@@ -6,6 +6,7 @@ use App\Events\NewMessage;
 use App\Events\newApplication;
 use App\Girl;
 use App\MyRequwest;
+use App\Useruser;
 use Illuminate\Http\Request;
 use App\User;
 use App\Message;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Nexmo\Response;
 use Symfony\Component\HttpFoundation\Tests\NewRequest;
+
 
 class ContactsController extends Controller
 {
@@ -216,6 +218,43 @@ class ContactsController extends Controller
         $myrequest->target_id = $id;
         $myrequest->save();
         broadcast(new newApplication($myrequest));
+        return response()->json('ok');
+    }
+
+    public function whoHavaAccessToMyAnket(Request $request)
+    {
+        $auth = Auth::user();
+
+        /*   $request = MyRequwest::select('id',
+               'who_id',
+               'target_id')->where('who_id', $user->id)
+               ->where('readed', 0)
+               ->get();*/
+        $users_id = Useruser::select('id', 'my_id', 'other_id')->where(
+            'other_id',
+            $auth->id
+        )->get();//поулчаем список пользоваьедей, у которых доступ к моей анкете
+
+        //   dump($users_id);
+        $array = [];
+        foreach ($users_id as $item) {
+            $girl = Girl::select(['id', 'name', 'main_image'])->where('user_id', $item->my_id)->first();
+            array_push($array, $girl);
+        }
+        return $array;
+    }
+
+    //закрыть доступ
+    public function clouseaccess(Request $request)
+    {
+        $id = $request->input('id');
+        $auth = Auth::user();
+        $girl = Girl::select(['id', 'user_id'])->where('id', $id)->first();
+        $id = $girl->user_id;
+        //dump($id);
+        DB::table('user_user')->where('my_id', '=', $id)->where('other_id', $auth->id)->delete();
+        DB::table('requwest')->where('who_id', '=', $id)->where('target_id', $auth->id)->delete();
+
         return response()->json('ok');
     }
 }
