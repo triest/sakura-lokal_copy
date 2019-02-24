@@ -48,31 +48,40 @@
             },
             khowSendRequwestOrNot() { //узнаёт, отправлен запрос или нет
                 console.log("sendor not");
+                var data_response = null;
                 axios.get('/getsendregornot', {
                     params: {
                         id: this.id
                     }
                 })
                     .then((response) => {
-                        if (response.data == "not") {
+                        data_response = response.data;
+                        if (data_response == "not") {
                             this.showSendRegButton = true;
+                            console.log("not")
                         }
                         else {
+                            console.log("true");
+
                             this.showSendRegButton = false;
+                            console.log();
                             //если отправлен, то надо статус показать
-                            if (response.data['readed'] == 0) {
-                                this.regStatus = "notreaded"
-                                this.showSendRegButton=false;
-                            }
-                            else {
-                                if(response.data['status']=='acept'){
-                                    this.regStatus="acept"
-                                    this.showSendRegButton=false;
+                            if (response.data['readed'] == 1) {
+                                // this.regStatus = "notreaded"
+                                console.log("readed");
+                                if (response.data['status'] == 'confirmed') {
+                                    this.regStatus = "acept";
+                                    this.showSendRegButton = false;
                                 }
                                 else {
-                                    this.regStatus="denide"
-                                    this.showSendRegButton=false;
+                                    this.regStatus = "denide";
+                                    this.showSendRegButton = false;
                                 }
+                                //this.showSendRegButton=false;
+                            }
+                            else {
+                                console.log("not readed")
+                                this.regStatus = "notreaded";
                             }
                         }
 

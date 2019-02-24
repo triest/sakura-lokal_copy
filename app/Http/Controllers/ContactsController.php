@@ -152,8 +152,8 @@ class ContactsController extends Controller
         $auth = Auth::user();
         $myrequest = MyRequwest::select('id',
             'who_id',
-            'target_id', 'status', 'readed')->where('target_id', $auth->id)
-            // ->where('who_id', $auth->id)
+            'target_id', 'status', 'readed')->where('target_id', 16)
+            ->where('who_id', 1)
             ->first();
 
         broadcast(new newApplication($myrequest));
@@ -188,11 +188,12 @@ class ContactsController extends Controller
     public function sendornot(Request $request)
     {
         $id = $request->input('id');
-
+        $girl = Girl::select('id', 'user_id')->where('id', $id)->first();
         $auth = Auth::user();
+
         $myrequest = MyRequwest::select('id',
             'who_id',
-            'target_id', 'status', 'readed')->where('target_id', $id)
+            'target_id', 'status', 'readed')->where('target_id', $girl->user_id)
             ->where('who_id', $auth->id)->first();
         //  dump($myrequest);
         if ($myrequest != null) {
@@ -207,11 +208,14 @@ class ContactsController extends Controller
     public function sendreg(Request $request)
     {
         $id = $request->input('id');
+        $girl = Girl::select(['id', 'user_id'])->where('id', $id)->first();
+        $id = $girl->user_id;
         $auth = Auth::user();
-        $myrequest=new MyRequwest();
-        $myrequest->who_id=$auth->id;
-        $myrequest->target_id=$id;
+        $myrequest = new MyRequwest();
+        $myrequest->who_id = $auth->id;
+        $myrequest->target_id = $id;
         $myrequest->save();
+        broadcast(new newApplication($myrequest));
         return response()->json('ok');
     }
 }

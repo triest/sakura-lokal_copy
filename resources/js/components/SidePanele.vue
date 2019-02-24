@@ -31,7 +31,7 @@
         mounted() {
             Echo.private(`messages.${this.user.id}`)
                 .listen('NewMessage', (e) => {
-                    //   console.log('NewMessage');
+                       console.log('NewMessage');
                     axios.get('/getCountUnreaded')
                         .then((response) => {
                             this.numberUnreaded = response.data;

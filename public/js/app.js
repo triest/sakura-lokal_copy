@@ -2210,27 +2210,37 @@ __webpack_require__.r(__webpack_exports__);
 
       //узнаёт, отправлен запрос или нет
       console.log("sendor not");
+      var data_response = null;
       axios.get('/getsendregornot', {
         params: {
           id: this.id
         }
       }).then(function (response) {
-        if (response.data == "not") {
-          _this2.showSendRegButton = true;
-        } else {
-          _this2.showSendRegButton = false; //если отправлен, то надо статус показать
+        data_response = response.data;
 
-          if (response.data['readed'] == 0) {
-            _this2.regStatus = "notreaded";
-            _this2.showSendRegButton = false;
-          } else {
-            if (response.data['status'] == 'acept') {
+        if (data_response == "not") {
+          _this2.showSendRegButton = true;
+          console.log("not");
+        } else {
+          console.log("true");
+          _this2.showSendRegButton = false;
+          console.log(); //если отправлен, то надо статус показать
+
+          if (response.data['readed'] == 1) {
+            // this.regStatus = "notreaded"
+            console.log("readed");
+
+            if (response.data['status'] == 'confirmed') {
               _this2.regStatus = "acept";
               _this2.showSendRegButton = false;
             } else {
               _this2.regStatus = "denide";
               _this2.showSendRegButton = false;
-            }
+            } //this.showSendRegButton=false;
+
+          } else {
+            console.log("not readed");
+            _this2.regStatus = "notreaded";
           }
         }
       });
@@ -2294,7 +2304,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     Echo.private("messages.".concat(this.user.id)).listen('NewMessage', function (e) {
-      //   console.log('NewMessage');
+      console.log('NewMessage');
       axios.get('/getCountUnreaded').then(function (response) {
         _this.numberUnreaded = response.data;
       });
