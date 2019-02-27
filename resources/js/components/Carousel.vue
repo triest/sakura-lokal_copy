@@ -1,7 +1,6 @@
 <template>
     <v-carousel>
-        <v-carousel-item
-        ></v-carousel-item>
+        <v-carousel-item></v-carousel-item>
     </v-carousel>
 </template>
 

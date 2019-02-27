@@ -22,9 +22,9 @@
 
             <div class="avatar">
                 <img :src="'images/upload/'+application.image" :alt="application.who_name" height="150">
-                <p>{{application.who_name}}</p>
+                <br> {{application.who_name}}
                 <div v-if="application.status==null">Не рассмотрен</div>
-                <div v-if="application.status=='accept'">Подтвержден</div>
+                <div v-if="application.status=='confirmed'">Подтвержден</div>
                 <div v-if="application.status=='denide'">Отклонен</div>
             </div>
             <div class="contact">
@@ -32,12 +32,13 @@
 
             </div>
         </div>
-
+        <br><br>
         <b>
+            <br>
             Кому предоставил доступ:
             <div v-for="application in whocansee">
                 <div class="avatar">
-                    <img :src="'images/upload/'+application.image" :alt="application.name" height="150">
+                    <img :src="'images/upload/'+application.main_image" :alt="application.name" height="150">
                 </div>
                 <div class="contact">
                     <p class="name">{{ application.name }}</p>

@@ -42,4 +42,9 @@ class User extends Authenticatable
 
         return $girl;
     }
+
+    public function get_id()
+    {
+        return $this->id;
+    }
 }

@@ -1,19 +1,30 @@
-@extends('layouts.blog', ['title' => 'Список анкет'])
+@extends('layouts.blog', ['title' => $girl->name])
 
 
 
 @section('content')
     @if (Auth::guest())
     @else
-        <div class="card-body" id="app2">
-            <privatepanel :id="{{$girl->id}}"></privatepanel>
-        </div>
-    @endif
+        @if($girl->user_id!=auth()->user()->id)
+            <div class="card-body" id="app2">
+                <privatepanel :id="{{$girl->id}}"></privatepanel>
+            </div>
+        @else
+            Редактировать анкету
+        @endif
+        @if(auth()->user()->get_id()!=$girl->user_id)
+            <div class="card-body" id="app2">
+                Отправить сообщение
 
-    <a href="{{route('showGirl',['id'=>$girl->id])}}">
-        <img height="250" width="250"
-             src="<?php echo asset("/images/upload/$girl->main_image")?>">
-    </a>
+            </div>
+        @endif
+    @endif
+    <br>
+
+
+    <br>
+    <img height="250" width="250" src="<?php echo asset("/images/upload/$girl->main_image")?>">
+
     <h4 class="card-title">
         {{$girl->name}}
     </h4>

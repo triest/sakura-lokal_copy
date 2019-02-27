@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -21,25 +20,44 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('chat-app', require('./components/ChatApp.vue').default);
+Vue.component('chat-app2', require('./components/ChatApp2.vue').default);
 Vue.component('conversation', require('./components/Conversation.vue').default);
+Vue.component('conversation2', require('./components/Conversation2.vue').default);
 Vue.component('ContactsList', require('./components/ContactsList.vue').default);
+Vue.component('ContactsList2', require('./components/ContactsList2.vue').default);
 Vue.component('MessagesFeed', require('./components/MessagesFeed.vue').default);
+Vue.component('MessagesFeed2', require('./components/MessagesFeed2.vue').default);
+
 Vue.component('side-panel', require('./components/SidePanele.vue').default);
 //Vue.component('header', require('./components/Carousel.vue').default);
 Vue.component('privatepanel', require('./components/Private.vue').default);
 
 //компонент с заявками
 Vue.component('application', require('./components/Application.vue').default);
+
+Vue.component('editimages', require('./components/Editimages.vue').default);
+
+//модальное окно для отправки сообщения
+Vue.component('modal', require('./components/ModalComponent.vue'));
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
+
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        showModal: false
+    }
 });
 
 const app2 = new Vue({
-    el: '#app2'
+    el: '#app2',
+    data: {
+        showModal: false
+    }
 });

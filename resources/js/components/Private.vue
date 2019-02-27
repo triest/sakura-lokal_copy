@@ -5,16 +5,25 @@
         <h3 v-if="regStatus=='notreaded'">Заявка не рассмотрена</h3>
         <h3 v-if="regStatus=='acept'">Заявка принята</h3>
         <h3 v-if="regStatus=='denide'">Заявка отклонена</h3>
+        <button v-on:click="showMessageWindow()">Написать сообщение</button>
+        <modal v-if="showModal===true"></modal>
     </div>
+
+
 </template>
 
 <script>
+    import modal from './ModalComponent.vue';
+
     export default {
         props: {
             id: {
                 type: '',
                 required: true
             }
+        },
+        components: {
+            modal,
         },
         mounted() {
             console.log('private');
@@ -25,7 +34,9 @@
             return {
                 isOpen: false,
                 showSendRegButton: false,
-                regStatus: null
+                regStatus: null,
+                isModalVisible: true,
+                showModal: false
             }
         },
         methods: {
@@ -97,6 +108,19 @@
                             this.khowSendRequwestOrNot();
                         }
                     )
+            },
+            itemClicked: function () {
+                console.log("modal");
+                $("#my-modal").modal('show');
+            },
+            showModal() {
+                this.isModalVisible = true;
+            },
+            closeModal() {
+                this.isModalVisible = false;
+            },
+            showMessageWindow() {
+                this.showModal = true
             }
 
         }
@@ -104,5 +128,17 @@
 </script>
 
 <style scoped>
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: table;
+        transition: opacity .3s ease;
+
+    }
+
 
 </style>

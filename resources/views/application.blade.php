@@ -3,5 +3,5 @@
     <div class="card-body" id="app2">
         <application :user="{{auth()->user()}}"></application>
     </div>
-    <a class="button blue" href="{{route('main')}}" role="link" onclick=" relocate_home()">К списку анкет</a>
+    <b><a class="button blue" href="{{route('main')}}" role="link" onclick=" relocate_home()">К списку анкет</a></b>
 @endsection

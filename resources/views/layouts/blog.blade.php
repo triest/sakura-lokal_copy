@@ -5,7 +5,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{$title}}</title>
+    <title>{{$title}}</title>
     <script src="https://getbootstrap.com/docs/3.3/assets/js/ie-emulation-modes-warning.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
@@ -17,11 +17,6 @@
 
     <!-- galeray -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-
-
-
 
     <!--table CSS -->
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -53,7 +48,8 @@
 
 <body>
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="{{ asset('/js/axios.min.js') }}"></script>
 
 
 <div class="container">
