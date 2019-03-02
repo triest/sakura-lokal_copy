@@ -38,7 +38,7 @@ Vue.component('application', require('./components/Application.vue').default);
 Vue.component('editimages', require('./components/Editimages.vue').default);
 
 //модальное окно для отправки сообщения
-Vue.component('modal', require('./components/ModalComponent.vue'));
+//Vue.component('modal', require('./components/ModalComponent.vue'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

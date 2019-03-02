@@ -1,19 +1,22 @@
-
-<template>
-    <transition name="modal">
+<!--<template>
+    <transition name="modal" @close="showModal = false">
         <div class="modal-mask">
             <div class="modal-wrapper">
                 <div class="modal-container">
 
                     <div class="modal-header">
                         <slot name="header">
-                            Текст сообщения:
+                            Введите сообщение для
                         </slot>
                     </div>
 
                     <div class="modal-body">
                         <slot name="body">
-                            default body
+                            <textarea rows="10" cols="45" v-model="MessageText" name="MessageText"></textarea>
+                            <br>
+                            <button type="button" class="btn btn-secondary" v-on:click="saveChange">Отправить
+                                сообщение
+                            </button>
                         </slot>
                     </div>
 
@@ -21,12 +24,16 @@
                         <slot name="footer">
                             default footer
                             <br>
-                            <button class="modal-default-button" @click="$emit('close')">
+                            <button class="modal-default-button" v-on:click="close">
+                                OK
+                            </button>
+                            <button class="modal-default-button"  v-on:click="$emit('close')">
                                 OK
                             </button>
                         </slot>
                     </div>
                 </div>
+
             </div>
         </div>
     </transition>
@@ -34,19 +41,51 @@
 
 <script>
     export default {
+        props: {
+            id: {
+                type: Number,
+                required: true
+            }
+        },
         name: 'modal',
-        data:{
-          showModal:false
+        mounted() {
+            //console.log(this.id);
+        },
+        data() {
+            return {
+
+                MessageText: ""
+            }
         },
         methods: {
             close() {
-                this.$emit('close');
+             $emit('close')
             },
+            findUserByid() {
+
+            },
+            saveChange() {
+             //   console.log(this.MessageText)
+                axios.post('/conversation/send', {
+                    contact_id: this.id,
+                    text: this.MessageText
+                }).then((response) => {
+                    this.MessageText="";
+                   @close="showModal = false"
+                });
+
+            }
         },
     };
 </script>
 
 <style>
+    textarea {
+        width: 90%; /* Ширина поля в процентах */
+        height: 200px; /* Высота поля в пикселах */
+        resize: none; /* Запрещаем изменять размер */
+    }
+
     .modal-mask {
         position: fixed;
         z-index: 9998;
@@ -65,7 +104,7 @@
     }
 
     .modal-container {
-        width: 300px;
+        width: 600px;
         margin: 0px auto;
         padding: 20px 30px;
         background-color: #fff;

@@ -6,7 +6,7 @@
         <h3 v-if="regStatus=='acept'">Заявка принята</h3>
         <h3 v-if="regStatus=='denide'">Заявка отклонена</h3>
         <button v-on:click="showMessageWindow()">Написать сообщение</button>
-        <modal v-if="showModal===true"></modal>
+        <modal v-if="showModal===true" :id="id" v-on:close="showModal = false">></modal>
     </div>
 
 

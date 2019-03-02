@@ -29,6 +29,8 @@ Route::get('/contacts2', 'ContactsController@get2');
 Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
 Route::post('/conversation/send', 'ContactsController@send');
 
+Route::get('/join/', 'CustomUserController@index')->name('join');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -82,3 +84,14 @@ Route::get('/editimages', function () {
 })->middleware('auth');
 
 Route::get('/getmainImage', 'ContactsController@getmainimage')->middleware('auth');
+
+Route::get('/join/', 'CustomUserController@index')->name('join');
+Route::post('/join/new', 'CustomUserController@join')->name('joinStore');
+Route::get('/continion/', 'AnketController@createGirl')->name('continion');
+
+//редактировать анке
+Route::get('/edit', 'AnketController@girlsEditAuchAnket')->name('girlsEditAuchAnket')->middleware('auth');;
+Route::post('/user/anketa/edit/', 'AnketController@edit')->name('girlsEdit');
+
+//обновление главной фотографии
+Route::post('/updateMainImage', 'AnketController@updateMainImage')->name('updateMainImage');

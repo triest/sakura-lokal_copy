@@ -13,10 +13,7 @@
             Редактировать анкету
         @endif
         @if(auth()->user()->get_id()!=$girl->user_id)
-            <div class="card-body" id="app2">
-                Отправить сообщение
 
-            </div>
         @endif
     @endif
     <br>
