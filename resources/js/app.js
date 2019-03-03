@@ -37,7 +37,9 @@ Vue.component('application', require('./components/Application.vue').default);
 
 Vue.component('editimages', require('./components/Editimages.vue').default);
 
-Vue.component('modal-template',require('./components/modal-template.vue'))
+Vue.component('modal-template',require('./components/modal-template.vue').default);
+
+Vue.component('power', require('./components/Power.vue').default);
 //модальное окно для отправки сообщения
 //Vue.component('modal', require('./components/ModalComponent.vue'));
 

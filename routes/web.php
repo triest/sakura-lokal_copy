@@ -113,3 +113,10 @@ Route::get('/deletePrivateImage', 'AnketController@deletePrivateImage')->middlew
 Route::get('/power', function () {
     return view('power');
 })->middleware('auth');
+
+
+//олучаем состояние счета
+Route::get('/getMoney', 'MoneyController@getCurrentMoney')->middleware('auth');
+
+//путь для яндекса
+Route::post('/yandex', 'MoneyController@reciverMoney');

@@ -97,7 +97,7 @@
                         });
                 },
                 getimages() {
-                    console.log("get images");
+
                     axios.get('/getImages')
                         .then((response) => {
                             this.images = response.data;

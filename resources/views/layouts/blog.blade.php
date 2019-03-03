@@ -79,7 +79,7 @@
                     @if($girl=Auth::user()->anketisExsis()!=null)
                     <!-- {{$girl=Auth::user()->anketisExsis()}} -->
                         <img height="150" width="150"
-                             src="<?php echo asset("images/upload/$girl->main_image")?>">
+                             src="<?php echo asset("images/small/$girl->main_image")?>">
                         <side-panel :user="{{auth()->user()}}"></side-panel>
                     @else
                         <b><a class="btn btn-primary" href="{{route('createGirlPage')}}">Создать анкету</a> </b>

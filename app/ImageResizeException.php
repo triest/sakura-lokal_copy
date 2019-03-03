@@ -7,4 +7,6 @@ namespace App;
  */
 class ImageResizeException extends \Exception
 {
+
+
 }
