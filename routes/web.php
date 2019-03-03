@@ -83,7 +83,6 @@ Route::get('/editimages', function () {
     return view('editimages');
 })->middleware('auth');
 
-Route::get('/getmainImage', 'ContactsController@getmainimage')->middleware('auth');
 
 Route::get('/join/', 'CustomUserController@index')->name('join');
 Route::post('/join/new', 'CustomUserController@join')->name('joinStore');
@@ -95,3 +94,11 @@ Route::post('/user/anketa/edit/', 'AnketController@edit')->name('girlsEdit');
 
 //обновление главной фотографии
 Route::post('/updateMainImage', 'AnketController@updateMainImage')->name('updateMainImage');
+Route::get('/getmainImage', 'AnketController@getmainimage')->middleware('auth');
+//получаем обычные фотографии
+Route::get('/getImages', 'AnketController@getImages')->middleware('auth');
+//загрузить обычнае фотографии
+Route::post('/updateGalerayImage', 'AnketController@updateGalerayImage')->middleware('auth');
+
+//удалить фотографию
+Route::get('/deleteImage', 'AnketController@deleteImage')->middleware('auth')->name('showGirl');

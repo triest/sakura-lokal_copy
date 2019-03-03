@@ -304,11 +304,5 @@ class ContactsController extends Controller
         return response()->json('ok');
     }
 
-    //получаем главное изображение
-    public function getmainImage()
-    {
-        $auth = Auth::user();
-        $girl = Girl::select(['main_image'])->where('user_id', $auth->id)->first();
-        return response()->json($girl->main_image);
-    }
+
 }

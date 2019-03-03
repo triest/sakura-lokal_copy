@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use File;
 
 class AnketController extends Controller
 {
@@ -212,7 +213,7 @@ class AnketController extends Controller
 
             $image_extension = $request->file('file')->getClientOriginalExtension();
             //$image_new_name = md5(microtime(true));
-            $image_new_name=$girl->main_image;
+            $image_new_name = $girl->main_image;
             $temp_file = base_path().'/public/images/upload/'.strtolower($image_new_name);// кладем файл с новыс именем
             $request->file('file')
                 ->move(base_path().'/public/images/upload/',
@@ -221,7 +222,71 @@ class AnketController extends Controller
             $girl['main_image'] = $image_new_name;
         }
         $girl->save();
+
         return response()->json(['ok']);
     }
 
+    //получаем главное изображение
+    public function getmainImage()
+    {
+        $auth = Auth::user();
+        $girl = Girl::select(['main_image'])->where('user_id', $auth->id)->first();
+
+        return response()->json($girl->main_image);
+    }
+
+    public function getImages(Request $request)
+    {
+        $user = Auth::user();
+        $girl = Girl::select(['id'])->where('user_id', $user->get_id())->first();
+        $images = $girl->photos()->get();
+
+        return response()->json($images);
+    }
+
+    public function updateGalerayImage(Request $request)
+    {
+        $user = Auth::user();
+        //   dump($request);
+        if (Input::hasFile('file')) {
+            $image_extension = $request->file('file')->getClientOriginalExtension();
+            $image_new_name = md5(microtime(true));
+            $temp_file = base_path().'/public/images/upload/'.strtolower($image_new_name.'.'.$image_extension);// кладем файл с новыс именем
+            $request->file('file')
+                ->move(base_path().'/public/images/upload/', strtolower($image_new_name.'.'.$image_extension));
+            $photo = new Photo();
+            $girl = Girl::select(['id', 'user_id'])->where('user_id', $user->get_id())->first();
+            $photo['photo_name'] = $image_new_name.'.'.$image_extension;
+            $photo = new Photo();
+            $photo['photo_name'] = $image_new_name.'.'.$image_extension;
+            $photo['girl_id'] = $girl->id;
+            $photo->save();
+        }
+
+        return response()->json(['ok']);
+    }
+
+    public function deleteImage(Request $request)
+    {
+
+        $imagename = $request->imagename;
+        $user = Auth::user();
+        try {
+            $temp_file = base_path().'/public/images/upload/'.$imagename;
+            File::Delete($temp_file);
+            // тут будем удалять из таблицы
+            $photo = Photo::select('id')->where('photo_name', $imagename)->get();
+            $photo->delete();
+        } catch (\Exception $e) {
+            echo "delete errod";
+        }
+        $image = Photo::select(['id', 'photo_name'])->where('photo_name', $imagename)->first();
+        try {
+            File::delete($imagename);
+        } catch (IOException $e) {
+        }
+        $image->delete();
+
+        return response()->json(['ok']);
+    }
 }
