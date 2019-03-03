@@ -2363,6 +2363,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -2376,16 +2393,22 @@ __webpack_require__.r(__webpack_exports__);
       file: '',
       galerayFile: '',
       showModal: false,
-      images: []
+      images: [],
+      privateimages: [],
+      privatefile: '',
+      privatefileInput: ''
     };
   },
   computed: {
     getImageUrl: function getImageUrl() {
       return this.getmainImage();
+    },
+    getImagesUrls: function getImagesUrls() {
+      return this.getimages();
     }
   },
   mounted: function mounted() {
-    this.getmainImage(), this.getimages();
+    this.getmainImage(), this.getimages(), this.getprivateimages();
   },
   methods: {
     getmainImage: function getmainImage() {
@@ -2398,7 +2421,7 @@ __webpack_require__.r(__webpack_exports__);
     getimages: function getimages() {
       var _this2 = this;
 
-      this.images = null;
+      console.log("get images");
       axios.get('/getImages').then(function (response) {
         _this2.images = response.data;
       });
@@ -2409,7 +2432,7 @@ __webpack_require__.r(__webpack_exports__);
               Initialize the form data
           */
       var formData = new FormData();
-      formData.append('file', this.file);
+      formData.append('file', this.galerayFile);
       axios.post('/updateMainImage', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -2431,19 +2454,33 @@ __webpack_require__.r(__webpack_exports__);
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      }).then(function () {
-        console.log('SUCCESS!!');
-        this.getimages();
-      }).catch(function () {
-        this.getimages();
-      });
+      }).then(function () {}).catch(function () {});
+      this.getimages();
+    },
+    submitPrivateFile: function submitPrivateFile() {
+      /*
+              Initialize the form data
+          */
+      var formData = new FormData();
+      formData.append('file', this.privatefile);
+      axios.post('/updatePrivateGalerayImage', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function () {}).catch(function () {});
       this.getimages();
     },
     handleFileUpload: function handleFileUpload() {
       this.file = this.$refs.file.files[0];
     },
     handleFileUploadGaleay: function handleFileUploadGaleay() {
-      this.galerayFile = this.$refs.galerayFile.files[0];
+      this.galerayFile = this.$refs.galerayFileInput.files[0];
+    },
+    handleFileUploadPrivateGaleay: function handleFileUploadPrivateGaleay() {
+      this.privatefile = this.$refs.privatefileInput.files[0];
+    },
+    handlePrivateFileUpload: function handlePrivateFileUpload() {
+      this.privatefile = this.$refs.privatefileInput.files[0];
     },
     deleteGelataiImage: function deleteGelataiImage(image) {
       var _this3 = this;
@@ -2456,6 +2493,27 @@ __webpack_require__.r(__webpack_exports__);
         _this3.getimages();
       });
       this.getimages();
+    },
+    deletePrivateGelataiImage: function deletePrivateGelataiImage(image) {
+      var _this4 = this;
+
+      axios.get('/deletePrivateImage', {
+        params: {
+          imagename: image
+        }
+      }).then(function (response) {
+        _this4.getprivateimages();
+      });
+      this.getimages();
+    },
+    getprivateimages: function getprivateimages() {
+      var _this5 = this;
+
+      console.log("get private images");
+      this.privateimages = null;
+      axios.get('/getPrivateImages').then(function (response) {
+        _this5.privateimages = response.data;
+      });
     }
   }
 });
@@ -49706,7 +49764,7 @@ var render = function() {
           _c("label", [
             _vm._v("File\n                "),
             _c("input", {
-              ref: "galerayFile",
+              ref: "galerayFileInput",
               attrs: { type: "file", id: "galeray" },
               on: {
                 change: function($event) {
@@ -49750,6 +49808,65 @@ var render = function() {
               on: {
                 click: function($event) {
                   return _vm.deleteGelataiImage(image.photo_name)
+                }
+              }
+            },
+            [_vm._v("Удалить")]
+          )
+        ])
+      }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v("\n    Приватные фотографии:\n    "),
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
+          _c("label", [
+            _vm._v("File\n                "),
+            _c("input", {
+              ref: "privatefileInput",
+              attrs: { type: "file", id: "privatefile" },
+              on: {
+                change: function($event) {
+                  return _vm.handlePrivateFileUpload()
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              on: {
+                click: function($event) {
+                  return _vm.submitPrivateFile()
+                }
+              }
+            },
+            [_vm._v("Submit")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.privateimages, function(image) {
+        return _c("div", [
+          image != null
+            ? _c("p", [
+                _c("img", {
+                  attrs: {
+                    src: "images/upload/" + image.photo_name,
+                    height: "200"
+                  }
+                })
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-danger",
+              on: {
+                click: function($event) {
+                  return _vm.deletePrivateGelataiImage(image.photo_name)
                 }
               }
             },

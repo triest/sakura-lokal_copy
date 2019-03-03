@@ -101,4 +101,11 @@ Route::get('/getImages', 'AnketController@getImages')->middleware('auth');
 Route::post('/updateGalerayImage', 'AnketController@updateGalerayImage')->middleware('auth');
 
 //удалить фотографию
-Route::get('/deleteImage', 'AnketController@deleteImage')->middleware('auth')->name('showGirl');
+Route::get('/deleteImage', 'AnketController@deleteImage')->middleware('auth');
+
+//приватные фотографии
+Route::get('/getPrivateImages', 'AnketController@getPrivateImages')->middleware('auth');
+
+Route::post('/updatePrivateGalerayImage', 'AnketController@updatePrivateGalerayImage')->middleware('auth');
+
+Route::get('/deletePrivateImage', 'AnketController@deletePrivateImage')->middleware('auth');

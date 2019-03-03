@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/modal-template.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/0dd315521840db73a247690945d3273c.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/241693c3e7f669f5851860069c1cc69d.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/39e962de3f8c8b848fe03b564959e68c.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/6ff6e947b7ba75c8c2f38b2b581ce93e.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/94ad7772a65cbe3cc5451aa7c3eb196c.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/9dfdfef1e9baa657f861cb866f9e05b8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/ab4febb2f41599d340414eadb234ead2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/c005b4dbd595700701de6aa025e90d6d.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/upload/c005b4dbd595700701de6aa025e90d6d.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/c385ef697463993aab8edc7e69063cab.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/da7fd066db198c392d98e5b86a998ff0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/f10c8bb74ea80b19121680d4ef425248.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/f3896557a6b0063be1e8e113a16d1c94.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Editimages.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Editimages.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/editimages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editimages.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
@@ -48,11 +33,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="editimages.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/editimages.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="777">
-              <caret line="103" column="24" selection-start-line="103" selection-start-column="24" selection-end-line="103" selection-end-column="24" />
+            <state relative-caret-position="862">
+              <caret line="110" column="69" selection-start-line="110" selection-start-column="51" selection-end-line="110" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -60,8 +54,8 @@
       <file leaf-file-name="AnketController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="426">
+              <caret line="255" column="14" selection-start-line="255" selection-start-column="14" selection-end-line="255" selection-end-column="14" />
               <folding>
                 <element signature="e#40#53#0#PHP" expanded="true" />
               </folding>
@@ -77,17 +71,17 @@
       <file leaf-file-name="Girl.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Girl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            <state relative-caret-position="306">
+              <caret line="18" column="30" lean-forward="true" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Editimages.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Editimages.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/Editimages.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="144" column="37" lean-forward="true" selection-start-line="144" selection-start-column="37" selection-end-line="144" selection-end-column="37" />
+            <state relative-caret-position="94">
+              <caret line="136" column="33" selection-start-line="136" selection-start-column="33" selection-end-line="136" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -119,15 +113,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SidePanele.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/SidePanele.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="777">
-              <caret line="70" selection-start-line="69" selection-end-line="71" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -140,13 +125,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>app2</find>
-      <find>test</find>
-      <find>denideNewApplication</find>
-      <find>whocansee</find>
-      <find>clouseaccess</find>
-      <find>getmyapplication</find>
-      <find>dataTables</find>
       <find>then</find>
       <find>myApplication</find>
       <find>bootstrap.</find>
@@ -169,7 +147,14 @@
       <find>&quot;showModal = false</find>
       <find>galeray</find>
       <find>user</find>
+      <find>this.getimages();</find>
+      <find>getImageUrl</find>
       <find>getimages</find>
+      <find>submitPrivateFile</find>
+      <find>submitGaleray</find>
+      <find>handlePrivateFileUpload</find>
+      <find>handleFileUploadGaleay</find>
+      <find>galerayFileInput</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -222,13 +207,13 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/CustomUserController.php" />
         <option value="$PROJECT_DIR$/resources/views/custom/registration.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/editGirl.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/editimages.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/resources/js/components/modal-template.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/Editimages.vue" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" />
+        <option value="$PROJECT_DIR$/resources/views/editimages.blade.php" />
       </list>
     </option>
   </component>
@@ -513,7 +498,7 @@
       <workItem from="1551286938485" duration="11267000" />
       <workItem from="1551375489971" duration="2956000" />
       <workItem from="1551559674214" duration="6396000" />
-      <workItem from="1551599175431" duration="7634000" />
+      <workItem from="1551599175431" duration="15443000" />
     </task>
     <task id="LOCAL-00001" summary="Updating image">
       <created>1551566124024</created>
@@ -526,7 +511,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="201853000" />
+    <option name="totallyTimeSpent" value="209662000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -540,7 +525,7 @@
       <window_info anchor="bottom" id="Run" order="8" />
       <window_info id="npm" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="4" />
-      <window_info anchor="right" id="Remote Host" order="1" visible="true" weight="0.2140625" />
+      <window_info anchor="right" id="Remote Host" order="1" visible="true" weight="0.2078125" />
       <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.21875" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="0" />
@@ -832,13 +817,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/editimages.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="96" selection-start-line="6" selection-start-column="96" selection-end-line="6" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/SidePanele.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="777">
@@ -860,16 +838,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Privatephoto.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Girl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
@@ -877,20 +845,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/app/Girl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="777">
-          <caret line="103" column="24" selection-start-line="103" selection-start-column="24" selection-end-line="103" selection-end-column="24" />
+        <state relative-caret-position="306">
+          <caret line="18" column="30" lean-forward="true" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
+    <entry file="file://$PROJECT_DIR$/app/Privatephoto.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#40#53#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="862">
+          <caret line="110" column="69" selection-start-line="110" selection-start-column="51" selection-end-line="110" selection-end-column="69" />
         </state>
       </provider>
     </entry>
@@ -906,8 +874,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Editimages.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="144" column="37" lean-forward="true" selection-start-line="144" selection-start-column="37" selection-end-line="144" selection-end-column="37" />
+        <state relative-caret-position="94">
+          <caret line="136" column="33" selection-start-line="136" selection-start-column="33" selection-end-line="136" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="255" column="14" selection-start-line="255" selection-start-column="14" selection-end-line="255" selection-end-column="14" />
+          <folding>
+            <element signature="e#40#53#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/editimages.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
         </state>
       </provider>
     </entry>

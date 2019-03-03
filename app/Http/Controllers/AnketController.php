@@ -247,8 +247,8 @@ class AnketController extends Controller
     public function updateGalerayImage(Request $request)
     {
         $user = Auth::user();
-        //   dump($request);
         if (Input::hasFile('file')) {
+
             $image_extension = $request->file('file')->getClientOriginalExtension();
             $image_new_name = md5(microtime(true));
             $temp_file = base_path().'/public/images/upload/'.strtolower($image_new_name.'.'.$image_extension);// кладем файл с новыс именем
@@ -281,6 +281,60 @@ class AnketController extends Controller
             echo "delete errod";
         }
         $image = Photo::select(['id', 'photo_name'])->where('photo_name', $imagename)->first();
+        try {
+            File::delete($imagename);
+        } catch (IOException $e) {
+        }
+        $image->delete();
+
+        return response()->json(['ok']);
+    }
+
+    public function getPrivateImages(Request $request)
+    {
+        $user = Auth::user();
+        $girl = Girl::select(['id'])->where('user_id', $user->get_id())->first();
+        $images = $girl->privatephotos()->get();
+
+        return response()->json($images);
+    }
+
+    public function updatePrivateGalerayImage(Request $request)
+    {
+        $user = Auth::user();
+        if (Input::hasFile('file')) {
+            $image_extension = $request->file('file')->getClientOriginalExtension();
+            $image_new_name = md5(microtime(true));
+            $temp_file = base_path().'/public/images/upload/'.strtolower($image_new_name.'.'.$image_extension);// кладем файл с новыс именем
+            $request->file('file')
+                ->move(base_path().'/public/images/upload/', strtolower($image_new_name.'.'.$image_extension));
+            $photo = new Privatephoto();
+            $girl = Girl::select(['id', 'user_id'])->where('user_id', $user->get_id())->first();
+            $photo['photo_name'] = $image_new_name.'.'.$image_extension;
+            $photo = new Privatephoto();
+            $photo['photo_name'] = $image_new_name.'.'.$image_extension;
+            $photo['girl_id'] = $girl->id;
+            $photo->save();
+        }
+
+        return response()->json(['ok']);
+    }
+
+    public function deletePrivateImage(Request $request)
+    {
+
+        $imagename = $request->imagename;
+        $user = Auth::user();
+        try {
+            $temp_file = base_path().'/public/images/upload/'.$imagename;
+            File::Delete($temp_file);
+            // тут будем удалять из таблицы
+            $photo = Privatephoto::select('id')->where('photo_name', $imagename)->get();
+            $photo->delete();
+        } catch (\Exception $e) {
+            echo "delete errod";
+        }
+        $image = Privatephoto::select(['id', 'photo_name'])->where('photo_name', $imagename)->first();
         try {
             File::delete($imagename);
         } catch (IOException $e) {
