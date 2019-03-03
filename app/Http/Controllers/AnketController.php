@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use File;
 
+use App\ImageResize;
+
+
 class AnketController extends Controller
 {
     //
@@ -55,8 +58,15 @@ class AnketController extends Controller
             $request->file('file')
                 ->move(base_path().'/public/images/upload/',
                     strtolower($image_new_name.'.'.$image_extension));
-            $origin_size = getimagesize($temp_file);
+
             $girl['main_image'] = $image_new_name.'.'.$image_extension;
+            //сохраняем уменьшенную копию
+            $small = base_path().'/public/images/small/'.strtolower($image_new_name.'.'.$image_extension);
+            copy($temp_file, $small);
+
+            $image = new ImageResize($small);
+            $image->resizeToHeight(150);
+            $image->save($small);
         }
         $girl->save();
 
@@ -342,5 +352,82 @@ class AnketController extends Controller
         $image->delete();
 
         return response()->json(['ok']);
+    }
+
+    function image_resize(
+        $source_path,
+        $destination_path,
+        $newwidth,
+        $newheight = false,
+        $quality = false // качество для формата jpeg
+    )
+    {
+
+        ini_set("gd.jpeg_ignore_warning", 1); // иначе на некотоых jpeg-файлах не работает
+
+        list($oldwidth, $oldheight, $type) = getimagesize($source_path);
+
+        switch ($type) {
+            case IMAGETYPE_JPEG:
+                $typestr = 'jpeg';
+                break;
+            case IMAGETYPE_GIF:
+                $typestr = 'gif';
+                break;
+            case IMAGETYPE_PNG:
+                $typestr = 'png';
+                break;
+        }
+        $function = "imagecreatefrom$typestr";
+        $src_resource = $function($source_path);
+
+        if (!$newheight) {
+            $newheight = round($newwidth * $oldheight / $oldwidth);
+        } elseif (!$newwidth) {
+            $newwidth = round($newheight * $oldwidth / $oldheight);
+        }
+        $destination_resource = imagecreatetruecolor($newwidth, $newheight);
+
+        imagecopyresampled($destination_resource, $src_resource, 0, 0, 0, 0, $newwidth, $newheight, $oldwidth,
+            $oldheight);
+
+        if ($type = 2) { # jpeg
+            imageinterlace($destination_resource, 1); // чересстрочное формирование изображение
+            imagejpeg($destination_resource, $destination_path, $quality);
+        } else { # gif, png
+            $function = "image$typestr";
+            $function($destination_resource, $destination_path);
+        }
+
+        imagedestroy($destination_resource);
+        imagedestroy($src_resource);
+    }
+
+    function resize_image($file, $w, $h, $crop = false)
+    {
+        list($width, $height) = getimagesize($file);
+        $r = $width / $height;
+        if ($crop) {
+            if ($width > $height) {
+                $width = ceil($width - ($width * abs($r - $w / $h)));
+            } else {
+                $height = ceil($height - ($height * abs($r - $w / $h)));
+            }
+            $newwidth = $w;
+            $newheight = $h;
+        } else {
+            if ($w / $h > $r) {
+                $newwidth = $h * $r;
+                $newheight = $h;
+            } else {
+                $newheight = $w / $r;
+                $newwidth = $w;
+            }
+        }
+        $src = imagecreatefromjpeg($file);
+        $dst = imagecreatetruecolor($newwidth, $newheight);
+        imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+        return $dst;
     }
 }

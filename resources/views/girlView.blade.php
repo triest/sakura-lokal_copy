@@ -92,6 +92,6 @@
 
 
 
-    <a class="button blue" href="{{route('main')}}" role="link" onclick=" relocate_home()">К списку анкет</a>
+    <a  class="btn btn-primary"  href="{{route('main')}}" role="link" onclick=" relocate_home()">К списку анкет</a>
 
 @endsection

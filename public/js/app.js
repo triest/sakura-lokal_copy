@@ -50205,9 +50205,6 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("br"),
-    _c("br"),
-    _vm._v(" "),
     _c("b", [
       _c("a", { attrs: { href: "/applications" } }, [
         _vm._v("Заявки на открытие анкеты\n        "),
@@ -50216,11 +50213,12 @@ var render = function() {
           : _vm._e()
       ])
     ]),
-    _c("br"),
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
-    _vm._m(1)
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2)
   ])
 }
 var staticRenderFns = [
@@ -50239,6 +50237,16 @@ var staticRenderFns = [
     return _c("b", [
       _c("a", { attrs: { href: "/editimages" } }, [
         _vm._v("Редактирование галлереи")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("a", { staticClass: "btn btn-primary", attrs: { href: "/power" } }, [
+        _vm._v("Поднять анкету")
       ])
     ])
   }

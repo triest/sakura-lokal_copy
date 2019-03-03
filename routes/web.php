@@ -109,3 +109,7 @@ Route::get('/getPrivateImages', 'AnketController@getPrivateImages')->middleware(
 Route::post('/updatePrivateGalerayImage', 'AnketController@updatePrivateGalerayImage')->middleware('auth');
 
 Route::get('/deletePrivateImage', 'AnketController@deletePrivateImage')->middleware('auth');
+
+Route::get('/power', function () {
+    return view('power');
+})->middleware('auth');

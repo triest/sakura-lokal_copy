@@ -4,13 +4,13 @@
             <div v-if="numberUnreaded>0">+{{numberUnreaded}}</div>
         </a>
         </b>
-        <br><br>
         <b><a href="/applications">Заявки на открытие анкеты
             <div v-if="numberApplication>0">+{{numberApplication}}</div>
         </a>
-        </b><br>
+        </b>
         <b><a href="/edit">Редактирование анкеты</a> </b>
         <b><a href="/editimages">Редактирование галлереи</a> </b>
+        <b><a class="btn btn-primary" href="/power">Поднять анкету</a> </b>
     </div>
 </template>
 
