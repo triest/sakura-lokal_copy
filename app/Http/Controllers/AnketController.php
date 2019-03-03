@@ -38,7 +38,6 @@ class AnketController extends Controller
         ]);
 
         $user = Auth::user();
-        dump($request);
         $girl = new Girl();
         $girl->name = $request->name;
         $girl->sex = $request->sex;
@@ -48,6 +47,7 @@ class AnketController extends Controller
         $girl->height = $request->height;
         $girl->description = $request->description;
         $girl->private = $request->private;
+        $girl->user_id=$user->id;
         $girl->save();
 
 
