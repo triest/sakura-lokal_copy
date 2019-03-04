@@ -2794,6 +2794,7 @@ __webpack_require__.r(__webpack_exports__);
     getMoneut: function getMoneut() {
       var _this = this;
 
+      console.log("getMoney");
       axios.get('/getMoney').then(function (response) {
         _this.money = response.data;
       });
@@ -2807,9 +2808,11 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     toFirstPlase: function toFirstPlase() {
+      var that = this;
       axios.get('/tofirstplaсe').then(function (response) {
         console.log(response.data);
       });
+      that.getMoneut();
     }
   }
 });

@@ -98,6 +98,9 @@ class MoneyController extends Controller
         $current_date = Carbon::now();// текушая дата
         $girl->created_at = $current_date;
         $girl->save();
+        $money=$money-$toFirstPlase->price;
+        $user->money=$money;
+        $user->save();
 
         return response('ok');
     }

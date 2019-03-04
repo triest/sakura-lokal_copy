@@ -46,6 +46,7 @@
         methods:
             {
                 getMoneut() {
+                    console.log("getMoney");
                     axios.get('/getMoney')
                         .then((response) => {
                             this.money = response.data;
@@ -59,10 +60,12 @@
                         });
                 },
                 toFirstPlase() {
+                    var that = this;
                     axios.get('/tofirstplaсe')
                         .then((response) => {
                             console.log(response.data)
                         });
+                    that.getMoneut()
                 }
             }
     }

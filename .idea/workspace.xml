@@ -5,13 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MoneyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MoneyController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/CarouselTemp.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/CarouselTemp.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Power.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Power.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/editimages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editimages.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/power.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/power.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Power.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Power.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/Power.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="607">
-              <caret line="61" column="44" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="44" />
+            <state relative-caret-position="641">
+              <caret line="62" column="36" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -56,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GirlsController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="496">
-              <caret line="57" column="25" lean-forward="true" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
+              <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -70,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MoneyController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MoneyController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MoneyController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="89" column="49" selection-start-line="89" selection-start-column="49" selection-end-line="89" selection-end-column="49" />
+            <state relative-caret-position="763">
+              <caret line="102" column="22" selection-start-line="102" selection-start-column="22" selection-end-line="102" selection-end-column="22" />
               <folding>
                 <element signature="e#40#53#0#PHP" expanded="true" />
               </folding>
@@ -216,9 +210,9 @@
         <option value="$PROJECT_DIR$/resources/views/editimages.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_04_175332_create_prices_table.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/Power.vue" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MoneyController.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/Power.vue" />
       </list>
     </option>
   </component>
@@ -487,7 +481,7 @@
       <workItem from="1551375489971" duration="2956000" />
       <workItem from="1551559674214" duration="6396000" />
       <workItem from="1551599175431" duration="39885000" />
-      <workItem from="1551677099257" duration="20944000" />
+      <workItem from="1551677099257" duration="22607000" />
     </task>
     <task id="LOCAL-00001" summary="Updating image">
       <created>1551566124024</created>
@@ -500,7 +494,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="255048000" />
+    <option name="totallyTimeSpent" value="256711000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -786,13 +780,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Power.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="61" column="44" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="815">
@@ -803,17 +790,24 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GirlsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
-          <caret line="57" column="25" lean-forward="true" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
+          <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MoneyController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="89" column="49" selection-start-line="89" selection-start-column="49" selection-end-line="89" selection-end-column="49" />
+        <state relative-caret-position="763">
+          <caret line="102" column="22" selection-start-line="102" selection-start-column="22" selection-end-line="102" selection-end-column="22" />
           <folding>
             <element signature="e#40#53#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Power.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="641">
+          <caret line="62" column="36" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
         </state>
       </provider>
     </entry>
