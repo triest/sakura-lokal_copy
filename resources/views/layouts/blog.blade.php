@@ -53,7 +53,9 @@
 
 
 <div class="container">
-
+    <div class="card-body" id="app2">
+        <carouseltemp></carouseltemp>
+    </div>
     <div class="row row-offcanvas row-offcanvas-right">
 
         <div class="col-xs-12 col-sm-9">

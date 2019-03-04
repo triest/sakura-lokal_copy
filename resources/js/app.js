@@ -6,7 +6,13 @@
 
 require('./bootstrap');
 
+
+
+
 window.Vue = require('vue');
+
+import VueCarousel from 'vue-carousel';
+Vue.use(VueCarousel);
 
 /**
  * The following block of code may be used to automatically register your
@@ -40,6 +46,8 @@ Vue.component('editimages', require('./components/Editimages.vue').default);
 Vue.component('modal-template',require('./components/modal-template.vue').default);
 
 Vue.component('power', require('./components/Power.vue').default);
+
+Vue.component('carouseltemp', require('./components/CarouselTemp.vue').default);
 //модальное окно для отправки сообщения
 //Vue.component('modal', require('./components/ModalComponent.vue'));
 

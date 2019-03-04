@@ -26,6 +26,7 @@
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
     "popper.js": "^1.14.7",
-    "vue-carousel": "^0.18.0-alpha"
+    "vue-carousel": "^0.18.0-alpha",
+    "vue-v-carousel": "0.0.4"
   }
 }
