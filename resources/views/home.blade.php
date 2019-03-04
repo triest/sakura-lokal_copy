@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">We Code Messenger</div>
 
-                    <div class="card-body" id="app">
+                    <div class="card-body" id="app3">
                         <chat-app :user="{{auth()->user()}}"></chat-app>
                     </div>
                 </div>

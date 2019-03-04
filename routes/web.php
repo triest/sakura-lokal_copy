@@ -120,3 +120,8 @@ Route::get('/getMoney', 'MoneyController@getCurrentMoney')->middleware('auth');
 
 //путь для яндекса
 Route::post('/yandex', 'MoneyController@reciverMoney');
+
+//получить цены
+Route::get('/getpricestotop', 'MoneyController@getpricestotop')->middleware('auth');
+
+Route::get('/tofirstplaсe','MoneyController@toFirstPlase')->middleware('auth');

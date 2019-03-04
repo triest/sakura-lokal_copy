@@ -1935,9 +1935,7 @@ __webpack_require__.r(__webpack_exports__);
       imagesList: []
     };
   },
-  mounted: function mounted() {
-    console.log("carousel mounted");
-  },
+  mounted: function mounted() {},
   methods: {
     getmainImage: function getmainImage() {
       var _this = this;
@@ -2761,6 +2759,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -2770,7 +2774,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      money: ""
+      money: "",
+      prices: "",
+      priceToTop: ""
     };
   },
   computed: {
@@ -2782,7 +2788,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.getMoneut();
+    this.getMoneut(), this.getPrices();
   },
   methods: {
     getMoneut: function getMoneut() {
@@ -2790,6 +2796,19 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/getMoney').then(function (response) {
         _this.money = response.data;
+      });
+    },
+    getPrices: function getPrices() {
+      var _this2 = this;
+
+      var returnedData = "";
+      axios.get('/getpricestotop').then(function (response) {
+        _this2.priceToTop = response.data;
+      });
+    },
+    toFirstPlase: function toFirstPlase() {
+      axios.get('/tofirstplaсe').then(function (response) {
+        console.log(response.data);
       });
     }
   }
@@ -50272,7 +50291,41 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("b", [_vm._v("Текущее состояние счета: " + _vm._s(_vm.money.money))])
+    _c("b", [_vm._v("Текущее состояние счета: " + _vm._s(_vm.money.money))]),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("b", [
+      _vm._v(
+        " Поместить анкету в шапку сайта(сменяемое меню) на 24 часа за " +
+          _vm._s(_vm.priceToTop[0][0].price) +
+          " рублей:"
+      )
+    ]),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("b", [
+      _vm._v(
+        "Поднять анкету на первое место за " +
+          _vm._s(_vm.priceToTop[1][0].price) +
+          " рублей"
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        on: {
+          click: function($event) {
+            return _vm.toFirstPlase()
+          }
+        }
+      },
+      [_vm._v("Поднять анкету на первое место")]
+    ),
+    _vm._v(" "),
+    _c("br")
   ])
 }
 var staticRenderFns = []
@@ -62639,6 +62692,12 @@ var app = new Vue({
 });
 var app2 = new Vue({
   el: '#app2',
+  data: {
+    showModal: false
+  }
+});
+var app3 = new Vue({
+  el: '#app3',
   data: {
     showModal: false
   }

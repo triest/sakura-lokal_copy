@@ -72,3 +72,10 @@ const app2 = new Vue({
         showModal: false
     }
 });
+
+const app3 = new Vue({
+    el: '#app3',
+    data: {
+        showModal: false
+    }
+});

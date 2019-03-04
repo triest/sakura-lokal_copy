@@ -20,7 +20,6 @@
             };
         },
         mounted() {
-            console.log("carousel mounted")
         },
         methods:
             {

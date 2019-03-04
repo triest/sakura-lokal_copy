@@ -1,7 +1,7 @@
 @extends('layouts.blog', ['title' => 'Редактировать галлерею'])
 
 @section('content')
-    <div class="card-body" id="app2">
+    <div class="card-body" id="app3">
         <editimages :user="{{auth()->user()}}"></editimages>
     </div>
     <br>

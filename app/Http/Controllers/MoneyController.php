@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Girl;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,5 +61,44 @@ class MoneyController extends Controller
         }
 
         return response('OK', 200);
+    }
+
+    public function getpricestotop(Request $request)
+    {
+
+        $toTop = DB::select('select price from prices where price_name = :price_name', ['price_name' => 'to_top']);
+        $updatemainimage = DB::select('select price from prices where price_name = :price_name',
+            ['price_name' => 'update_main_image']);
+        $toFirstPlase = DB::select('select price from prices where price_name = :price_name',
+            ['price_name' => 'to_first_plase']);
+
+        return response()->json([
+            $toTop,
+            $toFirstPlase,
+        ]);
+    }
+
+    public function toFirstPlase(Request $request)
+    {
+        $user = Auth::user();
+        $girl = Girl::select([
+
+            'id',
+            'user_id',
+            'biginvip',
+            'endvip',
+        ])->where('user_id', $user->id)->first();
+        $money = $user->money;
+        $toFirstPlase = collect(DB::select('select price from prices where price_name = :price_name',
+            ['price_name' => 'to_first_plase']))->first();
+        $toFirstPlase->price;
+        if ($toFirstPlase->price > $money) {
+            return response('lowMoney');
+        }
+        $current_date = Carbon::now();// текушая дата
+        $girl->created_at = $current_date;
+        $girl->save();
+
+        return response('ok');
     }
 }
