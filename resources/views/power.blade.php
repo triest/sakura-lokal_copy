@@ -4,6 +4,8 @@
     <div class="card-body" id="app3">
         <power :user="{{auth()->user()}}"></power>
 
+        <br>
+        <h2>Пополнить счет</h2>
         <b>Яндекс деньги:</b>
         <form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml">
             <!-- настя    <input type="hidden" name="receiver" value="410015938987820"> -->

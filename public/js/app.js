@@ -2772,6 +2772,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -2814,18 +2820,22 @@ __webpack_require__.r(__webpack_exports__);
     },
     toFirstPlase: function toFirstPlase() {
       var that = this;
-      axios.get('/tofirstplaсe').then(function (response) {
-        console.log(response.data);
-      });
+      axios.get('/tofirstplaсe').then(function (response) {});
       that.getMoneut();
     },
     toTop: function toTop() {
-      console.log(this.$refs.inputDaysNumber.value);
+      var _this3 = this;
+
       axios.get('/totop', {
         params: {
           days: this.$refs.inputDaysNumber.value
         }
-      }).then(function (response) {});
+      }).then(function (response) {
+        if (!response.data) {} else {
+          _this3.isOpen = false;
+        }
+      });
+      this.getMoneut();
     }
   }
 });
@@ -50327,7 +50337,7 @@ var render = function() {
       _vm._v(
         "\n        24 часа за " +
           _vm._s(_vm.priceToTop[0][0].price) +
-          " рублей/24 часа на за\n\n        :"
+          " рублей/24 часа\n\n        :"
       )
     ]),
     _vm._v(" "),
@@ -50353,17 +50363,21 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c(
-      "button",
-      {
-        on: {
-          click: function($event) {
-            return _vm.toFirstPlase()
-          }
-        }
-      },
-      [_vm._v("Поднять")]
-    ),
+    _vm.money.money >= _vm.priceToTop[1][0].price
+      ? _c("div", [
+          _c(
+            "button",
+            {
+              on: {
+                click: function($event) {
+                  return _vm.toFirstPlase()
+                }
+              }
+            },
+            [_vm._v("Поднять")]
+          )
+        ])
+      : _c("div", [_c("b", [_vm._v("Недостаточно денег. Пополните счет.")])]),
     _vm._v(" "),
     _c("br")
   ])
