@@ -2765,6 +2765,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -2776,15 +2783,13 @@ __webpack_require__.r(__webpack_exports__);
     return {
       money: "",
       prices: "",
-      priceToTop: ""
+      priceToTop: "",
+      inputDays: ""
     };
   },
   computed: {
-    getImageUrl: function getImageUrl() {
-      return this.getmainImage();
-    },
-    getImagesUrls: function getImagesUrls() {
-      return this.getimages();
+    max2: function max2() {
+      return this.money.money / this.priceToTop[0][0].price;
     }
   },
   mounted: function mounted() {
@@ -2813,6 +2818,14 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response.data);
       });
       that.getMoneut();
+    },
+    toTop: function toTop() {
+      console.log(this.$refs.inputDaysNumber.value);
+      axios.get('/totop', {
+        params: {
+          days: this.$refs.inputDaysNumber.value
+        }
+      }).then(function (response) {});
     }
   }
 });
@@ -50299,12 +50312,36 @@ var render = function() {
     _c("br"),
     _vm._v(" "),
     _c("b", [
+      _vm._v(" Поместить анкету в шапку сайта(сменяемое меню) на\n        "),
+      _c("input", {
+        ref: "inputDaysNumber",
+        attrs: {
+          name: "days",
+          id: "days",
+          type: "number",
+          min: "1",
+          max: _vm.max2
+        },
+        domProps: { value: _vm.max2 }
+      }),
       _vm._v(
-        " Поместить анкету в шапку сайта(сменяемое меню) на 24 часа за " +
+        "\n        24 часа за " +
           _vm._s(_vm.priceToTop[0][0].price) +
-          " рублей:"
+          " рублей/24 часа на за\n\n        :"
       )
     ]),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        on: {
+          click: function($event) {
+            return _vm.toTop()
+          }
+        }
+      },
+      [_vm._v("Поднять")]
+    ),
     _vm._v(" "),
     _c("br"),
     _vm._v(" "),
@@ -50325,7 +50362,7 @@ var render = function() {
           }
         }
       },
-      [_vm._v("Поднять анкету на первое место")]
+      [_vm._v("Поднять")]
     ),
     _vm._v(" "),
     _c("br")

@@ -98,10 +98,67 @@ class MoneyController extends Controller
         $current_date = Carbon::now();// текушая дата
         $girl->created_at = $current_date;
         $girl->save();
-        $money=$money-$toFirstPlase->price;
-        $user->money=$money;
+        $money = $money - $toFirstPlase->price;
+        $user->money = $money;
         $user->save();
 
         return response('ok');
     }
+
+    public function totop(Request $request)
+    {
+        $user = Auth::user();
+        $girl = Girl::select([
+            'id',
+            'user_id',
+            'biginvip',
+            'endvip',
+        ])->where('user_id', $user->id)->first();
+
+        $money = $user->money;
+        $toTop = collect(DB::select('select price from prices where price_name = :price_name',
+            ['price_name' => 'to_top']))->first();
+
+        $days = $request->days;
+        $days = floor($days);
+
+        if ($toTop->price * $days > $money) {
+            return response('lowMoney');
+        }
+        $current_date = Carbon::now();// текушая дата
+        $end_vip = $user->endvip;
+        $days = $request->days;
+        $days = floor($days); //кругляем полученнаы дни
+        //
+
+        if ($end_vip == null or $end_vip < $current_date) {  //есть ли сейчас vip статусэ
+            echo "endvip";
+            $end_vip = $current_date;
+            $begin_vip = $current_date;
+            $end_vip = $this->addDayswithdate($end_vip, $days);
+        } else {
+            $begin_vip = $user->beginvip;
+            $end_vip = $this->addDayswithdate($end_vip, $days);
+        }
+
+
+        $user->endvip = $end_vip;
+        $user->beginvip = $begin_vip;
+        $user->save();
+
+        $new_money = $user->money - $toTop->price * $days;
+        DB::table('users')->where('id', $user->id)->update(['money' => $new_money]);
+
+        return response('top');
+    }
+
+    //добавляет дни к дате
+    private function addDayswithdate($date, $days)
+    {
+        $date = strtotime("+".$days." days", strtotime($date));
+
+        return date("Y-m-d H:i:s", $date);
+    }
+
+
 }

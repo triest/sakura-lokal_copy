@@ -3,11 +3,18 @@
     <div>
         <b>Текущее состояние счета: {{money.money}}</b>
         <br>
-        <b> Поместить анкету в шапку сайта(сменяемое меню) на 24 часа за {{priceToTop[0][0].price}} рублей:</b>
+        <b> Поместить анкету в шапку сайта(сменяемое меню) на
+            <input name="days" id="days"  type="number"  min="1"
+                   :max="max2" :value="max2" ref="inputDaysNumber">
+            24 часа за {{priceToTop[0][0].price}} рублей/24 часа на за
+
+            :</b> <button v-on:click="toTop()">Поднять</button>
+
         <br>
         <b>Поднять анкету на первое место за {{priceToTop[1][0].price}} рублей</b>
-        <button v-on:click="toFirstPlase()">Поднять анкету на первое место</button>
+        <button v-on:click="toFirstPlase()">Поднять</button>
         <br>
+
 
     </div>
 </template>
@@ -27,16 +34,15 @@
             return {
                 money: "",
                 prices: "",
-                priceToTop: ""
+                priceToTop: "",
+                inputDays:""
             };
         },
         computed: {
-            getImageUrl: function () {
-                return this.getmainImage();
+            max2:function () {
+                return this.money.money/this.priceToTop[0][0].price
             },
-            getImagesUrls: function () {
-                return this.getimages()
-            }
+
 
         },
         mounted() {
@@ -58,6 +64,7 @@
                         .then((response) => {
                             this.priceToTop = response.data;
                         });
+
                 },
                 toFirstPlase() {
                     var that = this;
@@ -66,6 +73,19 @@
                             console.log(response.data)
                         });
                     that.getMoneut()
+                },
+                toTop() {
+                    console.log(this.$refs.inputDaysNumber.value)
+                    axios.get('/totop', {
+                        params: {
+                            days: this.$refs.inputDaysNumber.value
+                        }
+                    })
+                        .then((response) => {
+
+                        })
+
+
                 }
             }
     }

@@ -125,3 +125,5 @@ Route::post('/yandex', 'MoneyController@reciverMoney');
 Route::get('/getpricestotop', 'MoneyController@getpricestotop')->middleware('auth');
 
 Route::get('/tofirstplaсe','MoneyController@toFirstPlase')->middleware('auth');
+
+Route::get('/totop','MoneyController@totop')->middleware('auth');
