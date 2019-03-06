@@ -93,11 +93,6 @@
         </div><!--/span-->
     </div><!--/row-->
 
-    <hr>
-
-    <footer>
-
-    </footer>
 
 </div>
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>

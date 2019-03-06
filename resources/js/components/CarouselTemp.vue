@@ -1,11 +1,9 @@
 <template>
     <div>
-        <carousel :per-page="1"  :mouse-drag="false" :autoplay="true" :loop="true">
-            <slide>
-                Slide 1 Content
-            </slide>
-            <slide>
-                Slide 2 Content
+        <carousel :per-page="1" :mouse-drag="false" :autoplay="true" :loop="true">
+
+            <slide v-for="image in imagesList" :key="image[0].id">
+                <img :src="'images/upload/'+image[0].main_image" height="50">
             </slide>
         </carousel>
     </div>
@@ -20,6 +18,7 @@
             };
         },
         mounted() {
+            this.getmainImage()
         },
         methods:
             {

@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Girl;
 use App\Photo;
+use App\User;
 use App\Privatephoto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use File;
+use Carbon\Carbon;
 
 use App\ImageResize;
 
@@ -47,7 +49,7 @@ class AnketController extends Controller
         $girl->height = $request->height;
         $girl->description = $request->description;
         $girl->private = $request->private;
-        $girl->user_id=$user->id;
+        $girl->user_id = $user->id;
         $girl->save();
 
 
@@ -429,5 +431,28 @@ class AnketController extends Controller
         imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 
         return $dst;
+    }
+
+    //получаем обьекты для карусели
+    public function getdataforcarousel()
+    {
+        $current_date = Carbon::now();
+        $users = User::select([                 //получаем пользователей
+            'id',
+            'name',
+            'beginvip',
+            'endvip',
+        ])
+            //  ->where('vip','=','1')
+            ->where('beginvip', '<', $current_date)
+            ->where('endvip', '>', $current_date)
+            ->orderBy('created_at', 'DESC')->get();
+        $ankets = [];
+        foreach ($users as $user) {
+            $girl = Girl::select(['id', 'name', 'main_image'])->where('user_id', $user->id)->first();
+            array_push($ankets, $girl);
+        }
+
+        return response()->json(['ankets' => $ankets]);
     }
 }

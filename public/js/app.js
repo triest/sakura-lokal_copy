@@ -1927,15 +1927,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       imagesList: []
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.getmainImage();
+  },
   methods: {
     getmainImage: function getmainImage() {
       var _this = this;
@@ -49610,11 +49610,16 @@ var render = function() {
             loop: true
           }
         },
-        [
-          _c("slide", [_vm._v("\n            Slide 1 Content\n        ")]),
-          _vm._v(" "),
-          _c("slide", [_vm._v("\n            Slide 2 Content\n        ")])
-        ],
+        _vm._l(_vm.imagesList, function(image) {
+          return _c("slide", { key: image[0].id }, [
+            _c("img", {
+              attrs: {
+                src: "images/upload/" + image[0].main_image,
+                height: "50"
+              }
+            })
+          ])
+        }),
         1
       )
     ],
