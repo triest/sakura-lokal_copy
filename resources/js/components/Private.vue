@@ -7,6 +7,8 @@
         <h3 v-if="regStatus=='denide'">Заявка отклонена</h3>
         <button v-on:click="showMessageWindow()">Написать сообщение</button>
         <modal v-if="showModal===true" :id="id" v-on:close="showModal = false">></modal>
+        <button v-on:click="showPresentModal=true">Отправить подарок</button>
+        <present v-if="showPresentModal" :id="id" @closeRequest='close()'></present>
     </div>
 
 
@@ -14,6 +16,7 @@
 
 <script>
     import modal from './ModalComponent.vue';
+    import present from './PresentModal.vue'
 
     export default {
         props: {
@@ -23,7 +26,7 @@
             }
         },
         components: {
-            modal,
+            modal, present
         },
         mounted() {
             console.log('private');
@@ -36,7 +39,8 @@
                 showSendRegButton: false,
                 regStatus: null,
                 isModalVisible: true,
-                showModal: false
+                showModal: false,
+                showPresentModal: false
             }
         },
         methods: {
@@ -121,6 +125,10 @@
             },
             showMessageWindow() {
                 this.showModal = true
+            },
+            close() {
+                console.log("false");
+                this.showPresentModal = false;
             }
 
         }

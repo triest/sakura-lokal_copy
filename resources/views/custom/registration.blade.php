@@ -50,8 +50,8 @@
                                 </div>
 
 
-                                <div class="form-group row">
-                                    <label>Ваше имя</label>
+                                <div class="form-group">
+                                    <label for="name">Ваше имя</label>
                                     <input type='text' name='name' class='text-input  ' value='{{old('name')}}'
                                            required>
                                     @if($errors->has('name'))
@@ -60,8 +60,8 @@
                                 </div>
 
                                 <p class='mailHint'></p>
-                                <div class="form-group row">
-                                    <label>Ваш email</label>
+                                <div class="form-group">
+                                    <label for="email">Ваш email</label>
                                     <input type='text' name='email' class='text-input  ' value='{{old('email')}}'
                                            required>
                                     @if($errors->has('email'))
@@ -69,19 +69,17 @@
                                     @endif
                                 </div>
 
-                                <div class="form-group row">
-                                    <p class='mailHint'></p>
-                                    <label>Пароль</label>
-                                    <input type='text' name='password' class='text-input  ' value='{{old('password')}}'
+                                <div class="form-group">
+                                    <label for="password">Пароль</label>
+                                    <input type='text' name='password' value='{{old('password')}}'
                                            required>
                                     @if($errors->has('password'))
                                         <font color="red"><p>  {{$errors->first('password')}}</p></font>
                                     @endif
                                 </div>
                                 <br>
-                                <div class="form-group row">
-                                    <label>Подтверждение пароля</label>
-
+                                <div class="form-group">
+                                    <label for="password_confirmation">Подтверждение пароля</label>
                                     <input type='text' name='password_confirmation' class='text-input  '
                                            value='{{old('password')}}'
                                            required>
@@ -90,7 +88,6 @@
                                         сайта Sakura-city и подтверждаете что вам больше 18 лет. Запрещается
                                         продвигать незаконную коммерческую деятельность (например,
                                         проституцию). </p>
-
                                 </div>
                                 <button type="submit" class="btn btn-default">Зарегистрироваться</button>
 

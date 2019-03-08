@@ -79,7 +79,6 @@ class AnketController extends Controller
         if (Input::hasFile('images')) {
             $count = 0;
             foreach ($request->images as $key) {
-                echo 'image';
                 $image_extension = $request->file('file')->getClientOriginalExtension();
                 $image_new_name = md5(microtime(true));
                 $key->move(public_path().'/images/upload/', strtolower($image_new_name.'.'.$image_extension));
@@ -101,6 +100,7 @@ class AnketController extends Controller
             $photo['girl_id'] = $id;
             $photo->save();
         }
+        return $this->index();
     }
 
     public function girlsEditAuchAnket()
@@ -449,7 +449,7 @@ class AnketController extends Controller
             ->orderBy('created_at', 'DESC')->get();
         $ankets = [];
         foreach ($users as $user) {
-            $girl = Girl::select(['id', 'name', 'main_image'])->where('user_id', $user->id)->first();
+            $girl = Girl::select(['id', 'name', 'main_image','age'])->where('user_id', $user->id)->first();
             array_push($ankets, $girl);
         }
 

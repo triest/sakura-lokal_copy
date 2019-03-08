@@ -6,7 +6,7 @@
     @if (Auth::guest())
     @else
         @if($girl->user_id!=auth()->user()->id)
-            <div class="card-body" id="app2">
+            <div class="card-body" id="app7">
                 <privatepanel :id="{{$girl->id}}"></privatepanel>
             </div>
         @else

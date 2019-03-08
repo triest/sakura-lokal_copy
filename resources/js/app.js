@@ -7,11 +7,10 @@
 require('./bootstrap');
 
 
-
-
 window.Vue = require('vue');
 
 import VueCarousel from 'vue-carousel';
+
 Vue.use(VueCarousel);
 
 /**
@@ -43,13 +42,18 @@ Vue.component('application', require('./components/Application.vue').default);
 
 Vue.component('editimages', require('./components/Editimages.vue').default);
 
-Vue.component('modal-template',require('./components/modal-template.vue').default);
+Vue.component('modal-template', require('./components/modal-template.vue').default);
 
 Vue.component('power', require('./components/Power.vue').default);
 
 Vue.component('carouseltemp', require('./components/CarouselTemp.vue').default);
+
+Vue.component('presents', require('./components/Presents.vue').default);
+
+
 //модальное окно для отправки сообщения
 //Vue.component('modal', require('./components/ModalComponent.vue'));
+Vue.component('delmodal', require('./components/delModal.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -79,3 +83,18 @@ const app3 = new Vue({
         showModal: false
     }
 });
+
+const app4 = new Vue({
+    el: '#app4',
+    data: {
+        showModal: false
+    }
+});
+
+const app7 = new Vue({
+    el: '#app7',
+    data: {
+        showModal: false
+    }
+});
+

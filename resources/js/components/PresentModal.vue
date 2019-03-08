@@ -12,11 +12,26 @@
 
                     <div class="modal-body">
                         <slot name="body">
-                            <textarea rows="10" cols="45" v-model="MessageText" name="MessageText"></textarea>
-                            <br>
-                            <button type="button" class="btn btn-secondary" v-on:click="saveChange">Отправить
-                                сообщение
-                            </button>
+                            <table class="table table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>Подарок</th>
+                                    <th>Цена</th>
+                                    <th>Изображение</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="present in presents[0]">
+                                    <td>{{present.name}}</td>
+                                    <td>{{present.price}}</td>
+                                    <td><img :src="'presents/upload/'+present.image" height="200"></td>
+                                    <td>
+                                        <button class="btn" @click="givePresent(present.id)">Подарить
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </slot>
                     </div>
 
@@ -24,10 +39,8 @@
                         <slot name="footer">
                             default footer
                             <br>
-                            <button class="modal-default-button" v-on:click="close">
-                                OK
-                            </button>
-                            <button class="modal-default-button"  v-on:click="$emit('close')">
+
+                            <button class="modal-default-button" v-on:click="close()">
                                 OK
                             </button>
                         </slot>
@@ -43,43 +56,49 @@
     export default {
         props: {
             id: {
-                type: Number,
+                type: '',
                 required: true
             }
         },
-        name: 'modal',
         mounted() {
-            //console.log(this.id);
+            this.getPresentsList(),
+                console.log(this.id)
         },
         data() {
             return {
+                presents: [],
+                currentAnket: '',
 
-                MessageText: ""
             }
         },
         methods: {
             close() {
-             $emit('close')
+                this.$emit('closeRequest')
             },
-            findUserByid() {
 
+
+            getPresentsList() {
+                axios.get('/getpresents', {})
+                    .then((response) => {
+                            this.presents = response.data;
+                        }
+                    )
             },
-            saveChange() {
-             //   console.log(this.MessageText)
-                axios.post('/conversation/send', {
-                    contact_id: this.id,
-                    text: this.MessageText
-                }).then((response) => {
-                    this.MessageText="";
-                 //  @close="showModal = false"
-                });
+            givePresent(id) {
+                console.log(id),
+                    axios.post('/givepresent', {
+                        user_id: this.id,
+                        present_id: id
+                    }).then((response) => {
 
+                    });
+                this.close();
             }
-        },
-    };
+        }
+    }
 </script>
 
-<style>
+<style scoped>
     textarea {
         width: 90%; /* Ширина поля в процентах */
         height: 200px; /* Высота поля в пикселах */

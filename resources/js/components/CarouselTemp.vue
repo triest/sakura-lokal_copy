@@ -1,10 +1,23 @@
 <template>
     <div>
-        <carousel :per-page="1" :mouse-drag="false" :autoplay="true" :loop="true">
+        <carousel :per-page="1" :mouse-drag="false" :autoplay="true" :loop="true" :centerMode="true"
+                  :navigationEnabled="true">
 
             <slide v-for="image in imagesList" :key="image[0].id">
-                <img :src="'images/upload/'+image[0].main_image" height="50">
+                <div class="flex-center2 position-ref">
+                    <a :href="'/anket/'+image[0].id">
+                        <img :src="'images/upload/'+image[0].main_image" height="100">
+                    </a>
+                    <b>{{image[0].name}},S</b>
+                    <b>Возраст:{{image[0].age}}</b>
+                </div>
             </slide>
+            <slide>
+                <div class="flex-center2 position-ref">
+                    d
+                </div>
+            </slide>
+
         </carousel>
     </div>
 </template>
@@ -34,4 +47,18 @@
 
 <style scoped>
 
+
+    .carousel {
+        text-align: center; /* Родительскому задать выравнивание по центру */
+    }
+
+    .flex-center2 {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .position-ref {
+        position: relative;
+    }
 </style>

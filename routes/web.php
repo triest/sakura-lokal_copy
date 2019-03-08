@@ -131,3 +131,22 @@ Route::get('/totop', 'MoneyController@totop')->middleware('auth');
 
 //получаем картинки для карусели
 Route::get('/getdataforcarousel', 'AnketController@getdataforcarousel');
+
+
+//ути администратора
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/admin', 'AdminController@adminPanel')->name('adminPanel');
+    Route::get('/presentsControll', function () {
+        return view('admin.presentsControl');
+    })->name('presentsControll');
+
+});
+
+Route::get('/getpresents', 'AdminController@getpresents');
+
+Route::post('/createpresent', 'AdminController@storepresent');
+
+Route::post('/delpresent', 'AdminController@delpresent')->middleware('auth');
+
+//подарить подарок
+Route::post('/givepresent', 'AdminController@givepresent')->middleware('auth');

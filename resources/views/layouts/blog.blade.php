@@ -45,6 +45,7 @@
 
     <!--Yandex -->
     <meta name="yandex-verification" content="af4168af7d682a89"/>
+
 </head>
 
 <body>
@@ -87,6 +88,12 @@
                     @else
                         <b><a class="btn btn-primary" href="{{route('createGirlPage')}}">Создать анкету</a> </b>
                     @endif
+                    <br><br>
+                    <!--check is admin -->
+                    @if(Auth::user()->is_admin==1)
+                        <b><a class="btn btn-success" href="{{route('adminPanel')}}">Панель администратора</a> </b>
+                    @endif
+                    <b><a class="btn btn-success" href="{{route('main')}}">На главную</a> </b>
 
                 @endif
             </div>

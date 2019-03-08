@@ -201,7 +201,7 @@
                         }
                     )
                         .then((response) => {
-                            this.getprivateimages();
+
                         });
                     this.getimages();
                 },

@@ -1,4 +1,4 @@
-@extends('layouts.blog', ['title' => 'Редактировать галлерею'])
+@extends('layouts.blog', ['title' => 'Управление анкетой'])
 
 @section('content')
     <div class="card-body" id="app3">
