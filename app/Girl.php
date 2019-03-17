@@ -23,4 +23,10 @@ class Girl extends Model
     {
         return $this->hasOne('App\User');
     }
+
+    public function target()
+    {
+        return $this->hasOne('App\Target');
+    }
+
 }

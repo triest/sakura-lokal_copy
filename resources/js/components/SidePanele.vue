@@ -45,6 +45,12 @@
                             this.numberApplication = response.data;
                         })
                 });
+            Echo.private(`gifs.${this.user.id}`)
+                .listen('eventPresent', (e) => {
+                    console.log('NewPresent');
+                });
+
+
             axios.get('/getCountUnreaded')
                 .then((response) => {
                     this.numberUnreaded = response.data;

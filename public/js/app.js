@@ -3361,6 +3361,9 @@ __webpack_require__.r(__webpack_exports__);
         _this.numberApplication = response.data;
       });
     });
+    Echo.private("gifs.".concat(this.user.id)).listen('eventPresent', function (e) {
+      console.log('NewPresent');
+    });
     axios.get('/getCountUnreaded').then(function (response) {
       _this.numberUnreaded = response.data;
     });

@@ -150,3 +150,5 @@ Route::post('/delpresent', 'AdminController@delpresent')->middleware('auth');
 
 //подарить подарок
 Route::post('/givepresent', 'AdminController@givepresent')->middleware('auth');
+
+Route::get('/presenttest', 'AdminController@presenttest');
