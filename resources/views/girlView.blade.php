@@ -34,6 +34,7 @@
     @if($girl->sex=='male')
         <b> Мужской</b>
     @endif
+    <br>
 
     <p class="card-text"><b>Рост : {{$girl->height}}</b>
     <p class="card-text"><b>Вес : {{$girl->weight}}</b>
@@ -45,7 +46,13 @@
 
         @if($girl->meet=='male')
             <b> мужчиной</b>
-    @endif
+        @endif
+        <b>Цели знакомства:</b> <br>
+
+    @foreach($targets as $target)
+        <li><b>{{$target->name}}</b></li>
+    @endforeach
+
     <p class="card-text"><b> {!!$girl->description  !!}</b></p>
 
     @if($girl->private!=null)

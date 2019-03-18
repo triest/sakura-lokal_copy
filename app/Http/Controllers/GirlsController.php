@@ -21,18 +21,18 @@ class GirlsController extends Controller
             $user = Auth::user();  // и если админ
             if ($user->isAdmin == 1) {
                 $girls = Girl::select(['id', 'name', 'phone', 'main_image', 'description', 'banned'])
-                        ->orderBy('created_at', 'DESC')->simplePaginate(9);
+                    ->orderBy('created_at', 'DESC')->simplePaginate(9);
             } else {
                 $girls = Girl::select(['id', 'name', 'phone', 'main_image', 'description', 'sex'])
-                        ->where('banned', '=', '0')
-                        ->orderBy('created_at', 'DESC')
-                        ->Paginate(9);
-            }
-        } else {
-            $girls = Girl::select(['id', 'name', 'phone', 'main_image', 'description', 'sex'])
                     ->where('banned', '=', '0')
                     ->orderBy('created_at', 'DESC')
                     ->Paginate(9);
+            }
+        } else {
+            $girls = Girl::select(['id', 'name', 'phone', 'main_image', 'description', 'sex'])
+                ->where('banned', '=', '0')
+                ->orderBy('created_at', 'DESC')
+                ->Paginate(9);
         }
         $user = Auth::user();
 
@@ -43,20 +43,20 @@ class GirlsController extends Controller
     public function showGirl($id)
     {
         $girl = Girl::select([
-                'name',
-                'id',
-                'description',
-                'main_image',
-                'sex',
-                'meet',
-                'weight',
-                'height',
-                'age',
-                'country_id',
-                'region_id',
-                'city_id',
-                'banned',
-                'user_id'
+            'name',
+            'id',
+            'description',
+            'main_image',
+            'sex',
+            'meet',
+            'weight',
+            'height',
+            'age',
+            'country_id',
+            'region_id',
+            'city_id',
+            'banned',
+            'user_id',
         ])->where('id', $id)->first();
         if ($girl == null) {
             return $this->index();
@@ -65,12 +65,15 @@ class GirlsController extends Controller
 
         $AythUser = Auth::user();
         $privatephoto = null;
+
+        $targets = $girl->target()->get();
+
         //проверяем, что просматривающий пользователь зареген.
         if ($AythUser != null) {
             //  $girl_user_id=$girl->user_id;
             $user3 = DB::table('user_user')
-                    ->where('my_id', $AythUser->id)
-                    ->where('other_id', $girl->user_id)->first();
+                ->where('my_id', $AythUser->id)
+                ->where('other_id', $girl->user_id)->first();
             if ($user3 != null) {
                 $girl = Girl::select([
                     'name',
@@ -87,15 +90,17 @@ class GirlsController extends Controller
                     'city_id',
                     'banned',
                     'user_id',
-                    'private'
+                    'private',
                 ])->where('id', $id)->first();
                 $privatephoto = $girl->privatephotos()->get();
             }
         }
+
         return view('girlView')->with([
-                'girl' => $girl,
-                'images' => $images,
-                'privatephotos' => $privatephoto
+            'girl' => $girl,
+            'images' => $images,
+            'privatephotos' => $privatephoto,
+            'targets' => $targets
         ]);
     }
 

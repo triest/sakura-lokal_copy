@@ -24,7 +24,7 @@ class AnketController extends Controller
     {
         $user = Auth::user();
         $targets = Target::select(['id', 'name'])->get();
-        dump($targets);
+
 
         return view('createAnket')
             ->with(
@@ -44,7 +44,14 @@ class AnketController extends Controller
             // 'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+
         $user = Auth::user();
+
+        $girl = Girl::select('id', 'name', 'user_id')->where('user_id', $user->id)->first();
+        if ($girl != null) {
+            return redirect('/edit');
+        }
+
         $girl = new Girl();
         $girl->name = $request->name;
         $girl->sex = $request->sex;
