@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="Add get vip status">
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/girlView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/girlView.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editGirl.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editGirl.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,23 +26,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="girlView.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="girlView.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/girlView.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="53" column="15" selection-start-line="53" selection-start-column="15" selection-end-line="53" selection-end-column="15" />
+            <state relative-caret-position="354">
+              <caret line="51" column="21" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnketController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AnketController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
+            <state relative-caret-position="488">
+              <caret line="200" lean-forward="true" selection-start-line="200" selection-end-line="200" />
               <folding>
                 <element signature="e#40#53#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="editGirl.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/editGirl.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="70" column="74" lean-forward="true" selection-start-line="70" selection-start-column="74" selection-end-line="70" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -130,7 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MoneyController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/Power.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/CarouselTemp.vue" />
@@ -178,9 +185,10 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_03_18_120647_add_foregin_keys_to_irl_target_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_18_120730_add_foregin_keys_to_girl_target_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_18_122400_drop_foregin_target_from_girls.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" />
         <option value="$PROJECT_DIR$/resources/views/girlView.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/editGirl.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" />
       </list>
     </option>
   </component>
@@ -434,7 +442,7 @@
       <workItem from="1552114727980" duration="15352000" />
       <workItem from="1552167999989" duration="16000" />
       <workItem from="1552859512467" duration="1742000" />
-      <workItem from="1552900065548" duration="9581000" />
+      <workItem from="1552900065548" duration="11976000" />
     </task>
     <task id="LOCAL-00001" summary="Updating image">
       <created>1551566124024</created>
@@ -454,7 +462,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="363441000" />
+    <option name="totallyTimeSpent" value="365836000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -511,7 +519,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Refactor.php" />
     <entry file="file://E:/Dropbox/PHPтеория/checkdiscount.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -789,16 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
-          <folding>
-            <element signature="e#40#53#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GirlsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
@@ -808,8 +805,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/girlView.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="53" column="15" selection-start-line="53" selection-start-column="15" selection-end-line="53" selection-end-column="15" />
+        <state relative-caret-position="354">
+          <caret line="51" column="21" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/editGirl.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="70" column="74" lean-forward="true" selection-start-line="70" selection-start-column="74" selection-end-line="70" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="200" lean-forward="true" selection-start-line="200" selection-end-line="200" />
+          <folding>
+            <element signature="e#40#53#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -156,6 +156,17 @@ class AnketController extends Controller
         $phone = $user->phone;
 
         $targets = Target::select(['id', 'name'])->get();
+        $allTarget = [];
+        foreach ($targets as $tag) {
+            array_push($allTarget, $tag->name);
+        }
+        dump($allTarget);
+        $targets = $girl->target()->get();
+        $anketTarget = [];
+        foreach ($targets as $tag) {
+            array_push($anketTarget, $tag->name);
+        }
+
         //   $countries = collect(DB::select('select * from countries'));
         //$countries = collect(DB::select('select * from countries'));
 
@@ -164,6 +175,8 @@ class AnketController extends Controller
             'girl' => $girl,
             'phone' => $phone,
             'targets' => $targets,
+            'allTarget'=>$allTarget,
+            'anketTarget'=>$anketTarget
         ]);
     }
 
@@ -231,6 +244,18 @@ class AnketController extends Controller
         }
         //тут местоположее
         $girl->save();
+
+        //переделываем цели
+        $girl->target()->detach();
+        $target_requwest= $request->input('tags');
+        $targets = Target::select('id',
+            'name',
+            'created_at',
+            'updated_at')->whereIn('name', $target_requwest)->get();
+
+        foreach ($targets as $target){
+            $girl->target()->attach($target);
+        }
 
         //    return $this->girlsEditAuchAnket();
         return redirect('/anket');

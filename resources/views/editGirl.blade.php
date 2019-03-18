@@ -63,6 +63,14 @@
                name="met" value="male" checked>
         <label for="contactChoice2">с мужчиной</label>
         <br>
+        Цель знакомства:
+        @foreach($allTarget as $tag)
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="tags[]" value="{{$tag}}"
+                       @if(in_array($tag,$anketTarget)) checked="1" @endif >
+                <label class="form-check-label" for="exampleCheck1">{{$tag}}</label>
+            </div>
+        @endforeach
         <br>
         <br>
         <div class="form-group">
