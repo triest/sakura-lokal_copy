@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Girl;
 use App\Photo;
+use App\Target;
 use App\User;
 use App\Privatephoto;
 use Illuminate\Http\Request;
@@ -22,8 +23,12 @@ class AnketController extends Controller
     function createGirl()
     {
         $user = Auth::user();
+        $targets = Target::select(['id', 'name'])->get();
+        dump($targets);
 
-        return view('createAnket')->with(['username' => $user->name]);
+        return view('createAnket')
+            ->with(
+                ['username' => $user->name, 'tagrets' => $targets]);
     }
 
     function store(Request $request)
@@ -100,7 +105,17 @@ class AnketController extends Controller
             $photo['girl_id'] = $id;
             $photo->save();
         }
-        return $this->index();
+
+        //цели
+        foreach ($request->target as $item) {
+            $target = Target::select(['id', 'name'])->where('id', $item)->first();
+            if ($target != null) {
+                $girl->target()->attach($target);
+            }
+        }
+
+
+        return redirect('/anket');
     }
 
     public function girlsEditAuchAnket()
@@ -132,6 +147,8 @@ class AnketController extends Controller
             return $this->index();
         }
         $phone = $user->phone;
+
+        $targets = Target::select(['id', 'name'])->get();
         //   $countries = collect(DB::select('select * from countries'));
         //$countries = collect(DB::select('select * from countries'));
 
@@ -139,6 +156,7 @@ class AnketController extends Controller
             'username' => $user->name,
             'girl' => $girl,
             'phone' => $phone,
+            'targets' => $targets,
         ]);
     }
 
@@ -449,7 +467,7 @@ class AnketController extends Controller
             ->orderBy('created_at', 'DESC')->get();
         $ankets = [];
         foreach ($users as $user) {
-            $girl = Girl::select(['id', 'name', 'main_image','age'])->where('user_id', $user->id)->first();
+            $girl = Girl::select(['id', 'name', 'main_image', 'age'])->where('user_id', $user->id)->first();
             array_push($ankets, $girl);
         }
 

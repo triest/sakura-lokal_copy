@@ -7,7 +7,8 @@
         <br>
         <div class="form-group">
             <label for="title">Имя:</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Имя" value="{{$username}}" readonly required>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Имя" value="{{$username}}"
+                   readonly required>
         </div>
 
         @if($errors->has('name'))
@@ -58,6 +59,13 @@
         <label for="contactChoice2">с мужчиной</label>
         <br>
         <br>
+
+        <b>Цель знакомства:</b> <br>
+        @foreach($tagrets as $target)
+            <input class="form-check-input" type="checkbox" value="{{$target->id}}" name="target[]"  >
+            <label class="form-check-label" for="{{$target->id}}">{{$target->name}}</label>
+            <br>
+        @endforeach
 
         <label>Выберите заглавную фотографию</label>
 

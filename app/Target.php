@@ -14,5 +14,9 @@ class Target extends Model
         return $this->hasMany('App\Girl');
     }
 
+    public function girl()
+    {
+        return $this->belongsToMany('App\Girl', 'girl_target');
+    }
 
 }
