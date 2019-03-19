@@ -1866,6 +1866,7 @@ __webpack_require__.r(__webpack_exports__);
           _this3.getApplications();
         }
       });
+      this.getApplications();
     },
     getNewApplication: function getNewApplication(user_id) {
       var _this4 = this;
@@ -1879,6 +1880,8 @@ __webpack_require__.r(__webpack_exports__);
           _this4.getApplications();
         }
       });
+      this.getApplications();
+      this.getWhoHavwAccessToMyAnket();
     },
     getWhoHavwAccessToMyAnket: function getWhoHavwAccessToMyAnket() {
       var _this5 = this;
@@ -1916,6 +1919,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -3361,7 +3366,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.numberApplication = response.data;
       });
     });
-    Echo.private("gifs.".concat(this.user.id)).listen('eventPresent', function (e) {
+    Echo.private("gifs.".concat(this.user.id)).listen('eventPreasent', function (e) {
       console.log('NewPresent');
     });
     axios.get('/getCountUnreaded').then(function (response) {
@@ -50049,7 +50054,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "application" },
+    { staticClass: "applicationClass" },
     [
       _c("b", [_vm._v("\n        Просьбы предоставить доступ:\n    ")]),
       _vm._v(" "),
@@ -50227,13 +50232,13 @@ var render = function() {
                 _c("a", { attrs: { href: "/anket/" + image[0].id } }, [
                   _c("img", {
                     attrs: {
-                      src: "images/upload/" + image[0].main_image,
+                      src: "/images/upload/" + image[0].main_image,
                       height: "100"
                     }
                   })
                 ]),
                 _vm._v(" "),
-                _c("b", [_vm._v(_vm._s(image[0].name) + ",S")]),
+                _c("b", [_vm._v(_vm._s(image[0].name) + ",")]),
                 _vm._v(" "),
                 _c("b", [_vm._v("Возраст:" + _vm._s(image[0].age))])
               ])
@@ -50242,7 +50247,11 @@ var render = function() {
           _vm._v(" "),
           _c("slide", [
             _c("div", { staticClass: "flex-center2 position-ref" }, [
-              _vm._v("\n                d\n            ")
+              _c("a", { attrs: { href: "/power" } }, [
+                _c("img", {
+                  attrs: { src: "/images/anketa.jpeg", height: "100" }
+                })
+              ])
             ])
           ])
         ],
@@ -51243,7 +51252,7 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "btn",
+                                staticClass: "button btn-primary",
                                 on: {
                                   click: function($event) {
                                     return _vm.givePresent(present.id)
@@ -51600,6 +51609,7 @@ var render = function() {
           : _vm._e()
       ])
     ]),
+    _c("br"),
     _vm._v(" "),
     _c("b", [
       _c("a", { attrs: { href: "/applications" } }, [
@@ -51609,10 +51619,13 @@ var render = function() {
           : _vm._e()
       ])
     ]),
+    _c("br"),
     _vm._v(" "),
     _vm._m(0),
+    _c("br"),
     _vm._v(" "),
     _vm._m(1),
+    _c("br"),
     _vm._v(" "),
     _vm._m(2)
   ])
@@ -63921,6 +63934,12 @@ var app4 = new Vue({
 });
 var app7 = new Vue({
   el: '#app7',
+  data: {
+    showModal: false
+  }
+});
+var applicationClass = new Vue({
+  el: '#applicationClass',
   data: {
     showModal: false
   }

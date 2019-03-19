@@ -1,5 +1,5 @@
 <template>
-    <div class="application">
+    <div class="applicationClass">
         <b>
             Просьбы предоставить доступ:
         </b>
@@ -104,6 +104,7 @@
                                 this.getApplications();
                             }
                         })
+                    this.getApplications();
                 },
                 getNewApplication(user_id) {
                     axios.get('/geteaccess', {
@@ -116,6 +117,8 @@
                                 this.getApplications();
                             }
                         })
+                    this.getApplications();
+                    this.getWhoHavwAccessToMyAnket()
                 },
                 getWhoHavwAccessToMyAnket() {
                     axios.get('/whohaveaccesstomyanket')

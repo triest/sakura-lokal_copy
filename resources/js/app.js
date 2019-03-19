@@ -98,3 +98,9 @@ const app7 = new Vue({
     }
 });
 
+const applicationClass = new Vue({
+    el: '#applicationClass',
+    data: {
+        showModal: false
+    }
+});

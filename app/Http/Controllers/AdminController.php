@@ -111,7 +111,7 @@ class AdminController extends Controller
         $giftAct->present_id = $gift->id;
         $giftAct->save();
 
-        broadcast(new Present($giftAct));
+        broadcast(new eventPreasent($giftAct));
 
         return response()->json(['ok']);
     }

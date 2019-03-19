@@ -26,7 +26,7 @@
                                     <td>{{present.price}}</td>
                                     <td><img :src="'presents/upload/'+present.image" height="200"></td>
                                     <td>
-                                        <button class="btn" @click="givePresent(present.id)">Подарить
+                                        <button class="button btn-primary" @click="givePresent(present.id)">Подарить
                                         </button>
                                     </td>
                                 </tr>

@@ -3,13 +3,13 @@
         <b><a href="/messages">Сообщения
             <div v-if="numberUnreaded>0">+{{numberUnreaded}}</div>
         </a>
-        </b>
+        </b><br>
         <b><a href="/applications">Заявки на открытие анкеты
             <div v-if="numberApplication>0">+{{numberApplication}}</div>
         </a>
-        </b>
-        <b><a href="/edit">Редактирование анкеты</a> </b>
-        <b><a href="/editimages">Редактирование галлереи</a> </b>
+        </b><br>
+        <b><a href="/edit">Редактирование анкеты</a> </b><br>
+        <b><a href="/editimages">Редактирование галлереи</a> </b><br>
         <b><a class="btn btn-primary" href="/power">Поднять анкету</a> </b>
     </div>
 </template>
@@ -46,7 +46,7 @@
                         })
                 });
             Echo.private(`gifs.${this.user.id}`)
-                .listen('eventPresent', (e) => {
+                .listen('eventPreasent', (e) => {
                     console.log('NewPresent');
                 });
 
