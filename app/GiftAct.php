@@ -10,7 +10,7 @@ class GiftAct extends Model
     protected $table = "gift_act";
 
 
-    protected $fillable = ['id', 'present_id', 'who_id', 'target_id'];
+    protected $fillable = ['id', 'present_id', 'who_id', 'target_id','readed'];
 
     public function who()
     {

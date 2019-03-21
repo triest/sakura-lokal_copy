@@ -50,6 +50,7 @@ Vue.component('carouseltemp', require('./components/CarouselTemp.vue').default);
 
 Vue.component('presents', require('./components/Presents.vue').default);
 
+Vue.component('mypresents', require('./components/MyPresents.vue').default);
 
 //модальное окно для отправки сообщения
 //Vue.component('modal', require('./components/ModalComponent.vue'));
@@ -104,3 +105,4 @@ const applicationClass = new Vue({
         showModal: false
     }
 });
+

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddReadedValueToPresent extends Migration
+class AddLinkPresentActPresent extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddReadedValueToPresent extends Migration
     public function up()
     {
         Schema::table('gift_act', function (Blueprint $table) {
-
+            $table->foreign('present_id')->references('id')->on('presents');
         });
     }
 
@@ -25,8 +25,9 @@ class AddReadedValueToPresent extends Migration
      */
     public function down()
     {
-        Schema::table('present', function (Blueprint $table) {
-            //
+        Schema::table('gift_act', function (Blueprint $table) {
+            $table->dropForeign("present_id");
+
         });
     }
 }

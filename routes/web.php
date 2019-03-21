@@ -142,13 +142,28 @@ Route::group(['middleware' => 'admin'], function () {
 
 });
 
-Route::get('/getpresents', 'AdminController@getpresents');
+Route::get('/getpresents', 'PresentController@getpresents');
 
-Route::post('/createpresent', 'AdminController@storepresent');
+Route::post('/createpresent', 'PresentController@storepresent');
 
-Route::post('/delpresent', 'AdminController@delpresent')->middleware('auth');
+Route::post('/delpresent', 'PresentController@delpresent')->middleware('auth');
 
 //подарить подарок
-Route::post('/givepresent', 'AdminController@givepresent')->middleware('auth');
+Route::post('/givepresent', 'PresentController@givepresent')->middleware('auth');
 
-Route::get('/presenttest', 'AdminController@presenttest');
+Route::get('/presenttest', 'PresentController@presenttest');
+
+//счетчик подаркоа
+Route::get('/getCountUnreadedPresents', 'PresentController@getCountUnreaderPresents')->middleware('auth');
+
+//мои подарки
+Route::get('mypresents', function () {
+    return view('presents.mypresents');
+}
+
+//получение списка моих подарко
+)->middleware('auth');
+Route::get('/getpresentsforMe', 'PresentController@presentsForMe')->middleware('auth');
+
+//markpresentasreaded
+Route::post('/markpresentasreaded', 'PresentController@markpresentasreaded')->middleware('auth');

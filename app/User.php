@@ -22,7 +22,7 @@ class User extends Authenticatable
         'password',
         'money',
         'endvip',
-        'beginvip'
+        'beginvip',
     ];
 
     /**
@@ -49,5 +49,11 @@ class User extends Authenticatable
     public function get_id()
     {
         return $this->id;
+    }
+
+    public function finfUserById($id)
+    {
+
+        dump($id);
     }
 }
