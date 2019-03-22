@@ -175,8 +175,8 @@ class AnketController extends Controller
             'girl' => $girl,
             'phone' => $phone,
             'targets' => $targets,
-            'allTarget'=>$allTarget,
-            'anketTarget'=>$anketTarget
+            'allTarget' => $allTarget,
+            'anketTarget' => $anketTarget,
         ]);
     }
 
@@ -247,13 +247,13 @@ class AnketController extends Controller
 
         //переделываем цели
         $girl->target()->detach();
-        $target_requwest= $request->input('tags');
+        $target_requwest = $request->input('tags');
         $targets = Target::select('id',
             'name',
             'created_at',
             'updated_at')->whereIn('name', $target_requwest)->get();
 
-        foreach ($targets as $target){
+        foreach ($targets as $target) {
             $girl->target()->attach($target);
         }
 
@@ -263,6 +263,7 @@ class AnketController extends Controller
 
     public function updateMainImage(Request $request)
     {
+
         $validatedData = $request->validate([
             'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -504,5 +505,13 @@ class AnketController extends Controller
         }
 
         return response()->json(['ankets' => $ankets]);
+    }
+
+    public function getDataForChangeMainImage(Request $request)
+    {
+        $user = Auth::user();
+        $updateMainImagePrice = DB::table('prices')->where('price_name', '=','update_main_image')->get();
+
+        return response()->json(['update_main_image' => $updateMainImagePrice, 'user_money' => $user->money]);
     }
 }

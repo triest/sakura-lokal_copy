@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <b><a href="/messages">Сообщения
             <div v-if="numberUnreaded>0">+{{numberUnreaded}}</div>
         </a>

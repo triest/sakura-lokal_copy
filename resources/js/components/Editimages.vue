@@ -1,20 +1,28 @@
 <template>
 
     <div>
-        <p>Главная фотография:</p>
+        <p class="h3">Главная фотография:</p>
         <p v-if="mainImage!=null">
             <img :src="'images/upload/'+mainImage" height="150">
         </p>
         <div class="container">
-            <div class="large-12 medium-12 small-12 cell">
-                <label>File
-                    <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
-                </label>
-                <button v-on:click="submitFile()">Submit</button>
+            <b>Обновить главныю фотографию в Вашей анкете всего за {{priceChangeMainImage}} рублей!</b>
+            <div v-if="userMoney>=priceChangeMainImage">
+                <div class="large-12 medium-12 small-12 cell">
+                    <label>Выбирите изображение
+                        <input type="file" id="file" ref="mainFileInput" v-on:change="handleFileMainUpload()"/>
+                    </label>
+                    <button v-on:click="submitFile()">Submit</button>
+                </div>
+
+
+            </div>
+            <div v-else>
+                <p>Недостаточно денег. <b><a class="btn btn-primary" href="/power">Пополните счет</a> </b></p>
             </div>
         </div>
 
-        Галлерея:
+        <p class="h3">Галлерея:</p>
         <div class="container">
             <div class="large-12 medium-12 small-12 cell">
                 <label>File
@@ -31,7 +39,7 @@
             <button class="btn btn-danger" v-on:click="deleteGelataiImage(image.photo_name)">Удалить</button>
         </div>
         <br>
-        Приватные фотографии:
+        <p class="h3">Приватные фотографии:</p>
         <div class="container">
             <div class="large-12 medium-12 small-12 cell">
                 <label>File
@@ -71,7 +79,10 @@
                 images: [],
                 privateimages: [],
                 privatefile: '',
-                privatefileInput: ''
+                privatefileInput: '',
+                userMoney: '',
+                priceChangeMainImage: '',
+                mainFile:''
             };
         },
         computed: {
@@ -86,7 +97,8 @@
         mounted() {
             this.getmainImage(),
                 this.getimages(),
-                this.getprivateimages()
+                this.getprivateimages(),
+                this.getDataForChangeMainImage()
         },
         methods:
             {
@@ -111,7 +123,7 @@
                             Initialize the form data
                         */
                     let formData = new FormData();
-                    formData.append('file', this.galerayFile);
+                    formData.append('file', this.mainFile);
                     axios.post('/updateMainImage',
                         formData,
                         {
@@ -121,11 +133,12 @@
                         }
                     ).then(function () {
                         console.log('SUCCESS!!');
-                        this.getmainImage();
+                        getmainImage();
                     })
                         .catch(function () {
-                            this.getmainImage();
+                            getmainImage();
                         });
+                    getmainImage()
                 },
                 submitGaleray() {
                     /*
@@ -166,8 +179,8 @@
                     this.getimages();
                 },
 
-                handleFileUpload() {
-                    this.file = this.$refs.file.files[0];
+                handleFileMainUpload() {
+                    this.mainFile = this.$refs.mainFileInput.files[0];
                 },
                 handleFileUploadGaleay() {
                     this.galerayFile = this.$refs.galerayFileInput.files[0];
@@ -213,6 +226,17 @@
                             this.privateimages = response.data;
                         });
                 },
+                getDataForChangeMainImage() {
+                    axios.get('/getDataForChangeMainImage')
+                        .then((response) => {
+                                this.priceChangeMainImage = response.data.update_main_image[0].price
+                                this.userMoney = response.data.user_money;
+
+
+                            }
+                        )
+                }
+
             }
     }
 </script>

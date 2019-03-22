@@ -167,3 +167,6 @@ Route::get('/getpresentsforMe', 'PresentController@presentsForMe')->middleware('
 
 //markpresentasreaded
 Route::post('/markpresentasreaded', 'PresentController@markpresentasreaded')->middleware('auth');
+
+//
+Route::get('/getDataForChangeMainImage','AnketController@getDataForChangeMainImage')->middleware('auth');;
