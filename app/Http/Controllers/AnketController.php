@@ -267,11 +267,17 @@ class AnketController extends Controller
         $validatedData = $request->validate([
             'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        $updateMainImagePrice = DB::table('prices')->where('price_name', '=', 'update_main_image')->first();
+        $user = Auth::user();
+        dump($updateMainImagePrice);
+        $price = $updateMainImagePrice->price;
 
-        if (Input::hasFile('file')) {
+        $temp = $user->money - intval($price);
+
+        if (Input::hasFile('file') and $temp >= 0) {
 
             //сохраняем новый файл
-            $user = Auth::user();
+
             $girl = Girl::select(['main_image'])->where('user_id', $user->get_id())->first();
 
             $image_extension = $request->file('file')->getClientOriginalExtension();
@@ -283,8 +289,19 @@ class AnketController extends Controller
                     strtolower($image_new_name));
             $origin_size = getimagesize($temp_file);
             $girl['main_image'] = $image_new_name;
+            $small = base_path().'/public/images/small/'.strtolower($image_new_name);
+            copy($temp_file, $small);
+            $image = new ImageResize($small);
+            $image->resizeToHeight(150);
+
+
+            $user->money = $user->money - $price;
+            $user->save();
         }
         $girl->save();
+
+        //тут списываем деньгт
+
 
         return response()->json(['ok']);
     }
@@ -510,7 +527,7 @@ class AnketController extends Controller
     public function getDataForChangeMainImage(Request $request)
     {
         $user = Auth::user();
-        $updateMainImagePrice = DB::table('prices')->where('price_name', '=','update_main_image')->get();
+        $updateMainImagePrice = DB::table('prices')->where('price_name', '=', 'update_main_image')->get();
 
         return response()->json(['update_main_image' => $updateMainImagePrice, 'user_money' => $user->money]);
     }
