@@ -142,7 +142,21 @@ class PresentController extends Controller
                 FROM gift_act act left join presents pres on act.present_id=pres.id
             left join users who  on who.id=act.who_id
                        left join girls girl on girl.user_id=who.id
-                       where act.target_id=:id 
+                       where act.target_id=:id and act.readed=0
+                       ", ['id' => $user->id]);
+
+        return response()->json([$present]);
+    }
+
+    public function getpresentsHistoryforMe()
+    {
+        $user = Auth::user();
+        // $giftAct = GiftAct::select('id','present_id','who_id','target_id','created_at','readed')->where('target_id', $user->id)->where('readed', 0)->get();
+        $present = DB::select("SELECT act.id as 'act_id' ,pres.id as 'id', who.id as 'who_id',who.name as 'who_name',girl.main_image as 'who_image',pres.id as 'pres_id',pres.name as 'pres_name',pres.image as 'pres_image',act.readed 
+                FROM gift_act act left join presents pres on act.present_id=pres.id
+            left join users who  on who.id=act.who_id
+                       left join girls girl on girl.user_id=who.id
+                       where act.target_id=:id
                        ", ['id' => $user->id]);
 
         return response()->json([$present]);
@@ -157,8 +171,10 @@ class PresentController extends Controller
         if ($present != null) {
             $present->readed = true;
             $present->save();
+
             return response()->json(['ok']);
         }
+
         return response()->json(['fail']);
     }
 }

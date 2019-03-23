@@ -165,6 +165,8 @@ Route::get('mypresents', function () {
 )->middleware('auth');
 Route::get('/getpresentsforMe', 'PresentController@presentsForMe')->middleware('auth');
 
+Route::get('/getpresentsHistoryforMe', 'PresentController@getpresentsHistoryforMe')->middleware('auth');
+
 //markpresentasreaded
 Route::post('/markpresentasreaded', 'PresentController@markpresentasreaded')->middleware('auth');
 

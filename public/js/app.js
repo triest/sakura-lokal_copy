@@ -2881,16 +2881,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 //'./components/delModal.vue'
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   components: {},
   mounted: function mounted() {
-    this.getFresentsForMe();
+    this.getNewPresentsForMe();
   },
   data: function data() {
     return {
       presents: [],
+      presentsHistory: [],
       name: '',
       price: '',
       file1: '',
@@ -2899,19 +2907,26 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    getFresentsForMe: function getFresentsForMe() {
+    getNewPresentsForMe: function getNewPresentsForMe() {
       var _this = this;
 
-      this.presents = {};
+      this.presents = null;
       axios.get('/getpresentsforMe').then(function (response) {
         _this.presents = response.data[0];
+      });
+    },
+    getNewPresentsHistory: function getNewPresentsHistory() {
+      var _this2 = this;
+
+      this.presents = null;
+      axios.get('/getpresentsHistoryforMe').then(function (response) {
+        _this2.presents = response.data[0];
       });
     },
     handleFileUpload: function handleFileUpload() {
       this.file = this.$refs.file.files[0];
     },
     mark_as_readed: function mark_as_readed(id) {
-      console.log(id);
       var formData = new FormData();
       formData.append('present_id', id);
       axios.post('/markpresentasreaded', formData, {
@@ -2919,10 +2934,10 @@ __webpack_require__.r(__webpack_exports__);
           'Content-Type': 'multipart/form-data'
         }
       }).then().catch();
-      this.getFresentsForMe();
+      this.getNewPresentsForMe();
     },
     submitPresent: function submitPresent() {
-      var _this2 = this;
+      var _this3 = this;
 
       var that = this;
       var formData = new FormData();
@@ -2935,9 +2950,9 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         if (response.data == "ok") {
-          _this2.name = "";
-          _this2.price = "";
-          _this2.file = "";
+          _this3.name = "";
+          _this3.price = "";
+          _this3.file = "";
         }
       }).catch(function () {});
       this.getPresents();
@@ -51333,8 +51348,38 @@ var render = function() {
     "div",
     [
       _c("b", [_vm._v("Новые подарки для меня:")]),
-      _vm._v(":\n     "),
+      _vm._v(":\n    "),
       _vm._l(_vm.presents, function(present) {
+        return _c("div", [
+          _c("b", [_vm._v("От:" + _vm._s(present.who_name))]),
+          _c("br"),
+          _vm._v(" "),
+          _c("img", {
+            attrs: {
+              src: "presents/upload/" + present.pres_image,
+              height: "200"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              on: {
+                click: function($event) {
+                  return _vm.mark_as_readed(present.act_id)
+                }
+              }
+            },
+            [_vm._v("Получен")]
+          )
+        ])
+      }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("b", [_vm._v("История подарков:")]),
+      _vm._v(" "),
+      _vm._l(_vm.presentsHistory, function(present) {
         return _c("div", [
           _c("b", [_vm._v("От:" + _vm._s(present.who_name))]),
           _c("br"),
@@ -51913,7 +51958,9 @@ var render = function() {
     _vm._m(3),
     _vm._v(" "),
     _vm.numberApplicationPresents > 0
-      ? _c("div", [_c("b", [_vm._v(_vm._s(_vm.numberApplicationPresents))])])
+      ? _c("div", [
+          _c("b", [_vm._v("+" + _vm._s(_vm.numberApplicationPresents))])
+        ])
       : _vm._e()
   ])
 }
@@ -51953,8 +52000,7 @@ var staticRenderFns = [
     return _c("b", [
       _c("a", { staticClass: "btn btn-info", attrs: { href: "/mypresents" } }, [
         _vm._v("Мои подарки")
-      ]),
-      _vm._v("+ ")
+      ])
     ])
   }
 ]

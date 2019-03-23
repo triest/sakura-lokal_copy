@@ -1,14 +1,21 @@
 <template>
     <div>
         <b>Новые подарки для меня:</b>:
-         <div v-for="present in presents">
-                <b>От:{{present.who_name}}</b><br>
-                <img :src="'presents/upload/'+present.pres_image" height="200">
-                <button v-on:click="mark_as_readed(present.act_id)">Получен</button>
-            </div>
+        <div v-for="present in presents">
+            <b>От:{{present.who_name}}</b><br>
+            <img :src="'presents/upload/'+present.pres_image" height="200">
+            <button v-on:click="mark_as_readed(present.act_id)">Получен</button>
+        </div>
+
+        <br>
+        <b>История подарков:</b>
+        <div v-for="present in presentsHistory">
+            <b>От:{{present.who_name}}</b><br>
+            <img :src="'presents/upload/'+present.pres_image" height="200">
+            <button v-on:click="mark_as_readed(present.act_id)">Получен</button>
+        </div>
     </div>
 </template>
-
 
 
 <script>
@@ -19,11 +26,12 @@
         props: {},
         components: {},
         mounted() {
-            this.getFresentsForMe()
+            this.getNewPresentsForMe()
         },
         data() {
             return {
                 presents: [],
+                presentsHistory: [],
                 name: '',
                 price: '',
                 file1: '',
@@ -32,18 +40,25 @@
             }
         },
         methods: {
-            getFresentsForMe() {
-                this.presents = {};
+            getNewPresentsForMe() {
+                this.presents = null;
                 axios.get('/getpresentsforMe')
                     .then((response) => {
                         this.presents = response.data[0];
                     });
             },
+            getNewPresentsHistory() {
+                this.presents = null;
+                axios.get('/getpresentsHistoryforMe')
+                    .then((response) => {
+                        this.presents = response.data[0];
+                    });
+            },
+
             handleFileUpload() {
                 this.file = this.$refs.file.files[0];
             },
             mark_as_readed(id) {
-                console.log(id);
                 let formData = new FormData();
                 formData.append('present_id', id);
                 axios.post('/markpresentasreaded', formData,
@@ -55,7 +70,7 @@
                 )
                     .then()
                     .catch();
-                this.getFresentsForMe();
+                this.getNewPresentsForMe();
             },
             submitPresent() {
                 var that = this;
