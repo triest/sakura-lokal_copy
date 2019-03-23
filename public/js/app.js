@@ -2896,17 +2896,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //'./components/delModal.vue'
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   components: {},
   mounted: function mounted() {
-    this.getNewPresentsForMe(), this.getNewPresentsHistory();
+    this.getNewPresentsForMe(), this.getNewPresentsHistory(), this.getNewPresentsFromMe();
   },
   data: function data() {
     return {
       presents: [],
-      presentsHistory: [],
+      presentsHistoryFoME: [],
+      presentsHistoryFromMe: [],
       name: '',
       price: '',
       file1: '',
@@ -2925,12 +2942,20 @@ __webpack_require__.r(__webpack_exports__);
         _this.presents = response.data[0];
       });
     },
-    getNewPresentsHistory: function getNewPresentsHistory() {
+    getNewPresentsFromMe: function getNewPresentsFromMe() {
       var _this2 = this;
 
       this.presents = null;
+      axios.get('/getpresentsFromMe').then(function (response) {
+        _this2.presentsHistoryFromMe = response.data[0];
+      });
+    },
+    getNewPresentsHistory: function getNewPresentsHistory() {
+      var _this3 = this;
+
+      this.presents = null;
       axios.get('/getpresentsHistoryforMe').then(function (response) {
-        _this2.presentsHistory = response.data[0];
+        _this3.presentsHistoryFoME = response.data[0];
       });
     },
     handleFileUpload: function handleFileUpload() {
@@ -2947,7 +2972,7 @@ __webpack_require__.r(__webpack_exports__);
       this.getNewPresentsForMe();
     },
     submitPresent: function submitPresent() {
-      var _this3 = this;
+      var _this4 = this;
 
       var that = this;
       var formData = new FormData();
@@ -2960,9 +2985,9 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         if (response.data == "ok") {
-          _this3.name = "";
-          _this3.price = "";
-          _this3.file = "";
+          _this4.name = "";
+          _this4.price = "";
+          _this4.file = "";
         }
       }).catch(function () {});
       this.getPresents();
@@ -51350,8 +51375,172 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
-var staticRenderFns = []
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("ul", { staticClass: "nav nav-tabs" }, [
+      _c(
+        "li",
+        {
+          attrs: { role: "presentation" },
+          on: {
+            click: function($event) {
+              _vm.currentTab = "new"
+            }
+          }
+        },
+        [_vm._m(0)]
+      ),
+      _vm._v(" "),
+      _c(
+        "li",
+        {
+          attrs: { role: "presentation" },
+          on: {
+            click: function($event) {
+              _vm.currentTab = "history"
+            }
+          }
+        },
+        [_vm._m(1)]
+      ),
+      _vm._v(" "),
+      _c(
+        "li",
+        {
+          attrs: { role: "presentation" },
+          on: {
+            click: function($event) {
+              _vm.currentTab = "fromMe"
+            }
+          }
+        },
+        [_vm._m(2)]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "tab-content" }, [
+      _vm.currentTab == "new"
+        ? _c(
+            "div",
+            _vm._l(_vm.presents, function(present) {
+              return _c("div", [
+                _c("b", [_vm._v("От:" + _vm._s(present.who_name))]),
+                _c("br"),
+                _vm._v(" "),
+                _c("img", {
+                  attrs: {
+                    src: "presents/upload/" + present.pres_image,
+                    height: "200"
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.mark_as_readed(present.act_id)
+                      }
+                    }
+                  },
+                  [_vm._v("Получен")]
+                )
+              ])
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.currentTab == "history"
+        ? _c(
+            "div",
+            _vm._l(_vm.presentsHistoryFoME, function(present) {
+              return _c("div", [
+                _c("b", [_vm._v("От:" + _vm._s(present.who_name))]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v("\n                " + _vm._s(present.sended)),
+                _c("br"),
+                _vm._v(" "),
+                _c("img", {
+                  attrs: {
+                    src: "presents/upload/" + present.pres_image,
+                    height: "200"
+                  }
+                })
+              ])
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.currentTab == "fromMe"
+        ? _c(
+            "div",
+            _vm._l(_vm.presentsHistoryFromMe, function(present) {
+              return _c("div", [
+                _c("b", [_vm._v("От:" + _vm._s(present.who_name))]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v("\n                " + _vm._s(present.sended)),
+                _c("br"),
+                _vm._v(" "),
+                _c("img", {
+                  attrs: {
+                    src: "presents/upload/" + present.pres_image,
+                    height: "200"
+                  }
+                }),
+                _vm._v(" "),
+                (present.resded = 1)
+                  ? _c("div", [
+                      _vm._v(
+                        "\n                    Просмотрен\n                "
+                      )
+                    ])
+                  : _c("div", [
+                      _vm._v(
+                        "\n                    Не просмотрен\n                "
+                      )
+                    ])
+              ])
+            }),
+            0
+          )
+        : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("b", [_vm._v("Новые подарки")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("b", [_vm._v("История подарков")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("b", [_vm._v("Подарки от меня")])
+    ])
+  }
+]
+render._withStripped = true
 
 
 

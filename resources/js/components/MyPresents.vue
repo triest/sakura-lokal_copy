@@ -3,6 +3,7 @@
         <ul class="nav nav-tabs">
             <li role="presentation" @click="currentTab = 'new'"><a href="#"><b>Новые подарки</b></a></li>
             <li role="presentation" @click="currentTab = 'history'"><a href="#"><b>История подарков</b></a></li>
+            <li role="presentation" @click="currentTab = 'fromMe'"><a href="#"><b>Подарки от меня</b></a></li>
         </ul>
 
         <div class="tab-content">
@@ -14,10 +15,25 @@
                 </div>
             </div>
             <div v-if="currentTab == 'history'">
-                <div v-for="present in presentsHistory">
-                    <b>От:{{present.who_name}}</b><br> <br>
-                    {{present.}}
+                <div v-for="present in presentsHistoryFoME">
+                    <b>От:{{present.who_name}}</b> <br>
+                    {{present.sended}}<br>
                     <img :src="'presents/upload/'+present.pres_image" height="200">
+                </div>
+            </div>
+            <div v-if="currentTab == 'fromMe'">
+                <div v-for="present in presentsHistoryFromMe">
+                    <b>От:{{present.who_name}}</b> <br>
+                    {{present.sended}}<br>
+                    <img :src="'presents/upload/'+present.pres_image" height="200">
+                    <div v-if="present.resded=1">
+                        Просмотрен
+                    </div>
+                    <div v-else>
+                        Не просмотрен
+                    </div>
+
+
                 </div>
             </div>
 
@@ -35,12 +51,14 @@
         components: {},
         mounted() {
             this.getNewPresentsForMe(),
-                this.getNewPresentsHistory()
+                this.getNewPresentsHistory(),
+                this.getNewPresentsFromMe()
         },
         data() {
             return {
                 presents: [],
-                presentsHistory: [],
+                presentsHistoryFoME: [],
+                presentsHistoryFromMe: [],
                 name: '',
                 price: '',
                 file1: '',
@@ -58,11 +76,19 @@
                         this.presents = response.data[0];
                     });
             },
+            getNewPresentsFromMe() {
+                this.presents = null;
+                axios.get('/getpresentsFromMe')
+                    .then((response) => {
+                        this.presentsHistoryFromMe = response.data[0];
+                    });
+            },
+
             getNewPresentsHistory() {
                 this.presents = null;
                 axios.get('/getpresentsHistoryforMe')
                     .then((response) => {
-                        this.presentsHistory = response.data[0];
+                        this.presentsHistoryFoME = response.data[0];
                     });
             },
 
