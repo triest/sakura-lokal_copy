@@ -5,23 +5,20 @@
         <br>
         <b> Поместить анкету в шапку сайта(сменяемое меню) на
             <input name="days" id="days" type="number" min="1"
-                   :max="max2" :value="max2" ref="inputDaysNumber">
-            24 часа за {{priceToTop[0][0].price}} рублей/24 часа
-
-            :</b>
-        <button v-on:click="toTop()">Поднять</button>
-
-        <br>
-        <b>Поднять анкету на первое место за {{priceToTop[1][0].price}} рублей</b>
-        <div v-if="money.money>=priceToTop[1][0].price">
+                   :max="max2" :value="max2" ref="inputDaysNumber"></b>
+        <div v-if="priceToTop<money">
+            <button class="btn-primary" v-on:click="toTop()">Поднять</button>
+        </div>
+        <div v-else>
+            Недостаточно денег. Пополните счет.
+        </div>
+        <b>Поднять анкету на первое место за {{priceToTop.price}} рублей</b>
+        <div v-if="money.money>=priceToTop.price">
             <button v-on:click="toFirstPlase()">Поднять</button>
         </div>
         <div v-else>
-            <b>Недостаточно денег. Пополните счет.</b>
+            Недостаточно денег. Пополните счет.
         </div>
-        <br>
-
-
     </div>
 </template>
 
@@ -41,12 +38,14 @@
                 money: "",
                 prices: "",
                 priceToTop: "",
-                inputDays: ""
+                inputDays: "",
+                priceFirstPlase: ""
             };
         },
         computed: {
             max2: function () {
-                return this.money.money / this.priceToTop[0][0].price
+                //  return this.money.money / this.priceToTop[0][0].price
+                return this.money.money / 1-1
             },
 
 
@@ -76,7 +75,7 @@
                     var that = this;
                     axios.get('/tofirstplaсe')
                         .then((response) => {
-
+                            this.priceFirstPlase = response.data;
                         });
                     that.getMoneut()
                 },

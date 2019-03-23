@@ -106,3 +106,9 @@ const applicationClass = new Vue({
     }
 });
 
+const powerApp = new Vue({
+    el: '#powerApp',
+    data: {
+        showModal: false
+    }
+});

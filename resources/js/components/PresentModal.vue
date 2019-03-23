@@ -6,7 +6,7 @@
 
                     <div class="modal-header">
                         <slot name="header">
-                            Введите сообщение для
+                            <b>Подарки</b>
                         </slot>
                     </div>
 
@@ -24,11 +24,16 @@
                                 <tr v-for="present in presents[0]">
                                     <td>{{present.name}}</td>
                                     <td>{{present.price}}</td>
-                                    <td><img :src="'presents/upload/'+present.image" height="200"></td>
-                                    <td>
+                                    <td><img :src="'/presents/upload/'+present.image" height="200"></td>
+
+                                    <td v-if="userMoney>=present.price">
                                         <button class="button btn-primary" @click="givePresent(present.id)">Подарить
                                         </button>
                                     </td>
+                                    <td v-else>
+                                        <b>Недостаточно денег. Пополните счет</b>
+                                    </td>
+
                                 </tr>
                                 </tbody>
                             </table>
@@ -37,11 +42,8 @@
 
                     <div class="modal-footer">
                         <slot name="footer">
-                            default footer
-                            <br>
-
                             <button class="modal-default-button" v-on:click="close()">
-                                OK
+                                Закрыть
                             </button>
                         </slot>
                     </div>
@@ -62,13 +64,14 @@
         },
         mounted() {
             this.getPresentsList(),
-                console.log(this.id)
+                console.log(this.id),
+                this.getUserMoney();
         },
         data() {
             return {
                 presents: [],
                 currentAnket: '',
-
+                userMoney: ''
             }
         },
         methods: {
@@ -85,14 +88,20 @@
                     )
             },
             givePresent(id) {
-                console.log(id),
-                    axios.post('/givepresent', {
-                        user_id: this.id,
-                        present_id: id
-                    }).then((response) => {
-
-                    });
+                axios.post('/givepresent', {
+                    user_id: this.id,
+                    present_id: id
+                }).then((response) => {
+                });
                 this.close();
+            },
+            getUserMoney() {
+                axios.get('/getMoney'
+                )
+                    .then((response) => {
+                        this.money = response.data.money
+                        console.log(this.money)
+                    })
             }
         }
     }

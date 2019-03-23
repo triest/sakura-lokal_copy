@@ -1,7 +1,7 @@
 @extends('layouts.blog', ['title' => 'Управление анкетой'])
 
 @section('content')
-    <div class="card-body" id="app3">
+    <div class="card-body" id="powerApp">
         <power :user="{{auth()->user()}}"></power>
 
         <br>

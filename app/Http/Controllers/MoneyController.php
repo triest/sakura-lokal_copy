@@ -73,8 +73,8 @@ class MoneyController extends Controller
             ['price_name' => 'to_first_plase']);
 
         return response()->json([
-            $toTop,
-            $toFirstPlase,
+            ["totop" => $toTop],
+            ["tofirstplace" => $toFirstPlase],
         ]);
     }
 

@@ -2989,9 +2989,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -3004,12 +3001,14 @@ __webpack_require__.r(__webpack_exports__);
       money: "",
       prices: "",
       priceToTop: "",
-      inputDays: ""
+      inputDays: "",
+      priceFirstPlase: ""
     };
   },
   computed: {
     max2: function max2() {
-      return this.money.money / this.priceToTop[0][0].price;
+      //  return this.money.money / this.priceToTop[0][0].price
+      return this.money.money / 1 - 1;
     }
   },
   mounted: function mounted() {
@@ -3033,12 +3032,16 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     toFirstPlase: function toFirstPlase() {
+      var _this3 = this;
+
       var that = this;
-      axios.get('/tofirstplaсe').then(function (response) {});
+      axios.get('/tofirstplaсe').then(function (response) {
+        _this3.priceFirstPlase = response.data;
+      });
       that.getMoneut();
     },
     toTop: function toTop() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get('/totop', {
         params: {
@@ -3046,7 +3049,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         if (!response.data) {} else {
-          _this3.isOpen = false;
+          _this4.isOpen = false;
         }
       });
       this.getMoneut();
@@ -3119,6 +3122,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     id: {
@@ -3127,12 +3132,13 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.getPresentsList(), console.log(this.id);
+    this.getPresentsList(), console.log(this.id), this.getUserMoney();
   },
   data: function data() {
     return {
       presents: [],
-      currentAnket: ''
+      currentAnket: '',
+      userMoney: ''
     };
   },
   methods: {
@@ -3147,11 +3153,19 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     givePresent: function givePresent(id) {
-      console.log(id), axios.post('/givepresent', {
+      axios.post('/givepresent', {
         user_id: this.id,
         present_id: id
       }).then(function (response) {});
       this.close();
+    },
+    getUserMoney: function getUserMoney() {
+      var _this2 = this;
+
+      axios.get('/getMoney').then(function (response) {
+        _this2.money = response.data.money;
+        console.log(_this2.money);
+      });
     }
   }
 });
@@ -3436,7 +3450,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -51379,37 +51392,37 @@ var render = function() {
           max: _vm.max2
         },
         domProps: { value: _vm.max2 }
-      }),
-      _vm._v(
-        "\n        24 часа за " +
-          _vm._s(_vm.priceToTop[0][0].price) +
-          " рублей/24 часа\n\n        :"
-      )
+      })
     ]),
     _vm._v(" "),
-    _c(
-      "button",
-      {
-        on: {
-          click: function($event) {
-            return _vm.toTop()
-          }
-        }
-      },
-      [_vm._v("Поднять")]
-    ),
-    _vm._v(" "),
-    _c("br"),
+    _vm.priceToTop < _vm.money
+      ? _c("div", [
+          _c(
+            "button",
+            {
+              staticClass: "btn-primary",
+              on: {
+                click: function($event) {
+                  return _vm.toTop()
+                }
+              }
+            },
+            [_vm._v("Поднять")]
+          )
+        ])
+      : _c("div", [
+          _vm._v("\n        Недостаточно денег. Пополните счет.\n    ")
+        ]),
     _vm._v(" "),
     _c("b", [
       _vm._v(
         "Поднять анкету на первое место за " +
-          _vm._s(_vm.priceToTop[1][0].price) +
+          _vm._s(_vm.priceToTop.price) +
           " рублей"
       )
     ]),
     _vm._v(" "),
-    _vm.money.money >= _vm.priceToTop[1][0].price
+    _vm.money.money >= _vm.priceToTop.price
       ? _c("div", [
           _c(
             "button",
@@ -51423,9 +51436,9 @@ var render = function() {
             [_vm._v("Поднять")]
           )
         ])
-      : _c("div", [_c("b", [_vm._v("Недостаточно денег. Пополните счет.")])]),
-    _vm._v(" "),
-    _c("br")
+      : _c("div", [
+          _vm._v("\n        Недостаточно денег. Пополните счет.\n    ")
+        ])
   ])
 }
 var staticRenderFns = []
@@ -51467,13 +51480,7 @@ var render = function() {
             _c(
               "div",
               { staticClass: "modal-header" },
-              [
-                _vm._t("header", [
-                  _vm._v(
-                    "\n                        Введите сообщение для\n                    "
-                  )
-                ])
-              ],
+              [_vm._t("header", [_c("b", [_vm._v("Подарки")])])],
               2
             ),
             _vm._v(" "),
@@ -51504,30 +51511,36 @@ var render = function() {
                           _c("td", [
                             _c("img", {
                               attrs: {
-                                src: "presents/upload/" + present.image,
+                                src: "/presents/upload/" + present.image,
                                 height: "200"
                               }
                             })
                           ]),
                           _vm._v(" "),
-                          _c("td", [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "button btn-primary",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.givePresent(present.id)
-                                  }
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "Подарить\n                                    "
+                          _vm.userMoney >= present.price
+                            ? _c("td", [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "button btn-primary",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.givePresent(present.id)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "Подарить\n                                    "
+                                    )
+                                  ]
                                 )
-                              ]
-                            )
-                          ])
+                              ])
+                            : _c("td", [
+                                _c("b", [
+                                  _vm._v("Недостаточно денег. Пополните счет")
+                                ])
+                              ])
                         ])
                       }),
                       0
@@ -51543,11 +51556,6 @@ var render = function() {
               { staticClass: "modal-footer" },
               [
                 _vm._t("footer", [
-                  _vm._v(
-                    "\n                        default footer\n                        "
-                  ),
-                  _c("br"),
-                  _vm._v(" "),
                   _c(
                     "button",
                     {
@@ -51560,7 +51568,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                            OK\n                        "
+                        "\n                            Закрыть\n                        "
                       )
                     ]
                   )
@@ -51914,7 +51922,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("b", [
       _c("a", { attrs: { href: "/editimages" } }, [
-        _vm._v("Редактирование галлереи!")
+        _vm._v("Редактирование галлереи")
       ])
     ])
   },
@@ -64252,6 +64260,12 @@ var app7 = new Vue({
 });
 var applicationClass = new Vue({
   el: '#applicationClass',
+  data: {
+    showModal: false
+  }
+});
+var powerApp = new Vue({
+  el: '#powerApp',
   data: {
     showModal: false
   }
