@@ -2888,12 +2888,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 //'./components/delModal.vue'
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   components: {},
   mounted: function mounted() {
-    this.getNewPresentsForMe();
+    this.getNewPresentsForMe(), this.getNewPresentsHistory();
   },
   data: function data() {
     return {
@@ -2903,7 +2911,9 @@ __webpack_require__.r(__webpack_exports__);
       price: '',
       file1: '',
       isDisabled: true,
-      showModal: false
+      showModal: false,
+      //currentTab: 'foMe',
+      currentTab: 'new'
     };
   },
   methods: {
@@ -2920,7 +2930,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.presents = null;
       axios.get('/getpresentsHistoryforMe').then(function (response) {
-        _this2.presents = response.data[0];
+        _this2.presentsHistory = response.data[0];
       });
     },
     handleFileUpload: function handleFileUpload() {
@@ -51340,76 +51350,8 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("b", [_vm._v("Новые подарки для меня:")]),
-      _vm._v(":\n    "),
-      _vm._l(_vm.presents, function(present) {
-        return _c("div", [
-          _c("b", [_vm._v("От:" + _vm._s(present.who_name))]),
-          _c("br"),
-          _vm._v(" "),
-          _c("img", {
-            attrs: {
-              src: "presents/upload/" + present.pres_image,
-              height: "200"
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              on: {
-                click: function($event) {
-                  return _vm.mark_as_readed(present.act_id)
-                }
-              }
-            },
-            [_vm._v("Получен")]
-          )
-        ])
-      }),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("b", [_vm._v("История подарков:")]),
-      _vm._v(" "),
-      _vm._l(_vm.presentsHistory, function(present) {
-        return _c("div", [
-          _c("b", [_vm._v("От:" + _vm._s(present.who_name))]),
-          _c("br"),
-          _vm._v(" "),
-          _c("img", {
-            attrs: {
-              src: "presents/upload/" + present.pres_image,
-              height: "200"
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              on: {
-                click: function($event) {
-                  return _vm.mark_as_readed(present.act_id)
-                }
-              }
-            },
-            [_vm._v("Получен")]
-          )
-        ])
-      })
-    ],
-    2
-  )
-}
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
 
 
 

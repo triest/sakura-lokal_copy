@@ -1,18 +1,26 @@
 <template>
     <div>
-        <b>Новые подарки для меня:</b>:
-        <div v-for="present in presents">
-            <b>От:{{present.who_name}}</b><br>
-            <img :src="'presents/upload/'+present.pres_image" height="200">
-            <button v-on:click="mark_as_readed(present.act_id)">Получен</button>
-        </div>
+        <ul class="nav nav-tabs">
+            <li role="presentation" @click="currentTab = 'new'"><a href="#"><b>Новые подарки</b></a></li>
+            <li role="presentation" @click="currentTab = 'history'"><a href="#"><b>История подарков</b></a></li>
+        </ul>
 
-        <br>
-        <b>История подарков:</b>
-        <div v-for="present in presentsHistory">
-            <b>От:{{present.who_name}}</b><br>
-            <img :src="'presents/upload/'+present.pres_image" height="200">
-            <button v-on:click="mark_as_readed(present.act_id)">Получен</button>
+        <div class="tab-content">
+            <div v-if="currentTab == 'new'">
+                <div v-for="present in presents">
+                    <b>От:{{present.who_name}}</b><br>
+                    <img :src="'presents/upload/'+present.pres_image" height="200">
+                    <button v-on:click="mark_as_readed(present.act_id)">Получен</button>
+                </div>
+            </div>
+            <div v-if="currentTab == 'history'">
+                <div v-for="present in presentsHistory">
+                    <b>От:{{present.who_name}}</b><br> <br>
+                    {{present.}}
+                    <img :src="'presents/upload/'+present.pres_image" height="200">
+                </div>
+            </div>
+
         </div>
     </div>
 </template>
@@ -26,7 +34,8 @@
         props: {},
         components: {},
         mounted() {
-            this.getNewPresentsForMe()
+            this.getNewPresentsForMe(),
+                this.getNewPresentsHistory()
         },
         data() {
             return {
@@ -36,7 +45,9 @@
                 price: '',
                 file1: '',
                 isDisabled: true,
-                showModal: false
+                showModal: false,
+                //currentTab: 'foMe',
+                currentTab: 'new'
             }
         },
         methods: {
@@ -51,7 +62,7 @@
                 this.presents = null;
                 axios.get('/getpresentsHistoryforMe')
                     .then((response) => {
-                        this.presents = response.data[0];
+                        this.presentsHistory = response.data[0];
                     });
             },
 
