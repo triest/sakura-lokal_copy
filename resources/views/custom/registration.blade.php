@@ -12,74 +12,78 @@
 
         <div class=''>
             <div class='panel-body'>
-
-                <div class="container" style="max-width:600px;margin:60px auto;">
+                <div class="container">
                     <form action="{{route('joinStore')}}" class='form-horizontal joinForm' role='form' id='joinForm'
                           method='POST'>
                         {{ csrf_field() }}
                         <input type='hidden' name='step' value='2'>
                         <input type='hidden' name='join' value='yes'>
                         <div id='mail_selection_div' class='card island' style='display: block;'>
-                            <ul>
-                                <div class="form-group row">
-                                    <label>Вы
-                                        <div class='ControlGroup'>
-                                            <div class='select'>
-                                                <select name='you'>
-                                                    <option value='famele'>Женщина</option>
-                                                    <option value='male'>Мужчина</option>
-                                                </select>
-                                            </div>
+                            <div class="form-group row">
+                                <label for="you" class="col-sm-2 col-form-label">Вы</label>
+                                <div class="col-sm-10">
+                                    <div class='ControlGroup'>
+                                        <div class='select'>
+                                            <select name='you' id="you">
+                                                <option value='famele'>Женщина</option>
+                                                <option value='male'>Мужчина</option>
+                                            </select>
                                         </div>
-                                    </label>
+                                    </div>
                                 </div>
-
-                                <div class="form-group row">
-                                    <label>Ищете
-                                        <div class='ControlGroup'>
-                                            <div class='select'>
-                                                <select name='kogo'>
-                                                    <b>
-                                                        <option value='male'>Мужчину</option>
-                                                        <option value='famale'>Женщину</option>
-                                                    </b>
-                                                </select>
-                                            </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="kogo" class="col-sm-2 col-form-label">Ищете</label>
+                                <div class="col-sm-10">
+                                    <div class='ControlGroup'>
+                                        <div class='select'>
+                                            <select name='kogo' id="kogo">
+                                                <option value='male'>Мужчину</option>
+                                                <option value='famale'>Женщину</option>
+                                            </select>
                                         </div>
-                                    </label>
+                                    </div>
                                 </div>
+                            </div>
 
 
-                                <div class="form-group">
-                                    <label for="name">Ваше имя</label>
+                            <div class="form-group row">
+                                <label for="name" class="col-sm-2 col-form-label">Ваше имя</label>
+                                <div class="col-sm-10">
                                     <input type='text' name='name' class='text-input  ' value='{{old('name')}}'
                                            required>
                                     @if($errors->has('name'))
                                         <font color="red"><p>  {{$errors->first('name')}}</p></font>
                                     @endif
                                 </div>
+                            </div>
 
-                                <p class='mailHint'></p>
-                                <div class="form-group">
-                                    <label for="email">Ваш email</label>
-                                    <input type='text' name='email' class='text-input  ' value='{{old('email')}}'
+                            <div class="form-group row">
+                                <label for="email" class="col-sm-2 col-form-label">Ваш email</label>
+                                <div class="col-sm-10">
+                                    <input type='text' name='email' id="email" class='text-input  '
+                                           value='{{old('email')}}'
                                            required>
                                     @if($errors->has('email'))
                                         <font color="red"><p>  {{$errors->first('email')}}</p></font>
                                     @endif
                                 </div>
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="password">Пароль</label>
-                                    <input type='text' name='password' value='{{old('password')}}'
+                            <div class="form-group row">
+                                <label for="password" class="col-sm-2 col-form-label">Пароль</label>
+                                <div class="col-sm-10">
+                                    <input type='text' name='password' id="password" value='{{old('password')}}'
                                            required>
                                     @if($errors->has('password'))
                                         <font color="red"><p>  {{$errors->first('password')}}</p></font>
                                     @endif
                                 </div>
-                                <br>
-                                <div class="form-group">
-                                    <label for="password_confirmation">Подтверждение пароля</label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="password_confirmation" class="col-sm-2 col-form-label">Подтверждение
+                                    пароля</label>
+                                <div class="col-sm-10">
                                     <input type='text' name='password_confirmation' class='text-input  '
                                            value='{{old('password')}}'
                                            required>
@@ -89,7 +93,8 @@
                                         продвигать незаконную коммерческую деятельность (например,
                                         проституцию). </p>
                                 </div>
-                                <button type="submit" class="btn btn-default">Зарегистрироваться</button>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
 
                             </ul>
                         </div>
