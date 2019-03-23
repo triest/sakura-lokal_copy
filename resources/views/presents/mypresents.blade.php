@@ -1,4 +1,4 @@
-@extends('layouts.blog', ['title' => 'Управление подарками'])
+@extends('layouts.blog', ['title' => 'Мои подарки'])
 @section('content')
     <div class="card-body" id="app4">
         <mypresents :user="{{auth()->user()}}"></mypresents>

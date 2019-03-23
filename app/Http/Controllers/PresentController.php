@@ -142,10 +142,10 @@ class PresentController extends Controller
                 FROM gift_act act left join presents pres on act.present_id=pres.id
             left join users who  on who.id=act.who_id
                        left join girls girl on girl.user_id=who.id
-                       where act.target_id=:id
+                       where act.target_id=:id 
                        ", ['id' => $user->id]);
 
-        return response()->json(['presents' => $present]);
+        return response()->json([$present]);
     }
 
     public function markpresentasreaded(Request $request)

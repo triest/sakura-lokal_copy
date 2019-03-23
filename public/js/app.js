@@ -2878,6 +2878,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 //'./components/delModal.vue'
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
@@ -2901,7 +2904,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.presents = {};
       axios.get('/getpresentsforMe').then(function (response) {
-        _this.presents = response.data.presents;
+        _this.presents = response.data[0];
       });
     },
     handleFileUpload: function handleFileUpload() {
@@ -3008,7 +3011,7 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     max2: function max2() {
       //  return this.money.money / this.priceToTop[0][0].price
-      return this.money.money / 1 - 1;
+      return this.money.money / 1;
     }
   },
   mounted: function mounted() {
@@ -51328,29 +51331,36 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.presents, function(present) {
-      return _c("div", [
-        _c("b", [_vm._v("От:" + _vm._s(present.who_name))]),
-        _c("br"),
-        _vm._v(" "),
-        _c("img", {
-          attrs: { src: "presents/upload/" + present.pres_image, height: "200" }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            on: {
-              click: function($event) {
-                return _vm.mark_as_readed(present.act_id)
-              }
+    [
+      _c("b", [_vm._v("Новые подарки для меня:")]),
+      _vm._v(":\n     "),
+      _vm._l(_vm.presents, function(present) {
+        return _c("div", [
+          _c("b", [_vm._v("От:" + _vm._s(present.who_name))]),
+          _c("br"),
+          _vm._v(" "),
+          _c("img", {
+            attrs: {
+              src: "presents/upload/" + present.pres_image,
+              height: "200"
             }
-          },
-          [_vm._v("Получен")]
-        )
-      ])
-    }),
-    0
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              on: {
+                click: function($event) {
+                  return _vm.mark_as_readed(present.act_id)
+                }
+              }
+            },
+            [_vm._v("Получен")]
+          )
+        ])
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -51388,7 +51398,7 @@ var render = function() {
           name: "days",
           id: "days",
           type: "number",
-          min: "1",
+          min: "0",
           max: _vm.max2
         },
         domProps: { value: _vm.max2 }
@@ -51943,7 +51953,8 @@ var staticRenderFns = [
     return _c("b", [
       _c("a", { staticClass: "btn btn-info", attrs: { href: "/mypresents" } }, [
         _vm._v("Мои подарки")
-      ])
+      ]),
+      _vm._v("+ ")
     ])
   }
 ]

@@ -1,12 +1,15 @@
 <template>
     <div>
-        <div v-for="present in presents">
-            <b>От:{{present.who_name}}</b><br>
-            <img :src="'presents/upload/'+present.pres_image" height="200">
-            <button v-on:click="mark_as_readed(present.act_id)">Получен</button>
-        </div>
+        <b>Новые подарки для меня:</b>:
+         <div v-for="present in presents">
+                <b>От:{{present.who_name}}</b><br>
+                <img :src="'presents/upload/'+present.pres_image" height="200">
+                <button v-on:click="mark_as_readed(present.act_id)">Получен</button>
+            </div>
     </div>
 </template>
+
+
 
 <script>
 
@@ -33,17 +36,17 @@
                 this.presents = {};
                 axios.get('/getpresentsforMe')
                     .then((response) => {
-                        this.presents = response.data.presents;
+                        this.presents = response.data[0];
                     });
             },
             handleFileUpload() {
                 this.file = this.$refs.file.files[0];
             },
             mark_as_readed(id) {
-             console.log(id);
-              let formData=new FormData();
-              formData.append('present_id',id);
-                axios.post('/markpresentasreaded',formData,
+                console.log(id);
+                let formData = new FormData();
+                formData.append('present_id', id);
+                axios.post('/markpresentasreaded', formData,
                     {
                         headers: {
                             'Content-Type': 'multipart/form-data'

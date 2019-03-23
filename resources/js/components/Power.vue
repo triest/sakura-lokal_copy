@@ -4,7 +4,7 @@
         <b>Текущее состояние счета: {{money.money}}</b>
         <br>
         <b> Поместить анкету в шапку сайта(сменяемое меню) на
-            <input name="days" id="days" type="number" min="1"
+            <input name="days" id="days" type="number" min="0"
                    :max="max2" :value="max2" ref="inputDaysNumber"></b>
         <div v-if="priceToTop<money">
             <button class="btn-primary" v-on:click="toTop()">Поднять</button>
@@ -45,7 +45,7 @@
         computed: {
             max2: function () {
                 //  return this.money.money / this.priceToTop[0][0].price
-                return this.money.money / 1-1
+                return this.money.money / 1
             },
 
 
