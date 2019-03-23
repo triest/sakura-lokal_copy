@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3 v-if="isOpen">У вас открыт доступ к приватной информации!</h3>
-        <button v-if="showSendRegButton" v-on:click="sendRequwest()">Отправит запрос на открытие анкеты</button>
+        <button class="" v-if="showSendRegButton" v-on:click="sendRequwest()">Отправит запрос на открытие анкеты</button>
         <h3 v-if="regStatus=='notreaded'">Заявка не рассмотрена</h3>
         <h3 v-if="regStatus=='acept'">Заявка принята</h3>
         <h3 v-if="regStatus=='denide'">Заявка отклонена</h3>

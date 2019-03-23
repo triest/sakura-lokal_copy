@@ -2815,10 +2815,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     id: {
@@ -2836,7 +2832,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     close: function close() {
-      $emit('close');
+      this.$emit('close');
     },
     findUserByid: function findUserByid() {},
     saveChange: function saveChange() {
@@ -2847,8 +2843,14 @@ __webpack_require__.r(__webpack_exports__);
         contact_id: this.id,
         text: this.MessageText
       }).then(function (response) {
-        _this.MessageText = ""; //  @close="showModal = false"
+        _this.MessageText = "";
+
+        _this.$emit('close');
+
+        _this.close();
       });
+      this.$emit('close');
+      this.close();
     }
   }
 });
@@ -51309,23 +51311,7 @@ var render = function() {
               { staticClass: "modal-footer" },
               [
                 _vm._t("footer", [
-                  _vm._v(
-                    "\n                        default footer\n                        "
-                  ),
                   _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "modal-default-button",
-                      on: { click: _vm.close }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            OK\n                        "
-                      )
-                    ]
-                  ),
                   _vm._v(" "),
                   _c(
                     "button",
@@ -51339,7 +51325,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                            OK\n                        "
+                        "\n                            Закрыть\n                        "
                       )
                     ]
                   )

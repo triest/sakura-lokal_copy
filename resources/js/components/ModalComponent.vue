@@ -22,13 +22,9 @@
 
                     <div class="modal-footer">
                         <slot name="footer">
-                            default footer
                             <br>
-                            <button class="modal-default-button" v-on:click="close">
-                                OK
-                            </button>
                             <button class="modal-default-button"  v-on:click="$emit('close')">
-                                OK
+                                Закрыть
                             </button>
                         </slot>
                     </div>
@@ -59,7 +55,7 @@
         },
         methods: {
             close() {
-             $emit('close')
+             this.$emit('close')
             },
             findUserByid() {
 
@@ -71,9 +67,11 @@
                     text: this.MessageText
                 }).then((response) => {
                     this.MessageText="";
-                 //  @close="showModal = false"
+                    this.$emit('close');
+                    this.close();
                 });
-
+                this.$emit('close');
+                this.close();
             }
         },
     };
