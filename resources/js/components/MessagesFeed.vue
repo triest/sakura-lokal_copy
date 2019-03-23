@@ -45,6 +45,7 @@
     height: 100%;
     max-height: 470px;
     overflow: scroll;
+    max-width: 620px;
 
     ul {
         list-style-type: none;
@@ -56,7 +57,7 @@
                 width: 100%;
 
                 .text {
-                    max-width: 200px;
+                    max-width: 100px;
                     border-radius: 5px;
                     padding: 12px;
                     display: inline-block;

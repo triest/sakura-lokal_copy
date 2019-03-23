@@ -38,9 +38,9 @@
         computed: {
             sortedContacts() {
                 return _.sortBy(this.contacts, [(contact) => {
-                    if (contact == this.selected) {
+                   /* if (contact == this.selected) {
                         return Infinity;
-                    }
+                    }*/
 
                     return contact.unread;
                 }]).reverse();
@@ -55,14 +55,14 @@
     max-height: 600px;
     overflow: scroll;
     border-left: 1px solid #a6a6a6;
-    
+    max-width: 200px;
     ul {
         list-style-type: none;
-        padding-left: 0;
+        padding: 0;
 
         li {
             display: flex;
-            padding: 2px;
+            padding: 0px;
             border-bottom: 1px solid #aaaaaa;
             height: 80px;
             position: relative;
@@ -76,10 +76,10 @@
                 background: #82e0a8;
                 color: #fff;
                 position: absolute;
-                right: 11px;
-                top: 20px;
+                right: 110px;
+                top: 1px;
                 display: flex;
-                font-weight: 700;
+                font-weight: 400;
                 min-width: 20px;
                 justify-content: center;
                 align-items: center;
