@@ -7,7 +7,7 @@
     @else
         @if($girl->user_id!=auth()->user()->id)
             <div class="card-body" id="app7">
-                <privatepanel :id="{{$girl->id}}"></privatepanel>
+                <privatepanel :id="{{$girl->id}}" :user_id="{{$girl->user_id}}"></privatepanel>
             </div>
         @else
             Редактировать анкету

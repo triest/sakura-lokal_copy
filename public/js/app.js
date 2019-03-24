@@ -1817,6 +1817,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -1828,7 +1845,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       applications: [],
       myapplications: [],
-      whocansee: []
+      whocansee: [],
+      currentTab: 'main'
     };
   },
   mounted: function mounted() {
@@ -2444,6 +2462,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -2463,7 +2502,8 @@ __webpack_require__.r(__webpack_exports__);
       privatefileInput: '',
       userMoney: '',
       priceChangeMainImage: '',
-      mainFile: ''
+      mainFile: '',
+      currentTab: 'main'
     };
   },
   computed: {
@@ -3371,11 +3411,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     id: {
+      type: '',
+      required: true
+    },
+    user_id: {
       type: '',
       required: true
     }
@@ -3387,7 +3432,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log('private');
     console.log(this.id);
-    this.khowHasPrivateOrNot();
+    this.khowHasPrivateOrNot(), this.getuserid();
   },
   data: function data() {
     return {
@@ -3396,7 +3441,8 @@ __webpack_require__.r(__webpack_exports__);
       regStatus: null,
       isModalVisible: true,
       showModal: false,
-      showPresentModal: false
+      showPresentModal: false,
+      userId: ''
     };
   },
   methods: {
@@ -3418,75 +3464,86 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    khowSendRequwestOrNot: function khowSendRequwestOrNot() {
+    getuserid: function getuserid() {
       var _this2 = this;
 
-      //узнаёт, отправлен запрос или нет
-      console.log("sendor not");
-      var data_response = null;
-      axios.get('/getsendregornot', {
+      axios.get('/getuserid', {
         params: {
           id: this.id
         }
       }).then(function (response) {
-        data_response = response.data;
-
-        if (data_response == "not") {
-          _this2.showSendRegButton = true;
-          console.log("not");
-        } else {
-          console.log("true");
-          _this2.showSendRegButton = false;
-          console.log(); //если отправлен, то надо статус показать
-
-          if (response.data['readed'] == 1) {
-            // this.regStatus = "notreaded"
-            console.log("readed");
-
-            if (response.data['status'] == 'confirmed') {
-              _this2.regStatus = "acept";
-              _this2.showSendRegButton = false;
-            } else {
-              _this2.regStatus = "denide";
-              _this2.showSendRegButton = false;
-            } //this.showSendRegButton=false;
-
-          } else {
-            console.log("not readed");
-            _this2.regStatus = "notreaded";
-          }
-        }
+        _this2.user_id = response.data;
       });
-    },
-    //отправляет запрос на открытие анкеты
-    sendRequwest: function sendRequwest() {
-      var _this3 = this;
-
-      axios.get('/sendreg', {
-        params: {
-          id: this.id
-        }
-      }).then(function (response) {
-        _this3.khowSendRequwestOrNot();
-      });
-    },
-    itemClicked: function itemClicked() {
-      console.log("modal");
-      $("#my-modal").modal('show');
-    },
-    showModal: function showModal() {
-      this.isModalVisible = true;
-    },
-    closeModal: function closeModal() {
-      this.isModalVisible = false;
-    },
-    showMessageWindow: function showMessageWindow() {
-      this.showModal = true;
-    },
-    close: function close() {
-      console.log("false");
-      this.showPresentModal = false;
     }
+  },
+  khowSendRequwestOrNot: function khowSendRequwestOrNot() {
+    var _this3 = this;
+
+    //узнаёт, отправлен запрос или нет
+    console.log("sendor not");
+    var data_response = null;
+    axios.get('/getsendregornot', {
+      params: {
+        id: this.id
+      }
+    }).then(function (response) {
+      data_response = response.data;
+
+      if (data_response == "not") {
+        _this3.showSendRegButton = true;
+        console.log("not");
+      } else {
+        console.log("true");
+        _this3.showSendRegButton = false;
+        console.log(); //если отправлен, то надо статус показать
+
+        if (response.data['readed'] == 1) {
+          // this.regStatus = "notreaded"
+          console.log("readed");
+
+          if (response.data['status'] == 'confirmed') {
+            _this3.regStatus = "acept";
+            _this3.showSendRegButton = false;
+          } else {
+            _this3.regStatus = "denide";
+            _this3.showSendRegButton = false;
+          } //this.showSendRegButton=false;
+
+        } else {
+          console.log("not readed");
+          _this3.regStatus = "notreaded";
+        }
+      }
+    });
+  },
+  //отправляет запрос на открытие анкеты
+  sendRequwest: function sendRequwest() {
+    var _this4 = this;
+
+    axios.get('/sendreg', {
+      params: {
+        id: this.id
+      }
+    }).then(function (response) {
+      _this4.khowSendRequwestOrNot();
+    });
+  },
+  itemClicked: function itemClicked() {
+    console.log("modal");
+    $("#my-modal").modal('show');
+  },
+  showModal: function showModal() {
+    this.isModalVisible = true;
+  },
+  closeModal: function closeModal() {
+    this.isModalVisible = false;
+  },
+  showMessageWindow: function showMessageWindow() {
+    this.showModal = true;
+  },
+  close: function close() {
+    console.log("false");
+    this.showPresentModal = false;
   }
 });
 
@@ -50299,143 +50356,238 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "applicationClass" },
-    [
-      _c("b", [_vm._v("\n        Просьбы предоставить доступ:\n    ")]),
-      _vm._v(" "),
-      _vm._l(_vm.applications, function(application) {
-        return _c("div", [
-          _c("div", { staticClass: "avatar" }, [
-            _c("img", {
-              attrs: {
-                src: "images/upload/" + application.main_image,
-                alt: application.name,
-                height: "150"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contact" }, [
-            _c("p", { staticClass: "name" }, [_vm._v(_vm._s(application.name))])
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              on: {
-                click: function($event) {
-                  return _vm.getNewApplication(application.id)
-                }
-              }
-            },
-            [_vm._v("Предоставить доступ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              on: {
-                click: function($event) {
-                  return _vm.denideNewApplication(application.id)
-                }
-              }
-            },
-            [_vm._v("Закрыть доступ")]
-          )
-        ])
-      }),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("b", [_vm._v("\n        Мои запросы на открытие анкеты:\n    ")]),
-      _vm._v(" "),
-      _vm._l(_vm.myapplications, function(application) {
-        return _c("div", [
-          _c("div", { staticClass: "avatar" }, [
-            _c("img", {
-              attrs: {
-                src: "images/upload/" + application.image,
-                alt: application.who_name,
-                height: "150"
-              }
-            }),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" " + _vm._s(application.who_name) + "\n            "),
-            application.status == null
-              ? _c("div", [_vm._v("Не рассмотрен")])
-              : _vm._e(),
-            _vm._v(" "),
-            application.status == "confirmed"
-              ? _c("div", [_vm._v("Подтвержден")])
-              : _vm._e(),
-            _vm._v(" "),
-            application.status == "denide"
-              ? _c("div", [_vm._v("Отклонен")])
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contact" }, [
-            _c("p", { staticClass: "name" }, [_vm._v(_vm._s(application.name))])
-          ])
-        ])
-      }),
-      _vm._v(" "),
-      _c("br"),
-      _c("br"),
+  return _c("div", [
+    _c("ul", { staticClass: "nav nav-tabs" }, [
+      _c(
+        "li",
+        {
+          attrs: { role: "presentation" },
+          on: {
+            click: function($event) {
+              _vm.currentTab = "main"
+            }
+          }
+        },
+        [_vm._m(0)]
+      ),
       _vm._v(" "),
       _c(
-        "b",
-        [
-          _c("br"),
-          _vm._v("\n        Кому предоставил доступ:\n        "),
-          _vm._l(_vm.whocansee, function(application) {
-            return _c("div", [
-              _c("div", { staticClass: "avatar" }, [
-                _c("img", {
-                  attrs: {
-                    src: "images/upload/" + application.main_image,
-                    alt: application.name,
-                    height: "150"
-                  }
+        "li",
+        {
+          attrs: { role: "presentation" },
+          on: {
+            click: function($event) {
+              _vm.currentTab = "application"
+            }
+          }
+        },
+        [_vm._m(1)]
+      ),
+      _vm._v(" "),
+      _c(
+        "li",
+        {
+          attrs: { role: "presentation" },
+          on: {
+            click: function($event) {
+              _vm.currentTab = "who"
+            }
+          }
+        },
+        [_vm._m(2)]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "applicationClass" }, [
+      _c("div", { staticClass: "tab-content" }, [
+        _vm.currentTab == "main"
+          ? _c(
+              "div",
+              [
+                _c("b", [
+                  _vm._v(
+                    "\n                    Просьбы предоставить доступ:\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.applications, function(application) {
+                  return _c("div", [
+                    _c("div", { staticClass: "avatar" }, [
+                      _c("img", {
+                        attrs: {
+                          src: "images/upload/" + application.main_image,
+                          alt: application.name,
+                          height: "150"
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "contact" }, [
+                      _c("p", { staticClass: "name" }, [
+                        _vm._v(_vm._s(application.name))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.getNewApplication(application.id)
+                          }
+                        }
+                      },
+                      [_vm._v("Предоставить доступ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.denideNewApplication(application.id)
+                          }
+                        }
+                      },
+                      [_vm._v("Закрыть доступ")]
+                    )
+                  ])
                 })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "contact" }, [
-                _c("p", { staticClass: "name" }, [
-                  _vm._v(_vm._s(application.name))
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  on: {
-                    click: function($event) {
-                      return _vm.clouseAccess(application.id)
-                    }
-                  }
-                },
+              ],
+              2
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.currentTab == "application"
+          ? _c(
+              "div",
+              [
+                _c("b", [
+                  _vm._v(
+                    "\n                    Мои запросы на открытие анкеты:\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.myapplications, function(application) {
+                  return _c("div", [
+                    _c("div", { staticClass: "avatar" }, [
+                      _c("img", {
+                        attrs: {
+                          src: "images/upload/" + application.image,
+                          alt: application.who_name,
+                          height: "150"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(
+                        " " +
+                          _vm._s(application.who_name) +
+                          "\n                        "
+                      ),
+                      application.status == null
+                        ? _c("div", [_vm._v("Не рассмотрен")])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      application.status == "confirmed"
+                        ? _c("div", [_vm._v("Подтвержден")])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      application.status == "denide"
+                        ? _c("div", [_vm._v("Отклонен")])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "contact" }, [
+                      _c("p", { staticClass: "name" }, [
+                        _vm._v(_vm._s(application.name))
+                      ])
+                    ])
+                  ])
+                })
+              ],
+              2
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("b", [
+          _vm.currentTab == "who"
+            ? _c(
+                "div",
                 [
                   _vm._v(
-                    "Закрыть доступ к приватной\n                информации\n            "
-                  )
-                ]
+                    "\n                    Кому предоставил доступ:\n                    "
+                  ),
+                  _vm._l(_vm.whocansee, function(application) {
+                    return _c("div", [
+                      _c("div", { staticClass: "avatar" }, [
+                        _c("img", {
+                          attrs: {
+                            src: "images/upload/" + application.main_image,
+                            alt: application.name,
+                            height: "150"
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "contact" }, [
+                        _c("p", { staticClass: "name" }, [
+                          _vm._v(_vm._s(application.name))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          on: {
+                            click: function($event) {
+                              return _vm.clouseAccess(application.id)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "Закрыть доступ к приватной\n                            информации\n                        "
+                          )
+                        ]
+                      )
+                    ])
+                  })
+                ],
+                2
               )
-            ])
-          })
-        ],
-        2
-      )
-    ],
-    2
-  )
+            : _vm._e()
+        ])
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("b", [_vm._v("Просьбы предоставить доступ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("b", [_vm._v("Мои запросы на открытие\n            анкеты")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("b", [_vm._v("Кто может смотреть мою анкету")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -50810,184 +50962,296 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("p", { staticClass: "h3" }, [_vm._v("Главная фотография:")]),
+  return _c("div", [
+    _c("ul", { staticClass: "nav nav-tabs" }, [
+      _c(
+        "li",
+        {
+          attrs: { role: "presentation" },
+          on: {
+            click: function($event) {
+              _vm.currentTab = "main"
+            }
+          }
+        },
+        [_vm._m(0)]
+      ),
       _vm._v(" "),
-      _vm.mainImage != null
-        ? _c("p", [
-            _c("img", {
-              attrs: { src: "images/upload/" + _vm.mainImage, height: "150" }
-            })
+      _c(
+        "li",
+        {
+          attrs: { role: "presentation" },
+          on: {
+            click: function($event) {
+              _vm.currentTab = "galeray"
+            }
+          }
+        },
+        [_vm._m(1)]
+      ),
+      _vm._v(" "),
+      _c(
+        "li",
+        {
+          attrs: { role: "presentation" },
+          on: {
+            click: function($event) {
+              _vm.currentTab = "private"
+            }
+          }
+        },
+        [_vm._m(2)]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "tab-content" }, [
+      _vm.currentTab == "main"
+        ? _c("div", [
+            _c("p", { staticClass: "h3" }, [_vm._v("Главная фотография:")]),
+            _vm._v(" "),
+            _vm.mainImage != null
+              ? _c("p", [
+                  _c("img", {
+                    attrs: {
+                      src: "images/upload/" + _vm.mainImage,
+                      height: "150"
+                    }
+                  })
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("div", { staticClass: "container" }, [
+              _c("b", [
+                _vm._v(
+                  "Обновить главныю фотографию в Вашей анкете всего за " +
+                    _vm._s(_vm.priceChangeMainImage) +
+                    " рублей!"
+                )
+              ]),
+              _vm._v(" "),
+              _vm.userMoney >= _vm.priceChangeMainImage
+                ? _c("div", [
+                    _c(
+                      "div",
+                      { staticClass: "large-12 medium-12 small-12 cell" },
+                      [
+                        _c("label", [
+                          _vm._v(
+                            "Выбирите изображение\n                            "
+                          ),
+                          _c("input", {
+                            ref: "mainFileInput",
+                            attrs: { type: "file", id: "file" },
+                            on: {
+                              change: function($event) {
+                                return _vm.handleFileMainUpload()
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.submitFile()
+                              }
+                            }
+                          },
+                          [_vm._v("Submit")]
+                        )
+                      ]
+                    )
+                  ])
+                : _c("div", [_vm._m(3)])
+            ])
           ])
         : _vm._e(),
       _vm._v(" "),
-      _c("div", { staticClass: "container" }, [
-        _c("b", [
-          _vm._v(
-            "Обновить главныю фотографию в Вашей анкете всего за " +
-              _vm._s(_vm.priceChangeMainImage) +
-              " рублей!"
-          )
-        ]),
-        _vm._v(" "),
-        _vm.userMoney >= _vm.priceChangeMainImage
-          ? _c("div", [
-              _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
-                _c("label", [
-                  _vm._v("Выбирите изображение\n                    "),
-                  _c("input", {
-                    ref: "mainFileInput",
-                    attrs: { type: "file", id: "file" },
-                    on: {
-                      change: function($event) {
-                        return _vm.handleFileMainUpload()
-                      }
-                    }
-                  })
+      _c("div", { staticClass: "tab-content" }, [
+        _vm.currentTab == "galeray"
+          ? _c(
+              "div",
+              [
+                _c("p", { staticClass: "h3" }, [_vm._v("Галлерея:")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "container" }, [
+                  _c(
+                    "div",
+                    { staticClass: "large-12 medium-12 small-12 cell" },
+                    [
+                      _c("label", [
+                        _vm._v("File\n                            "),
+                        _c("input", {
+                          ref: "galerayFileInput",
+                          attrs: { type: "file", id: "galeray" },
+                          on: {
+                            change: function($event) {
+                              return _vm.handleFileUploadGaleay()
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          on: {
+                            click: function($event) {
+                              return _vm.submitGaleray()
+                            }
+                          }
+                        },
+                        [_vm._v("Загрузить")]
+                      )
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    on: {
-                      click: function($event) {
-                        return _vm.submitFile()
-                      }
-                    }
-                  },
-                  [_vm._v("Submit")]
-                )
-              ])
-            ])
-          : _c("div", [_vm._m(0)])
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "h3" }, [_vm._v("Галлерея:")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
-          _c("label", [
-            _vm._v("File\n                "),
-            _c("input", {
-              ref: "galerayFileInput",
-              attrs: { type: "file", id: "galeray" },
-              on: {
-                change: function($event) {
-                  return _vm.handleFileUploadGaleay()
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              on: {
-                click: function($event) {
-                  return _vm.submitGaleray()
-                }
-              }
-            },
-            [_vm._v("Submit")]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.images, function(image) {
-        return _c("div", [
-          image != null
-            ? _c("p", [
-                _c("img", {
-                  attrs: {
-                    src: "images/upload/" + image.photo_name,
-                    height: "200"
-                  }
+                _vm._l(_vm.images, function(image) {
+                  return _c("div", [
+                    image != null
+                      ? _c("p", [
+                          _c("img", {
+                            attrs: {
+                              src: "images/upload/" + image.photo_name,
+                              height: "200"
+                            }
+                          })
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        on: {
+                          click: function($event) {
+                            return _vm.deleteGelataiImage(image.photo_name)
+                          }
+                        }
+                      },
+                      [_vm._v("Удалить\n                    ")]
+                    )
+                  ])
                 })
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-danger",
-              on: {
-                click: function($event) {
-                  return _vm.deleteGelataiImage(image.photo_name)
-                }
-              }
-            },
-            [_vm._v("Удалить")]
-          )
-        ])
-      }),
+              ],
+              2
+            )
+          : _vm._e()
+      ]),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _c("p", { staticClass: "h3" }, [_vm._v("Приватные фотографии:")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
-          _c("label", [
-            _vm._v("File\n                "),
-            _c("input", {
-              ref: "privatefileInput",
-              attrs: { type: "file", id: "privatefile" },
-              on: {
-                change: function($event) {
-                  return _vm.handlePrivateFileUpload()
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              on: {
-                click: function($event) {
-                  return _vm.submitPrivateFile()
-                }
-              }
-            },
-            [_vm._v("Submit")]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.privateimages, function(image) {
-        return _c("div", [
-          image != null
-            ? _c("p", [
-                _c("img", {
-                  attrs: {
-                    src: "images/upload/" + image.photo_name,
-                    height: "200"
-                  }
+      _c("div", { staticClass: "tab-content" }, [
+        _vm.currentTab == "private"
+          ? _c(
+              "div",
+              [
+                _c("p", { staticClass: "h3" }, [
+                  _vm._v("Приватные фотографии:")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "container" }, [
+                  _c(
+                    "div",
+                    { staticClass: "large-12 medium-12 small-12 cell" },
+                    [
+                      _c("label", [
+                        _vm._v("File\n                            "),
+                        _c("input", {
+                          ref: "privatefileInput",
+                          attrs: { type: "file", id: "privatefile" },
+                          on: {
+                            change: function($event) {
+                              return _vm.handlePrivateFileUpload()
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          on: {
+                            click: function($event) {
+                              return _vm.submitPrivateFile()
+                            }
+                          }
+                        },
+                        [_vm._v("Загрузить")]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.privateimages, function(image) {
+                  return _c("div", [
+                    image != null
+                      ? _c("p", [
+                          _c("img", {
+                            attrs: {
+                              src: "images/upload/" + image.photo_name,
+                              height: "200"
+                            }
+                          })
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        on: {
+                          click: function($event) {
+                            return _vm.deletePrivateGelataiImage(
+                              image.photo_name
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Удалить\n                    "
+                        )
+                      ]
+                    )
+                  ])
                 })
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-danger",
-              on: {
-                click: function($event) {
-                  return _vm.deletePrivateGelataiImage(image.photo_name)
-                }
-              }
-            },
-            [_vm._v("Удалить")]
-          )
-        ])
-      })
-    ],
-    2
-  )
+              ],
+              2
+            )
+          : _vm._e()
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("b", [_vm._v("Главная фотография")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("b", [_vm._v("Общие фотографии")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("b", [_vm._v("Приватные фотографии")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -51947,7 +52211,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Отправит запрос на открытие анкеты")]
+            [_vm._v("Отправит запрос на открытие анкеты\n    ")]
           )
         : _vm._e(),
       _vm._v(" "),
@@ -52004,7 +52268,7 @@ var render = function() {
       _vm._v(" "),
       _vm.showPresentModal
         ? _c("present", {
-            attrs: { id: _vm.id },
+            attrs: { id: _vm.user_id },
             on: {
               closeRequest: function($event) {
                 return _vm.close()
@@ -52047,6 +52311,7 @@ var render = function() {
           : _vm._e()
       ])
     ]),
+    _c("br"),
     _vm._v(" "),
     _c("b", [
       _c("a", { attrs: { href: "/applications" } }, [
@@ -52056,7 +52321,6 @@ var render = function() {
           : _vm._e()
       ])
     ]),
-    _c("br"),
     _vm._v(" "),
     _vm._m(0),
     _c("br"),
@@ -66022,14 +66286,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************!*\
   !*** ./resources/js/components/Private.vue ***!
   \*********************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Private_vue_vue_type_template_id_4d01d568_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Private.vue?vue&type=template&id=4d01d568&scoped=true& */ "./resources/js/components/Private.vue?vue&type=template&id=4d01d568&scoped=true&");
 /* harmony import */ var _Private_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Private.vue?vue&type=script&lang=js& */ "./resources/js/components/Private.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _Private_vue_vue_type_style_index_0_id_4d01d568_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Private.vue?vue&type=style&index=0&id=4d01d568&scoped=true&lang=css& */ "./resources/js/components/Private.vue?vue&type=style&index=0&id=4d01d568&scoped=true&lang=css&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Private_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Private_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _Private_vue_vue_type_style_index_0_id_4d01d568_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Private.vue?vue&type=style&index=0&id=4d01d568&scoped=true&lang=css& */ "./resources/js/components/Private.vue?vue&type=style&index=0&id=4d01d568&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -66061,7 +66326,7 @@ component.options.__file = "resources/js/components/Private.vue"
 /*!**********************************************************************!*\
   !*** ./resources/js/components/Private.vue?vue&type=script&lang=js& ***!
   \**********************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

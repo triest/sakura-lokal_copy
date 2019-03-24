@@ -11,6 +11,11 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -174,4 +179,45 @@ Route::get('/getpresentsFromMe', 'PresentController@getpresentsFromMe')->middlew
 Route::post('/markpresentasreaded', 'PresentController@markpresentasreaded')->middleware('auth');
 
 //
-Route::get('/getDataForChangeMainImage','AnketController@getDataForChangeMainImage')->middleware('auth');;
+Route::get('/getDataForChangeMainImage', 'AnketController@getDataForChangeMainImage')->middleware('auth');;
+
+//получаем id пользователя по
+
+//SMS
+Route::get('/sendSMS2', function () {
+    $phone = Input::get('phone');
+    $user = collect(DB::select('select * from users where phone like ?', [$phone]))->first();
+    //   dump($user);
+    if ($user != null and $user->phone_conferd == 1) {
+        //echo 'Phone alredy exist!';
+        return response()->json(['result' => 'alredy']);
+    }
+    $user = Auth::user();
+    //если найден,то
+    //1)генерируем проль для отправки
+    $user->phone = $phone;
+    $activeCode = rand(1000, 9999);
+    $user->actice_code = $activeCode;
+    $user->save();
+    //2) отправляем его в смс
+  //  App::call('App\Http\Controllers\GirlsController@sendSMS', [$phone, $activeCode]);
+
+    return response()->json(['result' => 'ok']);
+}
+);
+Route::get('/sendCODE2', function () {
+    $code = Input::get('code');
+    $user = Auth::user();
+    if ($user->phone_conferd == 1) {
+        return response()->json(['result' => 'alredy']);
+    }
+    if ($code == $user->actice_code) {
+        $user->phone_conferd = 1;
+        $user->save();
+
+        return response()->json(['answer' => 'ok']);
+    } else {
+        return response()->json(['result' => 'fail']);
+    }
+}
+);

@@ -47,8 +47,8 @@ class CustomUserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->you = $request->you;
-        $user->kogo = $request->kogo;
+       /* $user->you = $request->you;
+        $user->kogo = $request->kogo;*/
         $user->password = bcrypt($request->password);
         $user->save();
         Auth::loginUsingId($user->id);

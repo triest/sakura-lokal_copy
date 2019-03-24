@@ -1,54 +1,71 @@
 <template>
-    <div class="applicationClass">
-        <b>
-            Просьбы предоставить доступ:
-        </b>
-        <div v-for="application in applications">
-            <div class="avatar">
-                <img :src="'images/upload/'+application.main_image" :alt="application.name" height="150">
-            </div>
-            <div class="contact">
-                <p class="name">{{ application.name }}</p>
-            </div>
-            <button v-on:click="getNewApplication(application.id)">Предоставить доступ</button>
-            <button v-on:click="denideNewApplication(application.id)">Закрыть доступ</button>
-        </div>
-        <br>
-        <br>
-        <b>
-            Мои запросы на открытие анкеты:
-        </b>
-        <div v-for="application in myapplications">
+    <div>
+        <ul class="nav nav-tabs">
+            <li role="presentation" @click="currentTab = 'main'"><a href="#"><b>Просьбы предоставить доступ</b></a></li>
+            <li role="presentation" @click="currentTab = 'application'"><a href="#"><b>Мои запросы на открытие
+                анкеты</b></a></li>
+            <li role="presentation" @click="currentTab = 'who'"><a href="#"><b>Кто может смотреть мою анкету</b></a>
+            </li>
+        </ul>
 
-            <div class="avatar">
-                <img :src="'images/upload/'+application.image" :alt="application.who_name" height="150">
-                <br> {{application.who_name}}
-                <div v-if="application.status==null">Не рассмотрен</div>
-                <div v-if="application.status=='confirmed'">Подтвержден</div>
-                <div v-if="application.status=='denide'">Отклонен</div>
-            </div>
-            <div class="contact">
-                <p class="name">{{ application.name }}</p>
 
-            </div>
-        </div>
-        <br><br>
-        <b>
-            <br>
-            Кому предоставил доступ:
-            <div v-for="application in whocansee">
-                <div class="avatar">
-                    <img :src="'images/upload/'+application.main_image" :alt="application.name" height="150">
+        <div class="applicationClass">
+            <div class="tab-content">
+                <div v-if="currentTab == 'main'">
+                    <b>
+                        Просьбы предоставить доступ:
+                    </b>
+                    <div v-for="application in applications">
+                        <div class="avatar">
+                            <img :src="'images/upload/'+application.main_image" :alt="application.name" height="150">
+                        </div>
+                        <div class="contact">
+                            <p class="name">{{ application.name }}</p>
+                        </div>
+                        <button v-on:click="getNewApplication(application.id)">Предоставить доступ</button>
+                        <button v-on:click="denideNewApplication(application.id)">Закрыть доступ</button>
+                    </div>
                 </div>
-                <div class="contact">
-                    <p class="name">{{ application.name }}</p>
-                </div>
-                <button v-on:click="clouseAccess(application.id)">Закрыть доступ к приватной
-                    информации
-                </button>
-            </div>
-        </b>
 
+                <div v-if="currentTab == 'application'">
+                    <b>
+                        Мои запросы на открытие анкеты:
+                    </b>
+                    <div v-for="application in myapplications">
+
+                        <div class="avatar">
+                            <img :src="'images/upload/'+application.image" :alt="application.who_name" height="150">
+                            <br> {{application.who_name}}
+                            <div v-if="application.status==null">Не рассмотрен</div>
+                            <div v-if="application.status=='confirmed'">Подтвержден</div>
+                            <div v-if="application.status=='denide'">Отклонен</div>
+                        </div>
+                        <div class="contact">
+                            <p class="name">{{ application.name }}</p>
+
+                        </div>
+                    </div>
+                </div>
+                <b>
+                    <div v-if="currentTab == 'who'">
+                        Кому предоставил доступ:
+                        <div v-for="application in whocansee">
+                            <div class="avatar">
+                                <img :src="'images/upload/'+application.main_image" :alt="application.name"
+                                     height="150">
+                            </div>
+                            <div class="contact">
+                                <p class="name">{{ application.name }}</p>
+                            </div>
+                            <button v-on:click="clouseAccess(application.id)">Закрыть доступ к приватной
+                                информации
+                            </button>
+                        </div>
+                    </div>
+                </b>
+
+            </div>
+        </div>
     </div>
 </template>
 
@@ -65,6 +82,7 @@
                 applications: [],
                 myapplications: [],
                 whocansee: [],
+                currentTab: 'main'
             };
         },
         mounted() {

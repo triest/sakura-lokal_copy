@@ -60,6 +60,7 @@ class ContactsController extends Controller
         Message::where('from', $id)->where('to', auth()->id());
         // get all messages between the authenticated user and the selected user
         $messages = Message::where('from', $id)->orWhere('to', $id)->get();
+
         return response()->json($messages);
     }
 
@@ -90,8 +91,6 @@ class ContactsController extends Controller
             $dialog4->my_id = $id2;
             $dialog4->save();
         }
-
-
         broadcast(new NewMessage($message));
         return response()->json($message);
     }
@@ -101,6 +100,7 @@ class ContactsController extends Controller
         $user = Auth::user();
         $messages = Message::where('to', $user->id)->where('readed', 0)->get();
         $count = count($messages);
+
         return $count;
     }
 
@@ -127,6 +127,7 @@ class ContactsController extends Controller
             $girl = Girl::select(['id', 'name', 'main_image'])->where('user_id', $item->who_id)->first();
             array_push($array, $girl);
         }
+
         return $array;
     }
 
@@ -147,6 +148,7 @@ class ContactsController extends Controller
               $girl = Girl::select(['id', 'name', 'main_image'])->where('user_id', $item->who_id)->first();
               array_push($array, $girl);
           }*/
+
         //  return response()->json(, $request);
         return $request;
     }
@@ -171,6 +173,7 @@ class ContactsController extends Controller
         $myrequest->readed = 1;
         $myrequest->status = 'rejected';
         $myrequest->save();
+
         return response()->json(['ok']);
     }
 
@@ -192,6 +195,7 @@ class ContactsController extends Controller
         $myrequest->save();
         DB::table('user_user')
             ->insert(['other_id' => $auth->id, 'my_id' => $id]);
+
         return response()->json(['ok']);
     }
 
@@ -216,6 +220,7 @@ class ContactsController extends Controller
             ->where('readed', 0)
             ->get();
         $count = count($myrequest);
+
         return $count;
     }
 
@@ -229,6 +234,7 @@ class ContactsController extends Controller
             ->where('other_id', $id)
             ->first();
         $private = collect($private);
+
         // dump($private);
         return $private;
     }
@@ -269,6 +275,7 @@ class ContactsController extends Controller
         $myrequest->image = $girl2->main_image;
         $myrequest->save();
         broadcast(new newApplication($myrequest));
+
         return response()->json('ok');
     }
 
@@ -287,6 +294,7 @@ class ContactsController extends Controller
             $girl = Girl::select(['id', 'name', 'main_image'])->where('user_id', $item->my_id)->first();
             array_push($array, $girl);
         }
+
         return $array;
     }
 

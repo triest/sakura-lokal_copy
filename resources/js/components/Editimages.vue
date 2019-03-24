@@ -1,61 +1,82 @@
 <template>
 
     <div>
-        <p class="h3">Главная фотография:</p>
-        <p v-if="mainImage!=null">
-            <img :src="'images/upload/'+mainImage" height="150">
-        </p>
-        <div class="container">
-            <b>Обновить главныю фотографию в Вашей анкете всего за {{priceChangeMainImage}} рублей!</b>
-            <div v-if="userMoney>=priceChangeMainImage">
-                <div class="large-12 medium-12 small-12 cell">
-                    <label>Выбирите изображение
-                        <input type="file" id="file" ref="mainFileInput" v-on:change="handleFileMainUpload()"/>
-                    </label>
-                    <button v-on:click="submitFile()">Submit</button>
+        <ul class="nav nav-tabs">
+            <li role="presentation" @click="currentTab = 'main'"><a href="#"><b>Главная фотография</b></a></li>
+            <li role="presentation" @click="currentTab = 'galeray'"><a href="#"><b>Общие фотографии</b></a></li>
+            <li role="presentation" @click="currentTab = 'private'"><a href="#"><b>Приватные фотографии</b></a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div v-if="currentTab == 'main'">
+                <p class="h3">Главная фотография:</p>
+                <p v-if="mainImage!=null">
+                    <img :src="'images/upload/'+mainImage" height="150">
+                </p>
+                <div class="container">
+                    <b>Обновить главныю фотографию в Вашей анкете всего за {{priceChangeMainImage}} рублей!</b>
+                    <div v-if="userMoney>=priceChangeMainImage">
+                        <div class="large-12 medium-12 small-12 cell">
+                            <label>Выбирите изображение
+                                <input type="file" id="file" ref="mainFileInput" v-on:change="handleFileMainUpload()"/>
+                            </label>
+                            <button v-on:click="submitFile()">Submit</button>
+                        </div>
+
+
+                    </div>
+                    <div v-else>
+                        <p>Недостаточно денег. <b><a class="btn btn-primary" href="/power">Пополните счет</a> </b></p>
+                    </div>
                 </div>
-
-
             </div>
-            <div v-else>
-                <p>Недостаточно денег. <b><a class="btn btn-primary" href="/power">Пополните счет</a> </b></p>
+            <div class="tab-content">
+                <div v-if="currentTab == 'galeray'">
+
+                    <p class="h3">Галлерея:</p>
+                    <div class="container">
+                        <div class="large-12 medium-12 small-12 cell">
+                            <label>File
+                                <input type="file" id="galeray" ref="galerayFileInput"
+                                       v-on:change="handleFileUploadGaleay()"/>
+                            </label>
+                            <button v-on:click="submitGaleray()">Загрузить</button>
+                        </div>
+                    </div>
+
+                    <div v-for="image in images">
+                        <p v-if="image!=null">
+                            <img :src="'images/upload/'+image.photo_name" height="200">
+                        </p>
+                        <button class="btn btn-danger" v-on:click="deleteGelataiImage(image.photo_name)">Удалить
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="tab-content">
+                <div v-if="currentTab == 'private'">
+                    <p class="h3">Приватные фотографии:</p>
+                    <div class="container">
+                        <div class="large-12 medium-12 small-12 cell">
+                            <label>File
+                                <input type="file" id="privatefile" ref="privatefileInput"
+                                       v-on:change="handlePrivateFileUpload()"/>
+                            </label>
+                            <button v-on:click="submitPrivateFile()">Загрузить</button>
+                        </div>
+                    </div>
+                    <div v-for="image in privateimages">
+                        <p v-if="image!=null">
+                            <img :src="'images/upload/'+image.photo_name" height="200">
+                        </p>
+                        <button class="btn btn-danger" v-on:click="deletePrivateGelataiImage(image.photo_name)">
+                            Удалить
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <p class="h3">Галлерея:</p>
-        <div class="container">
-            <div class="large-12 medium-12 small-12 cell">
-                <label>File
-                    <input type="file" id="galeray" ref="galerayFileInput" v-on:change="handleFileUploadGaleay()"/>
-                </label>
-                <button v-on:click="submitGaleray()">Submit</button>
-            </div>
-        </div>
-
-        <div v-for="image in images">
-            <p v-if="image!=null">
-                <img :src="'images/upload/'+image.photo_name" height="200">
-            </p>
-            <button class="btn btn-danger" v-on:click="deleteGelataiImage(image.photo_name)">Удалить</button>
-        </div>
-        <br>
-        <p class="h3">Приватные фотографии:</p>
-        <div class="container">
-            <div class="large-12 medium-12 small-12 cell">
-                <label>File
-                    <input type="file" id="privatefile" ref="privatefileInput" v-on:change="handlePrivateFileUpload()"/>
-                </label>
-                <button v-on:click="submitPrivateFile()">Submit</button>
-            </div>
-        </div>
-        <div v-for="image in privateimages">
-            <p v-if="image!=null">
-                <img :src="'images/upload/'+image.photo_name" height="200">
-            </p>
-            <button class="btn btn-danger" v-on:click="deletePrivateGelataiImage(image.photo_name)">Удалить</button>
-        </div>
-
-
     </div>
 </template>
 
@@ -82,7 +103,8 @@
                 privatefileInput: '',
                 userMoney: '',
                 priceChangeMainImage: '',
-                mainFile:''
+                mainFile: '',
+                currentTab: 'main'
             };
         },
         computed: {
