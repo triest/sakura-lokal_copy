@@ -14,16 +14,12 @@ class CreateTargetTable extends Migration
     public function up()
     {
         //
-        Schema::table('girls', function (Blueprint $table) {
-            //
+        Schema::table('target', function (Blueprint $table) {
+            $table->integer('id')->unsigned()->index();
+            $table->string('name')->unsigned()->index();
             $table->integer('target_id')->nullable()->unsigned();
         });
 
-
-        Schema::table('girls', function (Blueprint $table) {
-            //
-            $table->foreign('target_id')->references('id')->on('target');
-        });
     }
 
     /**
@@ -33,12 +29,6 @@ class CreateTargetTable extends Migration
      */
     public function down()
     {
-        //
-        Schema::table('girls', function (Blueprint $table) {
-            //
-
-            $table->dropForeign('target_id');
-
-        });
+        Schema::dropIfExists('target');
     }
 }

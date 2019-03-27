@@ -531,4 +531,56 @@ class AnketController extends Controller
 
         return response()->json(['update_main_image' => $updateMainImagePrice, 'user_money' => $user->money]);
     }
+
+    public function myAnket(Request $request)
+    {
+        $user = Auth::user();
+        if ($user == null) {
+            return redirect("\login");
+        }
+        $anket = Girl::select([
+            'name',
+            'id',
+            'description',
+            'main_image',
+            'sex',
+            'meet',
+            'weight',
+            'height',
+            'age',
+            'country_id',
+            'region_id',
+            'city_id',
+            'banned',
+            'user_id',
+        ])->where('user_id', $user->id)->first();
+
+        return view('myAnket')->with(['anket' => $anket]);
+    }
+
+    public function getMyAnketData()
+    {
+        $user = Auth::user();
+        if ($user == null) {
+            return redirect("\login");
+        }
+        $anket = Girl::select([
+            'name',
+            'id',
+            'description',
+            'main_image',
+            'sex',
+            'meet',
+            'weight',
+            'height',
+            'age',
+            'country_id',
+            'region_id',
+            'city_id',
+            'banned',
+            'user_id',
+        ])->where('user_id', $user->id)->first();
+
+        return response()->json([$anket]);
+    }
 }

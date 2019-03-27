@@ -200,7 +200,7 @@ Route::get('/sendSMS2', function () {
     $user->actice_code = $activeCode;
     $user->save();
     //2) отправляем его в смс
-  //  App::call('App\Http\Controllers\GirlsController@sendSMS', [$phone, $activeCode]);
+    //  App::call('App\Http\Controllers\GirlsController@sendSMS', [$phone, $activeCode]);
 
     return response()->json(['result' => 'ok']);
 }
@@ -221,3 +221,7 @@ Route::get('/sendCODE2', function () {
     }
 }
 );
+
+Route::get('/myAnket','AnketController@myAnket')->name("myAnket")->middleware('auth','anketExist');
+
+Route::get('/getMyAnketData','AnketController@getMyAnketData')->middleware('auth','anketExist');

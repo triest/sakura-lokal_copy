@@ -85,6 +85,9 @@
                         <img height="150" width="150"
                              src="<?php echo asset("images/small/$girl->main_image")?>">
                         <side-panel :user="{{auth()->user()}}"></side-panel>
+                        <br>
+                        <b><a class="btn btn-primary" href="{{route('myAnket')}}">Моя анкета</a> </b>
+                        <br>
                     @else
                         <b><a class="btn btn-primary" href="{{route('createGirlPage')}}">Создать анкету</a> </b>
                     @endif
