@@ -6,11 +6,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{$title}}</title>
-    <script src="https://getbootstrap.com/docs/3.3/assets/js/ie-emulation-modes-warning.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   <!-- <script src="https://getbootstrap.com/docs/3.3/assets/js/ie-emulation-modes-warning.js"></script> -->
+    <script src="{{ URL::asset('js/ie-emulation-modes-warning.js') }}" ></script>
+    <script src="{{ URL::asset('js/jquery-3.3.1.min.js') }}" ></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
 
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
     <link href="{{asset('css/gallery-grid.css')}}">
     <!-- Bootstrap core CSS -->
 
@@ -22,7 +24,7 @@
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
     <link href="{{asset('css/gallery-grid.css')}}">
 
     <!-- Bootstrap core CSS -->
@@ -105,7 +107,7 @@
 
 
 </div>
-<script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
 <script src="http://bootstrap-3.ru/examples/offcanvas/offcanvas.js"></script>
 <!-- скрипт для галлереи -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
