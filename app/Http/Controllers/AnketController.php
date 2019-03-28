@@ -160,7 +160,6 @@ class AnketController extends Controller
         foreach ($targets as $tag) {
             array_push($allTarget, $tag->name);
         }
-        dump($allTarget);
         $targets = $girl->target()->get();
         $anketTarget = [];
         foreach ($targets as $tag) {
@@ -568,6 +567,7 @@ class AnketController extends Controller
             'name',
             'id',
             'description',
+            'private',
             'main_image',
             'sex',
             'meet',
@@ -578,9 +578,40 @@ class AnketController extends Controller
             'region_id',
             'city_id',
             'banned',
+            'status',
             'user_id',
         ])->where('user_id', $user->id)->first();
 
-        return response()->json([$anket]);
+        $anketTarget = [];
+        $targets = $anket->target()->get();
+        foreach ($targets as $tag) {
+            array_push($anketTarget, $tag);
+        }
+        $targets = Target::select(['id', 'name'])->get();
+        $allTarget = [];
+        foreach ($targets as $tag) {
+            array_push($allTarget, $tag);
+        }
+
+        return response()->json([
+            "anket" => $anket,
+        ]);
+    }
+
+    public function getTopPhotos()
+    {
+        $user = Auth::user();
+        if ($user == null) {
+            return redirect("\login");
+        }
+        $anket = Girl::select([
+            'name',
+            'id',
+        ])->where('user_id', $user->id)->first();
+
+        $photos = $anket->photos()->take(5)->get();
+        return response()->json([
+           $photos
+        ]);
     }
 }

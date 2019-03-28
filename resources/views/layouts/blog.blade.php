@@ -6,9 +6,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{$title}}</title>
-   <!-- <script src="https://getbootstrap.com/docs/3.3/assets/js/ie-emulation-modes-warning.js"></script> -->
-    <script src="{{ URL::asset('js/ie-emulation-modes-warning.js') }}" ></script>
-    <script src="{{ URL::asset('js/jquery-3.3.1.min.js') }}" ></script>
+
+
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
 
 

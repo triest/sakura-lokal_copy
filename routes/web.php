@@ -225,3 +225,7 @@ Route::get('/sendCODE2', function () {
 Route::get('/myAnket','AnketController@myAnket')->name("myAnket")->middleware('auth','anketExist');
 
 Route::get('/getMyAnketData','AnketController@getMyAnketData')->middleware('auth','anketExist');
+
+Route::get('/getTopPhotos','AnketController@getTopPhotos')->middleware('auth','anketExist');
+
+Route::get('/getuserid', 'ContactsController@getUserID');

@@ -3412,6 +3412,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3432,7 +3433,8 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log('private');
     console.log(this.id);
-    this.khowHasPrivateOrNot(), this.getuserid();
+    this.getuserid();
+    this.khowHasPrivateOrNot();
   },
   data: function data() {
     return {
@@ -3452,10 +3454,10 @@ __webpack_require__.r(__webpack_exports__);
       console.log('reg ' + this.id);
       axios.get('/getisprivaterrnot', {
         params: {
-          id: this.id
+          id: this.user_id
         }
       }).then(function (response) {
-        if (!response.data) {
+        if (response.data == "true") {
           _this.isOpen = true;
         } else {
           _this.isOpen = false;
@@ -3749,11 +3751,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "myAnket",
   mounted: function mounted() {
     console.log("mounted");
     this.getMyAnketData();
+    this.getTopPhotos();
   },
   data: function data() {
     return {
@@ -3761,7 +3794,10 @@ __webpack_require__.r(__webpack_exports__);
       myapplications: [],
       whocansee: [],
       currentTab: 'main',
-      anket: ""
+      anket: "",
+      allTarget: "",
+      anketTarget: "",
+      topPhotos: ""
     };
   },
   methods: {
@@ -3769,7 +3805,15 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/getMyAnketData').then(function (response) {
-        _this.anket = response.data[0];
+        _this.anket = response.data;
+        console.log(_this.anket);
+      });
+    },
+    getTopPhotos: function getTopPhotos() {
+      var _this2 = this;
+
+      axios.get('/getTopPhotos').then(function (response) {
+        _this2.topPhotos = response.data[0];
       });
     }
   }
@@ -52542,26 +52586,111 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "col-md-4" }, [
       _c("img", {
-        attrs: { src: "/images/upload/" + _vm.anket.main_image, height: "150" }
+        attrs: {
+          src: "/images/upload/" + _vm.anket.anket.main_image,
+          height: "150"
+        }
       }),
+      _vm._v(" "),
+      _c("p", [_vm._v(_vm._s(_vm.anket.anket.status))]),
       _vm._v(" "),
       _c("a", { attrs: { href: "/mypresents" } }, [
         _c("img", { attrs: { src: "/images/gift.png", height: "100" } })
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-md-3" }, [
-      _c("h4", [_vm._v(_vm._s(_vm.anket.name))]),
-      _vm._v(" "),
-      _vm.anket.sex == "famele"
-        ? _c("div", [_vm._v("\n            Женщина\n        ")])
-        : _vm.anket.sex == "male"
-        ? _c("div", [_vm._v("\n            Meжчина\n        ")])
-        : _vm._e()
-    ])
+    _c(
+      "div",
+      { staticClass: "col-md-3" },
+      [
+        _c("h5", [_c("b", [_vm._v(_vm._s(_vm.anket.anket.name))])]),
+        _vm._v(" "),
+        _c("p", [_vm._v(_vm._s(_vm.anket.status))]),
+        _vm._v(" "),
+        _vm.anket.anket.sex == "famele"
+          ? _c("div", [_vm._v("\n            Женщина\n        ")])
+          : _vm.anket.anket.sex == "male"
+          ? _c("div", [_vm._v("\n            Mужчина\n        ")])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("b", [_vm._v("Хочу встретиться с:")]),
+        _vm._v(" "),
+        _vm.anket.anket.meet == "famele"
+          ? _c("div", [_vm._v("женщиной")])
+          : _vm.anket.anket.meet == "male"
+          ? _c("div", [_vm._v("мужчиной")])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v("\n\n        Возраст: " + _vm._s(_vm.anket.anket.age) + " "),
+        _c("br"),
+        _vm._v("\n        Рост: " + _vm._s(_vm.anket.anket.height)),
+        _c("br"),
+        _vm._v("\n        Вес: " + _vm._s(_vm.anket.anket.weight)),
+        _c("br"),
+        _vm._v(" "),
+        _vm._l(_vm.allTarget, function(target) {
+          return _c("li", [
+            target.id in _vm.anketTarget.id
+              ? _c("div", [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(target.name) +
+                      "\n            "
+                  )
+                ])
+              : _vm._e()
+          ])
+        }),
+        _vm._v(" "),
+        _vm._m(0),
+        _c("br"),
+        _vm._v(" "),
+        _vm._l(_vm.topPhotos, function(photo) {
+          return _c("div", [
+            _c("a", { attrs: { href: "/editimages" } }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/upload/" + photo.photo_name,
+                  height: "150"
+                }
+              })
+            ])
+          ])
+        }),
+        _vm._v(" "),
+        _c("b", [_vm._v("Текст анкеты:")]),
+        _c("br"),
+        _vm._v(
+          "\n        " + _vm._s(_vm.anket.anket.description) + "\n        "
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _c("b", [_vm._v("Приватный текст:")]),
+        _c("br"),
+        _vm._v("\n        " + _vm._s(_vm.anket.anket.private) + "\n        "),
+        _c("br"),
+        _c("br"),
+        _c("br")
+      ],
+      2
+    )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("a", { attrs: { href: "/editimages" } }, [_vm._v("Фотографии")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -64784,6 +64913,12 @@ var app3 = new Vue({
 });
 var app4 = new Vue({
   el: '#app4',
+  data: {
+    showModal: false
+  }
+});
+var privateApp = new Vue({
+  el: '#privateApp',
   data: {
     showModal: false
   }

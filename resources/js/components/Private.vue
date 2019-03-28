@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <h3 v-if="isOpen">У вас открыт доступ к приватной информации!</h3>
         <button class="" v-if="showSendRegButton" v-on:click="sendRequwest()">Отправит запрос на открытие анкеты
         </button>
@@ -36,8 +37,9 @@
         mounted() {
             console.log('private');
             console.log(this.id);
-            this.khowHasPrivateOrNot(),
-                this.getuserid()
+            this.getuserid();
+            this.khowHasPrivateOrNot();
+
         },
         data() {
             return {
@@ -55,11 +57,11 @@
                 console.log('reg ' + this.id);
                 axios.get('/getisprivaterrnot', {
                     params: {
-                        id: this.id
+                        id: this.user_id
                     }
                 })
                     .then((response) => {
-                        if (!response.data) {
+                        if (response.data == "true") {
                             this.isOpen = true;
                         }
                         else {

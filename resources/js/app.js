@@ -94,6 +94,13 @@ const app4 = new Vue({
     }
 });
 
+const privateApp = new Vue({
+    el: '#privateApp',
+    data: {
+        showModal: false
+    }
+});
+
 const app7 = new Vue({
     el: '#app7',
     data: {
