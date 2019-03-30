@@ -24,7 +24,10 @@ class AnketController extends Controller
     {
         $user = Auth::user();
         $targets = Target::select(['id', 'name'])->get();
-
+        //add check phone is confurnd
+        if ($user->phone == null or $user->phone_confirmed == 0) {
+            return view("custom.resetSMS2");
+        }
 
         return view('createAnket')
             ->with(
@@ -610,8 +613,9 @@ class AnketController extends Controller
         ])->where('user_id', $user->id)->first();
 
         $photos = $anket->photos()->take(5)->get();
+
         return response()->json([
-           $photos
+            $photos,
         ]);
     }
 }

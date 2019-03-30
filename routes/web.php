@@ -225,3 +225,8 @@ Route::get('/getMyAnketData', 'AnketController@getMyAnketData')->middleware('aut
 Route::get('/getTopPhotos', 'AnketController@getTopPhotos')->middleware('auth', 'anketExist');
 
 Route::get('/getuserid', 'ContactsController@getUserID');
+
+//
+Route::post('/inputPhone','GirlsController@inputPhone')->middleware('auth');
+
+Route::post('/inputCode','GirlsController@inputCode')->middleware('auth');

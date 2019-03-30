@@ -1,10 +1,10 @@
-@extends('layouts.blog', ['title' => 'Подтверждение SMS'])
+@extends('layouts.blog', ['title' => 'Подтверждение телефоного номера'])
 
 @section('content')
     <div class="row">
-
+        <div class="card-body" id="phoneApp">
+            <phoneComponent></phoneComponent>
+        </div>
     </div>
     <a class="button blue" href="{{route('main')}}" role="link">К списку анкет</a>
-    <!--   <button id="button2" style="display:none;" onclick="document.getElementById('button1').style.display = 'block'; this.style.display = 'none';">Сбросить пароль</button>
-    -->
 @endsection

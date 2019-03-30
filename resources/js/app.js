@@ -66,6 +66,7 @@ Vue.component('myanket', require('./components/myAnket.vue').default);
 
 Vue.component('edit', require('./components/Edit.vue').default);
 
+Vue.component('phonecomponent', require('./components/phoneComponent.vue').default);
 
 const app = new Vue({
     el: '#app',
@@ -125,6 +126,13 @@ const powerApp = new Vue({
 
 const myAnket = new Vue({
     el: '#myAnketApp',
+    data: {
+        showModal: false
+    }
+});
+
+const phoneApp = new Vue({
+    el: '#phoneApp',
     data: {
         showModal: false
     }

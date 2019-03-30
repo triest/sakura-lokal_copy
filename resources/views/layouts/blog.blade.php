@@ -99,7 +99,9 @@
                             <b><a class="btn btn-primary" href="{{route('myAnket')}}">Моя анкета</a> </b>
                             <br>
                         @else
+                            <br>
                             <b><a class="btn btn-primary" href="{{route('createGirlPage')}}">Создать анкету</a> </b>
+                            <br>
                         @endif
                         <br>
                         <!--check is admin -->
