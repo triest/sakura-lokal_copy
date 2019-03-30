@@ -235,9 +235,9 @@ class ContactsController extends Controller
             ->where('other_id', $id)
             ->first();
         if ($private == null) {
-            return response()->json('true');
+            return response()->json('false');  //
         } else {
-            return response()->json('false');
+            return response()->json('true');
         }
     }
 

@@ -64,6 +64,7 @@ Vue.component('myanket', require('./components/myAnket.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('edit', require('./components/Edit.vue').default);
 
 
 const app = new Vue({
@@ -122,7 +123,7 @@ const powerApp = new Vue({
     }
 });
 
-const myAnket= new Vue({
+const myAnket = new Vue({
     el: '#myAnketApp',
     data: {
         showModal: false

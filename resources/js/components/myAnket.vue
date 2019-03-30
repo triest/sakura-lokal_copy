@@ -1,13 +1,14 @@
 <template>
     <div>
-        <div class="col-md-4">
+        <div class="col-sm-4">
             <img :src="'/images/upload/'+anket.anket.main_image" height="150">
             <p>{{anket.anket.status}}</p>
             <a href="/mypresents"> <img :src="'/images/gift.png'" height="100"></a>
         </div>
-        <div class="col-md-3">
-            <h5><b>{{anket.anket.name}}</b></h5>
+        <div class="col-sm-4">
+            <h5><b>{{anket.anket.name}}</b></h5>   <a type="button" class="btn btn-primary" href="/edit" role="link">Редактировать</a>
             <p>{{anket.status}}</p>
+          
             <div v-if="anket.anket.sex=='famele'">
                 Женщина
             </div>
@@ -43,12 +44,14 @@
             {{anket.anket.private}}
             <br><br><br>
         </div>
-
+        <edit v-if="showEditModal" @closeRequest='close()'></edit>
     </div>
 
 </template>
 
 <script>
+    import edit from './Edit.vue'
+
     export default {
         name: "myAnket",
         mounted() {
@@ -65,8 +68,12 @@
                 anket: "",
                 allTarget: "",
                 anketTarget: "",
-                topPhotos: ""
+                topPhotos: "",
+                showEditModal: false
             };
+        },
+        comments: {
+            edit
         },
         methods:
             {

@@ -57,6 +57,7 @@ class GirlsController extends Controller
             'city_id',
             'banned',
             'user_id',
+            'status'
         ])->where('id', $id)->first();
         if ($girl == null) {
             return $this->index();

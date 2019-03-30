@@ -11,7 +11,6 @@
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
 
 
-
     <link href="{{asset('css/gallery-grid.css')}}">
     <!-- Bootstrap core CSS -->
 
@@ -46,6 +45,18 @@
 
     <!--Yandex -->
     <meta name="yandex-verification" content="af4168af7d682a89"/>
+    <style>
+        .row.no-gutter {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .row.no-gutter [class*='col-']:not(:first-child),
+        .row.no-gutter [class*='col-']:not(:last-child) {
+            padding-right: 0;
+            padding-left: 0;
+        }
+    </style>
 
 </head>
 
@@ -60,46 +71,45 @@
         <carouseltemp></carouseltemp>
     </div>
     <div class="row row-offcanvas row-offcanvas-right">
-
-        <div class="col-xs-12 col-sm-9">
-            <p class="pull-right visible-xs">
-                <button type="button" class="menuButton" data-toggle="offcanvas"><b>Меню</b></button>
-            </p>
-
-
-            <div class="row">
-                @yield('content')
+        <div class="row no-gutter">
+            <div class="col-xs-12 col-sm-8">
+                <p class="pull-right visible-xs">
+                    <button type="button" class="menuButton" data-toggle="offcanvas"><b>Меню</b></button>
+                </p>
+                <div class="row">
+                    @yield('content')
+                </div>
             </div>
-        </div>
 
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-            <div class="card-body" id="app">
-                @if (Auth::guest())
-                    <b><a href="{{ url('/login') }}">Войти</a></b><br>
-                    <b><a href="{{ url('/join') }}">Зарегистрироваться</a></b>
-                @else
-                    <b>{{auth()->user()->name}}</b><br>
-                    <b><a href="{{ url('/logout') }}">Выйти</a></b>
-                    <br>
-                    @if($girl=Auth::user()->anketisExsis()!=null)
-                    <!-- {{$girl=Auth::user()->anketisExsis()}} -->
-                        <img height="150" width="150"
-                             src="<?php echo asset("images/small/$girl->main_image")?>">
-                        <side-panel :user="{{auth()->user()}}"></side-panel>
-                        <br>
-                        <b><a class="btn btn-primary" href="{{route('myAnket')}}">Моя анкета</a> </b>
-                        <br>
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+                <div class="card-body" id="app">
+                    @if (Auth::guest())
+                        <b><a href="{{ url('/login') }}">Войти</a></b><br>
+                        <b><a href="{{ url('/join') }}">Зарегистрироваться</a></b>
                     @else
-                        <b><a class="btn btn-primary" href="{{route('createGirlPage')}}">Создать анкету</a> </b>
-                    @endif
-                    <br>
-                    <!--check is admin -->
-                    @if(Auth::user()->is_admin==1)
-                        <b><a class="btn btn-success" href="{{route('adminPanel')}}">Панель администратора</a> </b>
-                    @endif
-                    <b><a class="btn btn-success" href="{{route('main')}}">На главную</a> </b>
+                        <b>{{auth()->user()->name}}</b><br>
+                        <b><a href="{{ url('/logout') }}">Выйти</a></b>
+                        <br>
+                        @if($girl=Auth::user()->anketisExsis()!=null)
+                        <!-- {{$girl=Auth::user()->anketisExsis()}} -->
+                            <img height="150" width="150"
+                                 src="<?php echo asset("images/small/$girl->main_image")?>">
+                            <side-panel :user="{{auth()->user()}}"></side-panel>
+                            <br>
+                            <b><a class="btn btn-primary" href="{{route('myAnket')}}">Моя анкета</a> </b>
+                            <br>
+                        @else
+                            <b><a class="btn btn-primary" href="{{route('createGirlPage')}}">Создать анкету</a> </b>
+                        @endif
+                        <br>
+                        <!--check is admin -->
+                        @if(Auth::user()->is_admin==1)
+                            <b><a class="btn btn-success" href="{{route('adminPanel')}}">Панель администратора</a> </b>
+                        @endif
+                        <b><a class="btn btn-success" href="{{route('main')}}">На главную</a> </b>
 
-                @endif
+                    @endif
+                </div>
             </div>
         </div><!--/span-->
     </div><!--/row-->
