@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AddRelationsSeeder::class);
         $this->call(ApperanceSeeder::class);
         $this->call(TableTableSeeder::class);
+        $this->call(CreatePhoneSettingSeed::class);
     }
 }

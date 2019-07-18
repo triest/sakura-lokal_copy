@@ -25,12 +25,12 @@
             </div>
         </div>
 
-        Видимость телефона:
+        <b>Видимость телефона:</b>
         <br>
         @foreach($phone_setting as $item)
             <input type="radio" id="phone_settings"
                    name="phone_settings" value="{{$item->id}}" checked>
-            <label for="phone_settings">{{$item->name}}</label>
+            {{$item->name}}
             <br>
         @endforeach
 
