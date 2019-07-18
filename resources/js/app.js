@@ -68,6 +68,8 @@ Vue.component('edit', require('./components/Edit.vue').default);
 
 Vue.component('phonecomponent', require('./components/phoneComponent.vue').default);
 
+Vue.component('targets', require('./components/Targets.vue').default);
+
 const app = new Vue({
     el: '#app',
     data: {

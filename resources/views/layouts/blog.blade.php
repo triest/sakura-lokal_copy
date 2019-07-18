@@ -107,6 +107,7 @@
                         <!--check is admin -->
                         @if(Auth::user()->is_admin==1)
                             <b><a class="btn btn-success" href="{{route('adminPanel')}}">Панель администратора</a> </b>
+                            <br>
                         @endif
                         <b><a class="btn btn-success" href="{{route('main')}}">На главную</a> </b>
 
