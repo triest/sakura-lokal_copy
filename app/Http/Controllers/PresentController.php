@@ -3,14 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Events\eventPreasent;
+use App\Events\NewMessage;
 use App\GiftAct;
 use App\Girl;
+use App\Message;
 use App\Present;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use File;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use App\ImageResize;
+
+
 
 class PresentController extends Controller
 {
@@ -95,13 +101,15 @@ class PresentController extends Controller
     {
         $who = Auth::user();
         // $target = User::select(['id', 'name'])->where('id', $request->user_id)->first();
+
+
         $girl = Girl::select(['id', 'user_id'])->where('id', $request->user_id)->first();
-        $target = User::select(['id'])->where('id', $girl->user_id)->first();
+        //   $target = User::select(['id'])->where('id', $girl->user_id)->first();
         $gift = Present::select(['id'])->where('id', $request->present_id)->first();
         $giftAct = new GiftAct();
         //   $giftAct->who()->save($who);
         $giftAct->who_id = $who->id;
-        $giftAct->target_id = $target->id;
+        $giftAct->target_id = $request->user_id;
         $giftAct->present_id = $gift->id;
         $giftAct->save();
 
@@ -190,5 +198,26 @@ class PresentController extends Controller
         }
 
         return response()->json(['fail']);
+    }
+
+    public function eventtest(Request $request)
+    {
+     //   $giftAct = GiftAct::select(['id', 'present_id', 'who_id', 'target_id'])->where('id', 1)->first();
+     //   dump($giftAct);
+     //   $giftAct->save();
+      //  broadcast(new eventPreasent($giftAct));
+
+        $text="sss";
+
+
+        $message = Message::create([
+            'from' => auth()->id(),
+            'to' => auth()->id(),
+            'text' =>$text,
+        ]);
+
+     //   dump($giftAct);
+
+        broadcast(new NewMessage($message));
     }
 }

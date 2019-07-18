@@ -34,14 +34,11 @@
 
 
 <script>
-
     //'./components/delModal.vue'
-
     export default {
         props: {},
         components: {},
         mounted() {
-
         },
         data() {
             return {
@@ -69,8 +66,6 @@
                         let formData = new FormData();
                         formData.append('phone', this.phone);
                         try {
-
-
                             axios.post('/inputPhone', formData,
                                 {
                                     headers: {
@@ -100,7 +95,6 @@
                         this.errors.push('Введите телефон  указанном формате.');
                     }
                 }
-
             },
             sendCode() {
                 this.errors = [];
@@ -158,8 +152,5 @@
         background: rgba(0, 0, 0, 0.7);
         display: table;
         transition: opacity .3s ease;
-
     }
-
-
 </style>

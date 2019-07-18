@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use DB;
 
 class LoginController extends Controller
 {
@@ -36,4 +40,32 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        if (is_numeric($request->get('email'))) {
+            return ['phone' => $request->get('email'), 'password' => $request->get('password')];
+        }
+
+        return $request->only($this->username(), 'password');
+    }
+
+    function authenticated(Request $request, $user)
+    {
+        //тут когда последний раз заходил
+        $id = $user->get_gitl_id();
+        if ($id != null) {
+            DB::table('girls')
+                ->where('id', $id)
+                ->update(['last_login' => Carbon::now()->toDateTimeString()]);
+        }
+
+    }
+
 }

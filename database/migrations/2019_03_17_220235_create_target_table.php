@@ -14,10 +14,11 @@ class CreateTargetTable extends Migration
     public function up()
     {
         //
-        Schema::table('target', function (Blueprint $table) {
-            $table->integer('id')->unsigned()->index();
-            $table->string('name')->unsigned()->index();
+        Schema::create('target', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 255)->nullable();
             $table->integer('target_id')->nullable()->unsigned();
+            //   $table->timestamps();
         });
 
     }

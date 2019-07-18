@@ -17,6 +17,10 @@ class CreateUserUserTable extends Migration
             $table->increments('id');
             $table->integer('my_id')->unsigned()->index();
             $table->integer('other_id')->unsigned()->index();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->string('who_name', 50)->nullable()->default(null);
+            $table->string('image', 50)->nullable()->default(null);
         });
     }
     /**

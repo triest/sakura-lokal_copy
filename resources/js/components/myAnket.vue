@@ -32,6 +32,8 @@
                     {{target.name}}
                 </div>
             </li>
+
+         
             <b><a href="/editimages">Фотографии</a> </b><br>
             <div v-for="photo in topPhotos">
                 <a href="/editimages"><img :src="'/images/upload/'+photo.photo_name" height="150"></a>
@@ -81,7 +83,7 @@
                     axios.get('/getMyAnketData')
                         .then((response) => {
                             this.anket = response.data;
-                            console.log(this.anket)
+                          
                         })
                 },
                 getTopPhotos() {

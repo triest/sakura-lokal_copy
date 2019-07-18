@@ -62,7 +62,7 @@
             },
             saveChange() {
              //   console.log(this.MessageText)
-                axios.post('/conversation/send', {
+                axios.post('/conversation/sendModal', {
                     contact_id: this.id,
                     text: this.MessageText
                 }).then((response) => {

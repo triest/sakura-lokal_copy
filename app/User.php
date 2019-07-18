@@ -54,7 +54,23 @@ class User extends Authenticatable
 
     public function finfUserById($id)
     {
-
         dump($id);
     }
+
+
+    public function isOnline()
+    {
+        return Cache::has('user-is-online-'.$this->id);
+    }
+
+    public function get_gitl_id()
+    {
+        $girl = Girl::select('id', 'user_id')->where('user_id', $this->id)->first();
+        if ($girl == null) {
+            return null;
+        } else {
+            return $girl->id;
+        }
+    }
+
 }

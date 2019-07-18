@@ -15,7 +15,7 @@ class DropForeginTargetFromGirls extends Migration
     {
         Schema::table('girls', function (Blueprint $table) {
             //
-            $table->dropForeign("girls_target_id_foreign");
+        //    $table->dropForeign("girls_target_id_foreign");
         });
     }
 

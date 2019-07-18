@@ -24,9 +24,10 @@
                                 <tr v-for="present in presents[0]">
                                     <td>{{present.name}}</td>
                                     <td>{{present.price}}</td>
-                                    <td><img :src="'/presents/upload/'+present.image" height="200"></td>
-
+                                    <td><img :src="'/presents/upload/'+present.image" height="200">
+                                    </td>
                                     <td v-if="userMoney>=present.price">
+
                                         <button class="button btn-primary" @click="givePresent(present.id)">Подарить
                                         </button>
                                     </td>
@@ -63,8 +64,7 @@
             }
         },
         mounted() {
-            this.getPresentsList(),
-                console.log(this.id),
+            this.getPresentsList();
                 this.getUserMoney();
         },
         data() {
@@ -99,8 +99,8 @@
                 axios.get('/getMoney'
                 )
                     .then((response) => {
-                        this.money = response.data.money
-                        console.log(this.money)
+                        this.userMoney = response.data.money;
+                        console.log('user money '+this.money)
                     })
             }
         }

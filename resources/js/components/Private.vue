@@ -4,23 +4,62 @@
         <button class="btn-primary" v-if="showSendRegButton" v-on:click="sendRequwest()">Отправит запрос на открытие
             анкеты
         </button>
+        <h5 v-if="regStatus=='notreaded'">Заявка на открытие анкеты не рассмотрена</h5>
+        <h5 v-if="regStatus=='acept'">Заявка на открытие анкеты принята</h5>
+        <h5 v-if="regStatus=='denide'">Заявка на открытие анкеты отклонена</h5>
         <br>
-        <h3 v-if="regStatus=='notreaded'">Заявка не рассмотрена</h3>
-        <h3 v-if="regStatus=='acept'">Заявка принята</h3>
-        <h3 v-if="regStatus=='denide'">Заявка отклонена</h3>
+        <button class="btn-default" v-on:click="showMessageWindow()" style="button.css3button {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	padding: 10px 20px;
+	background: -moz-linear-gradient(
+		top,
+		#ffffff 0%,
+		#ffffff);
+	background: -webkit-gradient(
+		linear, left top, left bottom,
+		from(#ffffff),
+		to(#ffffff));
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #000000;
+	-moz-box-shadow:
+		0px 1px 3px rgba(250,250,250,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.6);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(250,250,250,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.6);
+	box-shadow:
+		0px 1px 3px rgba(250,250,250,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.6);
+	text-shadow:
+		0px -1px 0px rgba(0,0,0,1),
+		0px 1px 0px rgba(255,255,255,0.2);
+}
+">Написать сообщение
+        </button>
         <br>
-        <button class="btn-default" v-on:click="showMessageWindow()">Написать сообщение</button>
+
+        <button class=" btn-success
+        " v-on:click="showPresentModal=true" alt="Отправить подарок">Отправить подарок
+        </button>
         <br>
-        <modal v-if="showModal===true" :id="id" v-on:close="showModal = false">></modal>
-        <button class="btn-success" v-on:click="showPresentModal=true">Отправить подарок</button>
-        <br>
+        <div v-if="isAdmin==true">
+            <button class="btn-danger" v-on:click="showAdminModal=true">Действия администратора</button>
+        </div>
+        <admin v-if="showAdminModal" :id="user_id" @clouseAdminModal='clouseAdminModal()'></admin>
         <present v-if="showPresentModal" :id="user_id" @closeRequest='close()'></present>
+        <modal v-if="showModal===true" :id="id" v-on:close="showModal = false">></modal>
     </div>
 </template>
 
 <script>
     import modal from './ModalComponent.vue';
     import present from './PresentModal.vue'
+    import admin from './Admin.vue'
+    import Admin from "./Admin";
 
     export default {
         props: {
@@ -34,13 +73,13 @@
             },
         },
         components: {
+            Admin,
             modal, present
         },
         mounted() {
-            console.log('private');
-            console.log(this.id);
             this.getuserid();
             this.khowHasPrivateOrNot();
+            this.isAdminCheck();
 
         },
         data() {
@@ -52,6 +91,8 @@
                 showModal: false,
                 showPresentModal: false,
                 userId: '',
+                isAdmin: false,
+                showAdminModal: false
             }
         },
         methods: {
@@ -137,7 +178,6 @@
                     )
             },
             itemClicked: function () {
-                console.log("modal");
                 $("#my-modal").modal('show');
             },
             showModal() {
@@ -146,12 +186,28 @@
             closeModal() {
                 this.isModalVisible = false;
             },
+            clouseAdminModal() {
+                this.showAdminModal = false;
+            },
             showMessageWindow() {
                 this.showModal = true
             },
             close() {
-                console.log("false");
                 this.showPresentModal = false;
+            },
+            isAdminCheck() {
+                axios.get('/isAdmin', {})
+                    .then((response) => {
+                        var data_response = response.data;
+                        if (data_response == "true") {
+                            console.log("is admin");
+                            this.isAdmin = true;
+                        }
+                        else {
+                            console.log("not admin");
+                            this.isAdmin = false;
+                        }
+                    })
             }
         }
     }

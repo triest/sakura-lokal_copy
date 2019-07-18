@@ -14,7 +14,8 @@ class AddReadedValueToPresent extends Migration
     public function up()
     {
         Schema::table('gift_act', function (Blueprint $table) {
-
+            $table->dateTime('begin_search')->nullable();
+            $table->dateTime('end_search')->nullable();
         });
     }
 
@@ -27,6 +28,10 @@ class AddReadedValueToPresent extends Migration
     {
         Schema::table('present', function (Blueprint $table) {
             //
+            Schema::table('gift_act', function (Blueprint $table) {
+                $table->dropColumn('begin_search');
+                $table->dropColumn('end_search');
+            });
         });
     }
 }

@@ -23,7 +23,7 @@ Vue.use(VueCarousel);
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
+Vue.component('index2', require('./components/index2.vue').default);
 Vue.component('chat-app', require('./components/ChatApp.vue').default);
 Vue.component('chat-app2', require('./components/ChatApp2.vue').default);
 Vue.component('conversation', require('./components/Conversation.vue').default);
@@ -50,7 +50,13 @@ Vue.component('carouseltemp', require('./components/CarouselTemp.vue').default);
 
 Vue.component('presents', require('./components/Presents.vue').default);
 
+Vue.component('targets', require('./components/Targets.vue').default);
+
+Vue.component('interes', require('./components/Interes.vue').default);
+
 Vue.component('mypresents', require('./components/MyPresents.vue').default);
+
+Vue.component('likemodal', require('./components/LikeModal.vue').default);
 
 //модальное окно для отправки сообщения
 //Vue.component('modal', require('./components/ModalComponent.vue'));
@@ -68,7 +74,104 @@ Vue.component('edit', require('./components/Edit.vue').default);
 
 Vue.component('phonecomponent', require('./components/phoneComponent.vue').default);
 
-Vue.component('targets', require('./components/Targets.vue').default);
+Vue.component('selectcity', require('./components/SelectCity.vue').default);
+
+Vue.component('userscontroll', require('./components/Userscontroll.vue').default);
+
+Vue.component('moneycontroll', require('./components/Moneycontroll.vue').default);
+
+Vue.component('likes', require('./components/likes.vue').default);
+
+Vue.component('phonerequwest', require('./components/phoneRequwest.vue').default);
+
+//события
+Vue.component('myevents', require('./components/Myevents.vue').default);
+
+Vue.component('eventmycity', require('./components/eventmycity.vue').default);
+
+//заапрос на участие в событии
+Vue.component('eventrequwest', require('./components/Eventrequwest.vue').default);
+
+Vue.component('requwesteventlist', require('./components/Requwesteventlist.vue').default);
+
+Vue.component('requwesteventlist', require('./components/Requwesteventlist.vue').default);
+
+Vue.component('eventinmycityside', require('./components/EventInMyCitySide.vue').default);
+
+Vue.component('viewhistory', require('./components/Viewhistory.vue').default);
+
+Vue.component('aperance', require('./components/Aperance.vue').default);
+
+const aperanceApp= new Vue({
+    el: '#aperanceApp',
+    data: {
+        showModal: false
+    }
+});
+
+const viewhistoryapp= new Vue({
+    el: '#viewhistoryapp',
+    data: {
+        showModal: false
+    }
+});
+
+const eventinmycityapp= new Vue({
+    el: '#eventinmycityapp',
+    data: {
+        showModal: false
+    }
+});
+
+const requwesteventlistapp= new Vue({
+    el: '#requwesteventlistapp',
+    data: {
+        showModal: false
+    }
+});
+
+const eventequwestapp = new Vue({
+    el: '#eventrequwestapp',
+    data: {
+        showModal: false
+    }
+});
+
+const events = new Vue({
+    el: '#events',
+    data: {
+        showModal: false
+    }
+});
+
+const eventmycity = new Vue({
+    el: '#eventmycityApp',
+    data: {
+        showModal: false
+    }
+});
+
+const phoneRequwestApp = new Vue({
+    el: '#phoneRequwestApp',
+    data: {
+        showModal: false
+    }
+});
+
+
+const likesApp = new Vue({
+    el: '#likesApp',
+    data: {
+        showModal: false
+    }
+});
+
+const index = new Vue({
+    el: '#index',
+    data: {
+        showModal: false
+    }
+});
 
 const app = new Vue({
     el: '#app',
@@ -139,3 +242,42 @@ const phoneApp = new Vue({
         showModal: false
     }
 });
+
+const selectCityApp = new Vue({
+    el: '#selectCityApp',
+    data: {
+        showModal: false
+    }
+});
+
+const indexvue = new Vue({
+    el: '#indexvue',
+    data: {
+        showModal: false
+    }
+});
+
+const moneyApp = new Vue({
+    el: '#moneyApp',
+    data: {
+        showModal: false
+    }
+});
+
+const myeventApp = new Vue({
+    el: '#myeventApp',
+    data: {
+        showModal: false
+    }
+
+    //appacepted
+});
+
+const appaceptedApp = new Vue({
+    el: '#appaceptedApp',
+    data: {
+        showModal: false
+    }
+
+    //appacepted
+})

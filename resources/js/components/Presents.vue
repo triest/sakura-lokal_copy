@@ -96,8 +96,10 @@
                             this.price = "";
                             this.file = "";
                         }
+                        this.getPresents();
                     })
                     .catch(function () {
+                        this.getPresents();
                     });
                 this.getPresents();
             },

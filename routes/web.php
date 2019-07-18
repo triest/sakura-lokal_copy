@@ -24,23 +24,27 @@ Route::get('/messages', 'HomeController@index')->name('home');
 
 Route::get('/messages2', 'HomeController@index2')->name('home2');
 
-
 Route::get('/contacts', 'ContactsController@get');
 Route::get('/contacts2', 'ContactsController@get2');
 Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
 Route::post('/conversation/send', 'ContactsController@send');
+Route::post('/conversation/sendModal', 'ContactsController@sendModal');
 
 Route::get('/join/', 'CustomUserController@index')->name('join');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome2');
 })->name('welcome');
 
 Route::get('/anket', 'GirlsController@index')->name('main');
-Route::get('/createAnketPage', 'AnketController@createGirl')->name('createGirlPage')->middleware('auth');
+
+Route::get('/anket2', function () {
+    return view('index2');
+})->name('main2');
+
 
 //создание анкеты
-Route::get('/createAnketPage', 'AnketController@createGirl')->name('createGirlPage')->middleware('auth');;
+Route::get('/anket/create', 'AnketController@createGirl')->name('createGirlPage')->middleware('auth');;
 
 Route::post('/anket/create', 'AnketController@Store')->name('storeGirl');
 Route::get('/anket/{id}', 'GirlsController@showGirl')->name('showGirl');
@@ -62,6 +66,12 @@ Route::get('/getmyapplication', 'ContactsController@myApplication')->middleware(
 Route::get('/whohaveaccesstomyanket', 'ContactsController@whoHavaAccessToMyAnket')->middleware('auth');
 //закрыть доступ
 Route::get('/clouseaccess', 'ContactsController@clouseaccess')->middleware('auth');
+//заявки на открытие телефон
+Route::get('/getrequwesttoopenphone', 'ContactsController@getrequwesttoopenphone')->middleware('auth');
+
+//предоставление доступа к телефону
+Route::get('/getnewphonaaplication', 'ContactsController@getnewphonaaplication')->middleware('auth');
+
 
 //отклонить доступ
 Route::get('/denideaccess', 'ContactsController@denideAccess')->middleware('auth');
@@ -78,6 +88,14 @@ Route::get('/getsendregornot', 'ContactsController@sendornot')->middleware('auth
 
 //отправляем запрос:
 Route::get('/sendreg', 'ContactsController@sendreg')->middleware('auth');
+
+//отправлен ли запрос на открытие телефона
+Route::get('/getsendregphoneornot', 'ContactsController@getsendregphoneornot')->middleware('auth');
+
+Route::get('/denidephoneaplication', 'ContactsController@denidephoneaplication')->middleware('auth');
+
+//
+Route::get('/sendregphone', 'ContactsController@sendregphone')->middleware('auth');
 
 //редактирование галлереи
 Route::get('/editimages', function () {
@@ -125,9 +143,17 @@ Route::post('/yandex', 'MoneyController@reciverMoney');
 //получить цены
 Route::get('/getpricestotop', 'MoneyController@getpricestotop')->middleware('auth');
 
+Route::get('/getpricetoseach', 'MoneyController@getpricetoseach')->middleware('auth');
+
+Route::get('/getpricetofirstplace', 'MoneyController@getpricetofirstplase')->middleware('auth');
+
+Route::get('/getpricechangemainimage', 'MoneyController@getpricechangemainimage')->middleware('auth');
+
 Route::get('/tofirstplaсe', 'MoneyController@toFirstPlase')->middleware('auth');
 
 Route::get('/totop', 'MoneyController@totop')->middleware('auth');
+
+Route::get('/toseach', 'MoneyController@toseach')->middleware('auth');
 
 
 //получаем картинки для карусели
@@ -141,7 +167,70 @@ Route::group(['middleware' => 'admin'], function () {
         return view('admin.presentsControl');
     })->name('presentsControll');
 
+    Route::get('/targetsControll', function () {
+        return view('admin.targetsControl');
+    })->name('targetsControll');
+
+    Route::get('/interessControll', function () {
+        return view('admin.interesControl');
+    })->name('interetsControll');
+
+    Route::get('/usersControll', function () {
+        return view('admin.usersControll');
+    })->name('usersControll');
+
+    Route::get('/apperanceControll', function () {
+        return view('admin.apperanceControll');
+    })->name('apperanceControll');
+
+    //get aperance
+    Route::get('/admin/aperance', 'AdminController@getaperancelist');
+
+    Route::post('/admin/aperance', 'AdminController@aperancestore');
+
+    Route::post('/admin/aperance/edit', 'AdminController@aperanceedit');
+
+    Route::post('/admin/aperance/delete', 'AdminController@aperancedelete');
+
+
+    Route::get('/moneyControll', function () {
+        return view('admin.moneyControll');
+    })->name('moneyControll');
+
+    Route::get('/phoneSettings', function () {
+        return view('admin.phoneSettings');
+    })->name('phoneSettings');
+
+    // пользователи
+    Route::get('/getuserslist', 'AdminController@getuserslist')->middleware('auth', 'admin');
+    //конец пользователей
+    //получаем список интересов
+
+    Route::get('/interess', 'AdminController@getinteresslist')->middleware('auth', 'admin');
+
+    Route::post('/createinteress', 'AdminController@createinteress')->middleware('auth', 'admin');
+
+    Route::post('/editinteress', 'AdminController@editinteress')->middleware('auth', 'admin');
+
+    Route::post('/deleteinteress', 'AdminController@deleteinteress')->middleware('auth', 'admin');
+
+    Route::get('/bannedorNot', 'AdminController@bannedorNot')->middleware('auth', 'admin');
+    //работа с анкетами пользовател
+    Route::post('/makebunned', 'AdminController@makebunned')->middleware('auth', 'admin');
+
+    Route::get('/seachAdmin', 'AdminController@seachAdmin')->middleware('auth', 'admin');
+
+    Route::get('/bannedorNot', 'AdminController@bannedorNot')->middleware('auth', 'admin');
+
+    Route::get('/seachAdmin', 'AdminController@seachAdmin')->middleware('auth', 'admin');
+
+    Route::get('/getPrices', 'MoneyController@getPrices')->middleware('auth', 'admin');
+
+    //changeprice
+    Route::post('/changePrice', 'MoneyController@changePrice')->middleware('auth', 'admin');
 });
+
+Route::get('/isAdmin', 'AdminController@isAdmin')->middleware('auth');
 
 Route::get('/getpresents', 'PresentController@getpresents');
 
@@ -196,7 +285,7 @@ Route::get('/sendSMS2', function () {
     $user->actice_code = $activeCode;
     $user->save();
     //2) отправляем его в смс
-    //  App::call('App\Http\Controllers\GirlsController@sendSMS', [$phone, $activeCode]);
+    App::call('App\Http\Controllers\GirlsController@sendSMS', [$phone, $activeCode]);
 
     return response()->json(['result' => 'ok']);
 }
@@ -227,6 +316,113 @@ Route::get('/getTopPhotos', 'AnketController@getTopPhotos')->middleware('auth', 
 Route::get('/getuserid', 'ContactsController@getUserID');
 
 //
-Route::post('/inputPhone','GirlsController@inputPhone')->middleware('auth');
+Route::post('/inputPhone', 'GirlsController@inputPhone')->middleware('auth');
 
-Route::post('/inputCode','GirlsController@inputCode')->middleware('auth');
+Route::post('/inputCode', 'GirlsController@inputCode')->middleware('auth');
+
+//список целей
+Route::get('/targets', 'AdminController@gettargetslist')->middleware('auth', 'admin');
+
+Route::post('/createtarget', 'AdminController@createtarget')->middleware('auth', 'admin');
+
+Route::post('/edittarget', 'AdminController@edittarget')->middleware('auth', 'admin');
+
+Route::post('/deletetargret', 'AdminController@deletetargret')->middleware('auth', 'admin');
+
+//поиск города
+Route::get('/findcity/{name}', 'AnketController@findcity');//->middleware('auth');
+
+Route::get('/getargetslist', 'AdminController@gettargetslist');
+
+Route::get('/getinterestslist', 'AdminController@getinteresslist');
+
+Route::get('/seach', 'AnketController@seach');
+
+Route::get('/inseach', 'AnketController@inseach');
+
+Route::get('/eventtest', 'PresentController@eventtest');
+
+
+//лайки
+Route::get('/newlike', 'LikeController@newLike');
+Route::get('/getLikesNumber', 'LikeController@getLikesNumber');
+Route::get('/getLikesNumberAuch', 'LikeController@getLikesNumberAuch')->middleware('auth');
+//likeSendedl
+Route::get('/likeSended', 'LikeController@likeSended');
+//список тех, кто поставил мне лайки
+Route::get('/getLikesList', 'LikeController@getLikesList');
+
+
+//боковая панель, все данные
+//getalldataforsidepanel
+Route::get('/getalldataforsidepanel', 'AnketController@getalldataforsidepanel')->middleware('auth');
+
+//gatalldataforpower
+Route::get('/gatalldataforpower', 'AnketController@gatalldataforpower')->middleware('auth');
+
+
+//тест почты
+Route::get('/testmail', 'MailController@testemail');
+
+Route::get('/newsearch', function () {
+    return view('search.example');
+})->name('newsearch');
+
+
+//события
+Route::get('/myevent', 'MyEventController@myevent')->name('myevent')->middleware('auth', 'anketExist');
+
+//форма с созданием.
+Route::get('/createevent', 'MyEventController@create')->name('createevent')->middleware('auth', 'anketExist');
+
+Route::post('/createevent', 'MyEventController@store')->name('storeEvent')->middleware('auth', 'anketExist');
+
+//get my events list
+Route::get('/myeventslist', 'MyEventController@list')->name('myeventslist')->middleware('auth', 'anketExist');
+
+//редактировать событие
+Route::get('/editevent/{id}', 'MyEventController@edit')->name('editevent')->middleware('auth', 'anketExist');
+
+//просмотр события
+Route::get('/viewmyevent/{id}', 'MyEventController@viewmyevent')->name('viewmyevent')->middleware('auth', 'anketExist');
+
+Route::get('/viewmyevent/{id}/edit', 'MyEventController@edit')->name('editevent')->middleware('auth', 'anketExist');
+
+Route::get('/listrequwest', 'MyEventController@listrequwest')->name('viewmyevent')->middleware('auth',
+    'anketExist');
+
+//присоединиться к событию
+Route::get('/singup/{id}', 'MyEventController@singup')->name('viewmyevent')->middleware('auth', 'anketExist');
+
+//
+
+//тест карт
+Route::get('/map', function () {
+    return view("map");
+})->name('map')->middleware('auth');
+
+Route::post('/city/agree', 'GirlsController@agreeCity')->name('agreeCity');
+
+Route::post('/city/new', 'GirlsController@newCity')->name('newCity');
+
+Route::get('/city/change', 'GirlsController@changeCity')->name('changeCity');
+
+Route::get('/eventsinmycity', 'MyEventController@eventsinmycity');
+
+Route::get('/event/makerequwest', 'MyEventController@makerequwest');
+
+Route::get('/event/checkrequwest', 'MyEventController@checkrequwest');
+
+
+Route::get('/eventrequwestlist', 'MyEventController@requwestlist');
+
+Route::get('/event/accept', 'MyEventController@accept');
+
+Route::get('/test', function () {
+    return view('test');
+});
+
+Route::get('/history', 'AnketController@history');
+//Route::get('/history', 'AnketController@historypage');
+
+Route::get('/gethistory', 'AnketController@history');

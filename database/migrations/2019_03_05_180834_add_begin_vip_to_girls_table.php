@@ -16,7 +16,7 @@ class AddBeginVipToGirlsTable extends Migration
         Schema::table('girls', function (Blueprint $table) {
             //
             $table->datetime('beginvip')->nullable();
-            $table->datetime('endvip')->nullable();
+          //  $table->datetime('endvip')->nullable();
         });
     }
 
