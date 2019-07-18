@@ -47,8 +47,8 @@
                 errors: [],
                 codeErors: [],
                 codeVisable: false,
-                nextButtonVisable:false,
-                next:false
+                nextButtonVisable: false,
+                next: false
             }
         },
         methods: {
@@ -74,22 +74,21 @@
                                 }
                             )
                                 .then((response) => {
-                                    console.log(response.data)
                                     if (response.data.result == "ok") {
                                         console.log("ok");
                                         this.codeVisable = true;
                                         this.errors = [];
-                                    } else {
-                                        console.log("faik");
+                                    }
+                                    else if (response.data.result == "alredy") {
+                                        console.log("alredy");
                                         this.errors.push("Этот телефон уже зарегистрирован");
+                                        this.codeVisable = false;
                                     }
                                 })
-                                .catch(
-                                    this.errors.push("Этот телефон уже зарегистрирован")
-                                )
+
                         }
                         catch (e) {
-                            this.errors.push("Этот телефон уже зарегистрирован")
+
                         }
                     } else {
                         this.errors.push('Введите телефон  указанном формате.');

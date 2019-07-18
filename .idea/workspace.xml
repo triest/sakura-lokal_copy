@@ -1,159 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
+    <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="Fix check private or not">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Dialog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Dialog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/NewMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/NewMessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/eventPreasent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/eventPreasent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/newApplication.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/newApplication.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/GiftAct.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/GiftAct.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Girl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Girl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomUserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MoneyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MoneyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PresentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PresentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/AnketExist.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/AnketExist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CheckForMaintenanceMode.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckForMaintenanceMode.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/IsAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/IsAdmin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/TrimStrings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/TrimStrings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Message.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Photo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Photo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Present.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Present.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Privatephoto.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Privatephoto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Target.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Target.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Useruser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Useruser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/database/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_18_121825_create_messages_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_18_121825_create_messages_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_18_184127_create_girls_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_18_184127_create_girls_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_19_172247_add_default_value_banned.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_19_172247_add_default_value_banned.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_19_174126_images.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_19_174126_images.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_19_175735_private_images.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_19_175735_private_images.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_19_181245_private_photos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_19_181245_private_photos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_19_182118_rename_private_photos.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_19_182118_rename_private_photos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_20_203718_add_readed_field.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_20_203718_add_readed_field.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_22_075959_create_requwest_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_22_075959_create_requwest_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_22_105924_add_fields_to_requwest_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_22_105924_add_fields_to_requwest_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_22_190341_add_timestamp_to_requwest.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_22_190341_add_timestamp_to_requwest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_22_190811_add_timestamp_to_requwest2.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_22_190811_add_timestamp_to_requwest2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_22_203843_create_user_user_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_22_203843_create_user_user_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_24_122329_add_columns_to_requwest_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_24_122329_add_columns_to_requwest_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_172043_create_conversation_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_172043_create_conversation_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_173419_addoregin_keys_to_conversation_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_173419_addoregin_keys_to_conversation_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_03_164748_add_girl_user_foregin_key.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_03_164748_add_girl_user_foregin_key.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_03_170927_add_money_field_to_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_03_170927_add_money_field_to_user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_04_132435_add_vip_begin_and_end.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_04_132435_add_vip_begin_and_end.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_04_175332_create_prices_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_04_175332_create_prices_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_05_180834_add_begin_vip_to_girls_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_05_180834_add_begin_vip_to_girls_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_07_170615_create_presents_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_07_170615_create_presents_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_07_171539_create_girt_act_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_07_171539_create_girt_act_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_07_173105_add_foregin_keys_to_gift_act.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_07_173105_add_foregin_keys_to_gift_act.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_07_180838_add_admin_field_to_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_07_180838_add_admin_field_to_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_09_101015_add_readed_value_to_present.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_09_101015_add_readed_value_to_present.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_17_220235_create_target_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_17_220235_create_target_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_18_120004_create_girl_target_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_18_120004_create_girl_target_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_18_120730_add_foregin_keys_to_girl_target_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_18_120730_add_foregin_keys_to_girl_target_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_18_122400_drop_foregin_target_from_girls.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_18_122400_drop_foregin_target_from_girls.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_21_183433_add_link_present_act_present.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_21_183433_add_link_present_act_present.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_21_190514_add_readed_in_gift_act_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_21_190514_add_readed_in_gift_act_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_24_115703_add_active_code_phone_confernd_to_users.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_24_115703_add_active_code_phone_confernd_to_users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_28_121714_create_sessions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_28_121714_create_sessions_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_28_131934_add_status_column.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_28_131934_add_status_column.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_30_152302_add_co_users_columns_for_phone.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_30_152302_add_co_users_columns_for_phone.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_30_153400_drop_column_phone.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_30_153400_drop_column_phone.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/axios.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/axios.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Admin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Application.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Application.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/ChatApp.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ChatApp.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/ChatApp2.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ChatApp2.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/ContactsList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ContactsList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/ContactsList2.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ContactsList2.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Conversation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Conversation.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Conversation2.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Conversation2.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Interes.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Interes.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/LikeModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/LikeModal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/MessageComposer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/MessageComposer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/MessageComposer2.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/MessageComposer2.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/MessagesFeed.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/MessagesFeed.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/MessagesFeed2.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/MessagesFeed2.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/ModalComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ModalComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Myevents.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Myevents.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Power.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Power.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/PresentModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PresentModal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Presents.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Presents.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Private.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Private.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Requwesteventlist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Requwesteventlist.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/SelectCity.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SelectCity.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/SidePanele.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SidePanele.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Targets.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Targets.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/eventmycity.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/eventmycity.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/likes.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/likes.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/myAnket.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/myAnket.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/phoneComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/phoneComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/phoneRequwest.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/phoneRequwest.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/connect/ie-emulation-modes-warning.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/connect/ie-emulation-modes-warning.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/connect/jquery-3.3.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/connect/jquery-3.3.1.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/jquery-3.3.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/jquery-3.3.1.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/pagination.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/pagination.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/passwords.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/passwords.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/_variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/adminPanel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/adminPanel.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/createAnket.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/createAnket.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/custom/registration.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/custom/registration.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/custom/resetSMS.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/custom/resetSMS.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/editGirl.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editGirl.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/girlView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/girlView.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/blog.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/myAnket.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/myAnket.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/power.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/power.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/channels.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/channels.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/console.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/console.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -167,64 +19,54 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="2019_03_17_220235_create_target_table.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_17_220235_create_target_table.php">
+      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+            <state relative-caret-position="187">
+              <caret line="11" column="20" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddSmokingSeeder.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/seeds/AddSmokingSeeder.php">
+      <file leaf-file-name="phoneComponent.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/phoneComponent.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="344">
+              <caret line="126" column="34" lean-forward="true" selection-start-line="126" selection-start-column="34" selection-end-line="126" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Eventequwest.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/Eventequwest.vue">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="2014_10_12_000000_create_users_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
+      <file leaf-file-name="Interes.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/Interes.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="16" column="23" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="30" />
+            <state relative-caret-position="374">
+              <caret line="106" column="44" selection-start-line="106" selection-start-column="42" selection-end-line="106" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseSeeder.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
+      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="285">
+              <caret line="323" column="33" selection-start-line="323" selection-start-column="33" selection-end-line="323" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TableTableSeeder.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/seeds/TableTableSeeder.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="2019_05_09_221122_add_forehin_statys_myevent.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_09_221122_add_forehin_statys_myevent.php">
+      <file leaf-file-name="GirlsController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GirlsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+            <state relative-caret-position="421">
+              <caret line="409" column="57" selection-start-line="409" selection-start-column="57" selection-end-line="409" selection-end-column="57" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2019_05_09_000612_add_foregin_keys_event_partificants.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_09_000612_add_foregin_keys_event_partificants.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2019_05_09_000451_create_events_participants_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_09_000451_create_events_participants_table.php">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -241,7 +83,6 @@
     <findStrings>
       <find>sms</find>
       <find>inputp</find>
-      <find>inputPhone</find>
       <find>geteaccess</find>
       <find>makeAccess</find>
       <find>broad</find>
@@ -269,6 +110,7 @@
       <find>image</find>
       <find>price</find>
       <find>admin</find>
+      <find>inputPhone</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -277,8 +119,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="&lt;5191a40a-623d-4604-945c-a0ef48874391&gt;/sakura-city.info/resources/js/components/SidePanele.vue" />
-        <option value="&lt;5191a40a-623d-4604-945c-a0ef48874391&gt;/sakura-city.info/resources/js/components/ModalComponent.vue" />
         <option value="&lt;5191a40a-623d-4604-945c-a0ef48874391&gt;/sakura-city.info/app/Http/Controllers/PresentController.php" />
         <option value="E:/Dropbox/PHPтеория/test.php" />
         <option value="$PROJECT_DIR$/../../test/test.php" />
@@ -328,6 +168,8 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_05_09_220729_add_status_column2.php" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_17_220235_create_target_table.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/phoneComponent.vue" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" />
       </list>
     </option>
   </component>
@@ -473,25 +315,25 @@
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Providers" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="seeds" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -512,7 +354,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -603,7 +445,7 @@
       <workItem from="1555229620092" duration="18681000" />
       <workItem from="1555353381774" duration="2745000" />
       <workItem from="1555391489697" duration="1272000" />
-      <workItem from="1563449658449" duration="2253000" />
+      <workItem from="1563449658449" duration="6150000" />
     </task>
     <task id="LOCAL-00001" summary="Updating image">
       <created>1551566124024</created>
@@ -700,7 +542,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="821174000" />
+    <option name="totallyTimeSpent" value="825071000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -771,65 +613,10 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/js/components/SidePanele.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="11" lean-forward="true" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/phoneComponent.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="26" column="81" selection-start-line="26" selection-start-column="81" selection-end-line="26" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/girlView.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/sakura.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/app.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/blog.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="103" column="32" lean-forward="true" selection-start-line="103" selection-start-column="32" selection-end-line="103" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Targets.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_22_190341_add_timestamp_to_requwest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="16" column="55" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Interes.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -944,13 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -1028,13 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_09_221122_add_forehin_statys_myevent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_09_003211_add_foregin_keys_event_partificants2.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1052,18 +825,22 @@
     <entry file="file://$PROJECT_DIR$/database/seeds/AddRelationsSeeder.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/TableTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/AddSmokingSeeder.php">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_17_220235_create_target_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_07_213022_create_cmoking_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1072,10 +849,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_17_220235_create_target_table.php">
+    <entry file="file://$PROJECT_DIR$/database/seeds/AddSmokingSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        <state relative-caret-position="-51" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_09_221122_add_forehin_statys_myevent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="323" column="33" selection-start-line="323" selection-start-column="33" selection-end-line="323" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/ExampleComponent.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Interes.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="106" column="44" selection-start-line="106" selection-start-column="42" selection-end-line="106" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Eventslist.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Eventequwest.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Editimages.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3841" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/phoneComponent.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="126" column="34" lean-forward="true" selection-start-line="126" selection-start-column="34" selection-end-line="126" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GirlsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="409" column="57" selection-start-line="409" selection-start-column="57" selection-end-line="409" selection-end-column="57" />
         </state>
       </provider>
     </entry>
