@@ -66,7 +66,9 @@
                    placeholder="место события"
                    required>
         </div>
-        
+        @if($errors->has('place'))
+            <font color="red"><p>  {{$errors->first('place')}}</p></font>
+        @endif
 
 
 

@@ -33,16 +33,18 @@ class MyEventController extends Controller
     //пост события
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name'        => 'required',
-            'description' => 'required',
-            'max'         => 'required|numeric|min:1',
-            'min'         => 'required|numeric|min:1',
-            'begin'       => 'required',
-            'end'         => 'required',
-            'city'        => 'required',
-        ]);
-
+        dump($request);
+        //   die();
+        /* $validatedData = $request->validate([
+             'name'        => 'required',
+             'description' => 'required',
+             'max'         => 'numeric|min:1',
+             'min'         => 'numeric|min:1',
+           //  'begin'       => 'required',
+             // 'end'         => 'required',
+             // 'city'        => 'required',
+         ]);
+ */
 
         $event = new Myevent();
         $event->name = $request->name;
@@ -62,7 +64,7 @@ class MyEventController extends Controller
         if ($request->has('city')) {
             $event->city_id = $request->city;
         }
-        $event->girl_id = $girl->id;
+        $event->organizer_id = $girl->id;
         $event->save();
 
         if (Input::hasFile('file')) {
