@@ -28,12 +28,12 @@
             getEvents() {
                 console.log("get events");
                 axios.get('/eventsinmycity', {
-                        /*   params: {
-                               eventid: this.eventid,
-                               useris: id,
-                               action: 'accept',
-                               reqid: req_id,
-                           }*/
+                    /*   params: {
+                           eventid: this.eventid,
+                           useris: id,
+                           action: 'accept',
+                           reqid: req_id,
+                       }*/
                     }
                 )
                     .then((response) => {

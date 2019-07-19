@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        Нет событий
         <div v-for="event in events">
             {{event.name}} <br>
             Начало: {{event.begin}} <br>

@@ -15,7 +15,7 @@ class CreateEventsParticipantsTable extends Migration
     {
         Schema::create('events_participants', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('event_id')->unsigned()->index();
+            $table->integer('myevent_id')->unsigned()->index();
             $table->integer('participant_id')->unsigned()->index();
             $table->timestamps();
         });
