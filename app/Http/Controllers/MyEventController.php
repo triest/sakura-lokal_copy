@@ -93,7 +93,7 @@ class MyEventController extends Controller
             return null;
         }
         $events
-            = collect(DB::select('select myevents.id,myevents.name,event_statys.status_name,city.id_city,city.name as \'city_name\', myevents.place,myevents.created_at,myevents.updated_at from myevents  left join event_statys on myevents.status_id=event_statys.id left join cities city on myevents.city_id=city.id_city'));
+            = collect(DB::select('select myevents.id,myevents.name,event_statys.name as `event_statys`,city.id_city,city.name as \'city_name\', myevents.place,myevents.created_at,myevents.updated_at from myevents  left join event_statys on myevents.status_id=event_statys.id left join cities city on myevents.city_id=city.id_city'));
 
         return response()->json(["events" => $events]);
     }
