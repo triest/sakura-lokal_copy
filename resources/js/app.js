@@ -102,28 +102,28 @@ Vue.component('viewhistory', require('./components/Viewhistory.vue').default);
 
 Vue.component('aperance', require('./components/Aperance.vue').default);
 
-const aperanceApp= new Vue({
+const aperanceApp = new Vue({
     el: '#aperanceApp',
     data: {
         showModal: false
     }
 });
 
-const viewhistoryapp= new Vue({
+const viewhistoryapp = new Vue({
     el: '#viewhistoryapp',
     data: {
         showModal: false
     }
 });
 
-const eventinmycityapp= new Vue({
+const eventinmycityapp = new Vue({
     el: '#eventinmycityapp',
     data: {
         showModal: false
     }
 });
 
-const requwesteventlistapp= new Vue({
+const requwesteventlistapp = new Vue({
     el: '#requwesteventlistapp',
     data: {
         showModal: false
@@ -280,4 +280,13 @@ const appaceptedApp = new Vue({
     }
 
     //appacepted
-})
+});
+
+const sidePanelApp = new Vue({
+    el: '#sidePanelApp',
+    data: {
+        showModal: false
+    }
+
+    //appacepted
+});

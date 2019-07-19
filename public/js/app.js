@@ -71134,6 +71134,13 @@ var appaceptedApp = new Vue({
 
   }
 });
+        var sidePanelApp = new Vue({
+            el: '#sidePanelApp',
+            data: {
+                showModal: false //appacepted
+
+            }
+        });
 
 /***/ }),
 
