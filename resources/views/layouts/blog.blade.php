@@ -103,11 +103,10 @@
     <carouseltemp></carouseltemp>
 </div>
 
-<div class="col-sm-1">
-</div>
-<div class="col-sm-2">
+
+<div class="col-sm-3">
     <div id="test">
-        <div class="card " style=" background-color: #eeeeee;
+        <div class="card " style="width: 25rem; background-color: #eeeeee;
              border: 1px solid transparent;
              border-color: #666869;
 ">
@@ -117,9 +116,7 @@
         </div>
     </div>
 </div>
-
-<!-- десктоп sm-->
-<div class="col-sm-6">
+<div class="col-sm-3">
     <div class="row row-offcanvas row-offcanvas-right">
 
         <div class="col-xs-12 col-sm-9">
@@ -131,47 +128,46 @@
                 @yield('content')
             </div><!--/row-->
         </div><!--/span-->
-    </div>
-</div>
-<div class="col-xs-6 col-sm-1 sidebar-offcanvas" id="sidebar" role="navigation">
-    <div class="card-body">
-        @if (Auth::guest())
-            <b><a href="{{ url('/login') }}">Войти</a></b><br>
-            <b><a href="{{ url('/join') }}">Зарегистрироваться</a></b>
-        @else
-            <b>{{auth()->user()->name}}</b><br>
-            <b><a href="{{ url('/logout') }}">Выйти</a></b>
-            <br>
-            @if($girl=Auth::user()->anketisExsis()!=null)
-            <!-- {{$girl=Auth::user()->anketisExsis()}} -->
-                <img height="150" width="150"
-                     src="<?php echo asset("images/small/$girl->main_image")?>">
-                <div id="sidePanelApp">
-                    <side-panel :user="{{auth()->user()}}"></side-panel>
-                </div>
-                <br>
-                <b><a class="btn btn-primary" href="{{route('myAnket')}}">Моя анкета</a> </b>
-                <br><br>
-                <b><a class="btn btn-secondary" href="{{route('myevent')}}">Мои события</a> </b>
 
-            @else
-                <br>
-                <b><a class="btn btn-primary" href="{{route('createGirlPage')}}">Создать анкету</a> </b>
-                <br>
-            @endif
-            <br>
-            <!--check is admin -->
-            @if(Auth::user()->is_admin==1)
-                <b><a class="btn btn-success" href="{{route('adminPanel')}}">Панель администратора</a> </b>
-                <br>
-            @endif
-            <br>
-            <b><a class="btn btn-success" href="{{route('main')}}">На главную</a> </b>
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+            <div class="card-body">
+                @if (Auth::guest())
+                    <b><a href="{{ url('/login') }}">Войти</a></b><br>
+                    <b><a href="{{ url('/join') }}">Зарегистрироваться</a></b>
+                @else
+                    <b>{{auth()->user()->name}}</b><br>
+                    <b><a href="{{ url('/logout') }}">Выйти</a></b>
+                    <br>
+                    @if($girl=Auth::user()->anketisExsis()!=null)
+                    <!-- {{$girl=Auth::user()->anketisExsis()}} -->
+                        <img height="150" width="150"
+                             src="<?php echo asset("images/small/$girl->main_image")?>">
+                        <div id="sidePanelApp">
+                            <side-panel :user="{{auth()->user()}}"></side-panel>
+                        </div>
+                        <br>
+                        <b><a class="btn btn-primary" href="{{route('myAnket')}}">Моя анкета</a> </b>
+                        <br><br>
+                        <b><a class="btn btn-secondary" href="{{route('myevent')}}">Мои события</a> </b>
 
-        @endif
-    </div>
-</div>
-</div><!--/span-->
+                    @else
+                        <br>
+                        <b><a class="btn btn-primary" href="{{route('createGirlPage')}}">Создать анкету</a> </b>
+                        <br>
+                    @endif
+                    <br>
+                    <!--check is admin -->
+                    @if(Auth::user()->is_admin==1)
+                        <b><a class="btn btn-success" href="{{route('adminPanel')}}">Панель администратора</a> </b>
+                        <br>
+                    @endif
+                    <br>
+                    <b><a class="btn btn-success" href="{{route('main')}}">На главную</a> </b>
+
+                @endif
+            </div>
+        </div>
+    </div><!--/span-->
 </div>
 <!-- Bootstrap core JavaScript
 ================================================== -->
