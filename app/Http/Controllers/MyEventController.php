@@ -150,9 +150,20 @@ left join event_statys statys on myevents.status_id=statys.id left join
         $user = Auth::user();
         // dump($user);
         if ($user == null) {
-            echo "not user";
+            $ip = GirlsController::getIpStatic();
+            $response = file_get_contents("http://api.sypexgeo.net/json/"
+                .$ip); //запрашиваем местоположение
+            $response = json_decode($response);
+            $name = $response->city->name_ru;
 
-            return response()->json("not user");
+            $cities = DB::table('cities')->where('name', 'like', $name.'%')
+                ->first();
+            $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`	             
+                from myevents myev left join events_participants evpart on myev.id=evpart.myevent_id left join event_statys status on status.id=myev.status_id 
+                 where myev.city_id=? ', [$cities->id_city]));
+
+            // return response()->json("not user");
+            return response()->json($events);
         } else {
             $girl = $user->anketisExsis();
 

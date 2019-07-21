@@ -5604,8 +5604,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     city: {
@@ -58017,24 +58015,21 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-      [
-          _vm._v("\n    Нет событий\n    "),
-          _vm._l(_vm.events, function (event) {
-              return _c("div", [
-                  _vm._v("\n        " + _vm._s(event.name) + " "),
-                  _c("br"),
-                  _vm._v("\n        Начало: " + _vm._s(event.begin) + " "),
-                  _c("br"),
-                  _vm._v("\n        Место: " + _vm._s(event.place)),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("a", {attrs: {href: "/singup/" + event.id + ""}}, [
-                      _vm._v("Записаться")
-                  ])
+      _vm._l(_vm.events, function (event) {
+          return _c("div", [
+              _vm._v("\n        " + _vm._s(event.name) + " "),
+              _c("br"),
+              _vm._v("\n        Начало: " + _vm._s(event.begin) + " "),
+              _c("br"),
+              _vm._v("\n        Место: " + _vm._s(event.place)),
+              _c("br"),
+              _vm._v(" "),
+              _c("a", {attrs: {href: "/singup/" + event.id + ""}}, [
+                  _vm._v("Записаться")
               ])
-          })
-      ],
-      2
+          ])
+      }),
+      0
   )
 }
 var staticRenderFns = []

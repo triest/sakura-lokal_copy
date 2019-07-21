@@ -1,11 +1,9 @@
 <template>
     <div>
-        Нет событий
         <div v-for="event in events">
             {{event.name}} <br>
             Начало: {{event.begin}} <br>
             Место: {{event.place}}<br>
-
             <a v-bind:href="'/singup/'+event.id+''">Записаться</a>
         </div>
     </div>
