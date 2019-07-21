@@ -55902,7 +55902,7 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(event.begin))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(event.status_name))]),
+              _c("td", [_vm._v(_vm._s(event.event_statys))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(event.created_at))]),
             _vm._v(" "),

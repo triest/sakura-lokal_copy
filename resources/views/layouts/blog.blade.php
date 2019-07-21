@@ -7,18 +7,13 @@
 
     <title>{{$title}}</title>
     <script src="https://getbootstrap.com/docs/3.3/assets/js/ie-emulation-modes-warning.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{asset('css/gallery-grid.css')}}">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Bootstrap core CSS -->
 
-
-    <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{asset('css/gallery-grid.css')}}">
 
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +37,7 @@
     <meta name="generator" content="Bootply"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Bootstrap twitter bootstrap slider with carousel navigation example."/>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
 
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -104,21 +99,24 @@
 
 <body>
 <script src="{{ asset('/js/axios.min.js') }}"></script>
-<div id="test">
-    <div class="card " style="width: 25rem; background-color: #eeeeee;
+<div class="card-body" id="app2">
+    <carouseltemp></carouseltemp>
+</div>
+
+
+<div class="col-sm-3">
+    <div id="test">
+        <div class="card " style="width: 25rem; background-color: #eeeeee;
              border: 1px solid transparent;
              border-color: #666869;
 ">
-        <div id="eventinmycityapp">
-            <eventinmycityside></eventinmycityside>
+            <div id="eventinmycityapp">
+                <eventinmycityside></eventinmycityside>
+            </div>
         </div>
     </div>
 </div>
-
-<div class="container">
-    <div class="card-body" id="app2">
-        <carouseltemp></carouseltemp>
-    </div>
+<div class="col-sm-3">
     <div class="row row-offcanvas row-offcanvas-right">
 
         <div class="col-xs-12 col-sm-9">
@@ -170,7 +168,7 @@
             </div>
         </div>
     </div><!--/span-->
-</div><!--/row-->
+</div>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

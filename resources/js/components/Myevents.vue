@@ -19,7 +19,7 @@
                 <td>{{event.city_name}}</td>
                 <th>{{event.place}}</th>
                 <td>{{event.begin}}</td>
-                <td>{{event.status_name}}</td>
+                <td>{{event.event_statys}}</td>
                 <td>{{event.created_at}}</td>
                 <td>{{event.updated_at}}</td>
             </tr>
