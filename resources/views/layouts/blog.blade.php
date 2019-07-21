@@ -103,8 +103,9 @@
     <carouseltemp></carouseltemp>
 </div>
 
-
-<div class="col-sm-3">
+<div class="col-sm-1">
+</div>
+<div class="col-sm-2">
     <div id="test">
         <div class="card " style="width: 25rem; background-color: #eeeeee;
              border: 1px solid transparent;
@@ -116,10 +117,10 @@
         </div>
     </div>
 </div>
-<div class="col-sm-3">
+<div class="col-sm-8">
     <div class="row row-offcanvas row-offcanvas-right">
 
-        <div class="col-xs-12 col-sm-9">
+        <div class="col-xs-5 col-sm-8">
             <p class="pull-right visible-xs">
                 <button type="button" class="menuButton" data-toggle="offcanvas"><b>Меню</b></button>
             </p>
@@ -129,7 +130,7 @@
             </div><!--/row-->
         </div><!--/span-->
 
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
             <div class="card-body">
                 @if (Auth::guest())
                     <b><a href="{{ url('/login') }}">Войти</a></b><br>
