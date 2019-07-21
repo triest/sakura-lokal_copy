@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
             <div class="card  border-dark" style="width: 25rem; background-color: #eeeeee;
              border: 1px solid transparent;
              border-color: #666869;
@@ -12,7 +12,9 @@
                 <img width="200" src="<?php echo asset("/images/upload/$girl->main_image")?>">
                 {{$girl->status}}
                 <br>
-                Последний раз была: {{$girl->last_login}}
+                Последний раз был:
+                <br>
+                {{$girl->last_login}}
                 @if (Auth::guest())
 
                 @else
@@ -44,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
             <div class="card  border-dark" style="width: 30rem; background-color: #eeeeee;
              border: 1px solid transparent;
              border-color: #666869;
@@ -127,7 +129,7 @@
              border: 1px solid transparent;
              border-color: #666869;
 ">
-            <div class="col-sm-4">
+            <div class="col-lg-4 col-md-3 col-sm-4 col-xs-9 box-shadow">
                 <b>Интересы:</b> <br>
                 @if($interes==null)
                     Интересы не указанны
@@ -137,7 +139,7 @@
                     @endforeach
                 @endif
             </div>
-            <div class="col-sm-4">
+            <div class="col-lg-4 col-md-3 col-sm-4 col-xs-9 box-shadow">
                 <b>Цели знакомства:</b> <br>
                 @if($targets==null)
                     Цели не указанны
@@ -148,8 +150,7 @@
                 @endif
             </div>
         </div>
-    </div>
-    <div class="row">
+
         <br>
         <br>
         <b>Город:</b> <br>

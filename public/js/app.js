@@ -3147,6 +3147,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("event in my my city side");
@@ -5625,8 +5630,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    console.log("eventmycity"); //console.log("id my city " + this.city)
-
     this.findEventsInMyCity();
   },
   methods: {
@@ -5640,7 +5643,6 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this.events = response.data; //console.log(response.data[0])
       });
-      console.log(this.events);
     }
   }
 });
@@ -54757,45 +54759,60 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "carousel",
-        {
-          attrs: {
-            "per-page": 1,
-            "mouse-drag": false,
-            autoplay: true,
-            loop: true,
-            centerMode: true,
-            navigationEnabled: true
-          }
-        },
-        _vm._l(_vm.eventList, function(event) {
-          return _c("slide", { key: event.id }, [
-            _c("b", [_vm._v(_vm._s(event.name))]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v("\n            Место:" + _vm._s(event.place) + " "),
-            _c("br"),
-            _vm._v("\n            Дата: " + _vm._s(event.date) + " "),
-            _c("br"),
-            _vm._v("\n            Статус: " + _vm._s(event.status_name) + " "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "a",
-              { attrs: { type: "button", href: "/singup/" + event.id + "" } },
-              [_vm._v("Записаться")]
+    return _c("div", [
+        _vm.eventList != null
+            ? _c(
+            "div",
+            [
+                _c(
+                    "carousel",
+                    {
+                        attrs: {
+                            "per-page": 1,
+                            "mouse-drag": false,
+                            autoplay: true,
+                            loop: true,
+                            centerMode: true,
+                            navigationEnabled: true
+                        }
+                    },
+                    _vm._l(_vm.eventList, function (event) {
+                        return _c("slide", {key: event.id}, [
+                            _c("b", [_vm._v(_vm._s(event.name))]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(
+                                "\n                Место:" + _vm._s(event.place) + " "
+                            ),
+                            _c("br"),
+                            _vm._v("\n                Дата: " + _vm._s(event.date) + " "),
+                            _c("br"),
+                            _vm._v(
+                                "\n                Статус: " +
+                                _vm._s(event.status_name) +
+                                " "
+                            ),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c(
+                                "a",
+                                {
+                                    attrs: {
+                                        type: "button",
+                                        href: "/singup/" + event.id + ""
+                                    }
+                                },
+                                [_vm._v("Записаться")]
+                            )
+                        ])
+                    }),
+                    1
+                )
+            ],
+            1
             )
-          ])
-        }),
-        1
-      )
-    ],
-    1
-  )
+            : _c("div", [_c("p", [_vm._v("Нет событий")])])
+    ])
 }
 var staticRenderFns = []
 render._withStripped = true

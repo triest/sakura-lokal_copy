@@ -120,7 +120,7 @@
 <div class="col-sm-8">
     <div class="row row-offcanvas row-offcanvas-right">
 
-        <div class="col-xs-5 col-sm-8">
+        <div class="col-xs-5 col-sm-7">
             <p class="pull-right visible-xs">
                 <button type="button" class="menuButton" data-toggle="offcanvas"><b>Меню</b></button>
             </p>
@@ -129,9 +129,13 @@
                 @yield('content')
             </div><!--/row-->
         </div><!--/span-->
-
-        <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+        <!--sm- планшет -->
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
             <div class="card-body">
+                <p class="pull-right visible-xs visible-sm">
+                    <button type="button" class="menuButton" data-toggle="offcanvas"><b>Закрыть</b></button>
+                </p>
+                <br>
                 @if (Auth::guest())
                     <b><a href="{{ url('/login') }}">Войти</a></b><br>
                     <b><a href="{{ url('/join') }}">Зарегистрироваться</a></b>

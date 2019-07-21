@@ -35,8 +35,6 @@
 
         },
         mounted() {
-            console.log("eventmycity");
-            //console.log("id my city " + this.city)
             this.findEventsInMyCity();
         },
         methods:
@@ -49,7 +47,6 @@
                             this.events = response.data;
                             //console.log(response.data[0])
                         });
-                    console.log(this.events)
                 }
             }
     }
