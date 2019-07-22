@@ -15,7 +15,7 @@
             <tbody>
             <tr v-for="event in events">
                 <!--  <a :href="'/anket/'+like.id"> -->
-                <td><a :href="'/viewmyevent/' +event.id">{{event.name}}</a></td>
+                <td><a :href="'/myevent/' +event.id">{{event.name}}</a></td>
                 <td>{{event.city_name}}</td>
                 <th>{{event.place}}</th>
                 <td>{{event.begin}}</td>
@@ -43,7 +43,7 @@
         },
         methods: {
             getEvents() {
-                axios.get('/myeventslist')
+                axios.get('/myevent/list')
                     .then((response) => {
                         this.events = response.data.events;
                     });

@@ -71,20 +71,11 @@
         @endif
 
 
-
         <strong>Дата : </strong>
+        <input type="date" id="date" name="date">
 
-
-
-        <input type="text" class="form-control" id="datetimepicker5">
-
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker5').datetimepicker(
-                    {locale: 'ru'}
-                );
-            });
-        </script>
+        Время:
+        <input type="time" id="time" name="time">
 
         <label for="max">Максимальное число участников (если нет ограничения, оставьте пустым):
             <input type="number" name="max" id="min" min="1" checked>

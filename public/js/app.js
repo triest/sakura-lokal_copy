@@ -4102,7 +4102,7 @@ __webpack_require__.r(__webpack_exports__);
     getEvents: function getEvents() {
       var _this = this;
 
-      axios.get('/myeventslist').then(function (response) {
+        axios.get('/myevent/list').then(function (response) {
         _this.events = response.data.events;
       });
     }
@@ -55899,7 +55899,7 @@ var render = function() {
         _vm._l(_vm.events, function(event) {
           return _c("tr", [
             _c("td", [
-              _c("a", { attrs: { href: "/viewmyevent/" + event.id } }, [
+                _c("a", {attrs: {href: "/myevent/" + event.id}}, [
                 _vm._v(_vm._s(event.name))
               ])
             ]),
