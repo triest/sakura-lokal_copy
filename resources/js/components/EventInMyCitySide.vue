@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="eventList!=null">
+        <div v-if="eventList.length">
             <carousel :per-page="1" :mouse-drag="false" :autoplay="true" :loop="true" :centerMode="true"
                       :navigationEnabled="true">
                 <slide v-for="event in eventList" :key="event.id">
@@ -32,14 +32,7 @@
         methods: {
             getEvents() {
                 console.log("get events");
-                axios.get('/eventsinmycity', {
-                    /*   params: {
-                           eventid: this.eventid,
-                           useris: id,
-                           action: 'accept',
-                           reqid: req_id,
-                       }*/
-                    }
+                axios.get('/eventsinmycity', {}
                 )
                     .then((response) => {
                         this.eventList = response.data;

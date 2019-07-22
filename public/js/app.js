@@ -3167,14 +3167,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       console.log("get events");
-      axios.get('/eventsinmycity', {
-        /*   params: {
-               eventid: this.eventid,
-               useris: id,
-               action: 'accept',
-               reqid: req_id,
-           }*/
-      }).then(function (response) {
+        axios.get('/eventsinmycity', {}).then(function (response) {
         _this.eventList = response.data;
       });
     }
@@ -54760,7 +54753,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
     return _c("div", [
-        _vm.eventList != null
+        _vm.eventList.length
             ? _c(
             "div",
             [
