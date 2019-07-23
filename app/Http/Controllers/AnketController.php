@@ -34,7 +34,8 @@ class AnketController extends Controller
     {
         $user = Auth::user();
 
-        $girl = Girl::select(['id', 'name', 'user_id'])->where('user_id', $user->id)->first();
+        $girl = Girl::select(['id', 'name', 'user_id'])
+            ->where('user_id', $user->id)->first();
         if ($girl != null) {
             return redirect('/edit');
         }
@@ -60,14 +61,14 @@ class AnketController extends Controller
         return view('createAnket')
             ->with(
                 [
-                    'username' => $user->name,
-                    'tagrets' => $targets,
-                    'interests' => $interests,
-                    'apperance' => $apperance,
-                    'realtions' => $relations,
-                    'childrens' => $chidren,
-                    'smoking' => $smoking,
-                    'phone' => $phone,
+                    'username'      => $user->name,
+                    'tagrets'       => $targets,
+                    'interests'     => $interests,
+                    'apperance'     => $apperance,
+                    'realtions'     => $relations,
+                    'childrens'     => $chidren,
+                    'smoking'       => $smoking,
+                    'phone'         => $phone,
                     'phone_setting' => $phone_setting,
                 ]);
     }
@@ -76,21 +77,22 @@ class AnketController extends Controller
     {
 
         $validatedData = $request->validate([
-            'name' => 'required',
-            'sex' => 'required',
-            'age' => 'required|numeric|min:18',
-            'from' => 'required|numeric|min:18',
-            'to' => 'required|numeric|min:18',
-            'met' => 'required',
+            'name'        => 'required',
+            'sex'         => 'required',
+            'age'         => 'required|numeric|min:18',
+            'from'        => 'required|numeric|min:18',
+            'to'          => 'required|numeric|min:18',
+            'met'         => 'required',
             'description' => 'required',
-            'private' => 'required',
+            'private'     => 'required',
 
             // 'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $user = Auth::user();
 
-        $girl = Girl::select('id', 'name', 'user_id')->where('user_id', $user->id)->first();
+        $girl = Girl::select('id', 'name', 'user_id')
+            ->where('user_id', $user->id)->first();
         if ($girl != null) {
             return redirect('/edit');
         }
@@ -114,16 +116,20 @@ class AnketController extends Controller
 
 
         if (Input::hasFile('file')) {
-            $image_extension = $request->file('file')->getClientOriginalExtension();
+            $image_extension = $request->file('file')
+                ->getClientOriginalExtension();
             $image_new_name = md5(microtime(true));
-            $temp_file = base_path().'/public/images/upload/'.strtolower($image_new_name.'.'.$image_extension);// кладем файл с новыс именем
+            $temp_file = base_path().'/public/images/upload/'
+                .strtolower($image_new_name.'.'
+                    .$image_extension);// кладем файл с новыс именем
             $request->file('file')
                 ->move(base_path().'/public/images/upload/',
                     strtolower($image_new_name.'.'.$image_extension));
 
             $girl['main_image'] = $image_new_name.'.'.$image_extension;
             //сохраняем уменьшенную копию
-            $small = base_path().'/public/images/small/'.strtolower($image_new_name.'.'.$image_extension);
+            $small = base_path().'/public/images/small/'
+                .strtolower($image_new_name.'.'.$image_extension);
             copy($temp_file, $small);
 
             $image = new ImageResize($small);
@@ -141,9 +147,11 @@ class AnketController extends Controller
 
             $count = 0;
             foreach ($request->images as $key) {
-                $image_extension = $request->file('file')->getClientOriginalExtension();
+                $image_extension = $request->file('file')
+                    ->getClientOriginalExtension();
                 $image_new_name = md5(microtime(true));
-                $key->move(public_path().'/images/upload/', strtolower($image_new_name.'.'.$image_extension));
+                $key->move(public_path().'/images/upload/',
+                    strtolower($image_new_name.'.'.$image_extension));
                 $id = $girl['id'];
                 $photo = new Photo();
                 $photo['photo_name'] = $image_new_name.'.'.$image_extension;
@@ -155,9 +163,11 @@ class AnketController extends Controller
 
         if (Input::hasFile('privateimages')) {
             foreach ($request->privateimages as $key) {
-                $image_extension = $request->file('file')->getClientOriginalExtension();
+                $image_extension = $request->file('file')
+                    ->getClientOriginalExtension();
                 $image_new_name = md5(microtime(true));
-                $key->move(public_path().'/images/upload/', strtolower($image_new_name.'.'.$image_extension));
+                $key->move(public_path().'/images/upload/',
+                    strtolower($image_new_name.'.'.$image_extension));
                 $id = $girl['id'];
                 $photo = new Privatephoto();
                 $photo['photo_name'] = $image_new_name.'.'.$image_extension;
@@ -169,7 +179,8 @@ class AnketController extends Controller
         //цели
         if ($request->has('target')) {
             foreach ($request->target as $item) {
-                $target = Target::select(['id', 'name'])->where('id', $item)->first();
+                $target = Target::select(['id', 'name'])->where('id', $item)
+                    ->first();
                 if ($target != null) {
                     $girl->target()->attach($target);
                 }
@@ -178,7 +189,8 @@ class AnketController extends Controller
 
         //цели
         if ($request->has('aperance')) {
-            $target = Aperance::select(['id', 'name'])->where('id', $request->aperance)->first();
+            $target = Aperance::select(['id', 'name'])
+                ->where('id', $request->aperance)->first();
             if ($target != null) {
                 $girl->apperance_id = $target->id;
                 $girl->save();
@@ -187,7 +199,8 @@ class AnketController extends Controller
 
 
         if ($request->has('realtion')) {
-            $target = Relationh::select(['id', 'name'])->where('id', $request->realtion)->first();
+            $target = Relationh::select(['id', 'name'])
+                ->where('id', $request->realtion)->first();
             if ($target != null) {
                 $girl->relation_id = $target->id;
                 $girl->save();
@@ -195,7 +208,8 @@ class AnketController extends Controller
         }
 
         if ($request->has('childrens')) {
-            $target = Children::select(['id', 'name'])->where('id', $request->childrens)->first();
+            $target = Children::select(['id', 'name'])
+                ->where('id', $request->childrens)->first();
             if ($target != null) {
                 $girl->children_id = $target->id;
                 $girl->save();
@@ -203,7 +217,8 @@ class AnketController extends Controller
         }
 
         if ($request->has('smoking')) {
-            $target = Smoking::select(['id', 'name'])->where('id', $request->childrens)->first();
+            $target = Smoking::select(['id', 'name'])
+                ->where('id', $request->childrens)->first();
             if ($target != null) {
                 $girl->smoking_id = $target->id;
                 $girl->save();
@@ -216,7 +231,8 @@ class AnketController extends Controller
         }
         if ($request->has('interest')) {
             foreach ($request->interest as $item) {
-                $target = Interest::select(['id', 'name'])->where('id', $item)->first();
+                $target = Interest::select(['id', 'name'])->where('id', $item)
+                    ->first();
                 if ($target != null) {
                     $girl->interest()->attach($target);
                 }
@@ -292,54 +308,57 @@ class AnketController extends Controller
 
 
         if ($girl->city_id != null) {
-            $city = DB::table('cities')->where('id_city', '=', $girl->city_id)->first();
+            $city = DB::table('cities')->where('id_city', '=', $girl->city_id)
+                ->first();
         } else {
             $city = null;
         }
 
         //внешность
-        $selected_aperance = Aperance::select('id', 'name')->where('id', $girl->apperance_id)->first();
+        $selected_aperance = Aperance::select('id', 'name')
+            ->where('id', $girl->apperance_id)->first();
         $aperance = Aperance::select(['id', 'name'])->get();
 
 
         //тут настройки телефона
-        $select_phone_settings = DB::table('phone_settings')->where('id', $girl->phone_settings)->first();
+        $select_phone_settings = DB::table('phone_settings')
+            ->where('id', $girl->phone_settings)->first();
         $phone_setting = collect(DB::select('select * from phone_settings'));
 
         $relations = Relationh::select(['id', 'name'])->get();
 
 
         return view('editGirl')->with([
-            'username' => $user->name,
-            'girl' => $girl,
-            'phone' => $phone,
-            'targets' => $targets,
-            'allTarget' => $allTarget,
-            'anketTarget' => $anketTarget,
-            'interests' => $interests,
-            'anketInterests' => $anketInterest,
-            'allInterests' => $allInterests,
-            'city' => $city,
-            'phone_settings' => $phone_setting,
+            'username'              => $user->name,
+            'girl'                  => $girl,
+            'phone'                 => $phone,
+            'targets'               => $targets,
+            'allTarget'             => $allTarget,
+            'anketTarget'           => $anketTarget,
+            'interests'             => $interests,
+            'anketInterests'        => $anketInterest,
+            'allInterests'          => $allInterests,
+            'city'                  => $city,
+            'phone_settings'        => $phone_setting,
             'select_phone_settings' => $select_phone_settings,
-            'aperance' => $aperance,
-            'selected_aperance' => $selected_aperance,
-            'relations' => $relations,
+            'aperance'              => $aperance,
+            'selected_aperance'     => $selected_aperance,
+            'relations'             => $relations,
         ]);
     }
 
     public function edit(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
-            'sex' => 'required',
-            'age' => 'required|numeric|min:18',
-            'met' => 'required',
-            'private' => 'required',
+            'name'        => 'required',
+            'sex'         => 'required',
+            'age'         => 'required|numeric|min:18',
+            'met'         => 'required',
+            'private'     => 'required',
             'description' => 'required',
-            'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'from' => 'required|numeric|min:18',
-            'to' => 'required|numeric|min:18',
+            'file'        => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'from'        => 'required|numeric|min:18',
+            'to'          => 'required|numeric|min:18',
         ]);
         if (Auth::guest()) {
             return redirect('/login');
@@ -384,21 +403,30 @@ class AnketController extends Controller
             }
         }
 
-        DB::table('girls')->where('id', $girl->id)->update(['age' => $request['age']]);
-        DB::table('girls')->where('id', $girl->id)->update(['sex' => $request['sex']]);
-        DB::table('girls')->where('id', $girl->id)->update(['meet' => $request['met']]);
-        DB::table('girls')->where('id', $girl->id)->update(['description' => $request['description']]);
+        DB::table('girls')->where('id', $girl->id)
+            ->update(['age' => $request['age']]);
+        DB::table('girls')->where('id', $girl->id)
+            ->update(['sex' => $request['sex']]);
+        DB::table('girls')->where('id', $girl->id)
+            ->update(['meet' => $request['met']]);
+        DB::table('girls')->where('id', $girl->id)
+            ->update(['description' => $request['description']]);
         if (Input::hasFile('file')) {
             $old_image_name = $girl['main_image'];
             $path = base_path().'/public/images/upload/'.$old_image_name;
             File::Delete($path);
-            $image_extension = $request->file('file')->getClientOriginalExtension();
+            $image_extension = $request->file('file')
+                ->getClientOriginalExtension();
             $image_new_name = md5(microtime(true));
-            $temp_file = base_path().'/public/images/upload/'.strtolower($image_new_name.'.'.$image_extension);// кладем файл с новыс именем
+            $temp_file = base_path().'/public/images/upload/'
+                .strtolower($image_new_name.'.'
+                    .$image_extension);// кладем файл с новыс именем
             $new_name = $image_new_name.'.'.$image_extension;
             $request->file('file')
-                ->move(base_path().'/public/images/upload/', strtolower($image_new_name.'.'.$image_extension));
-            DB::table('girls')->where('id', $girl->id)->update(['main_image' => $new_name]);
+                ->move(base_path().'/public/images/upload/',
+                    strtolower($image_new_name.'.'.$image_extension));
+            DB::table('girls')->where('id', $girl->id)
+                ->update(['main_image' => $new_name]);
             $origin_size = getimagesize($temp_file);
         }
         //тут местоположее
@@ -434,7 +462,8 @@ class AnketController extends Controller
         }
 
         if ($request->has('aperance')) {
-            $target = Aperance::select(['id', 'name'])->where('id', $request->aperance)->first();
+            $target = Aperance::select(['id', 'name'])
+                ->where('id', $request->aperance)->first();
             if ($target != null) {
                 $girl->apperance_id = $target->id;
                 $girl->save();
@@ -455,7 +484,8 @@ class AnketController extends Controller
         $validatedData = $request->validate([
             'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        $updateMainImagePrice = DB::table('prices')->where('price_name', '=', 'update_main_image')->first();
+        $updateMainImagePrice = DB::table('prices')
+            ->where('price_name', '=', 'update_main_image')->first();
         $user = Auth::user();
         dump($updateMainImagePrice);
         $price = $updateMainImagePrice->price;
@@ -466,17 +496,20 @@ class AnketController extends Controller
 
             //сохраняем новый файл
 
-            $girl = Girl::select(['main_image'])->where('user_id', $user->get_id())->first();
+            $girl = Girl::select(['main_image'])
+                ->where('user_id', $user->get_id())->first();
 
             //$image_new_name = md5(microtime(true));
             $image_new_name = $girl->main_image;
-            $temp_file = base_path().'/public/images/upload/'.strtolower($image_new_name);// кладем файл с новыс именем
+            $temp_file = base_path().'/public/images/upload/'
+                .strtolower($image_new_name);// кладем файл с новыс именем
             $request->file('file')
                 ->move(base_path().'/public/images/upload/',
                     strtolower($image_new_name));
             $origin_size = getimagesize($temp_file);
             $girl['main_image'] = $image_new_name;
-            $small = base_path().'/public/images/small/'.strtolower($image_new_name);
+            $small = base_path().'/public/images/small/'
+                .strtolower($image_new_name);
             copy($temp_file, $small);
             $image = new ImageResize($small);
             $image->resizeToHeight(300);
@@ -497,7 +530,8 @@ class AnketController extends Controller
     public function getmainImage()
     {
         $auth = Auth::user();
-        $girl = Girl::select(['main_image'])->where('user_id', $auth->id)->first();
+        $girl = Girl::select(['main_image'])->where('user_id', $auth->id)
+            ->first();
 
         return response()->json($girl->main_image);
     }
@@ -505,7 +539,8 @@ class AnketController extends Controller
     public function getImages(Request $request)
     {
         $user = Auth::user();
-        $girl = Girl::select(['id'])->where('user_id', $user->get_id())->first();
+        $girl = Girl::select(['id'])->where('user_id', $user->get_id())
+            ->first();
         $images = $girl->photos()->get();
 
         return response()->json($images);
@@ -516,13 +551,18 @@ class AnketController extends Controller
         $user = Auth::user();
         if (Input::hasFile('file')) {
 
-            $image_extension = $request->file('file')->getClientOriginalExtension();
+            $image_extension = $request->file('file')
+                ->getClientOriginalExtension();
             $image_new_name = md5(microtime(true));
-            $temp_file = base_path().'/public/images/upload/'.strtolower($image_new_name.'.'.$image_extension);// кладем файл с новыс именем
+            $temp_file = base_path().'/public/images/upload/'
+                .strtolower($image_new_name.'.'
+                    .$image_extension);// кладем файл с новыс именем
             $request->file('file')
-                ->move(base_path().'/public/images/upload/', strtolower($image_new_name.'.'.$image_extension));
+                ->move(base_path().'/public/images/upload/',
+                    strtolower($image_new_name.'.'.$image_extension));
             $photo = new Photo();
-            $girl = Girl::select(['id', 'user_id'])->where('user_id', $user->get_id())->first();
+            $girl = Girl::select(['id', 'user_id'])
+                ->where('user_id', $user->get_id())->first();
             $photo['photo_name'] = $image_new_name.'.'.$image_extension;
             $photo = new Photo();
             $photo['photo_name'] = $image_new_name.'.'.$image_extension;
@@ -542,12 +582,14 @@ class AnketController extends Controller
             $temp_file = base_path().'/public/images/upload/'.$imagename;
             File::Delete($temp_file);
             // тут будем удалять из таблицы
-            $photo = Photo::select('id')->where('photo_name', $imagename)->get();
+            $photo = Photo::select('id')->where('photo_name', $imagename)
+                ->get();
             $photo->delete();
         } catch (\Exception $e) {
             echo "delete errod";
         }
-        $image = Photo::select(['id', 'photo_name'])->where('photo_name', $imagename)->first();
+        $image = Photo::select(['id', 'photo_name'])
+            ->where('photo_name', $imagename)->first();
         try {
             File::delete($imagename);
         } catch (IOException $e) {
@@ -560,7 +602,8 @@ class AnketController extends Controller
     public function getPrivateImages(Request $request)
     {
         $user = Auth::user();
-        $girl = Girl::select(['id'])->where('user_id', $user->get_id())->first();
+        $girl = Girl::select(['id'])->where('user_id', $user->get_id())
+            ->first();
         $images = $girl->privatephotos()->get();
 
         return response()->json($images);
@@ -570,13 +613,18 @@ class AnketController extends Controller
     {
         $user = Auth::user();
         if (Input::hasFile('file')) {
-            $image_extension = $request->file('file')->getClientOriginalExtension();
+            $image_extension = $request->file('file')
+                ->getClientOriginalExtension();
             $image_new_name = md5(microtime(true));
-            $temp_file = base_path().'/public/images/upload/'.strtolower($image_new_name.'.'.$image_extension);// кладем файл с новыс именем
+            $temp_file = base_path().'/public/images/upload/'
+                .strtolower($image_new_name.'.'
+                    .$image_extension);// кладем файл с новыс именем
             $request->file('file')
-                ->move(base_path().'/public/images/upload/', strtolower($image_new_name.'.'.$image_extension));
+                ->move(base_path().'/public/images/upload/',
+                    strtolower($image_new_name.'.'.$image_extension));
             $photo = new Privatephoto();
-            $girl = Girl::select(['id', 'user_id'])->where('user_id', $user->get_id())->first();
+            $girl = Girl::select(['id', 'user_id'])
+                ->where('user_id', $user->get_id())->first();
             $photo['photo_name'] = $image_new_name.'.'.$image_extension;
             $photo = new Privatephoto();
             $photo['photo_name'] = $image_new_name.'.'.$image_extension;
@@ -596,12 +644,14 @@ class AnketController extends Controller
             $temp_file = base_path().'/public/images/upload/'.$imagename;
             File::Delete($temp_file);
             // тут будем удалять из таблицы
-            $photo = Privatephoto::select('id')->where('photo_name', $imagename)->get();
+            $photo = Privatephoto::select('id')->where('photo_name', $imagename)
+                ->get();
             $photo->delete();
         } catch (\Exception $e) {
             echo "delete errod";
         }
-        $image = Privatephoto::select(['id', 'photo_name'])->where('photo_name', $imagename)->first();
+        $image = Privatephoto::select(['id', 'photo_name'])
+            ->where('photo_name', $imagename)->first();
         try {
             File::delete($imagename);
         } catch (IOException $e) {
@@ -620,7 +670,8 @@ class AnketController extends Controller
     )
     {
 
-        ini_set("gd.jpeg_ignore_warning", 1); // иначе на некотоых jpeg-файлах не работает
+        ini_set("gd.jpeg_ignore_warning",
+            1); // иначе на некотоых jpeg-файлах не работает
 
         list($oldwidth, $oldheight, $type) = getimagesize($source_path);
 
@@ -645,11 +696,13 @@ class AnketController extends Controller
         }
         $destination_resource = imagecreatetruecolor($newwidth, $newheight);
 
-        imagecopyresampled($destination_resource, $src_resource, 0, 0, 0, 0, $newwidth, $newheight, $oldwidth,
+        imagecopyresampled($destination_resource, $src_resource, 0, 0, 0, 0,
+            $newwidth, $newheight, $oldwidth,
             $oldheight);
 
         if ($type = 2) { # jpeg
-            imageinterlace($destination_resource, 1); // чересстрочное формирование изображение
+            imageinterlace($destination_resource,
+                1); // чересстрочное формирование изображение
             imagejpeg($destination_resource, $destination_path, $quality);
         } else { # gif, png
             $function = "image$typestr";
@@ -683,7 +736,8 @@ class AnketController extends Controller
         }
         $src = imagecreatefromjpeg($file);
         $dst = imagecreatetruecolor($newwidth, $newheight);
-        imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+        imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight,
+            $width, $height);
 
         return $dst;
     }
@@ -693,10 +747,10 @@ class AnketController extends Controller
     {
         $current_date = Carbon::now();
         $users = User::select([                 //получаем пользователей
-            'id',
-            'name',
-            'beginvip',
-            'endvip',
+                                                'id',
+                                                'name',
+                                                'beginvip',
+                                                'endvip',
         ])
             //  ->where('vip','=','1')
             ->where('beginvip', '<', $current_date)
@@ -704,7 +758,8 @@ class AnketController extends Controller
             ->orderBy('created_at', 'DESC')->get();
         $ankets = [];
         foreach ($users as $user) {
-            $girl = Girl::select(['id', 'name', 'main_image', 'age'])->where('user_id', $user->id)->first();
+            $girl = Girl::select(['id', 'name', 'main_image', 'age'])
+                ->where('user_id', $user->id)->first();
             array_push($ankets, $girl);
         }
 
@@ -714,9 +769,13 @@ class AnketController extends Controller
     public function getDataForChangeMainImage(Request $request)
     {
         $user = Auth::user();
-        $updateMainImagePrice = DB::table('prices')->where('price_name', '=', 'update_main_image')->get();
+        $updateMainImagePrice = DB::table('prices')
+            ->where('price_name', '=', 'update_main_image')->get();
 
-        return response()->json(['update_main_image' => $updateMainImagePrice, 'user_money' => $user->money]);
+        return response()->json([
+            'update_main_image' => $updateMainImagePrice,
+            'user_money'        => $user->money,
+        ]);
     }
 
     public function myAnket(Request $request)
@@ -747,17 +806,19 @@ class AnketController extends Controller
         //выбираем просмотры за день
         $views_fo_day = DB::table('view_history')
             ->where('girl_id', $anket->id)
-            ->whereBetween('time', [Carbon::now()->subDays(1), Carbon::now()->toDateTimeString()])
+            ->whereBetween('time',
+                [Carbon::now()->subDays(1), Carbon::now()->toDateTimeString()])
             ->count();
 
         $views_fo_week = DB::table('view_history')
             ->where('girl_id', $anket->id)
-            ->whereBetween('time', [Carbon::now()->subDays(1), Carbon::now()->toDateTimeString()])
+            ->whereBetween('time',
+                [Carbon::now()->subDays(1), Carbon::now()->toDateTimeString()])
             ->count();
 
         return view('myAnket')->with([
-            'anket' => $anket,
-            'views_fo_day' => $views_fo_day,
+            'anket'         => $anket,
+            'views_fo_day'  => $views_fo_day,
             'views_fo_week' => $views_fo_week,
         ]);
     }
@@ -846,11 +907,11 @@ class AnketController extends Controller
         }
 
         if ($request->has('with_met')) {
-            $with=$request->with_met;
-            if ($with=="with_famele"){
-                $girls->where('sex','famele');
-            }elseif ($with=="with_male"){
-                $girls->where('sex','male');
+            $with = $request->with_met;
+            if ($with == "with_famele") {
+                $girls->where('sex', 'famele');
+            } elseif ($with == "with_male") {
+                $girls->where('sex', 'male');
             }
 
             $girls->where('age', '>=', $request->min_age);
@@ -865,9 +926,12 @@ class AnketController extends Controller
     public function inseach(Request $request)
     {
         $user = Auth::user();
-        $girl = Girl::select(['id', 'name', 'begin_search', 'end_search'])->where('user_id', $user->id)->first();
+        $girl = Girl::select(['id', 'name', 'begin_search', 'end_search'])
+            ->where('user_id', $user->id)->first();
         $current_date = Carbon::now();
-        if ($current_date >= $girl->begin_search and $current_date <= $girl->end_search) {
+        if ($current_date >= $girl->begin_search and $current_date
+            <= $girl->end_search
+        ) {
             return response()->json("true");
         } else {
             return response()->json("false");
@@ -882,7 +946,8 @@ class AnketController extends Controller
         $messages = Message::where('to', $user->id)->where('readed', 0)->get();
         $countMessage = count($messages);
         // подарка
-        $gift = GiftAct::select('id')->where('target_id', $user->id)->where('readed', 0)->get();
+        $gift = GiftAct::select('id')->where('target_id', $user->id)
+            ->where('readed', 0)->get();
         $countGift = count($gift);
         //запросы
         $myrequest = MyRequwest::select('id',
@@ -892,13 +957,14 @@ class AnketController extends Controller
             ->get();
         $countRequwest = count($myrequest);
         $id = $user->get_gitl_id();
-        $nmberLikes = DB::table('likes')->where('target_id', $id)->get()->count();
+        $nmberLikes = DB::table('likes')->where('target_id', $id)->get()
+            ->count();
 
         return response()->json([
             "countMessages" => $countMessage,
-            "countGift" => $countGift,
+            "countGift"     => $countGift,
             "countRequwest" => $countRequwest,
-            "likeNumber" => $nmberLikes,
+            "likeNumber"    => $nmberLikes,
         ]);
     }
 
@@ -909,15 +975,18 @@ class AnketController extends Controller
         $user = Auth::user();
         $money = $user->money;
         $toTop = DB::table('prices')->where('price_name', 'to_top')->first();
-        $toFirstPlase = DB::table('prices')->where('price_name', 'to_first_place')->first();
-        $toseachPlase = DB::table('prices')->where('price_name', 'seach')->first();
-        $chageMainImage = DB::table('prices')->where('price_name', 'change_main_image')->first();
+        $toFirstPlase = DB::table('prices')
+            ->where('price_name', 'to_first_place')->first();
+        $toseachPlase = DB::table('prices')->where('price_name', 'seach')
+            ->first();
+        $chageMainImage = DB::table('prices')
+            ->where('price_name', 'change_main_image')->first();
 
         return response()->json([
-            'money' => $money,
-            'toTop' => $toTop,
-            'toFirstPlase' => $toFirstPlase,
-            'toseachPlase' => $toseachPlase,
+            'money'           => $money,
+            'toTop'           => $toTop,
+            'toFirstPlase'    => $toFirstPlase,
+            'toseachPlase'    => $toseachPlase,
             'changeMainImage' => $chageMainImage,
         ]);
     }
@@ -930,26 +999,31 @@ class AnketController extends Controller
         if ($user == null) {
             return redirect('/anket');
         }
-        $girl = Girl::select('id', 'user_id')->where('user_id', $user->id)->first();
+        $girl = Girl::select('id', 'user_id')->where('user_id', $user->id)
+            ->first();
         if ($girl == null) {
             return redirect('/anket');
         }
 
-        $history_today = DB::select('select  gl.id,gl.name,gl.age,gl.main_image,his.time,gl.city_id,citye.name as `city_name` from view_history his left JOIN girls gl on gl.id=his.who_id left join cities citye on citye.id_city=gl.city_id where girl_id=:girl_id and who_id!=:girl_id2 ORDER BY his.time DESC',
+        $history_today
+            = DB::select('select  gl.id,gl.name,gl.age,gl.main_image,his.time,gl.city_id,citye.name as `city_name` from view_history his left JOIN girls gl on gl.id=his.who_id left join cities citye on citye.id_city=gl.city_id where girl_id=:girl_id and who_id!=:girl_id2 ORDER BY his.time DESC',
             ['girl_id' => $girl->id, 'girl_id2' => $girl->id]);
 
-        $history_today2 = array();
-        array_push($history_today2, $history_today[0]);
-        $tempID = null;
-        //тут удаляем повторяющиеся записб, идушие последовательно
-        for ($i = 1; $i < count($history_today) - 1; $i++) {
-            if ($history_today[$i - 1]->id != $history_today[$i]->id) {
-                array_push($history_today2, $history_today[$i]);
+
+        if (!empty($history_today)) {
+            $history_today2 = array();
+            array_push($history_today2, $history_today[0]);
+            //тут удаляем повторяющиеся записб, идушие последовательно
+            for ($i = 1; $i < count($history_today) - 1; $i++) {
+                if ($history_today[$i - 1]->id != $history_today[$i]->id) {
+                    array_push($history_today2, $history_today[$i]);
+                }
             }
+
+            return view('viewhistory')->with(['today' => $history_today2]);
         }
 
-
-        return view('viewhistory')->with(['today' => $history_today2]);
+        return view('viewhistory')->with(['today' => $history_today]);
     }
 
     //история просмотров моеё анкеты
@@ -960,7 +1034,8 @@ class AnketController extends Controller
         if ($user == null) {
             return redirect('/anket');
         }
-        $girl = Girl::select('id', 'user_id')->where('user_id', $user->id)->first();
+        $girl = Girl::select('id', 'user_id')->where('user_id', $user->id)
+            ->first();
         if ($girl == null) {
             return redirect('/anket');
         }
