@@ -73,9 +73,15 @@
 
         <strong>Дата : </strong>
         <input type="date" id="date" name="date">
+        @if($errors->has('date'))
+            <font color="red"><p>  {{$errors->first('date')}}</p></font>
+        @endif
 
         Время:
         <input type="time" id="time" name="time">
+        @if($errors->has('time'))
+            <font color="red"><p>  {{$errors->first('time')}}</p></font>
+        @endif
 
         <label for="max">Максимальное число участников (если нет ограничения, оставьте пустым):
             <input type="number" name="max" id="min" min="1" checked>

@@ -45,47 +45,47 @@ Route::get('/anket2', function () {
 
 //создание анкеты
 Route::get('/anket/create', 'AnketController@createGirl')
-    ->name('createGirlPage')->middleware('auth');;
+        ->name('createGirlPage')->middleware('auth');;
 
 Route::post('/anket/create', 'AnketController@Store')->name('storeGirl');
 Route::get('/anket/{id}', 'GirlsController@showGirl')->name('showGirl');
 
 //количество непрочитанных сообщений
 Route::get('/getCountUnreaded', 'ContactsController@getCountUnreadedMessages')
-    ->middleware('auth');
+        ->middleware('auth');
 
 //оличество непрочитанных запросов
 Route::get('/getCountUnreadedRequwest',
-    'ContactsController@getCountUnreadedRequwest')->middleware('auth');
+        'ContactsController@getCountUnreadedRequwest')->middleware('auth');
 
 
 //заявки на открытия
 Route::get('/applications', 'ContactsController@getApplicationPage')
-    ->middleware('auth');
+        ->middleware('auth');
 //получаем сами заявки
 Route::get('/getapplication', 'ContactsController@getApplication')
-    ->middleware('auth');
+        ->middleware('auth');
 
 Route::get('/getmyapplication', 'ContactsController@myApplication')
-    ->middleware('auth');
+        ->middleware('auth');
 //кто имеет доступ к моеё анкете
 Route::get('/whohaveaccesstomyanket',
-    'ContactsController@whoHavaAccessToMyAnket')->middleware('auth');
+        'ContactsController@whoHavaAccessToMyAnket')->middleware('auth');
 //закрыть доступ
 Route::get('/clouseaccess', 'ContactsController@clouseaccess')
-    ->middleware('auth');
+        ->middleware('auth');
 //заявки на открытие телефон
 Route::get('/getrequwesttoopenphone',
-    'ContactsController@getrequwesttoopenphone')->middleware('auth');
+        'ContactsController@getrequwesttoopenphone')->middleware('auth');
 
 //предоставление доступа к телефону
 Route::get('/getnewphonaaplication', 'ContactsController@getnewphonaaplication')
-    ->middleware('auth');
+        ->middleware('auth');
 
 
 //отклонить доступ
 Route::get('/denideaccess', 'ContactsController@denideAccess')
-    ->middleware('auth');
+        ->middleware('auth');
 
 Route::get('/geteaccess', 'ContactsController@makeAccess')->middleware('auth');
 
@@ -93,25 +93,25 @@ Route::get('/req', 'ContactsController@reqTest')->middleware('auth');
 
 //проверяем, есть ли доступ к приватной части или нет
 Route::get('/getisprivaterrnot', 'ContactsController@getIsPrivateOrNot')
-    ->middleware('auth');
+        ->middleware('auth');
 
 //проверяем, отправляли ли запрос
 Route::get('/getsendregornot', 'ContactsController@sendornot')
-    ->middleware('auth');
+        ->middleware('auth');
 
 //отправляем запрос:
 Route::get('/sendreg', 'ContactsController@sendreg')->middleware('auth');
 
 //отправлен ли запрос на открытие телефона
 Route::get('/getsendregphoneornot', 'ContactsController@getsendregphoneornot')
-    ->middleware('auth');
+        ->middleware('auth');
 
 Route::get('/denidephoneaplication', 'ContactsController@denidephoneaplication')
-    ->middleware('auth');
+        ->middleware('auth');
 
 //
 Route::get('/sendregphone', 'ContactsController@sendregphone')
-    ->middleware('auth');
+        ->middleware('auth');
 
 //редактирование галлереи
 Route::get('/editimages', function () {
@@ -125,31 +125,31 @@ Route::get('/continion/', 'AnketController@createGirl')->name('continion');
 
 //редактировать анке
 Route::get('/edit', 'AnketController@girlsEditAuchAnket')
-    ->name('girlsEditAuchAnket')->middleware('auth');;
+        ->name('girlsEditAuchAnket')->middleware('auth');;
 Route::post('/user/anketa/edit/', 'AnketController@edit')->name('girlsEdit');
 
 //обновление главной фотографии
 Route::post('/updateMainImage', 'AnketController@updateMainImage')
-    ->name('updateMainImage');
+        ->name('updateMainImage');
 Route::get('/getmainImage', 'AnketController@getmainimage')->middleware('auth');
 //получаем обычные фотографии
 Route::get('/getImages', 'AnketController@getImages')->middleware('auth');
 //загрузить обычнае фотографии
 Route::post('/updateGalerayImage', 'AnketController@updateGalerayImage')
-    ->middleware('auth');
+        ->middleware('auth');
 
 //удалить фотографию
 Route::get('/deleteImage', 'AnketController@deleteImage')->middleware('auth');
 
 //приватные фотографии
 Route::get('/getPrivateImages', 'AnketController@getPrivateImages')
-    ->middleware('auth');
+        ->middleware('auth');
 
 Route::post('/updatePrivateGalerayImage',
-    'AnketController@updatePrivateGalerayImage')->middleware('auth');
+        'AnketController@updatePrivateGalerayImage')->middleware('auth');
 
 Route::get('/deletePrivateImage', 'AnketController@deletePrivateImage')
-    ->middleware('auth');
+        ->middleware('auth');
 
 Route::get('/power', function () {
     return view('power');
@@ -164,16 +164,16 @@ Route::post('/yandex', 'MoneyController@reciverMoney');
 
 //получить цены
 Route::get('/getpricestotop', 'MoneyController@getpricestotop')
-    ->middleware('auth');
+        ->middleware('auth');
 
 Route::get('/getpricetoseach', 'MoneyController@getpricetoseach')
-    ->middleware('auth');
+        ->middleware('auth');
 
 Route::get('/getpricetofirstplace', 'MoneyController@getpricetofirstplase')
-    ->middleware('auth');
+        ->middleware('auth');
 
 Route::get('/getpricechangemainimage',
-    'MoneyController@getpricechangemainimage')->middleware('auth');
+        'MoneyController@getpricechangemainimage')->middleware('auth');
 
 Route::get('/tofirstplaсe', 'MoneyController@toFirstPlase')->middleware('auth');
 
@@ -229,43 +229,43 @@ Route::group(['middleware' => 'admin'], function () {
 
     // пользователи
     Route::get('/getuserslist', 'AdminController@getuserslist')
-        ->middleware('auth', 'admin');
+            ->middleware('auth', 'admin');
     //конец пользователей
     //получаем список интересов
 
     Route::get('/interess', 'AdminController@getinteresslist')
-        ->middleware('auth', 'admin');
+            ->middleware('auth', 'admin');
 
     Route::post('/createinteress', 'AdminController@createinteress')
-        ->middleware('auth', 'admin');
+            ->middleware('auth', 'admin');
 
     Route::post('/editinteress', 'AdminController@editinteress')
-        ->middleware('auth', 'admin');
+            ->middleware('auth', 'admin');
 
     Route::post('/deleteinteress', 'AdminController@deleteinteress')
-        ->middleware('auth', 'admin');
+            ->middleware('auth', 'admin');
 
     Route::get('/bannedorNot', 'AdminController@bannedorNot')
-        ->middleware('auth', 'admin');
+            ->middleware('auth', 'admin');
     //работа с анкетами пользовател
     Route::post('/makebunned', 'AdminController@makebunned')
-        ->middleware('auth', 'admin');
+            ->middleware('auth', 'admin');
 
     Route::get('/seachAdmin', 'AdminController@seachAdmin')
-        ->middleware('auth', 'admin');
+            ->middleware('auth', 'admin');
 
     Route::get('/bannedorNot', 'AdminController@bannedorNot')
-        ->middleware('auth', 'admin');
+            ->middleware('auth', 'admin');
 
     Route::get('/seachAdmin', 'AdminController@seachAdmin')
-        ->middleware('auth', 'admin');
+            ->middleware('auth', 'admin');
 
     Route::get('/getPrices', 'MoneyController@getPrices')
-        ->middleware('auth', 'admin');
+            ->middleware('auth', 'admin');
 
     //changeprice
     Route::post('/changePrice', 'MoneyController@changePrice')
-        ->middleware('auth', 'admin');
+            ->middleware('auth', 'admin');
 });
 
 Route::get('/isAdmin', 'AdminController@isAdmin')->middleware('auth');
@@ -278,13 +278,13 @@ Route::post('/delpresent', 'PresentController@delpresent')->middleware('auth');
 
 //подарить подарок
 Route::post('/givepresent', 'PresentController@givepresent')
-    ->middleware('auth');
+        ->middleware('auth');
 
 Route::get('/presenttest', 'PresentController@presenttest');
 
 //счетчик подаркоа
 Route::get('/getCountUnreadedPresents',
-    'PresentController@getCountUnreaderPresents')->middleware('auth');
+        'PresentController@getCountUnreaderPresents')->middleware('auth');
 
 //мои подарки
 Route::get('mypresents', function () {
@@ -294,22 +294,22 @@ Route::get('mypresents', function () {
 //получение списка моих подарко
 )->middleware('auth');
 Route::get('/getpresentsforMe', 'PresentController@presentsForMe')
-    ->middleware('auth');
+        ->middleware('auth');
 
 Route::get('/getpresentsHistoryforMe',
-    'PresentController@getpresentsHistoryforMe')->middleware('auth');
+        'PresentController@getpresentsHistoryforMe')->middleware('auth');
 
 
 Route::get('/getpresentsFromMe', 'PresentController@getpresentsFromMe')
-    ->middleware('auth');
+        ->middleware('auth');
 
 //markpresentasreaded
 Route::post('/markpresentasreaded', 'PresentController@markpresentasreaded')
-    ->middleware('auth');
+        ->middleware('auth');
 
 //
 Route::get('/getDataForChangeMainImage',
-    'AnketController@getDataForChangeMainImage')->middleware('auth');;
+        'AnketController@getDataForChangeMainImage')->middleware('auth');;
 
 //получаем id пользователя по
 
@@ -317,7 +317,7 @@ Route::get('/getDataForChangeMainImage',
 Route::get('/sendSMS2', function () {
     $phone = Input::get('phone');
     $user = collect(DB::select('select * from users where phone like ?',
-        [$phone]))->first();
+            [$phone]))->first();
     //   dump($user);
     if ($user != null and $user->phone_conferd == 1) {
         //echo 'Phone alredy exist!';
@@ -332,7 +332,7 @@ Route::get('/sendSMS2', function () {
     $user->save();
     //2) отправляем его в смс
     App::call('App\Http\Controllers\GirlsController@sendSMS',
-        [$phone, $activeCode]);
+            [$phone, $activeCode]);
 
     return response()->json(['result' => 'ok']);
 }
@@ -355,13 +355,13 @@ Route::get('/sendCODE2', function () {
 );
 
 Route::get('/myAnket', 'AnketController@myAnket')->name("myAnket")
-    ->middleware('auth', 'anketExist');
+        ->middleware('auth', 'anketExist');
 
 Route::get('/getMyAnketData', 'AnketController@getMyAnketData')
-    ->middleware('auth', 'anketExist');
+        ->middleware('auth', 'anketExist');
 
 Route::get('/getTopPhotos', 'AnketController@getTopPhotos')
-    ->middleware('auth', 'anketExist');
+        ->middleware('auth', 'anketExist');
 
 Route::get('/getuserid', 'ContactsController@getUserID');
 
@@ -372,20 +372,20 @@ Route::post('/inputCode', 'GirlsController@inputCode')->middleware('auth');
 
 //список целей
 Route::get('/targets', 'AdminController@gettargetslist')
-    ->middleware('auth', 'admin');
+        ->middleware('auth', 'admin');
 
 Route::post('/createtarget', 'AdminController@createtarget')
-    ->middleware('auth', 'admin');
+        ->middleware('auth', 'admin');
 
 Route::post('/edittarget', 'AdminController@edittarget')
-    ->middleware('auth', 'admin');
+        ->middleware('auth', 'admin');
 
 Route::post('/deletetargret', 'AdminController@deletetargret')
-    ->middleware('auth', 'admin');
+        ->middleware('auth', 'admin');
 
 //поиск города
 Route::get('/findcity/{name}',
-    'AnketController@findcity');//->middleware('auth');
+        'AnketController@findcity');//->middleware('auth');
 
 Route::get('/getargetslist', 'AdminController@gettargetslist');
 
@@ -402,7 +402,7 @@ Route::get('/eventtest', 'PresentController@eventtest');
 Route::get('/newlike', 'LikeController@newLike');
 Route::get('/getLikesNumber', 'LikeController@getLikesNumber');
 Route::get('/getLikesNumberAuch', 'LikeController@getLikesNumberAuch')
-    ->middleware('auth');
+        ->middleware('auth');
 //likeSendedl
 Route::get('/likeSended', 'LikeController@likeSended');
 //список тех, кто поставил мне лайки
@@ -412,11 +412,11 @@ Route::get('/getLikesList', 'LikeController@getLikesList');
 //боковая панель, все данные
 //getalldataforsidepanel
 Route::get('/getalldataforsidepanel', 'AnketController@getalldataforsidepanel')
-    ->middleware('auth');
+        ->middleware('auth');
 
 //gatalldataforpower
 Route::get('/gatalldataforpower', 'AnketController@gatalldataforpower')
-    ->middleware('auth');
+        ->middleware('auth');
 
 
 //тест почты
@@ -429,37 +429,37 @@ Route::get('/newsearch', function () {
 
 //события
 Route::get('/myevent', 'MyEventController@myevent')->name('myevent')
-    ->middleware('auth', 'anketExist');
+        ->middleware('auth', 'anketExist');
 
 //форма с созданием.
-Route::get('/createevent', 'MyEventController@create')->name('createevent')
-    ->middleware('auth', 'anketExist');
+Route::get('/myevent/store', 'MyEventController@create')->name('createevent')
+        ->middleware('auth', 'anketExist');
 
-Route::post('/createevent', 'MyEventController@store')->name('storeEvent')
-    ->middleware('auth', 'anketExist');
+Route::post('/myevent/store', 'MyEventController@store')->name('storeEvent')
+        ->middleware('auth', 'anketExist');
 
 //get my events list
 Route::get('/myevent/list', 'MyEventController@list')->name('myeventslist')
-    ->middleware('auth', 'anketExist');
+        ->middleware('auth', 'anketExist');
 
 //редактировать событие
 Route::get('/editevent/{id}', 'MyEventController@edit')->name('editevent')
-    ->middleware('auth', 'anketExist');
+        ->middleware('auth', 'anketExist');
 
 //просмотр события
 Route::get('/myevent/{id}', 'MyEventController@viewmyevent')
-    ->name('viewmyevent')->middleware('auth', 'anketExist');
+        ->name('viewmyevent')->middleware('auth', 'anketExist');
 
 Route::get('/myevent/{id}/edit', 'MyEventController@edit')
-    ->name('editevent')->middleware('auth', 'anketExist');
+        ->name('editevent')->middleware('auth', 'anketExist');
 
 Route::get('/listrequwest', 'MyEventController@listrequwest')
-    ->name('viewmyevent')->middleware('auth',
-        'anketExist');
+        ->name('viewmyevent')->middleware('auth',
+                'anketExist');
 
 //присоединиться к событию
 Route::get('/singup/{id}', 'MyEventController@singup')->name('viewmyevent')
-    ->middleware('auth', 'anketExist');
+        ->middleware('auth', 'anketExist');
 
 //
 
