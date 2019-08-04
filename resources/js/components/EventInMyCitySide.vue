@@ -15,6 +15,7 @@
         </div>
         <div v-else>
             <p>Нет событий</p>
+            <a class="btn btn-primary" href="/myevent/store">Создать событие</a>
         </div>
     </div>
 </template>

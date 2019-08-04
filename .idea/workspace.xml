@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="" />
+    <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/EventInMyCitySide.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/EventInMyCitySide.vue" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,35 +21,44 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7208">
-              <caret line="435" column="22" selection-start-line="435" selection-start-column="18" selection-end-line="435" selection-end-column="22" />
+            <state relative-caret-position="200">
+              <caret line="476" column="27" selection-start-line="476" selection-start-column="13" selection-end-line="476" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyEventController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
+      <file leaf-file-name="eventmycity.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/eventmycity.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="29" column="26" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="26" />
+            <state relative-caret-position="620">
+              <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Myevents.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/Myevents.vue">
+      <file leaf-file-name="EventInMyCitySide.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/EventInMyCitySide.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+            <state relative-caret-position="289">
+              <caret line="17" column="76" selection-start-line="17" selection-start-column="76" selection-end-line="17" selection-end-column="76" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnketController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
+      <file leaf-file-name="SidePanele.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/SidePanele.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="1025" column="67" selection-start-line="1025" selection-start-column="53" selection-end-line="1025" selection-end-column="67" />
+            <state relative-caret-position="425">
+              <caret line="25" column="79" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="79" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="blog.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/blog.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="153" column="78" selection-start-line="153" selection-start-column="71" selection-end-line="153" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -62,7 +75,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getpricestotop</find>
       <find>change</find>
       <find>image</find>
       <find>price</find>
@@ -83,7 +95,6 @@
       <find>getci</find>
       <find>eventinmycityside</find>
       <find>Последний раз была</find>
-      <find>eventsinmycity</find>
       <find>carousel-inner</find>
       <find>status_name</find>
       <find>/moment.min</find>
@@ -92,6 +103,8 @@
       <find>applications-list</find>
       <find>myevent</find>
       <find>history_today</find>
+      <find>eventsinmycity</find>
+      <find>собы</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -147,15 +160,15 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_07_19_154547_add_deault_value_to_event_status.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_19_160414_rename_column_in_event_photos.php" />
         <option value="$PROJECT_DIR$/resources/js/components/eventmycity.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/EventInMyCitySide.vue" />
         <option value="$PROJECT_DIR$/resources/views/girlView.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/js/components/Myevents.vue" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/blog.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/test.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/event/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/EventInMyCitySide.vue" />
       </list>
     </option>
   </component>
@@ -274,10 +287,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -285,6 +297,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -362,7 +375,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -373,7 +385,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../adjux/adjux" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../yii-books/books" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -475,6 +487,7 @@
       <workItem from="1563612061111" duration="7417000" />
       <workItem from="1563704044194" duration="26731000" />
       <workItem from="1563872068965" duration="1508000" />
+      <workItem from="1564946897014" duration="2514000" />
     </task>
     <task id="LOCAL-00001" summary="Updating image">
       <created>1551566124024</created>
@@ -686,11 +699,18 @@
       <option name="project" value="LOCAL" />
       <updated>1563874339771</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Fix get event in my city sie panel (eventdate &gt;now)">
+      <created>1564949484895</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1564949484895</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="895213000" />
+    <option name="totallyTimeSpent" value="897727000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -701,8 +721,8 @@
       <window_info anchor="bottom" id="Migrations" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32946146" />
-      <window_info anchor="bottom" id="Run" order="9" />
       <window_info id="npm" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="9" />
       <window_info anchor="bottom" id="Terminal" order="5" />
       <window_info anchor="right" id="Remote Host" order="1" visible="true" weight="0.12552084" />
       <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.34895834" />
@@ -715,11 +735,11 @@
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="14" />
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="File Transfer" order="0" sideWeight="0.48697916" visible="true" weight="0.32946146" />
       <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49947917" weight="0.32946146" />
-      <window_info anchor="bottom" id="Messages" order="14" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -766,7 +786,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Fix reg form." />
     <MESSAGE value="Fix power vue" />
     <MESSAGE value="Fix present" />
     <MESSAGE value="Add present history" />
@@ -791,7 +810,8 @@
     <MESSAGE value="normal work" />
     <MESSAGE value="Add input date and time" />
     <MESSAGE value="Add check if empty history views" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add check if empty history views" />
+    <MESSAGE value="Fix get event in my city sie panel (eventdate &gt;now)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix get event in my city sie panel (eventdate &gt;now)" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -991,13 +1011,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/SidePanele.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="63" column="5" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/CarouselTemp.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1019,13 +1032,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/eventmycity.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/welcome.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1036,38 +1042,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/EventInMyCitySide.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/girlView.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="152" selection-start-line="152" selection-end-line="152" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/blog.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7208">
-          <caret line="435" column="22" selection-start-line="435" selection-start-column="18" selection-end-line="435" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="29" column="26" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1080,7 +1058,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
+        <state relative-caret-position="17051">
           <caret line="1025" column="67" selection-start-line="1025" selection-start-column="53" selection-end-line="1025" selection-end-column="67" />
         </state>
       </provider>
@@ -1094,8 +1072,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Myevents.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+        <state relative-caret-position="748">
+          <caret line="45" column="35" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-115">
+          <caret line="175" column="10" selection-start-line="175" selection-start-column="10" selection-end-line="175" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="476" column="27" selection-start-line="476" selection-start-column="13" selection-end-line="476" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/SidePanele.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="79" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/blog.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="153" column="78" selection-start-line="153" selection-start-column="71" selection-end-line="153" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/eventmycity.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/EventInMyCitySide.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="76" selection-start-line="17" selection-start-column="76" selection-end-line="17" selection-end-column="76" />
         </state>
       </provider>
     </entry>

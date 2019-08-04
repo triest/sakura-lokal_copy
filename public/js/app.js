@@ -3153,6 +3153,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("event in my my city side");
@@ -54807,7 +54808,18 @@ var render = function() {
             ],
             1
             )
-            : _c("div", [_c("p", [_vm._v("Нет событий")])])
+            : _c("div", [
+                _c("p", [_vm._v("Нет событий")]),
+                _vm._v(" "),
+                _c(
+                    "a",
+                    {
+                        staticClass: "btn btn-primary",
+                        attrs: {href: "/myevent/store"}
+                    },
+                    [_vm._v("Создать событие")]
+                )
+            ])
     ])
 }
 var staticRenderFns = []
