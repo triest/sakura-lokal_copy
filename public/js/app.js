@@ -3152,6 +3152,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("event in my my city side");
@@ -54778,7 +54779,9 @@ var render = function() {
                                 "\n                Место:" + _vm._s(event.place) + " "
                             ),
                             _c("br"),
-                            _vm._v("\n                Дата: " + _vm._s(event.date) + " "),
+                            _vm._v(
+                                "\n                Дата: " + _vm._s(event.begin) + " "
+                            ),
                             _c("br"),
                             _vm._v(
                                 "\n                Статус: " +

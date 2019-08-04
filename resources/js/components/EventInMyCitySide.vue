@@ -6,8 +6,9 @@
                 <slide v-for="event in eventList" :key="event.id">
                     <b>{{event.name}}</b> <br>
                     Место:{{event.place}} <br>
-                    Дата: {{event.date}} <br>
+                    Дата: {{event.begin}} <br>
                     Статус: {{event.status_name}} <br>
+
                     <a type="button" v-bind:href="'/singup/'+event.id+''">Записаться</a>
                 </slide>
             </carousel>
