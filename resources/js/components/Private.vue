@@ -98,7 +98,7 @@
         methods: {
             khowHasPrivateOrNot() {
                 console.log('reg ' + this.id);
-                axios.get('/getisprivaterrnot', {
+                axios.get('/private/status', {
                     params: {
                         id: this.user_id
                     }
@@ -128,7 +128,7 @@
             khowSendRequwestOrNot() { //узнаёт, отправлен запрос или нет
                 console.log("sendor not");
                 var data_response = null;
-                axios.get('/getsendregornot', {
+                axios.get('/private/requwest/status', {
                     params: {
                         id: this.id
                     }
@@ -167,7 +167,7 @@
                     })
             },//отправляет запрос на открытие анкеты
             sendRequwest() {
-                axios.get('/sendreg', {
+                axios.get('/private/requwest/send', {
                     params: {
                         id: this.id
                     }

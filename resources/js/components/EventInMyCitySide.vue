@@ -34,7 +34,7 @@
         methods: {
             getEvents() {
                 console.log("get events");
-                axios.get('/eventsinmycity', {}
+                axios.get('/events/inmycity', {}
                 )
                     .then((response) => {
                         this.eventList = response.data;

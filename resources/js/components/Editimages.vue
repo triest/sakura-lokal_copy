@@ -125,14 +125,14 @@
         methods:
             {
                 getmainImage() {
-                    axios.get('/getmainImage')
+                    axios.get('/image/main')
                         .then((response) => {
                             this.mainImage = response.data;
                         });
                 },
                 getimages() {
 
-                    axios.get('/getImages')
+                    axios.get('/images')
                         .then((response) => {
                             this.images = response.data;
                         });
@@ -146,7 +146,7 @@
                         */
                     let formData = new FormData();
                     formData.append('file', this.mainFile);
-                    axios.post('/updateMainImage',
+                    axios.post('/image/main/update',
                         formData,
                         {
                             headers: {
@@ -168,7 +168,7 @@
                         */
                     let formData = new FormData();
                     formData.append('file', this.galerayFile);
-                    axios.post('/updateGalerayImage',
+                    axios.post('/images/update',
                         formData,
                         {
                             headers: {
@@ -187,7 +187,7 @@
                         */
                     let formData = new FormData();
                     formData.append('file', this.privatefile);
-                    axios.post('/updatePrivateGalerayImage',
+                    axios.post('/images/private/update',
                         formData,
                         {
                             headers: {
@@ -216,7 +216,7 @@
 
                 deleteGelataiImage(image) {
 
-                    axios.get('/deleteImage', {
+                    axios.get('/image/delete', {
                             params: {
                                 imagename: image
                             }
@@ -229,7 +229,7 @@
                 },
                 deletePrivateGelataiImage(image) {
 
-                    axios.get('/deletePrivateImage', {
+                    axios.get('/images/private/delete', {
                             params: {
                                 imagename: image
                             }
@@ -243,7 +243,7 @@
                 getprivateimages() {
                     console.log("get private images");
                     this.privateimages = null;
-                    axios.get('/getPrivateImages')
+                    axios.get('/images/private')
                         .then((response) => {
                             this.privateimages = response.data;
                         });

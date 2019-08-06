@@ -111,22 +111,22 @@
         methods:
             {
                 getApplications() {
-                    axios.get('/getapplication')
+                    axios.get('/application/get')
                         .then((response) => {
                             this.applications = null;
                             this.applications = response.data;
                         })
                 },
                 getMyApplications() {
-                    axios.get('/getmyapplication')
+                    axios.get('/application/get/my')
                         .then((response) => {
                             this.myapplications = null;
                             this.myapplications = response.data;
                         })
                 },
                 denideNewApplication(girl_id) {
-                    console.log(girl_id)
-                    axios.get('/denideaccess', {
+                    console.log(girl_id);
+                    axios.get('/appilication/denide/', {
                         params: {
                             id: girl_id,
 
@@ -138,11 +138,11 @@
                             if (response.data == 'ok') {
                                 this.getApplications();
                             }
-                        })
+                        });
                     this.getApplications();
                 },
                 getNewApplication(user_id) {
-                    axios.get('/geteaccess', {
+                    axios.get('/application/make', {
                         params: {
                             id: user_id
                         }
@@ -151,7 +151,7 @@
                             if (response.data == 'ok') {
                                 this.getApplications();
                             }
-                        })
+                        });
                     this.getApplications();
                     this.getWhoHavwAccessToMyAnket()
                 },
@@ -176,14 +176,14 @@
                         })
                 },
                 getreqtopenphone() {
-                    axios.get('/getrequwesttoopenphone', {})
+                    axios.get('/phone/requwest/open', {})
                         .then((response) => {
                             //console.log(response.data)
                             this.requwesttoopenphone = response.data;
                         })
                 },
                 getNewPhoneApplication(id) {
-                    axios.get('/getnewphonaaplication', {
+                    axios.get('/phone/requwest/apperance/create', {
                         params: {
                             id: id,
                         }
@@ -195,7 +195,7 @@
                     this.getreqtopenphone();
                 },
                 denidePhoneApplication(id) {
-                    axios.get('/denidephoneaplication', {
+                    axios.get('/phone/appication/denide', {
                         params: {
                             id: id,
                         }

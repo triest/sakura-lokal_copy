@@ -2229,7 +2229,7 @@ __webpack_require__.r(__webpack_exports__);
     getApplications: function getApplications() {
       var _this = this;
 
-      axios.get('/getapplication').then(function (response) {
+        axios.get('/application/get').then(function (response) {
         _this.applications = null;
         _this.applications = response.data;
       });
@@ -2237,7 +2237,7 @@ __webpack_require__.r(__webpack_exports__);
     getMyApplications: function getMyApplications() {
       var _this2 = this;
 
-      axios.get('/getmyapplication').then(function (response) {
+        axios.get('/application/get/my').then(function (response) {
         _this2.myapplications = null;
         _this2.myapplications = response.data;
       });
@@ -2246,7 +2246,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       console.log(girl_id);
-      axios.get('/denideaccess', {
+        axios.get('/appilication/denide/', {
         params: {
           id: girl_id
         }
@@ -2262,7 +2262,7 @@ __webpack_require__.r(__webpack_exports__);
     getNewApplication: function getNewApplication(user_id) {
       var _this4 = this;
 
-      axios.get('/geteaccess', {
+        axios.get('/application/make', {
         params: {
           id: user_id
         }
@@ -2299,13 +2299,13 @@ __webpack_require__.r(__webpack_exports__);
     getreqtopenphone: function getreqtopenphone() {
       var _this7 = this;
 
-      axios.get('/getrequwesttoopenphone', {}).then(function (response) {
+        axios.get('/phone/requwest/open', {}).then(function (response) {
         //console.log(response.data)
         _this7.requwesttoopenphone = response.data;
       });
     },
     getNewPhoneApplication: function getNewPhoneApplication(id) {
-      axios.get('/getnewphonaaplication', {
+        axios.get('/phone/requwest/apperance/create', {
         params: {
           id: id
         }
@@ -2317,7 +2317,7 @@ __webpack_require__.r(__webpack_exports__);
     denidePhoneApplication: function denidePhoneApplication(id) {
       var _this8 = this;
 
-      axios.get('/denidephoneaplication', {
+        axios.get('/phone/appication/denide', {
         params: {
           id: id
         }
@@ -3013,14 +3013,14 @@ __webpack_require__.r(__webpack_exports__);
     getmainImage: function getmainImage() {
       var _this = this;
 
-      axios.get('/getmainImage').then(function (response) {
+        axios.get('/image/main').then(function (response) {
         _this.mainImage = response.data;
       });
     },
     getimages: function getimages() {
       var _this2 = this;
 
-      axios.get('/getImages').then(function (response) {
+        axios.get('/images').then(function (response) {
         _this2.images = response.data;
       });
     },
@@ -3031,7 +3031,7 @@ __webpack_require__.r(__webpack_exports__);
           */
       var formData = new FormData();
       formData.append('file', this.mainFile);
-      axios.post('/updateMainImage', formData, {
+        axios.post('/image/main/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -3049,7 +3049,7 @@ __webpack_require__.r(__webpack_exports__);
           */
       var formData = new FormData();
       formData.append('file', this.galerayFile);
-      axios.post('/updateGalerayImage', formData, {
+        axios.post('/images/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -3062,7 +3062,7 @@ __webpack_require__.r(__webpack_exports__);
           */
       var formData = new FormData();
       formData.append('file', this.privatefile);
-      axios.post('/updatePrivateGalerayImage', formData, {
+        axios.post('/images/private/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -3084,7 +3084,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteGelataiImage: function deleteGelataiImage(image) {
       var _this3 = this;
 
-      axios.get('/deleteImage', {
+        axios.get('/image/delete', {
         params: {
           imagename: image
         }
@@ -3094,7 +3094,7 @@ __webpack_require__.r(__webpack_exports__);
       this.getimages();
     },
     deletePrivateGelataiImage: function deletePrivateGelataiImage(image) {
-      axios.get('/deletePrivateImage', {
+        axios.get('/images/private/delete', {
         params: {
           imagename: image
         }
@@ -3106,7 +3106,7 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log("get private images");
       this.privateimages = null;
-      axios.get('/getPrivateImages').then(function (response) {
+        axios.get('/images/private').then(function (response) {
         _this4.privateimages = response.data;
       });
     },
@@ -3169,7 +3169,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       console.log("get events");
-        axios.get('/eventsinmycity', {}).then(function (response) {
+        axios.get('/events/inmycity', {}).then(function (response) {
         _this.eventList = response.data;
       });
     }
@@ -4659,7 +4659,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       console.log('reg ' + this.id);
-      axios.get('/getisprivaterrnot', {
+        axios.get('/private/status', {
         params: {
           id: this.user_id
         }
@@ -4691,7 +4691,7 @@ __webpack_require__.r(__webpack_exports__);
       //узнаёт, отправлен запрос или нет
       console.log("sendor not");
       var data_response = null;
-      axios.get('/getsendregornot', {
+        axios.get('/private/requwest/status', {
         params: {
           id: this.id
         }
@@ -4729,7 +4729,7 @@ __webpack_require__.r(__webpack_exports__);
     sendRequwest: function sendRequwest() {
       var _this4 = this;
 
-      axios.get('/sendreg', {
+        axios.get('/private/requwest/send', {
         params: {
           id: this.id
         }
@@ -6183,10 +6183,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var _methods;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -6226,60 +6222,51 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       regStatus: ''
     };
   },
-  methods: (_methods = {
+            methods: {
     sendRequwest: function sendRequwest() {
       var _this = this;
 
-      axios.get('/sendphonereg', {
+        axios.get('/phone/requwest/send', {
         params: {
           id: this.id
         }
       }).then(function (response) {
         _this.khowSendRequwestOrNot();
       });
-    }
-  }, _defineProperty(_methods, "sendRequwest", function sendRequwest() {
-    var _this2 = this;
+    },
+                khowSendRequwestOrNot: function khowSendRequwestOrNot() {
+                    var _this2 = this;
 
-    axios.get('/sendregphone', {
-      params: {
-        id: this.id
-      }
-    }).then(function (response) {
-      _this2.khowSendRequwestOrNot();
-    });
-  }), _defineProperty(_methods, "khowSendRequwestOrNot", function khowSendRequwestOrNot() {
-    var _this3 = this;
+                    //узнаёт, отправлен запрос или нет
+                    console.log("sendor not");
+                    var data_response = null;
+                    console.log("id " + this.id);
+                    axios.get('/phone/requwest/send/status', {
+                        params: {
+                            id: this.id
+                        }
+                    }).then(function (response) {
+                        data_response = response.data;
 
-    //узнаёт, отправлен запрос или нет
-    console.log("sendor not");
-    var data_response = null;
-    console.log("id " + this.id);
-    axios.get('/getsendregphoneornot', {
-      params: {
-        id: this.id
-      }
-    }).then(function (response) {
-      data_response = response.data;
+                        if (data_response == "not") {
+                            _this2.showSendRegButton = true;
+                            console.log("phone not");
+                            _this2.regStatus = "notsended";
+                        } else {
+                            _this2.showSendRegButton = false; //если отправлен, то надо статус показать
 
-      if (data_response == "not") {
-        _this3.showSendRegButton = true;
-        console.log("phone not");
-        _this3.regStatus = "notsended";
-      } else {
-        _this3.showSendRegButton = false; //если отправлен, то надо статус показать
-
-        if (response.data == "notreaded") {
-          _this3.regStatus = "notreaded";
-        } else if (response.data == "readed") {
-          _this3.regStatus = "readed";
-        } else if (response.data['status'] == "rejected") {
-          console.log("regecter");
-          _this3.regStatus = "rejected";
-        }
-      }
-    });
-  }), _methods)
+                            if (response.data == "notreaded") {
+                                _this2.regStatus = "notreaded";
+                            } else if (response.data == "readed") {
+                                _this2.regStatus = "readed";
+                            } else if (response.data['status'] == "rejected") {
+                                console.log("regecter");
+                                _this2.regStatus = "rejected";
+                            }
+                        }
+                    });
+                }
+            }
 });
 
 /***/ }),

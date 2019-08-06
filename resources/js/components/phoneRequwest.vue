@@ -42,18 +42,7 @@
         },
         methods: {
             sendRequwest() {
-                axios.get('/sendphonereg', {
-                    params: {
-                        id: this.id
-                    }
-                })
-                    .then((response) => {
-                            this.khowSendRequwestOrNot();
-                        }
-                    )
-            },
-            sendRequwest() {
-                axios.get('/sendregphone', {
+                axios.get('/phone/requwest/send', {
                     params: {
                         id: this.id
                     }
@@ -68,7 +57,7 @@
                 console.log("sendor not");
                 var data_response = null;
                 console.log("id " + this.id);
-                axios.get('/getsendregphoneornot', {
+                axios.get('/phone/requwest/send/status', {
                     params: {
                         id: this.id
                     }

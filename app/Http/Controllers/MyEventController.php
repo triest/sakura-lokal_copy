@@ -146,7 +146,7 @@ left join event_statys statys on myevents.status_id=statys.id left join
         ]);
     }
 
-    public function eventsinmycity(Request $request)
+    public function inmycity(Request $request)
     {
 
         $user = Auth::user();
