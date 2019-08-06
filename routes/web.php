@@ -405,8 +405,6 @@ Route::get('/seach', 'AnketController@seach');
 
 Route::get('/inseach', 'AnketController@inseach');
 
-Route::get('/eventtest', 'PresentController@eventtest');
-
 
 //лайки
 Route::get('/newlike', 'LikeController@newLike');

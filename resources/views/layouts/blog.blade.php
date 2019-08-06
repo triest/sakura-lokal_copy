@@ -14,6 +14,10 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Bootstrap core CSS -->
 
+    <!--for galeray -->
+    <link href="{{asset('css/gallery-grid.css')}}">
+    <link rel="stylesheet" href="{{ asset('js/baguetteBox.min.css') }}">
+    <!--end for faleray -->
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css"
@@ -40,7 +44,6 @@
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link rel="icon" href="http://example.com/favicon.png">
     <style>
         .container {
             max-width: 1170px;
