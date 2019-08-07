@@ -4,8 +4,8 @@
             <button class="btn-default" v-on:click="makeRequwest()">Отправить заявку на мероприятие
             </button>
         </div>
-        <h5 v-if="requwestStatus=='notreaded'"><b>Ваша заявка на участие в мероприятии не рассмотренна</b></h5>
-        <h5 v-if="requwestStatus=='aсcept'"><b>Заявка на участие  принята!</b></h5>
+        <h5 v-if="requwestStatus=='unread'"><b>Ваша заявка на участие в мероприятии не рассмотренна</b></h5>
+        <h5 v-if="requwestStatus=='aсcept'"><b>Заявка на участие принята!</b></h5>
         <h5 v-if="requwestStatus=='denide'"><b>Заявка на участие отклонена</b></h5>
     </div>
 </template>
@@ -14,13 +14,13 @@
     export default {
         props: {
             event: {
-                type: Object,
+                type: Number,
                 required: false
             },
         },
         mounted() {
             console.log("event req");
-            console.log(this.event.id);
+            console.log(this.event);
             this.checkRequwet();
         },
         data() {
@@ -32,9 +32,9 @@
         methods: {
             makeRequwest() {
                 console.log("make req");
-                axios.get('/event/makerequwest', {
+                axios.get('/event/requwest/create', {
                     params: {
-                        id: this.event.id
+                        id: this.event
                     }
                 })
                     .then((response) => {
@@ -46,7 +46,7 @@
             checkRequwet() {
                 axios.get('/event/checkrequwest', {
                     params: {
-                        id: this.event.id
+                        id: this.event
                     }
                 })
                     .then((response) => {
@@ -55,13 +55,13 @@
                         if (res == "notsend") {
                             this.requwestSended = 'false';
                         }
-                        else if (res['status'] == 'unredded') {
+                        else if (res['status'] == 'unread') {
                             this.requwestSended = true;
-                            this.requwestStatus= "notreaded";
+                            this.requwestStatus = "unread";
                         }
                         else if (res['status'] == 'accept') {
                             this.requwestSended = true;
-                            this.requwestStatus= "aсcept";
+                            this.requwestStatus = "aсcept";
                         }
                     })
             }

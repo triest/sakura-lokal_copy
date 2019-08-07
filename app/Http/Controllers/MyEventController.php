@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Newevent;
 use App\Girl;
+use App\Jobs\SendMessageAboutEvent;
+use App\Jobs\SendSMSAboutEvent;
 use App\Myevent;
 use App\EventStatys;
 use App\EventPhoto;
 use App\Eventrequwest;
 //use App\Events\Neweventrequwest;
+use App\User;
 use DateTime;
 use Doctrine\DBAL\Events;
 use Illuminate\Http\Request;
@@ -217,33 +221,66 @@ left join event_statys statys on myevents.status_id=statys.id left join
 
     public function singup($id)
     {
-        //выбираем событие
-        /* $events = collect(DB::select('select myev.id,myev.name,myev.place,myev.description,myev.max_people,myev.min_people,myev.begin,myev.end,myev.status_id from myevents myev left join events_participants evpart on myev.id=evpart.event_id
-              where myev.id=? limit 1', [$id]));*/
         $events = Myevent::select([
             'id',
             'name',
             'place',
+            'begin',
             'description',
             'max_people',
-        ])->Paginate(1);
-        //dump($events);
-        /*  $count = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.city_id from myevents myev left join events_participants evpart on myev.id=evpart.event_id
-               where myev.id=? group by myev.id', [$id]));
-  */
+            'organizer_id',
+        ])->where('id', $id)->first();
+        $days = [
+            'Воскресенье',
+            'Понедельник',
+            'Вторник',
+            'Среда',
+            'Четверг',
+            'Пятница',
+            'Суббота',
+        ];
+        $months = [
+            'Январь',
+            'Февраль',
+            'Март',
+            'Апрель',
+            'Май',
+            'Июнь',
+            'Июль',
+            'Август',
+            'Сентябрь',
+            'Октябрь',
+            'Ноябрь',
+            'Декабрь',
+        ];
+        $arr = explode(" ", $events->begin);
+        $day_num = date("w", strtotime($arr[0]));
+        $day_name = $days[$day_num];
+        $d = date_parse_from_format("Y-m-d", $arr[0]);
+        $month_name = $months[$d["month"]];
+        $day = $d["day"];
 
-        // dump($count);
 
+        $organizer = Girl::select(['id', 'name', 'main_image'])
+            ->where('id', $events->organizer_id)->first();
+        $photo = $events->photo()->get();
+        dump($photo);
 
         return view('event.singup')->with([
-            'events' => $events,
+            'event'      => $events,
+            'day_name'   => $day_name,
+            'month_name' => $month_name,
+            'day'        => $day,
+            'time'       => $arr[1],
+            'organizer'  => $organizer,
+            'photo'      => $photo
             /* 'count' => $count*/
         ]);
     }
 
     public function makerequwest(Request $request)
     {
-        // dump($request);
+
         $user = Auth::user();
         $girl = Girl::select(['id', 'name'])->where('user_id', $user->id)
             ->first();
@@ -251,28 +288,40 @@ left join event_statys statys on myevents.status_id=statys.id left join
             return null;
         }
         $eventreq = new Eventrequwest();
-        $eventreq->save();
-
         $event = Myevent::select([
             'id',
             'name',
             'place',
             'description',
             'max_people',
+            'organizer_id',
         ])->where('id',
             $request->id)->first();
+        if ($event == null) {
+            return response(404);
+        }
 
-        //$eventreq->who()->associate($girl)->save();
         $eventreq->girl_id = $girl->id;
         $eventreq->event_id
             = $event->id;      //  $eventreq->target()->associate($girl)->save();
 
-        $eventreq->status = 'unredded';
+        $eventreq->status = 'unread';
         $eventreq->save();
 
-        // broadcast(new Neweventrequwest($eventreq));
+        $eventOwgene = Girl::select(['id', 'user_id'])
+            ->where('id', $event->organizer_id)->first();
+        //  $user = $eventOwgene->user()->get();
+        $user = User::select(['id'])->where('id', $eventOwgene->user_id)
+            ->first();
 
-        return response()->json('ok');
+        broadcast(new Newevent($eventreq));
+        new SendMessageAboutEvent("Новая заявка на мероприятие", $user->email,
+            $user->name, 'Новая заявка на ваше мероприятие!');
+        new SendSMSAboutEvent("Новая заявка на мероприятие", $user->phone,
+            $event->name);
+
+
+        return response(200);
     }
 
     public function checkrequwest(Request $request)

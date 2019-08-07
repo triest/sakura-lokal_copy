@@ -3202,13 +3202,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     event: {
-      type: Object,
+        type: Number,
       required: false
     }
   },
   mounted: function mounted() {
     console.log("event req");
-    console.log(this.event.id);
+      console.log(this.event);
     this.checkRequwet();
   },
   data: function data() {
@@ -3222,9 +3222,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       console.log("make req");
-      axios.get('/event/makerequwest', {
+        axios.get('/event/requwest/create', {
         params: {
-          id: this.event.id
+            id: this.event
         }
       }).then(function (response) {
         //console.log(response.data);
@@ -3237,7 +3237,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/event/checkrequwest', {
         params: {
-          id: this.event.id
+            id: this.event
         }
       }).then(function (response) {
         //console.log(response.data);
@@ -3245,9 +3245,9 @@ __webpack_require__.r(__webpack_exports__);
 
         if (res == "notsend") {
           _this2.requwestSended = 'false';
-        } else if (res['status'] == 'unredded') {
+        } else if (res['status'] == 'unread') {
           _this2.requwestSended = true;
-          _this2.requwestStatus = "notreaded";
+            _this2.requwestStatus = "unread";
         } else if (res['status'] == 'accept') {
           _this2.requwestSended = true;
           _this2.requwestStatus = "aсcept";
@@ -54764,29 +54764,29 @@ var render = function() {
                             _vm._v(" "),
                             _c("br"),
                             _vm._v(
-                                "\n                Место:" + _vm._s(event.place) + " "
+                                "\n                    Место:" + _vm._s(event.place) + " "
                             ),
                             _c("br"),
                             _vm._v(
-                                "\n                Дата: " + _vm._s(event.begin) + " "
+                                "\n                    Дата: " + _vm._s(event.begin) + " "
                             ),
                             _c("br"),
                             _vm._v(
-                                "\n                Статус: " +
+                                "\n                    Статус: " +
                                 _vm._s(event.status_name) +
                                 " "
                             ),
                             _c("br"),
-                            _vm._v(" "),
+                            _vm._v("\nd\n                    "),
                             _c(
                                 "a",
                                 {
                                     attrs: {
                                         type: "button",
-                                        href: "/singup/" + event.id + ""
+                                        href: "event/singup/" + event.id
                                     }
                                 },
-                                [_vm._v("Записаться")]
+                                [_vm._v("Записаться!")]
                             )
                         ])
                     }),
@@ -54849,7 +54849,7 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm.requwestStatus == "notreaded"
+      _vm.requwestStatus == "unread"
       ? _c("h5", [
           _c("b", [
             _vm._v("Ваша заявка на участие в мероприятии не рассмотренна")
@@ -54858,7 +54858,7 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _vm.requwestStatus == "aсcept"
-      ? _c("h5", [_c("b", [_vm._v("Заявка на участие  принята!")])])
+        ? _c("h5", [_c("b", [_vm._v("Заявка на участие принята!")])])
       : _vm._e(),
     _vm._v(" "),
     _vm.requwestStatus == "denide"
@@ -71146,6 +71146,13 @@ var appaceptedApp = new Vue({
 });
         var sidePanelApp = new Vue({
             el: '#sidePanelApp',
+            data: {
+                showModal: false //appacepted
+
+            }
+        });
+        var eventregApp = new Vue({
+            el: '#eventregApp',
             data: {
                 showModal: false //appacepted
 

@@ -466,7 +466,7 @@ Route::get('/listrequwest', 'MyEventController@listrequwest')
         'anketExist');
 
 //присоединиться к событию
-Route::get('/singup/{id}', 'MyEventController@singup')->name('viewmyevent')
+Route::get('event/singup/{id}', 'MyEventController@singup')->name('viewmyevent')
     ->middleware('auth', 'anketExist');
 
 //
@@ -484,7 +484,7 @@ Route::get('/city/change', 'GirlsController@changeCity')->name('changeCity');
 
 Route::get('/events/inmycity', 'MyEventController@inmycity');
 
-Route::get('/event/makerequwest', 'MyEventController@makerequwest');
+Route::get('/event/requwest/create', 'MyEventController@makerequwest');
 
 Route::get('/event/checkrequwest', 'MyEventController@checkrequwest');
 

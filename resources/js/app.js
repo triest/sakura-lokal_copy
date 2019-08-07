@@ -290,3 +290,12 @@ const sidePanelApp = new Vue({
 
     //appacepted
 });
+
+const eventregApp = new Vue({
+    el: '#eventregApp',
+    data: {
+        showModal: false
+    }
+
+    //appacepted
+});
