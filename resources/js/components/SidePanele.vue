@@ -82,18 +82,6 @@
                 .listen('eventPreasent', (e) => {
                     this.getNumberUnreadedPresents();
                 });
-
-
-            /*  axios.get('/getCountUnreaded')
-                  .then((response) => {
-                      this.numberUnreaded = response.data;
-                  });*/
-            /*axios.get('/getCountUnreadedRequwest')
-                .then((response) => {
-                    this.numberApplication = response.data;
-                }),
-                this.getNumberUnreadedPresents();
-            this.getLikesNumber();*/
         },
         methods:
             {

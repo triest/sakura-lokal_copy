@@ -38,7 +38,6 @@ class MyEventController extends Controller
     //пост события
     public function store(Request $request)
     {
-        dump($request);
         $validatedData = $request->validate([
             'name'        => 'required',
             'description' => 'required',
@@ -112,10 +111,7 @@ class MyEventController extends Controller
             ->join('event_statys', 'event_statys.id', '=', 'myevents.status_id')
             ->where('myevents.id', '=', $id)
             ->first();
-        //dump($events);
         $statys = EventStatys::select()->get();
-
-        // dump($statys);
 
         return view('event.edit')->with([
             'event'  => $events,
@@ -133,13 +129,7 @@ left join event_statys statys on myevents.status_id=statys.id left join
             [$id]));
         $events = $events[0];
 
-        //dump($events);
         $statys = EventStatys::select()->get();
-        // dump($events);
-
-        // dump($statys);
-        //dump($events);
-
         if ($events == null) {
             return null;
         }
@@ -264,7 +254,7 @@ left join event_statys statys on myevents.status_id=statys.id left join
         $organizer = Girl::select(['id', 'name', 'main_image'])
             ->where('id', $events->organizer_id)->first();
         $photo = $events->photo()->get();
-        dump($photo);
+
 
         return view('event.singup')->with([
             'event'      => $events,
@@ -346,6 +336,7 @@ left join event_statys statys on myevents.status_id=statys.id left join
 
     public function requwestlist(Request $request)
     {
+
         $list
             = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=?',
             [$request->eventid]));
@@ -355,27 +346,53 @@ left join event_statys statys on myevents.status_id=statys.id left join
         $reject
             = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="denide"',
             [$request->eventid]));
-        $unredded
-            = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="unredded"',
+        $unreaded
+            = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="unreaded"',
             [$request->eventid]));
 
+        //  dump($unredded);
 
         return response()->json([
             'all'      => $list,
             'accepted' => $accepted,
             'reject'   => $reject,
-            'unredded' => $unredded,
+            'unreaded' => $unreaded,
         ]);
+    }
+
+
+    public function unreaded(Request $request)
+    {
+        $unreaded
+            = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="unreaded"',
+            [$request->eventid]));
+
+        return response()->json($unreaded);
+    }
+
+    public function accepted(Request $request)
+    {
+        $unreaded
+            = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="accept"',
+            [$request->eventid]));
+
+        return response()->json($unreaded);
+    }
+
+    public function denided(Request $request)
+    {
+        $unreaded
+            = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="denide"',
+            [$request->eventid]));
+
+        return response()->json($unreaded);
     }
 
     public function accept(Request $request)
     {
         $id = $request->useris;
-        //dump($id);
         $action = $request->action;
-        //dump($action);
         $eventid = $request->eventid;
-        //dump($eventid);
         //id запрома
         $reqid = $request->reqid;
 
@@ -408,7 +425,7 @@ left join event_statys statys on myevents.status_id=statys.id left join
 
     }
 
-    public function requwestmyevent(Request $request)
+    public function countunreaded(Request $request)
     {
         $user = Auth::user();
         if ($user == null) {

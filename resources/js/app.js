@@ -94,8 +94,6 @@ Vue.component('eventrequwest', require('./components/Eventrequwest.vue').default
 
 Vue.component('requwesteventlist', require('./components/Requwesteventlist.vue').default);
 
-Vue.component('requwesteventlist', require('./components/Requwesteventlist.vue').default);
-
 Vue.component('eventinmycityside', require('./components/EventInMyCitySide.vue').default);
 
 Vue.component('viewhistory', require('./components/Viewhistory.vue').default);

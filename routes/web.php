@@ -488,11 +488,17 @@ Route::get('/event/requwest/create', 'MyEventController@makerequwest');
 
 Route::get('/event/checkrequwest', 'MyEventController@checkrequwest');
 
-Route::get('/eventrequwestlist', 'MyEventController@requwestlist');
+Route::get('/event/requwestlist', 'MyEventController@requwestlist');
+
+Route::get('/event/requwestlist/unreaded', 'MyEventController@unreaded');
+
+Route::get('/event/requwestlist/accepted', 'MyEventController@accepted');
+
+Route::get('/event/requwestlist/denided', 'MyEventController@denided');
 
 Route::get('/event/accept', 'MyEventController@accept');
 
-Route::get('/event/requwest/myevent', 'MyEventController@requwestmyevent');
+Route::get('/event/requwest/myevent', 'MyEventController@countunreaded');
 
 Route::get('/test', function () {
     return view('test');

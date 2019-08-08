@@ -4946,11 +4946,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     eventid: {
-      type: Number,
+        type: String,
       required: true
     }
   },
@@ -4958,11 +4957,12 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log("requwesteventlist1");
     this.getrequwests();
-    console.log(this.eventid);
+      this.getunreaded();
+      this.getacepted();
+      this.getdenided();
   },
   data: function data() {
     return {
-      accept: null,
       requwestlist: null,
       currentTab: 'all',
       accepted: null,
@@ -4971,8 +4971,16 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+      gatall: function gatall() {
+          this.getrequwests();
+          this.getacepted();
+          this.getdenided();
+      },
     accept: function accept(id, req_id) {
-      console.log(id);
+        this.requwestlist = [];
+        this.accepted = null;
+        this.rejected = null;
+        this.unredded = null;
       axios.get('/event/accept', {
         params: {
           eventid: this.eventid,
@@ -4981,10 +4989,10 @@ __webpack_require__.r(__webpack_exports__);
           reqid: req_id
         }
       }).then(function (response) {});
+        this.gatall();
+        this.getacepted();
     },
     reject: function reject(id, req_id) {
-      console.log(id);
-      console.log(id);
       axios.get('/event/accept', {
         params: {
           eventid: this.eventid,
@@ -4993,23 +5001,54 @@ __webpack_require__.r(__webpack_exports__);
           reqid: req_id
         }
       }).then(function (response) {});
+        this.gatall();
     },
     getrequwests: function getrequwests() {
       var _this = this;
 
-      axios.get('/eventrequwestlist', {
+        this.requwestlist = null;
+        axios.get('/event/requwestlist', {
         params: {
           eventid: this.eventid
         }
       }).then(function (response) {
         _this.requwestlist = response.data.all;
-        _this.accepted = response.data.accepted;
-        _this.rejected = response.data.reject;
-        _this.unredded = response.data.unredded;
+        });
+    },
+      getacepted: function getacepted() {
+          var _this2 = this;
+
+          axios.get('/event/requwestlist/accepted', {
+              params: {
+                  eventid: this.eventid
+              }
+          }).then(function (response) {
+              _this2.accepted = response.data;
+          });
+      },
+      getdenided: function getdenided() {
+          var _this3 = this;
+
+          axios.get('/event/requwestlist/denided', {
+              params: {
+                  eventid: this.eventid
+              }
+          }).then(function (response) {
+              _this3.rejected = response.data;
+          });
+      },
+      getunreaded: function getunreaded() {
+          var _this4 = this;
+
+          axios.get('/event/requwestlist/unreaded', {
+              params: {
+                  eventid: this.eventid
+              }
+          }).then(function (response) {
+              _this4.unredded = response.data;
       });
     },
     myFunction: function myFunction(id) {
-      console.log(id);
       window.open("/anket/" + id, "_blank");
     }
   }
@@ -5153,17 +5192,6 @@ __webpack_require__.r(__webpack_exports__);
     Echo.private("gifs.".concat(this.user.id)).listen('eventPreasent', function (e) {
       _this.getNumberUnreadedPresents();
     });
-    /*  axios.get('/getCountUnreaded')
-          .then((response) => {
-              this.numberUnreaded = response.data;
-          });*/
-
-    /*axios.get('/getCountUnreadedRequwest')
-        .then((response) => {
-            this.numberApplication = response.data;
-        }),
-        this.getNumberUnreadedPresents();
-    this.getLikesNumber();*/
   },
   methods: {
     closeLikeModal: function closeLikeModal() {
@@ -6262,7 +6290,6 @@ __webpack_require__.r(__webpack_exports__);
 
         if (data_response == "not") {
           _this2.showSendRegButton = true;
-          console.log("phone not");
           _this2.regStatus = "notsended";
         } else {
           _this2.showSendRegButton = false; //если отправлен, то надо статус показать
@@ -57121,7 +57148,7 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
-                          requwest.status == "unredded"
+                            requwest.status == "unreaded"
                             ? _c("h5", [
                                 _c("b", [
                                   _c(
@@ -57143,6 +57170,8 @@ var render = function() {
                                       )
                                     ]
                                   ),
+                                    _vm._v(" "),
+                                    _c("br"),
                                   _vm._v(" "),
                                   _c(
                                     "a",
@@ -71004,7 +71033,6 @@ Vue.component('myevents', __webpack_require__(/*! ./components/Myevents.vue */ "
 Vue.component('eventmycity', __webpack_require__(/*! ./components/eventmycity.vue */ "./resources/js/components/eventmycity.vue").default); //заапрос на участие в событии
 
 Vue.component('eventrequwest', __webpack_require__(/*! ./components/Eventrequwest.vue */ "./resources/js/components/Eventrequwest.vue").default);
-Vue.component('requwesteventlist', __webpack_require__(/*! ./components/Requwesteventlist.vue */ "./resources/js/components/Requwesteventlist.vue").default);
 Vue.component('requwesteventlist', __webpack_require__(/*! ./components/Requwesteventlist.vue */ "./resources/js/components/Requwesteventlist.vue").default);
 Vue.component('eventinmycityside', __webpack_require__(/*! ./components/EventInMyCitySide.vue */ "./resources/js/components/EventInMyCitySide.vue").default);
 Vue.component('viewhistory', __webpack_require__(/*! ./components/Viewhistory.vue */ "./resources/js/components/Viewhistory.vue").default);

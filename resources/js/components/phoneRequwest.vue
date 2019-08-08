@@ -66,7 +66,6 @@
                         data_response = response.data;
                         if (data_response == "not") {
                             this.showSendRegButton = true;
-                            console.log("phone not")
                             this.regStatus = "notsended"
                         }
                         else {
