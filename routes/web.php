@@ -488,10 +488,11 @@ Route::get('/event/requwest/create', 'MyEventController@makerequwest');
 
 Route::get('/event/checkrequwest', 'MyEventController@checkrequwest');
 
-
 Route::get('/eventrequwestlist', 'MyEventController@requwestlist');
 
 Route::get('/event/accept', 'MyEventController@accept');
+
+Route::get('/event/requwest/myevent', 'MyEventController@requwestmyevent');
 
 Route::get('/test', function () {
     return view('test');

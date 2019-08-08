@@ -2229,7 +2229,7 @@ __webpack_require__.r(__webpack_exports__);
     getApplications: function getApplications() {
       var _this = this;
 
-        axios.get('/application/get').then(function (response) {
+      axios.get('/application/get').then(function (response) {
         _this.applications = null;
         _this.applications = response.data;
       });
@@ -2237,7 +2237,7 @@ __webpack_require__.r(__webpack_exports__);
     getMyApplications: function getMyApplications() {
       var _this2 = this;
 
-        axios.get('/application/get/my').then(function (response) {
+      axios.get('/application/get/my').then(function (response) {
         _this2.myapplications = null;
         _this2.myapplications = response.data;
       });
@@ -2246,7 +2246,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       console.log(girl_id);
-        axios.get('/appilication/denide/', {
+      axios.get('/appilication/denide/', {
         params: {
           id: girl_id
         }
@@ -2262,7 +2262,7 @@ __webpack_require__.r(__webpack_exports__);
     getNewApplication: function getNewApplication(user_id) {
       var _this4 = this;
 
-        axios.get('/application/make', {
+      axios.get('/application/make', {
         params: {
           id: user_id
         }
@@ -2299,13 +2299,13 @@ __webpack_require__.r(__webpack_exports__);
     getreqtopenphone: function getreqtopenphone() {
       var _this7 = this;
 
-        axios.get('/phone/requwest/open', {}).then(function (response) {
+      axios.get('/phone/requwest/open', {}).then(function (response) {
         //console.log(response.data)
         _this7.requwesttoopenphone = response.data;
       });
     },
     getNewPhoneApplication: function getNewPhoneApplication(id) {
-        axios.get('/phone/requwest/apperance/create', {
+      axios.get('/phone/requwest/apperance/create', {
         params: {
           id: id
         }
@@ -2317,7 +2317,7 @@ __webpack_require__.r(__webpack_exports__);
     denidePhoneApplication: function denidePhoneApplication(id) {
       var _this8 = this;
 
-        axios.get('/phone/appication/denide', {
+      axios.get('/phone/appication/denide', {
         params: {
           id: id
         }
@@ -3013,14 +3013,14 @@ __webpack_require__.r(__webpack_exports__);
     getmainImage: function getmainImage() {
       var _this = this;
 
-        axios.get('/image/main').then(function (response) {
+      axios.get('/image/main').then(function (response) {
         _this.mainImage = response.data;
       });
     },
     getimages: function getimages() {
       var _this2 = this;
 
-        axios.get('/images').then(function (response) {
+      axios.get('/images').then(function (response) {
         _this2.images = response.data;
       });
     },
@@ -3031,7 +3031,7 @@ __webpack_require__.r(__webpack_exports__);
           */
       var formData = new FormData();
       formData.append('file', this.mainFile);
-        axios.post('/image/main/update', formData, {
+      axios.post('/image/main/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -3049,7 +3049,7 @@ __webpack_require__.r(__webpack_exports__);
           */
       var formData = new FormData();
       formData.append('file', this.galerayFile);
-        axios.post('/images/update', formData, {
+      axios.post('/images/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -3062,7 +3062,7 @@ __webpack_require__.r(__webpack_exports__);
           */
       var formData = new FormData();
       formData.append('file', this.privatefile);
-        axios.post('/images/private/update', formData, {
+      axios.post('/images/private/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -3084,7 +3084,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteGelataiImage: function deleteGelataiImage(image) {
       var _this3 = this;
 
-        axios.get('/image/delete', {
+      axios.get('/image/delete', {
         params: {
           imagename: image
         }
@@ -3094,7 +3094,7 @@ __webpack_require__.r(__webpack_exports__);
       this.getimages();
     },
     deletePrivateGelataiImage: function deletePrivateGelataiImage(image) {
-        axios.get('/images/private/delete', {
+      axios.get('/images/private/delete', {
         params: {
           imagename: image
         }
@@ -3106,7 +3106,7 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log("get private images");
       this.privateimages = null;
-        axios.get('/images/private').then(function (response) {
+      axios.get('/images/private').then(function (response) {
         _this4.privateimages = response.data;
       });
     },
@@ -3153,7 +3153,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("event in my my city side");
@@ -3169,7 +3168,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       console.log("get events");
-        axios.get('/events/inmycity', {}).then(function (response) {
+      axios.get('/events/inmycity', {}).then(function (response) {
         _this.eventList = response.data;
       });
     }
@@ -3202,13 +3201,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     event: {
-        type: Number,
+      type: Number,
       required: false
     }
   },
   mounted: function mounted() {
     console.log("event req");
-      console.log(this.event);
+    console.log(this.event);
     this.checkRequwet();
   },
   data: function data() {
@@ -3222,9 +3221,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       console.log("make req");
-        axios.get('/event/requwest/create', {
+      axios.get('/event/requwest/create', {
         params: {
-            id: this.event
+          id: this.event
         }
       }).then(function (response) {
         //console.log(response.data);
@@ -3237,7 +3236,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/event/checkrequwest', {
         params: {
-            id: this.event
+          id: this.event
         }
       }).then(function (response) {
         //console.log(response.data);
@@ -3247,7 +3246,7 @@ __webpack_require__.r(__webpack_exports__);
           _this2.requwestSended = 'false';
         } else if (res['status'] == 'unread') {
           _this2.requwestSended = true;
-            _this2.requwestStatus = "unread";
+          _this2.requwestStatus = "unread";
         } else if (res['status'] == 'accept') {
           _this2.requwestSended = true;
           _this2.requwestStatus = "aсcept";
@@ -4104,7 +4103,7 @@ __webpack_require__.r(__webpack_exports__);
     getEvents: function getEvents() {
       var _this = this;
 
-        axios.get('/myevent/list').then(function (response) {
+      axios.get('/myevent/list').then(function (response) {
         _this.events = response.data.events;
       });
     }
@@ -4659,7 +4658,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       console.log('reg ' + this.id);
-        axios.get('/private/status', {
+      axios.get('/private/status', {
         params: {
           id: this.user_id
         }
@@ -4691,7 +4690,7 @@ __webpack_require__.r(__webpack_exports__);
       //узнаёт, отправлен запрос или нет
       console.log("sendor not");
       var data_response = null;
-        axios.get('/private/requwest/status', {
+      axios.get('/private/requwest/status', {
         params: {
           id: this.id
         }
@@ -4729,7 +4728,7 @@ __webpack_require__.r(__webpack_exports__);
     sendRequwest: function sendRequwest() {
       var _this4 = this;
 
-        axios.get('/private/requwest/send', {
+      axios.get('/private/requwest/send', {
         params: {
           id: this.id
         }
@@ -5107,6 +5106,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -5125,7 +5126,8 @@ __webpack_require__.r(__webpack_exports__);
       numberApplicationPresents: 0,
       inseach: false,
       likesNunber: 0,
-      showLikeModal: false
+      showLikeModal: false,
+      unreeadedEventRequwest: 0
     };
   },
   mounted: function mounted() {
@@ -5133,6 +5135,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.inSeach();
     this.getAllDataForSidePanel();
+    this.getNumberUnreadedEventRequwest();
     Echo.private("messages.".concat(this.user.id)).listen('NewMessage', function (e) {
       //console.log('NewMessage');
       axios.get('/getCountUnreaded').then(function (response) {
@@ -5221,6 +5224,15 @@ __webpack_require__.r(__webpack_exports__);
     clouseLikeModal: function clouseLikeModal() {
       console.log("clouseLikeModal");
       this.showLikeModal = false;
+    },
+    //
+    getNumberUnreadedEventRequwest: function getNumberUnreadedEventRequwest() {
+      var _this7 = this;
+
+      axios.get('/event/requwest/myevent', {}).then(function (response) {
+        //    this.unreeadedEventRequwest = response.data["count(*)"];
+        _this7.unreeadedEventRequwest = response.data;
+      });
     }
   }
 });
@@ -6222,11 +6234,11 @@ __webpack_require__.r(__webpack_exports__);
       regStatus: ''
     };
   },
-            methods: {
+  methods: {
     sendRequwest: function sendRequwest() {
       var _this = this;
 
-        axios.get('/phone/requwest/send', {
+      axios.get('/phone/requwest/send', {
         params: {
           id: this.id
         }
@@ -6234,39 +6246,39 @@ __webpack_require__.r(__webpack_exports__);
         _this.khowSendRequwestOrNot();
       });
     },
-                khowSendRequwestOrNot: function khowSendRequwestOrNot() {
-                    var _this2 = this;
+    khowSendRequwestOrNot: function khowSendRequwestOrNot() {
+      var _this2 = this;
 
-                    //узнаёт, отправлен запрос или нет
-                    console.log("sendor not");
-                    var data_response = null;
-                    console.log("id " + this.id);
-                    axios.get('/phone/requwest/send/status', {
-                        params: {
-                            id: this.id
-                        }
-                    }).then(function (response) {
-                        data_response = response.data;
+      //узнаёт, отправлен запрос или нет
+      console.log("sendor not");
+      var data_response = null;
+      console.log("id " + this.id);
+      axios.get('/phone/requwest/send/status', {
+        params: {
+          id: this.id
+        }
+      }).then(function (response) {
+        data_response = response.data;
 
-                        if (data_response == "not") {
-                            _this2.showSendRegButton = true;
-                            console.log("phone not");
-                            _this2.regStatus = "notsended";
-                        } else {
-                            _this2.showSendRegButton = false; //если отправлен, то надо статус показать
+        if (data_response == "not") {
+          _this2.showSendRegButton = true;
+          console.log("phone not");
+          _this2.regStatus = "notsended";
+        } else {
+          _this2.showSendRegButton = false; //если отправлен, то надо статус показать
 
-                            if (response.data == "notreaded") {
-                                _this2.regStatus = "notreaded";
-                            } else if (response.data == "readed") {
-                                _this2.regStatus = "readed";
-                            } else if (response.data['status'] == "rejected") {
-                                console.log("regecter");
-                                _this2.regStatus = "rejected";
-                            }
-                        }
-                    });
-                }
-            }
+          if (response.data == "notreaded") {
+            _this2.regStatus = "notreaded";
+          } else if (response.data == "readed") {
+            _this2.regStatus = "readed";
+          } else if (response.data['status'] == "rejected") {
+            console.log("regecter");
+            _this2.regStatus = "rejected";
+          }
+        }
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -54741,73 +54753,73 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-    return _c("div", [
-        _vm.eventList.length
-            ? _c(
-            "div",
-            [
-                _c(
-                    "carousel",
-                    {
-                        attrs: {
-                            "per-page": 1,
-                            "mouse-drag": false,
-                            autoplay: true,
-                            loop: true,
-                            centerMode: true,
-                            navigationEnabled: true
-                        }
-                    },
-                    _vm._l(_vm.eventList, function (event) {
-                        return _c("slide", {key: event.id}, [
-                            _c("b", [_vm._v(_vm._s(event.name))]),
-                            _vm._v(" "),
-                            _c("br"),
-                            _vm._v(
-                                "\n                    Место:" + _vm._s(event.place) + " "
-                            ),
-                            _c("br"),
-                            _vm._v(
-                                "\n                    Дата: " + _vm._s(event.begin) + " "
-                            ),
-                            _c("br"),
-                            _vm._v(
-                                "\n                    Статус: " +
-                                _vm._s(event.status_name) +
-                                " "
-                            ),
-                            _c("br"),
-                            _vm._v("\nd\n                    "),
-                            _c(
-                                "a",
-                                {
-                                    attrs: {
-                                        type: "button",
-                                        href: "event/singup/" + event.id
-                                    }
-                                },
-                                [_vm._v("Записаться!")]
-                            )
-                        ])
-                    }),
-                    1
-                )
-            ],
-            1
-            )
-            : _c("div", [
-                _c("p", [_vm._v("Нет событий")]),
-                _vm._v(" "),
-                _c(
+  return _c("div", [
+    _vm.eventList.length
+      ? _c(
+          "div",
+          [
+            _c(
+              "carousel",
+              {
+                attrs: {
+                  "per-page": 1,
+                  "mouse-drag": false,
+                  autoplay: true,
+                  loop: true,
+                  centerMode: true,
+                  navigationEnabled: true
+                }
+              },
+              _vm._l(_vm.eventList, function(event) {
+                return _c("slide", { key: event.id }, [
+                  _c("b", [_vm._v(_vm._s(event.name))]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(
+                    "\n                Место:" + _vm._s(event.place) + " "
+                  ),
+                  _c("br"),
+                  _vm._v(
+                    "\n                Дата: " + _vm._s(event.begin) + " "
+                  ),
+                  _c("br"),
+                  _vm._v(
+                    "\n                Статус: " +
+                      _vm._s(event.status_name) +
+                      " "
+                  ),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
                     "a",
                     {
-                        staticClass: "btn btn-primary",
-                        attrs: {href: "/myevent/store"}
+                      attrs: {
+                        type: "button",
+                        href: "event/singup/" + event.id
+                      }
                     },
-                    [_vm._v("Создать событие")]
-                )
-            ])
-    ])
+                    [_vm._v("Записаться!")]
+                  )
+                ])
+              }),
+              1
+            )
+          ],
+          1
+        )
+      : _c("div", [
+          _c("p", [_vm._v("Нет событий")]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { href: "/myevent/store" }
+            },
+            [_vm._v("Создать событие")]
+          )
+        ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -54849,7 +54861,7 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-      _vm.requwestStatus == "unread"
+    _vm.requwestStatus == "unread"
       ? _c("h5", [
           _c("b", [
             _vm._v("Ваша заявка на участие в мероприятии не рассмотренна")
@@ -54858,7 +54870,7 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _vm.requwestStatus == "aсcept"
-        ? _c("h5", [_c("b", [_vm._v("Заявка на участие принята!")])])
+      ? _c("h5", [_c("b", [_vm._v("Заявка на участие принята!")])])
       : _vm._e(),
     _vm._v(" "),
     _vm.requwestStatus == "denide"
@@ -55901,7 +55913,7 @@ var render = function() {
         _vm._l(_vm.events, function(event) {
           return _c("tr", [
             _c("td", [
-                _c("a", {attrs: {href: "/myevent/" + event.id}}, [
+              _c("a", { attrs: { href: "/myevent/" + event.id } }, [
                 _vm._v(_vm._s(event.name))
               ])
             ]),
@@ -55912,7 +55924,7 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(event.begin))]),
             _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(event.event_statys))]),
+            _c("td", [_vm._v(_vm._s(event.event_statys))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(event.created_at))]),
             _vm._v(" "),
@@ -57407,7 +57419,12 @@ var render = function() {
       _vm._v(" "),
       _vm._m(3),
       _c("br"),
-      _c("br")
+      _c("br"),
+      _vm._v(
+        "\n\n    Запросы на события: " +
+          _vm._s(_vm.unreeadedEventRequwest) +
+          "\n"
+      )
     ],
     1
   )
@@ -58027,21 +58044,21 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-      _vm._l(_vm.events, function (event) {
-          return _c("div", [
-              _vm._v("\n        " + _vm._s(event.name) + " "),
-              _c("br"),
-              _vm._v("\n        Начало: " + _vm._s(event.begin) + " "),
-              _c("br"),
-              _vm._v("\n        Место: " + _vm._s(event.place)),
-              _c("br"),
-              _vm._v(" "),
-              _c("a", {attrs: {href: "/singup/" + event.id + ""}}, [
-                  _vm._v("Записаться")
-              ])
-          ])
-      }),
-      0
+    _vm._l(_vm.events, function(event) {
+      return _c("div", [
+        _vm._v("\n        " + _vm._s(event.name) + " "),
+        _c("br"),
+        _vm._v("\n        Начало: " + _vm._s(event.begin) + " "),
+        _c("br"),
+        _vm._v("\n        Место: " + _vm._s(event.place)),
+        _c("br"),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "/singup/" + event.id + "" } }, [
+          _vm._v("Записаться")
+        ])
+      ])
+    }),
+    0
   )
 }
 var staticRenderFns = []
@@ -71144,20 +71161,20 @@ var appaceptedApp = new Vue({
 
   }
 });
-        var sidePanelApp = new Vue({
-            el: '#sidePanelApp',
-            data: {
-                showModal: false //appacepted
+var sidePanelApp = new Vue({
+  el: '#sidePanelApp',
+  data: {
+    showModal: false //appacepted
 
-            }
-        });
-        var eventregApp = new Vue({
-            el: '#eventregApp',
-            data: {
-                showModal: false //appacepted
+  }
+});
+var eventregApp = new Vue({
+  el: '#eventregApp',
+  data: {
+    showModal: false //appacepted
 
-            }
-        });
+  }
+});
 
 /***/ }),
 

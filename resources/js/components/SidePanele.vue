@@ -24,6 +24,8 @@
         </div>
         <likemodal v-if="showLikeModal" @closeLikeModalEmit='closeLikeModal()'></likemodal>
         <b><a class="btn btn-primary" href="/history">Просмотры моей анкеты</a> </b><br><br>
+
+        Запросы на события: {{unreeadedEventRequwest}}
     </div>
 </template>
 
@@ -49,7 +51,8 @@
                 numberApplicationPresents: 0,
                 inseach: false,
                 likesNunber: 0,
-                showLikeModal: false
+                showLikeModal: false,
+                unreeadedEventRequwest: 0,
             }
                 ;
         },
@@ -57,6 +60,7 @@
         mounted() {
             this.inSeach();
             this.getAllDataForSidePanel();
+            this.getNumberUnreadedEventRequwest();
             Echo.private(`messages.${this.user.id}`)
                 .listen('NewMessage', (e) => {
                     //console.log('NewMessage');
@@ -147,6 +151,16 @@
                 clouseLikeModal() {
                     console.log("clouseLikeModal");
                     this.showLikeModal = false;
+                },
+                //
+                getNumberUnreadedEventRequwest() {
+                    axios.get('/event/requwest/myevent', {})
+                        .then((response) => {
+                                //    this.unreeadedEventRequwest = response.data["count(*)"];
+                                this.unreeadedEventRequwest = response.data;
+                            }
+                        )
+                    ;
                 }
 
             }

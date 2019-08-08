@@ -8,7 +8,6 @@
                     Место:{{event.place}} <br>
                     Дата: {{event.begin}} <br>
                     Статус: {{event.status_name}} <br>
-                    d
                     <a type="button" v-bind:href="'event/singup/'+event.id">Записаться!</a>
                 </slide>
             </carousel>

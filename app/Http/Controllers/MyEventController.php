@@ -408,4 +408,25 @@ left join event_statys statys on myevents.status_id=statys.id left join
 
     }
 
+    public function requwestmyevent(Request $request)
+    {
+        $user = Auth::user();
+        if ($user == null) {
+            return 502;
+        }
+        $girl = $user->anketisExsis();
+
+
+        if ($girl == null) {
+            return 502;
+        }
+
+        $unredded
+            = collect(DB::select('SELECT * FROM `event_requwest` `eventreq` LEFT JOIN `myevents` `myeven` ON
+`eventreq`.`event_id`=`myeven`.`id`
+WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
+            [$girl->id]))->count();
+
+        return response()->json($unredded);
+    }
 }
