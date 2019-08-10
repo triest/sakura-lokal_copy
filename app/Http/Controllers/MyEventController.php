@@ -446,4 +446,39 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
 
         return response()->json($unredded);
     }
+
+    public function requwestcount(Request $request)
+    {
+        $event = Myevent::select(['id', 'name', 'max_people', 'min_people'])
+            ->where('id', $request->eventid)
+            ->first();
+        if ($event == null) {
+            return 404;
+        }
+        $accepted = Eventrequwest::select([
+            'id',
+            'event_id',
+            'girl_id',
+            'status',
+        ])
+            ->where('event_id', $event->id)
+            ->where('status', 'accept')
+            ->count();
+        $unreaded = Eventrequwest::select([
+            'id',
+            'event_id',
+            'girl_id',
+            'status',
+        ])
+            ->where('event_id', $event->id)
+            ->where('status', 'unreaded')
+            ->get();
+
+        return response()->json([
+            'event'    => $event,
+            'accepted' => $accepted,
+            'unreaded' => $unreaded,
+        ]);
+
+    }
 }

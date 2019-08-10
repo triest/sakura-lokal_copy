@@ -4946,6 +4946,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     eventid: {
@@ -4960,6 +4964,7 @@ __webpack_require__.r(__webpack_exports__);
       this.getunreaded();
       this.getacepted();
       this.getdenided();
+      this.requwestcount();
   },
   data: function data() {
     return {
@@ -4967,7 +4972,9 @@ __webpack_require__.r(__webpack_exports__);
       currentTab: 'all',
       accepted: null,
       rejected: null,
-      unredded: null
+        unredded: null,
+        countaccepted: null,
+        max_people: null
     };
   },
   methods: {
@@ -5050,7 +5057,20 @@ __webpack_require__.r(__webpack_exports__);
     },
     myFunction: function myFunction(id) {
       window.open("/anket/" + id, "_blank");
-    }
+    },
+      requwestcount: function requwestcount() {
+          var _this5 = this;
+
+          var temp;
+          axios.get('/event/requwest/count', {
+              params: {
+                  eventid: this.eventid
+              }
+          }).then(function (response) {
+              _this5.countaccepted = response.data.accepted;
+              _this5.max_people = response.data.event.max_people;
+          });
+      }
   }
 });
 
@@ -56608,6 +56628,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+      _vm._v(
+          "\n        Принятых заявок:\n        " + _vm._s(_vm.countaccepted) + " "
+      ),
+      _c("br"),
+      _vm._v(
+          "\n        Максимальное число заявок: " +
+          _vm._s(_vm.max_people) +
+          "\n\n        "
+      ),
     _c("ul", { staticClass: "nav nav-tabs" }, [
       _c(
         "li",

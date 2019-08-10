@@ -1,5 +1,9 @@
 <template>
     <div>
+        Принятых заявок:
+        {{countaccepted}} <br>
+        Максимальное число заявок: {{max_people}}
+
         <ul class="nav nav-tabs">
             <li role="presentation" @click="currentTab = 'accepted'"><a href="#"><b>Принятые</b></a></li>
             <li role="presentation" @click="currentTab = 'rejected'"><a href="#"><b>Отклоненные</b></a></li>
@@ -176,6 +180,7 @@
             this.getunreaded();
             this.getacepted();
             this.getdenided();
+            this.requwestcount();
         },
         data() {
             return {
@@ -183,7 +188,9 @@
                 currentTab: 'all',
                 accepted: null,
                 rejected: null,
-                unredded: null
+                unredded: null,
+                countaccepted: null,
+                max_people: null,
             }
         },
         methods: {
@@ -278,6 +285,20 @@
 
             myFunction: function (id) {
                 window.open("/anket/" + id, "_blank");
+            },
+            requwestcount: function () {
+                let temp;
+                axios.get('/event/requwest/count', {
+                        params: {
+                            eventid: this.eventid
+                        }
+                    }
+                ).then((response) => {
+                    this.countaccepted = response.data.accepted;
+                    this.max_people = response.data.event.max_people;
+
+                });
+
             }
         },
     }
