@@ -56,10 +56,10 @@
 </template>
 
 <script>
-    import modal from './ModalComponent.vue';
+    import modal from '../chat/ModalComponent.vue';
     import present from './PresentModal.vue'
-    import admin from './Admin.vue'
-    import Admin from "./Admin";
+    import admin from '../admin/Admin.vue'
+    import Admin from "../admin/Admin";
 
     export default {
         props: {

@@ -18,4 +18,15 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testPostCityTest(){
+        //Route::post('/city/agree', 'GirlsController@agreeCity')->name('agreeCity');
+        $response=$this->get('/');
+        $response->assertStatus(200);
+    }
 }

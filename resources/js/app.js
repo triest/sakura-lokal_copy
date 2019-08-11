@@ -24,81 +24,81 @@ Vue.use(VueCarousel);
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.component('index2', require('./components/index2.vue').default);
-Vue.component('chat-app', require('./components/ChatApp.vue').default);
-Vue.component('chat-app2', require('./components/ChatApp2.vue').default);
-Vue.component('conversation', require('./components/Conversation.vue').default);
-Vue.component('conversation2', require('./components/Conversation2.vue').default);
-Vue.component('ContactsList', require('./components/ContactsList.vue').default);
-Vue.component('ContactsList2', require('./components/ContactsList2.vue').default);
-Vue.component('MessagesFeed', require('./components/MessagesFeed.vue').default);
-Vue.component('MessagesFeed2', require('./components/MessagesFeed2.vue').default);
+Vue.component('chat-app', require('./components/chat/ChatApp.vue').default);
+Vue.component('chat-app2', require('./components/chat/ChatApp2.vue').default);
+Vue.component('conversation', require('./components/chat/Conversation.vue').default);
+Vue.component('conversation2', require('./components/chat/Conversation2.vue').default);
+Vue.component('ContactsList', require('./components/chat/ContactsList.vue').default);
+Vue.component('ContactsList2', require('./components/chat/ContactsList2.vue').default);
+Vue.component('MessagesFeed', require('./components/chat/MessagesFeed.vue').default);
+Vue.component('MessagesFeed2', require('./components/chat/MessagesFeed2.vue').default);
 
-Vue.component('side-panel', require('./components/SidePanele.vue').default);
+Vue.component('side-panel', require('./components/layouts/SidePanele.vue').default);
 //Vue.component('header', require('./components/Carousel.vue').default);
-Vue.component('privatepanel', require('./components/Private.vue').default);
+Vue.component('privatepanel', require('./components/anket/Private.vue').default);
 
 //компонент с заявками
-Vue.component('application', require('./components/Application.vue').default);
+Vue.component('application', require('./components/anket/Application.vue').default);
 
-Vue.component('editimages', require('./components/Editimages.vue').default);
+Vue.component('editimages', require('./components/anket/Editimages.vue').default);
 
 Vue.component('modal-template', require('./components/modal-template.vue').default);
 
-Vue.component('power', require('./components/Power.vue').default);
+Vue.component('power', require('./components/anket/Power.vue').default);
 
-Vue.component('carouseltemp', require('./components/CarouselTemp.vue').default);
+Vue.component('carouseltemp', require('./components/layouts/CarouselTemp.vue').default);
 
-Vue.component('presents', require('./components/Presents.vue').default);
+Vue.component('presents', require('./components/admin/Presents.vue').default);
 
-Vue.component('targets', require('./components/Targets.vue').default);
+Vue.component('targets', require('./components/admin/Targets.vue').default);
 
-Vue.component('interes', require('./components/Interes.vue').default);
+Vue.component('interes', require('./components/admin/Interes.vue').default);
 
-Vue.component('mypresents', require('./components/MyPresents.vue').default);
+Vue.component('mypresents', require('./components/anket/MyPresents.vue').default);
 
-Vue.component('likemodal', require('./components/LikeModal.vue').default);
+Vue.component('likemodal', require('./components/likes/LikeModal.vue').default);
 
 //модальное окно для отправки сообщения
 //Vue.component('modal', require('./components/ModalComponent.vue'));
 Vue.component('delmodal', require('./components/delModal.vue').default);
 
 
-Vue.component('myanket', require('./components/myAnket.vue').default);
+Vue.component('myanket', require('./components/anket/myAnket.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('edit', require('./components/Edit.vue').default);
+Vue.component('edit', require('./components/chat/Edit.vue').default);
 
-Vue.component('phonecomponent', require('./components/phoneComponent.vue').default);
+Vue.component('phonecomponent', require('./components/confirnPhone/phoneComponent.vue').default);
 
-Vue.component('selectcity', require('./components/SelectCity.vue').default);
+Vue.component('selectcity', require('./components/layouts/SelectCity.vue').default);
 
-Vue.component('userscontroll', require('./components/Userscontroll.vue').default);
+Vue.component('userscontroll', require('./components/admin/Userscontroll.vue').default);
 
-Vue.component('moneycontroll', require('./components/Moneycontroll.vue').default);
+Vue.component('moneycontroll', require('./components/admin/Moneycontroll.vue').default);
 
-Vue.component('likes', require('./components/likes.vue').default);
+Vue.component('likes', require('./components/likes/likes.vue').default);
 
-Vue.component('phonerequwest', require('./components/phoneRequwest.vue').default);
+Vue.component('phonerequwest', require('./components/anket/phoneRequwest.vue').default);
 
 //события
-Vue.component('myevents', require('./components/Myevents.vue').default);
+Vue.component('myevents', require('./components/events/Myevents.vue').default);
 
-Vue.component('eventmycity', require('./components/eventmycity.vue').default);
+Vue.component('eventmycity', require('./components/events/eventmycity.vue').default);
 
 //заапрос на участие в событии
-Vue.component('eventrequwest', require('./components/Eventrequwest.vue').default);
+Vue.component('eventrequwest', require('./components/events/Eventrequwest.vue').default);
 
-Vue.component('requwesteventlist', require('./components/Requwesteventlist.vue').default);
+Vue.component('requwesteventlist', require('./components/events/Requwesteventlist.vue').default);
 
-Vue.component('eventinmycityside', require('./components/EventInMyCitySide.vue').default);
+Vue.component('eventinmycityside', require('./components/events/EventInMyCitySide.vue').default);
 
-Vue.component('viewhistory', require('./components/Viewhistory.vue').default);
+Vue.component('viewhistory', require('./components/anket/Viewhistory.vue').default);
 
-Vue.component('aperance', require('./components/Aperance.vue').default);
+Vue.component('aperance', require('./components/admin/Aperance.vue').default);
 
 const aperanceApp = new Vue({
     el: '#aperanceApp',

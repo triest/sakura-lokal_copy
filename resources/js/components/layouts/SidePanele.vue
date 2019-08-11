@@ -30,7 +30,7 @@
 </template>
 
 <script>
-    import likemodal from './LikeModal'
+    import likemodal from '../likes/LikeModal'
 
 
     export default {

@@ -479,6 +479,11 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
             'accepted' => $accepted,
             'unreaded' => $unreaded,
         ]);
+    }
+
+    public function myparticipation(Request $request)
+    {
 
     }
 }
+

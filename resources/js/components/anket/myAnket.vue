@@ -52,7 +52,7 @@
 </template>
 
 <script>
-    import edit from './Edit.vue'
+    import edit from '../chat/Edit.vue'
 
     export default {
         name: "myAnket",

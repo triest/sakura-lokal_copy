@@ -23,8 +23,8 @@
 </template>
 
 <script>
-    import modal from './ModalComponent.vue';
-    import present from './PresentModal.vue'
+    import modal from '../chat/ModalComponent.vue';
+    import present from '../anket/PresentModal.vue'
     import admin from './Admin.vue'
     import Admin from "./Admin";
 

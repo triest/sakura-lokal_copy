@@ -469,7 +469,9 @@ Route::get('/listrequwest', 'MyEventController@listrequwest')
 Route::get('event/singup/{id}', 'MyEventController@singup')->name('viewmyevent')
     ->middleware('auth', 'anketExist');
 
-
+//события с моим участием
+Route::get('event/myparticipation', 'MyEventController@myparticipation')
+    ->middleware('auth', 'anketExist');
 
 //тест карт
 Route::get('/map', function () {
@@ -503,6 +505,9 @@ Route::get('/event/requwest/myevent', 'MyEventController@countunreaded');
 //счетчик заявок на события
 Route::get('/event/requwest/count', 'MyEventController@requwestcount');
 
+//события, на которые я подал заявку
+Route::get('/event/participation', 'MyEventController@participation')
+    ->middleware('auth', 'anketExist');
 
 Route::get('/test', function () {
     return view('test');
