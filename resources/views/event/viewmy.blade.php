@@ -20,7 +20,6 @@
             Список подавших заявку:
             <div id="requwesteventlistapp">
                 <requwesteventlist eventid="{{$event->id}}"></requwesteventlist>
-
             </div>
         </div>
     </div>

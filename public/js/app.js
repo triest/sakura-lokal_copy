@@ -4243,7 +4243,8 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     Echo.private("messages.".concat(this.user.id)).listen('NewMessage', function (e) {
-      _this.hanleIncoming(e.message);
+      //  this.hanleIncoming(e.message);
+      console.log("message");
     });
     axios.get('/contacts').then(function (response) {
       _this.contacts = response.data;
@@ -6002,7 +6003,7 @@ __webpack_require__.r(__webpack_exports__);
     this.getAllDataForSidePanel();
     this.getNumberUnreadedEventRequwest();
     Echo.private("messages.".concat(this.user.id)).listen('NewMessage', function (e) {
-      //console.log('NewMessage');
+      console.log('NewMessage');
       axios.get('/getCountUnreaded').then(function (response) {
         _this.numberUnreaded = response.data;
       });
@@ -6010,13 +6011,15 @@ __webpack_require__.r(__webpack_exports__);
       _this.getNumberUnreadedMessages();
     });
     Echo.private("requwests.".concat(this.user.id)).listen('newApplication', function (e) {
-      // console.log('NewRequwest');
+      console.log('NewRequwest');
       axios.get('/getCountUnreadedRequwest').then(function (response) {
         _this.numberApplication = response.data;
       });
     });
     Echo.private("gifs.".concat(this.user.id)).listen('eventPreasent', function (e) {
       _this.getNumberUnreadedPresents();
+
+      console.log("presrn");
     });
   },
   methods: {
@@ -6040,8 +6043,11 @@ __webpack_require__.r(__webpack_exports__);
     inSeach: function inSeach() {
       var _this4 = this;
 
+      var res;
       axios.get('/inseach').then(function (response) {
-        if (response.data == "true") {
+        res = response.data;
+
+        if (res == true) {
           _this4.inseach = true;
         } else {
           _this4.inseach = false;
@@ -58489,36 +58495,43 @@ var render = function() {
           }
         },
         [
-          _vm._l(_vm.imagesList, function(image) {
-            return _c("slide", { key: image[0].id }, [
-              _c("div", { staticClass: "flex-center2 position-ref" }, [
-                _c("a", { attrs: { href: "/anket/" + image[0].id } }, [
-                  _c("img", {
-                    attrs: {
-                      src: "/images/small/" + image[0].main_image,
-                      height: "100"
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("b", [_vm._v(_vm._s(image[0].name) + ",")]),
-                _vm._v(" "),
-                _c("b", [_vm._v("Возраст:" + _vm._s(image[0].age))])
-              ])
-            ])
-          }),
-          _vm._v(" "),
-          _c("slide", [
-            _c("div", { staticClass: "flex-center2 position-ref" }, [
-              _c("a", { attrs: { href: "/power" } }, [
-                _c("img", {
-                  attrs: { src: "/images/anketa.jpeg", height: "100" }
-                })
-              ])
-            ])
-          ])
-        ],
-        2
+          _vm.imagesList.length > 0
+            ? _c(
+                "div",
+                [
+                  _vm._l(_vm.imagesList, function(image) {
+                    return _c("slide", { key: image[0].id }, [
+                      _c("div", { staticClass: "flex-center2 position-ref" }, [
+                        _c("a", { attrs: { href: "/anket/" + image[0].id } }, [
+                          _c("img", {
+                            attrs: {
+                              src: "/images/small/" + image[0].main_image,
+                              height: "100"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("b", [_vm._v(_vm._s(image[0].name) + ",")]),
+                        _vm._v(" "),
+                        _c("b", [_vm._v("Возраст:" + _vm._s(image[0].age))])
+                      ])
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c("slide", [
+                    _c("div", { staticClass: "flex-center2 position-ref" }, [
+                      _c("a", { attrs: { href: "/power" } }, [
+                        _c("img", {
+                          attrs: { src: "/images/anketa.jpeg", height: "100" }
+                        })
+                      ])
+                    ])
+                  ])
+                ],
+                2
+              )
+            : _vm._e()
+        ]
       )
     ],
     1
@@ -71131,172 +71144,175 @@ Vue.component('requwesteventlist', __webpack_require__(/*! ./components/events/R
 Vue.component('eventinmycityside', __webpack_require__(/*! ./components/events/EventInMyCitySide.vue */ "./resources/js/components/events/EventInMyCitySide.vue").default);
 Vue.component('viewhistory', __webpack_require__(/*! ./components/anket/Viewhistory.vue */ "./resources/js/components/anket/Viewhistory.vue").default);
 Vue.component('aperance', __webpack_require__(/*! ./components/admin/Aperance.vue */ "./resources/js/components/admin/Aperance.vue").default);
-var aperanceApp = new Vue({
-  el: '#aperanceApp',
-  data: {
-    showModal: false
-  }
-});
-var viewhistoryapp = new Vue({
-  el: '#viewhistoryapp',
-  data: {
-    showModal: false
-  }
-});
-var eventinmycityapp = new Vue({
-  el: '#eventinmycityapp',
-  data: {
-    showModal: false
-  }
-});
-var requwesteventlistapp = new Vue({
-  el: '#requwesteventlistapp',
-  data: {
-    showModal: false
-  }
-});
-var eventequwestapp = new Vue({
-  el: '#eventrequwestapp',
-  data: {
-    showModal: false
-  }
-});
-var events = new Vue({
-  el: '#events',
-  data: {
-    showModal: false
-  }
-});
-var eventmycity = new Vue({
-  el: '#eventmycityApp',
-  data: {
-    showModal: false
-  }
-});
-var phoneRequwestApp = new Vue({
-  el: '#phoneRequwestApp',
-  data: {
-    showModal: false
-  }
-});
-var likesApp = new Vue({
-  el: '#likesApp',
-  data: {
-    showModal: false
-  }
-});
-var index = new Vue({
-  el: '#index',
-  data: {
-    showModal: false
-  }
-});
-var app = new Vue({
-  el: '#app',
-  data: {
-    showModal: false
-  }
-});
-var app2 = new Vue({
-  el: '#app2',
-  data: {
-    showModal: false
-  }
-});
-var app3 = new Vue({
-  el: '#app3',
-  data: {
-    showModal: false
-  }
-});
-var app4 = new Vue({
-  el: '#app4',
-  data: {
-    showModal: false
-  }
-});
-var privateApp = new Vue({
-  el: '#privateApp',
-  data: {
-    showModal: false
-  }
-});
-var app7 = new Vue({
-  el: '#app7',
-  data: {
-    showModal: false
-  }
-});
-var applicationClass = new Vue({
-  el: '#applicationClass',
-  data: {
-    showModal: false
-  }
-});
-var powerApp = new Vue({
-  el: '#powerApp',
-  data: {
-    showModal: false
-  }
-});
-var myAnket = new Vue({
-  el: '#myAnketApp',
-  data: {
-    showModal: false
-  }
-});
-var phoneApp = new Vue({
-  el: '#phoneApp',
-  data: {
-    showModal: false
-  }
-});
-var selectCityApp = new Vue({
-  el: '#selectCityApp',
-  data: {
-    showModal: false
-  }
-});
-var indexvue = new Vue({
-  el: '#indexvue',
-  data: {
-    showModal: false
-  }
-});
-var moneyApp = new Vue({
-  el: '#moneyApp',
-  data: {
-    showModal: false
-  }
-});
-var myeventApp = new Vue({
-  el: '#myeventApp',
-  data: {
-    showModal: false //appacepted
 
-  }
-});
-var appaceptedApp = new Vue({
-  el: '#appaceptedApp',
-  data: {
-    showModal: false //appacepted
+window.onload = function () {
+  var aperanceApp = new Vue({
+    el: '#aperanceApp',
+    data: {
+      showModal: false
+    }
+  });
+  var viewhistoryapp = new Vue({
+    el: '#viewhistoryapp',
+    data: {
+      showModal: false
+    }
+  });
+  var eventinmycityapp = new Vue({
+    el: '#eventinmycityapp',
+    data: {
+      showModal: false
+    }
+  });
+  var requwesteventlistapp = new Vue({
+    el: '#requwesteventlistapp',
+    data: {
+      showModal: false
+    }
+  });
+  var eventrequwestapp = new Vue({
+    el: '#eventrequwestapp',
+    data: {
+      showModal: false
+    }
+  });
+  var events = new Vue({
+    el: '#events',
+    data: {
+      showModal: false
+    }
+  });
+  var eventmycity = new Vue({
+    el: '#eventmycityApp',
+    data: {
+      showModal: false
+    }
+  });
+  var phoneRequwestApp = new Vue({
+    el: '#phoneRequwestApp',
+    data: {
+      showModal: false
+    }
+  });
+  var likesApp = new Vue({
+    el: '#likesApp',
+    data: {
+      showModal: false
+    }
+  });
+  var index = new Vue({
+    el: '#index',
+    data: {
+      showModal: false
+    }
+  });
+  var app = new Vue({
+    el: '#app',
+    data: {
+      showModal: false
+    }
+  });
+  var app2 = new Vue({
+    el: '#app2',
+    data: {
+      showModal: false
+    }
+  });
+  var app3 = new Vue({
+    el: '#app3',
+    data: {
+      showModal: false
+    }
+  });
+  var app4 = new Vue({
+    el: '#app4',
+    data: {
+      showModal: false
+    }
+  });
+  var privateApp = new Vue({
+    el: '#privateApp',
+    data: {
+      showModal: false
+    }
+  });
+  var app7 = new Vue({
+    el: '#app7',
+    data: {
+      showModal: false
+    }
+  });
+  var applicationClass = new Vue({
+    el: '#applicationClass',
+    data: {
+      showModal: false
+    }
+  });
+  var powerApp = new Vue({
+    el: '#powerApp',
+    data: {
+      showModal: false
+    }
+  });
+  var myAnket = new Vue({
+    el: '#myAnketApp',
+    data: {
+      showModal: false
+    }
+  });
+  var phoneApp = new Vue({
+    el: '#phoneApp',
+    data: {
+      showModal: false
+    }
+  });
+  var selectCityApp = new Vue({
+    el: '#selectCityApp',
+    data: {
+      showModal: false
+    }
+  });
+  var indexvue = new Vue({
+    el: '#indexvue',
+    data: {
+      showModal: false
+    }
+  });
+  var moneyApp = new Vue({
+    el: '#moneyApp',
+    data: {
+      showModal: false
+    }
+  });
+  var myeventApp = new Vue({
+    el: '#myeventApp',
+    data: {
+      showModal: false //appacepted
 
-  }
-});
-var sidePanelApp = new Vue({
-  el: '#sidePanelApp',
-  data: {
-    showModal: false //appacepted
+    }
+  });
+  var appaceptedApp = new Vue({
+    el: '#appaceptedApp',
+    data: {
+      showModal: false //appacepted
 
-  }
-});
-var eventregApp = new Vue({
-  el: '#eventregApp',
-  data: {
-    showModal: false //appacepted
+    }
+  });
+  var sidePanelApp = new Vue({
+    el: '#sidePanelApp',
+    data: {
+      showModal: false //appacepted
 
-  }
-});
+    }
+  });
+  var eventregApp = new Vue({
+    el: '#eventregApp',
+    data: {
+      showModal: false //appacepted
+
+    }
+  });
+};
 
 /***/ }),
 

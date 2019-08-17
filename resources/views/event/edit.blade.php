@@ -68,11 +68,11 @@
         </script>
 
         <script>
-            $(function() {
+            $(function () {
                 $("#datepicker1").datepicker();
             });
 
-            $(function() {
+            $(function () {
                 $('#timepicker').timepicker();
             });
         </script>
@@ -137,8 +137,8 @@
             }
         };
 
-        $(function() {
-            var optionsTime = $.extend({}, defaults, {format:'HH:mm'});
+        $(function () {
+            var optionsTime = $.extend({}, defaults, {format: 'HH:mm'});
 
             $('.timepicker').datetimepicker(optionsTime);
         });

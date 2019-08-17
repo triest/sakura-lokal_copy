@@ -32,51 +32,54 @@ class GirlsController extends Controller
     //
     function index(Request $request)
     {
+        $ua = $request->header('User-Agent');
+        $ua = $request->server('HTTP_USER_AGENT');
+
         if (Auth::check()) {
             $user = Auth::user();  // и если админ
             if ($user->isAdmin == 1) {
                 $girls = Girl::select([
-                    'id',
-                    'name',
-                    'phone',
-                    'main_image',
-                    'description',
-                    'banned',
-                    'age',
+                        'id',
+                        'name',
+                        'phone',
+                        'main_image',
+                        'description',
+                        'banned',
+                        'age',
                 ])
-                    ->orderBy('created_at', 'DESC')->simplePaginate(9);
+                        ->orderBy('created_at', 'DESC')->simplePaginate(9);
             } else {
                 $girls = Girl::select([
+                        'id',
+                        'name',
+                        'phone',
+                        'main_image',
+                        'description',
+                        'sex',
+                        'age',
+                ])
+                        ->where('banned', '=', '0')
+                        ->orderBy('created_at', 'DESC')
+                        ->Paginate(9);
+            }
+        } else {
+            $girls = Girl::select([
                     'id',
                     'name',
                     'phone',
                     'main_image',
                     'description',
                     'sex',
+                    'views_all',
                     'age',
-                ])
+            ])
                     ->where('banned', '=', '0')
                     ->orderBy('created_at', 'DESC')
                     ->Paginate(9);
-            }
-        } else {
-            $girls = Girl::select([
-                'id',
-                'name',
-                'phone',
-                'main_image',
-                'description',
-                'sex',
-                'views_all',
-                'age',
-            ])
-                ->where('banned', '=', '0')
-                ->orderBy('created_at', 'DESC')
-                ->Paginate(9);
         }
         $ip = $this->getIp();
         $response = file_get_contents("http://api.sypexgeo.net/json/"
-            .$ip); //запрашиваем местоположение
+                . $ip); //запрашиваем местоположение
         $response = json_decode($response);
         $name = $response->city->name_ru;
         if ($request->session()->get('city')) {
@@ -84,62 +87,63 @@ class GirlsController extends Controller
             $city = DB::table('cities')->where('id_city', $city)->first();
             if ($city != null) {
                 return view('index')->with([
-                    'girls'  => $girls,
-                    'events' => null,
-                    'city'   => $city,
+                        'girls' => $girls,
+                        'events' => null,
+                        'city' => $city,
                 ]);
             } else {
                 return view('index')->with([
-                    'girls'  => $girls,
-                    'events' => null,
-                    'city'   => null,
+                        'girls' => $girls,
+                        'events' => null,
+                        'city' => null,
                 ]);
             }
         } else {
-            $cities = DB::table('cities')->where('name', 'like', $name.'%')
-                ->first();
+            $cities = DB::table('cities')->where('name', 'like', $name . '%')
+                    ->first();
 
             return view('confurnCity2')->with(['city' => $cities]);
         }
 
+
         return view('index')->with([
-            'girls'  => $girls,
-            'events' => null,
-            'city'   => null,
+                'girls' => $girls,
+                'events' => null,
+                'city' => null,
         ]);
     }
 
 
     public function showGirl(
-        $id
+            $id
     ) {
         $girl = Girl::select([
-            'name',
-            'id',
-            'description',
-            'main_image',
-            'sex',
-            'meet',
-            'weight',
-            'height',
-            'age',
-            'country_id',
-            'region_id',
-            'city_id',
+                'name',
+                'id',
+                'description',
+                'main_image',
+                'sex',
+                'meet',
+                'weight',
+                'height',
+                'age',
+                'country_id',
+                'region_id',
+                'city_id',
 
-            'banned',
-            'user_id',
-            'phone',
-            'phone_settings',
-            'status',
-            'views_all',
-            'last_login',
-            'from_age',
-            'to_age',
-            'apperance_id',
-            'relation_id',
-            'children_id',
-            'smoking_id',
+                'banned',
+                'user_id',
+                'phone',
+                'phone_settings',
+                'status',
+                'views_all',
+                'last_login',
+                'from_age',
+                'to_age',
+                'apperance_id',
+                'relation_id',
+                'children_id',
+                'smoking_id',
         ])->where('id', $id)->first();
 
         if ($girl == null) {
@@ -155,7 +159,7 @@ class GirlsController extends Controller
 
         if ($girl->city_id != null) {
             $city = DB::table('cities')->where('id_city', '=', $girl->city_id)
-                ->first();
+                    ->first();
         } else {
             $city = null;
         }
@@ -178,64 +182,64 @@ class GirlsController extends Controller
         //проверяем, что просматривающий пользователь зареген.
         if ($AythUser != null) {
             $user3 = DB::table('user_user')
-                ->where('my_id', $AythUser->id)
-                ->where('other_id', $girl->user_id)->first();
+                    ->where('my_id', $AythUser->id)
+                    ->where('other_id', $girl->user_id)->first();
             if ($user3 != null) {
                 $girl = Girl::select([
-                    'name',
-                    'id',
-                    'description',
-                    'main_image',
-                    'sex',
-                    'meet',
-                    'weight',
-                    'height',
-                    'age',
-                    'phone',
-                    'country_id',
-                    'region_id',
-                    'city_id',
-                    'banned',
-                    'user_id',
-                    'private',
-                    'phone_settings',
-                    'last_login',
-                    'from_age',
-                    'to_age',
-                    'relation_id',
-                    'smoking_id',
+                        'name',
+                        'id',
+                        'description',
+                        'main_image',
+                        'sex',
+                        'meet',
+                        'weight',
+                        'height',
+                        'age',
+                        'phone',
+                        'country_id',
+                        'region_id',
+                        'city_id',
+                        'banned',
+                        'user_id',
+                        'private',
+                        'phone_settings',
+                        'last_login',
+                        'from_age',
+                        'to_age',
+                        'relation_id',
+                        'smoking_id',
                 ])->where('id', $id)->first();
 
                 $privatephoto = $girl->privatephotos()->get();
             }
             $ip = $this->getIp();
             $ayth_girl = Girl::select('id', 'user_id')
-                ->where('user_id', $AythUser->id)->first();
+                    ->where('user_id', $AythUser->id)->first();
             if ($ip != null and $ayth_girl != null) {
 
                 if ($utm_source != null) {
                     dump($utm_source);
                     $source_id = DB::table('view_source')
-                        ->where('name', $utm_source)->first();
+                            ->where('name', $utm_source)->first();
 
                     if ($source_id != null) {
                         DB::table('view_history')->insert([
-                            'girl_id'   => $girl->id,
-                            'ip'        => $ip,
-                            'source_id' => $source_id->id,
+                                'girl_id' => $girl->id,
+                                'ip' => $ip,
+                                'source_id' => $source_id->id,
                         ]);
                     }
                 } else {
                     $source_id = DB::table('view_source')
-                        ->where('name', $utm_source)->first();
+                            ->where('name', $utm_source)->first();
                     if ($source_id != null) {
                         DB::table('view_history')->insert([
-                            'girl_id'   => $girl->id,
-                            'ip'        => $ip,
-                            'source_id' => $source_id->id,
+                                'girl_id' => $girl->id,
+                                'ip' => $ip,
+                                'source_id' => $source_id->id,
                         ]);
                         DB::table('view_history')
-                            ->insert(['girl_id' => $girl->id, 'ip' => $ip]);
+                                ->insert(['girl_id' => $girl->id, 'ip' => $ip]);
                     }
                 }
             }
@@ -244,17 +248,17 @@ class GirlsController extends Controller
             //сохраняем данные просмотра
             if ($utm_source != null) {
                 $source_id = DB::table('view_source')
-                    ->where('name', $utm_source)->first();
+                        ->where('name', $utm_source)->first();
                 if ($source_id != null) {
                     DB::table('view_history')->insert([
-                        'girl_id'   => $girl->id,
-                        'ip'        => $ip,
-                        'source_id' => $source_id->id,
+                            'girl_id' => $girl->id,
+                            'ip' => $ip,
+                            'source_id' => $source_id->id,
                     ]);
                 } else {
                     DB::table('view_history')->insert([
-                        'girl_id' => $girl->id,
-                        'ip'      => $ip,
+                            'girl_id' => $girl->id,
+                            'ip' => $ip,
                     ]);
                 }
             }
@@ -267,15 +271,15 @@ class GirlsController extends Controller
         } else {
             if ($AythUser != null) {
                 $auth_girl = Girl::select('id', 'user_id')
-                    ->where('user_id', $AythUser->id)->first();
+                        ->where('user_id', $AythUser->id)->first();
                 if ($auth_girl != null) {
                     $girl_in_table = DB::table('girl_open_phone_girl')
-                        ->where('girl_id', $auth_girl->id)
-                        ->where('target_id', $girl->id)->first();
+                            ->where('girl_id', $auth_girl->id)
+                            ->where('target_id', $girl->id)->first();
                     if ($girl_in_table != null) {
                         $girl2 = Girl::select([
-                            'id',
-                            'phone',
+                                'id',
+                                'phone',
                         ])->where('id', $id)->first();;
                         $phone = $girl2->phone;
                     } else {
@@ -298,10 +302,10 @@ class GirlsController extends Controller
         //авв сшен
         if ($girl->city_id != null) {
             $city = DB::table('cities')->where('id_city', $girl->city_id)
-                ->first();
+                    ->first();
             if ($city != null) {
                 $region = DB::table('regions')
-                    ->where('id_region', $city->id_region)->first();
+                        ->where('id_region', $city->id_region)->first();
             } else {
                 $region = null;
             }
@@ -310,45 +314,45 @@ class GirlsController extends Controller
             $region = null;
         }
         $aperance = Aperance::select('id', 'name')
-            ->where('id', $girl->apperance_id)->first();
+                ->where('id', $girl->apperance_id)->first();
 
         $relation = Relationh::select('id', 'name')
-            ->where('id', $girl->relation_id)->first();
+                ->where('id', $girl->relation_id)->first();
 
         $children = Children::select(['id', 'name'])
-            ->where('id', $girl->children_id)->first();
+                ->where('id', $girl->children_id)->first();
 
         $smoking = Smoking::select(['id', 'name'])
-            ->where('id', $girl->smoking_id)->first();
+                ->where('id', $girl->smoking_id)->first();
 
         return view('girlView')->with([
-            'girl'           => $girl,
-            'images'         => $images,
-            'privatephotos'  => $privatephoto,
-            'targets'        => $targets,
-            'city'           => $city,
-            'region'         => $region,
-            'interes'        => $interes,
-            'phone_settings' => $phone_settings,
-            'phone'          => $phone,
-            'views'          => $views,
-            'aperance'       => $aperance,
-            'relation'       => $relation,
-            'children'       => $children,
-            'smoking'        => $smoking,
+                'girl' => $girl,
+                'images' => $images,
+                'privatephotos' => $privatephoto,
+                'targets' => $targets,
+                'city' => $city,
+                'region' => $region,
+                'interes' => $interes,
+                'phone_settings' => $phone_settings,
+                'phone' => $phone,
+                'views' => $views,
+                'aperance' => $aperance,
+                'relation' => $relation,
+                'children' => $children,
+                'smoking' => $smoking,
         ]);
     }
 
     public function inputPhone(
-        Request $request
+            Request $request
     ) {
         $validatedData = $request->validate([
-            'phone' => 'required|numeric|min:11',
+                'phone' => 'required|numeric|min:11',
         ]);
 
         $phone = $request->phone;
         $user = collect(DB::select('select * from users where phone like ?',
-            [$phone]))->first();
+                [$phone]))->first();
         if ($user != null and $user->phone_confirmed == 1) {
             return response()->json(['result' => 'alredy']);
         }
@@ -369,10 +373,10 @@ class GirlsController extends Controller
 
     public
     function inputCode(
-        Request $request
+            Request $request
     ) {
         $validatedData = $request->validate([
-            'code' => 'required|numeric|min:11',
+                'code' => 'required|numeric|min:11',
         ]);
 
         $inputCode = $request->code;
@@ -389,11 +393,11 @@ class GirlsController extends Controller
 
     public
     function SendSMS(
-        $phone,
-        $text
+            $phone,
+            $text
     ) {
         $src
-            = '<?xml version="1.0" encoding="UTF-8"?>
+                = '<?xml version="1.0" encoding="UTF-8"?>
         <SMS>
             <operations>
             <operation>SEND</operation>
@@ -404,22 +408,22 @@ class GirlsController extends Controller
             </authentification>
             <message>
             <sender>SMS</sender>
-            <text>'.$text.'</text>
+            <text>' . $text . '</text>
             </message>
             <numbers>
-            <number messageID="msg11">'.$phone.'</number>
+            <number messageID="msg11">' . $phone . '</number>
             </numbers>
         </SMS>';
         $Curl = curl_init();
         $CurlOptions = array(
-            CURLOPT_URL            => 'http://api.atompark.com/members/sms/xml.php',
-            CURLOPT_FOLLOWLOCATION => false,
-            CURLOPT_POST           => true,
-            CURLOPT_HEADER         => false,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_CONNECTTIMEOUT => 15,
-            CURLOPT_TIMEOUT        => 100,
-            CURLOPT_POSTFIELDS     => array('XML' => $src),
+                CURLOPT_URL => 'http://api.atompark.com/members/sms/xml.php',
+                CURLOPT_FOLLOWLOCATION => false,
+                CURLOPT_POST => true,
+                CURLOPT_HEADER => false,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_CONNECTTIMEOUT => 15,
+                CURLOPT_TIMEOUT => 100,
+                CURLOPT_POSTFIELDS => array('XML' => $src),
         );
         curl_setopt_array($Curl, $CurlOptions);
         if (false === ($Result = curl_exec($Curl))) {
@@ -433,22 +437,22 @@ class GirlsController extends Controller
     function getIp()
     {
         foreach (
-            array(
-                'HTTP_CLIENT_IP',
-                'HTTP_X_FORWARDED_FOR',
-                'HTTP_X_FORWARDED',
-                'HTTP_X_CLUSTER_CLIENT_IP',
-                'HTTP_FORWARDED_FOR',
-                'HTTP_FORWARDED',
-                'REMOTE_ADDR',
-            ) as $key
+                array(
+                        'HTTP_CLIENT_IP',
+                        'HTTP_X_FORWARDED_FOR',
+                        'HTTP_X_FORWARDED',
+                        'HTTP_X_CLUSTER_CLIENT_IP',
+                        'HTTP_FORWARDED_FOR',
+                        'HTTP_FORWARDED',
+                        'REMOTE_ADDR',
+                ) as $key
         ) {
             if (array_key_exists($key, $_SERVER) === true) {
                 foreach (explode(',', $_SERVER[$key]) as $ip) {
                     $ip = trim($ip); // just to be safe
                     if (filter_var($ip, FILTER_VALIDATE_IP,
-                            FILTER_FLAG_NO_PRIV_RANGE
-                            | FILTER_FLAG_NO_RES_RANGE) !== false
+                                    FILTER_FLAG_NO_PRIV_RANGE
+                                    | FILTER_FLAG_NO_RES_RANGE) !== false
                     ) {
                         return $ip;
                     }
@@ -463,22 +467,22 @@ class GirlsController extends Controller
     static function getIpstatic()
     {
         foreach (
-            array(
-                'HTTP_CLIENT_IP',
-                'HTTP_X_FORWARDED_FOR',
-                'HTTP_X_FORWARDED',
-                'HTTP_X_CLUSTER_CLIENT_IP',
-                'HTTP_FORWARDED_FOR',
-                'HTTP_FORWARDED',
-                'REMOTE_ADDR',
-            ) as $key
+                array(
+                        'HTTP_CLIENT_IP',
+                        'HTTP_X_FORWARDED_FOR',
+                        'HTTP_X_FORWARDED',
+                        'HTTP_X_CLUSTER_CLIENT_IP',
+                        'HTTP_FORWARDED_FOR',
+                        'HTTP_FORWARDED',
+                        'REMOTE_ADDR',
+                ) as $key
         ) {
             if (array_key_exists($key, $_SERVER) === true) {
                 foreach (explode(',', $_SERVER[$key]) as $ip) {
                     $ip = trim($ip); // just to be safe
                     if (filter_var($ip, FILTER_VALIDATE_IP,
-                            FILTER_FLAG_NO_PRIV_RANGE
-                            | FILTER_FLAG_NO_RES_RANGE) !== false
+                                    FILTER_FLAG_NO_PRIV_RANGE
+                                    | FILTER_FLAG_NO_RES_RANGE) !== false
                     ) {
                         return $ip;
                     }
@@ -491,10 +495,10 @@ class GirlsController extends Controller
 
     public
     function agreeCity(
-        Request $request
+            Request $request
     ) {
         $cities = DB::table('cities')
-            ->where('name', 'like', $request->city_name.'%')->first();
+                ->where('name', 'like', $request->city_name . '%')->first();
         //  dump($cities);
         $id = $cities->id_city;
         if ($id == null) {
@@ -508,10 +512,10 @@ class GirlsController extends Controller
 
     public
     function newCity(
-        Request $request
+            Request $request
     ) {
         $validatedData = $request->validate([
-            'city' => 'required',
+                'city' => 'required',
         ]);
 
         $city = $request->city;
@@ -562,8 +566,8 @@ class GirlsController extends Controller
                 return null;
             }
             $events = Myevent::select('id', 'name', 'city_id', 'begin', 'end',
-                'place')->where('city_id',
-                $city->id_city)->get();
+                    'place')->where('city_id',
+                    $city->id_city)->get();
 
             return $city;
         } else {
@@ -578,14 +582,14 @@ class GirlsController extends Controller
     {
         $ip = GirlsController::getIpStatic();
         $response = file_get_contents("http://api.sypexgeo.net/json/"
-            .$ip); //запрашиваем местоположение
+                . $ip); //запрашиваем местоположение
         $response = json_decode($response);
         $name = $response->city->name_ru;
 
-        $cities = DB::table('cities')->where('name', 'like', $name.'%')
-            ->first();
+        $cities = DB::table('cities')->where('name', 'like', $name . '%')
+                ->first();
         $response = file_get_contents("http://api.sypexgeo.net/json/"
-            .$ip); //запрашиваем местоположение
+                . $ip); //запрашиваем местоположение
         $response = json_decode($response);
 
         return view('confurmCity')->with(['city' => $response]);
@@ -596,14 +600,14 @@ class GirlsController extends Controller
     {
         $ip = GirlsController::getIpStatic();
         $response = file_get_contents("http://api.sypexgeo.net/json/"
-            .$ip); //запрашиваем местоположение
+                . $ip); //запрашиваем местоположение
         $response = json_decode($response);
         $name = $response->city->name_ru;
 
-        $cities = DB::table('cities')->where('name', 'like', $name.'%')
-            ->first();
+        $cities = DB::table('cities')->where('name', 'like', $name . '%')
+                ->first();
         $response = file_get_contents("http://api.sypexgeo.net/json/"
-            .$ip); //запрашиваем местоположение
+                . $ip); //запрашиваем местоположение
         $response = json_decode($response);
 
         return view('confurmCity')->with(['city' => $response]);

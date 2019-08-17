@@ -63,7 +63,7 @@
             this.getNumberUnreadedEventRequwest();
             Echo.private(`messages.${this.user.id}`)
                 .listen('NewMessage', (e) => {
-                    //console.log('NewMessage');
+                    console.log('NewMessage');
                     axios.get('/getCountUnreaded')
                         .then((response) => {
                             this.numberUnreaded = response.data;
@@ -72,7 +72,7 @@
                 });
             Echo.private(`requwests.${this.user.id}`)
                 .listen('newApplication', (e) => {
-                    // console.log('NewRequwest');
+                     console.log('NewRequwest');
                     axios.get('/getCountUnreadedRequwest')
                         .then((response) => {
                             this.numberApplication = response.data;
@@ -81,6 +81,7 @@
             Echo.private(`gifs.${this.user.id}`)
                 .listen('eventPreasent', (e) => {
                     this.getNumberUnreadedPresents();
+                    console.log("presrn");
                 });
         },
         methods:
@@ -101,9 +102,11 @@
                         })
                 },
                 inSeach() {
+                    let res;
                     axios.get('/inseach')
                         .then((response) => {
-                            if (response.data == "true") {
+                            res = response.data;
+                            if (res == true) {
                                 this.inseach = true;
                             }
                             else {

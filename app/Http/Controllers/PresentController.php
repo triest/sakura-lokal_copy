@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Input;
 use App\ImageResize;
 
 
-
 class PresentController extends Controller
 {
     //
@@ -25,10 +24,10 @@ class PresentController extends Controller
     public function getpresents()
     {
         $presents = Present::select([
-            'id',
-            'name',
-            'price',
-            'image',
+                'id',
+                'name',
+                'price',
+                'image',
         ])->get();
 
         return response()->json([$presents]);
@@ -38,9 +37,9 @@ class PresentController extends Controller
     public function storepresent(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
-            'price' => 'required|numeric|min:1',
-            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'name' => 'required',
+                'price' => 'required|numeric|min:1',
+                'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $present = new Present();
         $present->name = $request->name;
@@ -48,14 +47,14 @@ class PresentController extends Controller
         if (Input::hasFile('file')) {
             $image_extension = $request->file('file')->getClientOriginalExtension();
             $image_new_name = md5(microtime(true));
-            $temp_file = base_path().'/public/presents/upload/'.strtolower($image_new_name.'.'.$image_extension);// кладем файл с новыс именем
+            $temp_file = base_path() . '/public/presents/upload/' . strtolower($image_new_name . '.' . $image_extension);// кладем файл с новыс именем
             $request->file('file')
-                ->move(base_path().'/public/presents/upload/',
-                    strtolower($image_new_name.'.'.$image_extension));
+                    ->move(base_path() . '/public/presents/upload/',
+                            strtolower($image_new_name . '.' . $image_extension));
 
-            $present->image = $image_new_name.'.'.$image_extension;
+            $present->image = $image_new_name . '.' . $image_extension;
             //сохраняем уменьшенную копию
-            $small = base_path().'/public/presents/small/'.strtolower($image_new_name.'.'.$image_extension);
+            $small = base_path() . '/public/presents/small/' . strtolower($image_new_name . '.' . $image_extension);
             copy($temp_file, $small);
 
             $image = new ImageResize($small);
@@ -72,21 +71,21 @@ class PresentController extends Controller
         $id = $request->id;
 
         $presentss = Present::select([
-            'id',
-            'name',
-            'price',
-            'image',
+                'id',
+                'name',
+                'price',
+                'image',
         ])->where('id', $id)
-            ->first();
+                ->first();
         if ($presentss == null) {
             return response()->json(['fail']);
         }
 
         // удаляем файд
         try {
-            $path = base_path().'/public/presents/upload/'.$presentss->image;
+            $path = base_path() . '/public/presents/upload/' . $presentss->image;
             File::Delete($path);
-            $path = base_path().'/public/presents/small/'.$presentss->image;
+            $path = base_path() . '/public/presents/small/' . $presentss->image;
             File::Delete($path);
 
         } catch (\Exception $e) {
@@ -126,10 +125,11 @@ class PresentController extends Controller
          $giftAct->target_id = 1;
          $giftAct->present_id = 1;
          $giftAct->save();*/
+        $user = Auth::user();
 
+        $giftAct = GiftAct::select(['id', 'present_id', 'who_id', 'target_id'])->where('id', 2)->first();
+        //  dump($giftAct);
 
-        $giftAct = GiftAct::select(['id', 'present_id', 'who_id', 'target_id'])->where('id', 1)->first();
-        dump($giftAct);
         broadcast(new eventPreasent($giftAct));
     }
 
@@ -188,7 +188,7 @@ class PresentController extends Controller
     {
         dump($request);
         $present = GiftAct::select(['id', 'present_id', 'who_id', 'target_id', 'readed'])->where('id',
-            $request->present_id)->first();
+                $request->present_id)->first();
         dump($present);
         if ($present != null) {
             $present->readed = true;
@@ -202,21 +202,21 @@ class PresentController extends Controller
 
     public function eventtest(Request $request)
     {
-     //   $giftAct = GiftAct::select(['id', 'present_id', 'who_id', 'target_id'])->where('id', 1)->first();
-     //   dump($giftAct);
-     //   $giftAct->save();
-      //  broadcast(new eventPreasent($giftAct));
+        //   $giftAct = GiftAct::select(['id', 'present_id', 'who_id', 'target_id'])->where('id', 1)->first();
+        //   dump($giftAct);
+        //   $giftAct->save();
+        //  broadcast(new eventPreasent($giftAct));
 
-        $text="sss";
+        $text = "sss";
 
 
         $message = Message::create([
-            'from' => auth()->id(),
-            'to' => auth()->id(),
-            'text' =>$text,
+                'from' => auth()->id(),
+                'to' => auth()->id(),
+                'text' => $text,
         ]);
 
-     //   dump($giftAct);
+        //   dump($giftAct);
 
         broadcast(new NewMessage($message));
     }

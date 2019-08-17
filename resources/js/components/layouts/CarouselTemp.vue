@@ -2,24 +2,24 @@
     <div>
         <carousel :per-page="1" :mouse-drag="false" :autoplay="true" :loop="true" :centerMode="true"
                   :navigationEnabled="true">
-
-            <slide v-for="image in imagesList" :key="image[0].id">
-                <div class="flex-center2 position-ref">
-                    <a :href="'/anket/'+image[0].id">
-                        <img :src="'/images/small/'+image[0].main_image" height="100">
-                    </a>
-                    <b>{{image[0].name}},</b>
-                    <b>Возраст:{{image[0].age}}</b>
-                </div>
-            </slide>
-            <slide>
-                <div class="flex-center2 position-ref">
-                    <a :href="'/power'">
-                        <img :src="'/images/anketa.jpeg'" height="100">
-                    </a>
-                </div>
-            </slide>
-
+            <div v-if="imagesList.length>0">
+                <slide v-for="image in imagesList" :key="image[0].id">
+                    <div class="flex-center2 position-ref">
+                        <a :href="'/anket/'+image[0].id">
+                            <img :src="'/images/small/'+image[0].main_image" height="100">
+                        </a>
+                        <b>{{image[0].name}},</b>
+                        <b>Возраст:{{image[0].age}}</b>
+                    </div>
+                </slide>
+                <slide>
+                    <div class="flex-center2 position-ref">
+                        <a :href="'/power'">
+                            <img :src="'/images/anketa.jpeg'" height="100">
+                        </a>
+                    </div>
+                </slide>
+            </div>
         </carousel>
     </div>
 </template>

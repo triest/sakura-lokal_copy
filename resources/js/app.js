@@ -100,200 +100,202 @@ Vue.component('viewhistory', require('./components/anket/Viewhistory.vue').defau
 
 Vue.component('aperance', require('./components/admin/Aperance.vue').default);
 
-const aperanceApp = new Vue({
-    el: '#aperanceApp',
-    data: {
-        showModal: false
-    }
-});
+window.onload = function () {
+    const aperanceApp = new Vue({
+        el: '#aperanceApp',
+        data: {
+            showModal: false
+        }
+    });
 
-const viewhistoryapp = new Vue({
-    el: '#viewhistoryapp',
-    data: {
-        showModal: false
-    }
-});
+    const viewhistoryapp = new Vue({
+        el: '#viewhistoryapp',
+        data: {
+            showModal: false
+        }
+    });
 
-const eventinmycityapp = new Vue({
-    el: '#eventinmycityapp',
-    data: {
-        showModal: false
-    }
-});
+    const eventinmycityapp = new Vue({
+        el: '#eventinmycityapp',
+        data: {
+            showModal: false
+        }
+    });
 
-const requwesteventlistapp = new Vue({
-    el: '#requwesteventlistapp',
-    data: {
-        showModal: false
-    }
-});
+    const requwesteventlistapp = new Vue({
+        el: '#requwesteventlistapp',
+        data: {
+            showModal: false
+        }
+    });
 
-const eventequwestapp = new Vue({
-    el: '#eventrequwestapp',
-    data: {
-        showModal: false
-    }
-});
+    const eventrequwestapp = new Vue({
+        el: '#eventrequwestapp',
+        data: {
+            showModal: false
+        }
+    });
 
-const events = new Vue({
-    el: '#events',
-    data: {
-        showModal: false
-    }
-});
+    const events = new Vue({
+        el: '#events',
+        data: {
+            showModal: false
+        }
+    });
 
-const eventmycity = new Vue({
-    el: '#eventmycityApp',
-    data: {
-        showModal: false
-    }
-});
+    const eventmycity = new Vue({
+        el: '#eventmycityApp',
+        data: {
+            showModal: false
+        }
+    });
 
-const phoneRequwestApp = new Vue({
-    el: '#phoneRequwestApp',
-    data: {
-        showModal: false
-    }
-});
+    const phoneRequwestApp = new Vue({
+        el: '#phoneRequwestApp',
+        data: {
+            showModal: false
+        }
+    });
 
 
-const likesApp = new Vue({
-    el: '#likesApp',
-    data: {
-        showModal: false
-    }
-});
+    const likesApp = new Vue({
+        el: '#likesApp',
+        data: {
+            showModal: false
+        }
+    });
 
-const index = new Vue({
-    el: '#index',
-    data: {
-        showModal: false
-    }
-});
+    const index = new Vue({
+        el: '#index',
+        data: {
+            showModal: false
+        }
+    });
 
-const app = new Vue({
-    el: '#app',
-    data: {
-        showModal: false
-    }
-});
+    const app = new Vue({
+        el: '#app',
+        data: {
+            showModal: false
+        }
+    });
 
-const app2 = new Vue({
-    el: '#app2',
-    data: {
-        showModal: false
-    }
-});
+    const app2 = new Vue({
+        el: '#app2',
+        data: {
+            showModal: false
+        }
+    });
 
-const app3 = new Vue({
-    el: '#app3',
-    data: {
-        showModal: false
-    }
-});
+    const app3 = new Vue({
+        el: '#app3',
+        data: {
+            showModal: false
+        }
+    });
 
-const app4 = new Vue({
-    el: '#app4',
-    data: {
-        showModal: false
-    }
-});
+    const app4 = new Vue({
+        el: '#app4',
+        data: {
+            showModal: false
+        }
+    });
 
-const privateApp = new Vue({
-    el: '#privateApp',
-    data: {
-        showModal: false
-    }
-});
+    const privateApp = new Vue({
+        el: '#privateApp',
+        data: {
+            showModal: false
+        }
+    });
 
-const app7 = new Vue({
-    el: '#app7',
-    data: {
-        showModal: false
-    }
-});
+    const app7 = new Vue({
+        el: '#app7',
+        data: {
+            showModal: false
+        }
+    });
 
-const applicationClass = new Vue({
-    el: '#applicationClass',
-    data: {
-        showModal: false
-    }
-});
+    const applicationClass = new Vue({
+        el: '#applicationClass',
+        data: {
+            showModal: false
+        }
+    });
 
-const powerApp = new Vue({
-    el: '#powerApp',
-    data: {
-        showModal: false
-    }
-});
+    const powerApp = new Vue({
+        el: '#powerApp',
+        data: {
+            showModal: false
+        }
+    });
 
-const myAnket = new Vue({
-    el: '#myAnketApp',
-    data: {
-        showModal: false
-    }
-});
+    const myAnket = new Vue({
+        el: '#myAnketApp',
+        data: {
+            showModal: false
+        }
+    });
 
-const phoneApp = new Vue({
-    el: '#phoneApp',
-    data: {
-        showModal: false
-    }
-});
+    const phoneApp = new Vue({
+        el: '#phoneApp',
+        data: {
+            showModal: false
+        }
+    });
 
-const selectCityApp = new Vue({
-    el: '#selectCityApp',
-    data: {
-        showModal: false
-    }
-});
+    const selectCityApp = new Vue({
+        el: '#selectCityApp',
+        data: {
+            showModal: false
+        }
+    });
 
-const indexvue = new Vue({
-    el: '#indexvue',
-    data: {
-        showModal: false
-    }
-});
+    const indexvue = new Vue({
+        el: '#indexvue',
+        data: {
+            showModal: false
+        }
+    });
 
-const moneyApp = new Vue({
-    el: '#moneyApp',
-    data: {
-        showModal: false
-    }
-});
+    const moneyApp = new Vue({
+        el: '#moneyApp',
+        data: {
+            showModal: false
+        }
+    });
 
-const myeventApp = new Vue({
-    el: '#myeventApp',
-    data: {
-        showModal: false
-    }
+    const myeventApp = new Vue({
+        el: '#myeventApp',
+        data: {
+            showModal: false
+        }
 
-    //appacepted
-});
+        //appacepted
+    });
 
-const appaceptedApp = new Vue({
-    el: '#appaceptedApp',
-    data: {
-        showModal: false
-    }
+    const appaceptedApp = new Vue({
+        el: '#appaceptedApp',
+        data: {
+            showModal: false
+        }
 
-    //appacepted
-});
+        //appacepted
+    });
 
-const sidePanelApp = new Vue({
-    el: '#sidePanelApp',
-    data: {
-        showModal: false
-    }
+    const sidePanelApp = new Vue({
+        el: '#sidePanelApp',
+        data: {
+            showModal: false
+        }
 
-    //appacepted
-});
+        //appacepted
+    });
 
-const eventregApp = new Vue({
-    el: '#eventregApp',
-    data: {
-        showModal: false
-    }
+    const eventregApp = new Vue({
+        el: '#eventregApp',
+        data: {
+            showModal: false
+        }
 
-    //appacepted
-});
+        //appacepted
+    });
+}

@@ -39,13 +39,13 @@ class MyEventController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name'        => 'required',
-            'description' => 'required',
-            'max'         => 'numeric|min:1',
-            'min'         => 'numeric|min:1',
-            'date'        => 'required|date_format:Y-m-d',
-            'time'        => 'required|date_format:H:i',
-            'city'        => 'required',
+                'name' => 'required',
+                'description' => 'required',
+                'max' => 'numeric|min:1',
+                'min' => 'numeric|min:1',
+                'date' => 'required|date_format:Y-m-d',
+                'time' => 'required|date_format:H:i',
+                'city' => 'required',
         ]);
 
 
@@ -56,13 +56,13 @@ class MyEventController extends Controller
         $event->description = $request->description;
         $event->max_people = $request->max;
         $event->min_people = $request->min;
-        $event->begin = new DateTime($request->date.' '.$request->time);
+        $event->begin = new DateTime($request->date . ' ' . $request->time);
         if ($request->has('place')) {
             $event->place = $request->place;
         }
         $user = Auth::user();
         $girl = Girl::select(['id', 'name', 'user_id'])
-            ->where('user_id', $user->id)->first();
+                ->where('user_id', $user->id)->first();
         if ($girl == null) {
             return null;
         }
@@ -78,11 +78,11 @@ class MyEventController extends Controller
             foreach ($request->file as $key) {
                 $image_extension = $key->getClientOriginalExtension();
                 $image_new_name = md5(microtime(true));
-                $key->move(public_path().'/images/events/',
-                    strtolower($image_new_name.'.'.$image_extension));
+                $key->move(public_path() . '/images/events/',
+                        strtolower($image_new_name . '.' . $image_extension));
 
                 $photo = new EventPhoto();
-                $photo['photo_name'] = $image_new_name.'.'.$image_extension;
+                $photo['photo_name'] = $image_new_name . '.' . $image_extension;
                 $photo['myevent_id'] = $event->id;
                 $photo->save();
             }
@@ -100,7 +100,7 @@ class MyEventController extends Controller
             return null;
         }
         $events
-            = collect(DB::select('select myevents.id,myevents.name,event_statys.name as `event_statys`,city.id_city,city.name as \'city_name\',myevents.begin, myevents.place,myevents.created_at,myevents.updated_at from myevents  left join event_statys on myevents.status_id=event_statys.id left join cities city on myevents.city_id=city.id_city'));
+                = collect(DB::select('select myevents.id,myevents.name,event_statys.name as `event_statys`,city.id_city,city.name as \'city_name\',myevents.begin, myevents.place,myevents.created_at,myevents.updated_at from myevents  left join event_statys on myevents.status_id=event_statys.id left join cities city on myevents.city_id=city.id_city'));
 
         return response()->json(["events" => $events]);
     }
@@ -108,14 +108,14 @@ class MyEventController extends Controller
     public function edit($id)
     {
         $events = DB::table('myevents')
-            ->join('event_statys', 'event_statys.id', '=', 'myevents.status_id')
-            ->where('myevents.id', '=', $id)
-            ->first();
+                ->join('event_statys', 'event_statys.id', '=', 'myevents.status_id')
+                ->where('myevents.id', '=', $id)
+                ->first();
         $statys = EventStatys::select()->get();
 
         return view('event.edit')->with([
-            'event'  => $events,
-            'statys' => $statys,
+                'event' => $events,
+                'statys' => $statys,
         ]);
     }
 
@@ -126,7 +126,7 @@ myevents.begin,myevents.end_applications,city.id_city,city.name as \'city_name\'
 myevents.place,myevents.created_at,myevents.updated_at,statys.name as \'status_name\'  from myevents  
 left join event_statys statys on myevents.status_id=statys.id left join
  cities city on myevents.city_id=city.id_city where myevents.id=?',
-            [$id]));
+                [$id]));
         $events = $events[0];
 
         $statys = EventStatys::select()->get();
@@ -135,8 +135,8 @@ left join event_statys statys on myevents.status_id=statys.id left join
         }
 
         return view('event.viewmy')->with([
-            'event'  => $events,
-            'statys' => $statys,
+                'event' => $events,
+                'statys' => $statys,
         ]);
     }
 
@@ -147,38 +147,37 @@ left join event_statys statys on myevents.status_id=statys.id left join
         if ($user == null) {
             $ip = GirlsController::getIpStatic();
             $response = file_get_contents("http://api.sypexgeo.net/json/"
-                .$ip); //запрашиваем местоположение
+                    . $ip); //запрашиваем местоположение
             $response = json_decode($response);
             $name = $response->city->name_ru;
 
-            $cities = DB::table('cities')->where('name', 'like', $name.'%')
-                ->first();
-            $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`	             
-                from myevents myev left join events_participants evpart on myev.id=evpart.myevent_id left join event_statys status on status.id=myev.status_id 
-                 where myev.city_id=? and  myev.begin>now()',
-                [$cities->id_city]));
-
-            return response()->json($events);
-        } else {
-            $girl = $user->anketisExsis();
-
-            if ($girl == null) {
-                $ip = GirlsController::getIpStatic();
-                $response = file_get_contents("http://api.sypexgeo.net/json/"
-                    .$ip); //запрашиваем местоположение
-                $response = json_decode($response);
-                $name = $response->city->name_ru;
-                $cities = DB::table('cities')->where('name', 'like', $name.'%')
+            $cities = DB::table('cities')->where('name', 'like', $name . '%')
                     ->first();
-                $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`	             
+            $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`	             
                 from myevents myev left join events_participants evpart on myev.id=evpart.myevent_id left join event_statys status on status.id=myev.status_id 
                  where myev.city_id=? and  myev.begin>now()',
                     [$cities->id_city]));
 
+            return response()->json($events);
+        } else {
+            $girl = $user->anketisExsis();
+            if ($girl == null) {
+                $ip = GirlsController::getIpStatic();
+                $response = file_get_contents("http://api.sypexgeo.net/json/"
+                        . $ip); //запрашиваем местоположение
+                $response = json_decode($response);
+                $name = $response->city->name_ru;
+                $cities = DB::table('cities')->where('name', 'like', $name . '%')
+                        ->first();
+                $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`	             
+                from myevents myev left join events_participants evpart on myev.id=evpart.myevent_id left join event_statys status on status.id=myev.status_id 
+                 where myev.city_id=? and  myev.begin>now()',
+                        [$cities->id_city]));
+
                 return response()->json($events);
             } else {
                 $girl = Girl::select('id', 'name', 'city_id')
-                    ->where('user_id', $user->id)->first();
+                        ->where('user_id', $user->id)->first();
                 $city_id = $girl->city_id;
                 if ($city_id != null) {
                     $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`	             
@@ -187,17 +186,17 @@ left join event_statys statys on myevents.status_id=statys.id left join
                 } else {
                     $ip = GirlsController::getIpStatic();
                     $response
-                        = file_get_contents("http://api.sypexgeo.net/json/"
-                        .$ip); //запрашиваем местоположение
+                            = file_get_contents("http://api.sypexgeo.net/json/"
+                            . $ip); //запрашиваем местоположение
                     $response = json_decode($response);
                     $name = $response->city->name_ru;
                     $cities = DB::table('cities')
-                        ->where('name', 'like', $name.'%')
-                        ->first();
+                            ->where('name', 'like', $name . '%')
+                            ->first();
                     $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`	             
                 from myevents myev left join events_participants evpart on myev.id=evpart.myevent_id left join event_statys status on status.id=myev.status_id 
                  where myev.city_id=?  and myev.begin>now()',
-                        [$cities->id_city]));
+                            [$cities->id_city]));
 
                     return response()->json($events);
                 }
@@ -212,36 +211,36 @@ left join event_statys statys on myevents.status_id=statys.id left join
     public function singup($id)
     {
         $events = Myevent::select([
-            'id',
-            'name',
-            'place',
-            'begin',
-            'description',
-            'max_people',
-            'organizer_id',
+                'id',
+                'name',
+                'place',
+                'begin',
+                'description',
+                'max_people',
+                'organizer_id',
         ])->where('id', $id)->first();
         $days = [
-            'Воскресенье',
-            'Понедельник',
-            'Вторник',
-            'Среда',
-            'Четверг',
-            'Пятница',
-            'Суббота',
+                'Воскресенье',
+                'Понедельник',
+                'Вторник',
+                'Среда',
+                'Четверг',
+                'Пятница',
+                'Суббота',
         ];
         $months = [
-            'Январь',
-            'Февраль',
-            'Март',
-            'Апрель',
-            'Май',
-            'Июнь',
-            'Июль',
-            'Август',
-            'Сентябрь',
-            'Октябрь',
-            'Ноябрь',
-            'Декабрь',
+                'Январь',
+                'Февраль',
+                'Март',
+                'Апрель',
+                'Май',
+                'Июнь',
+                'Июль',
+                'Август',
+                'Сентябрь',
+                'Октябрь',
+                'Ноябрь',
+                'Декабрь',
         ];
         $arr = explode(" ", $events->begin);
         $day_num = date("w", strtotime($arr[0]));
@@ -252,18 +251,18 @@ left join event_statys statys on myevents.status_id=statys.id left join
 
 
         $organizer = Girl::select(['id', 'name', 'main_image'])
-            ->where('id', $events->organizer_id)->first();
+                ->where('id', $events->organizer_id)->first();
         $photo = $events->photo()->get();
 
 
         return view('event.singup')->with([
-            'event'      => $events,
-            'day_name'   => $day_name,
-            'month_name' => $month_name,
-            'day'        => $day,
-            'time'       => $arr[1],
-            'organizer'  => $organizer,
-            'photo'      => $photo
+                'event' => $events,
+                'day_name' => $day_name,
+                'month_name' => $month_name,
+                'day' => $day,
+                'time' => $arr[1],
+                'organizer' => $organizer,
+                'photo' => $photo
             /* 'count' => $count*/
         ]);
     }
@@ -273,42 +272,42 @@ left join event_statys statys on myevents.status_id=statys.id left join
 
         $user = Auth::user();
         $girl = Girl::select(['id', 'name'])->where('user_id', $user->id)
-            ->first();
+                ->first();
         if ($girl == null) {
             return null;
         }
         $eventreq = new Eventrequwest();
         $event = Myevent::select([
-            'id',
-            'name',
-            'place',
-            'description',
-            'max_people',
-            'organizer_id',
+                'id',
+                'name',
+                'place',
+                'description',
+                'max_people',
+                'organizer_id',
         ])->where('id',
-            $request->id)->first();
+                $request->id)->first();
         if ($event == null) {
             return response(404);
         }
 
         $eventreq->girl_id = $girl->id;
         $eventreq->event_id
-            = $event->id;      //  $eventreq->target()->associate($girl)->save();
+                = $event->id;      //  $eventreq->target()->associate($girl)->save();
 
         $eventreq->status = 'unread';
         $eventreq->save();
 
         $eventOwgene = Girl::select(['id', 'user_id'])
-            ->where('id', $event->organizer_id)->first();
+                ->where('id', $event->organizer_id)->first();
         //  $user = $eventOwgene->user()->get();
         $user = User::select(['id'])->where('id', $eventOwgene->user_id)
-            ->first();
+                ->first();
 
         broadcast(new Newevent($eventreq));
         new SendMessageAboutEvent("Новая заявка на мероприятие", $user->email,
-            $user->name, 'Новая заявка на ваше мероприятие!');
+                $user->name, 'Новая заявка на ваше мероприятие!');
         new SendSMSAboutEvent("Новая заявка на мероприятие", $user->phone,
-            $event->name);
+                $event->name);
 
 
         return response(200);
@@ -318,13 +317,13 @@ left join event_statys statys on myevents.status_id=statys.id left join
     {
         $user = Auth::user();
         $girl = Girl::select(['id', 'name'])->where('user_id', $user->id)
-            ->first();
+                ->first();
         if ($girl == null) {
             return null;
         }
         $eventreq = Eventrequwest::select(['id', 'status'])
-            ->where('girl_id', $girl->id)->where('event_id',
-                $request->id)->first();
+                ->where('girl_id', $girl->id)->where('event_id',
+                        $request->id)->first();
 
         if ($girl != null && $eventreq != null) {
             //return response()->json('sended');
@@ -338,25 +337,25 @@ left join event_statys statys on myevents.status_id=statys.id left join
     {
 
         $list
-            = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=?',
-            [$request->eventid]));
+                = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=?',
+                [$request->eventid]));
         $accepted
-            = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="accept"',
-            [$request->eventid]));
+                = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="accept"',
+                [$request->eventid]));
         $reject
-            = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="denide"',
-            [$request->eventid]));
+                = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="denide"',
+                [$request->eventid]));
         $unreaded
-            = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="unreaded"',
-            [$request->eventid]));
+                = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="unreaded"',
+                [$request->eventid]));
 
         //  dump($unredded);
 
         return response()->json([
-            'all'      => $list,
-            'accepted' => $accepted,
-            'reject'   => $reject,
-            'unreaded' => $unreaded,
+                'all' => $list,
+                'accepted' => $accepted,
+                'reject' => $reject,
+                'unreaded' => $unreaded,
         ]);
     }
 
@@ -364,8 +363,8 @@ left join event_statys statys on myevents.status_id=statys.id left join
     public function unreaded(Request $request)
     {
         $unreaded
-            = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="unreaded"',
-            [$request->eventid]));
+                = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="unreaded"',
+                [$request->eventid]));
 
         return response()->json($unreaded);
     }
@@ -373,8 +372,8 @@ left join event_statys statys on myevents.status_id=statys.id left join
     public function accepted(Request $request)
     {
         $unreaded
-            = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="accept"',
-            [$request->eventid]));
+                = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="accept"',
+                [$request->eventid]));
 
         return response()->json($unreaded);
     }
@@ -382,8 +381,8 @@ left join event_statys statys on myevents.status_id=statys.id left join
     public function denided(Request $request)
     {
         $unreaded
-            = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="denide"',
-            [$request->eventid]));
+                = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="denide"',
+                [$request->eventid]));
 
         return response()->json($unreaded);
     }
@@ -412,13 +411,13 @@ left join event_statys statys on myevents.status_id=statys.id left join
 
         if ($action == 'accept') {
             DB::table('event_requwest')
-                ->where('id', $reqid)
-                ->update(['status' => 'accept']);
+                    ->where('id', $reqid)
+                    ->update(['status' => 'accept']);
 
         } elseif ($action == 'reject') {
             DB::table('event_requwest')
-                ->where('id', $reqid)
-                ->update(['status' => 'denide']);
+                    ->where('id', $reqid)
+                    ->update(['status' => 'denide']);
         }
 
         return response(200);
@@ -439,10 +438,10 @@ left join event_statys statys on myevents.status_id=statys.id left join
         }
 
         $unredded
-            = collect(DB::select('SELECT * FROM `event_requwest` `eventreq` LEFT JOIN `myevents` `myeven` ON
+                = collect(DB::select('SELECT * FROM `event_requwest` `eventreq` LEFT JOIN `myevents` `myeven` ON
 `eventreq`.`event_id`=`myeven`.`id`
 WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
-            [$girl->id]))->count();
+                [$girl->id]))->count();
 
         return response()->json($unredded);
     }
@@ -450,34 +449,34 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
     public function requwestcount(Request $request)
     {
         $event = Myevent::select(['id', 'name', 'max_people', 'min_people'])
-            ->where('id', $request->eventid)
-            ->first();
+                ->where('id', $request->eventid)
+                ->first();
         if ($event == null) {
             return 404;
         }
         $accepted = Eventrequwest::select([
-            'id',
-            'event_id',
-            'girl_id',
-            'status',
+                'id',
+                'event_id',
+                'girl_id',
+                'status',
         ])
-            ->where('event_id', $event->id)
-            ->where('status', 'accept')
-            ->count();
+                ->where('event_id', $event->id)
+                ->where('status', 'accept')
+                ->count();
         $unreaded = Eventrequwest::select([
-            'id',
-            'event_id',
-            'girl_id',
-            'status',
+                'id',
+                'event_id',
+                'girl_id',
+                'status',
         ])
-            ->where('event_id', $event->id)
-            ->where('status', 'unreaded')
-            ->get();
+                ->where('event_id', $event->id)
+                ->where('status', 'unreaded')
+                ->get();
 
         return response()->json([
-            'event'    => $event,
-            'accepted' => $accepted,
-            'unreaded' => $unreaded,
+                'event' => $event,
+                'accepted' => $accepted,
+                'unreaded' => $unreaded,
         ]);
     }
 
