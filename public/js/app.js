@@ -5355,6 +5355,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   components: {},
@@ -57558,11 +57565,21 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(event.begin))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(event.event_statys))]),
+                    _c("td", [_vm._v(_vm._s(event.statys_name))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(event.created_at))]),
+                    event.req_status == "unread"
+                      ? _c("div", [_c("td", [_vm._v("Заявка не прочитанна")])])
+                      : _vm._e(),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(event.updated_at))])
+                    event.req_status == "accept"
+                      ? _c("div", [_c("td", [_vm._v("Заявка принята")])])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    event.req_status == "denide"
+                      ? _c("div", [_c("td", [_vm._v("Заявка отклонена")])])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(event.created_at))])
                   ])
                 }),
                 0
@@ -57628,9 +57645,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Статус события")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Создано")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Изменено")])
+        _c("th", [_vm._v("Создано")])
       ])
     ])
   }

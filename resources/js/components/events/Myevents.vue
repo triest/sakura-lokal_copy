@@ -42,7 +42,6 @@
                         <th>Дата события</th>
                         <th>Статус события</th>
                         <th>Создано</th>
-                        <th>Изменено</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -52,9 +51,17 @@
                         <td>{{event.city_name}}</td>
                         <th>{{event.place}}</th>
                         <td>{{event.begin}}</td>
-                        <td>{{event.event_statys}}</td>
+                        <td>{{event.statys_name}}</td>
+                        <div v-if='event.req_status=="unread"'>
+                            <td>Заявка не прочитанна</td>
+                        </div>
+                        <div v-if='event.req_status=="accept"'>
+                            <td>Заявка принята</td>
+                        </div>
+                        <div v-if='event.req_status=="denide"'>
+                            <td>Заявка отклонена</td>
+                        </div>
                         <td>{{event.created_at}}</td>
-                        <td>{{event.updated_at}}</td>
                     </tr>
                     </tbody>
                 </table>

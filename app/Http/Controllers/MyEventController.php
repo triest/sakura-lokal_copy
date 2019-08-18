@@ -504,9 +504,12 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
             return 502;
         }
 
-        $event = collect(DB::select('SELECT * FROM `event_requwest` `eventreq` LEFT JOIN `myevents` `myeven` ON
-`eventreq`.`event_id`=`myeven`.`id`
-WHERE `eventreq`.`girl_id`=?',
+        $event = collect(DB::select('SELECT myeven.name,myeven.place,myeven.begin,status.name as statys_name,eventreq.status as req_status
+            FROM `event_requwest` `eventreq` 
+            LEFT JOIN `myevents` `myeven` ON
+              `eventreq`.`event_id`=`myeven`.`id` 
+            left join event_statys status on status.id=myeven.status_id 
+              WHERE `eventreq`.`girl_id`=?',
                 [$girl->id]));
         return response()->json($event);
     }
