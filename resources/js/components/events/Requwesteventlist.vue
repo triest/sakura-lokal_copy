@@ -4,6 +4,10 @@
         {{countaccepted}} <br>
         Максимальное число заявок: {{max_people}}
 
+        <div v-if="countaccepted==max_people">
+            <b> Максимальное число участников! </b>
+        </div>
+
         <ul class="nav nav-tabs">
             <li role="presentation" @click="currentTab = 'accepted'"><a href="#"><b>Принятые</b></a></li>
             <li role="presentation" @click="currentTab = 'rejected'"><a href="#"><b>Отклоненные</b></a></li>
@@ -132,11 +136,10 @@
                                 <a @click="myFunction(requwest.id)">
                                     <p>{{requwest.name}},
                                         {{requwest.age}}</p></a>
-                                <h5 v-if="requwest.status=='unreaded'"><b>
+                                <h5 v-if="requwest.status=='unread'"><b>
                                     <a class="btn btn-primary" @click="accept(requwest.id,requwest.req_id)">
                                         Принять
                                     </a>
-                                    <br>
                                     <a class="btn btn-danger" @click="reject(requwest.id,requwest.req_id)">
                                         Отклонить
                                     </a>
@@ -198,7 +201,7 @@
                 this.getrequwests();
                 this.getacepted();
                 this.getdenided();
-
+                this.requwestcount();
             },
 
             accept(id, req_id) {

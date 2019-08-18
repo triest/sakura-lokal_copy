@@ -12,8 +12,6 @@
             {{$time}}
             <br>
             Организатор:
-            {{$organizer->name}} <br>
-
             <a href="{{route('showGirl',['id'=>$organizer->id,'utm_source'=>'event'])}}">
                 <b>{{$organizer->name}}</b>
             </a>

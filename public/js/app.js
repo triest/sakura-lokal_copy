@@ -5328,6 +5328,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   components: {},
@@ -5339,6 +5366,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       events: "",
+      myparticipationList: "",
       currentTab: 'createmy'
     };
   },
@@ -5351,8 +5379,10 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     myparticipation: function myparticipation() {
+      var _this2 = this;
+
       axios.get('/event/myparticipation').then(function (response) {
-        console.log(response.data);
+        _this2.myparticipationList = response.data;
       });
     }
   }
@@ -5369,6 +5399,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -5568,6 +5601,7 @@ __webpack_require__.r(__webpack_exports__);
       this.getrequwests();
       this.getacepted();
       this.getdenided();
+      this.requwestcount();
     },
     accept: function accept(id, req_id) {
       this.requwestlist = [];
@@ -5836,6 +5870,15 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -57475,6 +57518,42 @@ var render = function() {
               )
             ])
           ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.currentTab == "participation"
+        ? _c("div", [
+            _c("table", { staticClass: "table table-condensed" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.myparticipationList, function(event) {
+                  return _c("tr", [
+                    _c("td", [
+                      _c(
+                        "a",
+                        { attrs: { href: "/event/singup/" + event.id } },
+                        [_vm._v(_vm._s(event.name))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(event.city_name))]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v(_vm._s(event.place))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(event.begin))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(event.event_statys))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(event.created_at))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(event.updated_at))])
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
         : _vm._e()
     ])
   ])
@@ -57494,6 +57573,28 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "#" } }, [
       _c("b", [_vm._v("С моим участием")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Событие")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Город")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Место события")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Дата события")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Статус события")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Создано")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Изменено")])
+      ])
     ])
   },
   function() {
@@ -57550,6 +57651,10 @@ var render = function() {
         _vm._s(_vm.max_people) +
         "\n\n        "
     ),
+    _vm.countaccepted == _vm.max_people
+      ? _c("div", [_c("b", [_vm._v(" Максимальное число участников! ")])])
+      : _vm._e(),
+    _vm._v(" "),
     _c("ul", { staticClass: "nav nav-tabs" }, [
       _c(
         "li",
@@ -58090,7 +58195,7 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
-                          requwest.status == "unreaded"
+                          requwest.status == "unread"
                             ? _c("h5", [
                                 _c("b", [
                                   _c(
@@ -58112,8 +58217,6 @@ var render = function() {
                                       )
                                     ]
                                   ),
-                                  _vm._v(" "),
-                                  _c("br"),
                                   _vm._v(" "),
                                   _c(
                                     "a",
@@ -58632,7 +58735,21 @@ var render = function() {
                 ],
                 2
               )
-            : _vm._e()
+            : _c(
+                "div",
+                [
+                  _c("slide", [
+                    _c("div", { staticClass: "flex-center2 position-ref" }, [
+                      _c("a", { attrs: { href: "/power" } }, [
+                        _c("img", {
+                          attrs: { src: "/images/anketa.jpeg", height: "100" }
+                        })
+                      ])
+                    ])
+                  ])
+                ],
+                1
+              )
         ]
       )
     ],
@@ -58729,7 +58846,7 @@ var render = function() {
         _c("a", { attrs: { href: "/messages" } }, [
           _vm._v("Сообщения\n        "),
           _vm.numberUnreaded > 0
-            ? _c("div", [_vm._v("+" + _vm._s(_vm.numberUnreaded))])
+            ? _c("div", [_vm._v("(" + _vm._s(_vm.numberUnreaded) + ")")])
             : _vm._e()
         ])
       ]),
@@ -58739,7 +58856,7 @@ var render = function() {
         _c("a", { attrs: { href: "/applications" } }, [
           _vm._v("Заявки на открытие анкеты\n        "),
           _vm.numberApplication > 0
-            ? _c("div", [_vm._v("+" + _vm._s(_vm.numberApplication))])
+            ? _c("div", [_vm._v("(" + _vm._s(_vm.numberApplication) + ")")])
             : _vm._e()
         ])
       ]),
@@ -58752,7 +58869,7 @@ var render = function() {
       _vm._v(" "),
       _vm.numberApplicationPresents > 0
         ? _c("div", [
-            _c("b", [_vm._v("+" + _vm._s(_vm.numberApplicationPresents))])
+            _c("b", [_vm._v("(" + _vm._s(_vm.numberApplicationPresents) + ")")])
           ])
         : _vm._e(),
       _vm._v(" "),

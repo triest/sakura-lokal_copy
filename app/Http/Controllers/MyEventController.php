@@ -363,7 +363,7 @@ left join event_statys statys on myevents.status_id=statys.id left join
     public function unreaded(Request $request)
     {
         $unreaded
-                = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="unreaded"',
+                = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="unread"',
                 [$request->eventid]));
 
         return response()->json($unreaded);
@@ -463,6 +463,8 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
                 ->where('event_id', $event->id)
                 ->where('status', 'accept')
                 ->count();
+
+
         $unreaded = Eventrequwest::select([
                 'id',
                 'event_id',
@@ -483,6 +485,21 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
     public function myparticipation(Request $request)
     {
 
+        $user = Auth::user();
+        if ($user == null) {
+            return 502;
+        }
+        $girl = $user->anketisExsis();
+
+        if ($girl == null) {
+            return 502;
+        }
+
+        $event = collect(DB::select('SELECT * FROM `event_requwest` `eventreq` LEFT JOIN `myevents` `myeven` ON
+`eventreq`.`event_id`=`myeven`.`id`
+WHERE `eventreq`.`girl_id`=?',
+                [$girl->id]));
+        return response()->json($event);
     }
 }
 

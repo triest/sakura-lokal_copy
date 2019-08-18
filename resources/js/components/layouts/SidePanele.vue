@@ -3,17 +3,17 @@
 
         <img height="20" src="/images/heart.png" v-on:mouseover="showLikeModal=true"> {{likesNunber}} <br>
         <b><a href="/messages">Сообщения
-            <div v-if="numberUnreaded>0">+{{numberUnreaded}}</div>
+            <div v-if="numberUnreaded>0">({{numberUnreaded}})</div>
         </a>
         </b><br>
         <b><a href="/applications">Заявки на открытие анкеты
-            <div v-if="numberApplication>0">+{{numberApplication}}</div>
+            <div v-if="numberApplication>0">({{numberApplication}})</div>
         </a>
         </b>
 
         <b><a class="btn btn-primary" href="/power">Поднять анкету</a> </b><br><br>
         <b><a class="btn btn-info" href="/mypresents">Мои подарки</a> </b>
-        <div v-if="numberApplicationPresents>0"><b>+{{numberApplicationPresents}}</b></div>
+        <div v-if="numberApplicationPresents>0"><b>({{numberApplicationPresents}})</b></div>
         <br><br>
         <div v-if="inseach==true">
             <b>Ваша анкета отображаеться в поиске</b>

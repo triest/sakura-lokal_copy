@@ -20,6 +20,15 @@
                     </div>
                 </slide>
             </div>
+            <div v-else>
+                <slide>
+                    <div class="flex-center2 position-ref">
+                        <a :href="'/power'">
+                            <img :src="'/images/anketa.jpeg'" height="100">
+                        </a>
+                    </div>
+                </slide>
+            </div>
         </carousel>
     </div>
 </template>
