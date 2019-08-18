@@ -10,13 +10,11 @@
                onclick=" relocate_home()">Редактировать</a>
 
             <h2>{{$event->name}}<br></h2>
-            Место: {{$event->place}}<br>
-            Начало: {{$event->begin}}<br>
-            Заявки принимаються до: {{$event->end_applications}}<br>
-            Описание: {{$event->description}} <br>
+            <p> Место: {{$event->place}}</p>
+            <p>Начало: {{$event->begin}}</p>
+            <p>Заявки принимаються до: {{$event->end_applications}}</p>
             Статус: {{$event->status_name}} <br>
-
-
+            <p>Описание:< {{$event->description}} </p>
             Список подавших заявку:
             <div id="requwesteventlistapp">
                 <requwesteventlist eventid="{{$event->id}}"></requwesteventlist>

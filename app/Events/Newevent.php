@@ -11,7 +11,7 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use App\Eventrequwest;
 
-class Newevent
+class Newevent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $eventrequwest;
@@ -21,10 +21,10 @@ class Newevent
      *
      * @return void
      */
-    public function __construct(Eventrequwest $eventrequwest)
+    public function __construct($organizer)
     {
         //
-        $this->eventrequwest = $eventrequwest;
+        $this->eventrequwest = $organizer;
     }
 
     /**
@@ -33,8 +33,8 @@ class Newevent
      * @return \Illuminate\Broadcasting\Channel|array
      */
     public function broadcastOn()
-    {
-        return new PrivateChannel('eventsrequwest.' . $this->eventrequwest->to);
+    {  //отправить на канал пользователю
+        return new PrivateChannel('App.User.' . $this->eventrequwest->id);
     }
 
     /**
@@ -44,7 +44,7 @@ class Newevent
      */
     public function broadcastWith()
     {
-        $this->message->load('fromContact');
-        return ["message" => $this->message];
+        $this->eventrequwest->load('fromContact');
+        return ["eventreq" => $this->eventrequwest];
     }
 }

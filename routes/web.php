@@ -502,6 +502,8 @@ Route::get('/event/accept', 'MyEventController@accept');
 
 Route::get('/event/requwest/myevent', 'MyEventController@countunreaded');
 
+Route::get('/event/requwest/list', 'MyEventController@requwestMyeventslist');
+
 //счетчик заявок на события
 Route::get('/event/requwest/count', 'MyEventController@requwestcount');
 

@@ -26,3 +26,11 @@ Broadcast::channel('requwests.{id}', function ($user, $id) {
 Broadcast::channel('gifs.{id}', function ($user, $id) {
     return $user->id === (int)$id;
 });
+
+Broadcast::channel('gifs.{id}', function ($user, $id) {
+    return $user->id === (int)$id;
+});
+
+Broadcast::channel('eventsrequwest.{id}', function ($user, $id) {
+    return $user->id === (int)$id;
+});

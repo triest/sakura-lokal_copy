@@ -25,7 +25,10 @@
         <likemodal v-if="showLikeModal" @closeLikeModalEmit='closeLikeModal()'></likemodal>
         <b><a class="btn btn-primary" href="/history">Просмотры моей анкеты</a> </b><br><br>
 
-        Запросы на события: {{unreeadedEventRequwest}}
+        Запросы на мои события: {{unreeadedEventRequwest}}
+        <div v-if="unreeadedEventRequwest>0">
+            <a class="btn btn-primary" href="/event/requwest/list">Смотреть запросы</a>
+        </div>
     </div>
 </template>
 
@@ -72,7 +75,7 @@
                 });
             Echo.private(`requwests.${this.user.id}`)
                 .listen('newApplication', (e) => {
-                     console.log('NewRequwest');
+                    console.log('NewRequwest');
                     axios.get('/getCountUnreadedRequwest')
                         .then((response) => {
                             this.numberApplication = response.data;
@@ -83,6 +86,16 @@
                     this.getNumberUnreadedPresents();
                     console.log("presrn");
                 });
+            Echo.private(`eventsrequwest.${this.user.id}`)
+                .listen('Newevent', (e) => {
+                    console.log('NewRequwestEvent');
+                });
+            Echo.private(`App.User.${this.user.id}`)
+                .listen('Newevent', (e) => {
+                    console.log("new Event");
+                    this.getNumberUnreadedEventRequwest();
+                });
+
         },
         methods:
             {
@@ -148,7 +161,7 @@
                     axios.get('/event/requwest/myevent', {})
                         .then((response) => {
                                 //    this.unreeadedEventRequwest = response.data["count(*)"];
-                                this.unreeadedEventRequwest = response.data;
+                                this.unreeadedEventRequwest = response.data.organizer;
                             }
                         )
                     ;

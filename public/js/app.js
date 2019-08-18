@@ -5569,6 +5569,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     eventid: {
@@ -6018,6 +6022,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -6064,6 +6071,14 @@ __webpack_require__.r(__webpack_exports__);
       _this.getNumberUnreadedPresents();
 
       console.log("presrn");
+    });
+    Echo.private("eventsrequwest.".concat(this.user.id)).listen('Newevent', function (e) {
+      console.log('NewRequwestEvent');
+    });
+    Echo.private("App.User.".concat(this.user.id)).listen('Newevent', function (e) {
+      console.log("new Event");
+
+      _this.getNumberUnreadedEventRequwest();
     });
   },
   methods: {
@@ -6135,7 +6150,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/event/requwest/myevent', {}).then(function (response) {
         //    this.unreeadedEventRequwest = response.data["count(*)"];
-        _this7.unreeadedEventRequwest = response.data;
+        _this7.unreeadedEventRequwest = response.data.organizer;
       });
     }
   }
@@ -57776,48 +57791,52 @@ var render = function() {
                               ]
                             ),
                             _vm._v(" "),
-                            requwest.status == "unredded"
+                            requwest.status == "unread"
                               ? _c("h5", [
                                   _c("b", [
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass: "btn btn-primary",
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.accept(
-                                              requwest.id,
-                                              requwest.req_id
-                                            )
+                                    _c("p", [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "btn btn-primary",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.accept(
+                                                requwest.id,
+                                                requwest.req_id
+                                              )
+                                            }
                                           }
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                            Принять\n                                        "
-                                        )
-                                      ]
-                                    ),
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                            Принять\n                                        "
+                                          )
+                                        ]
+                                      )
+                                    ]),
                                     _vm._v(" "),
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass: "btn btn-danger",
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.reject(
-                                              requwest.id,
-                                              requwest.req_id
-                                            )
+                                    _c("p", [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "btn btn-danger",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.reject(
+                                                requwest.id,
+                                                requwest.req_id
+                                              )
+                                            }
                                           }
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                            Отклонить\n                                        "
-                                        )
-                                      ]
-                                    )
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                Отклонить\n                                            "
+                                          )
+                                        ]
+                                      )
+                                    ])
                                   ])
                                 ])
                               : _vm._e(),
@@ -57925,7 +57944,7 @@ var render = function() {
                           _vm._v(" "),
                           requwest.status == "unredded"
                             ? _c("h5", [
-                                _c("b", [
+                                _c("p", [
                                   _c(
                                     "a",
                                     {
@@ -57941,11 +57960,13 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                                        Принять\n                                    "
+                                        "\n                                            Принять\n                                        "
                                       )
                                     ]
-                                  ),
-                                  _vm._v(" "),
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("p", [
                                   _c(
                                     "a",
                                     {
@@ -57961,7 +57982,7 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                                        Отклонить\n                                    "
+                                        "\n                                            Отклонить\n                                        "
                                       )
                                     ]
                                   )
@@ -57972,25 +57993,27 @@ var render = function() {
                           requwest.status == "accept"
                             ? _c("h5", [
                                 _c("b", [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-danger",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.reject(
-                                            requwest.id,
-                                            requwest.req_id
-                                          )
+                                  _c("p", [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "btn btn-danger",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.reject(
+                                              requwest.id,
+                                              requwest.req_id
+                                            )
+                                          }
                                         }
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        Отклонить\n                                    "
-                                      )
-                                    ]
-                                  )
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                            Отклонить\n                                        "
+                                        )
+                                      ]
+                                    )
+                                  ])
                                 ])
                               ])
                             : _vm._e(),
@@ -57998,25 +58021,27 @@ var render = function() {
                           requwest.status == "denide"
                             ? _c("h5", [
                                 _c("b", [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-primary",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.accept(
-                                            requwest.id,
-                                            requwest.req_id
-                                          )
+                                  _c("p", [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "btn btn-primary",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.accept(
+                                              requwest.id,
+                                              requwest.req_id
+                                            )
+                                          }
                                         }
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        Принять\n                                    "
-                                      )
-                                    ]
-                                  )
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                            Принять\n                                        "
+                                        )
+                                      ]
+                                    )
+                                  ])
                                 ])
                               ])
                             : _vm._e()
@@ -58198,45 +58223,49 @@ var render = function() {
                           requwest.status == "unread"
                             ? _c("h5", [
                                 _c("b", [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-primary",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.accept(
-                                            requwest.id,
-                                            requwest.req_id
-                                          )
+                                  _c("p", [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "btn btn-primary",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.accept(
+                                              requwest.id,
+                                              requwest.req_id
+                                            )
+                                          }
                                         }
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        Принять\n                                    "
-                                      )
-                                    ]
-                                  ),
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        Принять\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ]),
                                   _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-danger",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.reject(
-                                            requwest.id,
-                                            requwest.req_id
-                                          )
+                                  _c("p", [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "btn btn-danger",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.reject(
+                                              requwest.id,
+                                              requwest.req_id
+                                            )
+                                          }
                                         }
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        Отклонить\n                                    "
-                                      )
-                                    ]
-                                  )
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                            Отклонить\n                                        "
+                                        )
+                                      ]
+                                    )
+                                  ])
                                 ])
                               ])
                             : _vm._e(),
@@ -58247,26 +58276,6 @@ var render = function() {
                                   _c(
                                     "a",
                                     {
-                                      staticClass: "btn btn-primary",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.accept(
-                                            requwest.id,
-                                            requwest.req_id
-                                          )
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        Принять\n                                    "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
                                       staticClass: "btn btn-danger",
                                       on: {
                                         click: function($event) {
@@ -58280,32 +58289,6 @@ var render = function() {
                                     [
                                       _vm._v(
                                         "\n                                        Отклонить\n                                    "
-                                      )
-                                    ]
-                                  )
-                                ])
-                              ])
-                            : _vm._e(),
-                          _vm._v(" "),
-                          requwest.status == "denide"
-                            ? _c("h5", [
-                                _c("b", [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-primary",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.accept(
-                                            requwest.id,
-                                            requwest.req_id
-                                          )
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        Принять\n                                    "
                                       )
                                     ]
                                   )
@@ -58899,10 +58882,22 @@ var render = function() {
       _c("br"),
       _c("br"),
       _vm._v(
-        "\n\n    Запросы на события: " +
+        "\n\n    Запросы на мои события: " +
           _vm._s(_vm.unreeadedEventRequwest) +
-          "\n"
-      )
+          "\n    "
+      ),
+      _vm.unreeadedEventRequwest > 0
+        ? _c("div", [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { href: "/event/requwest/list" }
+              },
+              [_vm._v("Смотреть запросы")]
+            )
+          ])
+        : _vm._e()
     ],
     1
   )

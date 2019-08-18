@@ -290,9 +290,9 @@ left join event_statys statys on myevents.status_id=statys.id left join
             return response(404);
         }
 
-        $eventreq->girl_id = $girl->id;
+        $eventreq->girl_id = $girl->id; //рзобраться с тем, кому отправляеться событие.
         $eventreq->event_id
-                = $event->id;      //  $eventreq->target()->associate($girl)->save();
+                = $event->id;
 
         $eventreq->status = 'unread';
         $eventreq->save();
@@ -302,12 +302,16 @@ left join event_statys statys on myevents.status_id=statys.id left join
         //  $user = $eventOwgene->user()->get();
         $user = User::select(['id'])->where('id', $eventOwgene->user_id)
                 ->first();
-
-        broadcast(new Newevent($eventreq));
-        new SendMessageAboutEvent("Новая заявка на мероприятие", $user->email,
-                $user->name, 'Новая заявка на ваше мероприятие!');
-        new SendSMSAboutEvent("Новая заявка на мероприятие", $user->phone,
-                $event->name);
+        $organizer = $event->organizer()->first();
+        if ($organizer != null) {
+            new Newevent($organizer);
+        }
+        if ($user != null) {
+            new SendMessageAboutEvent("Новая заявка на мероприятие", $user->email,
+                    $user->name, 'Новая заявка на ваше мероприятие!');
+            new SendSMSAboutEvent("Новая заявка на мероприятие", $user->phone,
+                    $event->name);
+        }
 
 
         return response(200);
@@ -432,7 +436,6 @@ left join event_statys statys on myevents.status_id=statys.id left join
         }
         $girl = $user->anketisExsis();
 
-
         if ($girl == null) {
             return 502;
         }
@@ -443,7 +446,13 @@ left join event_statys statys on myevents.status_id=statys.id left join
 WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
                 [$girl->id]))->count();
 
-        return response()->json($unredded);
+        $unreaded2 = collect(DB::select('SELECT * FROM `event_requwest` `eventreq` LEFT JOIN `myevents` `myeven` ON
+`eventreq`.`event_id`=`myeven`.`id`
+WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
+                [$girl->id]))->count();
+
+
+        return response()->json(['organizer' => $unredded]);
     }
 
     public function requwestcount(Request $request)
@@ -500,6 +509,11 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
 WHERE `eventreq`.`girl_id`=?',
                 [$girl->id]));
         return response()->json($event);
+    }
+
+    public function requwestMyeventslist(Request $request)
+    {
+
     }
 }
 
