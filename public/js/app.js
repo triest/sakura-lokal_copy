@@ -5273,6 +5273,9 @@ __webpack_require__.r(__webpack_exports__);
         } else if (res['status'] == 'accept') {
           _this2.requwestSended = true;
           _this2.requwestStatus = "aсcept";
+        } else if (res['status'] == 'denide') {
+          _this2.requwestSended = true;
+          _this2.requwestStatus = "denide";
         }
       });
     }

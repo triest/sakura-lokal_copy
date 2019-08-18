@@ -63,6 +63,10 @@
                             this.requwestSended = true;
                             this.requwestStatus = "aсcept";
                         }
+                        else if (res['status'] == 'denide') {
+                            this.requwestSended = true;
+                            this.requwestStatus = "denide";
+                        }
                     })
             }
         }

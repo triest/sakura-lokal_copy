@@ -5,16 +5,18 @@
             <b>{{$event->name}}</b>
         </p>
         <p>
-            {{$day}},
-            {{$day_name}} число,
-            {{$month_name}} <br>
+            {{$day}}, {{$month_name}}
+            {{$day_name}} ,
+        </p>
+        <p>
             Начало:
             {{$time}}
-            <br>
-            Организатор:
-            <a href="{{route('showGirl',['id'=>$organizer->id,'utm_source'=>'event'])}}">
-                <b>{{$organizer->name}}</b>
-            </a>
+        </p>
+        <p>
+        Организатор:
+        <a href="{{route('showGirl',['id'=>$organizer->id,'utm_source'=>'event'])}}">
+            <b>{{$organizer->name}}</b>
+        </a>
         </p>
         <div id="eventregApp">
             <eventrequwest :event={{$event->id}}></eventrequwest>
@@ -37,6 +39,8 @@
                 </div>
             </div>
         </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 
         <script>
             baguetteBox.run('.tz-gallery');
