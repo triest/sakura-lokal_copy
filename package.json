@@ -25,7 +25,9 @@
   },
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
+    "laravel-echo": "^1.5.4",
     "popper.js": "^1.14.7",
+    "pusher-js": "^5.0.0",
     "vue-carousel": "^0.18.0-alpha",
     "vue-v-carousel": "0.0.4"
   }

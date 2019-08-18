@@ -27,7 +27,7 @@
         mounted() {
             Echo.private(`messages.${this.user.id}`)
                 .listen('NewMessage', (e) => {
-                  //  this.hanleIncoming(e.message);
+                    this.hanleIncoming(e.message);
                     console.log("message")
                 });
 
