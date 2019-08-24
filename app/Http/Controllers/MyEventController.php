@@ -392,6 +392,7 @@ left join event_statys statys on myevents.status_id=statys.id left join
         if ($organizer != null) {
             new Newevent($organizer);
         }
+
         if ($user != null) {
             new SendMessageAboutEvent("Новая заявка на мероприятие",
                 $user->email,
@@ -605,11 +606,43 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
     public function requwestMyeventslist(Request $request)
     {
 
+        return view('event.allRequwesList');
     }
 
     public function reminders(Request $request)
     {
 
     }
+
+    public function requwestListAll(Request $request)
+    {
+        $user = Auth::user();
+        if ($user == null) {
+            return 502;
+        }
+        $girl = $user->anketisExsis()->first();
+        // dump($girl);
+        //мои запросы
+        $myRequwest = collect(DB::select('SELECT myeven.id,eventreq.girl_id,myeven.name,myeven.place,myeven.begin,status.name as statys_name,eventreq.status as req_status FROM `event_requwest` `eventreq`  LEFT JOIN `myevents` `myeven` ON  `eventreq`.`event_id`=`myeven`.`id`     left join event_statys status on status.id=myeven.status_id 
+            where  `eventreq`.`girl_id`=?',
+            [$girl->id]));
+        //  dump($myRequwest);
+
+        //запросы к моим событиям
+        $requestMyEvent
+            = collect(DB::select('select * from new_chat.event_requwest req left join new_chat.myevents even on req.event_id=even.id left join girls on req.girl_id=girls.id where even.organizer_id=?',
+            [$girl->id]));
+
+        /* dump($requestMyEvent);*/
+
+        return response()->json([
+            'myRequwest'     => $myRequwest,
+            'requestMyEvent' => $requestMyEvent,
+        ]);
+
+    }
 }
 
+/*
+ *     "message": "SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'eventreq.girl_id,myeven.name,myeven.place,myeven.begin,status.name as statys_nam' at line 1 (SQL: SELECT myeven.id,,eventreq.girl_id,myeven.name,myeven.place,myeven.begin,status.name as statys_name,eventreq.status as req_status FROM `event_requwest` `eventreq`  LEFT JOIN `myevents` `myeven` ON  `eventreq`.`event_id`=`myeven`.`id`     left join event_statys status on status.id=myeven.status_id  where  `eventreq`.`girl_id`=1
+ * */
