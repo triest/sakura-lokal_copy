@@ -443,6 +443,7 @@ Route::get('/myevent', 'MyEventController@myevent')->name('myevent')
 Route::get('/myevent/store', 'MyEventController@create')->name('createevent')
         ->middleware('auth', 'anketExist');
 
+
 Route::post('/myevent/store', 'MyEventController@store')->name('storeEvent')
         ->middleware('auth', 'anketExist');
 
@@ -451,8 +452,7 @@ Route::get('/myevent/list', 'MyEventController@list')->name('myeventslist')
         ->middleware('auth', 'anketExist');
 
 //редактировать событие
-Route::get('/editevent/{id}', 'MyEventController@edit')->name('editevent')
-        ->middleware('auth', 'anketExist');
+
 
 //просмотр события
 Route::get('/myevent/{id}', 'MyEventController@viewmyevent')
@@ -460,6 +460,9 @@ Route::get('/myevent/{id}', 'MyEventController@viewmyevent')
 
 Route::get('/myevent/{id}/edit', 'MyEventController@edit')
         ->name('editevent')->middleware('auth', 'anketExist');
+
+Route::post('/myevent/edit', 'MyEventController@update')->name('updateEvent')
+    ->middleware('auth', 'anketExist');
 
 Route::get('/listrequwest', 'MyEventController@listrequwest')
         ->name('viewmyevent')->middleware('auth',
@@ -472,6 +475,9 @@ Route::get('event/singup/{id}', 'MyEventController@singup')->name('viewmyevent')
 //события с моим участием
 Route::get('event/myparticipation', 'MyEventController@myparticipation')
         ->middleware('auth', 'anketExist');
+
+//Намопинание о событиях, путь для скрипта
+Route::get('event/reminders', 'MyEventController@reminders');
 
 //тест карт
 Route::get('/map', function () {
@@ -519,3 +525,5 @@ Route::get('/history', 'AnketController@history');
 //Route::get('/history', 'AnketController@historypage');
 
 Route::get('/gethistory', 'AnketController@history');
+
+

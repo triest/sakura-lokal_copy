@@ -2,7 +2,9 @@
     <div class="conversation">
         <h1>{{ contact ? contact.name : 'Выберите собеседника' }}</h1>
         <MessagesFeed :contact="contact" :messages="messages"/>
-        <MessageComposer @send="sendMessage"/>
+        <div v-if="contact">
+            <MessageComposer @send="sendMessage"/>
+        </div>
     </div>
 </template>
 
@@ -40,17 +42,17 @@
 </script>
 
 <style lang="scss" scoped>
-.conversation {
-    flex: 5;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    .conversation {
+        flex: 5;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
-    h1 {
-        font-size: 20px;
-        padding: 10px;
-        margin: 0;
-        border-bottom: 1px dashed lightgray;
+        h1 {
+            font-size: 20px;
+            padding: 10px;
+            margin: 0;
+            border-bottom: 1px dashed lightgray;
+        }
     }
-}
 </style>

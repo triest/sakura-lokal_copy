@@ -4517,6 +4517,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4707,6 +4709,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -56582,7 +56586,13 @@ var render = function() {
         attrs: { contact: _vm.contact, messages: _vm.messages }
       }),
       _vm._v(" "),
-      _c("MessageComposer", { on: { send: _vm.sendMessage } })
+        _vm.contact
+            ? _c(
+            "div",
+            [_c("MessageComposer", {on: {send: _vm.sendMessage}})],
+            1
+            )
+            : _vm._e()
     ],
     1
   )
@@ -56786,7 +56796,7 @@ var render = function() {
           expression: "message"
         }
       ],
-      attrs: { placeholder: "Введите сообщение" },
+        attrs: {placeholder: "Введите сообщение!"},
       domProps: { value: _vm.message },
       on: {
         keydown: function($event) {
@@ -56805,7 +56815,15 @@ var render = function() {
           _vm.message = $event.target.value
         }
       }
-    })
+    }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+          "button",
+          {staticClass: "btn btn-primary", attrs: {onclick: _vm.send}},
+          [_vm._v("Отправить")]
+      )
   ])
 }
 var staticRenderFns = []
