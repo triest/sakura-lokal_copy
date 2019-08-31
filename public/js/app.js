@@ -5240,14 +5240,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
         /* harmony default export */
         __webpack_exports__["default"] = ({
-            props: {
-                eventid: {
-                    type: String,
-                    required: true
-                }
-            },
+            props: {},
             components: {},
             mounted: function mounted() {
                 console.log("requwesteventlist1");
@@ -5255,13 +5257,13 @@ __webpack_require__.r(__webpack_exports__);
             },
             data: function data() {
                 return {
-                    requwestlist: null,
+                    requwestlist: "",
                     currentTab: 'RequwestToMyEvent',
-                    myrequwests: null,
-                    requwesttomyevent: null,
-                    unredded: null,
-                    countaccepted: null,
-                    max_people: null
+                    myrequwests: "",
+                    requwesttomyevent: "",
+                    unredded: "",
+                    countaccepted: "",
+                    max_people: ""
                 };
             },
             methods: {
@@ -5272,9 +5274,15 @@ __webpack_require__.r(__webpack_exports__);
                     this.accepted = null;
                     this.rejected = null;
                     this.unredded = null;
+                    var temp;
                     axios.get('list/all').then(function (response) {
-                        _this.myrequwests = response.data.myRequwest;
-                        _this.requwesttomyevent = response.data.requestMyEvent;
+                        //  this.myrequwests = response.data.myRequwest;
+                        //console.log(response.data);
+                        var data = response.data; // console.log(data);
+
+                        _this.myrequwests = data.myRequwest;
+                        _this.requwesttomyevent = data.requestMyEvent; //  console.log(temp);
+                        // this.requwesttomyevent = response.data.requestMyEvent;
                     });
                 }
             }
@@ -57493,14 +57501,10 @@ render._withStripped = true
             var _h = _vm.$createElement
             var _c = _vm._self._c || _h
             return _c("div", [
-                _vm._v(
-                    "\n        Принятых заявок:\n        " + _vm._s(_vm.countaccepted) + " "
-                ),
+                _vm._v("\n    Принятых заявок:\n    " + _vm._s(_vm.countaccepted) + " "),
                 _c("br"),
                 _vm._v(
-                    "\n        Максимальное число заявок: " +
-                    _vm._s(_vm.max_people) +
-                    "\n\n        "
+                    "\n    Максимальное число заявок: " + _vm._s(_vm.max_people) + "\n\n    "
                 ),
                 _vm.countaccepted == _vm.max_people
                     ? _c("div", [_c("b", [_vm._v(" Максимальное число участников! ")])])
@@ -57534,143 +57538,102 @@ render._withStripped = true
                     )
                 ]),
                 _vm._v(" "),
-                _c("div", {staticClass: "applicationClass"}, [
-                    _c("div", {staticClass: "tab-content"}, [
-                        _vm.currentTab == "myRequwest"
-                            ? _c(
-                            "div",
-                            _vm._l(_vm.myrequwests, function (requwest) {
-                                return _c("div", [
-                                    _c(
-                                        "div",
-                                        {
-                                            staticClass:
-                                                "col-lg-4 col-md-3 col-sm-5 col-xs-9 box-shadow"
-                                        },
-                                        [
-                                            _c(
-                                                "div",
-                                                {
-                                                    staticClass: "card  border-dark",
-                                                    staticStyle: {
-                                                        width: "18rem",
-                                                        "background-color": "#eeeeee",
-                                                        border: "1px solid transparent",
-                                                        "border-color": "#666869"
-                                                    }
-                                                },
-                                                [
-                                                    _c("div", {staticClass: "card-body"}, [
-                                                        _vm._v(
-                                                            "\n                                    " +
-                                                            _vm._s(requwest.name) +
-                                                            "\n                                    Место: " +
-                                                            _vm._s(requwest.place) +
-                                                            "\n                                    Начало: " +
-                                                            _vm._s(_vm.request.begin) +
-                                                            "\n                                    "
-                                                        ),
-                                                        requwest.req_status == "unread"
-                                                            ? _c("div", [
-                                                                _c("td", [_vm._v("Заявка не прочитанна")])
-                                                            ])
-                                                            : _vm._e(),
-                                                        _vm._v(" "),
-                                                        requwest.req_status == "accept"
-                                                            ? _c("div", [
-                                                                _c("td", [_vm._v("Заявка принята")])
-                                                            ])
-                                                            : _vm._e(),
-                                                        _vm._v(" "),
-                                                        requwest.req_status == "denide"
-                                                            ? _c("div", [
-                                                                _c("td", [_vm._v("Заявка отклонена")])
-                                                            ])
-                                                            : _vm._e(),
-                                                        _vm._v(" "),
-                                                        _c("td", [_vm._v(_vm._s(requwest.created_at))])
-                                                    ])
-                                                ]
-                                            )
-                                        ]
-                                    )
-                                ])
-                            }),
-                            0
-                            )
-                            : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _vm.currentTab == "RequwestToMyEvent"
-                        ? _c(
-                        "div",
-                        _vm._l(_vm.requwesttomyevent, function (requwest) {
-                            return _c(
-                                "div",
-                                _vm._l(_vm.myrequwests, function (requwest) {
-                                    return _c("div", [
-                                        _c(
-                                            "div",
-                                            {
-                                                staticClass:
-                                                    "col-lg-4 col-md-3 col-sm-5 col-xs-9 box-shadow"
-                                            },
-                                            [
-                                                _c(
-                                                    "div",
-                                                    {
-                                                        staticClass: "card  border-dark",
-                                                        staticStyle: {
-                                                            width: "18rem",
-                                                            "background-color": "#eeeeee",
-                                                            border: "1px solid transparent",
-                                                            "border-color": "#666869"
-                                                        }
-                                                    },
-                                                    [
-                                                        _c("div", {staticClass: "card-body"}, [
-                                                            _vm._v(
-                                                                "\n                                    " +
-                                                                _vm._s(requwest.name) +
-                                                                "\n                                    Место: " +
-                                                                _vm._s(requwest.place) +
-                                                                "\n                                    Начало: " +
-                                                                _vm._s(_vm.request.begin) +
-                                                                "\n                                    "
-                                                            ),
-                                                            requwest.req_status == "unread"
-                                                                ? _c("div", [
-                                                                    _c("td", [_vm._v("Заявка не прочитанна")])
-                                                                ])
-                                                                : _vm._e(),
-                                                            _vm._v(" "),
-                                                            requwest.req_status == "accept"
-                                                                ? _c("div", [
-                                                                    _c("td", [_vm._v("Заявка принята")])
-                                                                ])
-                                                                : _vm._e(),
-                                                            _vm._v(" "),
-                                                            requwest.req_status == "denide"
-                                                                ? _c("div", [
-                                                                    _c("td", [_vm._v("Заявка отклонена")])
-                                                                ])
-                                                                : _vm._e(),
-                                                            _vm._v(" "),
-                                                            _c("td", [_vm._v(_vm._s(requwest.created_at))])
-                                                        ])
-                                                    ]
-                                                )
-                                            ]
-                                        )
+                _vm.currentTab == "myRequwest"
+                    ? _c("div", [
+                        _c("table", {staticClass: "table table-condensed"}, [
+                            _vm._m(2),
+                            _vm._v(" "),
+                            _c(
+                                "tbody",
+                                _vm._l(_vm.myrequwests, function (event) {
+                                    return _c("tr", [
+                                        _c("td", [
+                                            _c("a", {attrs: {href: "/event/singup/" + event.id}}, [
+                                                _vm._v(_vm._s(event.name))
+                                            ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(event.city_name))]),
+                                        _vm._v(" "),
+                                        _c("th", [_vm._v(_vm._s(event.place))]),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(event.begin))]),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(event.statys_name))]),
+                                        _vm._v(" "),
+                                        event.req_status == "unread"
+                                            ? _c("div", [_c("td", [_vm._v("Заявка не прочитанна")])])
+                                            : _vm._e(),
+                                        _vm._v(" "),
+                                        event.req_status == "accept"
+                                            ? _c("div", [_c("td", [_vm._v("Заявка принята")])])
+                                            : _vm._e(),
+                                        _vm._v(" "),
+                                        event.req_status == "denide"
+                                            ? _c("div", [_c("td", [_vm._v("Заявка отклонена")])])
+                                            : _vm._e(),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(event.created_at))])
                                     ])
                                 }),
                                 0
                             )
-                        }),
-                        0
-                        )
-                        : _vm._e()
-                ])
+                        ])
+                    ])
+                    : _vm._e(),
+                _vm._v(" "),
+                _vm.currentTab == "RequwestToMyEvent"
+                    ? _c("div", [
+                        _c("table", {staticClass: "table table-condensed"}, [
+                            _vm._m(3),
+                            _vm._v(" "),
+                            _c(
+                                "tbody",
+                                _vm._l(_vm.requwesttomyevent, function (event) {
+                                    return _c("tr", [
+                                        _c("td", [
+                                            _c("a", {attrs: {href: "/event/singup/" + event.id}}, [
+                                                _vm._v(_vm._s(event.name))
+                                            ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(event.city_name))]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                            _c("img", {
+                                                attrs: {
+                                                    src: "/images/upload/" + event.main_image,
+                                                    height: "200"
+                                                }
+                                            })
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(event.place))]),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(event.begin))]),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(event.statys_name))]),
+                                        _vm._v(" "),
+                                        event.req_status == "unread"
+                                            ? _c("div", [_c("td", [_vm._v("Заявка не прочитанна")])])
+                                            : _vm._e(),
+                                        _vm._v(" "),
+                                        event.req_status == "accept"
+                                            ? _c("div", [_c("td", [_vm._v("Заявка принята")])])
+                                            : _vm._e(),
+                                        _vm._v(" "),
+                                        event.req_status == "denide"
+                                            ? _c("div", [_c("td", [_vm._v("Заявка отклонена")])])
+                                            : _vm._e(),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(event.created_at))])
+                                    ])
+                                }),
+                                0
+                            )
+                        ])
+                    ])
+                    : _vm._e()
             ])
         }
         var staticRenderFns = [
@@ -57686,6 +57649,46 @@ render._withStripped = true
                 var _c = _vm._self._c || _h
                 return _c("a", {attrs: {href: "#"}}, [
                     _c("b", [_vm._v("Запросы к моим событиям")])
+                ])
+            },
+            function () {
+                var _vm = this
+                var _h = _vm.$createElement
+                var _c = _vm._self._c || _h
+                return _c("thead", [
+                    _c("tr", [
+                        _c("th", [_vm._v("Событие")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Город")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Место события")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Дата события")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Статус события")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Создано")])
+                    ])
+                ])
+            },
+            function () {
+                var _vm = this
+                var _h = _vm.$createElement
+                var _c = _vm._self._c || _h
+                return _c("thead", [
+                    _c("tr", [
+                        _c("th"),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Город")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Место события")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Дата события")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Статус события")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Создано")])
+                    ])
                 ])
             }
         ]

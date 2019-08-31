@@ -12,80 +12,82 @@
             <li role="presentation" @click="currentTab = 'myRequwest'"><a href="#"><b>Мои запросы</b></a></li>
             <li role="presentation" @click="currentTab = 'RequwestToMyEvent'"><a href="#"><b>Запросы к моим событиям</b></a>
             </li>
-
         </ul>
-        <div class="applicationClass">
-            <div class="tab-content">
-                <div v-if="currentTab == 'myRequwest'">
-                    <div v-for="requwest in myrequwests">
-
-                        <div class="col-lg-4 col-md-3 col-sm-5 col-xs-9 box-shadow">
-                            <div class="card  border-dark" style="width: 18rem; background-color: #eeeeee;
-             border: 1px solid transparent;
-             border-color: #666869;
-">
-                                <div class="card-body">
-                                    {{requwest.name}}
-                                    Место: {{requwest.place}}
-                                    Начало: {{request.begin}}
-                                    <div v-if='requwest.req_status=="unread"'>
-                                        <td>Заявка не прочитанна</td>
-                                    </div>
-                                    <div v-if='requwest.req_status=="accept"'>
-                                        <td>Заявка принята</td>
-                                    </div>
-                                    <div v-if='requwest.req_status=="denide"'>
-                                        <td>Заявка отклонена</td>
-                                    </div>
-                                    <td>{{requwest.created_at}}</td>
-                                </div>
-                            </div>
-                        </div>
+        <div v-if="currentTab == 'myRequwest'">
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th>Событие</th>
+                    <th>Город</th>
+                    <th>Место события</th>
+                    <th>Дата события</th>
+                    <th>Статус события</th>
+                    <th>Создано</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="event in myrequwests">
+                    <!--  <a :href="'/anket/'+like.id"> -->
+                    <td><a :href="'/event/singup/' +event.id">{{event.name}}</a></td>
+                    <td>{{event.city_name}}</td>
+                    <th>{{event.place}}</th>
+                    <td>{{event.begin}}</td>
+                    <td>{{event.statys_name}}</td>
+                    <div v-if='event.req_status=="unread"'>
+                        <td>Заявка не прочитанна</td>
                     </div>
-                </div>
-            </div>
-            <div v-if="currentTab == 'RequwestToMyEvent'">
-                <div v-for="requwest in requwesttomyevent">
-                    <div v-for="requwest in myrequwests">
-
-                        <div class="col-lg-4 col-md-3 col-sm-5 col-xs-9 box-shadow">
-                            <div class="card  border-dark" style="width: 18rem; background-color: #eeeeee;
-             border: 1px solid transparent;
-             border-color: #666869;
-">
-                                <div class="card-body">
-                                    {{requwest.name}}
-                                    Место: {{requwest.place}}
-                                    Начало: {{request.begin}}
-                                    <div v-if='requwest.req_status=="unread"'>
-                                        <td>Заявка не прочитанна</td>
-                                    </div>
-                                    <div v-if='requwest.req_status=="accept"'>
-                                        <td>Заявка принята</td>
-                                    </div>
-                                    <div v-if='requwest.req_status=="denide"'>
-                                        <td>Заявка отклонена</td>
-                                    </div>
-                                    <td>{{requwest.created_at}}</td>
-                                </div>
-                            </div>
-                        </div>
+                    <div v-if='event.req_status=="accept"'>
+                        <td>Заявка принята</td>
                     </div>
-
-                </div>
-            </div>
+                    <div v-if='event.req_status=="denide"'>
+                        <td>Заявка отклонена</td>
+                    </div>
+                    <td>{{event.created_at}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div v-if="currentTab == 'RequwestToMyEvent'">
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Город</th>
+                    <th>Место события</th>
+                    <th>Дата события</th>
+                    <th>Статус события</th>
+                    <th>Создано</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="event in requwesttomyevent">
+                    <!--  <a :href="'/anket/'+like.id"> -->
+                    <td><a :href="'/event/singup/' +event.id">{{event.name}}</a></td>
+                    <td>{{event.city_name}}</td>
+                    <td><img :src="'/images/upload/'+event.main_image" height="200"></td>
+                    <td>{{event.place}}</td>
+                    <td>{{event.begin}}</td>
+                    <td>{{event.statys_name}}</td>
+                    <div v-if='event.req_status=="unread"'>
+                        <td>Заявка не прочитанна</td>
+                    </div>
+                    <div v-if='event.req_status=="accept"'>
+                        <td>Заявка принята</td>
+                    </div>
+                    <div v-if='event.req_status=="denide"'>
+                        <td>Заявка отклонена</td>
+                    </div>
+                    <td>{{event.created_at}}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        props: {
-            eventid: {
-                type: String,
-                required: true
-            },
-        },
+        props: {},
         components: {},
         mounted() {
             console.log("requwesteventlist1");
@@ -93,13 +95,13 @@
         },
         data() {
             return {
-                requwestlist: null,
+                requwestlist: "",
                 currentTab: 'RequwestToMyEvent',
-                myrequwests: null,
-                requwesttomyevent: null,
-                unredded: null,
-                countaccepted: null,
-                max_people: null,
+                myrequwests: "",
+                requwesttomyevent: "",
+                unredded: "",
+                countaccepted: "",
+                max_people: "",
             }
         },
         methods: {
@@ -108,12 +110,19 @@
                 this.accepted = null;
                 this.rejected = null;
                 this.unredded = null;
-                axios.get('list/all',
-                )
+                var temp;
+                axios.get('list/all',)
                     .then((response) => {
-                        this.myrequwests = response.data.myRequwest;
-                        this.requwesttomyevent = response.data.requestMyEvent;
+                        //  this.myrequwests = response.data.myRequwest;
+                        //console.log(response.data);
+                        var data = response.data;
+                        // console.log(data);
+                        this.myrequwests = data.myRequwest;
+                        this.requwesttomyevent = data.requestMyEvent;
+                        //  console.log(temp);
+                        // this.requwesttomyevent = response.data.requestMyEvent;
                     });
+
             },
 
 
