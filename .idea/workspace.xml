@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/events/AllEventRequwetList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/event/allRequwesList.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/events/Eventequwest.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/events/AllEventRequwetList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/events/AllEventRequwetList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/event/singup.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/event/singup.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +22,7 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8534">
+            <state relative-caret-position="709">
               <caret line="513" column="31" selection-start-line="513" selection-start-column="27" selection-end-line="513" selection-end-column="31" />
             </state>
           </provider>
@@ -35,8 +31,8 @@
       <file leaf-file-name="AllEventRequwetList.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/events/AllEventRequwetList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="27" column="53" lean-forward="true" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
+            <state relative-caret-position="238">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -44,20 +40,38 @@
       <file leaf-file-name="Myevents.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/events/Myevents.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
+            <state relative-caret-position="918">
               <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="63" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyEventController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MyEventController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="627" column="26" lean-forward="true" selection-start-line="627" selection-start-column="26" selection-end-line="627" selection-end-column="26" />
+            <state relative-caret-position="729">
+              <caret line="161" column="13" lean-forward="true" selection-start-line="161" selection-start-column="13" selection-end-line="161" selection-end-column="13" />
               <folding>
                 <element signature="e#40#64#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewmy.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/event/viewmy.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="singup.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/event/singup.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" column="49" lean-forward="true" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -101,7 +115,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>eventsinmycity/events/inmycity</find>
       <find>deleteImage</find>
       <find>inmycity</find>
       <find>singup</find>
@@ -124,13 +137,14 @@
       <find>/event/requwest/count</find>
       <find>myevent(</find>
       <find>myeve</find>
-      <find />
+      <find>Введите сообщение!</find>
       <find>myeven</find>
       <find>спис</find>
       <find>event/requwest/</find>
       <find>makerequwest</find>
       <find>requwestMyeventslist</find>
       <find>event/requwest/list</find>
+      <find>myeven.eventreq.girl_id</find>
     </findStrings>
     <dirStrings>
       <dir>W:\domains\new_chat\chat\resources\js\components</dir>
@@ -181,7 +195,6 @@
         <option value="$PROJECT_DIR$/resources/views/girlView.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/blog.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/Eventrequwest.vue" />
-        <option value="$PROJECT_DIR$/resources/views/event/singup.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/EventInMyCitySide.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/SidePanele.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/phoneRequwest.vue" />
@@ -196,8 +209,9 @@
         <option value="$PROJECT_DIR$/resources/views/event/allRequwesList.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/events/AllEventRequwetList.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/events/AllEventRequwetList.vue" />
+        <option value="$PROJECT_DIR$/resources/views/event/singup.blade.php" />
       </list>
     </option>
   </component>
@@ -359,36 +373,25 @@
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chat" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chat" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="upload" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="events" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
@@ -402,6 +405,11 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="event" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chat" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -560,7 +568,8 @@
       <workItem from="1565511601510" duration="2230000" />
       <workItem from="1565513963192" duration="2451000" />
       <workItem from="1566632413102" duration="22523000" />
-      <workItem from="1566663615132" duration="2657000" />
+      <workItem from="1566663615132" duration="4428000" />
+      <workItem from="1567283477831" duration="750000" />
     </task>
     <task id="LOCAL-00001" summary="Updating image">
       <created>1551566124024</created>
@@ -835,7 +844,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566648284392</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Add sql requwest to get all requwest for event.">
+      <created>1566667005661</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1566667005661</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -871,7 +887,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="974706000" />
+    <option name="totallyTimeSpent" value="977227000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -882,8 +898,8 @@
       <window_info anchor="bottom" id="Migrations" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32946146" />
-      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.4984375" weight="0.32946146" />
       <window_info id="npm" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.4984375" weight="0.32946146" />
       <window_info anchor="bottom" id="Terminal" order="5" />
       <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.21145834" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
@@ -947,7 +963,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Fix links in layouts" />
     <MESSAGE value="Fix check private or not" />
     <MESSAGE value="Fix phone settings in girl create" />
     <MESSAGE value="Add relation id" />
@@ -972,7 +987,8 @@
     <MESSAGE value="Add confurm ind reject event requwest." />
     <MESSAGE value="Add get max people for event" />
     <MESSAGE value="Fix edit event" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix edit event" />
+    <MESSAGE value="Add sql requwest to get all requwest for event." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add sql requwest to get all requwest for event." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1024,13 +1040,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/event/singup.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Myevent.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -1056,13 +1065,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/PhoneApp.vue" />
     <entry file="file://$PROJECT_DIR$/resources/js/components/phoneRequwest.vue" />
-    <entry file="file://$PROJECT_DIR$/resources/views/event/viewmy.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="11" lean-forward="true" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/blog.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -1195,13 +1197,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8534">
-          <caret line="513" column="31" selection-start-line="513" selection-start-column="27" selection-end-line="513" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/events/Requwesteventlist.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4051" />
@@ -1216,25 +1211,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/events/Myevents.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
+        <state relative-caret-position="918">
           <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="63" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/events/AllEventRequwetList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="27" column="53" lean-forward="true" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="709">
+          <caret line="513" column="31" selection-start-line="513" selection-start-column="27" selection-end-line="513" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="627" column="26" lean-forward="true" selection-start-line="627" selection-start-column="26" selection-end-line="627" selection-end-column="26" />
+        <state relative-caret-position="729">
+          <caret line="161" column="13" lean-forward="true" selection-start-line="161" selection-start-column="13" selection-end-line="161" selection-end-column="13" />
           <folding>
             <element signature="e#40#64#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/event/viewmy.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/event/singup.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="49" lean-forward="true" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
         </state>
       </provider>
     </entry>

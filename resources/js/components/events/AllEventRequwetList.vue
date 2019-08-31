@@ -46,51 +46,32 @@
             </div>
             <div v-if="currentTab == 'RequwestToMyEvent'">
                 <div v-for="requwest in requwesttomyevent">
+                    <div v-for="requwest in myrequwests">
 
-                    <div class="col-lg-4 col-md-3 col-sm-5 col-xs-9 box-shadow">
-                        <div class="card  border-dark" style="width: 18rem; background-color: #eeeeee;
+                        <div class="col-lg-4 col-md-3 col-sm-5 col-xs-9 box-shadow">
+                            <div class="card  border-dark" style="width: 18rem; background-color: #eeeeee;
              border: 1px solid transparent;
              border-color: #666869;
 ">
-                            <div class="card-body">
-
-                                <a @click="myFunction(requwest.id)">
-                                    <img :src="'/images/upload/'+requwest.main_image" height="150">
-                                </a>
-                                <a @click="myFunction(requwest.id)">
-                                    <p>{{requwest.name}},
-                                        {{requwest.age}}</p></a>
-
-                                <h5 v-if="requwest.status=='unredded'">
-                                    <p>
-                                        <a class="btn btn-primary" @click="accept(requwest.id,requwest.req_id)">
-                                            Принять
-                                        </a>
-                                    </p>
-                                    <p>
-                                        <a class="btn btn-danger" @click="reject(requwest.id,requwest.req_id)">
-                                            Отклонить
-                                        </a>
-                                    </p>
-                                </h5>
-                                <h5 v-if="requwest.status=='accept'"><b>
-                                    <p>
-                                        <a class="btn btn-danger" @click="reject(requwest.id,requwest.req_id)">
-                                            Отклонить
-                                        </a>
-                                    </p>
-                                </b></h5>
-                                <h5 v-if="requwest.status=='denide'"><b>
-                                    <p>
-                                        <a class="btn btn-primary" @click="accept(requwest.id,requwest.req_id)">
-                                            Принять
-                                        </a>
-                                    </p>
-                                </b>
-                                </h5>
+                                <div class="card-body">
+                                    {{requwest.name}}
+                                    Место: {{requwest.place}}
+                                    Начало: {{request.begin}}
+                                    <div v-if='requwest.req_status=="unread"'>
+                                        <td>Заявка не прочитанна</td>
+                                    </div>
+                                    <div v-if='requwest.req_status=="accept"'>
+                                        <td>Заявка принята</td>
+                                    </div>
+                                    <div v-if='requwest.req_status=="denide"'>
+                                        <td>Заявка отклонена</td>
+                                    </div>
+                                    <td>{{requwest.created_at}}</td>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -113,7 +94,7 @@
         data() {
             return {
                 requwestlist: null,
-                currentTab: 'all',
+                currentTab: 'RequwestToMyEvent',
                 myrequwests: null,
                 requwesttomyevent: null,
                 unredded: null,
@@ -131,7 +112,7 @@
                 )
                     .then((response) => {
                         this.myrequwests = response.data.myRequwest;
-                        this.requwesttomyevent = response.data.to
+                        this.requwesttomyevent = response.data.requestMyEvent;
                     });
             },
 

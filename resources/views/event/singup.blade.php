@@ -29,9 +29,9 @@
                 <div class="row">
                     @foreach($photo as $image)
                         <div class="col-sm-7 col-md-7 col-ld">
-                            <a class="lightbox" href="<?php echo asset("/images/upload/$image->photo_name")?>">
+                            <a class="lightbox" href="<?php echo asset("/images/events/$image->photo_name")?>">
                                 <img height="200"
-                                     src="<?php echo asset("/images/upload/$image->photo_name")?>">
+                                     src="<?php echo asset("/images/events/$image->photo_name")?>">
                             </a>
                         </div>
                         <div class="col-sm-6 col-md-4 col-ld"></div>
