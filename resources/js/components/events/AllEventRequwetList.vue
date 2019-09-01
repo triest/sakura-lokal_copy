@@ -64,19 +64,25 @@
                     <!--  <a :href="'/anket/'+like.id"> -->
                     <td><a :href="'/event/singup/' +event.id">{{event.name}}</a></td>
                     <td>{{event.city_name}}</td>
-                    <td><img :src="'/images/upload/'+event.main_image" height="200"></td>
+                    <td><a :href="'/anket/' +event.girl_id">{{event.girl_name}}</a></td>
+                    <td><img :src="'/images/upload/'+event.girl_main_image" height="100"></td>
                     <td>{{event.place}}</td>
-                    <td>{{event.begin}}</td>
                     <td>{{event.statys_name}}</td>
-                    <div v-if='event.req_status=="unread"'>
-                        <td>Заявка не прочитанна</td>
-                    </div>
-                    <div v-if='event.req_status=="accept"'>
-                        <td>Заявка принята</td>
-                    </div>
-                    <div v-if='event.req_status=="denide"'>
-                        <td>Заявка отклонена</td>
-                    </div>
+                    <h5 v-if="event.req_status=='unread'"><b>
+                        <p><a class="btn btn-primary" @click="accept(event.id,event.req_id,)">
+                            Принять
+                        </a></p>
+                        <p>
+                            <a class="btn btn-danger" @click="reject(event.id,event.req_id)">
+                                Отклонить
+                            </a>
+                        </p>
+                    </b></h5>
+                    <h5 v-if="event.req_status=='accept'"><b>
+                        <a class="btn btn-danger" @click="reject(event.id,event.req_id)">
+                            Отклонить
+                        </a>
+                    </b></h5>
                     <td>{{event.created_at}}</td>
                 </tr>
                 </tbody>
@@ -124,7 +130,48 @@
                     });
 
             },
+            accept(event_id, requwest_id, action) {
+                this.requwestlist = [];
+                this.accepted = null;
+                this.rejected = null;
+                this.unredded = null;
+                let id = 1;
+                axios.get('/event/accept', {
+                        params: {
+                            eventid: event_id,
+                            useris: id,
+                            action: 'accept',
+                            reqid: requwest_id,
+                        }
+                    }
+                )
+                    .then((response) => {
 
+                    });
+                this.getall();
+
+            },
+            reject(event_id, requwest_id, action) {
+                this.requwestlist = [];
+                this.accepted = null;
+                this.rejected = null;
+                this.unredded = null;
+                let id = 1;
+                axios.get('/event/accept', {
+                        params: {
+                            eventid: event_id,
+                            useris: id,
+                            action: 'accept',
+                            reqid: requwest_id,
+                        }
+                    }
+                )
+                    .then((response) => {
+
+                    });
+                this.getall();
+
+            },
 
             /*
                         accept(id, req_id) {

@@ -5150,16 +5150,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-    /***/
-    "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/events/AllEventRequwetList.vue?vue&type=script&lang=js&":
-    /*!*************************************************************************************************************************************************************************************!*\
-      !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/events/AllEventRequwetList.vue?vue&type=script&lang=js& ***!
-      \*************************************************************************************************************************************************************************************/
-    /*! exports provided: default */
-    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/events/AllEventRequwetList.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/events/AllEventRequwetList.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -5247,49 +5246,85 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-        /* harmony default export */
-        __webpack_exports__["default"] = ({
-            props: {},
-            components: {},
-            mounted: function mounted() {
-                console.log("requwesteventlist1");
-                this.getall();
-            },
-            data: function data() {
-                return {
-                    requwestlist: "",
-                    currentTab: 'RequwestToMyEvent',
-                    myrequwests: "",
-                    requwesttomyevent: "",
-                    unredded: "",
-                    countaccepted: "",
-                    max_people: ""
-                };
-            },
-            methods: {
-                getall: function getall() {
-                    var _this = this;
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {},
+  components: {},
+  mounted: function mounted() {
+    console.log("requwesteventlist1");
+    this.getall();
+  },
+  data: function data() {
+    return {
+      requwestlist: "",
+      currentTab: 'RequwestToMyEvent',
+      myrequwests: "",
+      requwesttomyevent: "",
+      unredded: "",
+      countaccepted: "",
+      max_people: ""
+    };
+  },
+  methods: {
+    getall: function getall() {
+      var _this = this;
 
-                    this.requwestlist = [];
-                    this.accepted = null;
-                    this.rejected = null;
-                    this.unredded = null;
-                    var temp;
-                    axios.get('list/all').then(function (response) {
-                        //  this.myrequwests = response.data.myRequwest;
-                        //console.log(response.data);
-                        var data = response.data; // console.log(data);
+      this.requwestlist = [];
+      this.accepted = null;
+      this.rejected = null;
+      this.unredded = null;
+      var temp;
+      axios.get('list/all').then(function (response) {
+        //  this.myrequwests = response.data.myRequwest;
+        //console.log(response.data);
+        var data = response.data; // console.log(data);
 
-                        _this.myrequwests = data.myRequwest;
-                        _this.requwesttomyevent = data.requestMyEvent; //  console.log(temp);
-                        // this.requwesttomyevent = response.data.requestMyEvent;
-                    });
-                }
-            }
-        });
+        _this.myrequwests = data.myRequwest;
+        _this.requwesttomyevent = data.requestMyEvent; //  console.log(temp);
+        // this.requwesttomyevent = response.data.requestMyEvent;
+      });
+    },
+    accept: function accept(event_id, requwest_id, action) {
+      this.requwestlist = [];
+      this.accepted = null;
+      this.rejected = null;
+      this.unredded = null;
+      var id = 1;
+      axios.get('/event/accept', {
+        params: {
+          eventid: event_id,
+          useris: id,
+          action: 'accept',
+          reqid: requwest_id
+        }
+      }).then(function (response) {});
+      this.getall();
+    },
+    reject: function reject(event_id, requwest_id, action) {
+      this.requwestlist = [];
+      this.accepted = null;
+      this.rejected = null;
+      this.unredded = null;
+      var id = 1;
+      axios.get('/event/accept', {
+        params: {
+          eventid: event_id,
+          useris: id,
+          action: 'accept',
+          reqid: requwest_id
+        }
+      }).then(function (response) {});
+      this.getall();
+    }
+  }
+});
 
-        /***/
-    }),
+/***/ }),
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/events/EventInMyCitySide.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************!*\
@@ -56727,13 +56762,13 @@ var render = function() {
         attrs: { contact: _vm.contact, messages: _vm.messages }
       }),
       _vm._v(" "),
-        _vm.contact
-            ? _c(
+      _vm.contact
+        ? _c(
             "div",
-            [_c("MessageComposer", {on: {send: _vm.sendMessage}})],
+            [_c("MessageComposer", { on: { send: _vm.sendMessage } })],
             1
-            )
-            : _vm._e()
+          )
+        : _vm._e()
     ],
     1
   )
@@ -56937,7 +56972,7 @@ var render = function() {
           expression: "message"
         }
       ],
-        attrs: {placeholder: "Введите сообщение!"},
+      attrs: { placeholder: "Введите сообщение!" },
       domProps: { value: _vm.message },
       on: {
         keydown: function($event) {
@@ -56957,14 +56992,14 @@ var render = function() {
         }
       }
     }),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c(
-          "button",
-          {staticClass: "btn btn-primary", attrs: {onclick: _vm.send}},
-          [_vm._v("Отправить")]
-      )
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c(
+      "button",
+      { staticClass: "btn btn-primary", attrs: { onclick: _vm.send } },
+      [_vm._v("Отправить")]
+    )
   ])
 }
 var staticRenderFns = []
@@ -57475,228 +57510,280 @@ var staticRenderFns = [
 render._withStripped = true
 
 
-        /***/
-    }),
 
-    /***/
-    "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/events/AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true&":
-    /*!*****************************************************************************************************************************************************************************************************************************************!*\
-      !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/events/AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true& ***!
-      \*****************************************************************************************************************************************************************************************************************************************/
-    /*! exports provided: render, staticRenderFns */
-    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+/***/ }),
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony export (binding) */
-        __webpack_require__.d(__webpack_exports__, "render", function () {
-            return render;
-        });
-        /* harmony export (binding) */
-        __webpack_require__.d(__webpack_exports__, "staticRenderFns", function () {
-            return staticRenderFns;
-        });
-        var render = function () {
-            var _vm = this
-            var _h = _vm.$createElement
-            var _c = _vm._self._c || _h
-            return _c("div", [
-                _vm._v("\n    Принятых заявок:\n    " + _vm._s(_vm.countaccepted) + " "),
-                _c("br"),
-                _vm._v(
-                    "\n    Максимальное число заявок: " + _vm._s(_vm.max_people) + "\n\n    "
-                ),
-                _vm.countaccepted == _vm.max_people
-                    ? _c("div", [_c("b", [_vm._v(" Максимальное число участников! ")])])
-                    : _vm._e(),
-                _vm._v(" "),
-                _c("ul", {staticClass: "nav nav-tabs"}, [
-                    _c(
-                        "li",
-                        {
-                            attrs: {role: "presentation"},
-                            on: {
-                                click: function ($event) {
-                                    _vm.currentTab = "myRequwest"
-                                }
-                            }
-                        },
-                        [_vm._m(0)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                        "li",
-                        {
-                            attrs: {role: "presentation"},
-                            on: {
-                                click: function ($event) {
-                                    _vm.currentTab = "RequwestToMyEvent"
-                                }
-                            }
-                        },
-                        [_vm._m(1)]
-                    )
-                ]),
-                _vm._v(" "),
-                _vm.currentTab == "myRequwest"
-                    ? _c("div", [
-                        _c("table", {staticClass: "table table-condensed"}, [
-                            _vm._m(2),
-                            _vm._v(" "),
-                            _c(
-                                "tbody",
-                                _vm._l(_vm.myrequwests, function (event) {
-                                    return _c("tr", [
-                                        _c("td", [
-                                            _c("a", {attrs: {href: "/event/singup/" + event.id}}, [
-                                                _vm._v(_vm._s(event.name))
-                                            ])
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("td", [_vm._v(_vm._s(event.city_name))]),
-                                        _vm._v(" "),
-                                        _c("th", [_vm._v(_vm._s(event.place))]),
-                                        _vm._v(" "),
-                                        _c("td", [_vm._v(_vm._s(event.begin))]),
-                                        _vm._v(" "),
-                                        _c("td", [_vm._v(_vm._s(event.statys_name))]),
-                                        _vm._v(" "),
-                                        event.req_status == "unread"
-                                            ? _c("div", [_c("td", [_vm._v("Заявка не прочитанна")])])
-                                            : _vm._e(),
-                                        _vm._v(" "),
-                                        event.req_status == "accept"
-                                            ? _c("div", [_c("td", [_vm._v("Заявка принята")])])
-                                            : _vm._e(),
-                                        _vm._v(" "),
-                                        event.req_status == "denide"
-                                            ? _c("div", [_c("td", [_vm._v("Заявка отклонена")])])
-                                            : _vm._e(),
-                                        _vm._v(" "),
-                                        _c("td", [_vm._v(_vm._s(event.created_at))])
-                                    ])
-                                }),
-                                0
-                            )
-                        ])
-                    ])
-                    : _vm._e(),
-                _vm._v(" "),
-                _vm.currentTab == "RequwestToMyEvent"
-                    ? _c("div", [
-                        _c("table", {staticClass: "table table-condensed"}, [
-                            _vm._m(3),
-                            _vm._v(" "),
-                            _c(
-                                "tbody",
-                                _vm._l(_vm.requwesttomyevent, function (event) {
-                                    return _c("tr", [
-                                        _c("td", [
-                                            _c("a", {attrs: {href: "/event/singup/" + event.id}}, [
-                                                _vm._v(_vm._s(event.name))
-                                            ])
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("td", [_vm._v(_vm._s(event.city_name))]),
-                                        _vm._v(" "),
-                                        _c("td", [
-                                            _c("img", {
-                                                attrs: {
-                                                    src: "/images/upload/" + event.main_image,
-                                                    height: "200"
-                                                }
-                                            })
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("td", [_vm._v(_vm._s(event.place))]),
-                                        _vm._v(" "),
-                                        _c("td", [_vm._v(_vm._s(event.begin))]),
-                                        _vm._v(" "),
-                                        _c("td", [_vm._v(_vm._s(event.statys_name))]),
-                                        _vm._v(" "),
-                                        event.req_status == "unread"
-                                            ? _c("div", [_c("td", [_vm._v("Заявка не прочитанна")])])
-                                            : _vm._e(),
-                                        _vm._v(" "),
-                                        event.req_status == "accept"
-                                            ? _c("div", [_c("td", [_vm._v("Заявка принята")])])
-                                            : _vm._e(),
-                                        _vm._v(" "),
-                                        event.req_status == "denide"
-                                            ? _c("div", [_c("td", [_vm._v("Заявка отклонена")])])
-                                            : _vm._e(),
-                                        _vm._v(" "),
-                                        _c("td", [_vm._v(_vm._s(event.created_at))])
-                                    ])
-                                }),
-                                0
-                            )
-                        ])
-                    ])
-                    : _vm._e()
-            ])
-        }
-        var staticRenderFns = [
-            function () {
-                var _vm = this
-                var _h = _vm.$createElement
-                var _c = _vm._self._c || _h
-                return _c("a", {attrs: {href: "#"}}, [_c("b", [_vm._v("Мои запросы")])])
-            },
-            function () {
-                var _vm = this
-                var _h = _vm.$createElement
-                var _c = _vm._self._c || _h
-                return _c("a", {attrs: {href: "#"}}, [
-                    _c("b", [_vm._v("Запросы к моим событиям")])
-                ])
-            },
-            function () {
-                var _vm = this
-                var _h = _vm.$createElement
-                var _c = _vm._self._c || _h
-                return _c("thead", [
-                    _c("tr", [
-                        _c("th", [_vm._v("Событие")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Город")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Место события")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Дата события")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Статус события")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Создано")])
-                    ])
-                ])
-            },
-            function () {
-                var _vm = this
-                var _h = _vm.$createElement
-                var _c = _vm._self._c || _h
-                return _c("thead", [
-                    _c("tr", [
-                        _c("th"),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Город")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Место события")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Дата события")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Статус события")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Создано")])
-                    ])
-                ])
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/events/AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/events/AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._v("\n    Принятых заявок:\n    " + _vm._s(_vm.countaccepted) + " "),
+    _c("br"),
+    _vm._v(
+      "\n    Максимальное число заявок: " + _vm._s(_vm.max_people) + "\n\n    "
+    ),
+    _vm.countaccepted == _vm.max_people
+      ? _c("div", [_c("b", [_vm._v(" Максимальное число участников! ")])])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("ul", { staticClass: "nav nav-tabs" }, [
+      _c(
+        "li",
+        {
+          attrs: { role: "presentation" },
+          on: {
+            click: function($event) {
+              _vm.currentTab = "myRequwest"
             }
-        ]
-        render._withStripped = true
+          }
+        },
+        [_vm._m(0)]
+      ),
+      _vm._v(" "),
+      _c(
+        "li",
+        {
+          attrs: { role: "presentation" },
+          on: {
+            click: function($event) {
+              _vm.currentTab = "RequwestToMyEvent"
+            }
+          }
+        },
+        [_vm._m(1)]
+      )
+    ]),
+    _vm._v(" "),
+    _vm.currentTab == "myRequwest"
+      ? _c("div", [
+          _c("table", { staticClass: "table table-condensed" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.myrequwests, function(event) {
+                return _c("tr", [
+                  _c("td", [
+                    _c("a", { attrs: { href: "/event/singup/" + event.id } }, [
+                      _vm._v(_vm._s(event.name))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(event.city_name))]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v(_vm._s(event.place))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(event.begin))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(event.statys_name))]),
+                  _vm._v(" "),
+                  event.req_status == "unread"
+                    ? _c("div", [_c("td", [_vm._v("Заявка не прочитанна")])])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  event.req_status == "accept"
+                    ? _c("div", [_c("td", [_vm._v("Заявка принята")])])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  event.req_status == "denide"
+                    ? _c("div", [_c("td", [_vm._v("Заявка отклонена")])])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(event.created_at))])
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.currentTab == "RequwestToMyEvent"
+      ? _c("div", [
+          _c("table", { staticClass: "table table-condensed" }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.requwesttomyevent, function(event) {
+                return _c("tr", [
+                  _c("td", [
+                    _c("a", { attrs: { href: "/event/singup/" + event.id } }, [
+                      _vm._v(_vm._s(event.name))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(event.city_name))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("a", { attrs: { href: "/anket/" + event.girl_id } }, [
+                      _vm._v(_vm._s(event.girl_name))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("img", {
+                      attrs: {
+                        src: "/images/upload/" + event.girl_main_image,
+                        height: "100"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(event.place))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(event.statys_name))]),
+                  _vm._v(" "),
+                  event.req_status == "unread"
+                    ? _c("h5", [
+                        _c("b", [
+                          _c("p", [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-primary",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.accept(event.id, event.req_id)
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                        Принять\n                    "
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-danger",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.reject(event.id, event.req_id)
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                            Отклонить\n                        "
+                                )
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  event.req_status == "accept"
+                    ? _c("h5", [
+                        _c("b", [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-danger",
+                              on: {
+                                click: function($event) {
+                                  return _vm.reject(event.id, event.req_id)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        Отклонить\n                    "
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(event.created_at))])
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [_c("b", [_vm._v("Мои запросы")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("b", [_vm._v("Запросы к моим событиям")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Событие")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Город")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Место события")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Дата события")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Статус события")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Создано")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th"),
+        _vm._v(" "),
+        _c("th", [_vm._v("Город")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Место события")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Дата события")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Статус события")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Создано")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
 
 
-        /***/
-    }),
+
+/***/ }),
 
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/events/EventInMyCitySide.vue?vue&type=template&id=3c1a5a22&scoped=true&":
 /*!***************************************************************************************************************************************************************************************************************************************!*\
@@ -71755,7 +71842,7 @@ Vue.component('requwesteventlist', __webpack_require__(/*! ./components/events/R
 Vue.component('eventinmycityside', __webpack_require__(/*! ./components/events/EventInMyCitySide.vue */ "./resources/js/components/events/EventInMyCitySide.vue").default);
 Vue.component('viewhistory', __webpack_require__(/*! ./components/anket/Viewhistory.vue */ "./resources/js/components/anket/Viewhistory.vue").default);
 Vue.component('aperance', __webpack_require__(/*! ./components/admin/Aperance.vue */ "./resources/js/components/admin/Aperance.vue").default);
-        Vue.component('all-event-requwet-list', __webpack_require__(/*! ./components/events/AllEventRequwetList.vue */ "./resources/js/components/events/AllEventRequwetList.vue").default);
+Vue.component('all-event-requwet-list', __webpack_require__(/*! ./components/events/AllEventRequwetList.vue */ "./resources/js/components/events/AllEventRequwetList.vue").default);
 
 window.onload = function () {
   var aperanceApp = new Vue({
@@ -74436,95 +74523,77 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_delModal_vue_vue_type_template_id_5074d4a6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-        /***/
-    }),
 
-    /***/
-    "./resources/js/components/events/AllEventRequwetList.vue":
-    /*!****************************************************************!*\
-      !*** ./resources/js/components/events/AllEventRequwetList.vue ***!
-      \****************************************************************/
-    /*! exports provided: default */
-    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+/***/ }),
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony import */
-        var _AllEventRequwetList_vue_vue_type_template_id_b457e02e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true& */ "./resources/js/components/events/AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true&");
-        /* harmony import */
-        var _AllEventRequwetList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AllEventRequwetList.vue?vue&type=script&lang=js& */ "./resources/js/components/events/AllEventRequwetList.vue?vue&type=script&lang=js&");
-        /* empty/unused harmony star reexport */
-        /* harmony import */
-        var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/***/ "./resources/js/components/events/AllEventRequwetList.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/events/AllEventRequwetList.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AllEventRequwetList_vue_vue_type_template_id_b457e02e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true& */ "./resources/js/components/events/AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true&");
+/* harmony import */ var _AllEventRequwetList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AllEventRequwetList.vue?vue&type=script&lang=js& */ "./resources/js/components/events/AllEventRequwetList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
-        /* normalize component */
-
-        var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-            _AllEventRequwetList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-            _AllEventRequwetList_vue_vue_type_template_id_b457e02e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-            _AllEventRequwetList_vue_vue_type_template_id_b457e02e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-            false,
-            null,
-            "b457e02e",
-            null
-        )
-
-        /* hot reload */
-        if (false) {
-            var api;
-        }
-        component.options.__file = "resources/js/components/events/AllEventRequwetList.vue"
-        /* harmony default export */
-        __webpack_exports__["default"] = (component.exports);
-
-        /***/
-    }),
-
-    /***/
-    "./resources/js/components/events/AllEventRequwetList.vue?vue&type=script&lang=js&":
-    /*!*****************************************************************************************!*\
-      !*** ./resources/js/components/events/AllEventRequwetList.vue?vue&type=script&lang=js& ***!
-      \*****************************************************************************************/
-    /*! exports provided: default */
-    /***/ (function (module, __webpack_exports__, __webpack_require__) {
-
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony import */
-        var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AllEventRequwetList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AllEventRequwetList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/events/AllEventRequwetList.vue?vue&type=script&lang=js&");
-        /* empty/unused harmony star reexport */
-        /* harmony default export */
-        __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AllEventRequwetList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]);
-
-        /***/
-    }),
-
-    /***/
-    "./resources/js/components/events/AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true&":
-    /*!***********************************************************************************************************!*\
-      !*** ./resources/js/components/events/AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true& ***!
-      \***********************************************************************************************************/
-    /*! exports provided: render, staticRenderFns */
-    /***/ (function (module, __webpack_exports__, __webpack_require__) {
-
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
-        /* harmony import */
-        var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AllEventRequwetList_vue_vue_type_template_id_b457e02e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/events/AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true&");
-        /* harmony reexport (safe) */
-        __webpack_require__.d(__webpack_exports__, "render", function () {
-            return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AllEventRequwetList_vue_vue_type_template_id_b457e02e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"];
-        });
-
-        /* harmony reexport (safe) */
-        __webpack_require__.d(__webpack_exports__, "staticRenderFns", function () {
-            return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AllEventRequwetList_vue_vue_type_template_id_b457e02e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"];
-        });
 
 
-        /***/
-    }),
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AllEventRequwetList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AllEventRequwetList_vue_vue_type_template_id_b457e02e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AllEventRequwetList_vue_vue_type_template_id_b457e02e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "b457e02e",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/events/AllEventRequwetList.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/events/AllEventRequwetList.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/events/AllEventRequwetList.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AllEventRequwetList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AllEventRequwetList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/events/AllEventRequwetList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AllEventRequwetList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/events/AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/events/AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true& ***!
+  \***********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AllEventRequwetList_vue_vue_type_template_id_b457e02e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/events/AllEventRequwetList.vue?vue&type=template&id=b457e02e&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AllEventRequwetList_vue_vue_type_template_id_b457e02e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AllEventRequwetList_vue_vue_type_template_id_b457e02e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
 
 /***/ "./resources/js/components/events/EventInMyCitySide.vue":
 /*!**************************************************************!*\
