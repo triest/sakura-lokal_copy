@@ -62,7 +62,7 @@
                 <tbody>
                 <tr v-for="event in requwesttomyevent">
                     <!--  <a :href="'/anket/'+like.id"> -->
-                    <td><a :href="'/event/singup/' +event.id">{{event.name}}</a></td>
+                    <td><a :href="'/myevent/' +event.id">{{event.name}}</a></td>
                     <td>{{event.city_name}}</td>
                     <td><a :href="'/anket/' +event.girl_id">{{event.girl_name}}</a></td>
                     <td><img :src="'/images/upload/'+event.girl_main_image" height="100"></td>

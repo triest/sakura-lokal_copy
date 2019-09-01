@@ -479,6 +479,8 @@ Route::get('event/myparticipation', 'MyEventController@myparticipation')
 //Намопинание о событиях, путь для скрипта
 Route::get('event/reminders', 'MyEventController@reminders');
 
+Route::get('event/reminders/all', 'MyEventController@remindersAll');
+
 //тест карт
 Route::get('/map', function () {
     return view("map");

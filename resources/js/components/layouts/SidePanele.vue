@@ -29,11 +29,15 @@
         <div v-if="unreeadedEventRequwest>0">
             <a class="btn btn-primary" href="/event/requwest/list">Смотреть запросы</a>
         </div>
+
+        <alertmodal v-if="showAlertModal" @closeAlertModalEmit='clouseAlertModal()'></alertmodal>
+
     </div>
 </template>
 
 <script>
     import likemodal from '../likes/LikeModal'
+    import alertmodal from '../layouts/AlertModal'
 
 
     export default {
@@ -45,7 +49,8 @@
             }
         },
         components: {
-            likemodal
+            likemodal,
+            alertmodal
         },
         data() {
             return {
@@ -56,6 +61,7 @@
                 likesNunber: 0,
                 showLikeModal: false,
                 unreeadedEventRequwest: 0,
+                showAlertModal: false,
             }
                 ;
         },
@@ -64,6 +70,7 @@
             this.inSeach();
             this.getAllDataForSidePanel();
             this.getNumberUnreadedEventRequwest();
+            this.remidese();
             Echo.private(`messages.${this.user.id}`)
                 .listen('NewMessage', (e) => {
                     console.log('NewMessage');
@@ -165,6 +172,19 @@
                             }
                         )
                     ;
+                },
+                remidese() {
+                    axios.get('event/reminders', {})
+                        .then((response) => {
+                                //    this.unreeadedEventRequwest = response.data["count(*)"];
+                                console.log(response.data);
+                                this.showAlertModal = true;
+                            }
+                        )
+                    ;
+                },
+                clouseAlertModal() {
+                    this.showAlertModal = false;
                 }
 
             }

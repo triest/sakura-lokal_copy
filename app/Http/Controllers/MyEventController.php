@@ -611,6 +611,58 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
 
     public function reminders(Request $request)
     {
+        $user = Auth::user();
+        if ($user == null) {
+            return 502;
+        }
+        $girl = $user->anketisExsis()->first();
+
+        if ($girl == null) {
+            return 404;
+        }
+
+        //запросы к моим событиям
+        $requestMyEvent
+            = collect(DB::select('select even.name,even.id,req.id as `req_id`,even.place as `place`,girls.id as `girl_id`, even.id as `event_id`,girls.main_image as `girl_main_image`,
+  even.begin,
+ girls.name as `girl_name`,req.status as `req_status` 
+              from new_chat.event_requwest req 
+              left join new_chat.myevents even on req.event_id=even.id 
+              left join girls on req.girl_id=girls.id 
+              where req.girl_id=? and DATE(even.begin)=CURDATE()',
+            [$girl->id]));
+
+        return response()->json([
+            'requestMyEvent' => $requestMyEvent,
+        ]);
+
+    }
+
+    public function remindersAll(Request $request)
+    {
+        $user = Auth::user();
+        if ($user == null) {
+            return 502;
+        }
+        $girl = $user->anketisExsis()->first();
+
+        if ($girl == null) {
+            return 404;
+        }
+
+        //запросы к моим событиям
+        $requestMyEvent
+            = collect(DB::select('select even.name,even.id,req.id as `req_id`,even.place as `place`,girls.id as `girl_id`, even.id as `event_id`,girls.main_image as `girl_main_image`,
+  even.begin,
+ girls.name as `girl_name`,req.status as `req_status` 
+              from new_chat.event_requwest req 
+              left join new_chat.myevents even on req.event_id=even.id 
+              left join girls on req.girl_id=girls.id 
+              where  DATE(even.begin)=CURDATE()'));
+
+        /* return response()->json([
+             'requestMyEvent' => $requestMyEvent,
+         ]);*/
 
     }
 
