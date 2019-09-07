@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/events/AllEventRequwetList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/events/AllEventRequwetList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,19 +21,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8007">
-              <caret line="482" selection-start-line="482" selection-end-line="482" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AllEventRequwetList.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/events/AllEventRequwetList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-187">
+            <state relative-caret-position="17">
               <caret line="65" column="48" selection-start-line="65" selection-start-column="48" selection-end-line="65" selection-end-column="48" />
             </state>
           </provider>
@@ -43,8 +33,8 @@
       <file leaf-file-name="MyEventController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="709">
-              <caret line="664" column="13" selection-start-line="664" selection-start-column="13" selection-end-line="664" selection-end-column="13" />
+            <state relative-caret-position="369">
+              <caret line="626" column="31" selection-start-line="626" selection-start-column="31" selection-end-line="626" selection-end-column="31" />
               <folding>
                 <element signature="e#40#64#0#PHP" expanded="true" />
               </folding>
@@ -52,40 +42,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Requwesteventlist.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/events/Requwesteventlist.vue">
+      <file leaf-file-name="GirlsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GirlsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2567">
-              <caret line="163" column="41" selection-start-line="149" selection-start-column="29" selection-end-line="163" selection-end-column="41" />
+            <state relative-caret-position="952">
+              <caret line="120" selection-start-line="120" selection-end-line="120" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SidePanele.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue">
+      <file leaf-file-name="AlertModal.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="179" column="59" lean-forward="true" selection-start-line="179" selection-start-column="59" selection-end-line="179" selection-end-column="59" />
+            <state relative-caret-position="119">
+              <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
               <folding>
-                <element signature="e#1448#1490#0" expanded="true" />
+                <element signature="e#2515#2756#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModalComponent.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/chat/ModalComponent.vue">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="Private.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/anket/Private.vue">
+      <file leaf-file-name="Editimages.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/anket/Editimages.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="52" column="16" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="16" />
-              <folding>
-                <element signature="e#2025#2072#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="578">
+              <caret line="70" column="87" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="87" />
             </state>
           </provider>
         </entry>
@@ -93,26 +75,23 @@
       <file leaf-file-name="PresentModal.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/anket/PresentModal.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="90" column="10" selection-end-line="179" selection-end-column="8" />
+            <state relative-caret-position="173">
+              <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+              <folding>
+                <element signature="n#style#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modal.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/modal.vue">
+      <file leaf-file-name="Private.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/anket/Private.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AlertModal.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="573">
-              <caret line="53" column="47" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="47" />
+            <state relative-caret-position="2737">
+              <caret line="191" column="8" selection-start-line="191" selection-start-column="8" selection-end-line="193" selection-end-column="14" />
+              <folding>
+                <element signature="e#2025#2072#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -129,7 +108,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>eventrequwestlist</find>
       <find>requwestmyevent</find>
       <find>getalldataforsidepanel</find>
       <find>dump</find>
@@ -143,7 +121,7 @@
       <find>/event/requwest/count</find>
       <find>myevent(</find>
       <find>myeve</find>
-      <find>Введите сообщение!</find>
+      <find />
       <find>myeven</find>
       <find>спис</find>
       <find>event/requwest/</find>
@@ -154,11 +132,12 @@
       <find>list</find>
       <find>begin</find>
       <find>event/reminders'</find>
-      <find>showMessageWindow</find>
       <find>isModalVisible</find>
       <find>modal</find>
       <find>my-modal</find>
       <find>showLikeModal</find>
+      <find>showMessageWindow</find>
+      <find>showAlertModal</find>
     </findStrings>
     <dirStrings>
       <dir>W:\domains\new_chat\chat\resources\js\components</dir>
@@ -187,7 +166,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_05_09_220729_add_status_column2.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_17_220235_create_target_table.php" />
         <option value="$PROJECT_DIR$/resources/js/components/phoneComponent.vue" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_18_174922_change_phone_settings_id_columnt.php" />
         <option value="$PROJECT_DIR$/database/seeds/CreatePhoneSettingSeed.php" />
@@ -223,9 +201,10 @@
         <option value="$PROJECT_DIR$/resources/views/event/singup.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/events/AllEventRequwetList.vue" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue" />
       </list>
     </option>
   </component>
@@ -354,7 +333,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -370,12 +348,38 @@
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chat" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chat" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chat" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chat" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="events" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
@@ -457,6 +461,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -468,7 +473,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../yii2test" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -613,7 +618,11 @@
       <workItem from="1567283477831" duration="6866000" />
       <workItem from="1567326187438" duration="12204000" />
       <workItem from="1567342041647" duration="1111000" />
-      <workItem from="1567357655214" duration="2231000" />
+      <workItem from="1567357655214" duration="2739000" />
+      <workItem from="1567368303089" duration="44000" />
+      <workItem from="1567631532465" duration="768000" />
+      <workItem from="1567700549627" duration="112000" />
+      <workItem from="1567884299721" duration="7047000" />
     </task>
     <task id="LOCAL-00001" summary="Updating image">
       <created>1551566124024</created>
@@ -916,7 +925,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567337776918</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Add empty alert modal about event">
+      <created>1567359998800</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1567359998800</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -952,7 +968,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="998889000" />
+    <option name="totallyTimeSpent" value="1007368000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -963,8 +979,8 @@
       <window_info anchor="bottom" id="Migrations" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32946146" />
-      <window_info id="npm" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="9" sideWeight="0.4984375" weight="0.32946146" />
+      <window_info id="npm" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="5" />
       <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.21145834" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
@@ -974,7 +990,7 @@
       <window_info anchor="bottom" id="Debug" order="10" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
-      <window_info anchor="right" id="Remote Host" order="1" weight="0.12552084" />
+      <window_info anchor="right" id="Remote Host" order="1" weight="0.31354168" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Messages" order="14" />
@@ -1028,7 +1044,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="fix check phone alredy exist" />
     <MESSAGE value="Add header carousel" />
     <MESSAGE value="Fix get event in my city" />
     <MESSAGE value="Rename column for myevent_photo and add default valie to myevent status" />
@@ -1053,7 +1068,8 @@
     <MESSAGE value="Fix see image in event singu up page." />
     <MESSAGE value="Fix see image in event requwest page" />
     <MESSAGE value="Add accept to event req." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add accept to event req." />
+    <MESSAGE value="Add empty alert modal about event" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add empty alert modal about event" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1062,11 +1078,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Jobs/SendSMSAboutEvent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Events/Newevent.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="335">
@@ -1173,16 +1184,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/chat/ChatApp.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/chat/Conversation.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/event/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1235,9 +1236,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#8200#0#Blade" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1252,13 +1250,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
           <caret line="46" column="39" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/anket/Editimages.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="30" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -1293,20 +1284,17 @@
     <entry file="file://$PROJECT_DIR$/resources/js/components/chat/ModalComponent.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/anket/Private.vue">
+    <entry file="file://$PROJECT_DIR$/resources/js/components/chat/Conversation.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="52" column="16" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="16" />
-          <folding>
-            <element signature="e#2025#2072#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="289">
+          <caret line="18" column="29" selection-start-line="17" selection-start-column="14" selection-end-line="18" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/anket/PresentModal.vue">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GirlsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="90" column="10" selection-end-line="179" selection-end-column="8" />
+        <state relative-caret-position="952">
+          <caret line="120" selection-start-line="120" selection-end-line="120" />
         </state>
       </provider>
     </entry>
@@ -1317,10 +1305,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/chat/ChatApp.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/anket/PresentModal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/anket/Private.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2737">
+          <caret line="191" column="8" selection-start-line="191" selection-start-column="8" selection-end-line="193" selection-end-column="14" />
+          <folding>
+            <element signature="e#2025#2072#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/anket/Editimages.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="70" column="87" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3179">
+          <caret line="188" column="36" selection-start-line="188" selection-start-column="36" selection-end-line="188" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="709">
-          <caret line="664" column="13" selection-start-line="664" selection-start-column="13" selection-end-line="664" selection-end-column="13" />
+        <state relative-caret-position="369">
+          <caret line="626" column="31" selection-start-line="626" selection-start-column="31" selection-end-line="626" selection-end-column="31" />
           <folding>
             <element signature="e#40#64#0#PHP" expanded="true" />
           </folding>
@@ -1329,24 +1354,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/events/AllEventRequwetList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-187">
+        <state relative-caret-position="17">
           <caret line="65" column="48" selection-start-line="65" selection-start-column="48" selection-end-line="65" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="53" column="47" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="179" column="59" lean-forward="true" selection-start-line="179" selection-start-column="59" selection-end-line="179" selection-end-column="59" />
+        <state relative-caret-position="119">
+          <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
           <folding>
-            <element signature="e#1448#1490#0" expanded="true" />
+            <element signature="e#2515#2756#0" />
           </folding>
         </state>
       </provider>

@@ -3,16 +3,14 @@
         <div class="modal-mask">
             <div class="modal-wrapper">
                 <div class="modal-container">
-
-                    <div class="modal-header">
-                        <slot name="header">
-                            <b>dsdsdssdds</b>
-                        </slot>
-                    </div>
-
                     <div class="modal-body">
                         <slot name="body">
-                            dsdsds
+                            <a :href="'/myevent/'+event[0].id"> <b>{{event[0].name}}</b></a>
+                            <p> Сегодня в {{event[0].place}}</p>
+                            <p>Начало в {{event[0].begin}}</p>
+                            <p>Не пропустите! </p>
+                            <img :src="'images/events/'+event[0].photo_name" height="200">
+                            <p>Организатор:<a :href="'/anket/'+event[0].girl_id">{{event[0].girl_name}}</a></p>
                         </slot>
                     </div>
 
@@ -33,14 +31,13 @@
 <script>
     export default {
         props: {
-            id: {
-                type: '',
-                required: true
+            event: {
+                type: Array,
+                required: false
             }
         },
         mounted() {
-            this.getPresentsList();
-            this.getUserMoney();
+            console.log(this.event);
         },
         data() {
             return {
@@ -50,10 +47,16 @@
             }
         },
         methods: {
-            close() {
-                this.$emit('closeAlertModalEmit')
+            closeWindow() {
+                console.log("clouse");
+                this.$emit('closeAlertModalEmit', 'someValue')
             },
-
+            showMessageWindow() {
+                console.log("chow");
+            },
+            close() {
+                this.$emit('closeAlert')
+            },
 
         }
     }

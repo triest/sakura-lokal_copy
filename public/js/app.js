@@ -6094,18 +6094,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    id: {
-      type: '',
-      required: true
+      event: {
+          type: Array,
+          required: false
     }
   },
   mounted: function mounted() {
-    this.getPresentsList();
-    this.getUserMoney();
+      console.log(this.event);
   },
   data: function data() {
     return {
@@ -6115,8 +6112,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+      closeWindow: function closeWindow() {
+          console.log("clouse");
+          this.$emit('closeAlertModalEmit', 'someValue');
+      },
+      showMessageWindow: function showMessageWindow() {
+          console.log("chow");
+      },
     close: function close() {
-      this.$emit('closeAlertModalEmit');
+        this.$emit('closeAlert');
     }
   }
 });
@@ -6309,7 +6313,8 @@ __webpack_require__.r(__webpack_exports__);
       likesNunber: 0,
       showLikeModal: false,
       unreeadedEventRequwest: 0,
-      showAlertModal: false
+        showAlertModal: false,
+        event: ""
     };
   },
   mounted: function mounted() {
@@ -6423,9 +6428,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this8 = this;
 
       axios.get('event/reminders', {}).then(function (response) {
-        //    this.unreeadedEventRequwest = response.data["count(*)"];
-        console.log(response.data);
-        _this8.showAlertModal = true;
+          //  console.log(response.data)
+          if (response.data.requestMyEvent.length > 0) {
+              _this8.showAlertModal = true;
+              _this8.event = response.data.requestMyEvent;
+          }
       });
     },
     clouseAlertModal: function clouseAlertModal() {
@@ -59304,19 +59311,34 @@ var render = function() {
           _c("div", { staticClass: "modal-container" }, [
             _c(
               "div",
-              { staticClass: "modal-header" },
-              [_vm._t("header", [_c("b", [_vm._v("dsdsdssdds")])])],
-              2
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
               { staticClass: "modal-body" },
               [
                 _vm._t("body", [
-                  _vm._v(
-                    "\n                        dsdsds\n                    "
-                  )
+                    _c("a", {attrs: {href: "/myevent/" + _vm.event[0].id}}, [
+                        _c("b", [_vm._v(_vm._s(_vm.event[0].name))])
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(" Сегодня в " + _vm._s(_vm.event[0].place))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Начало в " + _vm._s(_vm.event[0].begin))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Не пропустите! ")]),
+                    _vm._v(" "),
+                    _c("img", {
+                        attrs: {
+                            src: "images/events/" + _vm.event[0].photo_name,
+                            height: "200"
+                        }
+                    }),
+                    _vm._v(" "),
+                    _c("p", [
+                        _vm._v("Организатор:"),
+                        _c(
+                            "a",
+                            {attrs: {href: "/anket/" + _vm.event[0].girl_id}},
+                            [_vm._v(_vm._s(_vm.event[0].girl_name))]
+                        )
+                    ])
                 ])
               ],
               2
@@ -59609,8 +59631,9 @@ var render = function() {
       _vm._v(" "),
       _vm.showAlertModal
         ? _c("alertmodal", {
+              attrs: {event: _vm.event},
             on: {
-              closeAlertModalEmit: function($event) {
+                closeAlert: function ($event) {
                 return _vm.clouseAlertModal()
               }
             }

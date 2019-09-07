@@ -30,7 +30,7 @@
             <a class="btn btn-primary" href="/event/requwest/list">Смотреть запросы</a>
         </div>
 
-        <alertmodal v-if="showAlertModal" @closeAlertModalEmit='clouseAlertModal()'></alertmodal>
+        <alertmodal v-if="showAlertModal" :event="event" @closeAlert="clouseAlertModal()"></alertmodal>
 
     </div>
 </template>
@@ -62,6 +62,7 @@
                 showLikeModal: false,
                 unreeadedEventRequwest: 0,
                 showAlertModal: false,
+                event: "",
             }
                 ;
         },
@@ -176,9 +177,11 @@
                 remidese() {
                     axios.get('event/reminders', {})
                         .then((response) => {
-                                //    this.unreeadedEventRequwest = response.data["count(*)"];
-                                console.log(response.data);
+                            //  console.log(response.data)
+                            if (response.data.requestMyEvent.length > 0) {
                                 this.showAlertModal = true;
+                                this.event = response.data.requestMyEvent;
+                            }
                             }
                         )
                     ;
