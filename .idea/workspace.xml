@@ -38,8 +38,8 @@
       <file leaf-file-name="MyEventController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="622" column="38" selection-start-line="622" selection-start-column="38" selection-end-line="622" selection-end-column="38" />
+            <state relative-caret-position="408">
+              <caret line="630" column="55" lean-forward="true" selection-start-line="630" selection-start-column="55" selection-end-line="630" selection-end-column="55" />
               <folding>
                 <element signature="e#40#64#0#PHP" expanded="true" />
               </folding>
@@ -630,7 +630,7 @@
       <workItem from="1567631532465" duration="768000" />
       <workItem from="1567700549627" duration="112000" />
       <workItem from="1567884299721" duration="7531000" />
-      <workItem from="1567928406490" duration="13183000" />
+      <workItem from="1567928406490" duration="13359000" />
     </task>
     <task id="LOCAL-00001" summary="Updating image">
       <created>1551566124024</created>
@@ -961,7 +961,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567950432464</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Fix remidate">
+      <created>1567952934306</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1567952934306</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -997,7 +1004,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1021035000" />
+    <option name="totallyTimeSpent" value="1021211000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1073,7 +1080,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Fix event tatys name" />
     <MESSAGE value="sm not final" />
     <MESSAGE value="desctop sm column" />
     <MESSAGE value="Fix get events by ip" />
@@ -1098,7 +1104,8 @@
     <MESSAGE value="Add alert modal for event." />
     <MESSAGE value="Add notification recived field for event." />
     <MESSAGE value="Fix alert reived today" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix alert reived today" />
+    <MESSAGE value="Fix remidate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix remidate" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1397,8 +1404,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="622" column="38" selection-start-line="622" selection-start-column="38" selection-end-line="622" selection-end-column="38" />
+        <state relative-caret-position="408">
+          <caret line="630" column="55" lean-forward="true" selection-start-line="630" selection-start-column="55" selection-end-line="630" selection-end-column="55" />
           <folding>
             <element signature="e#40#64#0#PHP" expanded="true" />
           </folding>
