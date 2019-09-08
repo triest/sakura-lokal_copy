@@ -631,8 +631,7 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
               left join event_photos photos on photos.myevent_id=even.id
               where req.girl_id=? and DATE(even.begin)=CURDATE()
               and  	alert_notification_today_received=0
-              and (TIMESTAMPDIFF(HOUR, alert_notification_today, NOW())>2)
-              ',
+              and ((TIMESTAMPDIFF(HOUR, alert_notification_today, NOW())>2) or (alert_notification_today is null))',
             [$girl->id]));
 
         return response()->json([
@@ -726,12 +725,13 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
                 'fail2',
             ]);
         }
-        if ($request->notification_type == "alert_today") {
+        if ($request->action == "alert_late") {
+            $req->alert_notification_today = new \DateTime();
+        } else {
             $req->alert_notification_today_received = 1;
             $req->alert_notification_today = new \DateTime();
-            $req->save();
         }
-
+        $req->save();
         return response()->json([
             'ok',
         ]);

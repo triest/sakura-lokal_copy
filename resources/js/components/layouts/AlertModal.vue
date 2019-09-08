@@ -21,9 +21,7 @@
 
                     <div class="modal-footer">
                         <slot name="footer">
-                            <button class="modal-default-button" v-on:click="close()">
-                                Закрыть
-                            </button>
+                        
                         </slot>
                     </div>
                 </div>
@@ -60,7 +58,7 @@
                 console.log("chow");
             },
             close() {
-                this.$emit('closeAlert')
+
             },
             alert_reciver() {
                 axios.get('event/reminders/recived', {
@@ -74,7 +72,7 @@
                     .then((response) => {
 
                     });
-
+                this.$emit('closeAlert')
             },
             alert_late() {
                 axios.get('/event/reminders/recived', {
@@ -88,7 +86,7 @@
                     .then((response) => {
 
                     });
-
+                this.$emit('closeAlert')
             }
 
         }

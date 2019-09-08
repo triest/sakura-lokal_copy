@@ -4,6 +4,7 @@
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,7 +21,7 @@
       <file leaf-file-name="AllEventRequwetList.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/events/AllEventRequwetList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2691">
+            <state relative-caret-position="-508">
               <caret line="65" column="48" selection-start-line="65" selection-start-column="48" selection-end-line="65" selection-end-column="48" />
             </state>
           </provider>
@@ -35,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyEventController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MyEventController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="630" column="55" lean-forward="true" selection-start-line="630" selection-start-column="55" selection-end-line="630" selection-end-column="55" />
+            <state relative-caret-position="590">
+              <caret line="730" column="13" selection-start-line="730" selection-start-column="13" selection-end-line="730" selection-end-column="13" />
               <folding>
                 <element signature="e#40#64#0#PHP" expanded="true" />
               </folding>
@@ -74,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlertModal.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AlertModal.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="83" column="55" selection-start-line="83" selection-start-column="44" selection-end-line="83" selection-end-column="55" />
+            <state relative-caret-position="391">
+              <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -217,8 +218,8 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_09_08_113230_add_datetime_of_notifications.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_09_08_153721_add_column_for_repeat_notiication.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue" />
       </list>
     </option>
   </component>
@@ -630,7 +631,7 @@
       <workItem from="1567631532465" duration="768000" />
       <workItem from="1567700549627" duration="112000" />
       <workItem from="1567884299721" duration="7531000" />
-      <workItem from="1567928406490" duration="13359000" />
+      <workItem from="1567928406490" duration="14702000" />
     </task>
     <task id="LOCAL-00001" summary="Updating image">
       <created>1551566124024</created>
@@ -968,7 +969,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567952934306</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Fix remidate2">
+      <created>1567953110303</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1567953110303</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1004,7 +1012,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1021211000" />
+    <option name="totallyTimeSpent" value="1022554000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1080,7 +1088,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="sm not final" />
     <MESSAGE value="desctop sm column" />
     <MESSAGE value="Fix get events by ip" />
     <MESSAGE value="normal on smartphone" />
@@ -1105,7 +1112,8 @@
     <MESSAGE value="Add notification recived field for event." />
     <MESSAGE value="Fix alert reived today" />
     <MESSAGE value="Fix remidate" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix remidate" />
+    <MESSAGE value="Fix remidate2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix remidate2" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1381,20 +1389,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/events/AllEventRequwetList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2691">
-          <caret line="65" column="48" selection-start-line="65" selection-start-column="48" selection-end-line="65" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="83" column="55" selection-start-line="83" selection-start-column="44" selection-end-line="83" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="681">
@@ -1404,11 +1398,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="630" column="55" lean-forward="true" selection-start-line="630" selection-start-column="55" selection-end-line="630" selection-end-column="55" />
+        <state relative-caret-position="590">
+          <caret line="730" column="13" selection-start-line="730" selection-start-column="13" selection-end-line="730" selection-end-column="13" />
           <folding>
             <element signature="e#40#64#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/events/AllEventRequwetList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-508">
+          <caret line="65" column="48" selection-start-line="65" selection-start-column="48" selection-end-line="65" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
         </state>
       </provider>
     </entry>
