@@ -620,8 +620,7 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
         if ($girl == null) {
             return 404;
         }
-
-        //запросы к моим событиям
+        // напоминание каждые два часа
         $requestMyEvent
             = collect(DB::select('select even.name,even.id,req.id as `req_id`,even.place as `place`,girls.id as `girl_id`, even.id as `event_id`,girls.main_image as `girl_main_image`,
   even.begin,photos.photo_name,
@@ -630,8 +629,9 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
               left join new_chat.myevents even on req.event_id=even.id 
               left join girls on req.girl_id=girls.id 
               left join event_photos photos on photos.myevent_id=even.id
-              where req.girl_id=? and DATE(even.begin)=CURDATE()
+              where req.girl_id=1 and DATE(even.begin)=CURDATE()
               and  	alert_notification_today_received=0
+              and (TIMESTAMPDIFF(HOUR, alert_notification_today, NOW())>2)
               ',
             [$girl->id]));
 

@@ -4,9 +4,6 @@
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,8 +38,8 @@
       <file leaf-file-name="MyEventController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="599">
-              <caret line="633" column="55" selection-start-line="633" selection-start-column="55" selection-end-line="633" selection-end-column="55" />
+            <state relative-caret-position="429">
+              <caret line="622" column="38" selection-start-line="622" selection-start-column="38" selection-end-line="622" selection-end-column="38" />
               <folding>
                 <element signature="e#40#64#0#PHP" expanded="true" />
               </folding>
@@ -633,7 +630,7 @@
       <workItem from="1567631532465" duration="768000" />
       <workItem from="1567700549627" duration="112000" />
       <workItem from="1567884299721" duration="7531000" />
-      <workItem from="1567928406490" duration="10986000" />
+      <workItem from="1567928406490" duration="13183000" />
     </task>
     <task id="LOCAL-00001" summary="Updating image">
       <created>1551566124024</created>
@@ -957,7 +954,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567930990135</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Fix alert reived today">
+      <created>1567950432464</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1567950432464</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -993,7 +997,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1018838000" />
+    <option name="totallyTimeSpent" value="1021035000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1069,7 +1073,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Rename column for myevent_photo and add default valie to myevent status" />
     <MESSAGE value="Fix event tatys name" />
     <MESSAGE value="sm not final" />
     <MESSAGE value="desctop sm column" />
@@ -1094,7 +1097,8 @@
     <MESSAGE value="Add empty alert modal about event" />
     <MESSAGE value="Add alert modal for event." />
     <MESSAGE value="Add notification recived field for event." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add notification recived field for event." />
+    <MESSAGE value="Fix alert reived today" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix alert reived today" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1393,8 +1397,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="599">
-          <caret line="633" column="55" selection-start-line="633" selection-start-column="55" selection-end-line="633" selection-end-column="55" />
+        <state relative-caret-position="429">
+          <caret line="622" column="38" selection-start-line="622" selection-start-column="38" selection-end-line="622" selection-end-column="38" />
           <folding>
             <element signature="e#40#64#0#PHP" expanded="true" />
           </folding>
