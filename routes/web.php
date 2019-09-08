@@ -481,6 +481,10 @@ Route::get('event/reminders', 'MyEventController@reminders');
 
 Route::get('event/reminders/all', 'MyEventController@remindersAll');
 
+//уведомление полученно
+//Для полученных, или напомнить позже
+Route::get('event/reminders/recived', 'MyEventController@remindersRecived');
+
 //тест карт
 Route::get('/map', function () {
     return view("map");

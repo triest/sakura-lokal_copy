@@ -6094,6 +6094,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
       event: {
@@ -6121,6 +6126,28 @@ __webpack_require__.r(__webpack_exports__);
       },
     close: function close() {
         this.$emit('closeAlert');
+    },
+      alert_reciver: function alert_reciver() {
+          axios.get('event/reminders/recived', {
+              params: {
+                  girl_id: this.girlid,
+                  action: "alert_recived",
+                  notification_type: "alert_today",
+                  event_id: this.event[0].id
+              }
+          }).then(function (response) {
+          });
+      },
+      alert_late: function alert_late() {
+          axios.get('/event/reminders/recived', {
+              params: {
+                  girl_id: this.girlid,
+                  action: "alert_late",
+                  notification_type: "alert_today",
+                  event_id: this.event[0].id
+              }
+          }).then(function (response) {
+          });
     }
   }
 });
@@ -59338,7 +59365,37 @@ var render = function() {
                             {attrs: {href: "/anket/" + _vm.event[0].girl_id}},
                             [_vm._v(_vm._s(_vm.event[0].girl_name))]
                         )
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                        "button",
+                        {
+                            staticClass: "btn-primary",
+                            on: {
+                                click: function ($event) {
+                                    return _vm.alert_reciver()
+                                }
+                            }
+                        },
+                        [
+                            _vm._v(
+                                "Напоминание прочитанно. Больше не\n                            напоминать\n                        "
+                            )
+                        ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                        "button",
+                        {
+                            staticClass: "btn-primary",
+                            on: {
+                                click: function ($event) {
+                                    return _vm.alert_late()
+                                }
+                            }
+                        },
+                        [_vm._v("Напоминание позже")]
+                    )
                 ])
               ],
               2

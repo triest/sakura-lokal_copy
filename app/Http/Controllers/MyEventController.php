@@ -630,7 +630,9 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
               left join new_chat.myevents even on req.event_id=even.id 
               left join girls on req.girl_id=girls.id 
               left join event_photos photos on photos.myevent_id=even.id
-              where req.girl_id=? and DATE(even.begin)=CURDATE()',
+              where req.girl_id=? and DATE(even.begin)=CURDATE()
+              and  	alert_notification_today_received=0
+              ',
             [$girl->id]));
 
         return response()->json([
@@ -696,6 +698,42 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
         return response()->json([
             'myRequwest'     => $myRequwest,
             'requestMyEvent' => $requestMyEvent,
+        ]);
+
+    }
+
+    //
+    public function remindersRecived(Request $request)
+    {
+        $user = Auth::user();
+        $girl = $user->anketisExsis();
+        if ($girl == null) {
+            return response()->json([
+                'fail2',
+            ]);
+        }
+        $req = Eventrequwest::select([
+            'id',
+            'alert_notification_today_received',
+            'alert_notification_today',
+        ])
+            ->where('event_id', $request->event_id)
+            ->where('girl_id', $girl->id)
+            ->first();
+
+        if ($req == null) {
+            return response()->json([
+                'fail2',
+            ]);
+        }
+        if ($request->notification_type == "alert_today") {
+            $req->alert_notification_today_received = 1;
+            $req->alert_notification_today = new \DateTime();
+            $req->save();
+        }
+
+        return response()->json([
+            'ok',
         ]);
 
     }
