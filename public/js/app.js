@@ -56672,7 +56672,7 @@ var render = function() {
   return _c("div", { staticClass: "chat-app" }, [
     _c(
       "div",
-      { staticClass: "col-lg-3 col-md-3 col-sm-5 col-xs-9 box-shadow" },
+        {staticClass: "col-lg-3"},
       [
         _c("ContactsList", {
           attrs: { contacts: _vm.contacts },
@@ -56684,7 +56684,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "col-lg-9 col-md-9 col-sm-9 col-xs-9 box-shadow" },
+        {staticClass: "col-lg-9"},
       [
         _c("Conversation", {
           attrs: { contact: _vm.selectedContact, messages: _vm.messages },
