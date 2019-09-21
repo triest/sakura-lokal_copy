@@ -29,7 +29,7 @@
 
 <style lang="scss" scoped>
     .composer textarea {
-        width: 65%;
+        width: 98%;
         margin: 10px;
         resize: none;
         border-radius: 3px;

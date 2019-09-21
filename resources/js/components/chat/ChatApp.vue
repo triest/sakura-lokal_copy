@@ -1,7 +1,11 @@
 <template>
-    <div class="chat-app">
-        <ContactsList :contacts="contacts" @selected="startConversationWith"/>
-        <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
+    <div class="chat-app"> <!-- lg комп-->
+        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-9 box-shadow">
+            <ContactsList :contacts="contacts" @selected="startConversationWith"/>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 box-shadow">
+            <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
+        </div>
     </div>
 </template>
 
@@ -76,9 +80,10 @@
     }
 </script>
 
-
+<!--
 <style lang="scss" scoped>
-.chat-app {
-    display: flex;
-}
+    .chat-app {
+        display: flex;
+    }
 </style>
+-->

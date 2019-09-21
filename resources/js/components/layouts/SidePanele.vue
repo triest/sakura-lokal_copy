@@ -175,7 +175,7 @@
                     ;
                 },
                 remidese() {
-                    axios.get('event/reminders', {})
+                    axios.get('/event/reminders', {})
                         .then((response) => {
                             //  console.log(response.data)
                             if (response.data.requestMyEvent.length > 0) {
