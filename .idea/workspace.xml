@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/chat/ChatApp.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/chat/ChatApp.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/blog.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,17 +35,17 @@
       <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="89" selection-start-line="10" selection-start-column="89" selection-end-line="10" selection-end-column="89" />
+            <state relative-caret-position="187">
+              <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyEventController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MyEventController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="631" column="31" selection-start-line="631" selection-start-column="24" selection-end-line="631" selection-end-column="31" />
+            <state relative-caret-position="526">
+              <caret line="634" column="32" selection-start-line="634" selection-start-column="32" selection-end-line="634" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -54,7 +53,7 @@
       <file leaf-file-name="SidePanele.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1848">
+            <state relative-caret-position="2992">
               <caret line="177" column="36" selection-start-line="177" selection-start-column="36" selection-end-line="177" selection-end-column="36" />
             </state>
           </provider>
@@ -65,9 +64,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
               <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
-              <folding>
-                <element signature="e#438#480#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -81,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blog.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="blog.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/blog.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="124" column="20" selection-start-line="124" selection-start-column="20" selection-end-line="124" selection-end-column="20" />
+            <state relative-caret-position="2159">
+              <caret line="130" column="33" selection-start-line="130" selection-start-column="33" selection-end-line="130" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -157,7 +153,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_05_09_003211_add_foregin_keys_event_partificants2.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_09_220729_add_status_column2.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_17_220235_create_target_table.php" />
         <option value="$PROJECT_DIR$/resources/js/components/phoneComponent.vue" />
@@ -198,7 +193,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_09_08_113230_add_datetime_of_notifications.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_09_08_153721_add_column_for_repeat_notiication.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue" />
         <option value="&lt;68d1a62b-4a75-4826-8d04-cf9ac7841949&gt;/srv/www/vhosts/drevlanka.ru/work/iptv/hardware_seach_api.php" />
         <option value="&lt;68d1a62b-4a75-4826-8d04-cf9ac7841949&gt;/srv/www/vhosts/drevlanka.ru/work/userscontrol/modules/pivottable/ajax.php" />
@@ -208,6 +202,8 @@
         <option value="$PROJECT_DIR$/resources/js/components/chat/ContactsList.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/chat/ChatApp.vue" />
         <option value="$PROJECT_DIR$/resources/views/layouts/blog.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/MyEventController.php" />
       </list>
     </option>
   </component>
@@ -607,14 +603,8 @@
       <workItem from="1568046348190" duration="8569000" />
       <workItem from="1568062234418" duration="34000" />
       <workItem from="1568649985461" duration="15333000" />
-      <workItem from="1569081682123" duration="7999000" />
-    </task>
-    <task id="LOCAL-00003" summary="Fix update main image. Now need money for update main image.">
-      <created>1553282709083</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1553282709083</updated>
+      <workItem from="1569081682123" duration="9484000" />
+      <workItem from="1569158903287" duration="764000" />
     </task>
     <task id="LOCAL-00004" summary="Fix reg form.">
       <created>1553331355604</created>
@@ -952,7 +942,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569086935138</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Fix chat style for PC and phone">
+      <created>1569089750830</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1569089750830</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -988,7 +985,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1054554000" />
+    <option name="totallyTimeSpent" value="1056803000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -998,8 +995,8 @@
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5015625" side_tool="true" weight="0.32946146" />
       <window_info anchor="bottom" id="Migrations" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
-      <window_info id="npm" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32946146" />
+      <window_info id="npm" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="9" sideWeight="0.4984375" weight="0.32946146" />
       <window_info anchor="bottom" id="Terminal" order="5" />
       <window_info anchor="right" id="Remote Host" order="1" visible="true" weight="0.122395836" />
@@ -1064,7 +1061,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="normal on smartphone" />
     <MESSAGE value="fix desctop and smaprtpone" />
     <MESSAGE value="normal work" />
     <MESSAGE value="Add input date and time" />
@@ -1089,7 +1085,8 @@
     <MESSAGE value="Fix remidate2" />
     <MESSAGE value="Fix remidese recent" />
     <MESSAGE value="Fix chat style for PC" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix chat style for PC" />
+    <MESSAGE value="Fix chat style for PC and phone" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix chat style for PC and phone" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1352,13 +1349,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="631" column="31" selection-start-line="631" selection-start-column="24" selection-end-line="631" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1383,16 +1373,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="89" selection-start-line="10" selection-start-column="89" selection-end-line="10" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1848">
+        <state relative-caret-position="2992">
           <caret line="177" column="36" selection-start-line="177" selection-start-column="36" selection-end-line="177" selection-end-column="36" />
         </state>
       </provider>
@@ -1401,16 +1384,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
-          <folding>
-            <element signature="e#438#480#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/blog.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="124" column="20" selection-start-line="124" selection-start-column="20" selection-end-line="124" selection-end-column="20" />
+        <state relative-caret-position="2159">
+          <caret line="130" column="33" selection-start-line="130" selection-start-column="33" selection-end-line="130" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="634" column="32" selection-start-line="634" selection-start-column="32" selection-end-line="634" selection-end-column="32" />
         </state>
       </provider>
     </entry>

@@ -629,10 +629,10 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
               left join new_chat.myevents even on req.event_id=even.id 
               left join girls on req.girl_id=girls.id 
               left join event_photos photos on photos.myevent_id=even.id
-              where req.girl_id=? and DATE(even.begin)=CURDATE()
+              where (req.girl_id=? or  even.organizer_id=?)  and DATE(even.begin)=CURDATE()
               and  	alert_notification_today_received=0
               and ((TIMESTAMPDIFF(HOUR, alert_notification_today, NOW())>2) or (alert_notification_today is null))',
-            [$girl->id]));
+            [$girl->id, $girl->id]));
 
         return response()->json([
             'requestMyEvent' => $requestMyEvent,
