@@ -64,16 +64,18 @@
         <br>
 
         <p><b>Отношения:</b></p>
-        @foreach($realtions as $item)
+        @foreach($relations as $item)
             @if($girl->relation_id==$item->id)
                 <input type="radio" value="{{$item->id}}" name="realtion" id="relation" checked>
                 {{$item->name}}
+                <br>
             @else
-                <input type="radio" value="{{$item->id}}" name="realtion" id="relation">
+                <input type="radio" value="{{$item->id}}" name="realtion" id="relation">     {{$item->name}}
+                <br>
             @endif
         @endforeach
 
-
+        <br>
         <b> С кем хотите познакомиться:</b> <br>
         <input type="radio" id="contactmet"
                name="met" value="famele">

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRelationIdToGirlsTable extends Migration
+class AddLinkToRelation extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,7 @@ class AddRelationIdToGirlsTable extends Migration
     {
         Schema::table('girls', function (Blueprint $table) {
             //
-            $table->bigInteger('relation_id')->unsigned()->index()->nullable()
-                ->default(null);
+            $table->foreign('relation_id')->references('id')->on('relations');
         });
     }
 
@@ -29,7 +28,7 @@ class AddRelationIdToGirlsTable extends Migration
     {
         Schema::table('girls', function (Blueprint $table) {
             //
-            $table->dropColumn('relation_id');
+            $table->dropForeign('relation_id');
         });
     }
 }

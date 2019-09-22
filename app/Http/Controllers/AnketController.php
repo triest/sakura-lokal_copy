@@ -469,7 +469,7 @@ class AnketController extends Controller
                 $girl->save();
             }
         }
-
+        $girl->relation_id = $request->realtion;
         //тут сохраняем телефон
         $girl->phone_settings = $request->phone_settings;
         $girl->save();

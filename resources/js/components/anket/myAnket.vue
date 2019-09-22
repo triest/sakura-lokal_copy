@@ -6,7 +6,8 @@
             <a href="/mypresents"> <img :src="'/images/gift.png'" height="100"></a>
         </div>
         <div class="col-sm-4">
-            <h5><b>{{anket.anket.name}}</b></h5>   <a type="button" class="btn btn-primary" href="/edit" role="link">Редактировать</a>
+            <h5><b>{{anket.anket.name}}</b></h5>   <a type="button" class="btn btn-primary" href="anket/edit"
+                                                      role="link">Редактировать</a>
             <p>{{anket.status}}</p>
           
             <div v-if="anket.anket.sex=='famele'">

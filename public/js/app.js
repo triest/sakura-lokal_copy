@@ -56492,7 +56492,7 @@ var render = function() {
             "a",
             {
               staticClass: "btn btn-primary",
-              attrs: { type: "button", href: "/edit", role: "link" }
+                attrs: {type: "button", href: "anket/edit", role: "link"}
             },
             [_vm._v("Редактировать")]
           ),
