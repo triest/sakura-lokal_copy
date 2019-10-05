@@ -137,7 +137,6 @@ class AdminController extends Controller
 
     public function bannedorNot(Request $request)
     {
-        //    dump($request);
         $validatedData = $request->validate([
             'id' => 'required',
         ]);
@@ -161,7 +160,6 @@ class AdminController extends Controller
 
         $girl = Girl::select(['id', 'name', 'user_id', 'banned'])->where('user_id', $request->id)->first();
 
-        //   dump($girl);
         if ($girl->banned == 1) {
             $girl->banned = 0;
             $girl->save();
@@ -186,11 +184,6 @@ class AdminController extends Controller
             'begin_search',
             'end_search',
         ])->get();
-        /* $girl=DB::table('girls')
-             ->join('users', 'users.id', '=', 'girls.user_id')
-             ->select('users.id ad id','users.name','girls.id as girl_id','users.money')
-             ->get();*/
-        //  $girl = collect(DB::select('select * from girls'))->get();
         $results = DB::select('select gl.id,u.name,u.money,gl.banned from users u left join girls gl on gl.user_id=u.id');
 
 //        dump($results);
@@ -200,9 +193,7 @@ class AdminController extends Controller
 
     public function seachAdmin(Request $request)
     {
-        //   dump($request);
         $baned = $request->banned;
-        //dump($baned);
         if ($baned == 'banned') {
             $baned = 1;
         } elseif ($baned == 'unbanned') {
@@ -210,8 +201,6 @@ class AdminController extends Controller
         } else {
             $baned = 3;
         }
-        //    dump($baned);
-
         $girls = Girl::query();
 
         //если есть имя
@@ -221,7 +210,6 @@ class AdminController extends Controller
                 ->get();
         }
         if ($baned != 3) {
-            //   echo $baned;
             $girls->where('banned', $baned)->get();
         }
 

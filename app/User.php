@@ -41,7 +41,6 @@ class User extends Authenticatable
     {
 
         $user_id = Auth::user()->id;
-        //  dump($user_id);
         $girl = Girl::select(['id', 'name', 'main_image', 'banned'])->where('user_id', $user_id)->first();
 
         return $girl;
@@ -63,7 +62,7 @@ class User extends Authenticatable
         return Cache::has('user-is-online-'.$this->id);
     }
 
-    public function get_gitl_id()
+    public function get_girl_id()
     {
         $girl = Girl::select('id', 'user_id')->where('user_id', $this->id)->first();
         if ($girl == null) {
@@ -72,5 +71,15 @@ class User extends Authenticatable
             return $girl->id;
         }
     }
+
+    public static function getautch()
+    {
+        $user_id = Auth::user();
+        $user = User::select(['id', 'name'])->where('id', $user_id->id)
+            ->first();
+
+        return $user;
+    }
+
 
 }

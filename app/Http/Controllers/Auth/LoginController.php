@@ -59,7 +59,7 @@ class LoginController extends Controller
     function authenticated(Request $request, $user)
     {
         //тут когда последний раз заходил
-        $id = $user->get_gitl_id();
+        $id = $user->get_girl_id();
         if ($id != null) {
             DB::table('girls')
                 ->where('id', $id)

@@ -419,12 +419,10 @@ Route::get('/getLikesList', 'LikeController@getLikesList');
 
 //боковая панель, все данные
 //getalldataforsidepanel
-Route::get('/getalldataforsidepanel', 'AnketController@getalldataforsidepanel')
-    ->middleware('auth');
+Route::get('/getalldataforsidepanel', 'AnketController@getalldataforsidepanel');
 
 //gatalldataforpower
-Route::get('/gatalldataforpower', 'AnketController@gatalldataforpower')
-    ->middleware('auth');
+Route::get('/gatalldataforpower', 'AnketController@gatalldataforpower');
 
 
 //тест почты
@@ -514,7 +512,8 @@ Route::get('/event/accept', 'MyEventController@accept');
 
 Route::get('/event/requwest/myevent', 'MyEventController@countunreaded');
 
-Route::get('/event/requwest/list', 'MyEventController@requwestMyeventslist');
+Route::get('/event/requwest/list', 'MyEventController@requwestMyeventslist')
+    ->middleware('anketExist');;
 
 //вск запросы на мои события
 Route::get('event/requwest/list/all', 'MyEventController@requwestListAll');

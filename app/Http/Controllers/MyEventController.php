@@ -304,6 +304,14 @@ left join event_statys statys on myevents.status_id=statys.id left join
             'max_people',
             'organizer_id',
         ])->where('id', $id)->first();
+        //моё ли это событие
+        $auth_user = Auth::user();
+        $girl_id = $auth_user->get_girl_id();
+
+        if ($girl_id == $events->organizer_id) {
+            return redirect("/myevent/".$id);
+        }
+
         $days = [
             'Воскресенье',
             'Понедельник',
@@ -361,7 +369,6 @@ left join event_statys statys on myevents.status_id=statys.id left join
         if ($girl == null) {
             return null;
         }
-        $eventreq = new Eventrequwest();
         $event = Myevent::select([
             'id',
             'name',
@@ -375,24 +382,13 @@ left join event_statys statys on myevents.status_id=statys.id left join
             return response(404);
         }
 
-        $eventreq->girl_id
-            = $girl->id; //рзобраться с тем, кому отправляеться событие.
-        $eventreq->event_id
-            = $event->id;
-
-        $eventreq->status = 'unread';
-        $eventreq->save();
+        $rez = $event->makeRequwest($girl);
 
         $eventOwgene = Girl::select(['id', 'user_id'])
             ->where('id', $event->organizer_id)->first();
         //  $user = $eventOwgene->user()->get();
         $user = User::select(['id'])->where('id', $eventOwgene->user_id)
             ->first();
-        $organizer = $event->organizer()->first();
-        if ($organizer != null) {
-            new Newevent($organizer);
-        }
-
         if ($user != null) {
             new SendMessageAboutEvent("Новая заявка на мероприятие",
                 $user->email,
@@ -440,8 +436,6 @@ left join event_statys statys on myevents.status_id=statys.id left join
         $unreaded
             = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="unreaded"',
             [$request->eventid]));
-
-        //  dump($unredded);
 
         return response()->json([
             'all'      => $list,
@@ -534,12 +528,6 @@ left join event_statys statys on myevents.status_id=statys.id left join
 WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
             [$girl->id]))->count();
 
-        $unreaded2 = collect(DB::select('SELECT * FROM `event_requwest` `eventreq` LEFT JOIN `myevents` `myeven` ON
-`eventreq`.`event_id`=`myeven`.`id`
-WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
-            [$girl->id]))->count();
-
-
         return response()->json(['organizer' => $unredded]);
     }
 
@@ -592,13 +580,7 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
             return 502;
         }
 
-        $event = collect(DB::select('SELECT myeven.id,myeven.name,myeven.place,myeven.begin,status.name as statys_name,eventreq.status as req_status
-            FROM `event_requwest` `eventreq` 
-            LEFT JOIN `myevents` `myeven` ON
-              `eventreq`.`event_id`=`myeven`.`id` 
-            left join event_statys status on status.id=myeven.status_id 
-              WHERE `eventreq`.`girl_id`=?',
-            [$girl->id]));
+        $event = Myevent::myparticipation($girl);
 
         return response()->json($event);
     }
@@ -671,28 +653,12 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
     public function requwestListAll(Request $request)
     {
         $user = Auth::user();
-        if ($user == null) {
-            return 502;
-        }
-        $girl = $user->anketisExsis()->first();
-        // dump($girl);
         //мои запросы
-        $myRequwest = collect(DB::select('SELECT myeven.id,eventreq.girl_id,myeven.name,myeven.place,myeven.begin,status.name as statys_name,eventreq.status as req_status 
-              FROM `event_requwest` `eventreq`  LEFT JOIN `myevents` `myeven` ON  `eventreq`.`event_id`=`myeven`.`id`     left join event_statys status on status.id=myeven.status_id 
-            where  `eventreq`.`girl_id`=?',
-            [$girl->id]));
-        //  dump($myRequwest);
+        $myRequwest = Myevent::myRequwest($user);
 
         //запросы к моим событиям
-        $requestMyEvent
-            = collect(DB::select('select even.name,even.id,req.id as `req_id`,even.place as `place`,girls.id as `girl_id`, even.id as `event_id`,girls.main_image as `girl_main_image`, girls.name as `girl_name`,req.status as `req_status` 
-  
-            from new_chat.event_requwest req 
-              left join new_chat.myevents even on req.event_id=even.id 
-              left join girls on req.girl_id=girls.id where even.organizer_id=?',
-            [$girl->id]));
+        $requestMyEvent = Myevent::RequwestToMyEvent($user);
 
-        /* dump($requestMyEvent);*/
 
         return response()->json([
             'myRequwest'     => $myRequwest,
@@ -732,13 +698,10 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
             $req->alert_notification_today = new \DateTime();
         }
         $req->save();
+
         return response()->json([
             'ok',
         ]);
 
     }
 }
-
-/*
- *     "message": "SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'eventreq.girl_id,myeven.name,myeven.place,myeven.begin,status.name as statys_nam' at line 1 (SQL: SELECT myeven.id,,eventreq.girl_id,myeven.name,myeven.place,myeven.begin,status.name as statys_name,eventreq.status as req_status FROM `event_requwest` `eventreq`  LEFT JOIN `myevents` `myeven` ON  `eventreq`.`event_id`=`myeven`.`id`     left join event_statys status on status.id=myeven.status_id  where  `eventreq`.`girl_id`=1
- * */

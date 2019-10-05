@@ -5,25 +5,28 @@
             <b>{{$event->name}}</b>
         </p>
         <p>
+            {{$event->place}},
             {{$day}}, {{$month_name}}
-            {{$day_name}} ,
+            {{$day_name}}
         </p>
         <p>
             Начало:
             {{$time}}
         </p>
         <p>
-        Организатор:
-        <a href="{{route('showGirl',['id'=>$organizer->id,'utm_source'=>'event'])}}">
-            <b>{{$organizer->name}}</b>
-        </a>
+            Организатор:
+            <a href="{{route('showGirl',['id'=>$organizer->id,'utm_source'=>'event'])}}">
+                <b>{{$organizer->name}}</b>
+            </a>
         </p>
-        <div id="eventregApp">
-            <eventrequwest :event={{$event->id}}></eventrequwest>
-        </div>
         <p>
             {{$event->description}}
         </p>
+        <div id="eventregApp">
+            <p>
+                <eventrequwest :event={{$event->id}}></eventrequwest>
+            </p>
+        </div>
         <div class="container gallery-container">
             <div class="tz-gallery">
                 <div class="row">

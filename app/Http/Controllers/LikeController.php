@@ -13,23 +13,7 @@ class LikeController extends Controller
     //
     public function newLike(Request $request)
     {
-        $targetGirl = Girl::select([
-            'name',
-            'id',
-            'description',
-            'main_image',
-            'sex',
-            'meet',
-            'weight',
-            'height',
-            'age',
-            'country_id',
-            'region_id',
-            'city_id',
-            'banned',
-            'user_id',
-            'status',
-        ])->where('id', $request->girl_id)->first();
+        $targetGirl = Girl::where('id', $request->girl_id)->first();
 
         $user = Auth::user();
 
@@ -62,23 +46,7 @@ class LikeController extends Controller
 
     public function getLikesNumber(Request $request)
     {
-        $targetGirl = Girl::select([
-            'name',
-            'id',
-            'description',
-            'main_image',
-            'sex',
-            'meet',
-            'weight',
-            'height',
-            'age',
-            'country_id',
-            'region_id',
-            'city_id',
-            'banned',
-            'user_id',
-            'status',
-        ])->where('id', $request->girl_id)->first();
+
         $nmberLikes = DB::table('likes')->where('target_id', $request->girl_id)->get()->count();
 
         return response()->json(['likeNumber' => $nmberLikes]);
@@ -86,25 +54,8 @@ class LikeController extends Controller
 
     public function getLikesNumberAuch(Request $request)
     {
-        $targetGirl = Girl::select([
-            'name',
-            'id',
-            'description',
-            'main_image',
-            'sex',
-            'meet',
-            'weight',
-            'height',
-            'age',
-            'country_id',
-            'region_id',
-            'city_id',
-            'banned',
-            'user_id',
-            'status',
-        ])->where('id', $request->girl_id)->first();
         $user = Auth::user();  // и если админ
-        $id = $user->get_gitl_id();
+        $id = $user->get_girl_id();
         if ($id != null) {
             $nmberLikes = DB::table('likes')->where('target_id', $id)->get()->count();
 
@@ -145,9 +96,6 @@ class LikeController extends Controller
         if ($whoGirl == null) {
             return response()->json(['not']);
         }
-        // dump($request);
-        // dump($whoGirl);
-        // dump($targetGirl);
 
         $like = Like::select(['id'])->where('who_id', $whoGirl->id)->where('target_id', $targetGirl->id)->first();
         if ($like != null) {
@@ -180,13 +128,13 @@ class LikeController extends Controller
         ])->where('user_id', $user->id)->first();
 
         if ($targetGirl != null) {
-            $nmberLikes = DB::table('likes')
+            $numberLikes = DB::table('likes')
                 ->join('girls', 'likes.who_id', '=', 'girls.id')
                 ->where('target_id', $targetGirl->id)
                 ->orderBy('likes.updated_at','DESC')
                 ->get();
 
-            return response()->json($nmberLikes);
+            return response()->json($numberLikes);
         } else {
             return response()->json(['nolakes']);
         }

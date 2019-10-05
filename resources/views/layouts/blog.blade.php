@@ -25,7 +25,8 @@
           rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
     <!-- Custom styles for this template -->
-    <link href="http://bootstrap-3.ru/examples/offcanvas/offcanvas.css" rel="stylesheet">
+    <!-- <link href="http://bootstrap-3.ru/examples/offcanvas/offcanvas.css" rel="stylesheet">-->
+    <link href="{{asset('css/bootstrap.offcanvas.css')}}" rel="stylesheet">
     <link rel="icon" href="<?php echo asset("public/images/sakura.jpg")?>">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
@@ -180,7 +181,13 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
-<script src="http://bootstrap-3.ru/examples/offcanvas/offcanvas.js"></script>
+<!--<script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script> -->
+<!--<script src="{{ asset('js/bootstrap.min.js') }}" defer></script>-->
+<!--<script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
+
+<!--<script src="http://bootstrap-3.ru/examples/offcanvas/offcanvas.js"></script>-->
+<script src="{{ asset('js/offcanvas.js') }}" defer></script>
+<script src="{{ asset('js/bootstrap.offcanvas.js') }}" defer></script>
 </body>
 </html>

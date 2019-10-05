@@ -487,7 +487,6 @@ class AnketController extends Controller
         $updateMainImagePrice = DB::table('prices')
             ->where('price_name', '=', 'update_main_image')->first();
         $user = Auth::user();
-        dump($updateMainImagePrice);
         $price = $updateMainImagePrice->price;
 
         $temp = $user->money - intval($price);
@@ -499,31 +498,19 @@ class AnketController extends Controller
             $girl = Girl::select(['main_image'])
                 ->where('user_id', $user->get_id())->first();
 
-            //$image_new_name = md5(microtime(true));
-            $image_new_name = $girl->main_image;
-            $temp_file = base_path().'/public/images/upload/'
-                .strtolower($image_new_name);// кладем файл с новыс именем
-            $request->file('file')
-                ->move(base_path().'/public/images/upload/',
-                    strtolower($image_new_name));
-            $origin_size = getimagesize($temp_file);
-            $girl['main_image'] = $image_new_name;
-            $small = base_path().'/public/images/small/'
-                .strtolower($image_new_name);
-            copy($temp_file, $small);
-            $image = new ImageResize($small);
-            $image->resizeToHeight(300);
-
+            $girl->updateMainImage($request);
 
             $user->money = $user->money - $price;
             $user->save();
+
+            return response()->json(['ok']);
+        } else {
+            return response()->json(['no money']);
         }
-        $girl->save();
 
         //тут списываем деньгт
 
 
-        return response()->json(['ok']);
     }
 
     //получаем главное изображение
@@ -577,7 +564,6 @@ class AnketController extends Controller
     {
 
         $imagename = $request->imagename;
-        $user = Auth::user();
         try {
             $temp_file = base_path().'/public/images/upload/'.$imagename;
             File::Delete($temp_file);
@@ -586,7 +572,7 @@ class AnketController extends Controller
                 ->get();
             $photo->delete();
         } catch (\Exception $e) {
-            echo "delete errod";
+            echo "delete error";
         }
         $image = Photo::select(['id', 'photo_name'])
             ->where('photo_name', $imagename)->first();
@@ -956,7 +942,7 @@ class AnketController extends Controller
             ->where('readed', 0)
             ->get();
         $countRequwest = count($myrequest);
-        $id = $user->get_gitl_id();
+        $id = $user->get_girl_id();
         $nmberLikes = DB::table('likes')->where('target_id', $id)->get()
             ->count();
 

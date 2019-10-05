@@ -223,7 +223,6 @@ class GirlsController extends Controller
             if ($ip != null and $ayth_girl != null) {
 
                 if ($utm_source != null) {
-                    dump($utm_source);
                     $source_id = DB::table('view_source')
                         ->where('name', $utm_source)->first();
 
@@ -306,11 +305,9 @@ class GirlsController extends Controller
 
         //авв сшен
         if ($girl->city_id != null) {
-            $city = DB::table('cities')->where('id_city', $girl->city_id)
-                ->first();
+            $city = $girl->getCity();
             if ($city != null) {
-                $region = DB::table('regions')
-                    ->where('id_region', $city->id_region)->first();
+                $region = $girl->getRigion($city);
             } else {
                 $region = null;
             }
