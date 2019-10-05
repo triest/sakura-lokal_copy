@@ -49,6 +49,9 @@ class GirlsController extends Controller
                 ])
                     ->orderBy('created_at', 'DESC')->simplePaginate(9);
             } else {
+                $user = $user = Auth::user();
+                $anket = $user->anketisExsis();
+
                 $girls = Girl::select([
                     'id',
                     'name',
@@ -57,8 +60,10 @@ class GirlsController extends Controller
                     'description',
                     'sex',
                     'age',
+                    'meet',
                 ])
                     ->where('banned', '=', '0')
+                    ->where('sex', '=', $anket->meet)
                     ->orderBy('created_at', 'DESC')
                     ->Paginate(9);
             }
@@ -152,7 +157,7 @@ class GirlsController extends Controller
         ])->where('id', $id)->first();
 
         if ($girl == null) {
-            return $this->index();
+            return redirect('/anket');
         }
         $images = $girl->photos()->get();
 

@@ -131,8 +131,8 @@ Route::post('/join/new', 'CustomUserController@join')->name('joinStore');
 Route::get('/continion/', 'AnketController@createGirl')->name('continion');
 
 //редактировать анке
-Route::get('/edit', 'AnketController@girlsEditAuchAnket')
-    ->name('girlsEditAuchAnket')->middleware('auth');;
+Route::get('/user/anketa/edit/', 'AnketController@girlsEditAuchAnket')
+    ->name('girlsEditAuchAnket');
 Route::post('/user/anketa/edit/', 'AnketController@edit')->name('girlsEdit');
 
 //изображения
