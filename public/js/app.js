@@ -4064,6 +4064,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "myAnket",
@@ -56492,7 +56493,7 @@ var render = function() {
             "a",
             {
               staticClass: "btn btn-primary",
-                attrs: {type: "button", href: "anket/edit", role: "link"}
+                attrs: {type: "button", href: "user/anketa/edit", role: "link"}
             },
             [_vm._v("Редактировать")]
           ),

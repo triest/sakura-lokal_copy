@@ -6,7 +6,7 @@
             <a href="/mypresents"> <img :src="'/images/gift.png'" height="100"></a>
         </div>
         <div class="col-sm-4">
-            <h5><b>{{anket.anket.name}}</b></h5>   <a type="button" class="btn btn-primary" href="anket/edit"
+            <h5><b>{{anket.anket.name}}</b></h5>   <a type="button" class="btn btn-primary" href="user/anketa/edit"
                                                       role="link">Редактировать</a>
             <p>{{anket.status}}</p>
           
