@@ -55272,11 +55272,14 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("br"),
-                      _vm._v(
-                        " " +
-                          _vm._s(application.name) +
-                          "\n                        "
-                      ),
+                        _c("b", [
+                            _c(
+                                "a",
+                                {attrs: {href: "anket/" + application.id}},
+                                [_vm._v(" " + _vm._s(application.name))]
+                            )
+                        ]),
+                        _vm._v(" "),
                       application.status == null
                         ? _c("div", [_vm._v("Не рассмотрен")])
                         : _vm._e(),

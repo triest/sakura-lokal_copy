@@ -37,7 +37,7 @@
                         <div class="avatar">
                             <img :src="'images/upload/'+application.main_image" :alt="application.who_name"
                                  height="150">
-                            <br> {{application.name}}
+                            <br><b><a :href="'anket/'+application.id"> {{application.name}}</a></b>
                             <div v-if="application.status==null">Не рассмотрен</div>
                             <div v-if="application.status=='confirmed'">Подтвержден</div>
                             <div v-if="application.status=='denide'">Отклонен</div>
