@@ -66,7 +66,7 @@ Route::get('/applications', 'ContactsController@getApplicationPage')
 Route::get('/application/get', 'ContactsController@getApplication')
     ->middleware('auth');
 
-Route::get('/getmyapplication', 'ContactsController@myApplication')
+Route::get('/application/get/my', 'ContactsController@myApplication')
     ->middleware('auth');
 //кто имеет доступ к моеё анкете
 Route::get('/whohaveaccesstomyanket',
