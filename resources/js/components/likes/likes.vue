@@ -1,8 +1,7 @@
 <template>
     <div>
-        <img height="20" src="/images/heart.png"> {{likesNunber}}
         <div v-if="auth">
-            <div v-if="showSendLike=='false'">
+            <div v-if="showSendLike=='true'">
                 <p>Вам нравиться эта анкета</p>
             </div>
             <div v-else>
@@ -10,8 +9,9 @@
                     <img height="20" src="/images/heart.png" alt="Постивить отметку">
                 </button>
             </div>
+            <img height="20" src="/images/heart.png">
+            {{likesNunber}}
         </div>
-
     </div>
 </template>
 
@@ -102,7 +102,7 @@
                         this.responseSender = response.data;
                         if (this.responseSender == "alredy") {
                             console.log("alredy");
-                            this.showSendLike = "false";
+                            this.showSendLike = "true";
 
                         } else {
                             this.showSendLike = "true";

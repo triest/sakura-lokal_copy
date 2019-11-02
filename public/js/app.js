@@ -6680,7 +6680,7 @@ __webpack_require__.r(__webpack_exports__);
 
         if (_this3.responseSender == "alredy") {
           console.log("alredy");
-          _this3.showSendLike = "false";
+          _this3.showSendLike = "true";
         } else {
           _this3.showSendLike = "true";
         }
@@ -59990,11 +59990,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("img", { attrs: { height: "20", src: "/images/heart.png" } }),
-    _vm._v(" " + _vm._s(_vm.likesNunber) + "\n    "),
     _vm.auth
       ? _c("div", [
-          _vm.showSendLike == "false"
+          _vm.showSendLike == "true"
             ? _c("div", [_c("p", [_vm._v("Вам нравиться эта анкета")])])
             : _c("div", [
                 _c(
@@ -60016,7 +60014,10 @@ var render = function() {
                     })
                   ]
                 )
-              ])
+              ]),
+          _vm._v(" "),
+          _c("img", { attrs: { height: "20", src: "/images/heart.png" } }),
+          _vm._v("\n        " + _vm._s(_vm.likesNunber) + "\n    ")
         ])
       : _vm._e()
   ])
