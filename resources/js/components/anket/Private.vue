@@ -4,7 +4,7 @@
         <button class="btn-primary" v-if="showSendRegButton" v-on:click="sendRequwest()">Отправить запрос на открытие
             анкеты
         </button>
-        <h5 v-if="regStatus=='notreaded'">Заявка на открытие анкеты не рассмотрена
+        <h5 v-if="regStatus=='notreaded' && !showSendRegButton">Заявка на открытие анкеты не рассмотрена
             <br>
             <button class="btn btn-primary" v-on:click="withdrawRequwest()">
                 Отозавать заявку
