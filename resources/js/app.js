@@ -102,6 +102,10 @@ Vue.component('aperance', require('./components/admin/Aperance.vue').default);
 
 Vue.component('all-event-requwet-list', require('./components/events/AllEventRequwetList.vue').default);
 
+Vue.component('seach', require('./components/seach/index').default);
+
+
+
 window.onload = function () {
     const aperanceApp = new Vue({
         el: '#aperanceApp',
@@ -294,6 +298,15 @@ window.onload = function () {
 
     const eventregApp = new Vue({
         el: '#eventregApp',
+        data: {
+            showModal: false
+        }
+
+        //appacepted
+    });
+
+    const seachApp = new Vue({
+        el: '#seachApp',
         data: {
             showModal: false
         }

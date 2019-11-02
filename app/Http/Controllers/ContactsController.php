@@ -335,6 +335,29 @@ class ContactsController extends Controller
         return response()->json('ok');
     }
 
+    public function withdrawreq(Request $request)
+    {
+        $id = $request->input('id');
+        $girl = Girl::select(['id', 'user_id'])->where('id', $id)->first();
+
+        $id = $girl->user_id;
+        $auth = Auth::user();
+
+        $girl2 = Girl::select(['name', 'main_image'])
+            ->where('user_id', $auth->id)->first();
+        $myregrest = MyRequwest::select(['id'])->where('who_id', '=', $auth->id)
+            ->where('target_id', '=', $id);
+        if ($myregrest == null) {
+            return response('', 404);
+        }
+
+        $myregrest->delete();
+
+        return response('', 203);
+
+    }
+
+
     public function whoHavaAccessToMyAnket(Request $request)
     {
         $auth = Auth::user();

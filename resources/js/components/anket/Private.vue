@@ -1,10 +1,15 @@
 <template>
     <div>
         <h3 v-if="isOpen">У вас открыт доступ к приватной информации!</h3>
-        <button class="btn-primary" v-if="showSendRegButton" v-on:click="sendRequwest()">Отправит запрос на открытие
+        <button class="btn-primary" v-if="showSendRegButton" v-on:click="sendRequwest()">Отправить запрос на открытие
             анкеты
         </button>
-        <h5 v-if="regStatus=='notreaded'">Заявка на открытие анкеты не рассмотрена</h5>
+        <h5 v-if="regStatus=='notreaded'">Заявка на открытие анкеты не рассмотрена
+            <br>
+            <button class="btn btn-primary" v-on:click="withdrawRequwest()">
+                Отозавать заявку
+            </button>
+        </h5>
         <h5 v-if="regStatus=='acept'">Заявка на открытие анкеты принята</h5>
         <h5 v-if="regStatus=='denide'">Заявка на открытие анкеты отклонена</h5>
         <br>
@@ -177,6 +182,19 @@
                         }
                     )
             },
+            //отозвать запрос на открытие анкеты
+            withdrawRequwest() {
+                axios.get('/private/requwest/withdraw', {
+                    params: {
+                        id: this.id
+                    }
+                })
+                    .then((response) => {
+                            this.khowSendRequwestOrNot();
+                        }
+                    )
+            },
+
             itemClicked: function () {
                 $("#my-modal").modal('show');
             },

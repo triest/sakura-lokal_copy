@@ -105,6 +105,9 @@ Route::get('/private/requwest/status', 'ContactsController@sendornot')
 Route::get('/private/requwest/send', 'ContactsController@sendreg')
     ->middleware('auth');
 
+//отправляем запрос:
+Route::get('/private/requwest/withdraw', 'ContactsController@withdrawreq')
+    ->middleware('auth');
 //phone
 //отправлен ли запрос на открытие телефона
 Route::get('/phone/requwest/send/status',
@@ -535,4 +538,6 @@ Route::get('/history', 'AnketController@history');
 
 Route::get('/gethistory', 'AnketController@history');
 
+
+Route::get('/seach', 'SeachController@index');
 

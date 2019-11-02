@@ -63,7 +63,7 @@ class GirlsController extends Controller
                     'meet',
                 ])
                     ->where('banned', '=', '0')
-                    ->where('sex', '=', $anket->meet)
+                    //       ->where('sex', '=', $anket->meet)
                     ->orderBy('created_at', 'DESC')
                     ->Paginate(9);
             }
@@ -92,6 +92,8 @@ class GirlsController extends Controller
 
         }
 
+        dump($girls);
+
         if ($request->session()->get('city')) {
             $city = $request->session()->get('city');
             $city = DB::table('cities')->where('id_city', $city)->first();
@@ -115,6 +117,7 @@ class GirlsController extends Controller
             return view('confurnCity2')->with(['city' => $cities]);
         }
 
+        dump($girls);
 
         return view('index')->with([
             'girls'  => $girls,
