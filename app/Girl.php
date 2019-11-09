@@ -5,6 +5,7 @@ namespace App;
 use http\Env\Request;
 use Illuminate\Database\Eloquent\Model;
 use App\Myevent;
+use Illuminate\Support\Carbon;
 
 class Girl extends Model
 {
@@ -103,6 +104,41 @@ class Girl extends Model
         $image = new ImageResize($small);
         $image->resizeToHeight(300);
         $this->save();
+    }
+
+    public function lastLoginFormat()
+    {
+        $last_login = $this->last_login;
+        $mytime = Carbon::now();
+        $last_login = Carbon::createFromFormat('Y-m-d H:i:s', $last_login);
+        $datediff = date_diff($last_login, $mytime);
+        if ($datediff->y == 0 && $datediff->m == 0 && $datediff->d == 0) {
+            if ($datediff->h < 1) {
+                $last_login = "менее часа назад";
+            } else {
+                $last_login = $datediff->h." часа назад";
+            }
+        } elseif ($datediff->y == 0 && $datediff->m == 0 && $datediff->d > 0) {
+            if ($datediff->d == 1) {
+                $last_login = "вчера";
+            } elseif ($datediff->d < 7) {
+                $last_login = $datediff->d." дня назад";
+            } elseif ($datediff->d >= 7 && $datediff->d <= 13) {
+                $last_login = "неделю назад";
+            } elseif ($datediff->d > 13) {
+                $last_login = "две недели назад";
+            } elseif ($datediff->d > 21) {
+                $last_login = "три недели назад";
+            }
+        } elseif ($datediff->y == 0 && $datediff->m == 1) {
+            $last_login = "месяц назад";
+        } elseif ($datediff->y == 0 && $datediff->m > 1) {
+            $last_login = $datediff->m."месяцев назад";
+        } elseif ($datediff->y >= 1) {
+            $last_login = "давно";
+        }
+
+        return $last_login;
     }
 }
 

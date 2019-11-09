@@ -19,8 +19,7 @@
                 @if($girl->sex=='male')
                     Последний раз был
                 @endif
-
-                <br>
+                
                 {{$last_login}}
                 @if (Auth::guest())
 
