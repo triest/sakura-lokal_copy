@@ -147,13 +147,14 @@
                     <br>
                     @if($girl=Auth::user()->anketisExsis()!=null)
                     <!-- {{$girl=Auth::user()->anketisExsis()}} -->
-                        <img height="150" width="150"
-                             src="<?php echo asset("images/small/$girl->main_image")?>">
+                        <a href="{{route('myAnket')}}">
+                            <img height="150" width="150"
+                                 src="<?php echo asset("images/small/$girl->main_image")?>">
+                        </a>
                         <div id="sidePanelApp">
                             <side-panel :user="{{auth()->user()}}"></side-panel>
                         </div>
                         <br>
-                        <b><a class="btn btn-primary" href="{{route('myAnket')}}">Моя анкета</a> </b>
                         <br><br>
                         <b><a class="btn btn-secondary" href="{{route('myevent')}}">Мои события</a> </b>
 

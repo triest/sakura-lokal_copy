@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Filesystem\Cache;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,25 +17,27 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'id',
-        'name',
-        'email',
-        'password',
-        'money',
-        'endvip',
-        'beginvip',
-    ];
+    protected $fillable
+        = [
+            'id',
+            'name',
+            'email',
+            'password',
+            'money',
+            'endvip',
+            'beginvip',
+        ];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden
+        = [
+            'password',
+            'remember_token',
+        ];
 
     //проверка есть ли анкета
     public function anketisExsis()
@@ -60,12 +63,13 @@ class User extends Authenticatable
 
     public function isOnline()
     {
-        return Cache::has('user-is-online-'.$this->id);
+        return \Cache::has('user-is-online-'.$this->id);
     }
 
     public function get_girl_id()
     {
-        $girl = Girl::select('id', 'user_id')->where('user_id', $this->id)->first();
+        $girl = Girl::select('id', 'user_id')->where('user_id', $this->id)
+            ->first();
         if ($girl == null) {
             return null;
         } else {

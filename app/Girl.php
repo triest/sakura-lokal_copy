@@ -6,6 +6,7 @@ use http\Env\Request;
 use Illuminate\Database\Eloquent\Model;
 use App\Myevent;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 
 class Girl extends Model
 {
@@ -32,7 +33,7 @@ class Girl extends Model
 
     public function user()
     {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
     public function target()
@@ -115,6 +116,8 @@ class Girl extends Model
         if ($datediff->y == 0 && $datediff->m == 0 && $datediff->d == 0) {
             if ($datediff->h < 1) {
                 $last_login = "менее часа назад";
+            } elseif ($datediff->h == 1) {
+                $last_login = "час назад";
             } else {
                 $last_login = $datediff->h." часа назад";
             }
@@ -139,6 +142,19 @@ class Girl extends Model
         }
 
         return $last_login;
+    }
+
+    /**
+     * Check is user online.
+     *
+     * @return bool
+     */
+    public function isOnline()
+    {
+        $user = $this->user()->first();
+
+        //return $user->isOnline();
+        return Cache::has('user-is-online-'.$this->id);
     }
 }
 

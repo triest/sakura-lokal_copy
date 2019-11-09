@@ -12,15 +12,7 @@
                 <img width="200" src="<?php echo asset("/images/upload/$girl->main_image")?>">
                 {{$girl->status}}
                 <br>
-                @if($girl->sex=='famele')
-                    Последний раз была
-                @endif
 
-                @if($girl->sex=='male')
-                    Последний раз был
-                @endif
-                
-                {{$last_login}}
                 @if (Auth::guest())
 
                 @else
@@ -59,8 +51,21 @@
 ">
                 <h4 class="card-title">
                     {{$girl->name}}
+                    @if($girl->isOnline())
+                        <img width="10" src="<?php echo asset("/images/circle-16.ico")?>">
+                    @endif
                 </h4>
+                @if($girl->isOnline())
+                @else
+                    @if($girl->sex=='famele')
+                        <small>Последний раз была</small>
+                    @endif
 
+                    @if($girl->sex=='male')
+                        <small>Последний раз был</small>
+                    @endif
+                    <small>{{$last_login}}</small>
+                @endif
                 <b>Пол:</b>
                 @if($girl->sex=='famele')
                     <b> Женский</b>
