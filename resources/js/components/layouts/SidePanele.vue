@@ -1,7 +1,8 @@
 <template>
     <div>
 
-        <img height="20" src="/images/heart.png" v-on:mouseover="showLikeModal=true"> {{likesNunber}} <br>
+        <img height="20" src="/images/heart.png" v-on:mouseover="triger()" v-on:mouseleave="cleare()"> {{likesNunber}}
+        <br>
         <b><a href="/messages">Сообщения
             <div v-if="numberUnreaded>0">({{numberUnreaded}})</div>
         </a>
@@ -103,10 +104,20 @@
                     console.log("new Event");
                     this.getNumberUnreadedEventRequwest();
                 });
-
         },
         methods:
             {
+                triger() {
+                    clearTimeout(this.timer);
+                    this.timer = setTimeout(() => {
+                        clearTimeout(this.timer);
+                        this.showLikeModal = true;
+                    }, 1500)
+                },
+
+                cleare() {
+                    clearTimeout(this.timer);
+                },
                 closeLikeModal() {
                     this.showLikeModal = false;
                 },

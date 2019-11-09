@@ -12,9 +12,16 @@
                 <img width="200" src="<?php echo asset("/images/upload/$girl->main_image")?>">
                 {{$girl->status}}
                 <br>
-                Последний раз был:
+                @if($girl->sex=='famele')
+                    Последний раз была
+                @endif
+
+                @if($girl->sex=='male')
+                    Последний раз был
+                @endif
+
                 <br>
-                {{$girl->last_login}}
+                {{$last_login}}
                 @if (Auth::guest())
 
                 @else

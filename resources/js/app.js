@@ -104,11 +104,18 @@ Vue.component('all-event-requwet-list', require('./components/events/AllEventReq
 
 Vue.component('seach', require('./components/seach/index').default);
 
-
+Vue.component('carusel', require('./components/carusel/carusel').default);
 
 window.onload = function () {
     const aperanceApp = new Vue({
         el: '#aperanceApp',
+        data: {
+            showModal: false
+        }
+    });
+
+    const caruselApp = new Vue({
+        el: '#caruselApp',
         data: {
             showModal: false
         }

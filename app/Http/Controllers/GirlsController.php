@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use File;
 use Illuminate\Support\Facades\DB;
@@ -335,6 +336,37 @@ class GirlsController extends Controller
         $smoking = Smoking::select(['id', 'name'])
             ->where('id', $girl->smoking_id)->first();
 
+        $last_login = $girl->last_login;
+        $mytime = Carbon::now();
+        $last_login = Carbon::createFromFormat('Y-m-d H:i:s', $last_login);
+        $datediff = date_diff($last_login, $mytime);
+        $last_login = "dsd";
+        if ($datediff->y == 0 && $datediff->m == 0 && $datediff->d == 0) {
+            if ($datediff->h < 1) {
+                $last_login = "Менее часа назад";
+            } else {
+                $last_login = $datediff->h." часа назад";
+            }
+        } elseif ($datediff->y == 0 && $datediff->m == 0 && $datediff->d > 0) {
+            if ($datediff->d == 1) {
+                $last_login = "вчера";
+            } elseif ($datediff->d < 7) {
+                $last_login = $datediff->d." дня назад";
+            } elseif ($datediff->d >= 7 && $datediff->d <= 13) {
+                $last_login = "неделю назад";
+            } elseif ($datediff->d > 13) {
+                $last_login = "две недели назад";
+            } elseif ($datediff->d > 21) {
+                $last_login = "три недели назад";
+            }
+        } elseif ($datediff->y == 0 && $datediff->m == 1) {
+            $last_login = "месяц назад";
+        } elseif ($datediff->y == 0 && $datediff->m > 1) {
+            $last_login = $datediff->m."месяцев назад";
+        } elseif ($datediff->y >= 1) {
+            $last_login = "давно";
+        }
+
         return view('girlView')->with([
             'girl'           => $girl,
             'images'         => $images,
@@ -345,6 +377,7 @@ class GirlsController extends Controller
             'interes'        => $interes,
             'phone_settings' => $phone_settings,
             'phone'          => $phone,
+            'last_login'     => $last_login,
             'views'          => $views,
             'aperance'       => $aperance,
             'relation'       => $relation,

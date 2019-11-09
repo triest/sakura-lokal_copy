@@ -4222,6 +4222,30 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+    /***/
+    "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/carusel/carusel.vue?vue&type=script&lang=js&":
+    /*!**************************************************************************************************************************************************************************!*\
+      !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/carusel/carusel.vue?vue&type=script&lang=js& ***!
+      \**************************************************************************************************************************************************************************/
+    /*! exports provided: default */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+        /* harmony default export */
+        __webpack_exports__["default"] = ({
+            mounted: function mounted() {
+                console.log("carsel");
+            }
+        });
+
+        /***/
+    }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/chat/ChatApp.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/chat/ChatApp.vue?vue&type=script&lang=js& ***!
@@ -6336,6 +6360,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6398,51 +6423,63 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
+      triger: function triger() {
+          var _this2 = this;
+
+          clearTimeout(this.timer);
+          this.timer = setTimeout(function () {
+              clearTimeout(_this2.timer);
+              _this2.showLikeModal = true;
+          }, 1500);
+      },
+      cleare: function cleare() {
+          clearTimeout(this.timer);
+      },
     closeLikeModal: function closeLikeModal() {
       this.showLikeModal = false;
     },
     getNumberUnreadedMessages: function getNumberUnreadedMessages() {
-      var _this2 = this;
+        var _this3 = this;
 
       axios.get('/getCountUnreaded').then(function (response) {
-        _this2.numberUnreaded = response.data;
+          _this3.numberUnreaded = response.data;
       });
     },
     getNumberUnreadedPresents: function getNumberUnreadedPresents() {
-      var _this3 = this;
+        var _this4 = this;
 
       axios.get('/getCountUnreadedPresents').then(function (response) {
-        _this3.numberApplicationPresents = response.data;
+          _this4.numberApplicationPresents = response.data;
       });
     },
     inSeach: function inSeach() {
-      var _this4 = this;
+        var _this5 = this;
 
       var res;
       axios.get('/inseach').then(function (response) {
         res = response.data;
 
         if (res == true) {
-          _this4.inseach = true;
+            _this5.inseach = true;
         } else {
-          _this4.inseach = false;
+            _this5.inseach = false;
         }
       });
     },
     getLikesNumber: function getLikesNumber() {
-      var _this5 = this;
+        var _this6 = this;
 
       axios.get('/getLikesNumberAuch', {
         params: {
           girl_id: this.girlid
         }
       }).then(function (response) {
-        _this5.likesNunber = response.data['likeNumber'];
+          _this6.likesNunber = response.data['likeNumber'];
       });
       console.log("likes number " + this.likesNunber);
     },
     getAllDataForSidePanel: function getAllDataForSidePanel() {
-      var _this6 = this;
+        var _this7 = this;
 
       axios.get('/getalldataforsidepanel', {
         params: {
@@ -6450,10 +6487,10 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         var data = response.data;
-        _this6.likesNunber = data.likeNumber;
-        _this6.numberApplicationPresents = data.countGift;
-        _this6.numberUnreaded = data.countMessages;
-        _this6.numberApplication = data.countRequwest;
+          _this7.likesNunber = data.likeNumber;
+          _this7.numberApplicationPresents = data.countGift;
+          _this7.numberUnreaded = data.countMessages;
+          _this7.numberApplication = data.countRequwest;
       });
     },
     clouseLikeModal: function clouseLikeModal() {
@@ -6462,21 +6499,21 @@ __webpack_require__.r(__webpack_exports__);
     },
     //
     getNumberUnreadedEventRequwest: function getNumberUnreadedEventRequwest() {
-      var _this7 = this;
+        var _this8 = this;
 
       axios.get('/event/requwest/myevent', {}).then(function (response) {
         //    this.unreeadedEventRequwest = response.data["count(*)"];
-        _this7.unreeadedEventRequwest = response.data.organizer;
+          _this8.unreeadedEventRequwest = response.data.organizer;
       });
     },
     remidese: function remidese() {
-      var _this8 = this;
+        var _this9 = this;
 
       axios.get('/event/reminders', {}).then(function (response) {
         //  console.log(response.data)
         if (response.data.requestMyEvent.length > 0) {
-          _this8.showAlertModal = true;
-          _this8.event = response.data.requestMyEvent;
+            _this9.showAlertModal = true;
+            _this9.event = response.data.requestMyEvent;
         }
       });
     },
@@ -56838,6 +56875,37 @@ render._withStripped = true
 
 /***/ }),
 
+    /***/
+    "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/carusel/carusel.vue?vue&type=template&id=09b75228&scoped=true&":
+    /*!******************************************************************************************************************************************************************************************************************************!*\
+      !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/carusel/carusel.vue?vue&type=template&id=09b75228&scoped=true& ***!
+      \******************************************************************************************************************************************************************************************************************************/
+    /*! exports provided: render, staticRenderFns */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export (binding) */
+        __webpack_require__.d(__webpack_exports__, "render", function () {
+            return render;
+        });
+        /* harmony export (binding) */
+        __webpack_require__.d(__webpack_exports__, "staticRenderFns", function () {
+            return staticRenderFns;
+        });
+        var render = function () {
+            var _vm = this
+            var _h = _vm.$createElement
+            var _c = _vm._self._c || _h
+            return _c("div")
+        }
+        var staticRenderFns = []
+        render._withStripped = true
+
+
+        /***/
+    }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/chat/ChatApp.vue?vue&type=template&id=1526169d&":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/chat/ChatApp.vue?vue&type=template&id=1526169d& ***!
@@ -59725,11 +59793,14 @@ var render = function() {
         attrs: { height: "20", src: "/images/heart.png" },
         on: {
           mouseover: function($event) {
-            _vm.showLikeModal = true
+              return _vm.triger()
+          },
+            mouseleave: function ($event) {
+                return _vm.cleare()
           }
         }
       }),
-      _vm._v(" " + _vm._s(_vm.likesNunber) + " "),
+        _vm._v(" " + _vm._s(_vm.likesNunber) + "\n    "),
       _c("br"),
       _vm._v(" "),
       _c("b", [
@@ -72400,6 +72471,7 @@ Vue.component('viewhistory', __webpack_require__(/*! ./components/anket/Viewhist
 Vue.component('aperance', __webpack_require__(/*! ./components/admin/Aperance.vue */ "./resources/js/components/admin/Aperance.vue").default);
 Vue.component('all-event-requwet-list', __webpack_require__(/*! ./components/events/AllEventRequwetList.vue */ "./resources/js/components/events/AllEventRequwetList.vue").default);
 Vue.component('seach', __webpack_require__(/*! ./components/seach/index */ "./resources/js/components/seach/index.vue").default);
+        Vue.component('carusel', __webpack_require__(/*! ./components/carusel/carusel */ "./resources/js/components/carusel/carusel.vue").default);
 
 window.onload = function () {
   var aperanceApp = new Vue({
@@ -72408,6 +72480,12 @@ window.onload = function () {
       showModal: false
     }
   });
+    var caruselApp = new Vue({
+        el: '#caruselApp',
+        data: {
+            showModal: false
+        }
+    });
   var viewhistoryapp = new Vue({
     el: '#viewhistoryapp',
     data: {
@@ -73869,8 +73947,94 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_phoneRequwest_vue_vue_type_template_id_4072aad7_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+        /***/
+    }),
 
-/***/ }),
+    /***/
+    "./resources/js/components/carusel/carusel.vue":
+    /*!*****************************************************!*\
+      !*** ./resources/js/components/carusel/carusel.vue ***!
+      \*****************************************************/
+    /*! exports provided: default */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony import */
+        var _carusel_vue_vue_type_template_id_09b75228_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./carusel.vue?vue&type=template&id=09b75228&scoped=true& */ "./resources/js/components/carusel/carusel.vue?vue&type=template&id=09b75228&scoped=true&");
+        /* harmony import */
+        var _carusel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./carusel.vue?vue&type=script&lang=js& */ "./resources/js/components/carusel/carusel.vue?vue&type=script&lang=js&");
+        /* empty/unused harmony star reexport */
+        /* harmony import */
+        var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+        /* normalize component */
+
+        var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+            _carusel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+            _carusel_vue_vue_type_template_id_09b75228_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+            _carusel_vue_vue_type_template_id_09b75228_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+            false,
+            null,
+            "09b75228",
+            null
+        )
+
+        /* hot reload */
+        if (false) {
+            var api;
+        }
+        component.options.__file = "resources/js/components/carusel/carusel.vue"
+        /* harmony default export */
+        __webpack_exports__["default"] = (component.exports);
+
+        /***/
+    }),
+
+    /***/
+    "./resources/js/components/carusel/carusel.vue?vue&type=script&lang=js&":
+    /*!******************************************************************************!*\
+      !*** ./resources/js/components/carusel/carusel.vue?vue&type=script&lang=js& ***!
+      \******************************************************************************/
+    /*! exports provided: default */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony import */
+        var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_carusel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./carusel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/carusel/carusel.vue?vue&type=script&lang=js&");
+        /* empty/unused harmony star reexport */
+        /* harmony default export */
+        __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_carusel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+        /***/
+    }),
+
+    /***/
+    "./resources/js/components/carusel/carusel.vue?vue&type=template&id=09b75228&scoped=true&":
+    /*!************************************************************************************************!*\
+      !*** ./resources/js/components/carusel/carusel.vue?vue&type=template&id=09b75228&scoped=true& ***!
+      \************************************************************************************************/
+    /*! exports provided: render, staticRenderFns */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony import */
+        var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_carusel_vue_vue_type_template_id_09b75228_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./carusel.vue?vue&type=template&id=09b75228&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/carusel/carusel.vue?vue&type=template&id=09b75228&scoped=true&");
+        /* harmony reexport (safe) */
+        __webpack_require__.d(__webpack_exports__, "render", function () {
+            return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_carusel_vue_vue_type_template_id_09b75228_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"];
+        });
+
+        /* harmony reexport (safe) */
+        __webpack_require__.d(__webpack_exports__, "staticRenderFns", function () {
+            return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_carusel_vue_vue_type_template_id_09b75228_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"];
+        });
+
+
+        /***/ }),
 
 /***/ "./resources/js/components/chat/ChatApp.vue":
 /*!**************************************************!*\
