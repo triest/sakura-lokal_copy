@@ -4,7 +4,7 @@
             <li v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)"
                 :class="{ 'selected': contact == selected }">
                 <div class="avatar">
-                    <img :src="'images/small/'+contact.main_image" :alt="contact.name">
+                    <img :src="'images/upload/'+contact.main_image" :alt="contact.name">
                 </div>
                 <div class="contact">
                     <p class="name">{{ contact.name }}</p>
@@ -54,6 +54,7 @@
         flex: 2;
         max-height: 600px;
         overflow: scroll;
+        overflow-x: hidden;
         border-left: 1px solid #a6a6a6;
         max-width: 200px;
         ul {
@@ -95,7 +96,7 @@
                     align-items: center;
 
                     img {
-                        width: 50px;
+                        width: 60px;
                         height: 60px;
                         border-radius: 70%;
                         margin: 0 auto;
@@ -104,7 +105,7 @@
 
                 .contact {
                     flex: 3;
-                    font-size: 14px;
+                    font-size: 16px;
                     overflow: hidden;
                     display: flex;
                     flex-direction: column;

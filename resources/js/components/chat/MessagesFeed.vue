@@ -49,6 +49,7 @@
     height: 100%;
     max-height: 470px;
     overflow: scroll;
+    overflow-x: hidden;
     max-width: 620px;
 
     ul {
