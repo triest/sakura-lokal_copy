@@ -66,6 +66,7 @@
                     @endif
                     <small>{{$last_login}}</small>
                 @endif
+                <br>
                 <b>Пол:</b>
                 @if($girl->sex=='famele')
                     <b> Женский</b>

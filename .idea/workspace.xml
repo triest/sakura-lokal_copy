@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Girl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Girl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/circle-16.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/circle-16.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/girlView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/girlView.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/blog.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,38 +20,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="girlView.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="girlView.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/girlView.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="67" column="22" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
+            <state relative-caret-position="270">
+              <caret line="54" column="28" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SidePanele.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue">
+      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="60" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
+            <state relative-caret-position="391">
+              <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="circle-16.ico" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/images/circle-16.ico">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file leaf-file-name="online.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/images/online.jpg">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file leaf-file-name="blog.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/blog.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
+            <state relative-caret-position="2533">
               <caret line="152" column="28" selection-start-line="152" selection-start-column="28" selection-end-line="152" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Private.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/anket/Private.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="59" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -60,11 +60,8 @@
       <file leaf-file-name="GirlsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GirlsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="339" lean-forward="true" selection-start-line="339" selection-end-line="339" />
-              <folding>
-                <element signature="e#641#3601#0#PHP" />
-              </folding>
+            <state relative-caret-position="410">
+              <caret line="338" column="47" lean-forward="true" selection-start-line="338" selection-start-column="47" selection-end-line="338" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -77,7 +74,7 @@
       <file leaf-file-name="Kernel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Kernel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
+            <state relative-caret-position="374">
               <caret line="22" column="75" selection-start-line="22" selection-start-column="75" selection-end-line="22" selection-end-column="75" />
             </state>
           </provider>
@@ -86,7 +83,7 @@
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
+            <state relative-caret-position="1037">
               <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
               <folding>
                 <element signature="e#23#55#0#PHP" expanded="true" />
@@ -98,7 +95,7 @@
       <file leaf-file-name="Girl.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Girl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
+            <state relative-caret-position="-26">
               <caret line="119" column="34" selection-start-line="119" selection-start-column="34" selection-end-line="119" selection-end-column="34" />
             </state>
           </provider>
@@ -116,8 +113,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get_gitl_id</find>
-      <find>singup</find>
       <find>--&gt;</find>
       <find>myAnket</find>
       <find>/anket/edit</find>
@@ -133,8 +128,8 @@
       <find>myapplications</find>
       <find>getApplicationPage</find>
       <find>iptv1</find>
-      <find>Заявка на открытие анкеты принята</find>
-      <find>Создать событие</find>
+      <find />
+      <find />
       <find>private/requwest/send</find>
       <find>sendreg</find>
       <find>like</find>
@@ -146,6 +141,8 @@
       <find>моя</find>
       <find>Выйти</find>
       <find>$children</find>
+      <find>пол</find>
+      <find>is</find>
     </findStrings>
     <replaceStrings>
       <replace>get_girl_id</replace>
@@ -155,9 +152,9 @@
       <dir>W:\domains\new_chat\chat\resources</dir>
       <dir>W:\domains\new_chat\chat</dir>
       <dir>W:\domains\new_chat\chat\</dir>
-      <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat\resources\js\components</dir>
-      <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat\</dir>
-      <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat</dir>
+      <dir />
+      <dir />
+      <dir />
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -171,7 +168,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_09_08_110154_add_readed_fild_to_event_requwest_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_09_08_113230_add_datetime_of_notifications.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_09_08_153721_add_column_for_repeat_notiication.php" />
         <option value="$PROJECT_DIR$/resources/js/components/layouts/AlertModal.vue" />
@@ -219,9 +215,10 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/blog.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" />
         <option value="$PROJECT_DIR$/app/Girl.php" />
         <option value="$PROJECT_DIR$/resources/views/girlView.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" />
+        <option value="$PROJECT_DIR$/resources/views/index.blade.php" />
       </list>
     </option>
   </component>
@@ -636,13 +633,8 @@
       <workItem from="1573055335266" duration="3990000" />
       <workItem from="1573280942927" duration="1371000" />
       <workItem from="1573315847478" duration="13327000" />
-    </task>
-    <task id="LOCAL-00018" summary="fix check phone alredy exist">
-      <created>1563531262025</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1563531262025</updated>
+      <workItem from="1573335940724" duration="700000" />
+      <workItem from="1573377597394" duration="6931000" />
     </task>
     <task id="LOCAL-00019" summary="Add header carousel">
       <created>1563532540655</created>
@@ -980,7 +972,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573327173819</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Add check user online and last login">
+      <created>1573336021474</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1573336021474</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1016,7 +1015,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1139976000" />
+    <option name="totallyTimeSpent" value="1147607000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1026,15 +1025,14 @@
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5015625" side_tool="true" weight="0.32946146" />
       <window_info anchor="bottom" id="Migrations" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="3" visible="true" weight="0.11404435" />
+      <window_info anchor="bottom" id="Version Control" order="3" visible="true" weight="0.11193242" />
       <window_info anchor="bottom" id="Run" order="9" sideWeight="0.4984375" weight="0.32946146" />
       <window_info id="npm" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="5" />
-      <window_info anchor="right" id="Remote Host" order="1" visible="true" weight="0.12864584" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.21354167" />
+      <window_info anchor="right" id="Remote Host" order="1" visible="true" weight="0.075520836" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.17708333" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="0" />
-      <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49947917" weight="0.32946146" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="10" weight="0.4" />
@@ -1046,6 +1044,7 @@
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="File Transfer" order="0" sideWeight="0.48697916" visible="true" weight="0.32946146" />
+      <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49947917" weight="0.32946146" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1092,7 +1091,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Fix see image in event requwest page" />
     <MESSAGE value="Add accept to event req." />
     <MESSAGE value="Add empty alert modal about event" />
     <MESSAGE value="Add alert modal for event." />
@@ -1117,7 +1115,8 @@
     <MESSAGE value="Fix logic witdrawRequwest button2" />
     <MESSAGE value="Add last login date" />
     <MESSAGE value="Move last login to model" />
-    <option name="LAST_COMMIT_MESSAGE" value="Move last login to model" />
+    <MESSAGE value="Add check user online and last login" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add check user online and last login" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1126,20 +1125,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/js/components/index/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/search/example.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-204" />
@@ -1368,14 +1353,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Kernel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
+        <state relative-caret-position="374">
           <caret line="22" column="75" selection-start-line="22" selection-start-column="75" selection-end-line="22" selection-end-column="75" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
+        <state relative-caret-position="1037">
           <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
           <folding>
             <element signature="e#23#55#0#PHP" expanded="true" />
@@ -1383,37 +1368,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/circle-16.ico">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/blog.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
+        <state relative-caret-position="2533">
           <caret line="152" column="28" selection-start-line="152" selection-start-column="28" selection-end-line="152" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GirlsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="339" lean-forward="true" selection-start-line="339" selection-end-line="339" />
-          <folding>
-            <element signature="e#641#3601#0#PHP" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Girl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
+        <state relative-caret-position="-26">
           <caret line="119" column="34" selection-start-line="119" selection-start-column="34" selection-end-line="119" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GirlsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="338" column="47" lean-forward="true" selection-start-line="338" selection-start-column="47" selection-end-line="338" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/girlView.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="67" column="22" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
+        <state relative-caret-position="270">
+          <caret line="54" column="28" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/circle-16.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/online.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
         </state>
       </provider>
     </entry>

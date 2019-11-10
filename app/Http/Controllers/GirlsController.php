@@ -118,7 +118,6 @@ class GirlsController extends Controller
             return view('confurnCity2')->with(['city' => $cities]);
         }
 
-        dump($girls);
 
         return view('index')->with([
             'girls'  => $girls,
