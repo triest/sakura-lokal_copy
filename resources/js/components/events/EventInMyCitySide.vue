@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="eventPanel">
         <div v-if="eventList.length">
             <carousel :per-page="1" :mouse-drag="false" :autoplay="true" :loop="true" :centerMode="true"
                       :navigationEnabled="true">
@@ -45,5 +45,7 @@
 </script>
 
 <style scoped>
-
+    .eventPanel {
+        max-width: 100px;
+    }
 </style>
