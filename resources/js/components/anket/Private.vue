@@ -155,9 +155,10 @@
                     .then((response) => {
                         //   this.user_id = response.data;
                         console.log(response.data)
-                        if (response.data != []) {
-                            console.log("alredy");
+                        if (response.data != [] && response.data == "true") {
                             this.wink = true;
+                        } else {
+                            this.wink = false;
                         }
                     })
             },
