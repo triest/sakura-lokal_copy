@@ -50,6 +50,9 @@
         <button class=" btn-success
         " v-on:click="showPresentModal=true" alt="Отправить подарок">Отправить подарок
         </button>
+        <div v-if="wink==false">
+            <button class=" btn-success" v-on:click="wink()" alt="Подмигнуть"> Подмигнуть</button>
+        </div>
         <br>
         <div v-if="isAdmin==true">
             <button class="btn-danger" v-on:click="showAdminModal=true">Действия администратора</button>
@@ -85,6 +88,7 @@
             this.getuserid();
             this.khowHasPrivateOrNot();
             this.isAdminCheck();
+            this.getWingk();
 
         },
         data() {
@@ -97,7 +101,8 @@
                 showPresentModal: false,
                 userId: '',
                 isAdmin: false,
-                showAdminModal: false
+                showAdminModal: false,
+                wink: false
             }
         },
         methods: {
@@ -127,6 +132,33 @@
                 })
                     .then((response) => {
                         this.user_id = response.data;
+                    })
+            },
+            wink() {
+                axios.get('/anket/wink/make', {
+                    params: {
+                        id: this.id
+                    }
+                })
+                    .then((response) => {
+                        //   this.user_id = response.data;
+                    });
+                this.getWeak();
+            },
+
+            getWingk() {
+                axios.get('/anket/wink/get', {
+                    params: {
+                        id: this.id
+                    }
+                })
+                    .then((response) => {
+                        //   this.user_id = response.data;
+                        console.log(response.data)
+                        if (response.data != []) {
+                            console.log("alredy");
+                            this.wink = true;
+                        }
                     })
             },
 

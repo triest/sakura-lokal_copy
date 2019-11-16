@@ -541,3 +541,8 @@ Route::get('/gethistory', 'AnketController@history');
 
 Route::get('/seach', 'SeachController@index');
 
+
+//подмигивание
+Route::get('anket/wink/make', 'AnketController@wink');
+
+Route::get('anket/wink/get', 'AnketController@winkGet');

@@ -521,6 +521,8 @@ class ContactsController extends Controller
         $application->status = 'rejected';
         $application->save();
 
+
+
     }
 
 }
