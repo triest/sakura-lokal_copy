@@ -4,13 +4,10 @@
         <button class="btn-primary" v-if="showSendRegButton" v-on:click="sendRequwest()">Отправит запрос на открытие
             анкеты
         </button>
-        <br>
         <h3 v-if="regStatus=='notreaded'">Заявка не рассмотрена</h3>
         <h3 v-if="regStatus=='acept'">Заявка принята</h3>
         <h3 v-if="regStatus=='denide'">Заявка отклонена</h3>
-        <br>
         <button class="btn-default" v-on:click="showMessageWindow()">Написать сообщение</button>
-        <br>
         <modal v-if="showModal===true" :id="id" v-on:close="showModal = false">></modal>
         <button class="btn-success" v-on:click="showPresentModal=true">Отправить подарок</button>
         <br>

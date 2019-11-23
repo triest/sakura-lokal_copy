@@ -11,8 +11,6 @@
 ">
                 <img width="200" src="<?php echo asset("/images/upload/$girl->main_image")?>">
                 {{$girl->status}}
-                <br>
-
                 @if (Auth::guest())
 
                 @else
@@ -50,7 +48,7 @@
              border-color: #666869;
 ">
                 <h4 class="card-title">
-                    {{$girl->name}}
+                    {{$girl->name}}, {{$girl->age}}
                     @if($girl->isOnline())
                         <img width="10" src="<?php echo asset("/images/circle-16.ico")?>">
                     @endif
@@ -66,7 +64,7 @@
                     @endif
                     <small>{{$last_login}}</small>
                 @endif
-                <br>
+
                 <b>Пол:</b>
                 @if($girl->sex=='famele')
                     <b> Женский</b>
@@ -109,14 +107,11 @@
                     @endif
                 @endif
 
-                <p class="card-text"><b>Рост :</b> {{$girl->height}}</p>
+                <b>Рост :</b> {{$girl->height}}
                 <p class="card-text"><b>Вес : </b>{{$girl->weight}}</p>
-                <p class="card-text"><b>Возраст :</b> {{$girl->age}}</p>
-                <p class="card-text"><b>Внешность :</b></p>
                 @if ($aperance!=null)
+                    <p class="card-text"><b>Внешность :</b></p>
                     <p> {{$aperance->name}}</p>
-                @else
-                    Не указана
                 @endif
 
 

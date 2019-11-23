@@ -32,13 +32,17 @@
         </div>
 
         <alertmodal v-if="showAlertModal" :event="event" @closeAlert="clouseAlertModal()"></alertmodal>
-
+        <div class="newmessagemodalclass" id="newmessagemodalclass">
+            <newmessagemodal v-if="showNemMessageModal" :event="event"
+                             @closeNewMessageAlert="closeNewMessageAlert()"></newmessagemodal>
+        </div>
     </div>
 </template>
 
 <script>
     import likemodal from '../likes/LikeModal'
     import alertmodal from '../layouts/AlertModal'
+    import newmessagemodal from '../chat/newMessageModal'
 
 
     export default {
@@ -51,7 +55,8 @@
         },
         components: {
             likemodal,
-            alertmodal
+            alertmodal,
+            newmessagemodal
         },
         data() {
             return {
@@ -64,6 +69,7 @@
                 unreeadedEventRequwest: 0,
                 showAlertModal: false,
                 event: "",
+                showNemMessageModal: true
             }
                 ;
         },
@@ -81,6 +87,7 @@
                             this.numberUnreaded = response.data;
                         });
                     this.getNumberUnreadedMessages();
+                    this.showNemMessageModal = true;
                 });
             Echo.private(`requwests.${this.user.id}`)
                 .listen('newApplication', (e) => {
@@ -199,6 +206,9 @@
                 },
                 clouseAlertModal() {
                     this.showAlertModal = false;
+                },
+                closeNewMessageAlert() {
+                    this.showNemMessageModal = false;
                 }
 
             }
@@ -207,5 +217,10 @@
 
 
 <style scoped>
-
+    .newmessagemodalclass {
+        position: absolute !important;
+        top: -100px !important;
+        left: -100px !important;
+        background-color: yellow !important;
+    }
 </style>

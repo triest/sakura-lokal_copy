@@ -2,7 +2,7 @@
     <div>
         <div v-if="auth">
             <div v-if="showSendLike=='true'">
-                <p>Вам нравиться эта анкета</p>
+                Вам нравиться эта анкета
             </div>
             <div v-else>
                 <button v-on:click="newLike()">
