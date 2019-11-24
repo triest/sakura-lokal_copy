@@ -1,92 +1,45 @@
 <template>
     <div>
         <h3 v-if="isOpen">У вас открыт доступ к приватной информации!</h3>
-        <button class="btn-primary" v-if="showSendRegButton" v-on:click="sendRequwest()">Отправить запрос на открытие
-            анкеты
-        </button>
-        <h5 v-if="regStatus=='notreaded' && !showSendRegButton">Заявка на открытие анкеты не рассмотрена
+        <!--  <button class="btn-primary" v-if="showSendRegButton" v-on:click="sendRequwest()">Попросить открыть анкету
+          </button>
+          -->
+        <h5 v-if="regStatus=='notreaded' && !showSendRegButton">Пользователь открыл вас свою анкту
             <button class="btn btn-primary" v-on:click="withdrawRequwest()">
                 Отозавать заявку
             </button>
         </h5>
-        <h5 v-if="regStatus=='acept'">Заявка на открытие анкеты принята</h5>
-        <h5 v-if="regStatus=='denide'">Заявка на открытие анкеты отклонена</h5>
+        <h5 v-if="regStatus=='acept'">Пользователь открыл Вам свою анкету</h5>
+        <h5 v-if="regStatus=='denide'">Пользователь отклонил вышу просьбу открыть анкету</h5>
         <table>
             <tr>
                 <td>
-                    <button class="btn-default" v-on:click="showMessageWindow()" style="button.css3button {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	color: #000000;
-	padding: 10px 20px;
-	background: -moz-linear-gradient(
-		top,
-		#ffffff 0%,
-		#ffffff);
-	background: -webkit-gradient(
-		linear, left top, left bottom,
-		from(#ffffff),
-		to(#ffffff));
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	border: 1px solid #000000;
-	-moz-box-shadow:
-		0px 1px 3px rgba(250,250,250,0.5),
-		inset 0px 0px 1px rgba(255,255,255,0.6);
-	-webkit-box-shadow:
-		0px 1px 3px rgba(250,250,250,0.5),
-		inset 0px 0px 1px rgba(255,255,255,0.6);
-	box-shadow:
-		0px 1px 3px rgba(250,250,250,0.5),
-		inset 0px 0px 1px rgba(255,255,255,0.6);
-	text-shadow:
-		0px -1px 0px rgba(0,0,0,1),
-		0px 1px 0px rgba(255,255,255,0.2);
-}
-">Написать сообщение
+                    <button class="btn btn-primary" v-on:click="showMessageWindow()">Написать сообщение
                     </button>
                 </td>
                 <td>
-                    <button class="btn-success
-        " v-on:click="showPresentModal=true" style="button.css3button {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	color: #000000;
-	padding: 10px 20px;
-	background: -moz-linear-gradient(
-		top,
-		#ffffff 0%,
-		#ffffff);
-	background: -webkit-gradient(
-		linear, left top, left bottom,
-		from(#ffffff),
-		to(#ffffff));
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	border: 1px solid #000000;
-	-moz-box-shadow:
-		0px 1px 3px rgba(250,250,250,0.5),
-		inset 0px 0px 1px rgba(255,255,255,0.6);
-	-webkit-box-shadow:
-		0px 1px 3px rgba(250,250,250,0.5),
-		inset 0px 0px 1px rgba(255,255,255,0.6);
-	box-shadow:
-		0px 1px 3px rgba(250,250,250,0.5),
-		inset 0px 0px 1px rgba(255,255,255,0.6);
-	text-shadow:
-		0px -1px 0px rgba(0,0,0,1),
-		0px 1px 0px rgba(255,255,255,0.2);
-}
-" alt="Отправить подарок">Отправить подарок
-                    </button>
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            или
+                        </button>
+                        <div class="dropdown-menu">
+                            <div v-if="wink==false">
+                                <button class="btn btn-success" v-on:click="wink()" alt="Подмигнуть"> Подмигнуть
+                                </button>
+                            </div>
+                            <button class="btn btn-success
+        " v-on:click="showPresentModal=true" alt="Отправить подарок">Отправить подарок
+                            </button>
+                            <button class="btn-primary" v-if="showSendRegButton" v-on:click="sendRequwest()">Попросить
+                                открыть анкету
+                            </button>
+                        </div>
+                    </div>
+
                 </td>
             </tr>
         </table>
-        <div v-if="wink==false">
-            <button class=" btn-success" v-on:click="wink()" alt="Подмигнуть"> Подмигнуть</button>
-        </div>
+
         <br>
         <div v-if="isAdmin==true">
             <button class="btn-danger" v-on:click="showAdminModal=true">Действия администратора</button>

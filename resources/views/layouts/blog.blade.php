@@ -25,7 +25,7 @@
           rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
     <!-- Custom styles for this template -->
-    <link href="http://bootstrap-3.ru/examples/offcanvas/offcanvas.css" rel="stylesheet">
+    <!--  <link href="http://bootstrap-3.ru/examples/offcanvas/offcanvas.css" rel="stylesheet"> -->
     <link rel="icon" href="<?php echo asset("public/images/sakura.jpg")?>">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->

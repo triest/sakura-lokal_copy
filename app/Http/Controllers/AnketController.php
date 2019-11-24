@@ -273,6 +273,7 @@ class AnketController extends Controller
             'to_age',
             'apperance_id',
             'relation_id',
+            'status',
         ])->where('user_id', $user->id)->first();
         if ($girl == null) {
             return $this->index();
@@ -361,6 +362,7 @@ class AnketController extends Controller
             'file'        => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'from'        => 'required|numeric|min:18',
             'to'          => 'required|numeric|min:18',
+            'status'      => 'min:5',
         ]);
         if (Auth::guest()) {
             return redirect('/login');
@@ -391,6 +393,7 @@ class AnketController extends Controller
         $girl->private = $request->private;
         $girl->from_age = $request->from;
         $girl->to_age = $request->to;
+        $girl->status_message = $request->status;
         $girl->save();
         if ($request->has('famele')) {
             $sex = 'famele';

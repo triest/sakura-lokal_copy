@@ -20,14 +20,24 @@
             <font color="red"><p>  {{$errors->first('name')}}</p></font>
         @endif
 
-
+    <!--
         <div class="control-group2" ng-class="{true: 'error'}[submitted && form.pas.$invalid]">
             <div class="form-group">
                 <label for="phone">Ваш телефон:</label>
-                <!--   <input type="tel" class="form-control" id="phone" name="phone" pattern="^\(\d{3}\)\d{3}-\d{2}-\d{2}$" required></input>-->
+                   <input type="tel" class="form-control" id="phone" name="phone" pattern="^\(\d{3}\)\d{3}-\d{2}-\d{2}$" disabled></input>-->
+        <!--
+                    </div>
+                </div>
+        -->
+        <div class="control-group2" ng-class="{true: 'error'}[submitted && form.pas.$invalid]">
+            <div class="form-group">
+                <label for="phone">Ваш статус:</label>
+                <input type="text" class="form-control" id="status" name="status"
+                       required></input>
 
             </div>
         </div>
+
         <b> Пол:</b> <br>
         <input type="radio" id="contactChoice1"
                name="sex" value="famele" checked>

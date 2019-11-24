@@ -37,6 +37,8 @@ Vue.component('side-panel', require('./components/layouts/SidePanele.vue').defau
 //Vue.component('header', require('./components/Carousel.vue').default);
 Vue.component('privatepanel', require('./components/anket/Private.vue').default);
 
+Vue.component('private2', require('./components/anket/private2.vue').default);
+
 //компонент с заявками
 Vue.component('application', require('./components/anket/Application.vue').default);
 
@@ -314,6 +316,16 @@ window.onload = function () {
 
     const seachApp = new Vue({
         el: '#seachApp',
+        data: {
+            showModal: false
+        }
+
+        //appacepted
+    });
+
+
+    const private2App = new Vue({
+        el: '#private2App',
         data: {
             showModal: false
         }

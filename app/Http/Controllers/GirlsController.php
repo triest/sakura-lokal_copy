@@ -143,7 +143,7 @@ class GirlsController extends Controller
             'country_id',
             'region_id',
             'city_id',
-
+            'status',
             'banned',
             'user_id',
             'phone',
@@ -208,6 +208,7 @@ class GirlsController extends Controller
                     'weight',
                     'height',
                     'age',
+                    'status',
                     'phone',
                     'country_id',
                     'region_id',

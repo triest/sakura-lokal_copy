@@ -69,7 +69,7 @@
                 unreeadedEventRequwest: 0,
                 showAlertModal: false,
                 event: "",
-                showNemMessageModal: true
+                showNemMessageModal: false
             }
                 ;
         },
