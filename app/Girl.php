@@ -118,8 +118,14 @@ class Girl extends Model
                 $last_login = "менее часа назад";
             } elseif ($datediff->h == 1) {
                 $last_login = "час назад";
-            } else {
+            } elseif (($datediff->h > 1 && $datediff->h <= 4)
+                || ($datediff->h >= 22 && $datediff >= 23)
+            ) {
                 $last_login = $datediff->h." часа назад";
+            } elseif ($datediff->h >= 5 && $datediff->h <= 20) {
+                $last_login = $datediff->h." часов назад";
+            } elseif ($datediff->h == 21) {
+                $last_login = $datediff->h." час назад";
             }
         } elseif ($datediff->y == 0 && $datediff->m == 0 && $datediff->d > 0) {
             if ($datediff->d == 1) {

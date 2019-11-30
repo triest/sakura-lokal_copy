@@ -50,11 +50,11 @@
             @if($girl->isOnline())
             @else
                 @if($girl->sex=='famele')
-                    <small>Последний раз была</small>
+                    <small>, последний раз была {{$last_login}}</small>
                 @endif
 
                 @if($girl->sex=='male')
-                    <small>Последний раз был {{$last_login}}</small>
+                    <small>, последний раз был {{$last_login}}</small>
                 @endif
             @endif
             @if ($girl->status!=null)
