@@ -1,9 +1,8 @@
 <template>
-    <div>
-        <carousel :per-page="1" :mouse-drag="false" :autoplay="true" :loop="true" :centerMode="true"
-                  :navigationEnabled="true">
-
-
+    <div class="col-ml-4" style="width: 500px;  margin-left: auto;
+    margin-right: auto">
+        <carousel :per-page="3" :mouse-drag="false" :autoplay="true" :loop="true" :centerMode="true"
+                  :navigationEnabled="false">
             <slide>
                 <div class="flex-center2 position-ref">
                     <a :href="'/power'">
@@ -32,7 +31,6 @@
                     </a>
                 </div>
             </slide>
-       
         </carousel>
     </div>
 </template>

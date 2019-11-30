@@ -102,7 +102,9 @@
 <body>
 <script src="{{ asset('/js/axios.min.js') }}"></script>
 <div class="card-body" id="app2">
-    <carouseltemp></carouseltemp>
+    <div class="row" style="position: center">
+        <carusel></carusel>
+    </div>
 </div>
 
 <div class="col-sm-1">

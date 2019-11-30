@@ -4522,8 +4522,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
             data: function data() {
                 return {
@@ -57915,17 +57913,25 @@ var render = function() {
   var _c = _vm._self._c || _h
     return _c(
         "div",
+        {
+            staticClass: "col-ml-4",
+            staticStyle: {
+                width: "500px",
+                "margin-left": "auto",
+                "margin-right": "auto"
+            }
+        },
         [
             _c(
                 "carousel",
                 {
                     attrs: {
-                        "per-page": 1,
+                        "per-page": 3,
                         "mouse-drag": false,
                         autoplay: true,
                         loop: true,
                         centerMode: true,
-                        navigationEnabled: true
+                        navigationEnabled: false
                     }
                 },
                 [
@@ -75313,7 +75319,9 @@ component.options.__file = "resources/js/components/carusel/carusel.vue"
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_carusel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./carusel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/carusel/carusel.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_carusel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]);
+        /* empty/unused harmony star reexport */
+        /* harmony default export */
+        __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_carusel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]);
 
         /***/
     }),
@@ -75341,7 +75349,8 @@ __webpack_require__.r(__webpack_exports__);
         /* harmony default export */
         __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_carusel_vue_vue_type_style_index_0_id_09b75228_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a);
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./resources/js/components/carusel/carusel.vue?vue&type=template&id=09b75228&scoped=true&":
 /*!************************************************************************************************!*\
