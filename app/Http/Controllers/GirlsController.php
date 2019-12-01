@@ -51,7 +51,8 @@ class GirlsController extends Controller
                     ->orderBy('created_at', 'DESC')->simplePaginate(9);
             } else {
                 $user = $user = Auth::user();
-                $anket = $user->anketisExsis();
+                $user = User::select(['id'])->where('id', $user->id)->first();
+                $girls = $user->anketisExsis();
 
                 $girls = Girl::select([
                     'id',
@@ -93,7 +94,6 @@ class GirlsController extends Controller
 
         }
 
-        dump($girls);
 
         if ($request->session()->get('city')) {
             $city = $request->session()->get('city');

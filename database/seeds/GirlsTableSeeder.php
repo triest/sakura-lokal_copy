@@ -12,7 +12,7 @@ class GirlsTableSeeder extends Seeder
     public function run()
     {
         //
-        factory(App\Girls::class, 50)->create()->each(function ($girl) {
+        factory(App\Girl::class, 50)->create()->each(function ($girl) {
             $girl->photos()->save(factory(App\Photo::class)->make());
         });
     }

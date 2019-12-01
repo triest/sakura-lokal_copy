@@ -110,6 +110,10 @@ class Girl extends Model
     public function lastLoginFormat()
     {
         $last_login = $this->last_login;
+        dump($this->last_login);
+        if ($this->last_login == null) {
+            return;
+        }
         $mytime = Carbon::now();
         $last_login = Carbon::createFromFormat('Y-m-d H:i:s', $last_login);
         $datediff = date_diff($last_login, $mytime);
@@ -161,6 +165,45 @@ class Girl extends Model
 
         //return $user->isOnline();
         return Cache::has('user-is-online-'.$this->id);
+    }
+
+    public function newLike()
+    {
+
+        $user = Auth::user();
+
+        if ($user == null) {
+            return false;
+        }
+
+        $whoGirl = Girl::select([
+            'name',
+            'id',
+            'description',
+            'main_image',
+            'sex',
+            'meet',
+            'weight',
+            'height',
+            'age',
+            'country_id',
+            'region_id',
+            'city_id',
+            'banned',
+            'user_id',
+            'status',
+        ])->where('user_id', $user->id)->first();
+
+        if ($whoGirl == null) {
+            return false;
+        }
+
+        $like = new Like();
+        $like->target_id = $this->id;
+        $like->who_id = $whoGirl->id;
+        $like->save();
+
+        return true;
     }
 }
 

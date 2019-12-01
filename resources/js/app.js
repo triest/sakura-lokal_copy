@@ -108,6 +108,8 @@ Vue.component('seach', require('./components/seach/index').default);
 
 Vue.component('carusel', require('./components/carusel/carusel').default);
 
+Vue.component('likeCarusel', require('./components/carusel/likeCarusel').default);
+
 window.onload = function () {
     const aperanceApp = new Vue({
         el: '#aperanceApp',

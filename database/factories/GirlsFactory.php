@@ -1,16 +1,53 @@
 <?php
 
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 $factory->define(App\Girl::class, function (Faker $faker) {
     return [
         //
-        'name'              => $faker->name,
-        'email'             => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-        // password
+        'name'  => $faker->name,
+        'phone' => $faker->numberBetween($min = 100000000, $max = 90000000),
 
-        'remember_token' => Str::random(10),
+        'description'    => $faker->text,
+        'private'        => $faker->text,
+        'sex'            => function () {
+            $num = random_int(0, 1);
+            if ($num == 0) {
+                return 'famele';
+            } else {
+                return 'male';
+            }
+        },
+        'age'            => $faker->numberBetween($min = 18,
+            $max = 60),
+        'weight'         => $faker->numberBetween($min = 45,
+            $max = 80),
+        'height'         => $faker->numberBetween($min = 45,
+            $max = 80),
+        'meet'           => function () {
+            $num = random_int(0, 1);
+            if ($num == 0) {
+                return 'famele';
+            } else {
+                return 'male';
+            }
+        },
+        'status'         => $faker->realText($maxNbChars = 191, $indexSize = 2),
+        /*'phone_settings' => $faker->randomDigit($min = 1,
+            $max = 2),*/
+        'from_age'       => $faker->numberBetween($min = 18,
+            $max = 60),
+        'to_age'         => $faker->numberBetween($min = 18,
+            $max = 60),
+        /* 'apperance_id'   => $faker->randomDigit($min = 1,
+             $max = 3),*
+         'city_id'        => $faker->randomDigit($min = 1,
+             $max = 4),
+         'smoking_id'     => $faker->randomDigit($min = 1,
+             $max = 4),
+         'relation_id'    => $faker->randomDigit($min = 1,
+             $max = 6),*/
+        'status_message' => $faker->realText($maxNbChars = 191, $indexSize = 2),
     ];
 });

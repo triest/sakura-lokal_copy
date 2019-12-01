@@ -44,7 +44,7 @@ class User extends Authenticatable
     {
 
         $user_id = Auth::user()->id;
-        $girl = Girl::select(['id', 'name', 'main_image', 'banned', 'meet'])
+        $girl = Girl::select()
             ->where('user_id', $user_id)->first();
 
         return $girl;

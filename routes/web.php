@@ -546,3 +546,11 @@ Route::get('/seach', 'SeachController@index');
 Route::get('anket/wink/make', 'AnketController@wink');
 
 Route::get('anket/wink/get', 'AnketController@winkGet');
+
+Route::get('like-carusel', 'LikeCaruselController@index');
+
+Route::get('like-carusel/getAnket', 'LikeCaruselController@getAnket');
+
+Route::get('like-carusel/newLike', 'LikeCaruselController@newLike');
+
+Route::get('like-carusel/newDislike', 'LikeCaruselController@newDislike');

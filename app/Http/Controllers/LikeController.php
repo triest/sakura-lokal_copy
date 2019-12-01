@@ -15,31 +15,7 @@ class LikeController extends Controller
     {
         $targetGirl = Girl::where('id', $request->girl_id)->first();
 
-        $user = Auth::user();
-
-        $whoGirl = Girl::select([
-            'name',
-            'id',
-            'description',
-            'main_image',
-            'sex',
-            'meet',
-            'weight',
-            'height',
-            'age',
-            'country_id',
-            'region_id',
-            'city_id',
-            'banned',
-            'user_id',
-            'status',
-        ])->where('user_id', $user->id)->first();
-
-
-        $like = new Like();
-        $like->target_id = $targetGirl->id;
-        $like->who_id = $whoGirl->id;
-        $like->save();
+        $targetGirl->newLike();
 
         return response()->json(['ok']);
     }
@@ -47,7 +23,8 @@ class LikeController extends Controller
     public function getLikesNumber(Request $request)
     {
 
-        $nmberLikes = DB::table('likes')->where('target_id', $request->girl_id)->get()->count();
+        $nmberLikes = DB::table('likes')->where('target_id', $request->girl_id)
+            ->get()->count();
 
         return response()->json(['likeNumber' => $nmberLikes]);
     }
@@ -57,7 +34,8 @@ class LikeController extends Controller
         $user = Auth::user();  // и если админ
         $id = $user->get_girl_id();
         if ($id != null) {
-            $nmberLikes = DB::table('likes')->where('target_id', $id)->get()->count();
+            $nmberLikes = DB::table('likes')->where('target_id', $id)->get()
+                ->count();
 
             return response()->json(['likeNumber' => $nmberLikes]);
         } else {
@@ -97,7 +75,8 @@ class LikeController extends Controller
             return response()->json(['not']);
         }
 
-        $like = Like::select(['id'])->where('who_id', $whoGirl->id)->where('target_id', $targetGirl->id)->first();
+        $like = Like::select(['id'])->where('who_id', $whoGirl->id)
+            ->where('target_id', $targetGirl->id)->first();
         if ($like != null) {
             return response()->json('alredy');
         } else {
@@ -131,7 +110,7 @@ class LikeController extends Controller
             $numberLikes = DB::table('likes')
                 ->join('girls', 'likes.who_id', '=', 'girls.id')
                 ->where('target_id', $targetGirl->id)
-                ->orderBy('likes.updated_at','DESC')
+                ->orderBy('likes.updated_at', 'DESC')
                 ->get();
 
             return response()->json($numberLikes);

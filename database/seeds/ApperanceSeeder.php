@@ -12,5 +12,17 @@ class ApperanceSeeder extends Seeder
     public function run()
     {
         //
+        DB::table('appearance')->insert([
+            'name' => 'Европейская',
+        ]);
+
+        DB::table('appearance')->insert([
+            'name' => 'Азиатская',
+        ]);
+
+        DB::table('appearance')->insert([
+            'name' => 'Кавкзская',
+        ]);
+
     }
 }
