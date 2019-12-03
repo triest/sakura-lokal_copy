@@ -41,13 +41,20 @@ $factory->define(App\Girl::class, function (Faker $faker) {
         'to_age'         => $faker->numberBetween($min = 18,
             $max = 60),
         /* 'apperance_id'   => $faker->randomDigit($min = 1,
-             $max = 3),*
-         'city_id'        => $faker->randomDigit($min = 1,
+             $max = 3),**/
+        'children_id'    => $faker->numberBetween($min = 1,
+            $max = 4),
+        'smoking_id'     => $faker->numberBetween($min = 1,
              $max = 4),
-         'smoking_id'     => $faker->randomDigit($min = 1,
-             $max = 4),
-         'relation_id'    => $faker->randomDigit($min = 1,
-             $max = 6),*/
+        'relation_id'    => $faker->numberBetween($min = 1,
+            $max = 6),
         'status_message' => $faker->realText($maxNbChars = 191, $indexSize = 2),
+
+        'main_image' => function () {
+            $int = random_int(1, 60);
+
+            return $image = $int.".jpg";
+        },
+
     ];
 });

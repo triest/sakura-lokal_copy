@@ -10,7 +10,6 @@
              border-color: #666869;
 ">
                 <img width="200" src="<?php echo asset("/images/upload/$girl->main_image")?>">
-                {{$girl->status}}
                 @if (Auth::guest())
 
                 @else
