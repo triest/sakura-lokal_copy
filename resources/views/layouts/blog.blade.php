@@ -134,11 +134,12 @@
             </div><!--/row-->
         </div><!--/span-->
         <!--sm- комп -->
-        <div class=" col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <div class=" col-sm-3 sidebar-offcanvas hidden-xs hidden-sm" id="sidebar" role="navigation">
             <div class="card-body">
-                <p class="pull-right visible-xs visible-sm">
-                    <button type="button" class="menuButton" data-toggle="offcanvas"><b>Закрыть</b></button>
-                </p>
+                <!-- <p class="pull-right visible-xs visible-sm">
+                     <button type="button" class="menuButton" data-toggle="offcanvas"><b>Закрыть</b></button>
+                 </p>
+                 -->
                 <br>
                 @if (Auth::guest())
                     <b><a href="{{ url('/login') }}">Войти</a></b><br>

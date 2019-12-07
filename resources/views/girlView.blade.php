@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
-            {{$girl->name}}, {{$girl->age}}
+            <b>  {{$girl->name}}</b>, {{$girl->age}}
             @if($girl->isOnline())
                 <img width="10" src="<?php echo asset("/images/circle-16.ico")?>">
             @endif
@@ -106,20 +106,16 @@
              border-color: #666869;
 ">
             <div class="col-lg-4 col-md-3 col-sm-4 col-xs-9 box-shadow">
-                <b>Интересы:</b> <br>
-                @if($interes==null)
-                    Интересы не указанны
-                @else
+                @if($interes!=null)
+                    <b>Интересы:</b> <br>
                     @foreach($interes as $target)
                         {{$target->name}}<br>
                     @endforeach
                 @endif
             </div>
             <div class="col-lg-4 col-md-3 col-sm-4 col-xs-9 box-shadow">
-                <b>Цели знакомства:</b> <br>
-                @if($targets==null)
-                    Цели не указанны
-                @else
+                @if($targets!=null)
+                    <b>Цели знакомства:</b> <br>
                     @foreach($targets as $target)
                         {{$target->name}}<br>
                     @endforeach
@@ -132,26 +128,24 @@
             <p class="card-text"><b>Внешность :</b></p>
             <p> {{$aperance->name}}</p>
         @endif
-        <br>
-        <br>
-        <b>Город:</b> <br>
+
         @if($city!=null)
+            <b>Город:</b> <br>
             {{$city->name}}
-        @else
-            Не указан
+            <br>
         @endif
-        <br>
-        <b>Регион:</b> <br>
+
+
         @if($region!=null)
+            <b>Регион:</b> <br>
             {{$region->name}}
-        @else
-            Не указан
         @endif
         @if ($relation!=null)
             <b>Отношения:</b>
             {{$relation->name}}
+            <br>
         @endif
-        <br>
+
 
         @if ($children!=null)
             <b>Дети:</b> {{$children->name}} <br>
@@ -160,7 +154,7 @@
         @if ($smoking!=null)
             <b>Отношение к курению:</b> {{$smoking->name}} <br>
         @endif
-        <br><br>
+        <br>
 
         {!!$girl->description  !!}
 
@@ -169,9 +163,10 @@
             <div class="tz-gallery">
                 <div class="row">
                     @foreach($images as $image)
-                        <div class="col-sm-6 col-md-4 col-ld">
+                        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                             <a class="lightbox" href="<?php echo asset("/images/upload/$image->photo_name")?>">
-                                <img height="250" src="<?php echo asset("/images/upload/$image->photo_name")?>">
+                                <img height="250" width="250"
+                                     src="<?php echo asset("/images/upload/$image->photo_name")?>">
                             </a>
                         </div>
 
@@ -190,7 +185,7 @@
                     <div class="tz-gallery">
                         <div class="row">
                             @foreach($privatephotos as $image)
-                                <div class="col-sm-7 col-md-7 col-ld">
+                                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                                     <a class="lightbox" href="<?php echo asset("/images/upload/$image->photo_name")?>">
                                         <img height="200"
                                              src="<?php echo asset("/images/upload/$image->photo_name")?>">

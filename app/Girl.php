@@ -75,9 +75,20 @@ class Girl extends Model
         return $this->belongsToMany('App\Eventrequwest');
     }
 
+    public function children()
+    {
+        return $this->belongsTo('App\Children');
+    }
+
+    public function relation()
+    {
+        return $this->belongsTo('App\Relationh');
+    }
+
+
     public function getCity()
     {
-        return $city = DB::table('cities')->where('id_city', $girl->city_id)
+        return $city = DB::table('cities')->where('id_city', $this->city_id)
             ->first();
     }
 

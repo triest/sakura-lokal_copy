@@ -36,88 +36,17 @@ class GirlsController extends Controller
         $ua = $request->header('User-Agent');
         $ua = $request->server('HTTP_USER_AGENT');
 
-        if (Auth::check()) {
-            $user = Auth::user();  // и если админ
-            if ($user->isAdmin == 1) {
-                $girls = Girl::select([
-                    'id',
-                    'name',
-                    'phone',
-                    'main_image',
-                    'description',
-                    'banned',
-                    'age',
-                ])
-                    ->orderBy('created_at', 'DESC')->simplePaginate(9);
-            } else {
-                $user = $user = Auth::user();
-                $user = User::select(['id'])->where('id', $user->id)->first();
-                $girls = $user->anketisExsis();
-
-                $girls = Girl::select([
-                    'id',
-                    'name',
-                    'phone',
-                    'main_image',
-                    'description',
-                    'sex',
-                    'age',
-                    'meet',
-                ])
-                    ->where('banned', '=', '0')
-                    //       ->where('sex', '=', $anket->meet)
-                    ->orderBy('created_at', 'DESC')
-                    ->Paginate(9);
-            }
-        } else {
-            $girls = Girl::select([
-                'id',
-                'name',
-                'phone',
-                'main_image',
-                'description',
-                'sex',
-                'views_all',
-                'age',
-            ])
-                ->where('banned', '=', '0')
-                ->orderBy('created_at', 'DESC')
-                ->Paginate(9);
-        }
-        $ip = $this->getIp();
-        try {
-            $response = file_get_contents("http://api.sypexgeo.net/json/"
-                .$ip); //запрашиваем местоположение
-            $response = json_decode($response);
-            $name = $response->city->name_ru;
-        } catch (\Exception $exception) {
-
-        }
-
-
-        if ($request->session()->get('city')) {
-            $city = $request->session()->get('city');
-            $city = DB::table('cities')->where('id_city', $city)->first();
-            if ($city != null) {
-                return view('index')->with([
-                    'girls'  => $girls,
-                    'events' => null,
-                    'city'   => $city,
-                ]);
-            } else {
-                return view('index')->with([
-                    'girls'  => $girls,
-                    'events' => null,
-                    'city'   => null,
-                ]);
-            }
-        } elseif (isset($name)) {
-            $cities = DB::table('cities')->where('name', 'like', $name.'%')
-                ->first();
-
-            return view('confurnCity2')->with(['city' => $cities]);
-        }
-
+        $girls = Girl::select([
+            'id',
+            'name',
+            'main_image',
+            'sex',
+            'age',
+        ])
+            ->where('banned', '=', '0')
+            //       ->where('sex', '=', $anket->meet)
+            ->orderBy('created_at', 'DESC')
+            ->Paginate(12);
 
         return view('index')->with([
             'girls'  => $girls,
@@ -169,6 +98,9 @@ class GirlsController extends Controller
         $privatephoto = null;
 
         $targets = $girl->target()->get();
+        if (count($targets) == 0) {
+            $targets = null;
+        }
 
         if ($girl->city_id != null) {
             $city = DB::table('cities')->where('id_city', '=', $girl->city_id)
@@ -324,19 +256,30 @@ class GirlsController extends Controller
             $city = null;
             $region = null;
         }
-        $aperance = Aperance::select('id', 'name')
-            ->where('id', $girl->apperance_id)->first();
+        $aperance = $girl->aperance()->first();
+        if (empty ($aperance)) {
+            $aperance = null;
+        }
 
-        $relation = Relationh::select('id', 'name')
-            ->where('id', $girl->relation_id)->first();
 
-        $children = Children::select(['id', 'name'])
-            ->where('id', $girl->children_id)->first();
+        $relation = $girl->relation()->first();
+        if (empty ($relation)) {
+            $relation = null;
+        }
+
+        $children = $girl->children()->first();
+        if (empty ($children)) {
+            $children = null;
+        }
 
         $smoking = Smoking::select(['id', 'name'])
             ->where('id', $girl->smoking_id)->first();
+        if (empty ($smoking)) {
+            $smoking = null;
+        }
 
         $last_login = $girl->lastLoginFormat();
+
 
         return view('girlView')->with([
             'girl'           => $girl,
