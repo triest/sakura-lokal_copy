@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
              $this->call(TableTableSeeder::class);
              $this->call(CreatePhoneSettingSeed::class);
           */
-        $this->call(GirlsTableSeeder::class);
+        $this->call(UserTableSeeder::class);
     }
 }

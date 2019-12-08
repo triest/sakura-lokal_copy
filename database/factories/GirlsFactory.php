@@ -45,7 +45,7 @@ $factory->define(App\Girl::class, function (Faker $faker) {
         'children_id'    => $faker->numberBetween($min = 1,
             $max = 4),
         'smoking_id'     => $faker->numberBetween($min = 1,
-             $max = 4),
+            $max = 4),
         'relation_id'    => $faker->numberBetween($min = 1,
             $max = 6),
         'status_message' => $faker->realText($maxNbChars = 191, $indexSize = 2),
@@ -55,6 +55,17 @@ $factory->define(App\Girl::class, function (Faker $faker) {
 
             return $image = $int.".jpg";
         },
+
+        'apperance_id' => function () {
+            $int = random_int(1, 4);
+            if ($int = 4) {
+                return null;
+            } else {
+                return $int;
+            }
+        },
+
+
 
     ];
 });

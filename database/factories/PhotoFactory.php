@@ -14,9 +14,8 @@ $factory->define(App\Photo::class,
             $int = random_int(61, 148);
 
             return $image = $int.".jpg";
-        },
-        'girl_id'    => $faker->numberBetween($min = 512,
-            $max = 561),
+        }
+
     ];
 });
 

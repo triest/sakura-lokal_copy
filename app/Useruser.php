@@ -8,4 +8,6 @@ class Useruser extends Model
 {
     //
     protected $table = "user_user";
+
+
 }

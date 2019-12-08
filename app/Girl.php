@@ -19,6 +19,7 @@ class Girl extends Model
             'ptivate',
             'phone_settings',
             'views_all',
+            'user_id',
         ];
 
     public function photos()
@@ -33,7 +34,7 @@ class Girl extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->hasOne('App\User', 'id', 'user_id');
     }
 
     public function target()
@@ -52,7 +53,7 @@ class Girl extends Model
     public function interest()
     {
         //return $this->hasOne('App\Target');
-        return $this->belongsToMany('App\Interest', 'girl_interess');
+        return $this->belongsToMany('App\Interest', 'girl_interess', 'girl_id');
     }
 
     public function like()

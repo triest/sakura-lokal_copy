@@ -16,6 +16,7 @@
                     @if($girl->user_id!=auth()->user()->id)
                         <br>
                         <div class="card-body" id="app7">
+                            {{$girl->user_id}}
                             <privatepanel :id="{{$girl->id}}" :user_id="{{$girl->user_id}}"></privatepanel>
                         </div>
                     @else
@@ -163,9 +164,10 @@
             <div class="tz-gallery">
                 <div class="row">
                     @foreach($images as $image)
+
                         <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                             <a class="lightbox" href="<?php echo asset("/images/upload/$image->photo_name")?>">
-                                <img height="250" width="250"
+                                <img height="250"
                                      src="<?php echo asset("/images/upload/$image->photo_name")?>">
                             </a>
                         </div>
