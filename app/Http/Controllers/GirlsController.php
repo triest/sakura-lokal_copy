@@ -47,6 +47,7 @@ class GirlsController extends Controller
             //       ->where('sex', '=', $anket->meet)
             ->orderBy('created_at', 'DESC')
             ->Paginate(12);
+        $url = $girls->url($girls->currentPage());
 
         return view('index')->with([
             'girls'  => $girls,
@@ -57,8 +58,11 @@ class GirlsController extends Controller
 
 
     public function showGirl(
-        $id
+        $id,
+        Request $request
     ) {
+
+
         $girl = Girl::select([
             'name',
             'id',
@@ -280,6 +284,7 @@ class GirlsController extends Controller
 
         $last_login = $girl->lastLoginFormat();
 
+        $url = $request->header('referer');
 
         return view('girlView')->with([
             'girl'           => $girl,
@@ -297,6 +302,7 @@ class GirlsController extends Controller
             'relation'       => $relation,
             'children'       => $children,
             'smoking'        => $smoking,
+            'prevesion_page' => $url,
         ]);
     }
 
@@ -492,10 +498,10 @@ class GirlsController extends Controller
     {
         if (Auth::user()) {
             $user = Auth::user()->first();
-            dump($user);
+
             $girl = $user->anketisExsis();
             $girl = Girl::select(['id'])->where('user_id', $user->id)->first();
-            dump($girl);
+
             if ($girl == null) {
                 return null;
             } else {

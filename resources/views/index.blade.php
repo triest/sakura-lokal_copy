@@ -6,10 +6,13 @@
         <!-- md -комп-->
 
         <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a href="{{route('showGirl',['id'=>$girl->id])}}">
-                <img height="150" width="150"
-                     src="<?php echo asset("/images/small/$girl->main_image")?>">
-            </a>
+            <div class="card" style="  border: 1px solid transparent;   border-color: #000000;">
+                <a href="{{route('showGirl',['id'=>$girl->id])}}">
+                    <img height="150" width="150"
+                         src="<?php echo asset("/images/small/$girl->main_image")?>">
+                    <b>  {{$girl->name}}</b>, {{$girl->age}}
+                </a>
+            </div>
         </div>
     @endforeach
 
@@ -58,6 +61,7 @@
             margin: 115px;
         }
     </style>
+    <br><br><br>    <br><br><br>
     <?php echo $girls->render(); ?>
 
 @endsection

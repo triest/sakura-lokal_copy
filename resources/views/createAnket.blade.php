@@ -186,7 +186,7 @@
 
         <br>
         <div class="form-group">
-            <label for="exampleInputFile">Текст анкеты:</label><br>
+            <label for="exampleInputFile">Обо мне:</label><br>
             <textarea name="description" required> </textarea>
         </div>
         @if($errors->has('description'))
@@ -243,7 +243,7 @@
                multiple>
         <br>
 
-        <label>Выберите приватные фотографии для галереи(можно больше одной). Их смогут вилетьтолько те, кому вы
+        <label>Выберите приватные фотографии для галереи(можно больше одной). Их смогут увидеть только те, кому вы
             откроете доступ.</label>
         <input required type="file" class="form-control" name="privateimages[]" accept="image/*"
                placeholder="Фотографии"

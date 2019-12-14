@@ -9,7 +9,7 @@
              border: 1px solid transparent;
              border-color: #666869;
 ">
-                <img width="200" src="<?php echo asset("/images/upload/$girl->main_image")?>">
+                <img width="200" height="200" src="<?php echo asset("/images/upload/$girl->main_image")?>">
                 @if (Auth::guest())
 
                 @else
@@ -96,35 +96,39 @@
                 </p>
             </div>
         </div>
-        <br>
 
 
     </div>
 
     <div class="row">
-        <div class="card  border-dark" style="width: 70rem; background-color: #eeeeee;
-             border: 1px solid transparent;
-             border-color: #666869;
-">
-            <div class="col-lg-4 col-md-3 col-sm-4 col-xs-9 box-shadow">
-                @if($interes!=null)
-                    <b>Интересы:</b> <br>
-                    @foreach($interes as $target)
-                        {{$target->name}}<br>
-                    @endforeach
-                @endif
-            </div>
-            <div class="col-lg-4 col-md-3 col-sm-4 col-xs-9 box-shadow">
-                @if($targets!=null)
-                    <b>Цели знакомства:</b> <br>
-                    @foreach($targets as $target)
-                        {{$target->name}}<br>
-                    @endforeach
-                @endif
-            </div>
+        <div class="card  " style="width: 70rem; background-color: #eeeeee;">
+            @if($interes!=null)
+                <div class="col-lg-4 col-md-3 col-sm-4 col-xs-9 box-shadow">
+                    @if($interes!=null)
+                        <b>Интересы:</b> <br>
+                        @foreach($interes as $target)
+                            {{$target->name}}<br>
+                        @endforeach
+                    @endif
+                </div>
+            @endif
+            @if($targets!=null)
+                <div class="col-lg-4 col-md-3 col-sm-4 col-xs-9 box-shadow">
+                    @if($targets!=null)
+                        <b>Цели знакомства:</b> <br>
+                        @foreach($targets as $target)
+                            {{$target->name}}<br>
+                        @endforeach
+                    @endif
+                </div>
+            @endif
         </div>
-        <b>Рост :</b> {{$girl->height}}
-        <p class="card-text"><b>Вес : </b>{{$girl->weight}}</p>
+        @if($girl->height!=null)
+            <p class="card-text"><b>Рост :</b> {{$girl->height}}
+                @endif
+                @if($girl->weight!=null)
+                    <b>Вес : </b>{{$girl->weight}}</p>
+        @endif
         @if ($aperance!=null)
             <p class="card-text"><b>Внешность :</b></p>
             <p> {{$aperance->name}}</p>
@@ -158,67 +162,71 @@
         <br>
 
         {!!$girl->description  !!}
+    </div>
+    <br>
+    <div class="container gallery-container">
+        <div class="tz-gallery">
+            <div class="row">
+                @foreach($images as $image)
 
-        <br>
-        <div class="container gallery-container">
-            <div class="tz-gallery">
-                <div class="row">
-                    @foreach($images as $image)
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a class="lightbox" href="<?php echo asset("/images/upload/$image->photo_name")?>">
+                            <img height="250"
+                                 src="<?php echo asset("/images/upload/$image->photo_name")?>">
+                        </a>
+                    </div>
 
-                        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                            <a class="lightbox" href="<?php echo asset("/images/upload/$image->photo_name")?>">
-                                <img height="250"
-                                     src="<?php echo asset("/images/upload/$image->photo_name")?>">
-                            </a>
-                        </div>
-
-                    @endforeach
-                </div>
+                @endforeach
             </div>
         </div>
+    </div>
 
-        @if($girl->private!=null)
-            <label>Приватное сообщение:</label>
-            <p class="card-text>">{!!$girl->private  !!}</p>
-            @if (empty($privatephotos))
-            @else
-                <label>Приватные фотографии:</label>
-                <div class="container gallery-container">
-                    <div class="tz-gallery">
-                        <div class="row">
-                            @foreach($privatephotos as $image)
-                                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                                    <a class="lightbox" href="<?php echo asset("/images/upload/$image->photo_name")?>">
-                                        <img height="200"
-                                             src="<?php echo asset("/images/upload/$image->photo_name")?>">
-                                    </a>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-ld"></div>
-                            @endforeach
-                        </div>
+    @if($girl->private!=null)
+        <label>Приватное сообщение:</label>
+        <p class="card-text>">{!!$girl->private  !!}</p>
+        @if (empty($privatephotos))
+        @else
+            <label>Приватные фотографии:</label>
+            <div class="container gallery-container">
+                <div class="tz-gallery">
+                    <div class="row">
+                        @foreach($privatephotos as $image)
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <a class="lightbox" href="<?php echo asset("/images/upload/$image->photo_name")?>">
+                                    <img height="200"
+                                         src="<?php echo asset("/images/upload/$image->photo_name")?>">
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-ld"></div>
+                        @endforeach
                     </div>
                 </div>
-            @endif
-        @else
-            <br><br>
-
-            Вы не может смотреть приватную часть анкеты. Попросите пользователя открыть её.
-            <div id="private2App">
-                <private2 :id="{{$girl->id}}" :user_id="{{$girl->user_id}}"></private2>
             </div>
-
         @endif
-        <br>
+    @else
+        <br><br>
+
+        Вы не может смотреть приватную часть анкеты. Попросите пользователя открыть её.
+        <div id="private2App">
+            <private2 :id="{{$girl->id}}" :user_id="{{$girl->user_id}}"></private2>
+        </div>
+
+    @endif
+    <br>
+    @if($prevesion_page!=null)
+        <a class="btn btn-primary" href="{{$prevesion_page}}" role="link">К списку анкет</a>
+
+    @else
         <a class="btn btn-primary" href="{{route('main')}}" role="link" onclick=" relocate_home()">К списку анкет</a>
+    @endif
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.tz-gallery');
+    </script>
 
-
-        <script>
-            baguetteBox.run('.tz-gallery');
-        </script>
-    </div>
 
 
 @endsection

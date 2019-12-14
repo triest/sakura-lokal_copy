@@ -127,6 +127,10 @@
         <div class="col-sm-7">
             <p class="pull-right visible-xs">
                 <button type="button" class="menuButton" data-toggle="offcanvas"><b>Меню</b></button>
+                <button type="button" class="navbar-toggle collapsed js-offcanvas-btn">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="hiraku-open-btn-line"></span>
+                </button>
             </p>
 
             <div class="row">
@@ -134,7 +138,7 @@
             </div><!--/row-->
         </div><!--/span-->
         <!--sm- комп -->
-        <div class=" col-sm-3 sidebar-offcanvas hidden-xs hidden-sm" id="sidebar" role="navigation">
+        <div class=" col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
             <div class="card-body">
                 <!-- <p class="pull-right visible-xs visible-sm">
                      <button type="button" class="menuButton" data-toggle="offcanvas"><b>Закрыть</b></button>
