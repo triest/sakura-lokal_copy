@@ -7024,6 +7024,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
         /* harmony default export */
@@ -7050,7 +7054,8 @@ __webpack_require__.r(__webpack_exports__);
                     unreeadedEventRequwest: 0,
                     showAlertModal: false,
                     event: "",
-                    showNemMessageModal: false
+                    showNemMessageModal: false,
+                    mainImage: null
                 };
             },
             mounted: function mounted() {
@@ -7060,6 +7065,7 @@ __webpack_require__.r(__webpack_exports__);
                 this.getAllDataForSidePanel();
                 this.getNumberUnreadedEventRequwest();
                 this.remidese();
+                this.getmainImage();
                 Echo.private("messages.".concat(this.user.id)).listen('NewMessage', function (e) {
                     console.log('NewMessage');
                     axios.get('/getCountUnreaded').then(function (response) {
@@ -7100,6 +7106,13 @@ __webpack_require__.r(__webpack_exports__);
                         _this2.showLikeModal = true;
                     }, 1500);
                 },
+                getmainImage: function getmainImage() {
+                    var _this3 = this;
+
+                    axios.get('/image/main').then(function (response) {
+                        _this3.mainImage = response.data;
+                    });
+                },
                 cleare: function cleare() {
                     clearTimeout(this.timer);
                 },
@@ -7107,47 +7120,47 @@ __webpack_require__.r(__webpack_exports__);
                     this.showLikeModal = false;
                 },
                 getNumberUnreadedMessages: function getNumberUnreadedMessages() {
-                    var _this3 = this;
+                    var _this4 = this;
 
                     axios.get('/getCountUnreaded').then(function (response) {
-                        _this3.numberUnreaded = response.data;
+                        _this4.numberUnreaded = response.data;
                     });
                 },
                 getNumberUnreadedPresents: function getNumberUnreadedPresents() {
-                    var _this4 = this;
+                    var _this5 = this;
 
                     axios.get('/getCountUnreadedPresents').then(function (response) {
-                        _this4.numberApplicationPresents = response.data;
+                        _this5.numberApplicationPresents = response.data;
                     });
                 },
                 inSeach: function inSeach() {
-                    var _this5 = this;
+                    var _this6 = this;
 
                     var res;
                     axios.get('/inseach').then(function (response) {
                         res = response.data;
 
                         if (res == true) {
-                            _this5.inseach = true;
+                            _this6.inseach = true;
                         } else {
-                            _this5.inseach = false;
+                            _this6.inseach = false;
                         }
                     });
                 },
                 getLikesNumber: function getLikesNumber() {
-                    var _this6 = this;
+                    var _this7 = this;
 
                     axios.get('/getLikesNumberAuch', {
                         params: {
                             girl_id: this.girlid
                         }
                     }).then(function (response) {
-                        _this6.likesNunber = response.data['likeNumber'];
+                        _this7.likesNunber = response.data['likeNumber'];
                     });
                     console.log("likes number " + this.likesNunber);
                 },
                 getAllDataForSidePanel: function getAllDataForSidePanel() {
-                    var _this7 = this;
+                    var _this8 = this;
 
                     axios.get('/getalldataforsidepanel', {
                         params: {
@@ -7155,10 +7168,10 @@ __webpack_require__.r(__webpack_exports__);
                         }
                     }).then(function (response) {
                         var data = response.data;
-                        _this7.likesNunber = data.likeNumber;
-                        _this7.numberApplicationPresents = data.countGift;
-                        _this7.numberUnreaded = data.countMessages;
-                        _this7.numberApplication = data.countRequwest;
+                        _this8.likesNunber = data.likeNumber;
+                        _this8.numberApplicationPresents = data.countGift;
+                        _this8.numberUnreaded = data.countMessages;
+                        _this8.numberApplication = data.countRequwest;
                     });
                 },
                 clouseLikeModal: function clouseLikeModal() {
@@ -7167,21 +7180,21 @@ __webpack_require__.r(__webpack_exports__);
                 },
                 //
                 getNumberUnreadedEventRequwest: function getNumberUnreadedEventRequwest() {
-                    var _this8 = this;
+                    var _this9 = this;
 
                     axios.get('/event/requwest/myevent', {}).then(function (response) {
                         //    this.unreeadedEventRequwest = response.data["count(*)"];
-                        _this8.unreeadedEventRequwest = response.data.organizer;
+                        _this9.unreeadedEventRequwest = response.data.organizer;
                     });
                 },
                 remidese: function remidese() {
-                    var _this9 = this;
+                    var _this10 = this;
 
                     axios.get('/event/reminders', {}).then(function (response) {
                         //  console.log(response.data)
                         if (response.data.requestMyEvent.length > 0) {
-                            _this9.showAlertModal = true;
-                            _this9.event = response.data.requestMyEvent;
+                            _this10.showAlertModal = true;
+                            _this10.event = response.data.requestMyEvent;
                         }
                     });
                 },
@@ -61573,6 +61586,18 @@ render._withStripped = true
             var _c = _vm._self._c || _h
             return _c("div", [
                 _c("div", {staticClass: "navbar-brand"}, [
+                    _vm.mainImage != null
+                        ? _c("p", [
+                            _c("a", {attrs: {href: "/myAnket"}}, [
+                                _c("img", {
+                                    attrs: {src: "images/upload/" + _vm.mainImage, height: "30"}
+                                })
+                            ])
+                        ])
+                        : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", {staticClass: "navbar-brand"}, [
                     _c("b", [
                         _c("a", {attrs: {href: "/messages"}}, [
                             _vm._v("Сообщения\n            "),
@@ -61586,7 +61611,7 @@ render._withStripped = true
                 _c("div", {staticClass: "navbar-brand"}, [
                     _c("b", [
                         _c("a", {attrs: {href: "/applications"}}, [
-                            _vm._v("Заявки на открытие анкеты\n            "),
+                            _vm._v("Заявки на открытие\n            "),
                             _vm.numberApplication > 0
                                 ? _c("div", [_vm._v("(" + _vm._s(_vm.numberApplication) + ")")])
                                 : _vm._e()
@@ -61614,23 +61639,14 @@ render._withStripped = true
                 ),
                 _vm._v(" "),
                 _c("div", {staticClass: "navbar-brand"}, [
-                    _vm._v(
-                        "\n        Запросы на мои события: " +
-                        _vm._s(_vm.unreeadedEventRequwest) +
-                        "\n        "
-                    ),
-                    _vm.unreeadedEventRequwest > 0
-                        ? _c("div", [
-                            _c(
-                                "a",
-                                {
-                                    staticClass: "btn btn-primary",
-                                    attrs: {href: "/event/requwest/list"}
-                                },
-                                [_vm._v("Смотреть запросы")]
-                            )
-                        ])
-                        : _vm._e()
+                    _c(
+                        "a",
+                        {
+                            staticClass: "btn btn-primary",
+                            attrs: {href: "/event/requwest/list"}
+                        },
+                        [_vm._v("Запросы " + _vm._s(_vm.unreeadedEventRequwest))]
+                    )
                 ])
             ])
         }
@@ -61641,7 +61657,7 @@ render._withStripped = true
                 var _c = _vm._self._c || _h
                 return _c("b", [
                     _c("a", {staticClass: "btn btn-primary", attrs: {href: "/history"}}, [
-                        _vm._v("Просмотры моей анкеты")
+                        _vm._v("Просмотры")
                     ])
                 ])
             }

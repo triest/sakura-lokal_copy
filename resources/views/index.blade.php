@@ -5,11 +5,12 @@
     @foreach($girls as $girl)
         <!-- md -комп-->
 
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-3 thumb">
             <div class="card" style="  border: 1px solid transparent;   border-color: #000000;">
                 <a href="{{route('showGirl',['id'=>$girl->id])}}">
                     <img height="150" width="150"
                          src="<?php echo asset("/images/small/$girl->main_image")?>">
+                    <br>
                     <b>  {{$girl->name}}</b>, {{$girl->age}}
                 </a>
             </div>
