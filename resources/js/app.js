@@ -34,6 +34,7 @@ Vue.component('MessagesFeed', require('./components/chat/MessagesFeed.vue').defa
 Vue.component('MessagesFeed2', require('./components/chat/MessagesFeed2.vue').default);
 
 Vue.component('side-panel', require('./components/layouts/SidePanele.vue').default);
+Vue.component('side-panel2', require('./components/layouts/SidePanele2.vue').default);
 //Vue.component('header', require('./components/Carousel.vue').default);
 Vue.component('privatepanel', require('./components/anket/Private.vue').default);
 
@@ -300,6 +301,16 @@ window.onload = function () {
 
     const sidePanelApp = new Vue({
         el: '#sidePanelApp',
+        data: {
+            showModal: false
+        }
+
+        //appacepted
+    });
+
+
+    const sidePanelApp2 = new Vue({
+        el: '#sidePanelApp2',
         data: {
             showModal: false
         }

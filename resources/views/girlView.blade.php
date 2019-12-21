@@ -113,7 +113,7 @@
                 </div>
             @endif
             @if($targets!=null)
-                <div class="col-lg-4 col-md-3 col-sm-4 col-xs-9 box-shadow">
+                <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12 box-shadow">
                     @if($targets!=null)
                         <b>Цели знакомства:</b> <br>
                         @foreach($targets as $target)
@@ -160,8 +160,9 @@
             <b>Отношение к курению:</b> {{$smoking->name}} <br>
         @endif
         <br>
-
-        {!!$girl->description  !!}
+        <div class="col-lg-3 col-md-4 col-xs-6  col-sm-4 thumb">
+            {!!$girl->description  !!}
+        </div>
     </div>
     <br>
     <div class="container gallery-container">
@@ -169,7 +170,7 @@
             <div class="row">
                 @foreach($images as $image)
 
-                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                    <div class="col-lg-3 col-md-4 col-xs-6  col-sm-4 thumb">
                         <a class="lightbox" href="<?php echo asset("/images/upload/$image->photo_name")?>">
                             <img height="250"
                                  src="<?php echo asset("/images/upload/$image->photo_name")?>">
@@ -205,10 +206,11 @@
         @endif
     @else
         <br><br>
-
-        Вы не может смотреть приватную часть анкеты. Попросите пользователя открыть её.
-        <div id="private2App">
-            <private2 :id="{{$girl->id}}" :user_id="{{$girl->user_id}}"></private2>
+        <div class="col-lg-3 col-md-4 col-xs-6  col-sm-4 thumb">
+            Вы не может смотреть приватную часть анкеты. Попросите пользователя открыть её.
+            <div id="private2App">
+                <private2 :id="{{$girl->id}}" :user_id="{{$girl->user_id}}"></private2>
+            </div>
         </div>
 
     @endif

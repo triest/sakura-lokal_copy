@@ -547,6 +547,7 @@ Route::get('anket/wink/make', 'AnketController@wink');
 
 Route::get('anket/wink/get', 'AnketController@winkGet');
 
+//карусль
 Route::get('like-carusel', 'LikeCaruselController@index');
 
 Route::get('like-carusel/getAnket', 'LikeCaruselController@getAnket');

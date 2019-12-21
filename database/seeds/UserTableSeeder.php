@@ -1,4 +1,5 @@
-<?php
+<?
+
 
 use Illuminate\Database\Seeder;
 
@@ -16,11 +17,26 @@ class UserTableSeeder extends Seeder
             //  $user->message()->save(factory(App\Message::class)->make());
 
             $girl = factory(App\Girl::class)->make();
+            $girl->save();
             $girl->photos()->save(factory(App\Photo::class)->make());
             $girl->photos()->save(factory(App\Photo::class)->make());
             $girl->photos()->save(factory(App\Photo::class)->make());
             $girl->photos()->save(factory(App\Photo::class)->make());
-            $girl->target()->save(factory(App\Target::class)->make());
+            $girl->privatephotos()
+                ->save(factory(App\Privatephoto::class)->make());
+
+            $target = App\Target::select(['id'])->where('id', 1)->first();
+
+            $girl->target()->attach($target);
+            $target = App\Target::select(['id'])->where('id', 2)->first();
+
+            $girl->target()->attach($target);
+            $target = App\Target::select(['id'])->where('id', 4)->first();
+
+            $girl->target()->attach($target);
+            $target = App\Target::select(['id'])->where('id', 5)->first();
+            $target->save();
+            $girl->target()->attach($target);
             $girl->interest()->save(factory(App\Interest::class)->make());
             $user->girl()->save($girl);
 

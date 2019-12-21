@@ -101,6 +101,35 @@
 
 <body>
 <script src="{{ asset('/js/axios.min.js') }}"></script>
+
+<!-- тут меню -->
+<nav class="navbar visible-xs">
+    @if (Auth::guest())
+        <b><a class="navbar-brand" href="{{ url('/login') }}">Войти</a></b>
+        <b><a class="navbar-brand" href="{{ url('/join') }}">Зарегистрироваться</a></b>
+    @else
+        @if($girl=Auth::user()->anketisExsis()!=null)
+        <!-- {{$girl=Auth::user()->anketisExsis()}} -->
+            <a class="navbar-brand" href="{{route('myAnket')}}">
+                <img height="40" width="40"
+                     src="<?php echo asset("images/small/$girl->main_image")?>">
+            </a>
+            <li class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Меню <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{ url('/logout') }}">Выйти</a></li>
+                </ul>
+            </li>
+            <side-panel2 :user="{{auth()->user()}}"></side-panel2>
+
+        @else
+            <b class="navbar-brand"><a class="btn btn-primary" href="{{route('createGirlPage')}}">Создать анкету</a>
+            </b>
+        @endif
+    @endif
+</nav>
+
+
 <div class="card-body" id="app2">
     <div class="row" style="position: center">
         <carusel></carusel>
@@ -126,9 +155,9 @@
 
         <div class="col-sm-7">
             <p class="pull-right visible-xs">
-                <button type="button" class="menuButton" data-toggle="offcanvas"><b>Меню</b></button>
+                <!--  <button type="button" class="menuButton" data-toggle="offcanvas"><b>Меню</b></button> -->
                 <button type="button" class="navbar-toggle collapsed js-offcanvas-btn">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only"><a href="{{ url('/logout') }}">Выйти</a></span>
                     <span class="hiraku-open-btn-line"></span>
                 </button>
             </p>
@@ -138,7 +167,7 @@
             </div><!--/row-->
         </div><!--/span-->
         <!--sm- комп -->
-        <div class=" col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <div class=" col-sm-3 sidebar-offcanvas   visible-lg" id="sidebar" role="navigation">
             <div class="card-body">
                 <!-- <p class="pull-right visible-xs visible-sm">
                      <button type="button" class="menuButton" data-toggle="offcanvas"><b>Закрыть</b></button>

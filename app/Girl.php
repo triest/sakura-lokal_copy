@@ -40,7 +40,8 @@ class Girl extends Model
     public function target()
     {
         //return $this->hasOne('App\Target');
-        return $this->belongsToMany('App\Target', 'girl_target', 'girl_id');
+        return $this->belongsToMany('App\Target', 'girl_target', 'girl_id',
+            'target_id');
     }
 
     public function aperance()
