@@ -4,7 +4,7 @@
     <style>
         .cell {
             position: absolute;
-            top: 80px;
+            top: 120px;
             right: 0;
             bottom: 30px;
             left: 0;
@@ -28,22 +28,21 @@
         <!-- md -комп-->
 
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-3 thumb">
-            <div class="card" style="  border: 1px solid transparent;   border-color: #000000;">
-                <a href="{{route('showGirl',['id'=>$girl->id])}}">
-                    <img height="150" width="150"
-                         src="<?php echo asset("/images/small/$girl->main_image")?>">
-                    <br>
-                    <div class="cell">
-                        <div class="cell-overflow">
-                            {{$girl->name}}
-                        </div>
-                        <div class="cell-overflow">
-                            {{$girl->age}}
-                        </div>
+            <div class="card" style="width:200px" ; border: 1px solid transparent; border-color: #000000;
+            ">
+            <a href="{{route('showGirl',['id'=>$girl->id])}}">
+                <img height="200" width="200"
+                     src="<?php echo asset("/images/small/$girl->main_image")?>">
+                <br>
+                <div class="cell">
+                    <div class="cell-overflow">
+                        {{$girl->name}}
                     </div>
+                    {{$girl->age}}
+                </div>
 
-                </a>
-            </div>
+            </a>
+        </div>
         </div>
     @endforeach
 
