@@ -1,7 +1,28 @@
 @extends('layouts.blog', ['title' => 'Список анкет'])
 
 @section('content')
+    <style>
+        .cell {
+            position: absolute;
+            top: 100px;
+            right: 0;
+            bottom: 50px;
+            left: 0;
+            box-sizing: border-box;
+            display: block;
+            padding: 20px;
+            width: 100%;
+            color: white;
+        }
 
+        .cell-overflow {
+            box-sizing: border-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: white;
+        }
+    </style>
     @foreach($girls as $girl)
         <!-- md -комп-->
 
@@ -11,7 +32,13 @@
                     <img height="150" width="150"
                          src="<?php echo asset("/images/small/$girl->main_image")?>">
                     <br>
-                    <b>  {{$girl->name}}</b>, {{$girl->age}}
+                    <div class="cell">
+                        <div class="cell-overflow">
+                            {{$girl->name}}
+                        </div>
+                        {{$girl->age}}
+                    </div>
+
                 </a>
             </div>
         </div>
