@@ -27,7 +27,7 @@
     @foreach($girls as $girl)
         <!-- md -комп-->
 
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-3 thumb">
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-3 thumb">
             <div class="card" style="width:200px" ; border: 1px solid transparent; border-color: #000000;
             ">
             <a href="{{route('showGirl',['id'=>$girl->id])}}">
