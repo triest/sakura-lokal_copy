@@ -110,17 +110,10 @@
     @else
         @if($girl=Auth::user()->anketisExsis()!=null)
         <!-- {{$girl=Auth::user()->anketisExsis()}} -->
-            <a class="navbar-brand" href="{{route('myAnket')}}">
-                <img height="40" width="40"
-                     src="<?php echo asset("images/small/$girl->main_image")?>">
-            </a>
-            <li class="dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Меню <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="{{ url('/logout') }}">Выйти</a></li>
-                </ul>
-            </li>
-            <side-panel2 :user="{{auth()->user()}}"></side-panel2>
+            <div class="navbar-brand" id="sidePanelApp2">
+                <side-panel2 :user="{{auth()->user()}}"></side-panel2>
+
+            </div>
 
         @else
             <b class="navbar-brand"><a class="btn btn-primary" href="{{route('createGirlPage')}}">Создать анкету</a>

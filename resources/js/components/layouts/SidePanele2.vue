@@ -1,7 +1,26 @@
 <template>
     <div>
         <div class="navbar-brand">
-            ppp
+            <b><a href="/messages">Сообщения
+                <div v-if="numberUnreaded>0">({{numberUnreaded}})</div>
+            </a>
+            </b>
+        </div>
+        <div class="navbar-brand">
+            <b><a href="/applications">Заявки на открытие анкеты
+                <div v-if="numberApplication>0">({{numberApplication}})</div>
+            </a>
+            </b>
+        </div>
+        <div class="navbar-brand">
+            <likemodal v-if="showLikeModal" @closeLikeModalEmit='closeLikeModal()'></likemodal>
+            <b><a class="btn btn-primary" href="/history">Просмотры моей анкеты</a> </b>
+        </div>
+        <div class="navbar-brand">
+            Запросы на мои события: {{unreeadedEventRequwest}}
+            <div v-if="unreeadedEventRequwest>0">
+                <a class="btn btn-primary" href="/event/requwest/list">Смотреть запросы</a>
+            </div>
         </div>
     </div>
 </template>

@@ -7005,6 +7005,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
         /* harmony default export */
@@ -61552,15 +61571,78 @@ render._withStripped = true
             var _vm = this
             var _h = _vm.$createElement
             var _c = _vm._self._c || _h
-            return _vm._m(0)
+            return _c("div", [
+                _c("div", {staticClass: "navbar-brand"}, [
+                    _c("b", [
+                        _c("a", {attrs: {href: "/messages"}}, [
+                            _vm._v("Сообщения\n            "),
+                            _vm.numberUnreaded > 0
+                                ? _c("div", [_vm._v("(" + _vm._s(_vm.numberUnreaded) + ")")])
+                                : _vm._e()
+                        ])
+                    ])
+                ]),
+                _vm._v(" "),
+                _c("div", {staticClass: "navbar-brand"}, [
+                    _c("b", [
+                        _c("a", {attrs: {href: "/applications"}}, [
+                            _vm._v("Заявки на открытие анкеты\n            "),
+                            _vm.numberApplication > 0
+                                ? _c("div", [_vm._v("(" + _vm._s(_vm.numberApplication) + ")")])
+                                : _vm._e()
+                        ])
+                    ])
+                ]),
+                _vm._v(" "),
+                _c(
+                    "div",
+                    {staticClass: "navbar-brand"},
+                    [
+                        _vm.showLikeModal
+                            ? _c("likemodal", {
+                                on: {
+                                    closeLikeModalEmit: function ($event) {
+                                        return _vm.closeLikeModal()
+                                    }
+                                }
+                            })
+                            : _vm._e(),
+                        _vm._v(" "),
+                        _vm._m(0)
+                    ],
+                    1
+                ),
+                _vm._v(" "),
+                _c("div", {staticClass: "navbar-brand"}, [
+                    _vm._v(
+                        "\n        Запросы на мои события: " +
+                        _vm._s(_vm.unreeadedEventRequwest) +
+                        "\n        "
+                    ),
+                    _vm.unreeadedEventRequwest > 0
+                        ? _c("div", [
+                            _c(
+                                "a",
+                                {
+                                    staticClass: "btn btn-primary",
+                                    attrs: {href: "/event/requwest/list"}
+                                },
+                                [_vm._v("Смотреть запросы")]
+                            )
+                        ])
+                        : _vm._e()
+                ])
+            ])
         }
         var staticRenderFns = [
             function () {
                 var _vm = this
                 var _h = _vm.$createElement
                 var _c = _vm._self._c || _h
-                return _c("div", [
-                    _c("div", {staticClass: "navbar-brand"}, [_vm._v("\n     ppp\n    ")])
+                return _c("b", [
+                    _c("a", {staticClass: "btn btn-primary", attrs: {href: "/history"}}, [
+                        _vm._v("Просмотры моей анкеты")
+                    ])
                 ])
             }
         ]
@@ -78153,7 +78235,8 @@ __webpack_require__.r(__webpack_exports__);
         });
 
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./resources/js/components/likes/LikeModal.vue":
 /*!*****************************************************!*\
