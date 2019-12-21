@@ -4,9 +4,9 @@
     <style>
         .cell {
             position: absolute;
-            top: 100px;
+            top: 80px;
             right: 0;
-            bottom: 50px;
+            bottom: 30px;
             left: 0;
             box-sizing: border-box;
             display: block;
@@ -36,7 +36,9 @@
                         <div class="cell-overflow">
                             {{$girl->name}}
                         </div>
-                        {{$girl->age}}
+                        <div class="cell-overflow">
+                            {{$girl->age}}
+                        </div>
                     </div>
 
                 </a>
