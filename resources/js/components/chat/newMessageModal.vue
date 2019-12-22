@@ -20,7 +20,7 @@
                         <div class="modal-footer">
                             <slot name="footer">
                                 <button class="modal-default-button" v-on:click="close()">
-                                    п≈п╟п╨я─я▀я┌я▄
+                                    Закрыть
                                 </button>
                             </slot>
                         </div>
@@ -72,9 +72,9 @@
 
 <style>
     textarea {
-        width: 90%; /* п╗п╦я─п╦п╫п╟ п©п╬п╩я▐ п╡ п©я─п╬я├п╣п╫я┌п╟я┘ */
-        height: 200px; /* п▓я▀я│п╬я┌п╟ п©п╬п╩я▐ п╡ п©п╦п╨я│п╣п╩п╟я┘ */
-        resize: none; /* п≈п╟п©я─п╣я┴п╟п╣п╪ п╦п╥п╪п╣п╫я▐я┌я▄ я─п╟п╥п╪п╣я─ */
+        width: 90%; /* Ширина поля в процентах */
+        height: 200px; /* Высота поля в пикселах */
+        resize: none; /* Запрещаем изменять размер */
     }
 
     .modal-mask {

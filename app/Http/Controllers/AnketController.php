@@ -1161,4 +1161,43 @@ class AnketController extends Controller
         }
     }
 
+
+    public function getSettings(Request $request)
+    {
+        $userAuth = Auth::user();
+        $user = User::select(['id', 'name'])
+            ->where('id', $userAuth->id)->first();
+        $anket = $user->girl()->first();
+
+        /*
+         * теперь над получать цели
+         * */
+
+
+        $targets = Target::select(['id', 'name'])->get();
+
+        $selectedTargets = $anket->target(['id', 'name'])->get();
+        $id_array = array();
+        foreach ($selectedTargets as $item) {
+            $id_array[] = $item->id;
+        }
+
+        $interests = Interest::select(['id', 'name'])->get();
+        $apperance = Aperance::select(['id', 'name'])->get();
+        $relations = Relationh::select(['id', 'name'])->get();
+        $chidren = Children::select(['id', 'name'])->get();
+        $smoking = Smoking::select(['id', 'name'])->get();
+
+        return \response()->json([
+            "anket"           => $anket,
+            "targets"         => $targets,
+            "interests"       => $interests,
+            "apperance"       => $apperance,
+            "relations"       => $relations,
+            "chidren"         => $chidren,
+            "smoking"         => $smoking,
+            "selectedTargets" => $id_array,
+        ]);
+
+    }
 }

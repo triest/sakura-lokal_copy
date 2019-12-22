@@ -40,7 +40,8 @@
     <meta name="generator" content="Bootply"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Bootstrap twitter bootstrap slider with carousel navigation example."/>
-
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -103,7 +104,7 @@
 <script src="{{ asset('/js/axios.min.js') }}"></script>
 
 <!-- тут меню -->
-<nav class="navbar visible-xs">
+<nav class="navbar visible-sm">
     @if (Auth::guest())
         <b><a class="navbar-brand" href="{{ url('/login') }}">Войти</a></b>
         <b><a class="navbar-brand" href="{{ url('/join') }}">Зарегистрироваться</a></b>
@@ -171,6 +172,7 @@
                     <b><a href="{{ url('/login') }}">Войти</a></b><br>
                     <b><a href="{{ url('/join') }}">Зарегистрироваться</a></b>
                 @else
+
                     <b>{{auth()->user()->name}}</b><br>
                     <b><a href="{{ url('/logout') }}">Выйти</a></b>
                     <br>

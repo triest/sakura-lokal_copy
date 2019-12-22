@@ -32,17 +32,16 @@
         </div>
 
         <alertmodal v-if="showAlertModal" :event="event" @closeAlert="clouseAlertModal()"></alertmodal>
-        <div class="newmessagemodalclass" id="newmessagemodalclass">
-            <newmessagemodal v-if="showNemMessageModal" :event="event"
-                             @closeNewMessageAlert="closeNewMessageAlert()"></newmessagemodal>
-        </div>
+        <seachModal v-if="seachModal" :event="event" @closeAlert="clouseAlertModal()"
+                    @closeNewMessageAlert="closeNewMessageAlert()"></seachModal>
+
     </div>
 </template>
 
 <script>
     import likemodal from '../likes/LikeModal'
     import alertmodal from '../layouts/AlertModal'
-    import newmessagemodal from '../chat/newMessageModal'
+    import seachModal from '../chat/seachModal'
 
 
     export default {
@@ -56,10 +55,11 @@
         components: {
             likemodal,
             alertmodal,
-            newmessagemodal
+            seachModal
         },
         data() {
             return {
+                seachModal: true,
                 numberUnreaded: 0,
                 numberApplication: 0,
                 numberApplicationPresents: 0,
@@ -208,7 +208,8 @@
                     this.showAlertModal = false;
                 },
                 closeNewMessageAlert() {
-                    this.showNemMessageModal = false;
+                    console.log("close");
+                    this.seachModal = false;
                 }
 
             }
