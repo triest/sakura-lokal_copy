@@ -557,3 +557,5 @@ Route::get('like-carusel/newLike', 'LikeCaruselController@newLike');
 Route::get('like-carusel/newDislike', 'LikeCaruselController@newDislike');
 
 Route::get('anket2/getsrttings', 'AnketController@getSettings');
+
+Route::post('anket2/savesettings', 'AnketController@saveSettings');

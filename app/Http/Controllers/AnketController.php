@@ -1189,7 +1189,7 @@ class AnketController extends Controller
         foreach ($selectedInteres as $item) {
             $interest_array[] = $item->id;
         }
-        $aperance_array=array();
+        $aperance_array = array();
         $apperance = Aperance::select(['id', 'name'])->get();
         foreach ($apperance as $item) {
             $aperance_array[] = $item->id;
@@ -1211,5 +1211,10 @@ class AnketController extends Controller
 
         ]);
 
+    }
+
+    public function saveSettings(Request $request)
+    {
+        dump($request);
     }
 }
