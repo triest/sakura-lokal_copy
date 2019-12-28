@@ -13,38 +13,56 @@
 
                         <div class="modal-body">
                             <slot name="body">
-                                <p>
-                                    <label>Ищу:</label>
-                                    <select id="meet" class="meet" style="width: 100px" name="meet" v-model="meet">
-                                        <option value="famele">Девушку</option>
-                                        <option value="male">Парня</option>
-                                    </select>
-                                </p>
-                                <p>
-                                    <label>Возраст:</label> от <input type="number" name="from" id="from" min="18"
-                                                                      v-model="from"
-                                                                      onkeypress="return isNumber(event)"
-                                                                      style="width: 50px">
-                                    до <input type="number" name="to" id="to" min="18"
-                                              v-model="to"
-                                              onkeypress="return isNumber(event)" style="width: 50px">
+                                <form id="inputForm" name="inputForm">
+                                    <p>
+                                        <label>Ищу:</label>
+                                        <select id="meet" class="meet" style="width: 100px" name="meet" v-model="meet">
+                                            <option value="famele">Девушку</option>
+                                            <option value="male">Парня</option>
+                                        </select>
+                                    </p>
+                                    <p>
+                                        <label>Возраст:</label> от <input type="number" name="from" id="from" min="18"
+                                                                          v-model="from"
+                                                                          onkeypress="return isNumber(event)"
+                                                                          style="width: 50px">
+                                        до <input type="number" name="to" id="to" min="18"
+                                                  v-model="to"
+                                                  onkeypress="return isNumber(event)" style="width: 50px">
 
-                                </p>
+                                    </p>
 
-                                <label>Цель:</label>
+                                    <label>Цель:</label>
 
-                                <div v-for="target in targets">
+                                    <div v-for="target in targets">
 
-                                    <input type="checkbox" id="target" :checked="selected_targets.includes(target.id)">
-                                    {{target.name}}
+                                        <input type="checkbox" :id="target.id" :value="target.id"
+                                               :checked="selected_targets.includes(target.id)" v-model="select2tarrget">
+                                        {{target.name}}
 
-                                </div>
+                                    </div>
+                                    <label>Интересы:</label>
+
+                                    <div v-for="item in interest">
+                                        <input type="checkbox" id="interest" :value="item.id"
+                                               :checked="selected_interest.includes(item.id)" v-model="select2interest">
+                                        {{item.name}}
+                                    </div>
+
+                                    <label>Дети:</label>
+
+                                    <div v-for="item in children" v-model="select2children">
+                                        <input type="radio" :value="item.id" id="item.id" v-model="select2children"/> {{item.name}}
+                                    </div>
+                                </form>
                             </slot>
-
                         </div>
 
                         <div class="modal-footer">
                             <slot name="footer">
+                                <button class="modal-default-button" v-on:click="saveChange()">
+                                    Найти
+                                </button>
                                 <button class="modal-default-button" v-on:click="close()">
                                     Закрыть
                                 </button>
@@ -71,20 +89,43 @@
                 from: "18",
                 to: "18",
                 targets: "",
+                interest: " ",
                 selected_targets: [],
+                selected_interest: [],
                 meet: "",
-                checkedTarget: []
+                checkedTarget: [],
+                children: "",
+                select2tarrget: [],
+                select2interest: [],
+                select2children: [],
+                target: [],
+                target_active: [],
+
             }
         },
         methods: {
             close() {
                 console.log("ren emit");
-                this.$emit('closeNewMessageAlert')
+                this.$emit('closeSeachModal')
             },
             findUserByid() {
 
             },
             saveChange() {
+
+
+                axios.post('/anket2/savesettings', {
+                    meet: this.meet,
+                    from: this.from,
+                    to: this.to,
+                    select_target: this.select2tarrget,
+                    selected_interes: this.select2interest,
+                    children: this.select2children,
+                    target: this.select2tarrget
+
+                }).then((response) => {
+
+                });
             },
             getSettings() {
                 axios.get('anket2/getsrttings')
@@ -95,8 +136,11 @@
                         this.to = res.anket.to_age;
                         this.targets = res.targets;
                         this.selected_targets = res.selectedTargets;
+                        this.interest = res.interests;
+                        this.selected_interest = res.selectedInterest;
+                        this.children = res.chidren;
                         console.log("targets");
-                        console.log(this.targets)
+                        console.log(this.targets);
                         console.log("selected_targets");
                         console.log(this.selected_targets)
                     })

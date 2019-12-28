@@ -2,6 +2,8 @@
     <div>
 
         <img height="20" src="/images/heart.png" v-on:mouseover="triger()" v-on:mouseleave="cleare()"> {{likesNunber}}
+
+        <button class="btn-primary" v-on:click="openSeachModal()">Настроить поиск</button>
         <br>
         <b><a href="/messages">Сообщения
             <div v-if="numberUnreaded>0">({{numberUnreaded}})</div>
@@ -32,7 +34,7 @@
         </div>
 
         <alertmodal v-if="showAlertModal" :event="event" @closeAlert="clouseAlertModal()"></alertmodal>
-        <seachModal v-if="seachModal" :event="event" @closeAlert="clouseAlertModal()"
+        <seachModal v-if="seachModal" :event="event" @closeSeachModal="closeSeachModal()"
                     @closeNewMessageAlert="closeNewMessageAlert()"></seachModal>
 
     </div>
@@ -59,7 +61,7 @@
         },
         data() {
             return {
-                seachModal: true,
+                seachModal: false,
                 numberUnreaded: 0,
                 numberApplication: 0,
                 numberApplicationPresents: 0,
@@ -121,6 +123,10 @@
                         this.showLikeModal = true;
                     }, 1500)
                 },
+                openSeachModal() {
+                    this.seachModal = true;
+                },
+
 
                 cleare() {
                     clearTimeout(this.timer);
@@ -195,11 +201,11 @@
                 remidese() {
                     axios.get('/event/reminders', {})
                         .then((response) => {
-                            //  console.log(response.data)
-                            if (response.data.requestMyEvent.length > 0) {
-                                this.showAlertModal = true;
-                                this.event = response.data.requestMyEvent;
-                            }
+                                //  console.log(response.data)
+                                if (response.data.requestMyEvent.length > 0) {
+                                    this.showAlertModal = true;
+                                    this.event = response.data.requestMyEvent;
+                                }
                             }
                         )
                     ;
@@ -207,10 +213,10 @@
                 clouseAlertModal() {
                     this.showAlertModal = false;
                 },
-                closeNewMessageAlert() {
+                closeSeachModal() {
                     console.log("close");
                     this.seachModal = false;
-                }
+                },
 
             }
     }

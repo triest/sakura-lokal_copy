@@ -556,5 +556,4 @@ Route::get('like-carusel/newLike', 'LikeCaruselController@newLike');
 
 Route::get('like-carusel/newDislike', 'LikeCaruselController@newDislike');
 
-Route::get('anket2/getsrttings', 'AnketController@getSettings')
-    ->middleware('auth', 'anketExist');;
+Route::get('anket2/getsrttings', 'AnketController@getSettings');

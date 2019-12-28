@@ -46,7 +46,7 @@ class GirlsController extends Controller
             ->where('banned', '=', '0')
             //       ->where('sex', '=', $anket->meet)
             ->orderBy('created_at', 'DESC')
-            ->Paginate(12);
+            ->Paginate(16);
         $url = $girls->url($girls->currentPage());
 
         return view('index')->with([

@@ -27,6 +27,7 @@ use Carbon\Carbon;
 
 use App\ImageResize;
 use Nexmo\Response;
+use PhpParser\Node\Expr\Array_;
 
 
 class AnketController extends Controller
@@ -1183,20 +1184,31 @@ class AnketController extends Controller
         }
 
         $interests = Interest::select(['id', 'name'])->get();
+        $selectedInteres = $anket->interest(['id', 'name'])->get();
+        $interest_array = array();
+        foreach ($selectedInteres as $item) {
+            $interest_array[] = $item->id;
+        }
+        $aperance_array=array();
         $apperance = Aperance::select(['id', 'name'])->get();
+        foreach ($apperance as $item) {
+            $aperance_array[] = $item->id;
+        }
         $relations = Relationh::select(['id', 'name'])->get();
         $chidren = Children::select(['id', 'name'])->get();
         $smoking = Smoking::select(['id', 'name'])->get();
 
         return \response()->json([
-            "anket"           => $anket,
-            "targets"         => $targets,
-            "interests"       => $interests,
-            "apperance"       => $apperance,
-            "relations"       => $relations,
-            "chidren"         => $chidren,
-            "smoking"         => $smoking,
-            "selectedTargets" => $id_array,
+            "anket"            => $anket,
+            "targets"          => $targets,
+            "selectedTargets"  => $id_array,
+            "interests"        => $interests,
+            "selectedInterest" => $interest_array,
+            "apperance"        => $apperance,
+            "relations"        => $relations,
+            "chidren"          => $chidren,
+            "smoking"          => $smoking,
+
         ]);
 
     }
