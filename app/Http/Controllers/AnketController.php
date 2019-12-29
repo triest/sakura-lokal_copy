@@ -9,6 +9,7 @@ use App\Girl;
 use App\Message;
 use App\MyRequwest;
 use App\Photo;
+use App\SeachSettingsInterest;
 use App\Target;
 use App\User;
 use App\Privatephoto;
@@ -17,6 +18,7 @@ use App\Aperance;
 use App\Relationh;
 use App\Children;
 use App\Smoking;
+use App\SearchSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -1178,9 +1180,9 @@ class AnketController extends Controller
         $targets = Target::select(['id', 'name'])->get();
 
         $selectedTargets = $anket->target(['id', 'name'])->get();
-        $id_array = array();
+        $targets_array = array();
         foreach ($selectedTargets as $item) {
-            $id_array[] = $item->id;
+            $targets_array[] = $item->id;
         }
 
         $interests = Interest::select(['id', 'name'])->get();
@@ -1198,15 +1200,49 @@ class AnketController extends Controller
         $chidren = Children::select(['id', 'name'])->get();
         $smoking = Smoking::select(['id', 'name'])->get();
 
+        //;jcnftv j,obt yfcnhjqrb
+        $sechSettings = SearchSettings::select([
+            'id',
+            'girl_id',
+            'meet',
+            'age_from',
+            'age_to',
+            'children',
+        ])->where('girl_id', $anket->id)->first();
+
+        //тут получаем установленные настройки.
+        if ($sechSettings != null) {
+            $interest_array_temp = SeachSettingsInterest::select('id',
+                'sett_id')
+                ->where('settings_id', $sechSettings->id)
+                ->where('setting_name', 'interest')->get();
+            $interest_array = array();
+            foreach ($interest_array_temp as $item) {
+                $interest_array[] = $item->sett_id;
+            }
+
+            $targets_array_temp = SeachSettingsInterest::select('id',
+                'sett_id')
+                ->where('settings_id', $sechSettings->id)
+                ->where('setting_name', 'target')->get();
+            $targets_array = array();
+            foreach ($targets_array_temp as $item) {
+                // $targets_array[] = $item->sett_id;
+                array_push($targets_array, $item->sett_id);
+            }
+
+        }
+
         return \response()->json([
             "anket"            => $anket,
             "targets"          => $targets,
-            "selectedTargets"  => $id_array,
+            "selectedTargets"  => $targets_array,
             "interests"        => $interests,
             "selectedInterest" => $interest_array,
             "apperance"        => $apperance,
             "relations"        => $relations,
             "chidren"          => $chidren,
+            "sechSettings"     => $sechSettings,
             "smoking"          => $smoking,
 
         ]);
@@ -1215,6 +1251,55 @@ class AnketController extends Controller
 
     public function saveSettings(Request $request)
     {
-        dump($request);
+
+
+        $userAuth = Auth::user();
+        $user = User::select(['id', 'name'])
+            ->where('id', $userAuth->id)->first();
+        if ($user == null) {
+            return false;
+        }
+        $anket = Girl::select(['id', 'name'])->where('user_id', $user->id)
+            ->first();
+        if ($anket == null) {
+            return false;
+        }
+        $seachSettings = $anket->seachsettings()->first();
+
+
+        if ($seachSettings == null) {
+            $seachSettings = new SearchSettings();
+            $seachSettings->girl_id = $anket->id;
+            $seachSettings->save();
+        }
+        $seachSettings->meet = $request->meet;
+        $seachSettings->age_from = $request->from;
+        $seachSettings->age_to = $request->to;
+        $seachSettings->children = $request->children;
+        $seachSettings->save();
+        //теперь настройки поиска
+
+        $selectedTargets = $request->select_target;
+
+
+        foreach ($selectedTargets as $target) {
+            $setting = new SeachSettingsInterest();
+            $setting->settings_id = $seachSettings->id;
+            $setting->setting_name = "target";
+            $setting->sett_id = $target;
+            $setting->save();
+        }
+
+        $selectedTargets = $request->selected_interes;
+
+        foreach ($selectedTargets as $target) {
+            $setting = new SeachSettingsInterest();
+            $setting->settings_id = $seachSettings->id;
+            $setting->setting_name = "interest";
+            $setting->sett_id = $target;
+            $setting->save();
+        }
+
+        return response()->json(['ok']);
     }
 }

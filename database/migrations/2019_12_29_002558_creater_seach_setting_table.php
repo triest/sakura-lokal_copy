@@ -16,7 +16,7 @@ class CreaterSeachSettingTable extends Migration
         //
         Schema::create('seach_settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('girl_id')->unsigned()->index();
+            $table->integer('girl_id')->nullable()->unsigned()->index();
             $table->string('target_array')->nullable()->index();
             $table->string('interest_array')->nullable()->index();
             $table->string('meet')->nullable();

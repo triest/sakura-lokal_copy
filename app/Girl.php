@@ -37,6 +37,11 @@ class Girl extends Model
         return $this->hasOne('App\User', 'id', 'user_id');
     }
 
+    public function seachsettings()
+    {
+        return $this->hasOne('App\SearchSettings');
+    }
+
     public function target()
     {
         //return $this->hasOne('App\Target');
