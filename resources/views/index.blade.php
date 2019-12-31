@@ -1,6 +1,8 @@
 @extends('layouts.blog', ['title' => 'Список анкет'])
 
 @section('content')
+
+
     <style>
         .cell {
             position: absolute;
@@ -24,9 +26,12 @@
             color: white;
         }
     </style>
+    <div style="z-index:9999;" id="filterApp">
+        <filteranket></filteranket>
+    </div>
+
     @foreach($girls as $girl)
         <!-- md -комп-->
-
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-3 thumb">
             <div class="card" style="width:200px" ; border: 1px solid transparent; border-color: #000000;
             ">
@@ -45,6 +50,7 @@
         </div>
         </div>
     @endforeach
+
 
     <style>
         * {

@@ -156,7 +156,7 @@
                 </button>
             </p>
 
-            <div class="row">
+            <div class="row" style="z-index: -100">
                 @yield('content')
             </div><!--/row-->
         </div><!--/span-->
@@ -185,9 +185,10 @@
                         <div id="sidePanelApp">
                             <side-panel :user="{{auth()->user()}}"></side-panel>
                         </div>
-                        <br>
-                        <br><br>
-                        <b><a class="btn btn-secondary" href="{{route('myevent')}}">Мои события</a> </b>
+
+                        <b>
+                            <button class="btn btn-outline-primary" href="{{route('myevent')}}">Мои события</button>
+                        </b>
 
                     @else
                         <br>

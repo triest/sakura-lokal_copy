@@ -71,7 +71,8 @@
                 unreeadedEventRequwest: 0,
                 showAlertModal: false,
                 event: "",
-                showNemMessageModal: false
+                showNemMessageModal: false,
+                filter_enable: false
             }
                 ;
         },
@@ -182,6 +183,7 @@
                             this.numberApplicationPresents = data.countGift;
                             this.numberUnreaded = data.countMessages;
                             this.numberApplication = data.countRequwest;
+                            this.filter_enable = data.filter.filter_enable;
                         });
                 },
                 clouseLikeModal() {
@@ -217,7 +219,6 @@
                     console.log("close");
                     this.seachModal = false;
                 },
-
             }
     }
 </script>

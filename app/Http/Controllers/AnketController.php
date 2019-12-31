@@ -954,11 +954,15 @@ class AnketController extends Controller
         $nmberLikes = DB::table('likes')->where('target_id', $id)->get()
             ->count();
 
+        $filter = Girl::select(['filter_enable'])->where('id', $id)
+            ->first();
+
         return response()->json([
             "countMessages" => $countMessage,
             "countGift"     => $countGift,
             "countRequwest" => $countRequwest,
             "likeNumber"    => $nmberLikes,
+            "filter"        => $filter,
         ]);
     }
 
@@ -1209,6 +1213,7 @@ class AnketController extends Controller
             'age_to',
             'children',
         ])->where('girl_id', $anket->id)->first();
+
 
         //тут получаем установленные настройки.
         if ($sechSettings != null) {

@@ -111,6 +111,9 @@ Vue.component('carusel', require('./components/carusel/carusel').default);
 
 Vue.component('likeCarusel', require('./components/carusel/likeCarusel').default);
 
+Vue.component('filteranket', require('./components/layouts/filterAnket.vue').default);
+
+
 window.onload = function () {
     const aperanceApp = new Vue({
         el: '#aperanceApp',
@@ -339,6 +342,15 @@ window.onload = function () {
 
     const private2App = new Vue({
         el: '#private2App',
+        data: {
+            showModal: false
+        }
+
+        //appacepted
+    });
+
+    const filterApp = new Vue({
+        el: '#filterApp',
         data: {
             showModal: false
         }
