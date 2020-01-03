@@ -38,9 +38,9 @@ Route::get('/', function () {
 
 Route::get('/anket', 'GirlsController@index')->name('main');
 
-Route::get('/anket2', function () {
-    return view('index2');
-})->name('main2');
+Route::get('/anket3', 'GirlsController@index3')->name('main3');
+
+Route::get('/anket3/search', 'GirlsController@seach')->name('main3');
 
 
 //создание анкеты
@@ -559,3 +559,7 @@ Route::get('like-carusel/newDislike', 'LikeCaruselController@newDislike');
 Route::get('anket2/getsrttings', 'AnketController@getSettings');
 
 Route::post('anket2/savesettings', 'AnketController@saveSettings');
+
+Route::get('changeFilter', 'AnketController@changeFilter');
+Route::get('getfilterenable', 'AnketController@getfilterenable');
+

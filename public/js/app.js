@@ -7402,37 +7402,52 @@ __webpack_require__.r(__webpack_exports__);
             },
             mounted: function mounted() {
                 console.log("filter App");
+                this.getAllDataForSidePanel();
             },
             data: function data() {
                 return {
                     filter_enable: false,
-                    seachModal: false
+                    seachModalShow: false
                 };
             },
             methods: {
                 getAllDataForSidePanel: function getAllDataForSidePanel() {
                     var _this = this;
 
-                    axios.get('/getalldataforsidepanel', {
+                    var data = null;
+                    axios.get('/getfilterenable', {
                         params: {
                             girl_id: this.girlid
                         }
                     }).then(function (response) {
-                        var data = response.data;
-                        _this.filter_enable = data.filter.filter_enable;
+                        data = response.data;
+                        console.log(data);
+
+                        if (data[0] == 1) {
+                            _this.filter_enable = true;
+                        } else {
+                            _this.filter_enable = false;
+                        }
                     });
                 },
                 openSeachModal: function openSeachModal() {
-                    this.seachModal = true;
+                    this.seachModalShow = true;
                 },
                 closeSeachModal: function closeSeachModal() {
-                    console.log("close");
-                    this.seachModal = false;
+                    this.seachModalShow = false;
+                },
+                changeFilter: function changeFilter() {
+                    axios.get("changeFilter", {
+                        filrer: this.filter_enable
+                    }).then(function () {
+                        getAllDataForSidePanel();
+                    });
                 }
             }
         });
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/likes/LikeModal.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************!*\
@@ -12813,12 +12828,13 @@ exports.push([module.i, "\n.newmessagemodalclass[data-v-7feed50e] {\n    positio
 
 
 // module
-        exports.push([module.i, "\n.newmessagemodalclass[data-v-28146e74] {\n    position: absolute !important;\n    top: -100px !important;\n    left: -100px !important;\n    background-color: yellow !important;\n    z-index: 9999;\n}\n", ""]);
+        exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* прячем стандартный чекбокс */\ninput[type=\"checkbox\"][data-v-28146e74] {\n    display: none;\n}\n\n/* стили для метки */\ninput[type=\"checkbox\"] + label[data-v-28146e74] {\n    cursor: pointer;\n    padding-left: 50px;\n    position: relative;\n    font-family: tahoma, sans-serif, arial;\n    line-height: 40px;\n}\n\n/* стили для поля с бегунком*/\ninput[type=\"checkbox\"] + label[data-v-28146e74]::before {\n    content: \"\";\n    display: inline-block;\n    position: absolute;\n    top: 0;\n    left: 0;\n    vertical-align: middle;\n    padding: 0;\n    height: 24px;\n    width: 36px;\n    margin: 0 5px 0 0;\n    border: 1px solid #dadada;\n    border-radius: 12px;\n    background: #dddddd;\n}\n\n/* стили для бегунка*/\ninput[type=\"checkbox\"] + label[data-v-28146e74]::after {\n    content: \"\";\n    display: block;\n    position: absolute;\n    top: 1px;\n    left: 1px;\n    width: 22px;\n    height: 22px;\n    border-radius: 22px;\n    background: #fff;\n    border: 1px solid #dadada;\n    box-shadow: 0 3px 3px rgba(140, 140, 140, .1);\n}\n\n/* плавность )) */\ninput[type=\"checkbox\"] + label[data-v-28146e74]::before,\ninput[type=\"checkbox\"] + label[data-v-28146e74]::after {\n    transition: all .2s ease-out;\n}\n\n/* чекнутое состояние )) */\ninput[type=\"checkbox\"]:checked + label[data-v-28146e74]::before {\n    background: #6edc5f;\n    border-color: #6dd75e;\n}\ninput[type=\"checkbox\"]:checked + label[data-v-28146e74]::after {\n    left: 13px;\n}\n", ""]);
 
 // exports
 
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/likes/LikeModal.vue?vue&type=style&index=0&id=41332cb0&scoped=true&lang=css&":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -54843,24 +54859,26 @@ var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref-
 
         var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./filterAnket.vue?vue&type=style&index=0&id=28146e74&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layouts/filterAnket.vue?vue&type=style&index=0&id=28146e74&scoped=true&lang=css&");
 
-        if(typeof content === 'string') content = [[module.i, content, '']];
+        if (typeof content === 'string') content = [[module.i, content, '']];
 
         var transform;
 var insertInto;
 
 
-        var options = {"hmr":true}
+        var options = {"hmr": true}
 
         options.transform = transform
 options.insertInto = undefined;
 
         var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
 
-        if(content.locals) module.exports = content.locals;
+        if (content.locals) module.exports = content.locals;
 
-        if(false) {}
+        if (false) {
+        }
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/likes/LikeModal.vue?vue&type=style&index=0&id=41332cb0&scoped=true&lang=css&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -62296,13 +62314,51 @@ render._withStripped = true
                 "div",
                 {staticStyle: {"z-index": "-1"}},
                 [
-                    _vm._v("\n    Фильтр анкет:\n    "),
                     _c("input", {
-                        attrs: {type: "checkbox"},
-                        domProps: {checked: _vm.filter_enable}
+                        directives: [
+                            {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.filter_enable,
+                                expression: "filter_enable"
+                            }
+                        ],
+                        attrs: {
+                            id: "checkbox1",
+                            type: "checkbox",
+                            onclick: _vm.changeFilter()
+                        },
+                        domProps: {
+                            checked: Array.isArray(_vm.filter_enable)
+                                ? _vm._i(_vm.filter_enable, null) > -1
+                                : _vm.filter_enable
+                        },
+                        on: {
+                            change: function ($event) {
+                                var $$a = _vm.filter_enable,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                    var $$v = null,
+                                        $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                        $$i < 0 && (_vm.filter_enable = $$a.concat([$$v]))
+                                    } else {
+                                        $$i > -1 &&
+                                        (_vm.filter_enable = $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1)))
+                                    }
+                                } else {
+                                    _vm.filter_enable = $$c
+                                }
+                            }
+                        }
                     }),
                     _vm._v(" "),
-                    _vm.seachModal
+                    _c("label", {attrs: {for: "checkbox1"}}, [_vm._v("Фильтр анкет")]),
+                    _vm._v(" "),
+                    _vm.seachModalShow
                         ? _c("seachModal", {
                             attrs: {event: _vm.event},
                             on: {
@@ -62326,7 +62382,7 @@ render._withStripped = true
                                 }
                             }
                         },
-                        [_vm._v("Настроить поиск")]
+                        [_vm._v("Настроить фильтр")]
                     )
                 ],
                 1
@@ -62336,7 +62392,8 @@ render._withStripped = true
         render._withStripped = true
 
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/likes/LikeModal.vue?vue&type=template&id=41332cb0&scoped=true&":
 /*!******************************************************************************************************************************************************************************************************************************!*\
@@ -79041,7 +79098,8 @@ __webpack_require__.r(__webpack_exports__);
         });
 
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./resources/js/components/likes/LikeModal.vue":
 /*!*****************************************************!*\

@@ -20,6 +20,7 @@ class Girl extends Model
             'phone_settings',
             'views_all',
             'user_id',
+            'filter_enable',
         ];
 
     public function photos()

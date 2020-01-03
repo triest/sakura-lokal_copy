@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\SeachSettingsInterest;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -54,6 +55,89 @@ class GirlsController extends Controller
             'events' => null,
             'city'   => null,
         ]);
+    }
+
+    function index3(Request $request)
+    {
+        return view('index3');
+    }
+
+    function seach(Request $request)
+    {
+
+        dump($request);
+
+        $girls = null;
+        $AythUser = Auth::user();
+        if ($AythUser == null) {
+            return redirect('/login');
+        }
+
+        $ayth_girl = Girl::select('id', 'user_id')
+            ->where('user_id', $AythUser->id)->first();
+
+        if ($ayth_girl == null) {
+            return null;
+        }
+
+
+        $seachSettings = $ayth_girl->seachsettings()->first();
+        if ($seachSettings == null) {
+            return null;
+        }
+
+
+        if ($seachSettings != null) {
+            $seachSettingInterest
+                = SeachSettingsInterest::select([
+                'id',
+                'settings_id',
+                'setting_name',
+                'sett_id',
+            ])->where('settings_id',
+                $seachSettings->id)->get();
+
+            //  dump($seachSettingInterest);
+        }
+
+        //dump($seachSettingInterest);
+        //теперь формируем выборку
+        //образец запроса
+        //  $user = collect(DB::select('select * from users where phone like ?',
+        //        [$phone]))->first();
+
+        dump($seachSettings);
+
+        $qwertString
+            = "select * from girls girl left join girl_target girl_target on girl.id=girl_target.girl_id left join girl_interess girl_interest on girl.id=girl_interest.girl_id";
+
+        //
+
+        //        [$phone]))->first();
+
+
+        $where = " where girl.id is not null and girl.user_id is not null";
+
+        //возраст
+        if (isset($seachSettings->age_from)
+            && $seachSettings->age_from != null
+        ) {
+            $where .= " and girl.age>=$seachSettings->age_from";
+        }
+
+        if (isset($seachSettings->age_to)
+            && $seachSettings->age_to != null
+        ) {
+            $where .= " and girl.age<=$seachSettings->age_to";
+        }
+
+        $qwertString = $qwertString.$where;
+
+
+        $girls = DB::select($qwertString, []);
+
+
+        return $girls;
     }
 
 

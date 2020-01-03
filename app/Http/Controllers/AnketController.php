@@ -954,7 +954,7 @@ class AnketController extends Controller
         $nmberLikes = DB::table('likes')->where('target_id', $id)->get()
             ->count();
 
-        $filter = Girl::select(['filter_enable'])->where('id', $id)
+        $filter = Girl::select('filter_enable')->where('id', $id)
             ->first();
 
         return response()->json([
@@ -962,7 +962,7 @@ class AnketController extends Controller
             "countGift"     => $countGift,
             "countRequwest" => $countRequwest,
             "likeNumber"    => $nmberLikes,
-            "filter"        => $filter,
+            "filter"        => $filter->filter_enable,
         ]);
     }
 
@@ -1306,5 +1306,57 @@ class AnketController extends Controller
         }
 
         return response()->json(['ok']);
+    }
+
+    public function changeFilter(Request $request)
+    {
+        $userAuth = Auth::user();
+        $user = User::select(['id', 'name'])
+            ->where('id', $userAuth->id)->first();
+        if ($user == null) {
+            return false;
+        }
+        $anket = Girl::select(['id', 'name', 'filter_enable'])
+            ->where('user_id', $user->id)
+            ->first();
+        if ($anket == null) {
+            return false;
+        }
+
+
+        if ($anket->filter_enable == 0) {
+            Girl::where('user_id', $user->id)
+                ->update(['filter_enable' => 1]);
+
+            DB::table('girls')->where('user_id', $user->id)
+                ->update(['filter_enable' => 1]);
+        } else {
+            DB::table('girls')->where('user_id', $user->id)
+                ->update(['filter_enable' => 0]);
+        }
+
+
+        return response()->json(['ok']);
+    }
+
+    public function getfilterenable()
+    {
+        $userAuth = Auth::user();
+
+        $user = User::select(['id', 'name'])
+            ->where('id', $userAuth->id)->first();
+        if ($user == null) {
+            return false;
+        }
+        $anket = Girl::select(['id', 'filter_enable'])
+            ->where('user_id', $user->id)
+            ->first();
+
+        if ($anket == null) {
+            return false;
+        }
+
+
+        return response()->json([$anket->filter_enable]);
     }
 }
