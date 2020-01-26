@@ -4,12 +4,8 @@
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/chat/seachModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/chat/seachModal.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/filterAnket.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/filterAnket.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/girlView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/girlView.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,17 +22,17 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="570" column="58" selection-start-line="570" selection-start-column="49" selection-end-line="570" selection-end-column="58" />
+            <state relative-caret-position="510">
+              <caret line="565" column="64" selection-start-line="565" selection-start-column="52" selection-end-line="565" selection-end-column="64" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnketController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AnketController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="1314" column="39" lean-forward="true" selection-start-line="1314" selection-start-column="39" selection-end-line="1314" selection-end-column="39" />
+            <state relative-caret-position="697">
+              <caret line="1514" column="7" selection-start-line="1514" selection-start-column="7" selection-end-line="1514" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -44,8 +40,8 @@
       <file leaf-file-name="seachModal.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/chat/seachModal.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-942">
-              <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
+            <state relative-caret-position="-822">
+              <caret line="130" column="45" selection-start-line="130" selection-start-column="45" selection-end-line="130" selection-end-column="45" />
               <folding>
                 <element signature="n#style#0;n#select#0;n#p#0;n#form#0;n#slot#0;n#div#1;n#div#0;n#div#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#1;n#p#1;n#form#0;n#slot#0;n#div#1;n#div#0;n#div#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -63,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="filterAnket.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="filterAnket.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/filterAnket.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="97" column="29" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
+            <state relative-caret-position="236">
+              <caret line="95" column="35" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -84,11 +80,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>настроить ф</find>
-      <find>user_id</find>
-      <find>settings_name</find>
-      <find>SeachSettingsInterest</find>
-      <find>select</find>
       <find>anket2</find>
       <find>seach</find>
       <find>cha</find>
@@ -111,9 +102,14 @@
       <find>Cookie::::</find>
       <find>Настроить</find>
       <find>geta</find>
-      <find>anket3/getankets</find>
       <find>getankets</find>
       <find>randomString()</find>
+      <find>cookie</find>
+      <find>&gt;where('cookie', $cookie)</find>
+      <find>seachSettings</find>
+      <find>savesettings</find>
+      <find>dump</find>
+      <find>anket3/getankets</find>
     </findStrings>
     <replaceStrings>
       <replace>get_girl_id</replace>
@@ -201,10 +197,10 @@
         <option value="&lt;1cc8385a-929f-47c9-b206-547da89c2832&gt;/srv/www/vhosts/drevlanka.ru/work/seeuser/index.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_01_18_184048_add_cookie_to_search_settings.php" />
         <option value="$PROJECT_DIR$/resources/js/components/chat/seachModal.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/layouts/filterAnket.vue" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/layouts/filterAnket.vue" />
       </list>
     </option>
   </component>
@@ -644,14 +640,7 @@
       <workItem from="1579108923313" duration="1188000" />
       <workItem from="1579357089784" duration="15972000" />
       <workItem from="1579381748854" duration="2015000" />
-      <workItem from="1580030433430" duration="9380000" />
-    </task>
-    <task id="LOCAL-00046" summary="Add notification recived field for event.">
-      <created>1567930990134</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1567930990135</updated>
+      <workItem from="1580030433430" duration="13219000" />
     </task>
     <task id="LOCAL-00047" summary="Fix alert reived today">
       <created>1567950432464</created>
@@ -989,7 +978,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578055975136</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="Fix cookie seach.">
+      <created>1580044624376</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1580044624377</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1025,7 +1021,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1578483000" />
+    <option name="totallyTimeSpent" value="1582322000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1105,7 +1101,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/workbreaks" />
     </ignored-roots>
-    <MESSAGE value="Delete horizontal scroll." />
     <MESSAGE value="Create wink table and woregins keys." />
     <MESSAGE value="Add citcle" />
     <MESSAGE value="Add dink" />
@@ -1130,7 +1125,8 @@
     <MESSAGE value="Fix preselect" />
     <MESSAGE value="Add new seach modal to main index.blade.php" />
     <MESSAGE value="FilterAnket not finish" />
-    <option name="LAST_COMMIT_MESSAGE" value="FilterAnket not finish" />
+    <MESSAGE value="Fix cookie seach." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix cookie seach." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1378,17 +1374,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/chat/seachModal.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-942">
-          <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
-          <folding>
-            <element signature="n#style#0;n#select#0;n#p#0;n#form#0;n#slot#0;n#div#1;n#div#0;n#div#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#p#1;n#form#0;n#slot#0;n#div#1;n#div#0;n#div#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1403,24 +1388,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/filterAnket.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="97" column="29" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="570" column="58" selection-start-line="570" selection-start-column="49" selection-end-line="570" selection-end-column="58" />
+        <state relative-caret-position="510">
+          <caret line="565" column="64" selection-start-line="565" selection-start-column="52" selection-end-line="565" selection-end-column="64" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="1314" column="39" lean-forward="true" selection-start-line="1314" selection-start-column="39" selection-end-line="1314" selection-end-column="39" />
+        <state relative-caret-position="697">
+          <caret line="1514" column="7" selection-start-line="1514" selection-start-column="7" selection-end-line="1514" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/chat/seachModal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-822">
+          <caret line="130" column="45" selection-start-line="130" selection-start-column="45" selection-end-line="130" selection-end-column="45" />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#p#0;n#form#0;n#slot#0;n#div#1;n#div#0;n#div#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#p#1;n#form#0;n#slot#0;n#div#1;n#div#0;n#div#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/filterAnket.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="95" column="35" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
         </state>
       </provider>
     </entry>

@@ -1306,14 +1306,14 @@ class AnketController extends Controller
                 $seachSettings = $anket->seachsettings()->first();
             } else {
                 $cookie = Cookie::get('seachSettings');
-                $seachSettings = SearchSettings::select([])
-                    ->where("cookie", $cookie)->first();
+                $seachSettings = SearchSettings::select(['*'])
+                    ->where("cookie","=", $cookie)->first();
             }
         } else {
             $cookie = Cookie::get('seachSettings');
             if ($cookie != null) {
-                $seachSettings = SearchSettings::select([])
-                    ->where("cookie", $cookie)->first();
+                $seachSettings = SearchSettings::select(['*'])
+                    ->where("cookie","=", $cookie)->first();
             }
 
         }
@@ -1407,9 +1407,16 @@ class AnketController extends Controller
         $AythUser = Auth::user();
         if ($AythUser == null) {
             $cookie = Cookie::get('seachSettings');
-            dump($cookie);
-            $seachSettings = SearchSettings::select()->where('cookie', $cookie)
+
+            $seachSettings = SearchSettings::select([
+                'id',
+                'girl_id',
+                'meet',
+                'age_from',
+                'age_to',
+                'children',])->where('cookie', $cookie)
                 ->first();
+
         } else {
 
             $ayth_girl = Girl::select('id', 'user_id')
@@ -1425,6 +1432,8 @@ class AnketController extends Controller
                 return null;
             }
         }
+
+
 
         if (isset($seachSettings) && $seachSettings != null) {
             $seachSettingInterest
@@ -1455,7 +1464,7 @@ class AnketController extends Controller
 
 
         $where = " where girl.id is not null and girl.user_id is not null";
-
+        //dump($seachSettings);
         //возраст
         if (isset($seachSettings->age_from)
             && $seachSettings->age_from != null
@@ -1471,7 +1480,7 @@ class AnketController extends Controller
 
         $qwertString = $qwertString.$where;
 
-        var_dump($qwertString);
+     //   var_dump($qwertString);
 
         $qwertStringPages = $qwertString;
 

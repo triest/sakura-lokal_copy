@@ -93,7 +93,7 @@
 
                 },
                 getAnkets() {
-                    this.ankets = null;
+                    this.ankets = [];
                     axios.get("anket3/getankets", {params: {page: this.currentPage}}).then((response) => {
                         this.response = response.data;
                         this.ankets = this.response.ankets;
