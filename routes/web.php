@@ -40,7 +40,12 @@ Route::get('/anket', 'GirlsController@index')->name('main');
 
 Route::get('/anket3', 'GirlsController@index3')->name('main3');
 
-Route::get('/anket3/search', 'GirlsController@seach')->name('main3');
+Route::get('/anket3/search', 'GirlsController@seach')->name('seach');
+
+
+
+
+
 
 
 //создание анкеты
@@ -562,4 +567,6 @@ Route::post('anket2/savesettings', 'AnketController@saveSettings');
 
 Route::get('changeFilter', 'AnketController@changeFilter');
 Route::get('getfilterenable', 'AnketController@getfilterenable');
+
+Route::get('/anket3/getankets', 'AnketController@getankets')->name('getAnkets');
 

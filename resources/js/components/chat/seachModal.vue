@@ -7,7 +7,7 @@
 
                         <div class="modal-header">
                             <slot name="header">
-                                Поиск:
+                                Поиск1:
                             </slot>
                         </div>
 
@@ -40,7 +40,6 @@
                                         {{target.id}} {{target.name}}
 
                                     </div>
-                                    <label>Интересы:</label>
 
                                     <div v-for="item in interest">
                                         <input type="checkbox" :id="item.id"
@@ -132,9 +131,9 @@
                 axios.get('anket2/getsrttings')
                     .then((response) => {
                         let res = response.data;
-                        this.meet = res.anket.meet;
-                        this.from = res.anket.from_age;
-                        this.to = res.anket.to_age;
+                        //   this.meet = res.anket.meet;
+                        //  this.from = res.anket.from_age;
+                        //  this.to = res.anket.to_age;
                         this.targets = res.targets;
                         this.selected_targets = res.selectedTargets;
                         console.log(this.selected_targets);

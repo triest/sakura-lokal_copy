@@ -160,7 +160,7 @@
             <b>Отношение к курению:</b> {{$smoking->name}} <br>
         @endif
         <br>
-        <div class="col-lg-3 col-md-4 col-xs-6  col-sm-4 thumb">
+        <div class="col-lg-12 col-md-4 col-xs-6  col-sm-4 thumb">
             {!!$girl->description  !!}
         </div>
     </div>

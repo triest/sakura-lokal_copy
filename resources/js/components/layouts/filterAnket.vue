@@ -6,6 +6,30 @@
                     @closeNewMessageAlert="closeNewMessageAlert()"></seachModal>
         <button class="btn-primary" v-on:click="openSeachModal()">Настроить фильтр</button>
 
+        <div v-for="item in ankets">
+
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-3 thumb">
+                <div class="card" style="width:200px ; border: 1px solid transparent; border-color: #000000;
+                ">
+                    <a v-bind:href="'anket/'+item.id">
+                        <img :src="'images/upload/'+item.main_image" height="200" width="300">
+                        <br>
+                        <div class="cell">
+                            <div class="cell-overflow">
+                                {{item.name}}
+                            </div>
+                            {{item.age}}
+                        </div>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{currentPage}} из {{numPages}}
+        <div v-if="currentPage>1">
+            <button v-on:click="prevesionPage()"> Предыдущая страница</button>
+        </div>
+        <button v-on:click="nextPage()"> Следущая страница</button>
     </div>
 </template>
 
@@ -25,12 +49,17 @@
         },
         mounted() {
             console.log("filter App");
-            this.getAllDataForSidePanel();
+            this.getAnkets();
         },
         data() {
             return {
                 filter_enable: false,
-                seachModalShow: false
+                seachModalShow: false,
+                ankets: [],
+                response: [],
+                currentPage: 1,
+                numPages: null
+
             }
                 ;
         },
@@ -58,12 +87,29 @@
                 },
                 closeSeachModal() {
                     this.seachModalShow = false;
+                    this.getAnkets();
                 },
                 changeFilter() {
-                    axios.get("changeFilter", {filrer: this.filter_enable}).then(function () {
-                        getAllDataForSidePanel()
+
+                },
+                getAnkets() {
+                    this.ankets = null;
+                    axios.get("anket3/getankets", {params: {page: this.currentPage}}).then((response) => {
+                        this.response = response.data;
+                        this.ankets = this.response.ankets;
+                        this.numPages = this.response.numPages;
                     })
+
+                },
+                nextPage() {
+                    this.currentPage++;
+                    this.getAnkets();
+                },
+                prevesionPage() {
+                    this.currentPage--;
+                    this.getAnkets();
                 }
+
             }
     }
 </script>

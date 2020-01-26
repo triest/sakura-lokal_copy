@@ -65,8 +65,6 @@ class GirlsController extends Controller
     function seach(Request $request)
     {
 
-        dump($request);
-
         $girls = null;
         $AythUser = Auth::user();
         if ($AythUser == null) {
@@ -106,7 +104,6 @@ class GirlsController extends Controller
         //  $user = collect(DB::select('select * from users where phone like ?',
         //        [$phone]))->first();
 
-        dump($seachSettings);
 
         $qwertString
             = "select * from girls girl left join girl_target girl_target on girl.id=girl_target.girl_id left join girl_interess girl_interest on girl.id=girl_interest.girl_id";
@@ -668,4 +665,6 @@ class GirlsController extends Controller
 
         return view('changeCity')->with(['city' => $city]);
     }
+
+
 }
