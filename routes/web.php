@@ -42,10 +42,7 @@ Route::get('/anket3', 'GirlsController@index3')->name('main3');
 
 Route::get('/anket3/search', 'GirlsController@seach')->name('seach');
 
-
-
-
-
+Route::get('/anket4', 'GirlsController@index4')->name('main');
 
 
 //создание анкеты
@@ -570,3 +567,7 @@ Route::get('getfilterenable', 'AnketController@getfilterenable');
 
 Route::get('/anket3/getankets', 'AnketController@getankets')->name('getAnkets');
 
+/*включить фильтр*/
+
+Route::get('/filter_enable', 'GirlsController@filter_enable')
+    ->name('filter_enable');

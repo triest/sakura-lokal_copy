@@ -9,6 +9,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="citylink">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="reg">
         <serverdata>
           <mappings>
@@ -17,6 +24,13 @@
         </serverdata>
       </paths>
       <paths name="sakura-city">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="test">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />

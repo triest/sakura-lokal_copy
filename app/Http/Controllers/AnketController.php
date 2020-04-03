@@ -1307,13 +1307,13 @@ class AnketController extends Controller
             } else {
                 $cookie = Cookie::get('seachSettings');
                 $seachSettings = SearchSettings::select(['*'])
-                    ->where("cookie","=", $cookie)->first();
+                    ->where("cookie", "=", $cookie)->first();
             }
         } else {
             $cookie = Cookie::get('seachSettings');
             if ($cookie != null) {
                 $seachSettings = SearchSettings::select(['*'])
-                    ->where("cookie","=", $cookie)->first();
+                    ->where("cookie", "=", $cookie)->first();
             }
 
         }
@@ -1328,7 +1328,6 @@ class AnketController extends Controller
             $seachSettings->cookie = $cookie;
             $seachSettings->save();
         } elseif (!isset($seachSettings)
-            && Cookie::get('seachSettings') == null
         ) {
             $seachSettings = new SearchSettings();
             $seachSettings->meet = $request->meet;
@@ -1414,11 +1413,11 @@ class AnketController extends Controller
                 'meet',
                 'age_from',
                 'age_to',
-                'children',])->where('cookie', $cookie)
+                'children',
+            ])->where('cookie', $cookie)
                 ->first();
 
         } else {
-
             $ayth_girl = Girl::select('id', 'user_id')
                 ->where('user_id', $AythUser->id)->first();
 
@@ -1432,7 +1431,6 @@ class AnketController extends Controller
                 return null;
             }
         }
-
 
 
         if (isset($seachSettings) && $seachSettings != null) {
@@ -1477,10 +1475,11 @@ class AnketController extends Controller
         ) {
             $where .= " and girl.age<=$seachSettings->age_to";
         }
+        // $where .= " and girl.age BETWEEN $seachSettings->age_from and $seachSettings->age_to";
 
         $qwertString = $qwertString.$where;
 
-     //   var_dump($qwertString);
+        //   var_dump($qwertString);
 
         $qwertStringPages = $qwertString;
 
@@ -1489,13 +1488,14 @@ class AnketController extends Controller
 
         $numPages = count($numPages);
 
-        $numPages = round($numPages / 28);
+        $numPages = round($numPages / 20);
 
         //dump($request->page);
-        $qwertString = $qwertString." limit 28";
+        $qwertString = $qwertString." limit 20";
 
-        if (isset($request->page) && $request->page != 1) {
-            $offset = (($request->page) - 1) * 28;
+        if (isset($request->page) && intval($request->page) != 1) {
+
+            $offset = (intval($request->page) - 1) * 20;
             $qwertString = $qwertString." offset ".$offset;
         }
         // echo  $qwertString;

@@ -5,31 +5,6 @@
         <seachModal v-if="seachModalShow" :event="event" @closeSeachModal="closeSeachModal()"
                     @closeNewMessageAlert="closeNewMessageAlert()"></seachModal>
         <button class="btn-primary" v-on:click="openSeachModal()">Настроить фильтр</button>
-
-        <div v-for="item in ankets">
-
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-3 thumb">
-                <div class="card" style="width:200px ; border: 1px solid transparent; border-color: #000000;
-                ">
-                    <a v-bind:href="'anket/'+item.id">
-                        <img :src="'images/upload/'+item.main_image" height="200" width="300">
-                        <br>
-                        <div class="cell">
-                            <div class="cell-overflow">
-                                {{item.name}}
-                            </div>
-                            {{item.age}}
-                        </div>
-
-                    </a>
-                </div>
-            </div>
-        </div>
-        {{currentPage}} из {{numPages}}
-        <div v-if="currentPage>1">
-            <button v-on:click="prevesionPage()"> Предыдущая страница</button>
-        </div>
-        <button v-on:click="nextPage()"> Следущая страница</button>
     </div>
 </template>
 
@@ -90,7 +65,9 @@
                     this.getAnkets();
                 },
                 changeFilter() {
+                    axios.get("filter_enable", {params: {filter: this.filter_enable}}).then((response) => {
 
+                    }).catch(error => console.log(error));
                 },
                 getAnkets() {
                     this.ankets = [];
@@ -176,5 +153,41 @@
 
     input[type="checkbox"]:checked + label::after {
         left: 13px;
+    }
+
+    /*стиль кнопок*/
+
+    a {
+        text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;
+    }
+
+    a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .previous {
+        background-color: #f1f1f1;
+        color: black;
+    }
+
+    .next {
+        background-color: #110aaf;
+        color: white;
+
+    }
+
+    .next:hover {
+        cursor: pointer;
+    }
+
+    .previous:hover {
+        cursor: pointer;
+    }
+
+    .round {
+        border-radius: 50%;
     }
 </style>

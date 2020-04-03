@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\SeachSettingsInterest;
+use App\SearchSettings;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use File;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use  \App\Application;
 use Illuminate\Support\Facades\Input;
@@ -34,8 +36,36 @@ class GirlsController extends Controller
     //
     function index(Request $request)
     {
+
+        $girls = Girl::select([
+            'id',
+            'name',
+            'main_image',
+            'sex',
+            'age',
+        ])
+            ->where('banned', '=', '0')
+            //       ->where('sex', '=', $anket->meet)
+            ->orderBy('created_at', 'DESC')
+            ->Paginate(16);
+
+        return view('index')->with([
+            'girls'  => $girls,
+            'events' => null,
+            'city'   => null,
+        ]);
+    }
+
+    function index3(Request $request)
+    {
+        return view('index3');
+    }
+
+    function index4(Request $request)
+    {
         $ua = $request->header('User-Agent');
         $ua = $request->server('HTTP_USER_AGENT');
+
 
         $girls = Girl::select([
             'id',
@@ -55,11 +85,6 @@ class GirlsController extends Controller
             'events' => null,
             'city'   => null,
         ]);
-    }
-
-    function index3(Request $request)
-    {
-        return view('index3');
     }
 
     function seach(Request $request)
@@ -415,8 +440,7 @@ class GirlsController extends Controller
     }
 
 
-    public
-    function inputCode(
+    public function inputCode(
         Request $request
     ) {
         $validatedData = $request->validate([
@@ -435,8 +459,7 @@ class GirlsController extends Controller
         }
     }
 
-    public
-    function SendSMS(
+    public function SendSMS(
         $phone,
         $text
     ) {
@@ -507,8 +530,7 @@ class GirlsController extends Controller
         return null;
     }
 
-    public
-    static function getIpstatic()
+    public static function getIpstatic()
     {
         foreach (
             array(
@@ -537,8 +559,7 @@ class GirlsController extends Controller
         return null;
     }
 
-    public
-    function agreeCity(
+    public function agreeCity(
         Request $request
     ) {
         $cities = DB::table('cities')
@@ -554,8 +575,7 @@ class GirlsController extends Controller
         }
     }
 
-    public
-    function newCity(
+    public function newCity(
         Request $request
     ) {
         $validatedData = $request->validate([
@@ -574,8 +594,7 @@ class GirlsController extends Controller
 
     }
 
-    public
-    static function checkCity()
+    public static function checkCity()
     {
         if (Auth::user()) {
             $user = Auth::user()->first();
@@ -621,8 +640,7 @@ class GirlsController extends Controller
         }
     }
 
-    public
-    static function getCityByIpAndRedirect2()
+    public static function getCityByIpAndRedirect2()
     {
         $ip = GirlsController::getIpStatic();
         $response = file_get_contents("http://api.sypexgeo.net/json/"
@@ -639,8 +657,7 @@ class GirlsController extends Controller
         return view('confurmCity')->with(['city' => $response]);
     }
 
-    public
-    function getCityByIpAndRedirect()
+    public function getCityByIpAndRedirect()
     {
         $ip = GirlsController::getIpStatic();
         $response = file_get_contents("http://api.sypexgeo.net/json/"
@@ -657,13 +674,65 @@ class GirlsController extends Controller
         return view('confurmCity')->with(['city' => $response]);
     }
 
-    public
-    function changeCity()
+    public function changeCity()
     {
         $city = Session::get('city');
         $city = DB::table('cities')->where('id_city', $city)->first();
 
         return view('changeCity')->with(['city' => $city]);
+    }
+
+    public function filter_enable(Request $request)
+    {
+        $AythUser = Auth::user();
+        if ($AythUser == null) {
+            $cookie = Cookie::get('seachSettings');
+            if ($cookie != null) {
+
+                $seachSettings = SearchSettings::select([
+                    'id',
+                    'girl_id',
+                    'meet',
+                    'age_from',
+                    'age_to',
+                    'children',
+                ])->where('cookie', $cookie)
+                    ->first();
+                if ($seachSettings == null) {
+                    $seachSettings = new SearchSettings();
+                    $seachSettings->cookie = $cookie;
+                    $seachSettings->save();
+                }
+                if ($request->filter == "true") {
+                    $seachSettings->enable = 1;
+                } else {
+                    $seachSettings->enable = 0;
+                }
+                $seachSettings->save();
+
+            } else {
+                $seachSettings = new SearchSettings();
+                $cookie = sha1(time());
+                Cookie::queue('seachSettings', $cookie, 1000);
+                $seachSettings->cookie = $cookie;
+                if ($request->filter == "true") {
+                    $seachSettings->enable = 1;
+                } else {
+                    $seachSettings->enable = 0;
+                }
+                $seachSettings->save();
+            }
+        } else {
+            $ayth_girl = Girl::select('id', 'user_id')
+                ->where('user_id', $AythUser->id)->first();
+
+            if ($ayth_girl == null) {
+                return null;
+            }
+            $ayth_girl->filter_enable = 1;
+            $ayth_girl->save();
+        }
+
     }
 
 
