@@ -37,17 +37,65 @@ class GirlsController extends Controller
     function index(Request $request)
     {
 
-        $girls = Girl::select([
-            'id',
-            'name',
-            'main_image',
-            'sex',
-            'age',
-        ])
-            ->where('banned', '=', '0')
-            //       ->where('sex', '=', $anket->meet)
-            ->orderBy('created_at', 'DESC')
-            ->Paginate(16);
+
+        /*
+         *  смотрим фильтр
+         * */
+
+        $userAuth = Auth::user();
+        if ($userAuth != null) {
+            $girls = $userAuth->girl();
+            $seachSettings = SearchSettings::select(['*'])
+                ->where("girl_id", "=", $girls->id)->first();
+        } else {
+            $cookie = Cookie::get('seachSettings');
+            dump($cookie);
+            $seachSettings = SearchSettings::select(['*'])
+                ->where("cookie", "=", $cookie)->first();
+
+        }
+
+        if ($seachSettings == null) {
+
+            $girls = Girl::select([
+                'id',
+                'name',
+                'main_image',
+                'sex',
+                'age',
+            ])
+                ->where('banned', '=', '0')
+                //       ->where('sex', '=', $anket->meet)
+                ->orderBy('created_at', 'DESC')
+                ->Paginate(16);
+        } else {
+            dump($seachSettings);
+            $girls = null;
+            // настройки есть, теперь включаем поиск
+            /*
+            $girls = Girl::select([
+                'id',
+                'name',
+                'main_image',
+                'sex',
+                'age',
+            ])
+                ->where('banned', '=', '0')
+                ->orderBy('created_at', 'DESC')
+                ->Paginate(16);*/
+            //     dump($girls);
+            $girls = Girl::where('banned', 0);
+            if ($seachSettings->age_from != null) {
+                $girls->where('age', '>=', $seachSettings->age_from);
+            }
+            if ($seachSettings->age_to != null) {
+                $girls->where('age', '<=', $seachSettings->age_to);
+            }
+            $girls = $girls->get();
+            dump($girls);
+            die();
+        }
+
 
         return view('index')->with([
             'girls'  => $girls,
@@ -687,6 +735,7 @@ class GirlsController extends Controller
         $AythUser = Auth::user();
         if ($AythUser == null) {
             $cookie = Cookie::get('seachSettings');
+
             if ($cookie != null) {
 
                 $seachSettings = SearchSettings::select([
