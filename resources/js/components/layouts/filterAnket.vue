@@ -65,9 +65,10 @@
                     this.getAnkets();
                 },
                 changeFilter() {
-                    axios.get("filter_enable", {params: {filter: this.filter_enable}}).then((response) => {
+                    /*   axios.get("filter_enable", {params: {filter: this.filter_enable}}).then((response) => {
 
-                    }).catch(error => console.log(error));
+                       }).catch(error => console.log(error));
+                       */
                 },
                 getAnkets() {
                     this.ankets = [];

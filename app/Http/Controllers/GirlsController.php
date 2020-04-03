@@ -49,7 +49,6 @@ class GirlsController extends Controller
                 ->where("girl_id", "=", $girls->id)->first();
         } else {
             $cookie = Cookie::get('seachSettings');
-            dump($cookie);
             $seachSettings = SearchSettings::select(['*'])
                 ->where("cookie", "=", $cookie)->first();
 
@@ -69,7 +68,6 @@ class GirlsController extends Controller
                 ->orderBy('created_at', 'DESC')
                 ->Paginate(16);
         } else {
-            dump($seachSettings);
             $girls = null;
             // настройки есть, теперь включаем поиск
             /*
@@ -91,9 +89,13 @@ class GirlsController extends Controller
             if ($seachSettings->age_to != null) {
                 $girls->where('age', '<=', $seachSettings->age_to);
             }
-            $girls = $girls->get();
-            dump($girls);
-            die();
+            if ($seachSettings->children != null) {
+                $girls->where('children_id', '=', $seachSettings->children);
+            }
+
+            
+            $girls = $girls->paginate(16);;
+
         }
 
 
@@ -782,6 +784,7 @@ class GirlsController extends Controller
             $ayth_girl->save();
         }
 
+        return "true";
     }
 
 

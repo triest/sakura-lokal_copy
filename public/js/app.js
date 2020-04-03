@@ -7436,14 +7436,9 @@ __webpack_require__.r(__webpack_exports__);
       this.getAnkets();
     },
       changeFilter: function changeFilter() {
-          axios.get("filter_enable", {
-              params: {
-                  filter: this.filter_enable
-              }
-          }).then(function (response) {
-          }).catch(function (error) {
-              return console.log(error);
-          });
+          /*   axios.get("filter_enable", {params: {filter: this.filter_enable}}).then((response) => {
+              }).catch(error => console.log(error));
+             */
       },
     getAnkets: function getAnkets() {
       var _this2 = this;
@@ -12849,7 +12844,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-        exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* прячем стандартный чекбокс */\ninput[type=\"checkbox\"][data-v-28146e74] {\n    display: none;\n}\n\n/* стили для метки */\ninput[type=\"checkbox\"] + label[data-v-28146e74] {\n    cursor: pointer;\n    padding-left: 50px;\n    position: relative;\n    font-family: tahoma, sans-serif, arial;\n    line-height: 40px;\n}\n\n/* стили для поля с бегунком*/\ninput[type=\"checkbox\"] + label[data-v-28146e74]::before {\n    content: \"\";\n    display: inline-block;\n    position: absolute;\n    top: 0;\n    left: 0;\n    vertical-align: middle;\n    padding: 0;\n    height: 24px;\n    width: 36px;\n    margin: 0 5px 0 0;\n    border: 1px solid #dadada;\n    border-radius: 12px;\n    background: #dddddd;\n}\n\n/* стили для бегунка*/\ninput[type=\"checkbox\"] + label[data-v-28146e74]::after {\n    content: \"\";\n    display: block;\n    position: absolute;\n    top: 1px;\n    left: 1px;\n    width: 22px;\n    height: 22px;\n    border-radius: 22px;\n    background: #fff;\n    border: 1px solid #dadada;\n    box-shadow: 0 3px 3px rgba(140, 140, 140, .1);\n}\n\n/* плавность )) */\ninput[type=\"checkbox\"] + label[data-v-28146e74]::before,\ninput[type=\"checkbox\"] + label[data-v-28146e74]::after {\n    transition: all .2s ease-out;\n}\n\n/* чекнутое состояние )) */\ninput[type=\"checkbox\"]:checked + label[data-v-28146e74]::before {\n    background: #6edc5f;\n    border-color: #6dd75e;\n}\ninput[type=\"checkbox\"]:checked + label[data-v-28146e74]::after {\n    left: 13px;\n}\n\n/*стиль кнопок*/\na[data-v-28146e74] {\n    text-decoration: none;\n    display: inline-block;\n    padding: 8px 16px;\n}\na[data-v-28146e74]:hover {\n    background-color: #ddd;\n    color: black;\n}\n.previous[data-v-28146e74] {\n    background-color: #f1f1f1;\n    color: black;\n}\n.next[data-v-28146e74] {\n    background-color: #110aaf;\n    color: white;\n}\n.next[data-v-28146e74]:hover {\n    cursor: pointer;\n}\n.previous[data-v-28146e74]:hover {\n    cursor: pointer;\n}\n.round[data-v-28146e74] {\n    border-radius: 50%;\n}\n", ""]);
+        exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* прячем стандартный чекбокс */\ninput[type=\"checkbox\"][data-v-28146e74] {\n    display: none;\n}\n\n/* стили для метки */\ninput[type=\"checkbox\"] + label[data-v-28146e74] {\n    cursor: pointer;\n    padding-left: 50px;\n    position: relative;\n    font-family: tahoma, sans-serif, arial;\n    line-height: 40px;\n}\n\n/* стили для поля с бегунком*/\ninput[type=\"checkbox\"] + label[data-v-28146e74]::before {\n    content: \"\";\n    display: inline-block;\n    position: absolute;\n    top: 0;\n    left: 0;\n    vertical-align: middle;\n    padding: 0;\n    height: 24px;\n    width: 36px;\n    margin: 0 5px 0 0;\n    border: 1px solid #dadada;\n    border-radius: 12px;\n    background: #dddddd;\n}\n\n/* стили для бегунка*/\ninput[type=\"checkbox\"] + label[data-v-28146e74]::after {\n    content: \"\";\n    display: block;\n    position: absolute;\n    top: 1px;\n    left: 1px;\n    width: 22px;\n    height: 22px;\n    border-radius: 22px;\n    background: #fff;\n    border: 1px solid #dadada;\n    box-shadow: 0 3px 3px rgba(140, 140, 140, .1);\n}\n\n/* плавность )) */\ninput[type=\"checkbox\"] + label[data-v-28146e74]::before,\ninput[type=\"checkbox\"] + label[data-v-28146e74]::after {\n    transition: all .2s ease-out;\n}\n\n/* чекнутое состояние )) */\ninput[type=\"checkbox\"]:checked + label[data-v-28146e74]::before {\n    background: #6edc5f;\n    border-color: #6dd75e;\n}\ninput[type=\"checkbox\"]:checked + label[data-v-28146e74]::after {\n    left: 13px;\n}\n\n/*стиль кнопок*/\na[data-v-28146e74] {\n    text-decoration: none;\n    display: inline-block;\n    padding: 8px 16px;\n}\na[data-v-28146e74]:hover {\n    background-color: #ddd;\n    color: black;\n}\n.previous[data-v-28146e74] {\n    background-color: #f1f1f1;\n    color: black;\n}\n.next[data-v-28146e74] {\n    background-color: #110aaf;\n    color: white;\n}\n.next[data-v-28146e74]:hover {\n    cursor: pointer;\n}\n.previous[data-v-28146e74]:hover {\n    cursor: pointer;\n}\n.round[data-v-28146e74] {\n    border-radius: 50%;\n}\n", ""]);
 
 // exports
 
