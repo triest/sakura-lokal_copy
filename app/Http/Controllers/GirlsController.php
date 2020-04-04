@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\SeachSettingsInterest;
+use App\SeachSettingsType;
 use App\SearchSettings;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
@@ -82,6 +82,7 @@ class GirlsController extends Controller
                 ->orderBy('created_at', 'DESC')
                 ->Paginate(16);*/
             //     dump($girls);
+            dump($seachSettings);
             $girls = Girl::where('banned', 0);
             if ($seachSettings->age_from != null) {
                 $girls->where('age', '>=', $seachSettings->age_from);
@@ -93,7 +94,7 @@ class GirlsController extends Controller
                 $girls->where('children_id', '=', $seachSettings->children);
             }
 
-            
+
             $girls = $girls->paginate(16);;
 
         }
@@ -162,7 +163,7 @@ class GirlsController extends Controller
 
         if ($seachSettings != null) {
             $seachSettingInterest
-                = SeachSettingsInterest::select([
+                = SeachSettingsType::select([
                 'id',
                 'settings_id',
                 'setting_name',

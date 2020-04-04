@@ -9,7 +9,7 @@ use App\Girl;
 use App\Message;
 use App\MyRequwest;
 use App\Photo;
-use App\SeachSettingsInterest;
+use App\SeachSettingsType;
 use App\Target;
 use App\User;
 use App\Privatephoto;
@@ -1238,7 +1238,7 @@ class AnketController extends Controller
 
         //тут получаем установленные настройки.
         if (isset($sechSettings) && $sechSettings != null) {
-            $interest_array_temp = SeachSettingsInterest::select('id',
+            $interest_array_temp = SeachSettingsType::select('id',
                 'sett_id')
                 ->where('settings_id', $sechSettings->id)
                 ->where('setting_name', 'interest')->get();
@@ -1247,7 +1247,7 @@ class AnketController extends Controller
                 $interest_array[] = $item->sett_id;
             }
 
-            $targets_array_temp = SeachSettingsInterest::select('id',
+            $targets_array_temp = SeachSettingsType::select('id',
                 'sett_id')
                 ->where('settings_id', $sechSettings->id)
                 ->where('setting_name', 'target')->get();
@@ -1291,109 +1291,124 @@ class AnketController extends Controller
     public function saveSettings(Request $request)
     {
 
+        /*
+              $cookie = null;
+              $userAuth = Auth::user();
+              if ($userAuth != null) {
+                  $user = User::select(['id', 'name'])
+                      ->where('id', $userAuth->id)->first();
+                  //сли не авторизован, то смотрим по кукам.
+                  if ($user != null) {
+                      $anket = Girl::select(['id', 'name'])
+                          ->where('user_id', $user->id)
+                          ->first();
+                      if ($anket == null) {
+                          return false;
+                      }
+                      $seachSettings = $anket->seachsettings()->first();
+                  } else {
+                      $cookie = Cookie::get('seachSettings');
+                      $seachSettings = SearchSettings::select(['*'])
+                          ->where("cookie", "=", $cookie)->first();
+                  }
+              } else {
+                  $cookie = Cookie::get('seachSettings');
+                  if ($cookie != null) {
+                      $seachSettings = SearchSettings::select(['*'])
+                          ->where("cookie", "=", $cookie)->first();
+                  }
+              }
+
+              if (isset($seachSettings) && $seachSettings == null) {
+                  $seachSettings = new SearchSettings();
+                  $seachSettings->girl_id = $anket->id;
+                  $seachSettings->save();
+              } elseif (isset($cookie) && $cookie != null && isset($seachSettings)
+                  && $seachSettings == null
+              ) {
+                  $seachSettings = new SearchSettings();
+                  $seachSettings->cookie = $cookie;
+                  $seachSettings->save();
+              } elseif (!isset($seachSettings) && $cookie == null) {
+                  $seachSettings = new SearchSettings();
+                  $seachSettings->meet = $request->meet;
+                  $seachSettings->age_from = $request->from;
+                  $seachSettings->age_to = $request->to;
+                  $seachSettings->children = $request->children;
+                  // тут генерируем куку
+                  $value = $this->randomString();
+                  $seachSettings->cookie = $value;
+                  Cookie::queue(Cookie::make('seachSettings', $value, 1140));
+                  $seachSettings->save();
+                  if ($userAuth != null) {
+                      $user = User::select(['id', 'name'])
+                          ->where('id', $userAuth->id)->first();
+                      //сли не авторизован, то смотрим по кукам.
+                      if ($user != null) {
+                          $anket = Girl::select(['id', 'name'])
+                              ->where('user_id', $user->id)
+                              ->first();
+                          if ($anket == null) {
+                              return false;
+                          }
+                          $seachSettings->girl_id = $anket->id;
+                      } else {
+                          $cookie = Cookie::get('seachSettings');
+
+                      }
+                  } else {
+                      $cookie = Cookie::get('seachSettings');
+                      if ($cookie != null) {
+                          $seachSettings = SearchSettings::select([])
+                              ->where("cookie", $cookie)->first();
+                      }
+                  }
+              }
+
+              if (isset($seachSettings) && $seachSettings != null) {
+                  $seachSettings->meet = $request->meet;
+                  $seachSettings->age_from = $request->from;
+                  $seachSettings->age_to = $request->to;
+                  $seachSettings->children = $request->children;
+                  $seachSettings->save();
+              }
+              //теперь настройки поиска
+              dump($seachSettings);
+              $selectedTargets = $request->select_target;
+              dump($request);
+
+              foreach ($selectedTargets as $target) {
+                  $setting = new SeachSettingsInterest();
+                  $setting->settings_id = $seachSettings->id;
+                  $setting->setting_name = "target";
+                  $setting->sett_id = $target;
+                  $setting->save();
+              }
+      */
+        $seachSettings = SearchSettings::getSeachSettings();
+        dump($seachSettings);
+        if ($seachSettings == null) {
+            return null;
+        }
         $userAuth = Auth::user();
-        if ($userAuth != null) {
-            $user = User::select(['id', 'name'])
-                ->where('id', $userAuth->id)->first();
-            //сли не авторизован, то смотрим по кукам.
-            if ($user != null) {
-                $anket = Girl::select(['id', 'name'])
-                    ->where('user_id', $user->id)
-                    ->first();
-                if ($anket == null) {
-                    return false;
-                }
-                $seachSettings = $anket->seachsettings()->first();
-            } else {
-                $cookie = Cookie::get('seachSettings');
-                $seachSettings = SearchSettings::select(['*'])
-                    ->where("cookie", "=", $cookie)->first();
+
+
+        $selectedTargets = $request->targets;
+        foreach ($selectedTargets as $item) {
+            $target = Target::select(['id', 'name'])->where('id', $item)
+                ->first();
+            if ($target != null) {
+                $seachSettings->target()->save($target);
             }
-        } else {
-            $cookie = Cookie::get('seachSettings');
-            if ($cookie != null) {
-                $seachSettings = SearchSettings::select(['*'])
-                    ->where("cookie", "=", $cookie)->first();
+        }
+
+        $selectedTargets = $request->interests;
+        foreach ($selectedTargets as $item) {
+            $target = Interest::select(['id', 'name'])->where('id', $item)
+                ->first();
+            if ($target != null) {
+                $seachSettings->interest()->save($target);
             }
-
-        }
-
-        if (isset($seachSettings) && $seachSettings == null) {
-            $seachSettings = new SearchSettings();
-            $seachSettings->girl_id = $anket->id;
-            $seachSettings->save();
-        } elseif (isset($cookie) && $cookie != null
-        ) {
-            $seachSettings = new SearchSettings();
-            $seachSettings->cookie = $cookie;
-            $seachSettings->save();
-        } elseif (!isset($seachSettings)
-        ) {
-            $seachSettings = new SearchSettings();
-            $seachSettings->meet = $request->meet;
-            $seachSettings->age_from = $request->from;
-            $seachSettings->age_to = $request->to;
-            $seachSettings->children = $request->children;
-            // тут генерируем куку
-            $value = $this->randomString();
-            $seachSettings->cookie = $value;
-            Cookie::queue(Cookie::make('seachSettings', $value, 1140));
-            $seachSettings->save();
-            if ($userAuth != null) {
-                $user = User::select(['id', 'name'])
-                    ->where('id', $userAuth->id)->first();
-                //сли не авторизован, то смотрим по кукам.
-                if ($user != null) {
-                    $anket = Girl::select(['id', 'name'])
-                        ->where('user_id', $user->id)
-                        ->first();
-                    if ($anket == null) {
-                        return false;
-                    }
-                    $seachSettings->girl_id = $anket->id;
-                } else {
-                    $cookie = Cookie::get('seachSettings');
-
-                }
-            } else {
-                $cookie = Cookie::get('seachSettings');
-                if ($cookie != null) {
-                    $seachSettings = SearchSettings::select([])
-                        ->where("cookie", $cookie)->first();
-                }
-            }
-
-
-        }
-
-        if (isset($seachSettings) && $seachSettings != null) {
-            $seachSettings->meet = $request->meet;
-            $seachSettings->age_from = $request->from;
-            $seachSettings->age_to = $request->to;
-            $seachSettings->children = $request->children;
-            $seachSettings->save();
-        }
-        //теперь настройки поиска
-
-        $selectedTargets = $request->select_target;
-
-
-        foreach ($selectedTargets as $target) {
-            $setting = new SeachSettingsInterest();
-            $setting->settings_id = $seachSettings->id;
-            $setting->setting_name = "target";
-            $setting->sett_id = $target;
-            $setting->save();
-        }
-
-        $selectedTargets = $request->selected_interes;
-
-        foreach ($selectedTargets as $target) {
-            $setting = new SeachSettingsInterest();
-            $setting->settings_id = $seachSettings->id;
-            $setting->setting_name = "interest";
-            $setting->sett_id = $target;
-            $setting->save();
         }
 
         return response()->json(['ok']);
@@ -1435,7 +1450,7 @@ class AnketController extends Controller
 
         if (isset($seachSettings) && $seachSettings != null) {
             $seachSettingInterest
-                = SeachSettingsInterest::select([
+                = SeachSettingsType::select([
                 'id',
                 'settings_id',
                 'setting_name',

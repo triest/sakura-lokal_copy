@@ -19,4 +19,9 @@ class Target extends Model
         return $this->belongsToMany('App\Girl', 'girl_target');
     }
 
+    public function seachSetting()
+    {
+        return $this->belongsToMany('App\SearchSettings', 'search_target');
+    }
+
 }

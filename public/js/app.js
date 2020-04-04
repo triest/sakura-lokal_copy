@@ -5539,6 +5539,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   name: 'modal',
@@ -5552,17 +5553,10 @@ __webpack_require__.r(__webpack_exports__);
       to: "18",
       targets: "",
       interest: " ",
-      selected_targets: [],
-      selected_interest: [],
       meet: "",
-      checkedTarget: [],
-      children: "",
-      select2tarrget: [],
-      select2interest: [],
-      select2children: [],
-      target: [],
-      target_active: [],
-      selected_clildren: ""
+        children: [],
+        select2targets: [],
+        select2inters: []
     };
   },
   methods: {
@@ -5572,38 +5566,32 @@ __webpack_require__.r(__webpack_exports__);
     },
     findUserByid: function findUserByid() {},
     saveChange: function saveChange() {
-      var _this = this;
-
       axios.post('/anket2/savesettings', {
         meet: this.meet,
         from: this.from,
         to: this.to,
-        select_target: this.select2tarrget,
-        selected_interes: this.select2interest,
+          interests: this.select2inters,
         children: this.select2children,
-        target: this.select2tarrget,
-        selected_clildren: ""
-      }).then(function (response) {
-        _this.$emit('closeSeachModal');
+          targets: this.select2targets
+      }).then(function (response) {//this.$emit('closeSeachModal')
       });
     },
     getSettings: function getSettings() {
-      var _this2 = this;
+        var _this = this;
 
       axios.get('anket2/getsrttings').then(function (response) {
         var res = response.data; //   this.meet = res.anket.meet;
         //  this.from = res.anket.from_age;
         //  this.to = res.anket.to_age;
 
-        _this2.targets = res.targets;
-        _this2.selected_targets = res.selectedTargets;
-        console.log(_this2.selected_targets);
-        _this2.interest = res.interests;
-        _this2.selected_interest = res.selectedInterest;
-        _this2.children = res.chidren;
-        _this2.selected_clildren = res.sechSettings.children;
-        _this2.select2children = _this2.selected_clildren;
-        console.log(_this2.selected_clildren);
+          _this.targets = res.targets;
+          _this.selected_targets = res.selectedTargets;
+          _this.interest = res.interests;
+          _this.selected_interest = res.selectedInterest;
+          _this.children = res.chidren;
+          _this.selected_clildren = res.sechSettings.children;
+          _this.select2children = _this.selected_clildren;
+          console.log(_this.selected_clildren);
       });
     }
   }
@@ -59778,38 +59766,106 @@ var render = function() {
                           _vm._v(" "),
                           _c("label", [_vm._v("Цель:")]),
                           _vm._v(" "),
-                          _vm._l(_vm.targets, function(target) {
+                            _vm._l(_vm.targets, function (item) {
                             return _c("div", [
                               _c("input", {
-                                attrs: {
-                                  type: "checkbox",
-                                  id: target.id,
-                                  "v-model": _vm.select2tarrget
-                                },
+                                  directives: [
+                                      {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.select2targets,
+                                          expression: "select2targets"
+                                      }
+                                  ],
+                                  attrs: {type: "checkbox", id: item.id},
                                 domProps: {
+                                    value: item.id,
                                   checked: _vm.selected_targets.includes(
-                                    target.id
-                                  )
+                                      item.id
+                                  ),
+                                    checked: Array.isArray(_vm.select2targets)
+                                        ? _vm._i(_vm.select2targets, item.id) > -1
+                                        : _vm.select2targets
+                                },
+                                  on: {
+                                      change: function ($event) {
+                                          var $$a = _vm.select2targets,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                              var $$v = item.id,
+                                                  $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                  $$i < 0 &&
+                                                  (_vm.select2targets = $$a.concat([
+                                                      $$v
+                                                  ]))
+                                              } else {
+                                                  $$i > -1 &&
+                                                  (_vm.select2targets = $$a
+                                                      .slice(0, $$i)
+                                                      .concat($$a.slice($$i + 1)))
+                                              }
+                                          } else {
+                                              _vm.select2targets = $$c
+                                          }
+                                      }
                                 }
                               }),
                               _vm._v(
                                 "\n                                    " +
-                                  _vm._s(target.id) +
-                                  " " +
-                                  _vm._s(target.name) +
-                                  "\n\n                                "
+                                  _vm._s(item.name) +
+                                  "\n                                "
                               )
                             ])
                           }),
+                            _vm._v(" "),
+                            _c("label", [_vm._v("Bynthtds:")]),
                           _vm._v(" "),
                           _vm._l(_vm.interest, function(item) {
                             return _c("div", [
                               _c("input", {
+                                  directives: [
+                                      {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.select2inters,
+                                          expression: "select2inters"
+                                      }
+                                  ],
                                 attrs: { type: "checkbox", id: item.id },
                                 domProps: {
+                                    value: item.id,
                                   checked: _vm.selected_interest.includes(
                                     item.id
-                                  )
+                                  ),
+                                    checked: Array.isArray(_vm.select2inters)
+                                        ? _vm._i(_vm.select2inters, item.id) > -1
+                                        : _vm.select2inters
+                                },
+                                  on: {
+                                      change: function ($event) {
+                                          var $$a = _vm.select2inters,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                              var $$v = item.id,
+                                                  $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                  $$i < 0 &&
+                                                  (_vm.select2inters = $$a.concat([
+                                                      $$v
+                                                  ]))
+                                              } else {
+                                                  $$i > -1 &&
+                                                  (_vm.select2inters = $$a
+                                                      .slice(0, $$i)
+                                                      .concat($$a.slice($$i + 1)))
+                                              }
+                                          } else {
+                                              _vm.select2inters = $$c
+                                          }
+                                      }
                                 }
                               }),
                               _vm._v(
@@ -59833,7 +59889,7 @@ var render = function() {
                                     expression: "select2children"
                                   }
                                 ],
-                                attrs: { type: "radio", id: "item.id" },
+                                  attrs: {type: "radio"},
                                 domProps: {
                                   value: item.id,
                                   checked: _vm._q(_vm.select2children, item.id)

@@ -34,15 +34,16 @@
 
                                     <label>Цель:</label>
 
-                                    <div v-for="target in targets">
-                                        <input type="checkbox" :id="target.id" :v-model="select2tarrget"
-                                               :checked="selected_targets.includes(target.id)">
-                                        {{target.id}} {{target.name}}
-
+                                    <div v-for="item in targets">
+                                        <input type="checkbox" :id="item.id" :value="item.id" v-model="select2targets"
+                                               :checked="selected_targets.includes(item.id)">
+                                        {{item.name}}
                                     </div>
 
+                                    <label>Bynthtds:</label>
+
                                     <div v-for="item in interest">
-                                        <input type="checkbox" :id="item.id"
+                                        <input type="checkbox" :id="item.id" :value="item.id" v-model="select2inters"
                                                :checked="selected_interest.includes(item.id)">
                                         {{item.name}}
                                     </div>
@@ -50,7 +51,7 @@
                                     <label>Дети:</label>
 
                                     <div v-for="item in children">
-                                        <input type="radio" :value="item.id" id="item.id" v-model="select2children"/>
+                                        <input type="radio" :value="item.id" v-model="select2children"/>
                                         {{item.name}}
                                     </div>
                                 </form>
@@ -89,17 +90,10 @@
                 to: "18",
                 targets: "",
                 interest: " ",
-                selected_targets: [],
-                selected_interest: [],
                 meet: "",
-                checkedTarget: [],
-                children: "",
-                select2tarrget: [],
-                select2interest: [],
-                select2children: [],
-                target: [],
-                target_active: [],
-                selected_clildren: "",
+                children: [],
+                select2targets: [],
+                select2inters: []
             }
         },
         methods: {
@@ -117,14 +111,11 @@
                     meet: this.meet,
                     from: this.from,
                     to: this.to,
-                    select_target: this.select2tarrget,
-                    selected_interes: this.select2interest,
+                    interests: this.select2inters,
                     children: this.select2children,
-                    target: this.select2tarrget,
-                    selected_clildren: "",
-
+                    targets: this.select2targets
                 }).then((response) => {
-                    this.$emit('closeSeachModal')
+                    //this.$emit('closeSeachModal')
                 });
             },
             getSettings() {
@@ -136,7 +127,6 @@
                         //  this.to = res.anket.to_age;
                         this.targets = res.targets;
                         this.selected_targets = res.selectedTargets;
-                        console.log(this.selected_targets);
                         this.interest = res.interests;
                         this.selected_interest = res.selectedInterest;
                         this.children = res.chidren;
