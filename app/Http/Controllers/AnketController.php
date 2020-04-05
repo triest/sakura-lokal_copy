@@ -1222,6 +1222,9 @@ class AnketController extends Controller
             ])->where('girl_id', $anket->id)->first();
         } else {
             $cookie = Cookie::get('seachSettings');
+            if (isset($_COOKIE["seachSettings"])) {
+                $cookie = $_COOKIE["seachSettings"];
+            }
 
             if ($cookie != null) {
                 $sechSettings = SearchSettings::select([
@@ -1238,23 +1241,18 @@ class AnketController extends Controller
 
         //тут получаем установленные настройки.
         if (isset($sechSettings) && $sechSettings != null) {
-            $interest_array_temp = SeachSettingsType::select('id',
-                'sett_id')
-                ->where('settings_id', $sechSettings->id)
-                ->where('setting_name', 'interest')->get();
+            $interest_array_temp = $sechSettings->interest()->get();
+
             $interest_array = array();
             foreach ($interest_array_temp as $item) {
-                $interest_array[] = $item->sett_id;
+                $interest_array[] = $item->id;
             }
 
-            $targets_array_temp = SeachSettingsType::select('id',
-                'sett_id')
-                ->where('settings_id', $sechSettings->id)
-                ->where('setting_name', 'target')->get();
+
+            $targets_array_temp = $sechSettings->target()->get();
             $targets_array = array();
             foreach ($targets_array_temp as $item) {
-                // $targets_array[] = $item->sett_id;
-                array_push($targets_array, $item->sett_id);
+                array_push($targets_array, $item->id);
             }
 
         }
@@ -1386,7 +1384,6 @@ class AnketController extends Controller
               }
       */
         $seachSettings = SearchSettings::getSeachSettings();
-        dump($seachSettings);
         if ($seachSettings == null) {
             return null;
         }
@@ -1576,7 +1573,7 @@ class AnketController extends Controller
         return response()->json([$anket->filter_enable]);
     }
 
-    function randomString()
+    public static function randomString()
     {
         $length = 64;
         $chars

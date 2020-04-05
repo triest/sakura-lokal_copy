@@ -44,17 +44,24 @@ class GirlsController extends Controller
 
         $userAuth = Auth::user();
         if ($userAuth != null) {
-            $girls = $userAuth->girl();
-            $seachSettings = SearchSettings::select(['*'])
+            $girls = $userAuth->girl()->get();
+            $girls = $girls[0];
+            $seachSettings = SearchSettings::select(['id'])
                 ->where("girl_id", "=", $girls->id)->first();
         } else {
-            $cookie = Cookie::get('seachSettings');
-            $seachSettings = SearchSettings::select(['*'])
-                ->where("cookie", "=", $cookie)->first();
-
+            $cookie = $_COOKIE["laravel_session"];
+            dump($cookie);
+            if ($cookie != null) {
+                $seachSettings = SearchSettings::select(['*'])
+                    ->where("cookie", "=", $cookie)
+                    ->orderBy('updated_at', 'desc')
+                    ->first();
+            }
+            dump($seachSettings);
         }
+        dump($seachSettings);
 
-        if ($seachSettings == null) {
+        if (!isset($seachSettings) || $seachSettings == null) {
 
             $girls = Girl::select([
                 'id',
@@ -93,6 +100,14 @@ class GirlsController extends Controller
             if ($seachSettings->children != null) {
                 $girls->where('children_id', '=', $seachSettings->children);
             }
+
+            /*
+             * цели
+             * */
+
+            /*
+             * интересы
+             * */
 
 
             $girls = $girls->paginate(16);;

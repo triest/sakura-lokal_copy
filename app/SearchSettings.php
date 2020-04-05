@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Http\Controllers\AnketController;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
@@ -15,7 +16,7 @@ class SearchSettings extends Model
 
     public function girl()
     {
-        return $this->hasOne('App\Girl', 'id', 'girl_id');
+        return $this->belongsTo('App\Girl');
     }
 
     public function target()
@@ -37,7 +38,6 @@ class SearchSettings extends Model
     {
         $cookie = null;
         $userAuth = Auth::user();
-        dump($userAuth);
         if ($userAuth != null) {
             $user = User::select(['id', 'name'])
                 ->where('id', $userAuth->id)->first();
@@ -50,18 +50,33 @@ class SearchSettings extends Model
                 if ($anket == null) {
                     return false;
                 }
+                dump($anket);
+
                 $seachSettings = $anket->seachsettings()->first();
+
+                if ($seachSettings != null) {
+                    return $seachSettings;
+                } else {
+                    $seachSettings = new SearchSettings();
+                    $seachSettings->save();
+                    $anket->seachsettings()->save($seachSettings);
+
+                    return $seachSettings;
+                    //   $anket->target()->attach($seachSettings);
+                }
             } else {
 
-                $cookie = Cookie::get('seachSettings');
+                $cookie = $_COOKIE["laravel_session"];
                 $seachSettings = SearchSettings::select(['id'])
-                    ->where("cookie", "=", $cookie)->first();
+                    ->where("cookie", "=", $cookie)
+                    ->orderBy('created_at', 'desc')
+                    ->first();
                 if ($seachSettings != null) {
                     return $seachSettings;
                 }
             }
         } else {
-            $cookie = Cookie::get('seachSettings');
+            $cookie = $_COOKIE["laravel_session"];
             if ($cookie != null) {
                 $seachSettings = SearchSettings::select([
                     'id',
@@ -74,6 +89,7 @@ class SearchSettings extends Model
                     'age_from',
                     'children',
                 ])
+                    ->orderBy('created_at', 'desc')
                     ->where("cookie", "=", $cookie)->first();
 
                 if ($seachSettings == null) {
@@ -87,6 +103,9 @@ class SearchSettings extends Model
                 return $seachSettings;
             } else {
                 $seachSettings = new SearchSettings();
+                //$cookie = AnketController::randomString();
+                $cookie = $_COOKIE["laravel_session"];
+                $seachSettings->cookie = $cookie;
                 $seachSettings->save();
 
                 return $seachSettings;

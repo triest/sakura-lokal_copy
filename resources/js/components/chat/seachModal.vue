@@ -122,9 +122,6 @@
                 axios.get('anket2/getsrttings')
                     .then((response) => {
                         let res = response.data;
-                        //   this.meet = res.anket.meet;
-                        //  this.from = res.anket.from_age;
-                        //  this.to = res.anket.to_age;
                         this.targets = res.targets;
                         this.selected_targets = res.selectedTargets;
                         this.interest = res.interests;
