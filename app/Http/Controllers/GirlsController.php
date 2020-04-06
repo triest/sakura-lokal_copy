@@ -46,20 +46,21 @@ class GirlsController extends Controller
         if ($userAuth != null) {
             $girls = $userAuth->girl()->get();
             $girls = $girls[0];
-            $seachSettings = SearchSettings::select(['id'])
-                ->where("girl_id", "=", $girls->id)->first();
+            //  $seachSettings = SearchSettings::select(['id'])
+            //     ->where("girl_id", "=", $girls->id)->first();
+            $seachSettings = $girls->seachsettings()->first();
         } else {
-            $cookie = $_COOKIE["laravel_session"];
-            dump($cookie);
-            if ($cookie != null) {
-                $seachSettings = SearchSettings::select(['*'])
-                    ->where("cookie", "=", $cookie)
-                    ->orderBy('updated_at', 'desc')
-                    ->first();
+            if (isset($_COOKIE["laravel_session"])) {
+                $cookie = $_COOKIE["laravel_session"];
+                if ($cookie != null) {
+                    $seachSettings = SearchSettings::select(['*'])
+                        ->where("cookie", "=", $cookie)
+                        ->orderBy('updated_at', 'desc')
+                        ->first();
+                }
             }
-            dump($seachSettings);
+
         }
-        dump($seachSettings);
 
         if (!isset($seachSettings) || $seachSettings == null) {
 
@@ -90,7 +91,14 @@ class GirlsController extends Controller
                 ->Paginate(16);*/
             //     dump($girls);
             dump($seachSettings);
-            $girls = Girl::where('banned', 0);
+            $girls = Girl::where('banned', 0)
+                ->with('target');
+
+
+            //  $girls->leftJoin('girl_target', 'girl_id', 'target_id');
+            //     $girls->leftJoin('girl_interess', 'girl_id', 'interest_id');
+            //$girls->leftJoin('search_target', 'id', 'search_id');
+
             if ($seachSettings->age_from != null) {
                 $girls->where('age', '>=', $seachSettings->age_from);
             }
@@ -101,19 +109,65 @@ class GirlsController extends Controller
                 $girls->where('children_id', '=', $seachSettings->children);
             }
 
+            if ($seachSettings->sex != null) {
+                $girls->where('sex', '=', $seachSettings->meet);
+            }
+
+            dump($girls);
+
+            /*
+                        $girls = DB::table('girls');
+                   //     $girls->leftJoin('girl_interess', 'girls.id', '=', 'girl_interess.girl_id');
+
+
+                        if ($seachSettings->age_from != null) {
+                            $girls->where('age', '>=', $seachSettings->age_from);
+                        }
+
+                        if ($seachSettings->age_to != null) {
+                            $girls->where('age', '<=', $seachSettings->age_to);
+                        }
+
+                        if ($seachSettings->children != null) {
+                            $girls->where('children_id', '=', $seachSettings->children);
+                        }
+
+                        if ($seachSettings->sex != null) {
+                            $girls->where('sex', '=', $seachSettings->meet);
+                        }
+            */
+
+            $targets = $seachSettings->target()->get();
+            dump($targets);
+            if ($targets != null) {
+                dump($targets);
+                /*
+                foreach ($targets as $item) {
+                    //     $girls->target()->array_where();
+                    $girls->target()
+                        ->where('girl_target', 'target_id', $item->id);
+                }
+                */
+            }
+
+
+            $girls = $girls->get();
+
             /*
              * цели
              * */
+
 
             /*
              * интересы
              * */
 
 
-            $girls = $girls->paginate(16);;
+            //  $girls = $girls->paginate(16);;
 
         }
 
+        //dump($girls);
 
         return view('index')->with([
             'girls'  => $girls,
@@ -122,110 +176,55 @@ class GirlsController extends Controller
         ]);
     }
 
-    function index3(Request $request)
-    {
-        return view('index3');
-    }
 
-    function index4(Request $request)
-    {
-        $ua = $request->header('User-Agent');
-        $ua = $request->server('HTTP_USER_AGENT');
-
-
-        $girls = Girl::select([
-            'id',
-            'name',
-            'main_image',
-            'sex',
-            'age',
-        ])
-            ->where('banned', '=', '0')
-            //       ->where('sex', '=', $anket->meet)
-            ->orderBy('created_at', 'DESC')
-            ->Paginate(16);
-        $url = $girls->url($girls->currentPage());
-
-        return view('index')->with([
-            'girls'  => $girls,
-            'events' => null,
-            'city'   => null,
-        ]);
-    }
-
-    function seach(Request $request)
+    function seach()
     {
 
-        $girls = null;
-        $AythUser = Auth::user();
-        if ($AythUser == null) {
-            return redirect('/login');
+        $userAuth = Auth::user();
+        if ($userAuth != null) {
+            $girls = $userAuth->girl()->get();
+            $girls = $girls[0];
+            //  $seachSettings = SearchSettings::select(['id'])
+            //     ->where("girl_id", "=", $girls->id)->first();
+            $seachSettings = $girls->seachsettings()->first();
+        } else {
+            if (isset($_COOKIE["laravel_session"])) {
+                $cookie = $_COOKIE["laravel_session"];
+                if ($cookie != null) {
+                    $seachSettings = SearchSettings::select(['*'])
+                        ->where("cookie", "=", $cookie)
+                        ->orderBy('updated_at', 'desc')
+                        ->first();
+                }
+            }
+
         }
 
-        $ayth_girl = Girl::select('id', 'user_id')
-            ->where('user_id', $AythUser->id)->first();
+        if (!isset($seachSettings) || $seachSettings == null) {
 
-        if ($ayth_girl == null) {
-            return null;
-        }
-
-
-        $seachSettings = $ayth_girl->seachsettings()->first();
-        if ($seachSettings == null) {
-            return null;
-        }
-
-
-        if ($seachSettings != null) {
-            $seachSettingInterest
-                = SeachSettingsType::select([
+            $girls = Girl::select([
                 'id',
-                'settings_id',
-                'setting_name',
-                'sett_id',
-            ])->where('settings_id',
-                $seachSettings->id)->get();
-
-            //  dump($seachSettingInterest);
+                'name',
+                'main_image',
+                'sex',
+                'age',
+            ])
+                ->where('banned', '=', '0')
+                //       ->where('sex', '=', $anket->meet)
+                ->orderBy('created_at', 'DESC')
+                ->Paginate(16);
+        } else {
+            $girls = null;
         }
 
-        //dump($seachSettingInterest);
-        //теперь формируем выборку
-        //образец запроса
-        //  $user = collect(DB::select('select * from users where phone like ?',
-        //        [$phone]))->first();
 
+        return response()->json($girls);
+    }
 
-        $qwertString
-            = "select * from girls girl left join girl_target girl_target on girl.id=girl_target.girl_id left join girl_interess girl_interest on girl.id=girl_interest.girl_id";
+    function index2(Request $request)
+    {
 
-        //
-
-        //        [$phone]))->first();
-
-
-        $where = " where girl.id is not null and girl.user_id is not null";
-
-        //возраст
-        if (isset($seachSettings->age_from)
-            && $seachSettings->age_from != null
-        ) {
-            $where .= " and girl.age>=$seachSettings->age_from";
-        }
-
-        if (isset($seachSettings->age_to)
-            && $seachSettings->age_to != null
-        ) {
-            $where .= " and girl.age<=$seachSettings->age_to";
-        }
-
-        $qwertString = $qwertString.$where;
-
-
-        $girls = DB::select($qwertString, []);
-
-
-        return $girls;
+        return view('index2');
     }
 
 

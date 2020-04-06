@@ -38,11 +38,10 @@ Route::get('/', function () {
 
 Route::get('/anket', 'GirlsController@index')->name('main');
 
-Route::get('/anket3', 'GirlsController@index3')->name('main3');
 
-Route::get('/anket3/search', 'GirlsController@seach')->name('seach');
+Route::get('/anket2', 'GirlsController@index2')->name('main2');
 
-Route::get('/anket4', 'GirlsController@index4')->name('main');
+Route::get('/seach', 'SeachController@seach');
 
 
 //создание анкеты
@@ -406,7 +405,6 @@ Route::get('/getargetslist', 'AdminController@gettargetslist');
 
 Route::get('/getinterestslist', 'AdminController@getinteresslist');
 
-Route::get('/seach', 'AnketController@seach');
 
 Route::get('/inseach', 'AnketController@inseach');
 
@@ -539,9 +537,6 @@ Route::get('/history', 'AnketController@history');
 //Route::get('/history', 'AnketController@historypage');
 
 Route::get('/gethistory', 'AnketController@history');
-
-
-Route::get('/seach', 'SeachController@index');
 
 
 //подмигивание

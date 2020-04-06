@@ -48,7 +48,6 @@
 
             </a>
         </div>
-        </div>
     @endforeach
 
 
@@ -98,6 +97,7 @@
         }
     </style>
     <br><br><br>    <br><br><br>
-    <?php echo $girls->render(); ?>
+
+    <?php  ?>
 
 @endsection
