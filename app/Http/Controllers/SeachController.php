@@ -65,15 +65,21 @@ class SeachController extends Controller
 
         $targets = $seachSettings->target()->get();
         foreach ($targets as $target) {
-         //      $girls->where('target_id', $target->id);
+            //      $girls->where('target_id', $target->id);
         }
 
         $interest = $seachSettings->interest()->get();
         foreach ($interest as $item) {
-         //        $girls->where('interest_id', $item->id);
+            //        $girls->where('interest_id', $item->id);
         }
 
+        //ÎÕÖÎÏ ĞÏÌÕŞÉØ ŞÉÓÌÏ
+        $count = $girls->count();
+        $pum_pages = intval($count / $this->limit);
+
+
         $girls->select('girls.*')->limit($this->limit);
+
 
         if (isset($request->page) && intval($request->page) != 1) {
             $girls->offset($this->limit);
@@ -81,6 +87,10 @@ class SeachController extends Controller
 
         $girls = $girls->get();
 
-        return response()->json($girls);
+        return response()->json([
+            'ankets'    => $girls,
+            'count'     => $count,
+            'num_pages' => $pum_pages,
+        ]);
     }
 }

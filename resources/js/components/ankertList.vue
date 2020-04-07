@@ -13,6 +13,7 @@
                 </div>
             </div>
         </div>
+        <a class="previous " v-if="page<numPages"><a v-on:click="loadNew">Загрузить еще</a></a>
     </div>
 </template>
 
@@ -26,7 +27,9 @@
         data() {
             return {
                 anketList: [],
-                page: 1
+                page: 1,
+                numPages: null,
+                count: 0,
             }
         },
         methods: {
@@ -34,7 +37,11 @@
             seach() {
                 console.log("seach");
                 axios.get('/seach').then((response) => {
-                    this.anketList = response.data;
+                    let data = response.data;
+                    this.anketList = data.ankets;
+                    this.numPages = data.num_pages;
+                    this.count = data.count;
+
                 })
             },
 
@@ -43,25 +50,29 @@
                     let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
 
                     if (bottomOfWindow) {
-                        this.page++;
-                        console.log(this.page);
-                        axios.get('/seach',
-                            {
-                                params:
-                                    {
-                                        page: this.page
-                                    }
-                            }
-                        ).then((response) => {
-                            //  this.anketList.push(response.data);
-                            let temp = response.data;
-                            for (let i = 0; i < temp.length; i++) {
-                                console.log(temp[i]);
-                                this.anketList.push(temp[i]);
-                            }
-                        })
+                        this.loadNew();
                     }
                 }
+            },
+            loadNew() {
+                this.page++;
+                console.log(this.page);
+                axios.get('/seach',
+                    {
+                        params:
+                            {
+                                page: this.page
+                            }
+                    }
+                ).then((response) => {
+                    //  this.anketList.push(response.data);
+                    let data = response.data;
+                    let temp = data.ankets;
+                    for (let i = 0; i < temp.length; i++) {
+                        console.log(temp[i]);
+                        this.anketList.push(temp[i]);
+                    }
+                })
             }
         }
     }
@@ -131,5 +142,11 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         color: white;
+    }
+
+    .previous {
+        background-color: #f1f1f1;
+        color: black;
+        cursor: pointer;
     }
 </style>

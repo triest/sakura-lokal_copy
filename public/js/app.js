@@ -2829,6 +2829,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'edit',
   mounted: function mounted() {
@@ -2838,7 +2839,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       anketList: [],
-      page: 1
+        page: 1,
+        numPages: null,
+        count: 0
     };
   },
   methods: {
@@ -2847,7 +2850,10 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log("seach");
       axios.get('/seach').then(function (response) {
-        _this.anketList = response.data;
+          var data = response.data;
+          _this.anketList = data.ankets;
+          _this.numPages = data.num_pages;
+          _this.count = data.count;
       });
     },
     scroll: function scroll() {
@@ -2857,24 +2863,30 @@ __webpack_require__.r(__webpack_exports__);
         var bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
 
         if (bottomOfWindow) {
-          _this2.page++;
-          console.log(_this2.page);
-          axios.get('/seach', {
-            params: {
-              page: _this2.page
-            }
-          }).then(function (response) {
-            //  this.anketList.push(response.data);
-            var temp = response.data;
-
-            for (var i = 0; i < temp.length; i++) {
-              console.log(temp[i]);
-
-              _this2.anketList.push(temp[i]);
-            }
-          });
+            _this2.loadNew();
         }
       };
+    },
+      loadNew: function loadNew() {
+          var _this3 = this;
+
+          this.page++;
+          console.log(this.page);
+          axios.get('/seach', {
+              params: {
+                  page: this.page
+              }
+          }).then(function (response) {
+              //  this.anketList.push(response.data);
+              var data = response.data;
+              var temp = data.ankets;
+
+              for (var i = 0; i < temp.length; i++) {
+                  console.log(temp[i]);
+
+                  _this3.anketList.push(temp[i]);
+              }
+          });
     }
   }
 });
@@ -12566,7 +12578,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n*[data-v-19f1f812] {\n    box-sizing: border-box;\n}\n.circle[data-v-19f1f812]:before {\n    content: ' \\25CF';\n    font-size: 20px;\n    margin: 0 auto;\n    position: absolute;\n    bottom: 0;\n    background: rgb(0, 0, 0); /* Fallback color */\n    background: rgba(145, 100, 153, 0); /* Black background with 0.5 opacity */\n    color: #20f100;\n    width: 100%;\n    padding: 10px;\n}\nbody[data-v-19f1f812] {\n    font-family: Arial;\n    font-size: 17px;\n}\n.container[data-v-19f1f812] {\n    position: relative;\n    max-width: 800px;\n    margin: 0 auto;\n}\n.container img[data-v-19f1f812] {\n    vertical-align: middle;\n}\n.container .content[data-v-19f1f812] {\n    position: absolute;\n    bottom: 0;\n    background: rgb(0, 0, 0); /* Fallback color */\n    background: rgba(0, 0, 0, 0); /* Black background with 0.5 opacity */\n    color: #f1f1f1;\n    width: 100%;\n    padding: 0px;\n    margin: 115px;\n}\n.cell[data-v-19f1f812] {\n    position: absolute;\n    top: 120px;\n    right: 0;\n    bottom: 30px;\n    left: 0;\n    box-sizing: border-box;\n    display: block;\n    padding: 20px;\n    width: 100%;\n    color: white;\n    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;\n}\n.cell-overflow[data-v-19f1f812] {\n    box-sizing: border-box;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    color: white;\n}\n", ""]);
+        exports.push([module.i, "\n*[data-v-19f1f812] {\n    box-sizing: border-box;\n}\n.circle[data-v-19f1f812]:before {\n    content: ' \\25CF';\n    font-size: 20px;\n    margin: 0 auto;\n    position: absolute;\n    bottom: 0;\n    background: rgb(0, 0, 0); /* Fallback color */\n    background: rgba(145, 100, 153, 0); /* Black background with 0.5 opacity */\n    color: #20f100;\n    width: 100%;\n    padding: 10px;\n}\nbody[data-v-19f1f812] {\n    font-family: Arial;\n    font-size: 17px;\n}\n.container[data-v-19f1f812] {\n    position: relative;\n    max-width: 800px;\n    margin: 0 auto;\n}\n.container img[data-v-19f1f812] {\n    vertical-align: middle;\n}\n.container .content[data-v-19f1f812] {\n    position: absolute;\n    bottom: 0;\n    background: rgb(0, 0, 0); /* Fallback color */\n    background: rgba(0, 0, 0, 0); /* Black background with 0.5 opacity */\n    color: #f1f1f1;\n    width: 100%;\n    padding: 0px;\n    margin: 115px;\n}\n.cell[data-v-19f1f812] {\n    position: absolute;\n    top: 120px;\n    right: 0;\n    bottom: 30px;\n    left: 0;\n    box-sizing: border-box;\n    display: block;\n    padding: 20px;\n    width: 100%;\n    color: white;\n    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;\n}\n.cell-overflow[data-v-19f1f812] {\n    box-sizing: border-box;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    color: white;\n}\n.previous[data-v-19f1f812] {\n    background-color: #f1f1f1;\n    color: black;\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -57009,37 +57021,47 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.anketList, function(item) {
-      return _c("div", [
-        _c(
-          "div",
-          { staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-3 thumb" },
-          [
-            _c("a", { attrs: { href: /anket/ + item.id } }, [
-              _c("img", {
-                attrs: {
-                  width: "200",
-                  height: "200",
-                  src: "images/upload/" + item.main_image
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "cell" }, [
-              _c("div", { staticClass: "cell-overflow" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(item.name) +
-                    "\n                "
-                )
-              ]),
-              _vm._v("\n                " + _vm._s(item.age) + "\n            ")
-            ])
-          ]
-        )
-      ])
-    }),
-    0
+      [
+          _vm._l(_vm.anketList, function (item) {
+              return _c("div", [
+                  _c(
+                      "div",
+                      {staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-3 thumb"},
+                      [
+                          _c("a", {attrs: {href: /anket/ + item.id}}, [
+                              _c("img", {
+                                  attrs: {
+                                      width: "200",
+                                      height: "200",
+                                      src: "images/upload/" + item.main_image
+                                  }
+                              })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", {staticClass: "cell"}, [
+                              _c("div", {staticClass: "cell-overflow"}, [
+                                  _vm._v(
+                                      "\n                    " +
+                                      _vm._s(item.name) +
+                                      "\n                "
+                                  )
+                              ]),
+                              _vm._v(
+                                  "\n                " + _vm._s(item.age) + "\n            "
+                              )
+                          ])
+                      ]
+                  )
+              ])
+          }),
+          _vm._v(" "),
+          _vm.page < _vm.numPages
+              ? _c("a", {staticClass: "previous "}, [
+                  _c("a", {on: {click: _vm.loadNew}}, [_vm._v("Загрузить еще")])
+              ])
+              : _vm._e()
+      ],
+      2
   )
 }
 var staticRenderFns = []
