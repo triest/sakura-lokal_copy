@@ -21,10 +21,12 @@
         name: 'edit',
         mounted() {
             this.seach();
+            this.scroll();
         },
         data() {
             return {
-                anketList: []
+                anketList: [],
+                page: 1
             }
         },
         methods: {
@@ -34,6 +36,32 @@
                 axios.get('/seach').then((response) => {
                     this.anketList = response.data;
                 })
+            },
+
+            scroll() {
+                window.onscroll = () => {
+                    let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+
+                    if (bottomOfWindow) {
+                        this.page++;
+                        console.log(this.page);
+                        axios.get('/seach',
+                            {
+                                params:
+                                    {
+                                        page: this.page
+                                    }
+                            }
+                        ).then((response) => {
+                            //  this.anketList.push(response.data);
+                            let temp = response.data;
+                            for (let i = 0; i < temp.length; i++) {
+                                console.log(temp[i]);
+                                this.anketList.push(temp[i]);
+                            }
+                        })
+                    }
+                }
             }
         }
     }
