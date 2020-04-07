@@ -16,7 +16,7 @@
                                 <form id="inputForm" name="inputForm">
                                     <p>
                                         <label>Ищу:</label>
-                                        <select id="meet" class="meet" style="width: 100px" name="meet" v-model="meet">
+                                        <select id="meet" class="meet" name="meet" v-model="meet">
                                             <option value="famele">Девушку</option>
                                             <option value="male">Парня</option>
                                         </select>
@@ -35,23 +35,33 @@
                                     <label>Цель:</label>
 
                                     <div v-for="item in targets">
-                                        <input type="checkbox" :id="item.id" :value="item.id" v-model="select2targets"
-                                               :checked="selected_targets.includes(item.id)">
+                                        <label class="switch">
+                                            <input type="checkbox" :id="item.id" :value="item.id"
+                                                   v-model="select2targets">
+                                            <span class="slider round"></span>
+                                        </label>
                                         {{item.name}}
+
                                     </div>
 
-                                    <label>Bynthtds:</label>
+                                    <label>Интересы:</label>
 
                                     <div v-for="item in interest">
-                                        <input type="checkbox" :id="item.id" :value="item.id" v-model="select2inters"
-                                               :checked="selected_interest.includes(item.id)">
+                                        <label class="switch">
+                                            <input type="checkbox" :id="item.id" :value="item.id"
+                                                   v-model="select2inters">
+                                            <span class="slider round"></span>
+                                        </label>
                                         {{item.name}}
                                     </div>
 
                                     <label>Дети:</label>
 
                                     <div v-for="item in children">
-                                        <input type="radio" :value="item.id" v-model="select2children"/>
+                                        <label class="switch">
+                                            <input type="radio" :value="item.id" v-model="select2children"/>
+                                            <span class="slider round"></span>
+                                        </label>
                                         {{item.name}}
                                     </div>
                                 </form>
@@ -59,14 +69,14 @@
                         </div>
 
 
-                            <slot name="footer">
-                                <button class="btn btn-primary" v-on:click="saveChange()">
-                                    Найти
-                                </button>
-                                <button class="btn btn-secondary" v-on:click="close()">
-                                    Закрыть
-                                </button>
-                            </slot>
+                        <slot name="footer">
+                            <button class="btn btn-primary" v-on:click="saveChange()">
+                                Найти
+                            </button>
+                            <button class="btn btn-secondary" v-on:click="close()">
+                                Закрыть
+                            </button>
+                        </slot>
 
                     </div>
 
@@ -93,7 +103,8 @@
                 meet: "",
                 children: [],
                 select2targets: [],
-                select2inters: []
+                select2inters: [],
+                seachSettings: null
             }
         },
         methods: {
@@ -116,6 +127,7 @@
                     targets: this.select2targets
                 }).then((response) => {
                     //this.$emit('closeSeachModal')
+                    this.getSettings();
                 });
             },
             getSettings() {
@@ -123,14 +135,18 @@
                     .then((response) => {
                         let res = response.data;
                         this.targets = res.targets;
-                        this.selected_targets = res.selectedTargets;
+                        this.select2targets = res.selectedTargets;
                         this.interest = res.interests;
-                        this.selected_interest = res.selectedInterest;
                         this.children = res.chidren;
 
                         this.selected_clildren = res.sechSettings.children;
                         this.select2children = this.selected_clildren;
                         console.log(this.selected_clildren)
+                        this.seachSettings = res;
+                        this.from = res.sechSettings.age_from;
+                        this.to = res.sechSettings.age_to;
+                        this.meet = res.sechSettings.meet;
+                        console.log(this.selected_targets)
                     })
 
             }
@@ -236,7 +252,7 @@
         top: 1px;
         left: 1px;
         width: 26px;
-        height: 26px;
+        height: 13px;
         background-color: transparent;
         border-radius: 50%;
         box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
@@ -251,4 +267,5 @@
         left: 20px;
         box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);
     }
+
 </style>

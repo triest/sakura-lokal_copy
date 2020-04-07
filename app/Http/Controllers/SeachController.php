@@ -54,7 +54,7 @@ class SeachController extends Controller
 
             return response()->json($girls);
         } else {
-            //    dump($seachSettings);
+
         }
 
         $girls = DB::table('girls');
@@ -66,7 +66,7 @@ class SeachController extends Controller
         if ($seachSettings->age_from != null) {
             $girls->where('age', '>=', $seachSettings->age_from);
         }
-        //dump($seachSettings);
+
         if ($seachSettings->age_to != null) {
             $girls->where('age', '<=', $seachSettings->age_to);
         }
@@ -187,7 +187,8 @@ class SeachController extends Controller
             $targets_array_temp = $sechSettings->target()->get();
             $targets_array = array();
             foreach ($targets_array_temp as $item) {
-                array_push($targets_array, $item->id);
+                //     array_push($targets_array, $item->id);
+                $targets_array[] = $item->id;
             }
 
         }
