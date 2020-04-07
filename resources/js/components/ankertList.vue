@@ -148,5 +148,8 @@
         background-color: #f1f1f1;
         color: black;
         cursor: pointer;
+        /*  position: absolute;*/
+        width: 50%;
+        margin: 50%;
     }
 </style>

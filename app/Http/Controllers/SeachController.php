@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class SeachController extends Controller
 {
 
-    private $limit = 16;
+    private $limit = 4;
 
     //
     public function seach(Request $request)
@@ -81,8 +81,10 @@ class SeachController extends Controller
         $girls->select('girls.*')->limit($this->limit);
 
 
-        if (isset($request->page) && intval($request->page) != 1) {
-            $girls->offset($this->limit);
+        if (isset($request->page) && $request->page != null
+            && intval($request->page) != 1
+        ) {
+            $girls->offset($this->limit * (intval($request->page) - 1));
         }
 
         $girls = $girls->get();
