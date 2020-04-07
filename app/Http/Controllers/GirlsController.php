@@ -524,7 +524,7 @@ class GirlsController extends Controller
         }
     }
 
-    public function SendSMS(
+    public static function SendSMS(
         $phone,
         $text
     ) {
@@ -565,8 +565,7 @@ class GirlsController extends Controller
     }
 
     //get ip
-    public
-    function getIp()
+    public static function getIp()
     {
         foreach (
             array(

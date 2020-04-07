@@ -2,8 +2,8 @@
     <div>
 
         <img height="20" src="/images/heart.png" v-on:mouseover="triger()" v-on:mouseleave="cleare()"> {{likesNunber}}
-
-        <button class="btn-primary" v-on:click="openSeachModal()">Настроить поиск</button>
+        <br>
+        <button class="btn btn-primary" v-on:click="openSeachModal()">Настроить поиск</button>
         <br>
         <b><a href="/messages">Сообщения
             <div v-if="numberUnreaded>0">({{numberUnreaded}})</div>

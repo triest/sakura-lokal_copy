@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <div v-for="item in anketList">
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-3 thumb">
                 <a :href="/anket/+item.id">
@@ -18,6 +19,7 @@
 </template>
 
 <script>
+
     export default {
         name: 'edit',
         mounted() {

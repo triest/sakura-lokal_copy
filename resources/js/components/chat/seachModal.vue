@@ -7,7 +7,7 @@
 
                         <div class="modal-header">
                             <slot name="header">
-                                Поиск1:
+                                Поиск:
                             </slot>
                         </div>
 
@@ -58,16 +58,16 @@
                             </slot>
                         </div>
 
-                        <div class="modal-footer">
+
                             <slot name="footer">
-                                <button class="modal-default-button" v-on:click="saveChange()">
+                                <button class="btn btn-primary" v-on:click="saveChange()">
                                     Найти
                                 </button>
-                                <button class="modal-default-button" v-on:click="close()">
+                                <button class="btn btn-secondary" v-on:click="close()">
                                     Закрыть
                                 </button>
                             </slot>
-                        </div>
+
                     </div>
 
                 </div>

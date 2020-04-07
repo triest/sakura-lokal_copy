@@ -2830,6 +2830,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'edit',
   mounted: function mounted() {
@@ -59839,329 +59840,334 @@ var render = function() {
         [
           _c("div", { staticClass: "modal-mask" }, [
             _c("div", { staticClass: "modal-wrapper" }, [
-              _c("div", { staticClass: "modal-container" }, [
                 _c(
-                  "div",
-                  { staticClass: "modal-header" },
-                  [
-                    _vm._t("header", [
-                      _vm._v(
-                        "\n                            Поиск1:\n                        "
-                      )
-                    ])
-                  ],
-                  2
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "modal-body" },
-                  [
-                    _vm._t("body", [
-                      _c(
-                        "form",
-                        { attrs: { id: "inputForm", name: "inputForm" } },
-                        [
-                          _c("p", [
-                            _c("label", [_vm._v("Ищу:")]),
+                    "div",
+                    {staticClass: "modal-container"},
+                    [
+                        _c(
+                            "div",
+                            {staticClass: "modal-header"},
+                            [
+                                _vm._t("header", [
+                                    _vm._v(
+                                        "\n                            Поиск:\n                        "
+                                    )
+                                ])
+                            ],
+                            2
+                        ),
+                        _vm._v(" "),
+                        _c(
+                            "div",
+                            {staticClass: "modal-body"},
+                            [
+                                _vm._t("body", [
+                                    _c(
+                                        "form",
+                                        {attrs: {id: "inputForm", name: "inputForm"}},
+                                        [
+                                            _c("p", [
+                                                _c("label", [_vm._v("Ищу:")]),
+                                                _vm._v(" "),
+                                                _c(
+                                                    "select",
+                                                    {
+                                                        directives: [
+                                                            {
+                                                                name: "model",
+                                                                rawName: "v-model",
+                                                                value: _vm.meet,
+                                                                expression: "meet"
+                                                            }
+                                                        ],
+                                                        staticClass: "meet",
+                                                        staticStyle: {width: "100px"},
+                                                        attrs: {id: "meet", name: "meet"},
+                                                        on: {
+                                                            change: function ($event) {
+                                                                var $$selectedVal = Array.prototype.filter
+                                                                    .call($event.target.options, function (
+                                                                        o
+                                                                    ) {
+                                                                        return o.selected
+                                                                    })
+                                                                    .map(function (o) {
+                                                                        var val =
+                                                                            "_value" in o ? o._value : o.value
+                                                                        return val
+                                                                    })
+                                                                _vm.meet = $event.target.multiple
+                                                                    ? $$selectedVal
+                                                                    : $$selectedVal[0]
+                                                            }
+                                                        }
+                                                    },
+                                                    [
+                                                        _c("option", {attrs: {value: "famele"}}, [
+                                                            _vm._v("Девушку")
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _c("option", {attrs: {value: "male"}}, [
+                                                            _vm._v("Парня")
+                                                        ])
+                                                    ]
+                                                )
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("p", [
+                                                _c("label", [_vm._v("Возраст:")]),
+                                                _vm._v(" от "),
+                                                _c("input", {
+                                                    directives: [
+                                                        {
+                                                            name: "model",
+                                                            rawName: "v-model",
+                                                            value: _vm.from,
+                                                            expression: "from"
+                                                        }
+                                                    ],
+                                                    staticStyle: {width: "50px"},
+                                                    attrs: {
+                                                        type: "number",
+                                                        name: "from",
+                                                        id: "from",
+                                                        min: "18",
+                                                        onkeypress: "return isNumber(event)"
+                                                    },
+                                                    domProps: {value: _vm.from},
+                                                    on: {
+                                                        input: function ($event) {
+                                                            if ($event.target.composing) {
+                                                                return
+                                                            }
+                                                            _vm.from = $event.target.value
+                                                        }
+                                                    }
+                                                }),
+                                                _vm._v(
+                                                    "\n                                    до "
+                                                ),
+                                                _c("input", {
+                                                    directives: [
+                                                        {
+                                                            name: "model",
+                                                            rawName: "v-model",
+                                                            value: _vm.to,
+                                                            expression: "to"
+                                                        }
+                                                    ],
+                                                    staticStyle: {width: "50px"},
+                                                    attrs: {
+                                                        type: "number",
+                                                        name: "to",
+                                                        id: "to",
+                                                        min: "18",
+                                                        onkeypress: "return isNumber(event)"
+                                                    },
+                                                    domProps: {value: _vm.to},
+                                                    on: {
+                                                        input: function ($event) {
+                                                            if ($event.target.composing) {
+                                                                return
+                                                            }
+                                                            _vm.to = $event.target.value
+                                                        }
+                                                    }
+                                                })
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("label", [_vm._v("Цель:")]),
+                                            _vm._v(" "),
+                                            _vm._l(_vm.targets, function (item) {
+                                                return _c("div", [
+                                                    _c("input", {
+                                                        directives: [
+                                                            {
+                                                                name: "model",
+                                                                rawName: "v-model",
+                                                                value: _vm.select2targets,
+                                                                expression: "select2targets"
+                                                            }
+                                                        ],
+                                                        attrs: {type: "checkbox", id: item.id},
+                                                        domProps: {
+                                                            value: item.id,
+                                                            checked: _vm.selected_targets.includes(
+                                                                item.id
+                                                            ),
+                                                            checked: Array.isArray(_vm.select2targets)
+                                                                ? _vm._i(_vm.select2targets, item.id) > -1
+                                                                : _vm.select2targets
+                                                        },
+                                                        on: {
+                                                            change: function ($event) {
+                                                                var $$a = _vm.select2targets,
+                                                                    $$el = $event.target,
+                                                                    $$c = $$el.checked ? true : false
+                                                                if (Array.isArray($$a)) {
+                                                                    var $$v = item.id,
+                                                                        $$i = _vm._i($$a, $$v)
+                                                                    if ($$el.checked) {
+                                                                        $$i < 0 &&
+                                                                        (_vm.select2targets = $$a.concat([
+                                                                            $$v
+                                                                        ]))
+                                                                    } else {
+                                                                        $$i > -1 &&
+                                                                        (_vm.select2targets = $$a
+                                                                            .slice(0, $$i)
+                                                                            .concat($$a.slice($$i + 1)))
+                                                                    }
+                                                                } else {
+                                                                    _vm.select2targets = $$c
+                                                                }
+                                                            }
+                                                        }
+                                                    }),
+                                                    _vm._v(
+                                                        "\n                                    " +
+                                                        _vm._s(item.name) +
+                                                        "\n                                "
+                                                    )
+                                                ])
+                                            }),
+                                            _vm._v(" "),
+                                            _c("label", [_vm._v("Bynthtds:")]),
+                                            _vm._v(" "),
+                                            _vm._l(_vm.interest, function (item) {
+                                                return _c("div", [
+                                                    _c("input", {
+                                                        directives: [
+                                                            {
+                                                                name: "model",
+                                                                rawName: "v-model",
+                                                                value: _vm.select2inters,
+                                                                expression: "select2inters"
+                                                            }
+                                                        ],
+                                                        attrs: {type: "checkbox", id: item.id},
+                                                        domProps: {
+                                                            value: item.id,
+                                                            checked: _vm.selected_interest.includes(
+                                                                item.id
+                                                            ),
+                                                            checked: Array.isArray(_vm.select2inters)
+                                                                ? _vm._i(_vm.select2inters, item.id) > -1
+                                                                : _vm.select2inters
+                                                        },
+                                                        on: {
+                                                            change: function ($event) {
+                                                                var $$a = _vm.select2inters,
+                                                                    $$el = $event.target,
+                                                                    $$c = $$el.checked ? true : false
+                                                                if (Array.isArray($$a)) {
+                                                                    var $$v = item.id,
+                                                                        $$i = _vm._i($$a, $$v)
+                                                                    if ($$el.checked) {
+                                                                        $$i < 0 &&
+                                                                        (_vm.select2inters = $$a.concat([
+                                                                            $$v
+                                                                        ]))
+                                                                    } else {
+                                                                        $$i > -1 &&
+                                                                        (_vm.select2inters = $$a
+                                                                            .slice(0, $$i)
+                                                                            .concat($$a.slice($$i + 1)))
+                                                                    }
+                                                                } else {
+                                                                    _vm.select2inters = $$c
+                                                                }
+                                                            }
+                                                        }
+                                                    }),
+                                                    _vm._v(
+                                                        "\n                                    " +
+                                                        _vm._s(item.name) +
+                                                        "\n                                "
+                                                    )
+                                                ])
+                                            }),
+                                            _vm._v(" "),
+                                            _c("label", [_vm._v("Дети:")]),
+                                            _vm._v(" "),
+                                            _vm._l(_vm.children, function (item) {
+                                                return _c("div", [
+                                                    _c("input", {
+                                                        directives: [
+                                                            {
+                                                                name: "model",
+                                                                rawName: "v-model",
+                                                                value: _vm.select2children,
+                                                                expression: "select2children"
+                                                            }
+                                                        ],
+                                                        attrs: {type: "radio"},
+                                                        domProps: {
+                                                            value: item.id,
+                                                            checked: _vm._q(
+                                                                _vm.select2children,
+                                                                item.id
+                                                            )
+                                                        },
+                                                        on: {
+                                                            change: function ($event) {
+                                                                _vm.select2children = item.id
+                                                            }
+                                                        }
+                                                    }),
+                                                    _vm._v(
+                                                        "\n                                    " +
+                                                        _vm._s(item.name) +
+                                                        "\n                                "
+                                                    )
+                                                ])
+                                            })
+                                        ],
+                                        2
+                                    )
+                                ])
+                            ],
+                            2
+                        ),
+                        _vm._v(" "),
+                        _vm._t("footer", [
+                            _c(
+                                "button",
+                                {
+                                    staticClass: "btn btn-primary",
+                                    on: {
+                                        click: function ($event) {
+                                            return _vm.saveChange()
+                                        }
+                                    }
+                                },
+                                [
+                                    _vm._v(
+                                        "\n                                Найти\n                            "
+                                    )
+                                ]
+                            ),
                             _vm._v(" "),
                             _c(
-                              "select",
-                              {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.meet,
-                                    expression: "meet"
-                                  }
-                                ],
-                                staticClass: "meet",
-                                staticStyle: { width: "100px" },
-                                attrs: { id: "meet", name: "meet" },
-                                on: {
-                                  change: function($event) {
-                                    var $$selectedVal = Array.prototype.filter
-                                      .call($event.target.options, function(o) {
-                                        return o.selected
-                                      })
-                                      .map(function(o) {
-                                        var val =
-                                          "_value" in o ? o._value : o.value
-                                        return val
-                                      })
-                                    _vm.meet = $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  }
-                                }
-                              },
-                              [
-                                _c("option", { attrs: { value: "famele" } }, [
-                                  _vm._v("Девушку")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "male" } }, [
-                                  _vm._v("Парня")
-                                ])
-                              ]
+                                "button",
+                                {
+                                    staticClass: "btn btn-secondary",
+                                    on: {
+                                        click: function ($event) {
+                                            return _vm.close()
+                                        }
+                                    }
+                                },
+                                [
+                                    _vm._v(
+                                        "\n                                Закрыть\n                            "
+                                    )
+                                ]
                             )
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _c("label", [_vm._v("Возраст:")]),
-                            _vm._v(" от "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.from,
-                                  expression: "from"
-                                }
-                              ],
-                              staticStyle: { width: "50px" },
-                              attrs: {
-                                type: "number",
-                                name: "from",
-                                id: "from",
-                                min: "18",
-                                onkeypress: "return isNumber(event)"
-                              },
-                              domProps: { value: _vm.from },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.from = $event.target.value
-                                }
-                              }
-                            }),
-                            _vm._v("\n                                    до "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.to,
-                                  expression: "to"
-                                }
-                              ],
-                              staticStyle: { width: "50px" },
-                              attrs: {
-                                type: "number",
-                                name: "to",
-                                id: "to",
-                                min: "18",
-                                onkeypress: "return isNumber(event)"
-                              },
-                              domProps: { value: _vm.to },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.to = $event.target.value
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("label", [_vm._v("Цель:")]),
-                          _vm._v(" "),
-                          _vm._l(_vm.targets, function(item) {
-                            return _c("div", [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.select2targets,
-                                    expression: "select2targets"
-                                  }
-                                ],
-                                attrs: { type: "checkbox", id: item.id },
-                                domProps: {
-                                  value: item.id,
-                                  checked: _vm.selected_targets.includes(
-                                    item.id
-                                  ),
-                                  checked: Array.isArray(_vm.select2targets)
-                                    ? _vm._i(_vm.select2targets, item.id) > -1
-                                    : _vm.select2targets
-                                },
-                                on: {
-                                  change: function($event) {
-                                    var $$a = _vm.select2targets,
-                                      $$el = $event.target,
-                                      $$c = $$el.checked ? true : false
-                                    if (Array.isArray($$a)) {
-                                      var $$v = item.id,
-                                        $$i = _vm._i($$a, $$v)
-                                      if ($$el.checked) {
-                                        $$i < 0 &&
-                                          (_vm.select2targets = $$a.concat([
-                                            $$v
-                                          ]))
-                                      } else {
-                                        $$i > -1 &&
-                                          (_vm.select2targets = $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1)))
-                                      }
-                                    } else {
-                                      _vm.select2targets = $$c
-                                    }
-                                  }
-                                }
-                              }),
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(item.name) +
-                                  "\n                                "
-                              )
-                            ])
-                          }),
-                          _vm._v(" "),
-                          _c("label", [_vm._v("Bynthtds:")]),
-                          _vm._v(" "),
-                          _vm._l(_vm.interest, function(item) {
-                            return _c("div", [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.select2inters,
-                                    expression: "select2inters"
-                                  }
-                                ],
-                                attrs: { type: "checkbox", id: item.id },
-                                domProps: {
-                                  value: item.id,
-                                  checked: _vm.selected_interest.includes(
-                                    item.id
-                                  ),
-                                  checked: Array.isArray(_vm.select2inters)
-                                    ? _vm._i(_vm.select2inters, item.id) > -1
-                                    : _vm.select2inters
-                                },
-                                on: {
-                                  change: function($event) {
-                                    var $$a = _vm.select2inters,
-                                      $$el = $event.target,
-                                      $$c = $$el.checked ? true : false
-                                    if (Array.isArray($$a)) {
-                                      var $$v = item.id,
-                                        $$i = _vm._i($$a, $$v)
-                                      if ($$el.checked) {
-                                        $$i < 0 &&
-                                          (_vm.select2inters = $$a.concat([
-                                            $$v
-                                          ]))
-                                      } else {
-                                        $$i > -1 &&
-                                          (_vm.select2inters = $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1)))
-                                      }
-                                    } else {
-                                      _vm.select2inters = $$c
-                                    }
-                                  }
-                                }
-                              }),
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(item.name) +
-                                  "\n                                "
-                              )
-                            ])
-                          }),
-                          _vm._v(" "),
-                          _c("label", [_vm._v("Дети:")]),
-                          _vm._v(" "),
-                          _vm._l(_vm.children, function(item) {
-                            return _c("div", [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.select2children,
-                                    expression: "select2children"
-                                  }
-                                ],
-                                attrs: { type: "radio" },
-                                domProps: {
-                                  value: item.id,
-                                  checked: _vm._q(_vm.select2children, item.id)
-                                },
-                                on: {
-                                  change: function($event) {
-                                    _vm.select2children = item.id
-                                  }
-                                }
-                              }),
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(item.name) +
-                                  "\n                                "
-                              )
-                            ])
-                          })
-                        ],
-                        2
-                      )
-                    ])
-                  ],
-                  2
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "modal-footer" },
-                  [
-                    _vm._t("footer", [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "modal-default-button",
-                          on: {
-                            click: function($event) {
-                              return _vm.saveChange()
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Найти\n                            "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "modal-default-button",
-                          on: {
-                            click: function($event) {
-                              return _vm.close()
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Закрыть\n                            "
-                          )
-                        ]
-                      )
-                    ])
-                  ],
-                  2
+                        ])
+                    ],
+                    2
                 )
-              ])
             ])
           ])
         ]
@@ -62293,11 +62299,13 @@ var render = function() {
           }
         }
       }),
-      _vm._v(" " + _vm._s(_vm.likesNunber) + "\n\n    "),
+        _vm._v(" " + _vm._s(_vm.likesNunber) + "\n    "),
+        _c("br"),
+        _vm._v(" "),
       _c(
         "button",
         {
-          staticClass: "btn-primary",
+            staticClass: "btn btn-primary",
           on: {
             click: function($event) {
               return _vm.openSeachModal()
