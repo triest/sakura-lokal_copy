@@ -5637,11 +5637,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   name: 'modal',
@@ -5690,6 +5685,7 @@ __webpack_require__.r(__webpack_exports__);
         var res = response.data;
         _this2.targets = res.targets;
         _this2.select2targets = res.selectedTargets;
+          _this2.select2inters = res.selectedInterest;
         _this2.interest = res.interests;
         _this2.children = res.chidren;
         _this2.selected_clildren = res.sechSettings.children;
@@ -59865,19 +59861,6 @@ var render = function() {
                 [
                   _c(
                     "div",
-                    { staticClass: "modal-header" },
-                    [
-                      _vm._t("header", [
-                        _vm._v(
-                          "\n                            Поиск:\n                        "
-                        )
-                      ])
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
                     { staticClass: "modal-body" },
                     [
                       _vm._t("body", [
@@ -60042,7 +60025,22 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(" "),
-                                  _c("span", { staticClass: "slider round" })
+                                    _c(
+                                        "label",
+                                        {
+                                            staticClass: "onoffswitch-label",
+                                            attrs: {for: "myonoffswitch"}
+                                        },
+                                        [
+                                            _c("span", {
+                                                staticClass: "onoffswitch-inner"
+                                            }),
+                                            _vm._v(" "),
+                                            _c("span", {
+                                                staticClass: "onoffswitch-switch"
+                                            })
+                                        ]
+                                    )
                                 ]),
                                 _vm._v(
                                   "\n                                    " +

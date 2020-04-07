@@ -36,7 +36,7 @@ Route::get('/', function () {
     return view('welcome2');
 })->name('welcome');
 
-Route::get('/anket', 'GirlsController@index')->name('main');
+Route::get('/anket', 'GirlsController@index2')->name('main');
 
 
 Route::get('/anket2', 'GirlsController@index2')->name('main2');

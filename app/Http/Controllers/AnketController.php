@@ -64,7 +64,7 @@ class AnketController extends Controller
         $phone = $user->phone;
 
         // dump($phone);
-        return view('createAnket')
+        return view('anket.create')
             ->with(
                 [
                     'username'      => $user->name,
@@ -335,7 +335,7 @@ class AnketController extends Controller
         $relations = Relationh::select(['id', 'name'])->get();
 
 
-        return view('editGirl')->with([
+        return view('anket.edit')->with([
             'username'              => $user->name,
             'girl'                  => $girl,
             'phone'                 => $phone,
@@ -1168,8 +1168,6 @@ class AnketController extends Controller
             return \response()->json("false");
         }
     }
-
-
 
 
     public function getankets(Request $request)

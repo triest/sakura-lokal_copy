@@ -4,13 +4,6 @@
             <div class="modal-mask">
                 <div class="modal-wrapper">
                     <div class="modal-container">
-
-                        <div class="modal-header">
-                            <slot name="header">
-                                Поиск:
-                            </slot>
-                        </div>
-
                         <div class="modal-body">
                             <slot name="body">
                                 <form id="inputForm" name="inputForm">
@@ -29,16 +22,18 @@
                                         до <input type="number" name="to" id="to" min="18"
                                                   v-model="to"
                                                   onkeypress="return isNumber(event)" style="width: 50px">
-
                                     </p>
 
                                     <label>Цель:</label>
-
                                     <div v-for="item in targets">
                                         <label class="switch">
                                             <input type="checkbox" :id="item.id" :value="item.id"
                                                    v-model="select2targets">
-                                            <span class="slider round"></span>
+                                            <label class="onoffswitch-label" for="myonoffswitch">
+                                                <span class="onoffswitch-inner"></span>
+                                                <span class="onoffswitch-switch"></span>
+                                            </label>
+
                                         </label>
                                         {{item.name}}
 
@@ -136,6 +131,7 @@
                         let res = response.data;
                         this.targets = res.targets;
                         this.select2targets = res.selectedTargets;
+                        this.select2inters = res.selectedInterest;
                         this.interest = res.interests;
                         this.children = res.chidren;
 

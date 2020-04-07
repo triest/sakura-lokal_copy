@@ -457,7 +457,7 @@ class GirlsController extends Controller
 
         $url = $request->header('referer');
 
-        return view('girlView')->with([
+        return view('anket.view')->with([
             'girl'           => $girl,
             'images'         => $images,
             'privatephotos'  => $privatephoto,
