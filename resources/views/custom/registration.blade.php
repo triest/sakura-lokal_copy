@@ -6,7 +6,7 @@
 
 
     <div class='container text--center join--title'>
-        <h1>Регистрация аккаунта</h1>
+        <h1>Введите данные для входа</h1>
     </div>
     <div class='wrapper wrapper--login'>
 
@@ -655,9 +655,9 @@
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
 
-        var clouseModal=document.getElementById("clouseModal");
+        var clouseModal = document.getElementById("clouseModal");
 
-        clouseModal.onclick= function () {
+        clouseModal.onclick = function () {
             modal.style.display = "none";
 
         };

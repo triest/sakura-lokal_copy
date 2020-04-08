@@ -264,7 +264,7 @@ class GirlsController extends Controller
         ])->where('id', $id)->first();
 
         if ($girl == null) {
-            return redirect('/anket');
+            return view('anket.404');
         }
         $images = $girl->photos()->get();
 

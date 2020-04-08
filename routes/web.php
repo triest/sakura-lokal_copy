@@ -36,10 +36,10 @@ Route::get('/', function () {
     return view('welcome2');
 })->name('welcome');
 
-Route::get('/anket', 'GirlsController@index2')->name('main');
+Route::get('/anket', 'GirlsController@index2');
 
 
-Route::get('/anket2', 'GirlsController@index2')->name('main2');
+Route::get('/anket2', 'GirlsController@index2')->name('main');
 
 Route::get('/seach', 'SeachController@seach');
 
@@ -126,7 +126,7 @@ Route::get('/phone/requwest/send', 'ContactsController@sendregphone')
 //endphone
 //редактирование галлереи
 Route::get('/editimages', function () {
-    return view('editimages');
+    return view('anket.editimages');
 })->middleware('auth');
 
 

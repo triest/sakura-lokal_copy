@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['title' => 'Войдите'])
 
 @section('content')
     <div class="container">
@@ -46,7 +46,7 @@
                                    id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                             <label class="form-check-label" for="remember">
-                                 Запомнить меня
+                                Запомнить меня
                             </label>
                         </div>
                     </div>

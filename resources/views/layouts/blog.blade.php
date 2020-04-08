@@ -20,14 +20,19 @@
     <link rel="stylesheet" href="{{ asset('js/baguetteBox.min.css') }}">
     <!--end for faleray -->
 
+    <!--My custom style -->
+    <link href="{{asset('css/style.css')}}">
+    <!-- -->
+
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css"
           rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
     <!-- Custom styles for this template -->
     <!--  <link href="http://bootstrap-3.ru/examples/offcanvas/offcanvas.css" rel="stylesheet"> -->
-    <link rel="icon" href="<?php echo asset("public/images/sakura.jpg")?>">
 
+    <link rel="icon" href="http://example.com/favicon.png">
+    <link rel='icon' href='favicon.ico' type='image/x-icon' sizes="16x16"/>
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]>
 
@@ -96,6 +101,8 @@
             background-color: #ccc;
             border-radius: 3px;
         }
+
+
     </style>
 
 </head>
@@ -213,6 +220,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
 <!--<script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>-->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <!--<script src="http://bootstrap-3.ru/examples/offcanvas/offcanvas.js"></script>-->

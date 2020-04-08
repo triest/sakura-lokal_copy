@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Dialog;
 use App\Events\NewMessage;
 use App\GiftAct;
@@ -35,7 +36,10 @@ use PhpParser\Node\Expr\Array_;
 
 class AnketController extends Controller
 {
-    //
+    //required
+    public $phone_required = false;
+
+
     function createGirl()
     {
         $user = Auth::user();
@@ -54,7 +58,9 @@ class AnketController extends Controller
         $smoking = Smoking::select(['id', 'name'])->get();
 
         //add check phone is confurnd
-        if ($user->phone == null or $user->phone_confirmed == 0) {
+        if ($user->phone == null && $user->phone_confirmed == 0
+            && $this->phone_required
+        ) {
             return view("custom.resetSMS2");
         }
         // dump($user);
@@ -67,15 +73,16 @@ class AnketController extends Controller
         return view('anket.create')
             ->with(
                 [
-                    'username'      => $user->name,
-                    'tagrets'       => $targets,
-                    'interests'     => $interests,
-                    'apperance'     => $apperance,
-                    'realtions'     => $relations,
-                    'childrens'     => $chidren,
-                    'smoking'       => $smoking,
-                    'phone'         => $phone,
-                    'phone_setting' => $phone_setting,
+                    'username'       => $user->name,
+                    'tagrets'        => $targets,
+                    'interests'      => $interests,
+                    'apperance'      => $apperance,
+                    'realtions'      => $relations,
+                    'childrens'      => $chidren,
+                    'smoking'        => $smoking,
+                    'phone'          => $phone,
+                    'phone_setting'  => $phone_setting,
+                    'phone_required' => $this->phone_required,
                 ]);
     }
 
@@ -94,6 +101,9 @@ class AnketController extends Controller
 
             // 'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        if (Auth::guest()) {
+            return redirect('/login');
+        }
 
         $user = Auth::user();
 
@@ -104,7 +114,6 @@ class AnketController extends Controller
         }
 
         $girl = new Girl();
-        // $girl->id=$user->id;
         $girl->name = $request->name;
         $girl->sex = $request->sex;
         $girl->meet = $request->met;
@@ -144,9 +153,7 @@ class AnketController extends Controller
         }
         $girl->save();
 
-        if (Auth::guest()) {
-            return redirect('/login');
-        }
+
         // dump($request);
 
         if (Input::hasFile('images')) {
@@ -280,7 +287,8 @@ class AnketController extends Controller
             'status',
         ])->where('user_id', $user->id)->first();
         if ($girl == null) {
-            return $this->index();
+            //  return $this->index();
+            return view('anket.404');
         }
         $phone = $user->phone;
 

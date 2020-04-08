@@ -5695,7 +5695,6 @@ __webpack_require__.r(__webpack_exports__);
         _this2.from = res.sechSettings.age_from;
         _this2.to = res.sechSettings.age_to;
         _this2.meet = res.sechSettings.meet;
-        console.log(_this2.selected_targets);
       });
     }
   }
@@ -5712,6 +5711,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -60225,6 +60231,10 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "col-sm-10" }, [
       _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2),
       _vm._v(" "),
       _c("input", {
         directives: [
@@ -60263,26 +60273,25 @@ var render = function() {
                 return _c("li", [_vm._v(_vm._s(error))])
               }),
               0
-            )
+            ),
+              _vm._v(" "),
+              _c(
+                  "button",
+                  {
+                      staticClass: "btn btn-primary",
+                      on: {
+                          click: function ($event) {
+                              return _vm.sendSMS()
+                          }
+                      }
+                  },
+                  [_vm._v("Подтвердить")]
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _c("br")
           ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          on: {
-            click: function($event) {
-              return _vm.sendSMS()
-            }
-          }
-        },
-        [_vm._v("Подтвердить")]
-      ),
-      _vm._v(" "),
-      _c("br"),
-      _c("br"),
-      _vm._v(" "),
+          : _vm._e(),
       _vm.codeVisable
         ? _c("div", [
             _c("label", { attrs: { for: "code" } }, [
@@ -60349,19 +60358,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("b", [
-      _vm._v(
-        "Для продолжения регистрации необходимо подтвердить Ваш телефонный номер. Именно этот номер будут видеть\n            только\n            пользователи, которым вы предоставите такую возможность."
-      ),
-      _c("br"),
-      _vm._v("\n            Изменить номер нельзя."),
-      _c("br"),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(
-        "\n            Первая цифра-код страны. Для россии это 7. Пример: 79001234567;\n            Номер должен быть указан в формате 79001234567. "
-      ),
-      _c("br")
+      return _c("p", [
+          _c("b", [
+              _vm._v(
+                  "\n            Для продолжения регистрации необходимо подтвердить Ваш телефонный номер. Именно этот номер будут\n            видеть\n            только\n            пользователи, которым вы предоставите такую возможность.\n        "
+              )
+          ])
+      ])
+  },
+    function () {
+        var _vm = this
+        var _h = _vm.$createElement
+        var _c = _vm._self._c || _h
+        return _c("p", [_c("b", [_vm._v("Изменить номер нельзя.")])])
+    },
+    function () {
+        var _vm = this
+        var _h = _vm.$createElement
+        var _c = _vm._self._c || _h
+        return _c("p", [
+            _c("b", [
+                _vm._v(
+                    "\n                Первая цифра-код страны. Для россии это 7. Пример: 79001234567;\n            "
+                )
+            ])
     ])
   }
 ]
@@ -76047,15 +76067,16 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************************!*\
   !*** ./resources/js/components/ankertList.vue ***!
   \************************************************/
-/*! no static exports found */
+    /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ankertList_vue_vue_type_template_id_19f1f812_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ankertList.vue?vue&type=template&id=19f1f812&scoped=true& */ "./resources/js/components/ankertList.vue?vue&type=template&id=19f1f812&scoped=true&");
 /* harmony import */ var _ankertList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ankertList.vue?vue&type=script&lang=js& */ "./resources/js/components/ankertList.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _ankertList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _ankertList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _ankertList_vue_vue_type_style_index_0_id_19f1f812_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ankertList.vue?vue&type=style&index=0&id=19f1f812&scoped=true&lang=css& */ "./resources/js/components/ankertList.vue?vue&type=style&index=0&id=19f1f812&scoped=true&lang=css&");
+        /* empty/unused harmony star reexport */
+        /* harmony import */
+        var _ankertList_vue_vue_type_style_index_0_id_19f1f812_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ankertList.vue?vue&type=style&index=0&id=19f1f812&scoped=true&lang=css& */ "./resources/js/components/ankertList.vue?vue&type=style&index=0&id=19f1f812&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -76087,7 +76108,7 @@ component.options.__file = "resources/js/components/ankertList.vue"
 /*!*************************************************************************!*\
   !*** ./resources/js/components/ankertList.vue?vue&type=script&lang=js& ***!
   \*************************************************************************/
-/*! no static exports found */
+    /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

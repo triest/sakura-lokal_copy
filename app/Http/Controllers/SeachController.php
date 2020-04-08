@@ -50,9 +50,16 @@ class SeachController extends Controller
 
         if (!isset($seachSettings) || $seachSettings == null) {
 
-            $girls = DB::table('girls')->find(3);
+            $girls = DB::table('girls')->get();
+            $count = $girls->count();
+            $num_pages = intval($count / $this->limit);
 
-            return response()->json($girls);
+            return response()->json([
+                'ankets'    => $girls,
+                'count'     => $count,
+                'num_pages' => $num_pages,
+            ]);
+
         } else {
 
         }
@@ -83,7 +90,7 @@ class SeachController extends Controller
 
         //ÎÕÖÎÏ ĞÏÌÕŞÉØ ŞÉÓÌÏ
         $count = $girls->count();
-        $pum_pages = intval($count / $this->limit);
+        $num_pages = intval($count / $this->limit);
 
 
         $girls->select('girls.*')->limit($this->limit);
@@ -100,7 +107,7 @@ class SeachController extends Controller
         return response()->json([
             'ankets'    => $girls,
             'count'     => $count,
-            'num_pages' => $pum_pages,
+            'num_pages' => $num_pages,
         ]);
     }
 

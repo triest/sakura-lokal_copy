@@ -142,7 +142,6 @@
                         this.from = res.sechSettings.age_from;
                         this.to = res.sechSettings.age_to;
                         this.meet = res.sechSettings.meet;
-                        console.log(this.selected_targets)
                     })
 
             }

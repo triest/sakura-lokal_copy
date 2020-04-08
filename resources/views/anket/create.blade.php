@@ -15,35 +15,37 @@
             <font color="red"><p>  {{$errors->first('name')}}</p></font>
         @endif
 
-
-        <div class="control-group2" ng-class="{true: 'error'}[submitted && form.pas.$invalid]">
-            <div class="form-group">
-                <label for="phone">Ваш телефон:</label>
-                <br>
-                <input type="tel" class="form-control" id="phone" name="phone" pattern="^\(\d{3}\)\d{3}-\d{2}-\d{2}$"
-                       value="{{$phone}}" required disabled></input>
+        @if($phone_required)
+            <div class="control-group2" ng-class="{true: 'error'}[submitted && form.pas.$invalid]">
+                <div class="form-group">
+                    <label for="phone">Ваш телефон:</label>
+                    <br>
+                    <input type="tel" class="form-control" id="phone" name="phone"
+                           pattern="^\(\d{3}\)\d{3}-\d{2}-\d{2}$"
+                           value="{{$phone}}" required disabled></input>
+                </div>
             </div>
-        </div>
-
-        <b>Видимость телефона:</b>
-        <br>
-        @foreach($phone_setting as $item)
-            <input type="radio" id="phone_settings"
-                   name="phone_settings" value="{{$item->id}}" checked>
-            {{$item->name}}
+        @endif
+        @if($phone_required)
+            <b>Видимость телефона:</b>
             <br>
-        @endforeach
+            @foreach($phone_setting as $item)
+                <input type="radio" id="phone_settings"
+                       name="phone_settings" value="{{$item->id}}" checked>
+                {{$item->name}}
+                <br>
+            @endforeach
+        @endif
 
         <br>
-        <b> Пол:</b> <br>
+        <b> Кто вы:</b> <br>
         <input type="radio" id="contactChoice1"
                name="sex" value="famele" checked>
-        <label for="contactChoice1">Женский</label>
+        Женщина
 
         <input type="radio" id="contactChoice2"
                name="sex" value="male">
-        <label for="contactChoice2">Мужской</label>
-
+        Мужчина
 
         <br>
         <label for="age">Возраст:
@@ -62,20 +64,22 @@
                    pattern="[^@]+@[^@]+\.[0-9]{2,3}" onkeypress="return isNumber(event)">
         </label><br>
 
-        <b>Внешность:</b> <br>
+        <b>Внешность:</b>
         @foreach($apperance as $target)
-            <input type="radio" value="{{$target->id}}" name="aperance" id="aperance">
+            <br>
+            <label class="switch">
+                <input type="radio" value="{{$target->id}}" name="aperance" id="aperance">
+                <span class="slider round"></span>
+            </label>
             {{$target->name}}
         @endforeach
-        <br>
-
         <p><b>Отношения:</b></p>
         @foreach($realtions as $item)
             <input type="radio" value="{{$item->id}}" name="realtion" id="relation">
             {{$item->name}}
         @endforeach
 
-
+        <br>
         <p><b> С кем хотите познакомиться:</b></p>
         <input type="radio" id="contactmet"
                name="met" value="famele">
@@ -105,7 +109,7 @@
             {{$target->name}}
             <br>
         @endforeach
-
+        <br>
         <b>Интересы:</b> <br>
         @foreach($interests as $interest)
             <input class="form-check-input" type="checkbox" value="{{$interest->id}}" name="interest[]">
@@ -124,6 +128,7 @@
         @foreach($smoking as $item)
             <input type="radio" value="{{$item->id}}" name="smoking" id="smoking">
             {{$item->name}}
+            <br>
         @endforeach
 
         <div id="country">
@@ -186,21 +191,24 @@
 
         <br>
         <div class="form-group">
+            @if($errors->has('description'))
+                <font color="red"><p class="errors">{{$errors->first('description')}}</p></font>
+            @endif
             <label for="exampleInputFile">Обо мне:</label><br>
             <textarea name="description" required> </textarea>
         </div>
-        @if($errors->has('description'))
-            <font color="red"><p class="errors">{{$errors->first('description')}}</p></font>
-        @endif
+
 
         <div class="form-group">
-            <label for="exampleInputFile">Приватный текст, который видно только тем, кому вы откроете доступ:</label>
+            @if($errors->has('private'))
+                <font color="red"><p class="errors">{{$errors->first('private')}}</p></font>
+            @endif
+            <label for="exampleInputFile">Приватный текст, который видно только тем, кому вы откроете
+                доступ:</label>
             <br>
             <textarea name="private" required> </textarea>
         </div>
-        @if($errors->has('private'))
-            <font color="red"><p class="errors">{{$errors->first('private')}}</p></font>
-        @endif
+
 
         <input type="hidden" value="{{csrf_token()}}" name="_token">
 
