@@ -31,10 +31,10 @@ class SeachController extends Controller
         $userAuth = Auth::user();
         if ($userAuth != null) {
             $girls = $userAuth->girl()->get();
-            $girls = $girls[0];
+            $Autchgirls = $girls[0];
             //  $seachSettings = SearchSettings::select(['id'])
             //     ->where("girl_id", "=", $girls->id)->first();
-            $seachSettings = $girls->seachsettings()->first();
+            $seachSettings = $Autchgirls->seachsettings()->first();
         } else {
             if (isset($_COOKIE["laravel_session"])) {
                 $cookie = $_COOKIE["laravel_session"];
@@ -50,7 +50,12 @@ class SeachController extends Controller
 
         if (!isset($seachSettings) || $seachSettings == null) {
 
-            $girls = DB::table('girls')->get();
+            $girls = DB::table('girls');
+            if (isset($Autchgirls) && $Autchgirls != null) {
+                $girls->where('city_id', '=', $Autchgirls->city_id);
+                $girls->where('id', '<>', $Autchgirls->id);
+            }
+            $girls = $girls->orderByDesc('created_at')->get();
             $count = $girls->count();
             $num_pages = intval($count / $this->limit);
 
@@ -95,12 +100,21 @@ class SeachController extends Controller
 
         $girls->select('girls.*')->limit($this->limit);
 
+        $userAuth = Auth::user();
+        if ($userAuth != null) {
+            $girls = $userAuth->girl()->get();
+            $girls = $girls[0];
+            dump($girls);
+        }
+
 
         if (isset($request->page) && $request->page != null
             && intval($request->page) != 1
         ) {
             $girls->offset($this->limit * (intval($request->page) - 1));
         }
+
+        $girls->orderByDesc('created_at');
 
         $girls = $girls->get();
 
