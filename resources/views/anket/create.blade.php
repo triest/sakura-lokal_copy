@@ -133,7 +133,7 @@
 
         <div id="country">
             <label>Город</label>
-            <input name="cityname" id="cityname" oninput="findCity();" type="text"/>
+            <input name="cityname" id="cityname" oninput="findCity2();" type="text"/>
         </div>
 
 
@@ -145,20 +145,37 @@
         <br>
 
         <script>
-            /*  function findCity() {
-                  var inputcity = document.getElementById('cityname').value;
-                  console.log(inputcity);
-                  var x = document.getElementById("city");
-                  var option = document.createElement("option");
-                  axios.get('/findcity/' + inputcity, {
-                      params: {}
-                  })
-                      .then((response) => {
-                          var data = response.data;
-                          for (var i = 0; i <= data.length; i++) {
-                          }
-                      });
-              }*/
+            function findCity() {
+                let inputcity = document.getElementById('cityname').value;
+                console.log(inputcity);
+                let x = document.getElementById("city");
+                let option = document.createElement("option");
+                axios.get('/findcity/' + inputcity, {
+                    params: {}
+                })
+                    .then((response) => {
+                        let data = response.data;
+                        for (let i = 0; i <= data.length; i++) {
+                        }
+                    });
+            }
+
+            function findCity2() {
+                let inputcity = document.getElementById('cityname').value;
+                let x = document.getElementById("city");
+                //https://kladr-api.ru/api.php?query=%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%D1%81%D0%BA&contentType=city&withParent=1&limit=10
+
+                axios.get('/findcity2/' + inputcity, {
+                    params: {}
+                }).then((response) => {
+                    let data = response.data;
+                    console.log(data);
+                    $('#city').empty();
+                    for (var i = 0; i <= data.length; i++) {
+                        $('#city').append('<option value="' + data[i].OKATO + '">' + data[i].name + '</option>');
+                    }
+                });
+            }
         </script>
         <script>
             function findCity() {

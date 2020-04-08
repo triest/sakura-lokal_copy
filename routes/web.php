@@ -400,6 +400,8 @@ Route::post('/deletetargret', 'AdminController@deletetargret')
 //поиск города
 Route::get('/findcity/{name}',
     'AnketController@findcity');//->middleware('auth');
+Route::get('/findcity2/{name}',
+    'AnketController@findcity2');//->middleware('auth');
 
 Route::get('/getargetslist', 'AdminController@gettargetslist');
 
