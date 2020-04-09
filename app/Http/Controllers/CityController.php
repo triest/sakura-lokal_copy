@@ -13,6 +13,6 @@ class CityController extends Controller
     public static function GetCurrentCity()
     {
         $city = City::GetCurrentCity();
-        dump($city);
+
     }
 }

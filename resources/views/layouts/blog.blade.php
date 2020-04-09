@@ -175,6 +175,12 @@
                  </p>
                  -->
                 <br>
+                <? $city = \App\City::GetCurrentCity();
+                if ($city != null) {
+                    echo $city->name;
+                    echo "<br>";
+                }
+                ?>
                 @if (Auth::guest())
                     <b><a href="{{ url('/login') }}">Войти</a></b><br>
                     <b><a href="{{ url('/join') }}">Зарегистрироваться</a></b>
