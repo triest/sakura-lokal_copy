@@ -123,17 +123,20 @@
         @endforeach
 
         <label>Настройки видимости телефона:</label> <br>
-        @foreach($phone_settings as $item)
-            @if($select_phone_settings->id==$item->id)
-                <input type="radio" id="phone_settings"
-                       name="phone_settings" value="{{$item->id}}" checked>
-            @else
-                <input type="radio" id="phone_settings"
-                       name="phone_settings" value="{{$item->id}}">
-            @endif
-            {{$item->name}}
-            <br>
-        @endforeach
+        @if(isset($phone_settings))
+            @foreach($phone_settings as $item)
+
+                @if($select_phone_settings!=null && $select_phone_settings->id==$item->id)
+                    <input type="radio" id="phone_settings"
+                           name="phone_settings" value="{{$item->id}}" checked>
+                @else
+                    <input type="radio" id="phone_settings"
+                           name="phone_settings" value="{{$item->id}}">
+                @endif
+                {{$item->name}}
+                <br>
+            @endforeach
+        @endif
 
         <div id="country">
             <label>Город</label>

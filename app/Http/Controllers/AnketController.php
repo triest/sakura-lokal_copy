@@ -9,6 +9,7 @@ use App\GiftAct;
 use App\Girl;
 use App\Message;
 use App\MyRequwest;
+use App\PhoneSetting;
 use App\Photo;
 use App\SeachSettingsType;
 use App\Target;
@@ -237,7 +238,7 @@ class AnketController extends Controller
                 $girl->save();
             }
         }
-        
+
 
         if ($request->has('city')) {
             $girl->city_id = $request->city;
@@ -340,7 +341,10 @@ class AnketController extends Controller
         //тут настройки телефона
         $select_phone_settings = DB::table('phone_settings')
             ->where('id', $girl->phone_settings)->first();
-        $phone_setting = collect(DB::select('select * from phone_settings'));
+        //   $phone_setting = collect(DB::select('select * from phone_settings'))->get();
+        $phone_setting = PhoneSetting::select(['id', 'name'])->get();
+
+        dump($select_phone_settings);
 
         $relations = Relationh::select(['id', 'name'])->get();
 
