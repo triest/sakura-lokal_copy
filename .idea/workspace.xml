@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/app/City.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CityController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SeachController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SeachController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,38 +20,66 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="2019_02_19_181025_create_photos_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_19_181025_create_photos_table.php">
+      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="18" column="58" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="58" />
+            <state relative-caret-position="580">
+              <caret line="572" column="22" selection-start-line="572" selection-start-column="13" selection-end-line="572" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2020_04_09_142632_add_foregin_key_photo_album.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2020_04_09_142632_add_foregin_key_photo_album.php">
+      <file leaf-file-name="SeachController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SeachController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="648">
+              <caret line="127" column="7" lean-forward="true" selection-start-line="127" selection-start-column="7" selection-end-line="127" selection-end-column="7" />
+              <folding>
+                <element signature="e#40#57#0#PHP" expanded="true" />
+                <element signature="e#2022#2235#0#PHP" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2020_04_09_134427_create_album_photo_migration.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2020_04_09_134427_create_album_photo_migration.php">
+      <file leaf-file-name="AnketController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+            <state relative-caret-position="629">
+              <caret line="862" column="49" lean-forward="true" selection-start-line="845" selection-start-column="22" selection-end-line="862" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2020_04_09_144320_add_name_to_album_photo.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2020_04_09_144320_add_name_to_album_photo.php">
+      <file leaf-file-name="GirlsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GirlsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="729" column="41" lean-forward="true" selection-start-line="729" selection-start-column="5" selection-end-line="729" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CityController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CityController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" column="71" selection-start-line="17" selection-start-column="71" selection-end-line="17" selection-end-column="71" />
+              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+              <folding>
+                <element signature="e#40#53#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="City.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/City.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+              <folding>
+                <element signature="e#23#64#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,10 +96,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>jquery.min.js</find>
-      <find>tit</find>
-      <find>Регистрация аккаунта</find>
-      <find>myA</find>
       <find>Номер должен быть указан в формате</find>
       <find>phonecomponent</find>
       <find>phonec</find>
@@ -94,6 +122,10 @@
       <find>$phone_settings</find>
       <find>findCity2</find>
       <find>anketa</find>
+      <find>file_get_c</find>
+      <find>http://api.sypexgeo.net/json/</find>
+      <find>cityes_api</find>
+      <find>getIp</find>
     </findStrings>
     <replaceStrings>
       <replace>get_girl_id</replace>
@@ -106,6 +138,8 @@
       <dir>W:\domains\new_chat\chat\resources\views</dir>
       <dir>W:\domains\new_chat\chat\resources\js\components</dir>
       <dir>W:\domains\new_chat\chat</dir>
+      <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat</dir>
+      <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat\app</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -122,8 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="&lt;1cc8385a-929f-47c9-b206-547da89c2832&gt;/srv/www/vhosts/drevlanka.ru/work/develop/tikhonenko/photo/index.php" />
-        <option value="&lt;1cc8385a-929f-47c9-b206-547da89c2832&gt;/srv/www/vhosts/drevlanka.ru/work/develop/tikhonenko/photo/redirect.php" />
         <option value="&lt;1cc8385a-929f-47c9-b206-547da89c2832&gt;/srv/www/vhosts/drevlanka.ru/work/seeuser/index.php" />
         <option value="&lt;1cc8385a-929f-47c9-b206-547da89c2832&gt;/srv/www/vhosts/drevlanka.ru/work/stats/garant.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_04_03_122823_add_enable_to_search_settings.php" />
@@ -159,9 +191,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_04_08_163907_create_regions_api_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_04_08_160744_create_cityes_api_table.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/anket/create.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/SeachController.php" />
         <option value="$PROJECT_DIR$/app/PhoneSetting.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/resources/views/anket/edit.blade.php" />
@@ -173,6 +203,10 @@
         <option value="$PROJECT_DIR$/database/migrations/2020_04_09_142632_add_foregin_key_photo_album.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_04_09_144320_add_name_to_album_photo.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_04_09_134427_create_album_photo_migration.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/SeachController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/CityController.php" />
+        <option value="$PROJECT_DIR$/app/City.php" />
       </list>
     </option>
   </component>
@@ -317,19 +351,25 @@
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chat" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="seeds" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -615,14 +655,7 @@
       <workItem from="1586360014077" duration="599000" />
       <workItem from="1586372020871" duration="67000" />
       <workItem from="1586420763472" duration="3933000" />
-      <workItem from="1586426718744" duration="4797000" />
-    </task>
-    <task id="LOCAL-00068" summary="Add style for online icon">
-      <created>1573415279370</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1573415279371</updated>
+      <workItem from="1586426718744" duration="9360000" />
     </task>
     <task id="LOCAL-00069" summary="Delete horizontal scroll.">
       <created>1573418035328</created>
@@ -960,7 +993,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586428614477</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="Add Album and AlbumPhoto models and migrations">
+      <created>1586433016176</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1586433016176</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -996,7 +1036,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1766006000" />
+    <option name="totallyTimeSpent" value="1770569000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1014,6 +1054,7 @@
       <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.26302084" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="0" />
+      <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49947917" weight="0.32946146" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="10" weight="0.4" />
@@ -1026,7 +1067,6 @@
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="File Transfer" order="0" sideWeight="0.48541668" visible="true" weight="0.32946146" />
-      <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49947917" weight="0.32946146" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1076,7 +1116,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/workbreaks" />
     </ignored-roots>
-    <MESSAGE value="Add seach ettings table" />
     <MESSAGE value="Fix preselect" />
     <MESSAGE value="Add new seach modal to main index.blade.php" />
     <MESSAGE value="FilterAnket not finish" />
@@ -1101,7 +1140,8 @@
     <MESSAGE value="Add PhoneSettings model" />
     <MESSAGE value="Fix git ignore" />
     <MESSAGE value="Fix edit city" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix edit city" />
+    <MESSAGE value="Add Album and AlbumPhoto models and migrations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Album and AlbumPhoto models and migrations" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1110,27 +1150,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="8" column="14" selection-start-line="8" selection-end-line="8" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/auth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/filesystems.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="580">
@@ -1221,16 +1240,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2020_04_08_163907_create_regions_api_table.php" />
     <entry file="file://$PROJECT_DIR$/database/migrations/2020_04_08_160744_create_cityes_api_table.php" />
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SeachController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="76" column="17" lean-forward="true" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
-          <folding>
-            <element signature="e#40#57#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/anket/view.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -1259,24 +1268,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GirlsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="345" column="46" selection-start-line="345" selection-start-column="46" selection-end-line="345" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/anket/edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="147" column="10" selection-start-line="147" selection-start-column="10" selection-end-line="147" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="413" column="22" selection-start-line="413" selection-start-column="22" selection-end-line="413" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1286,16 +1281,6 @@
           <caret line="133" column="5" selection-start-line="133" selection-start-column="5" selection-end-line="143" selection-end-column="16" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="131" selection-start-line="131" selection-end-line="131" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_19_174126_images.php">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2020_04_04_192313_create_search_interest_table.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1358,17 +1343,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_19_181025_create_photos_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="58" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2020_04_09_144320_add_name_to_album_photo.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="71" selection-start-line="17" selection-start-column="71" selection-end-line="17" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2020_04_09_134427_create_album_photo_migration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -1379,10 +1364,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_04_09_134427_create_album_photo_migration.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_19_181025_create_photos_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+        <state relative-caret-position="272">
+          <caret line="18" column="58" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_19_174126_images.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SeachController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="127" column="7" lean-forward="true" selection-start-line="127" selection-start-column="7" selection-end-line="127" selection-end-column="7" />
+          <folding>
+            <element signature="e#40#57#0#PHP" expanded="true" />
+            <element signature="e#2022#2235#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="572" column="22" selection-start-line="572" selection-start-column="13" selection-end-line="572" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GirlsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="729" column="41" lean-forward="true" selection-start-line="729" selection-start-column="5" selection-end-line="729" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="862" column="49" lean-forward="true" selection-start-line="845" selection-start-column="22" selection-end-line="862" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CityController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding>
+            <element signature="e#40#53#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/City.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+          <folding>
+            <element signature="e#23#64#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -65,8 +65,6 @@ class SeachController extends Controller
                 'num_pages' => $num_pages,
             ]);
 
-        } else {
-
         }
 
         $girls = DB::table('girls');

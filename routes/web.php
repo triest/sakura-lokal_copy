@@ -568,3 +568,6 @@ Route::get('/anket3/getankets', 'AnketController@getankets')->name('getAnkets');
 
 Route::get('/filter_enable', 'GirlsController@filter_enable')
     ->name('filter_enable');
+
+
+Route::get('/city_test', 'CityController@GetCurrentCity');
