@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Aperance;
 use App\Children;
+use App\City;
 use App\Girl;
 use App\Interest;
 use App\Relationh;
@@ -95,6 +96,14 @@ class SeachController extends Controller
         //ÎÕÖÎÏ ĞÏÌÕŞÉØ ŞÉÓÌÏ
         $count = $girls->count();
         $num_pages = intval($count / $this->limit);
+
+        /* çÏÒÏÄ*/
+
+        $city = City::GetCurrentCity();
+
+        if ($city != null) {
+            $girls->where('city_id', $city->id);
+        }
 
 
         $girls->select('girls.*')->limit($this->limit);
