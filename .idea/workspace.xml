@@ -14,10 +14,9 @@
       <change afterPath="$PROJECT_DIR$/public/images/upload/cdcfbf7658264c1119610d1ea2a626ca.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/images/upload/d058e79436c26414cbf2708b8d13e2f5.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/images/upload/f8678390c3f1f6076b632cf91ed733ca.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SeachController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SeachController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/anket/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/anket/edit.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,11 +60,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="edit.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/anket/edit.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="128" column="48" selection-start-line="128" selection-start-column="48" selection-end-line="128" selection-end-column="48" />
+            <state relative-caret-position="404">
+              <caret line="136" column="20" lean-forward="true" selection-start-line="136" selection-start-column="20" selection-end-line="136" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -146,8 +154,8 @@
       <find>store</find>
       <find>seach</find>
       <find>anketa</find>
-      <find>$phone_settings</find>
       <find>girlsEditAuchAnket</find>
+      <find>$phone_settings</find>
     </findStrings>
     <replaceStrings>
       <replace>get_girl_id</replace>
@@ -176,7 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/index3.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/girlView.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_01_18_184048_add_cookie_to_search_settings.php" />
         <option value="&lt;1cc8385a-929f-47c9-b206-547da89c2832&gt;/srv/www/vhosts/drevlanka.ru/work/plan/modules/view/view.tpl" />
@@ -227,6 +234,7 @@
         <option value="$PROJECT_DIR$/app/PhoneSetting.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" />
         <option value="$PROJECT_DIR$/resources/views/anket/edit.blade.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -378,6 +386,12 @@
               <item name="chat" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chat" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
@@ -699,21 +713,7 @@
       <workItem from="1586360014077" duration="599000" />
       <workItem from="1586372020871" duration="67000" />
       <workItem from="1586420763472" duration="3933000" />
-      <workItem from="1586426718744" duration="1058000" />
-    </task>
-    <task id="LOCAL-00064" summary="Fix logic witdrawRequwest button2">
-      <created>1572725860555</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1572725860555</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Add last login date">
-      <created>1573326911213</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1573326911214</updated>
+      <workItem from="1586426718744" duration="1225000" />
     </task>
     <task id="LOCAL-00066" summary="Move last login to model">
       <created>1573327173818</created>
@@ -1044,7 +1044,21 @@
       <option name="project" value="LOCAL" />
       <updated>1586359666559</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="Fix phone settings">
+      <created>1586427859675</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1586427859675</updated>
+    </task>
+    <task id="LOCAL-00114" summary="Add PhoneSettings model">
+      <created>1586427901824</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1586427901824</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1080,7 +1094,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1762267000" />
+    <option name="totallyTimeSpent" value="1762434000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1160,8 +1174,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/workbreaks" />
     </ignored-roots>
-    <MESSAGE value="Add text style3" />
-    <MESSAGE value="Fix image style and cize" />
     <MESSAGE value="Add preselect for targets" />
     <MESSAGE value="Send seach form" />
     <MESSAGE value="Add seach ettings table" />
@@ -1185,7 +1197,9 @@
     <MESSAGE value="Save city by new api" />
     <MESSAGE value="Save city by new api, add migrations" />
     <MESSAGE value="Fix seach by id" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix seach by id" />
+    <MESSAGE value="Fix phone settings" />
+    <MESSAGE value="Add PhoneSettings model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add PhoneSettings model" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1194,7 +1208,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_04_04_192313_create_search_interest_table.php" />
     <entry file="file://$PROJECT_DIR$/app/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1428">
@@ -1463,8 +1476,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/anket/edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="128" column="48" selection-start-line="128" selection-start-column="48" selection-end-line="128" selection-end-column="48" />
+        <state relative-caret-position="404">
+          <caret line="136" column="20" lean-forward="true" selection-start-line="136" selection-start-column="20" selection-end-line="136" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
         </state>
       </provider>
     </entry>

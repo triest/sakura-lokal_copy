@@ -70,11 +70,12 @@ class SeachController extends Controller
         }
 
         $girls = DB::table('girls');
+        /*
         $girls = $girls->leftJoin('girl_target', 'girls.id', '=',
             'girl_target.girl_id');
         $girls = $girls->leftJoin('girl_interess', 'girls.id', '=',
             'girl_interess.girl_id');
-
+*/
         if ($seachSettings->age_from != null) {
             $girls->where('age', '>=', $seachSettings->age_from);
         }
@@ -100,18 +101,12 @@ class SeachController extends Controller
 
         $girls->select('girls.*')->limit($this->limit);
 
-        $userAuth = Auth::user();
-        if ($userAuth != null) {
-            $girls = $userAuth->girl()->get();
-            $girls = $girls[0];
-            dump($girls);
-        }
-
 
         if (isset($request->page) && $request->page != null
             && intval($request->page) != 1
         ) {
-            $girls->offset($this->limit * (intval($request->page) - 1));
+            $offset = $this->limit * (intval($request->page) - 1);
+            $girls->offset($offset);
         }
 
         $girls->orderByDesc('created_at');
