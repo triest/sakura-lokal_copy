@@ -140,11 +140,7 @@
 
         <div id="country">
             <label>Город</label>
-            @if($city!=null)
-                <input type="text" name="state" id="state" class="form-control" value="{{$city->name}}">
-            @else
-                <input name="cityname" id="cityname" oninput="findCity();" type="text"/>
-            @endif
+            <input name="cityname" id="cityname" oninput="findCity2();" type="text"/>
         </div>
 
         <label>Город:
@@ -215,6 +211,22 @@
                     });
             }
 
+            function findCity2() {
+                let inputcity = document.getElementById('cityname').value;
+                let x = document.getElementById("city");
+                //https://kladr-api.ru/api.php?query=%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%D1%81%D0%BA&contentType=city&withParent=1&limit=10
+
+                axios.get('/findcity2/' + inputcity, {
+                    params: {}
+                }).then((response) => {
+                    let data = response.data;
+                    console.log(data);
+                    $('#city').empty();
+                    for (var i = 0; i <= data.length; i++) {
+                        $('#city').append('<option value="' + data[i].OKATO + '">' + data[i].name + '</option>');
+                    }
+                });
+            }
         </script>
 
 

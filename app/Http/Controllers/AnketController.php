@@ -344,7 +344,6 @@ class AnketController extends Controller
         //   $phone_setting = collect(DB::select('select * from phone_settings'))->get();
         $phone_setting = PhoneSetting::select(['id', 'name'])->get();
 
-        dump($select_phone_settings);
 
         $relations = Relationh::select(['id', 'name'])->get();
 
@@ -492,6 +491,12 @@ class AnketController extends Controller
                 $girl->save();
             }
         }
+
+        if ($request->has('city')) {
+            $girl->city_id = $request->city;
+        }
+        $girl->save();
+
         $girl->relation_id = $request->realtion;
         //тут сохраняем телефон
         $girl->phone_settings = $request->phone_settings;
