@@ -148,6 +148,8 @@ Route::post('/image/main/update', 'AnketController@updateMainImage')
 Route::get('/image/main', 'AnketController@getmainimage')->middleware('auth');
 //получаем обычные фотографии
 Route::get('/images/', 'AnketController@getImages')->middleware('auth');
+
+Route::get('/image/{id}', 'AlbumController@getImage')->middleware('auth');
 //загрузить обычнае фотографии
 Route::post('/images/update', 'AnketController@updateGalerayImage')
     ->middleware('auth');

@@ -85,4 +85,19 @@ class AlbumController extends Controller
 
         return response()->json();
     }
+
+    public function getImage($id, Request $request)
+    {
+
+        $photo = AlbumPhoto::select(['*'])->where('id', $id)->first();
+
+        $type = $request->get('type');
+        if ($type == "json") {
+            return response()->json(['photo' => $photo]);
+        } else {
+            return $photo;
+        }
+
+
+    }
 }

@@ -3,47 +3,21 @@
         <div class="modal-mask">
             <div class="modal-wrapper">
                 <div class="modal-container">
-
                     <div class="modal-header">
                         <slot name="header">
-                            <b>Подарки</b>
                         </slot>
                     </div>
-
                     <div class="modal-body">
+
                         <slot name="body">
-                            <table class="table table-condensed">
-                                <thead>
-                                <tr>
-                                    <th>Подарок</th>
-                                    <th>Цена</th>
-                                    <th>Изображение</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr v-for="present in presents[0]">
-                                    <td>{{present.name}}</td>
-                                    <td>{{present.price}}</td>
-                                    <td><img :src="'/presents/upload/'+present.image" height="200">
-                                    </td>
-                                    <td v-if="userMoney>=present.price">
-
-                                        <button class="button btn-primary" @click="givePresent(present.id)">Подарить
-                                        </button>
-                                    </td>
-                                    <td v-else>
-                                        <b>Недостаточно денег. Пополните счет</b>
-                                    </td>
-
-                                </tr>
-                                </tbody>
-                            </table>
+                            <img :src="'/images/albums/'+name" height="400px">
                         </slot>
+                        <br>
+                        Загруженно: {{photo.created_at}}
                     </div>
-
                     <div class="modal-footer">
                         <slot name="footer">
-                            <button class="button btn-secondary" v-on:click="close()">
+                            <button type="button" class="btn btn-secondary" v-on:click="close()">
                                 Закрыть
                             </button>
                         </slot>
@@ -61,47 +35,33 @@
             id: {
                 type: '',
                 required: false
+            },
+            name: {
+                type: '',
+                required: false,
             }
         },
         mounted() {
-            this.getPresentsList();
-            this.getUserMoney();
+            this.getImage();
         },
         data() {
             return {
-                presents: [],
-                currentAnket: '',
-                userMoney: ''
+                photo: ''
             }
         },
         methods: {
             close() {
-                this.$emit('closeRequest')
+                this.$emit('close')
             },
-
-
-            getPresentsList() {
-                axios.get('/getpresents', {})
-                    .then((response) => {
-                            this.presents = response.data;
+            getImage() {
+                axios.get('/image/' + this.id, {
+                    params:
+                        {
+                            type: "json"
                         }
-                    )
-            },
-            givePresent(id) {
-                axios.post('/givepresent', {
-                    user_id: this.id,
-                    present_id: id
                 }).then((response) => {
-                });
-                this.close();
-            },
-            getUserMoney() {
-                axios.get('/getMoney'
-                )
-                    .then((response) => {
-                        this.userMoney = response.data.money;
-                        console.log('user money ' + this.money)
-                    })
+                    this.photo = response.data.photo;
+                })
             }
         }
     }

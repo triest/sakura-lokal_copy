@@ -2843,76 +2843,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
         /* harmony default export */
         __webpack_exports__["default"] = ({
             props: {
                 id: {
                     type: '',
                     required: false
+                },
+                name: {
+                    type: '',
+                    required: false
                 }
             },
             mounted: function mounted() {
-                this.getPresentsList();
-                this.getUserMoney();
+                this.getImage();
             },
             data: function data() {
                 return {
-                    presents: [],
-                    currentAnket: '',
-                    userMoney: ''
+                    photo: ''
                 };
             },
             methods: {
                 close: function close() {
-                    this.$emit('closeRequest');
+                    this.$emit('close');
                 },
-                getPresentsList: function getPresentsList() {
+                getImage: function getImage() {
                     var _this = this;
 
-                    axios.get('/getpresents', {}).then(function (response) {
-                        _this.presents = response.data;
-                    });
-                },
-                givePresent: function givePresent(id) {
-                    axios.post('/givepresent', {
-                        user_id: this.id,
-                        present_id: id
+                    axios.get('/image/' + this.id, {
+                        params: {
+                            type: "json"
+                        }
                     }).then(function (response) {
-                    });
-                    this.close();
-                },
-                getUserMoney: function getUserMoney() {
-                    var _this2 = this;
-
-                    axios.get('/getMoney').then(function (response) {
-                        _this2.userMoney = response.data.money;
-                        console.log('user money ' + _this2.money);
+                        _this.photo = response.data.photo;
                     });
                 }
             }
@@ -2980,15 +2943,17 @@ __webpack_require__.r(__webpack_exports__);
                     galerayFile: '',
                     comment: "",
                     Photoid: null,
-                    isModalVisible: false
+                    isModalVisible: false,
+                    PhotoName: null
                 };
             },
             components: {
                 modal: _albums_PhotoModal_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
             },
             methods: {
-                showModalFunction: function showModalFunction(id) {
+                showModalFunction: function showModalFunction(id, name) {
                     this.Photoid = id;
+                    this.PhotoName = name;
                     this.isModalVisible = true;
                 },
                 getPhoto: function getPhoto() {
@@ -12843,7 +12808,8 @@ exports.push([module.i, "\n.delmodal[data-v-042dd05c] {\n    position: fixed;\n 
 // exports
 
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ankertList.vue?vue&type=style&index=0&id=19f1f812&scoped=true&lang=css&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -54708,24 +54674,26 @@ var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref-
 
         var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./PhotoModal.vue?vue&type=style&index=0&id=409065ea&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/albums/PhotoModal.vue?vue&type=style&index=0&id=409065ea&scoped=true&lang=css&");
 
-        if(typeof content === 'string') content = [[module.i, content, '']];
+        if (typeof content === 'string') content = [[module.i, content, '']];
 
         var transform;
 var insertInto;
 
 
-        var options = {"hmr":true}
+        var options = {"hmr": true}
 
         options.transform = transform
 options.insertInto = undefined;
 
         var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
 
-        if(content.locals) module.exports = content.locals;
+        if (content.locals) module.exports = content.locals;
 
-        if(false) {}
+        if (false) {
+        }
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ankertList.vue?vue&type=style&index=0&id=19f1f812&scoped=true&lang=css&":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -57350,76 +57318,27 @@ render._withStripped = true
                     _c("div", {staticClass: "modal-mask"}, [
                         _c("div", {staticClass: "modal-wrapper"}, [
                             _c("div", {staticClass: "modal-container"}, [
-                                _c(
-                                    "div",
-                                    {staticClass: "modal-header"},
-                                    [_vm._t("header", [_c("b", [_vm._v("Подарки")])])],
-                                    2
-                                ),
+                                _c("div", {staticClass: "modal-header"}, [_vm._t("header")], 2),
                                 _vm._v(" "),
                                 _c(
                                     "div",
                                     {staticClass: "modal-body"},
                                     [
                                         _vm._t("body", [
-                                            _c("table", {staticClass: "table table-condensed"}, [
-                                                _c("thead", [
-                                                    _c("tr", [
-                                                        _c("th", [_vm._v("Подарок")]),
-                                                        _vm._v(" "),
-                                                        _c("th", [_vm._v("Цена")]),
-                                                        _vm._v(" "),
-                                                        _c("th", [_vm._v("Изображение")])
-                                                    ])
-                                                ]),
-                                                _vm._v(" "),
-                                                _c(
-                                                    "tbody",
-                                                    _vm._l(_vm.presents[0], function (present) {
-                                                        return _c("tr", [
-                                                            _c("td", [_vm._v(_vm._s(present.name))]),
-                                                            _vm._v(" "),
-                                                            _c("td", [_vm._v(_vm._s(present.price))]),
-                                                            _vm._v(" "),
-                                                            _c("td", [
-                                                                _c("img", {
-                                                                    attrs: {
-                                                                        src: "/presents/upload/" + present.image,
-                                                                        height: "200"
-                                                                    }
-                                                                })
-                                                            ]),
-                                                            _vm._v(" "),
-                                                            _vm.userMoney >= present.price
-                                                                ? _c("td", [
-                                                                    _c(
-                                                                        "button",
-                                                                        {
-                                                                            staticClass: "button btn-primary",
-                                                                            on: {
-                                                                                click: function ($event) {
-                                                                                    return _vm.givePresent(present.id)
-                                                                                }
-                                                                            }
-                                                                        },
-                                                                        [
-                                                                            _vm._v(
-                                                                                "Подарить\n                                    "
-                                                                            )
-                                                                        ]
-                                                                    )
-                                                                ])
-                                                                : _c("td", [
-                                                                    _c("b", [
-                                                                        _vm._v("Недостаточно денег. Пополните счет")
-                                                                    ])
-                                                                ])
-                                                        ])
-                                                    }),
-                                                    0
-                                                )
-                                            ])
-                                        ])
+                                            _c("img", {
+                                                attrs: {
+                                                    src: "/images/albums/" + _vm.name,
+                                                    height: "400px"
+                                                }
+                                            })
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("br"),
+                                        _vm._v(
+                                            "\n                    Загруженно: " +
+                                            _vm._s(_vm.photo.created_at) +
+                                            "\n                "
+                                        )
                                     ],
                                     2
                                 ),
@@ -57432,7 +57351,8 @@ render._withStripped = true
                                             _c(
                                                 "button",
                                                 {
-                                                    staticClass: "button btn-secondary",
+                                                    staticClass: "btn btn-secondary",
+                                                    attrs: {type: "button"},
                                                     on: {
                                                         click: function ($event) {
                                                             return _vm.close()
@@ -57505,6 +57425,8 @@ render._withStripped = true
                             _c(
                                 "button",
                                 {
+                                    staticClass: "btn btn-primary",
+                                    attrs: {type: "button"},
                                     on: {
                                         click: function ($event) {
                                             return _vm.submitFile()
@@ -57532,7 +57454,7 @@ render._withStripped = true
                                                 },
                                                 on: {
                                                     click: function ($event) {
-                                                        _vm.showModalFunction(photo.id)
+                                                        _vm.showModalFunction(photo.id, photo.photo_name)
                                                     }
                                                 }
                                             })
@@ -57545,7 +57467,7 @@ render._withStripped = true
                     _vm._v(" "),
                     _vm.showModal() === true
                         ? _c("modal", {
-                            attrs: {id: _vm.Photoid},
+                            attrs: {id: _vm.Photoid, name: _vm.PhotoName},
                             on: {
                                 close: function ($event) {
                                     return _vm.close()

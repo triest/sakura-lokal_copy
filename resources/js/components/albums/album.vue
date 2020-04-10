@@ -6,18 +6,18 @@
                     <input type="file" id="privatefile" ref="galerayFileInput"
                            v-on:change="handleFileUpload()"/>
                 </label>
-                <button v-on:click="submitFile()">Загрузить</button>
+                <button type="button" class="btn btn-primary" v-on:click="submitFile()">Загрузить</button>
             </div>
         </div>
         <div v-for="photo in photosList">
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-3 thumb">
                 <p v-if="photo!=null">
                     <img :src="'/images/albums/'+photo.photo_name" height="200"
-                         v-on:click="showModalFunction (photo.id)" style="cursor: pointer">
+                         v-on:click="showModalFunction (photo.id,photo.photo_name)" style="cursor: pointer">
                 </p>
             </div>
         </div>
-        <modal v-if="showModal()===true" :id="Photoid" @close='close()'></modal>
+        <modal v-if="showModal()===true" :id="Photoid" :name="PhotoName" @close='close()'></modal>
     </div>
 </template>
 
@@ -48,16 +48,18 @@
                 galerayFile: '',
                 comment: "",
                 Photoid: null,
-                isModalVisible: false
+                isModalVisible: false,
+                PhotoName: null,
             }
         },
         components: {
             modal
         },
         methods: {
-            showModalFunction(id) {
+            showModalFunction(id, name) {
 
                 this.Photoid = id;
+                this.PhotoName = name
                 this.isModalVisible = true;
             },
             getPhoto() {
