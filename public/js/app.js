@@ -2803,10 +2803,10 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
     /***/
-    "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/albums/album.vue?vue&type=script&lang=js&":
-    /*!***********************************************************************************************************************************************************************!*\
-      !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/albums/album.vue?vue&type=script&lang=js& ***!
-      \***********************************************************************************************************************************************************************/
+    "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/albums/PhotoModal.vue?vue&type=script&lang=js&":
+    /*!****************************************************************************************************************************************************************************!*\
+      !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/albums/PhotoModal.vue?vue&type=script&lang=js& ***!
+      \****************************************************************************************************************************************************************************/
     /*! exports provided: default */
     /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
@@ -2831,6 +2831,132 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+        /* harmony default export */
+        __webpack_exports__["default"] = ({
+            props: {
+                id: {
+                    type: '',
+                    required: false
+                }
+            },
+            mounted: function mounted() {
+                this.getPresentsList();
+                this.getUserMoney();
+            },
+            data: function data() {
+                return {
+                    presents: [],
+                    currentAnket: '',
+                    userMoney: ''
+                };
+            },
+            methods: {
+                close: function close() {
+                    this.$emit('closeRequest');
+                },
+                getPresentsList: function getPresentsList() {
+                    var _this = this;
+
+                    axios.get('/getpresents', {}).then(function (response) {
+                        _this.presents = response.data;
+                    });
+                },
+                givePresent: function givePresent(id) {
+                    axios.post('/givepresent', {
+                        user_id: this.id,
+                        present_id: id
+                    }).then(function (response) {
+                    });
+                    this.close();
+                },
+                getUserMoney: function getUserMoney() {
+                    var _this2 = this;
+
+                    axios.get('/getMoney').then(function (response) {
+                        _this2.userMoney = response.data.money;
+                        console.log('user money ' + _this2.money);
+                    });
+                }
+            }
+        });
+
+        /***/
+    }),
+
+    /***/
+    "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/albums/album.vue?vue&type=script&lang=js&":
+    /*!***********************************************************************************************************************************************************************!*\
+      !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/albums/album.vue?vue&type=script&lang=js& ***!
+      \***********************************************************************************************************************************************************************/
+    /*! exports provided: default */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony import */
+        var _albums_PhotoModal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../albums/PhotoModal.vue */ "./resources/js/components/albums/PhotoModal.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
         /* harmony default export */
         __webpack_exports__["default"] = ({
             name: 'edit',
@@ -2852,10 +2978,19 @@ __webpack_require__.r(__webpack_exports__);
                     numPages: null,
                     count: 0,
                     galerayFile: '',
-                    comment: ""
+                    comment: "",
+                    Photoid: null,
+                    isModalVisible: false
                 };
             },
+            components: {
+                modal: _albums_PhotoModal_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+            },
             methods: {
+                showModalFunction: function showModalFunction(id) {
+                    this.Photoid = id;
+                    this.isModalVisible = true;
+                },
                 getPhoto: function getPhoto() {
                     var _this = this;
 
@@ -2884,6 +3019,12 @@ __webpack_require__.r(__webpack_exports__);
                     }).catch(function () {
                     });
                     this.getimages();
+                },
+                showModal: function showModal() {
+                    return this.isModalVisible;
+                },
+                close: function close() {
+                    this.isModalVisible = false;
                 }
             }
         });
@@ -12681,7 +12822,28 @@ exports.push([module.i, "\n.delmodal[data-v-042dd05c] {\n    position: fixed;\n 
 // exports
 
 
-/***/ }),
+        /***/
+    }),
+
+    /***/
+    "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/albums/PhotoModal.vue?vue&type=style&index=0&id=409065ea&scoped=true&lang=css&":
+    /*!***********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+      !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/albums/PhotoModal.vue?vue&type=style&index=0&id=409065ea&scoped=true&lang=css& ***!
+      \***********************************************************************************************************************************************************************************************************************************************************************************************************/
+    /*! no static exports found */
+    /***/ (function (module, exports, __webpack_require__) {
+
+        exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+        exports.push([module.i, "\ntextarea[data-v-409065ea] {\n    width: 90%; /* Ширина поля в процентах */\n    height: 200px; /* Высота поля в пикселах */\n    resize: none; /* Запрещаем изменять размер */\n}\n.modal-mask[data-v-409065ea] {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-409065ea] {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container[data-v-409065ea] {\n    width: 600px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n}\n.modal-header h3[data-v-409065ea] {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body[data-v-409065ea] {\n    margin: 20px 0;\n}\n.modal-default-button[data-v-409065ea] {\n    float: right;\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n.modal-enter[data-v-409065ea] {\n    opacity: 0;\n}\n.modal-leave-active[data-v-409065ea] {\n    opacity: 0;\n}\n.modal-enter .modal-container[data-v-409065ea],\n.modal-leave-active .modal-container[data-v-409065ea] {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n", ""]);
+
+// exports
+
+
+        /***/ }),
 
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ankertList.vue?vue&type=style&index=0&id=19f1f812&scoped=true&lang=css&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -54514,25 +54676,56 @@ if(false) {}
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Userscontroll.vue?vue&type=style&index=0&id=042dd05c&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admin/Userscontroll.vue?vue&type=style&index=0&id=042dd05c&scoped=true&lang=css&");
 
-if(typeof content === 'string') content = [[module.i, content, '']];
+        if (typeof content === 'string') content = [[module.i, content, '']];
 
-var transform;
+        var transform;
+        var insertInto;
+
+
+        var options = {"hmr": true}
+
+        options.transform = transform
+        options.insertInto = undefined;
+
+        var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+        if (content.locals) module.exports = content.locals;
+
+        if (false) {
+        }
+
+        /***/
+    }),
+
+    /***/
+    "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/albums/PhotoModal.vue?vue&type=style&index=0&id=409065ea&scoped=true&lang=css&":
+    /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+      !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/albums/PhotoModal.vue?vue&type=style&index=0&id=409065ea&scoped=true&lang=css& ***!
+      \***************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+    /*! no static exports found */
+    /***/ (function (module, exports, __webpack_require__) {
+
+
+        var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./PhotoModal.vue?vue&type=style&index=0&id=409065ea&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/albums/PhotoModal.vue?vue&type=style&index=0&id=409065ea&scoped=true&lang=css&");
+
+        if(typeof content === 'string') content = [[module.i, content, '']];
+
+        var transform;
 var insertInto;
 
 
+        var options = {"hmr":true}
 
-var options = {"hmr":true}
-
-options.transform = transform
+        options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+        var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
 
-if(content.locals) module.exports = content.locals;
+        if(content.locals) module.exports = content.locals;
 
-if(false) {}
+        if(false) {}
 
-/***/ }),
+        /***/ }),
 
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ankertList.vue?vue&type=style&index=0&id=19f1f812&scoped=true&lang=css&":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -57122,6 +57315,154 @@ render._withStripped = true
     }),
 
     /***/
+    "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/albums/PhotoModal.vue?vue&type=template&id=409065ea&scoped=true&":
+    /*!********************************************************************************************************************************************************************************************************************************!*\
+      !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/albums/PhotoModal.vue?vue&type=template&id=409065ea&scoped=true& ***!
+      \********************************************************************************************************************************************************************************************************************************/
+    /*! exports provided: render, staticRenderFns */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export (binding) */
+        __webpack_require__.d(__webpack_exports__, "render", function () {
+            return render;
+        });
+        /* harmony export (binding) */
+        __webpack_require__.d(__webpack_exports__, "staticRenderFns", function () {
+            return staticRenderFns;
+        });
+        var render = function () {
+            var _vm = this
+            var _h = _vm.$createElement
+            var _c = _vm._self._c || _h
+            return _c(
+                "transition",
+                {
+                    attrs: {name: "modal"},
+                    on: {
+                        close: function ($event) {
+                            _vm.showModal = false
+                        }
+                    }
+                },
+                [
+                    _c("div", {staticClass: "modal-mask"}, [
+                        _c("div", {staticClass: "modal-wrapper"}, [
+                            _c("div", {staticClass: "modal-container"}, [
+                                _c(
+                                    "div",
+                                    {staticClass: "modal-header"},
+                                    [_vm._t("header", [_c("b", [_vm._v("Подарки")])])],
+                                    2
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                    "div",
+                                    {staticClass: "modal-body"},
+                                    [
+                                        _vm._t("body", [
+                                            _c("table", {staticClass: "table table-condensed"}, [
+                                                _c("thead", [
+                                                    _c("tr", [
+                                                        _c("th", [_vm._v("Подарок")]),
+                                                        _vm._v(" "),
+                                                        _c("th", [_vm._v("Цена")]),
+                                                        _vm._v(" "),
+                                                        _c("th", [_vm._v("Изображение")])
+                                                    ])
+                                                ]),
+                                                _vm._v(" "),
+                                                _c(
+                                                    "tbody",
+                                                    _vm._l(_vm.presents[0], function (present) {
+                                                        return _c("tr", [
+                                                            _c("td", [_vm._v(_vm._s(present.name))]),
+                                                            _vm._v(" "),
+                                                            _c("td", [_vm._v(_vm._s(present.price))]),
+                                                            _vm._v(" "),
+                                                            _c("td", [
+                                                                _c("img", {
+                                                                    attrs: {
+                                                                        src: "/presents/upload/" + present.image,
+                                                                        height: "200"
+                                                                    }
+                                                                })
+                                                            ]),
+                                                            _vm._v(" "),
+                                                            _vm.userMoney >= present.price
+                                                                ? _c("td", [
+                                                                    _c(
+                                                                        "button",
+                                                                        {
+                                                                            staticClass: "button btn-primary",
+                                                                            on: {
+                                                                                click: function ($event) {
+                                                                                    return _vm.givePresent(present.id)
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        [
+                                                                            _vm._v(
+                                                                                "Подарить\n                                    "
+                                                                            )
+                                                                        ]
+                                                                    )
+                                                                ])
+                                                                : _c("td", [
+                                                                    _c("b", [
+                                                                        _vm._v("Недостаточно денег. Пополните счет")
+                                                                    ])
+                                                                ])
+                                                        ])
+                                                    }),
+                                                    0
+                                                )
+                                            ])
+                                        ])
+                                    ],
+                                    2
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                    "div",
+                                    {staticClass: "modal-footer"},
+                                    [
+                                        _vm._t("footer", [
+                                            _c(
+                                                "button",
+                                                {
+                                                    staticClass: "button btn-secondary",
+                                                    on: {
+                                                        click: function ($event) {
+                                                            return _vm.close()
+                                                        }
+                                                    }
+                                                },
+                                                [
+                                                    _vm._v(
+                                                        "\n                            Закрыть\n                        "
+                                                    )
+                                                ]
+                                            )
+                                        ])
+                                    ],
+                                    2
+                                )
+                            ])
+                        ])
+                    ])
+                ]
+            )
+        }
+        var staticRenderFns = []
+        render._withStripped = true
+
+
+        /***/
+    }),
+
+    /***/
     "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/albums/album.vue?vue&type=template&id=ef3f3362&scoped=true&":
     /*!***************************************************************************************************************************************************************************************************************************!*\
       !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/albums/album.vue?vue&type=template&id=ef3f3362&scoped=true& ***!
@@ -57177,18 +57518,41 @@ render._withStripped = true
                     _vm._v(" "),
                     _vm._l(_vm.photosList, function (photo) {
                         return _c("div", [
-                            photo != null
-                                ? _c("p", [
-                                    _c("img", {
-                                        attrs: {
-                                            src: "/images/albums/" + photo.photo_name,
-                                            height: "200"
-                                        }
-                                    })
-                                ])
-                                : _vm._e()
+                            _c(
+                                "div",
+                                {staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-3 thumb"},
+                                [
+                                    photo != null
+                                        ? _c("p", [
+                                            _c("img", {
+                                                staticStyle: {cursor: "pointer"},
+                                                attrs: {
+                                                    src: "/images/albums/" + photo.photo_name,
+                                                    height: "200"
+                                                },
+                                                on: {
+                                                    click: function ($event) {
+                                                        _vm.showModalFunction(photo.id)
+                                                    }
+                                                }
+                                            })
+                                        ])
+                                        : _vm._e()
+                                ]
+                            )
                         ])
-                    })
+                    }),
+                    _vm._v(" "),
+                    _vm.showModal() === true
+                        ? _c("modal", {
+                            attrs: {id: _vm.Photoid},
+                            on: {
+                                close: function ($event) {
+                                    return _vm.close()
+                                }
+                            }
+                        })
+                        : _vm._e()
                 ],
                 2
             )
@@ -57197,7 +57561,8 @@ render._withStripped = true
         render._withStripped = true
 
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ankertList.vue?vue&type=template&id=19f1f812&scoped=true&":
 /*!*************************************************************************************************************************************************************************************************************************!*\
@@ -76249,6 +76614,121 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /***/ }),
+
+    /***/
+    "./resources/js/components/albums/PhotoModal.vue":
+    /*!*******************************************************!*\
+      !*** ./resources/js/components/albums/PhotoModal.vue ***!
+      \*******************************************************/
+    /*! exports provided: default */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony import */
+        var _PhotoModal_vue_vue_type_template_id_409065ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PhotoModal.vue?vue&type=template&id=409065ea&scoped=true& */ "./resources/js/components/albums/PhotoModal.vue?vue&type=template&id=409065ea&scoped=true&");
+        /* harmony import */
+        var _PhotoModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PhotoModal.vue?vue&type=script&lang=js& */ "./resources/js/components/albums/PhotoModal.vue?vue&type=script&lang=js&");
+        /* empty/unused harmony star reexport */
+        /* harmony import */
+        var _PhotoModal_vue_vue_type_style_index_0_id_409065ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PhotoModal.vue?vue&type=style&index=0&id=409065ea&scoped=true&lang=css& */ "./resources/js/components/albums/PhotoModal.vue?vue&type=style&index=0&id=409065ea&scoped=true&lang=css&");
+        /* harmony import */
+        var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+        /* normalize component */
+
+        var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+            _PhotoModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+            _PhotoModal_vue_vue_type_template_id_409065ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+            _PhotoModal_vue_vue_type_template_id_409065ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+            false,
+            null,
+            "409065ea",
+            null
+        )
+
+        /* hot reload */
+        if (false) {
+            var api;
+        }
+        component.options.__file = "resources/js/components/albums/PhotoModal.vue"
+        /* harmony default export */
+        __webpack_exports__["default"] = (component.exports);
+
+        /***/
+    }),
+
+    /***/
+    "./resources/js/components/albums/PhotoModal.vue?vue&type=script&lang=js&":
+    /*!********************************************************************************!*\
+      !*** ./resources/js/components/albums/PhotoModal.vue?vue&type=script&lang=js& ***!
+      \********************************************************************************/
+    /*! exports provided: default */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony import */
+        var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PhotoModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/albums/PhotoModal.vue?vue&type=script&lang=js&");
+        /* empty/unused harmony star reexport */
+        /* harmony default export */
+        __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+        /***/
+    }),
+
+    /***/
+    "./resources/js/components/albums/PhotoModal.vue?vue&type=style&index=0&id=409065ea&scoped=true&lang=css&":
+    /*!****************************************************************************************************************!*\
+      !*** ./resources/js/components/albums/PhotoModal.vue?vue&type=style&index=0&id=409065ea&scoped=true&lang=css& ***!
+      \****************************************************************************************************************/
+    /*! no static exports found */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony import */
+        var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoModal_vue_vue_type_style_index_0_id_409065ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./PhotoModal.vue?vue&type=style&index=0&id=409065ea&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/albums/PhotoModal.vue?vue&type=style&index=0&id=409065ea&scoped=true&lang=css&");
+        /* harmony import */
+        var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoModal_vue_vue_type_style_index_0_id_409065ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoModal_vue_vue_type_style_index_0_id_409065ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+        /* harmony reexport (unknown) */
+        for (var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoModal_vue_vue_type_style_index_0_id_409065ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if (__WEBPACK_IMPORT_KEY__ !== 'default') (function (key) {
+            __webpack_require__.d(__webpack_exports__, key, function () {
+                return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoModal_vue_vue_type_style_index_0_id_409065ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key];
+            })
+        }(__WEBPACK_IMPORT_KEY__));
+        /* harmony default export */
+        __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoModal_vue_vue_type_style_index_0_id_409065ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a);
+
+        /***/
+    }),
+
+    /***/
+    "./resources/js/components/albums/PhotoModal.vue?vue&type=template&id=409065ea&scoped=true&":
+    /*!**************************************************************************************************!*\
+      !*** ./resources/js/components/albums/PhotoModal.vue?vue&type=template&id=409065ea&scoped=true& ***!
+      \**************************************************************************************************/
+    /*! exports provided: render, staticRenderFns */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony import */
+        var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoModal_vue_vue_type_template_id_409065ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./PhotoModal.vue?vue&type=template&id=409065ea&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/albums/PhotoModal.vue?vue&type=template&id=409065ea&scoped=true&");
+        /* harmony reexport (safe) */
+        __webpack_require__.d(__webpack_exports__, "render", function () {
+            return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoModal_vue_vue_type_template_id_409065ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"];
+        });
+
+        /* harmony reexport (safe) */
+        __webpack_require__.d(__webpack_exports__, "staticRenderFns", function () {
+            return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoModal_vue_vue_type_template_id_409065ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"];
+        });
+
+
+        /***/
+    }),
 
     /***/
     "./resources/js/components/albums/album.vue":

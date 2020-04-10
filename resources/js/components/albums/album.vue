@@ -10,14 +10,20 @@
             </div>
         </div>
         <div v-for="photo in photosList">
-            <p v-if="photo!=null">
-                <img :src="'/images/albums/'+photo.photo_name" height="200">
-            </p>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-3 thumb">
+                <p v-if="photo!=null">
+                    <img :src="'/images/albums/'+photo.photo_name" height="200"
+                         v-on:click="showModalFunction (photo.id)" style="cursor: pointer">
+                </p>
+            </div>
         </div>
+        <modal v-if="showModal()===true" :id="Photoid" @close='close()'></modal>
     </div>
 </template>
 
 <script>
+    import modal from '../albums/PhotoModal.vue';
+
 
     export default {
         name: 'edit',
@@ -41,9 +47,19 @@
                 count: 0,
                 galerayFile: '',
                 comment: "",
+                Photoid: null,
+                isModalVisible: false
             }
         },
+        components: {
+            modal
+        },
         methods: {
+            showModalFunction(id) {
+
+                this.Photoid = id;
+                this.isModalVisible = true;
+            },
             getPhoto() {
                 axios.get('/myAnket/albums/' + this.id + '/photos', {
                     params:
@@ -76,6 +92,12 @@
                     });
                 this.getimages();
             },
+            showModal() {
+                return this.isModalVisible;
+            },
+            close() {
+                this.isModalVisible = false;
+            }
 
         }
     }
