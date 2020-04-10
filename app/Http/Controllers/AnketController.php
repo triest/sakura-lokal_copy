@@ -830,7 +830,7 @@ class AnketController extends Controller
                 [Carbon::now()->subDays(1), Carbon::now()->toDateTimeString()])
             ->count();
 
-        return view('myAnket')->with([
+        return view('anket.myAnket')->with([
             'anket'         => $anket,
             'views_fo_day'  => $views_fo_day,
             'views_fo_week' => $views_fo_week,
@@ -1405,6 +1405,40 @@ class AnketController extends Controller
         $str = substr(base64_encode(sha1(mt_rand())), 0, $length);
 
         return $str;
+    }
+
+    public function albumsPage($id = null)
+    {
+        if ($id != null) {
+            $girl = Girl::get($id);
+            $albums = $girl->albums()->get();
+        } else {
+            $userAuth = Auth::user();
+            $user = User::select(['id'])->where('id', $userAuth->id)->first();
+            $girl = $user->anketisExsis();
+            $albums = $girl->albums()->get();
+        }
+        dump($albums);
+
+        return view('anket.albums')->with([
+            'albums' => $albums,
+        ]);
+    }
+
+
+    public function albums($id) //get almubs by girl id
+    {
+        if ($id != null) {
+            $girl = Girl::get($id);
+            $albums = $girl->albums()->get();
+        } else {
+            $userAuth = Auth::user();
+            $user = User::select(['id'])->where('id', $userAuth->id)->first();
+            $girl = $user->anketisExsis();
+            $albums = $girl->albums()->get();
+        }
+
+        return $albums;
     }
 }
 

@@ -421,12 +421,13 @@ class GirlsController extends Controller
 
         //авв сшен
         if ($girl->city_id != null) {
-            $city = $girl->getCity();
+            $city = $girl->getCity();/*
             if ($city != null) {
                 $region = $girl->getRigion($city);
             } else {
                 $region = null;
-            }
+            }*/
+            $region = null;
         } else {
             $city = null;
             $region = null;

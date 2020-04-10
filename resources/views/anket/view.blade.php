@@ -49,12 +49,14 @@
             @endif
             @if($girl->isOnline())
             @else
-                @if($girl->sex=='famele')
-                    <small>, последний раз была {{$last_login}}</small>
-                @endif
+                @if($girl->lastLoginFormat()!="")
+                    @if($girl->sex=='famele')
+                        <small>, последний раз была {{$girl->lastLoginFormat()}}</small>
+                    @endif
 
-                @if($girl->sex=='male')
-                    <small>, последний раз был {{$last_login}}</small>
+                    @if($girl->sex=='male')
+                        <small>, последний раз был {{$girl->lastLoginFormat()}}</small>
+                    @endif
                 @endif
             @endif
             @if ($girl->status!=null)
@@ -77,7 +79,8 @@
                     @else
                         @if($girl->user_id!=auth()->user()->id)
                             <div id="phoneRequwestApp">
-                                <phonerequwest :id="{{$girl->id}}" :user_id="{{$girl->user_id}}"></phonerequwest>
+                                <phonerequwest :id="{{$girl->id}}"
+                                               :user_id="{{$girl->user_id}}"></phonerequwest>
                             </div>
                         @elseif($phone_settings==2 and $girl->user_id=auth()->user()->id)
                             Ваш телефон виден только тем,  вы его откроете

@@ -56,10 +56,15 @@ class SeachController extends Controller
                 $girls->where('city_id', '=', $Autchgirls->city_id);
                 $girls->where('id', '<>', $Autchgirls->id);
             }
+
+            $city = City::GetCurrentCity();
+
+            if ($city != null) {
+                $girls->where('city_id', $city->id);
+            }
             $girls = $girls->orderByDesc('created_at')->get();
             $count = $girls->count();
             $num_pages = intval($count / $this->limit);
-
             return response()->json([
                 'ankets'    => $girls,
                 'count'     => $count,
@@ -103,6 +108,10 @@ class SeachController extends Controller
 
         if ($city != null) {
             $girls->where('city_id', $city->id);
+        }
+
+        if (isset($Autchgirls) && $Autchgirls != null) {
+            $girls->where('id', '!=', $Autchgirls->id);
         }
 
 

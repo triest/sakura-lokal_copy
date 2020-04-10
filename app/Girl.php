@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Myevent;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class Girl extends Model
 {
@@ -23,6 +24,16 @@ class Girl extends Model
             'filter_enable',
         ];
 
+
+    public static function get($id)
+    {
+        $anket = Girl::select(['*'])
+            ->where('id', $id)
+            ->first();
+
+        return $anket;
+    }
+
     public function photos()
     {
         return $this->hasMany('App\Photo');
@@ -31,6 +42,12 @@ class Girl extends Model
     public function privatephotos()
     {
         return $this->hasMany('App\Privatephoto');
+    }
+
+
+    public function albums()
+    {
+        return $this->hasMany('App\Album');
     }
 
     public function user()
@@ -129,9 +146,8 @@ class Girl extends Model
     public function lastLoginFormat()
     {
         $last_login = $this->last_login;
-        dump($this->last_login);
         if ($this->last_login == null) {
-            return;
+            return "";
         }
         $mytime = Carbon::now();
         $last_login = Carbon::createFromFormat('Y-m-d H:i:s', $last_login);
@@ -224,6 +240,8 @@ class Girl extends Model
 
         return true;
     }
+
+
 }
 
 

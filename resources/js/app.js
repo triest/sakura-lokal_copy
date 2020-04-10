@@ -116,6 +116,9 @@ Vue.component('filteranket', require('./components/layouts/filterAnket.vue').def
 Vue.component('anketlist', require('./components/ankertList.vue').default);
 
 
+Vue.component('album', require('./components/albums/album.vue').default);
+
+
 window.onload = function () {
     const aperanceApp = new Vue({
         el: '#aperanceApp',
@@ -365,7 +368,14 @@ window.onload = function () {
         data: {
             showModal: false
         }
+        //appacepted
+    });
 
+    const albumApp = new Vue({
+        el: '#albumApp',
+        data: {
+            showModal: false
+        }
         //appacepted
     });
 }

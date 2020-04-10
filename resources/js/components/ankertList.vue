@@ -15,6 +15,7 @@
             </div>
         </div>
         <a class="previous " v-if="page<numPages"><a v-on:click="loadNew">Загрузить еще</a></a>
+
     </div>
 </template>
 

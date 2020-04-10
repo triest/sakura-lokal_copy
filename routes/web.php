@@ -371,6 +371,27 @@ Route::get('/sendCODE2', function () {
 Route::get('/myAnket', 'AnketController@myAnket')->name("myAnket")
     ->middleware('auth', 'anketExist');
 
+Route::get('/myAnket/albums/', 'AnketController@albumsPage')
+    ->name("albumsPage"); //get albums by yser ud
+Route::get('/album/create/', 'AlbumController@albumCreate')
+    ->name("albumCreate");
+
+Route::post('/album/store/', 'AlbumController@albumStore')
+    ->name("albumStore");
+
+
+Route::get('/myAnket/albums/{id}', 'AlbumController@album')
+    ->name("albumItem"); //get albums by yser ud
+
+Route::get('/myAnket/albums/{id}/photos', 'AlbumController@getAlbumPhotos')
+    ->name("albumItem");
+
+Route::post('/myAnket/albums/{id}/upload',
+    'AlbumController@uploadPhotoToAlbum');
+
+//get albums by yser ud
+
+
 Route::get('/getMyAnketData', 'AnketController@getMyAnketData')
     ->middleware('auth', 'anketExist');
 

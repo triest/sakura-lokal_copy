@@ -9,7 +9,7 @@
             <h5><b>{{anket.anket.name}}</b></h5>   <a type="button" class="btn btn-primary" href="user/anketa/edit"
                                                       role="link">Редактировать</a>
             <p>{{anket.status}}</p>
-          
+
             <div v-if="anket.anket.sex=='famele'">
                 Женщина
             </div>
@@ -23,6 +23,11 @@
             <div v-else-if="anket.anket.meet=='male'">мужчиной</div>
             <br>
 
+            Мои альбомы:
+            <a href="/myAnket/albums/">Смотреть</a>
+
+            <br>
+
             Возраст: {{anket.anket.age}} <br>
             Рост: {{anket.anket.height}}<br>
             Вес: {{anket.anket.weight}}<br>
@@ -34,7 +39,7 @@
                 </div>
             </li>
 
-         
+
             <b><a href="/editimages">Фотографии</a> </b><br>
             <div v-for="photo in topPhotos">
                 <a href="/editimages"><img :src="'/images/upload/'+photo.photo_name" height="150"></a>
@@ -84,7 +89,7 @@
                     axios.get('/getMyAnketData')
                         .then((response) => {
                             this.anket = response.data;
-                          
+
                         })
                 },
                 getTopPhotos() {
