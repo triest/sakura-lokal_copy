@@ -198,8 +198,12 @@ class Girl extends Model
     {
         $user = $this->user()->first();
 
-        //return $user->isOnline();
-        return Cache::has('user-is-online-'.$this->id);
+        if ($user) {
+            return $user->isOnline();
+        } else {
+            return null;
+        }
+        //return Cache::has('user-is-online-'.$this->id);
     }
 
     public function newLike()

@@ -45,19 +45,21 @@
         <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
             <b>  {{$girl->name}}</b>, {{$girl->age}}
             @if($girl->isOnline())
-                <img width="10" src="<?php echo asset("/images/circle-16.ico")?>">
+                <img width="10" src="<?php echo asset("/images/circle-16.ico")?>" title="В сети">
             @endif
             @if($girl->isOnline())
             @else
-                @if($girl->lastLoginFormat()!="")
-                    @if($girl->sex=='famele')
-                        <small>, последний раз была {{$girl->lastLoginFormat()}}</small>
-                    @endif
+                <small>
+                    @if($girl->lastLoginFormat()!="")
+                        @if($girl->sex=='famele')
+                            <small>, последний раз была {{$girl->lastLoginFormat()}}</small>
+                        @endif
 
-                    @if($girl->sex=='male')
-                        <small>, последний раз был {{$girl->lastLoginFormat()}}</small>
+                        @if($girl->sex=='male')
+                            <small>, последний раз был {{$girl->lastLoginFormat()}}</small>
+                        @endif
                     @endif
-                @endif
+                </small>
             @endif
             @if ($girl->status!=null)
                 <br>
@@ -65,8 +67,7 @@
             @endif
             <div class="card  border-dark" style="width: 30rem; background-color: #eeeeee;
              border: 1px solid transparent;
-             border-color: #666869;
-">
+             border-color: #666869;">
 
 
                 @if($phone_settings==1 and $phone!=null)
@@ -137,11 +138,6 @@
             <p> {{$aperance->name}}</p>
         @endif
 
-        @if($city!=null)
-            <b>Город:</b> <br>
-            {{$city->name}}
-            <br>
-        @endif
 
 
         @if($region!=null)
