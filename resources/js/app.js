@@ -118,6 +118,7 @@ Vue.component('anketlist', require('./components/ankertList.vue').default);
 
 Vue.component('album', require('./components/albums/album.vue').default);
 
+Vue.component('view', require('./components/anket/view').default);
 
 window.onload = function () {
     const aperanceApp = new Vue({
@@ -373,6 +374,14 @@ window.onload = function () {
 
     const albumApp = new Vue({
         el: '#albumApp',
+        data: {
+            showModal: false
+        }
+        //appacepted
+    });
+
+    const ankataApp = new Vue({
+        el: '#ankataApp',
         data: {
             showModal: false
         }

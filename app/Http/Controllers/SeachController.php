@@ -31,12 +31,15 @@ class SeachController extends Controller
 
         $userAuth = Auth::user();
         if ($userAuth != null) {
-            $girls = $userAuth->girl()->get();
-            $Autchgirls = $girls[0];
-            //  $seachSettings = SearchSettings::select(['id'])
-            //     ->where("girl_id", "=", $girls->id)->first();
-            $seachSettings = $Autchgirls->seachsettings()->first();
+            $Autchgirls = $userAuth->girl()->first();
+
+            if ($Autchgirls != null) {
+                //  $seachSettings = SearchSettings::select(['id'])
+                //     ->where("girl_id", "=", $girls->id)->first();
+                $seachSettings = $Autchgirls->seachsettings()->first();
+            }
         } else {
+
             if (isset($_COOKIE["laravel_session"])) {
                 $cookie = $_COOKIE["laravel_session"];
                 if ($cookie != null) {
@@ -54,7 +57,7 @@ class SeachController extends Controller
             $girls = DB::table('girls');
             if (isset($Autchgirls) && $Autchgirls != null) {
                 $girls->where('city_id', '=', $Autchgirls->city_id);
-                $girls->where('id', '<>', $Autchgirls->id);
+                //$girls->where('id', '<>', $Autchgirls->id);
             }
 
             $city = City::GetCurrentCity();
@@ -65,6 +68,7 @@ class SeachController extends Controller
             $girls = $girls->orderByDesc('created_at')->get();
             $count = $girls->count();
             $num_pages = intval($count / $this->limit);
+
             return response()->json([
                 'ankets'    => $girls,
                 'count'     => $count,
@@ -98,11 +102,11 @@ class SeachController extends Controller
             //        $girls->where('interest_id', $item->id);
         }
 
-        //нужно получиь число
+        //О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫
         $count = $girls->count();
         $num_pages = intval($count / $this->limit);
 
-        /* Город*/
+        /* О©╫О©╫О©╫О©╫О©╫*/
 
         $city = City::GetCurrentCity();
 
@@ -142,7 +146,7 @@ class SeachController extends Controller
 
 
         /*
-         * теперь над получать цели
+         * О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
          * */
 
 
@@ -206,7 +210,7 @@ class SeachController extends Controller
             }
         }
 
-        //тут получаем установленные настройки.
+        //О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫.
         if (isset($sechSettings) && $sechSettings != null) {
             $interest_array_temp = $sechSettings->interest()->get();
 
@@ -263,7 +267,7 @@ class SeachController extends Controller
               if ($userAuth != null) {
                   $user = User::select(['id', 'name'])
                       ->where('id', $userAuth->id)->first();
-                  //сли не авторизован, то смотрим по кукам.
+                  //О©╫О©╫О©╫ О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫, О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫ О©╫О©╫О©╫О©╫О©╫.
                   if ($user != null) {
                       $anket = Girl::select(['id', 'name'])
                           ->where('user_id', $user->id)
@@ -301,7 +305,7 @@ class SeachController extends Controller
                   $seachSettings->age_from = $request->from;
                   $seachSettings->age_to = $request->to;
                   $seachSettings->children = $request->children;
-                  // тут генерируем куку
+                  // О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
                   $value = $this->randomString();
                   $seachSettings->cookie = $value;
                   Cookie::queue(Cookie::make('seachSettings', $value, 1140));
@@ -309,7 +313,7 @@ class SeachController extends Controller
                   if ($userAuth != null) {
                       $user = User::select(['id', 'name'])
                           ->where('id', $userAuth->id)->first();
-                      //сли не авторизован, то смотрим по кукам.
+                      //О©╫О©╫О©╫ О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫, О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫ О©╫О©╫О©╫О©╫О©╫.
                       if ($user != null) {
                           $anket = Girl::select(['id', 'name'])
                               ->where('user_id', $user->id)
@@ -338,7 +342,7 @@ class SeachController extends Controller
                   $seachSettings->children = $request->children;
                   $seachSettings->save();
               }
-              //теперь настройки поиска
+              //О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫
               dump($seachSettings);
               $selectedTargets = $request->select_target;
               dump($request);

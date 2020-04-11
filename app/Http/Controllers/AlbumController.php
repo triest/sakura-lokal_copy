@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Album;
 use App\AlbumPhoto;
+use App\Girl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -16,7 +17,7 @@ class AlbumController extends Controller
         return view('anket.albumCreate');
     }
 
-    public function albumStore(Request $request)
+    public function albumStore($id, Request $request)
     {
         $validatedData = $request->validate([
             'name' => 'required',
@@ -30,14 +31,19 @@ class AlbumController extends Controller
 
         $anket->albums()->save($album);
 
-        return view('anket.albumpage')->with(['album' => $album]);
+//        return view('anket.albumpage')->with(['album' => $album]);
+        return redirect('/myAnket/'.$id.'/albums/');
     }
 
-    public function album($id, Request $request)
+    public function album($id, $albumid, Request $request)
     {
-        $album = Album::select(['id', 'name'])->where('id', $id)->first();
+        $album = Album::select(['id', 'name'])->where('id', $albumid)->first();
+        if ($album != null) {
+            $photos = $album->photos()->get();
+        } else {
+            $photos = null;
+        }
 
-        $photos = $album->photos()->get();
 
         return view('anket.albumpage')->with([
             'album'  => $album,
@@ -45,10 +51,39 @@ class AlbumController extends Controller
         ]);
     }
 
-    public function getAlbumPhotos($id, Request $request)
+    public function albums($id, Request $request)
+    {
+        $anket = Girl::get($id);
+
+        if ($anket == null) {
+
+        }
+        $albums = $anket->albums()->get();
+
+        $auth = Auth::user();
+        if ($auth != null) {
+            $authAnket = $auth->girl()->first();
+            if ($authAnket != null && $authAnket->id == $id) {
+                $allowEdit = true;
+            } else {
+                $allowEdit = false;
+            }
+        } else {
+            $allowEdit = false;
+        }
+
+        return view('anket.albums')->with([
+            'albums'    => $albums,
+            'id'        => $id,
+            'allowEdit' => $allowEdit,
+        ]);
+    }
+
+
+    public function getAlbumPhotos($id, $albumid, Request $request)
     {
 
-        $album = Album::select(['id', 'name'])->where('id', $id)->first();
+        $album = Album::select(['id', 'name'])->where('id', $albumid)->first();
 
         $photos = $album->photos()->get();
 

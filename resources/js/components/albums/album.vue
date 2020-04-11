@@ -63,6 +63,7 @@
                 this.isModalVisible = true;
             },
             getPhoto() {
+                this.photosList = null;
                 axios.get('/myAnket/albums/' + this.id + '/photos', {
                     params:
                         {
@@ -91,8 +92,9 @@
                     this.getPhoto();
                 })
                     .catch(function () {
+                        this.getPhoto();
                     });
-                this.getimages();
+                this.getPhoto();
             },
             showModal() {
                 return this.isModalVisible;

@@ -8,9 +8,9 @@
                         </slot>
                     </div>
                     <div class="modal-body">
-
                         <slot name="body">
-                            <img :src="'/images/albums/'+name" height="400px">
+                            <img class="container4" :src="'/images/albums/'+name" height="400px"
+                                 style="horiz-align:center">
                         </slot>
                         <br>
                         Загруженно: {{photo.created_at}}
@@ -136,5 +136,20 @@
     .modal-leave-active .modal-container {
         -webkit-transform: scale(1.1);
         transform: scale(1.1);
+    }
+
+    div.container4 {
+        height: 10em;
+        position: relative
+    }
+
+    div.container4 p {
+        background: yellow;
+        position: absolute;
+        margin: auto;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
     }
 </style>

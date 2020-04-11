@@ -137,9 +137,6 @@
             <p class="card-text"><b>Внешность :</b></p>
             <p> {{$aperance->name}}</p>
         @endif
-
-
-
         @if($region!=null)
             <b>Регион:</b> <br>
             {{$region->name}}

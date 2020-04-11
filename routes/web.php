@@ -378,15 +378,16 @@ Route::get('/myAnket/albums/', 'AnketController@albumsPage')
 Route::get('/album/create/', 'AlbumController@albumCreate')
     ->name("albumCreate");
 
-Route::post('/album/store/', 'AlbumController@albumStore')
+Route::post('/myAnket/{id}/album/store/', 'AlbumController@albumStore')
     ->name("albumStore");
 
 
-Route::get('/myAnket/albums/{id}', 'AlbumController@album')
-    ->name("albumItem"); //get albums by yser ud
+Route::get('/myAnket/{id}/albums/', 'AlbumController@albums');
+//get albums by yser ud
 
-Route::get('/myAnket/albums/{id}/photos', 'AlbumController@getAlbumPhotos')
-    ->name("albumItem");
+
+Route::get('/myAnket/{id}/albums/{albumid}/photos',
+    'AlbumController@album')->name('albumItem');
 
 Route::post('/myAnket/albums/{id}/upload',
     'AlbumController@uploadPhotoToAlbum');
