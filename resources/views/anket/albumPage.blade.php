@@ -3,7 +3,7 @@
 @section('content')
 
     <div id="albumApp">
-        <album :id="{{$album->id}}"></album>
+        <album :id="{{$id}}" :album="{{$album->id}}"></album>
     </div>
 
 @endsection

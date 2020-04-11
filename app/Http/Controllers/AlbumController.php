@@ -43,11 +43,17 @@ class AlbumController extends Controller
         } else {
             $photos = null;
         }
+        /*ут смотим тип,  и если еадо, то отдаем json*/
 
+        if ($request->get('type') == "json") {
+
+            return response()->json(['photos' => $photos]);
+        }
 
         return view('anket.albumpage')->with([
             'album'  => $album,
             'photos' => $photos,
+            'id'     => $id,
         ]);
     }
 

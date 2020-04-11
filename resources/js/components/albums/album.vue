@@ -32,7 +32,12 @@
                 type: Number,
                 default: null,
 
+            },
+            album: {
+                type: Number,
+                default: null,
             }
+
         },
         mounted() {
             console.log("album");
@@ -64,7 +69,7 @@
             },
             getPhoto() {
                 this.photosList = null;
-                axios.get('/myAnket/albums/' + this.id + '/photos', {
+                axios.get('/myAnket/' + this.id + '/albums/' + this.album + '/photos', {
                     params:
                         {
                             type: "json"

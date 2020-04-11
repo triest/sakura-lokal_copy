@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="{{route('albumItem',['id'=>$girl->id])}}"> Фотографии</a>
+        <a href="{{route('albums',['id'=>$girl->id])}}"> Фотографии</a>
         <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
             @if($phone_settings==1 and $phone!=null)
                 <b>Телефон:</b>

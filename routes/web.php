@@ -382,7 +382,7 @@ Route::post('/myAnket/{id}/album/store/', 'AlbumController@albumStore')
     ->name("albumStore");
 
 
-Route::get('/myAnket/{id}/albums/', 'AlbumController@albums');
+Route::get('/myAnket/{id}/albums/', 'AlbumController@albums')->name('albums');
 //get albums by yser ud
 
 

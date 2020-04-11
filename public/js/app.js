@@ -2927,6 +2927,10 @@ __webpack_require__.r(__webpack_exports__);
                 id: {
                     type: Number,
                     default: null
+                },
+                album: {
+                    type: Number,
+                    default: null
                 }
             },
             mounted: function mounted() {
@@ -2960,7 +2964,7 @@ __webpack_require__.r(__webpack_exports__);
                     var _this = this;
 
                     this.photosList = null;
-                    axios.get('/myAnket/albums/' + this.id + '/photos', {
+                    axios.get('/myAnket/' + this.id + '/albums/' + this.album + '/photos', {
                         params: {
                             type: "json"
                         }
@@ -4800,7 +4804,8 @@ __webpack_require__.r(__webpack_exports__);
             components: {}
         });
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/carusel/carusel.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************!*\
@@ -59326,7 +59331,8 @@ render._withStripped = true
         render._withStripped = true
 
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/carusel/carusel.vue?vue&type=template&id=09b75228&scoped=true&":
 /*!******************************************************************************************************************************************************************************************************************************!*\
@@ -77769,7 +77775,8 @@ __webpack_require__.r(__webpack_exports__);
         });
 
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./resources/js/components/carusel/carusel.vue":
 /*!*****************************************************!*\
