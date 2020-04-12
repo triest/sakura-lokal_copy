@@ -15,14 +15,7 @@ class City extends Model
     public static function GetCurrentCity()
     {
         $ip = GirlsController::getIpStatic();
-        if ($ip == null) {
-            return null;
-        }
-        try {
-            $response = file_get_contents("http://api.sypexgeo.net/json/".$ip);
-        } catch (IOException $e) {
-            return null;
-        }
+        $response = file_get_contents("http://api.sypexgeo.net/json/".$ip);
         $response = json_decode($response);
         $okato = $response->city->okato;
         $city = City::select([
