@@ -5,6 +5,7 @@ namespace App;
 use App\Http\Controllers\GirlsController;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\Filesystem\Exception\IOException;
 
 class City extends Model
 {
@@ -14,8 +15,14 @@ class City extends Model
     public static function GetCurrentCity()
     {
         $ip = GirlsController::getIpStatic();
-        $response = file_get_contents("http://api.sypexgeo.net/json/"
-            .$ip); //запрашиваем местоположение
+        if ($ip == null) {
+            return null;
+        }
+        try {
+            $response = file_get_contents("http://api.sypexgeo.net/json/".$ip);
+        } catch (IOException $e) {
+            return null;
+        }
         $response = json_decode($response);
         $okato = $response->city->okato;
         $city = City::select([
@@ -31,7 +38,6 @@ class City extends Model
                 = file_get_contents("https://kladr-api.ru/api.php?contentType=city&withParent=1&limit=10&query=$name");
             $response = json_decode($response);
             $result = $response->result;
-            dump($response);
             $city = City::select([
                 'id',
                 'name',
@@ -46,8 +52,8 @@ class City extends Model
             }
 
             return $city;
+        } else {
+            return $city;
         }
-
-        return $city;
     }
 }
