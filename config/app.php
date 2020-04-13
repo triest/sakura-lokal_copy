@@ -176,6 +176,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Scriptixru\SypexGeo\SypexGeoServiceProvider,
+        Jenssegers\Agent\AgentServiceProvider::class,
     ],
 
     /*
@@ -225,6 +226,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'SypexGeo'  => 'Scriptixru\SypexGeo\SypexGeoFacade',
+        'Agent'     => Jenssegers\Agent\Facades\Agent::class,
     ],
 
 ];

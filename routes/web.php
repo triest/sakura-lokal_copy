@@ -383,6 +383,8 @@ Route::post('/myAnket/{id}/album/store/', 'AlbumController@albumStore')
 
 
 Route::get('/myAnket/{id}/albums/', 'AlbumController@albums')->name('albums');
+Route::get('/myAnket/{id}/albums/{albumid}/delete',
+    'AlbumController@albumDelete')->name('albumsDelete');
 //get albums by yser ud
 
 
@@ -595,3 +597,6 @@ Route::get('/filter_enable', 'GirlsController@filter_enable')
 
 
 Route::get('/city_test', 'CityController@GetCurrentCity');
+
+
+Route::get('/mobile', 'MobileController@index');
