@@ -1,10 +1,13 @@
 <template>
     <div class="chat-app"> <!-- lg комп-->
-        <div class="col-lg-3">
-            <ContactsList :contacts="contacts" @selected="startConversationWith"/>
+        <button class="btn btn-primary" @click="showContactListFunction()">Показать анкеты</button>
+        <div class="col-lg-9 visible-xs">
+            <contacts-list :contacts="contacts" @selected="startConversationWith"
+                           v-if="showContactListCheck()"></contacts-list>
         </div>
         <div class="col-lg-9">
-            <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
+            <Conversation :contact="selectedContact" v-if="!showContactListCheck()" :messages="messages"
+                          @new="saveNewMessage"/>
         </div>
     </div>
 </template>
@@ -25,7 +28,8 @@
                 selectedContact: null,
                 messages: [],
                 contacts: [],
-                unreaded: 0
+                unreaded: 0,
+                showContartListVarible: false,
             };
         },
         mounted() {
@@ -48,6 +52,13 @@
                         this.messages = response.data;
                         this.selectedContact = contact;
                     })
+            },
+            showContactListFunction() {
+                console.log("d");
+                this.showContartListVarible = !this.showContartListVarible;
+            },
+            showContactList() {
+
             },
             saveNewMessage(message) {
                 this.messages.push(message);
@@ -73,6 +84,9 @@
 
                     return single;
                 })
+            },
+            showContactListCheck() {
+                return this.showContartListVarible;
             }
         },
         components: {Conversation, ContactsList}

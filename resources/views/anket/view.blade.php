@@ -11,8 +11,8 @@
 ">
                 <img width="200" height="200" src="<?php echo asset("/images/upload/$girl->main_image")?>">
                 @if (Auth::guest())
-
                 @else
+                    xccx
                     @if($girl->user_id!=auth()->user()->id)
                         <br>
                         <div class="card-body" id="app7">

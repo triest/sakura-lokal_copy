@@ -5716,6 +5716,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5730,7 +5733,8 @@ __webpack_require__.r(__webpack_exports__);
       selectedContact: null,
       messages: [],
       contacts: [],
-      unreaded: 0
+      unreaded: 0,
+      showContartListVarible: false
     };
   },
   mounted: function mounted() {
@@ -5753,6 +5757,11 @@ __webpack_require__.r(__webpack_exports__);
         _this2.selectedContact = contact;
       });
     },
+    showContactListFunction: function showContactListFunction() {
+      console.log("d");
+      this.showContartListVarible = !this.showContartListVarible;
+    },
+    showContactList: function showContactList() {},
     saveNewMessage: function saveNewMessage(message) {
       this.messages.push(message);
     },
@@ -5773,6 +5782,9 @@ __webpack_require__.r(__webpack_exports__);
         if (reset) single.unread = 0;else single.unread += 1;
         return single;
       });
+    },
+    showContactListCheck: function showContactListCheck() {
+      return this.showContartListVarible;
     }
   },
   components: {
@@ -60754,13 +60766,28 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "chat-app" }, [
     _c(
+      "button",
+      {
+        staticClass: "btn btn-primary",
+        on: {
+          click: function($event) {
+            return _vm.showContactListFunction()
+          }
+        }
+      },
+      [_vm._v("Показать анкеты")]
+    ),
+    _vm._v(" "),
+    _c(
       "div",
-      { staticClass: "col-lg-3" },
+      { staticClass: "col-lg-9 visible-xs" },
       [
-        _c("ContactsList", {
-          attrs: { contacts: _vm.contacts },
-          on: { selected: _vm.startConversationWith }
-        })
+        _vm.showContactListCheck()
+          ? _c("contacts-list", {
+              attrs: { contacts: _vm.contacts },
+              on: { selected: _vm.startConversationWith }
+            })
+          : _vm._e()
       ],
       1
     ),
@@ -60769,10 +60796,12 @@ var render = function() {
       "div",
       { staticClass: "col-lg-9" },
       [
-        _c("Conversation", {
-          attrs: { contact: _vm.selectedContact, messages: _vm.messages },
-          on: { new: _vm.saveNewMessage }
-        })
+        !_vm.showContactListCheck()
+          ? _c("Conversation", {
+              attrs: { contact: _vm.selectedContact, messages: _vm.messages },
+              on: { new: _vm.saveNewMessage }
+            })
+          : _vm._e()
       ],
       1
     )

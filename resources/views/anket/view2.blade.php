@@ -12,9 +12,6 @@
         <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
             <b>  {{$girl->name}}</b>, {{$girl->age}}
 
-            @if($girl->isOnline())
-                <img width="10" src="<?php echo asset("/images/circle-16.ico")?>" title="В сети">
-            @endif
             @if(!$girl->isOnline())
                 <small>
                     @if($girl->lastLoginFormat()!="")
@@ -33,6 +30,20 @@
             @if ($girl->status!=null)
                 <br>
                 {{$girl->status}}
+            @endif
+            @if (Auth::guest())
+            @else
+                @if(true)
+                    <br>
+                    <div class="card-body" id="app7">
+                        <privatepanel :id="{{$girl->id}}" :user_id="{{$girl->user_id}}"></privatepanel>
+                    </div>
+                @else
+                    <br>
+                    <a class="btn btn-primary" href="{{route('girlsEditAuchAnket')}}"> Редактировать анкету</a>
+                @endif
+                @if(auth()->user()->get_id()!=$girl->user_id)
+                @endif
             @endif
         </div>
     </div>
@@ -141,6 +152,7 @@
             @endif
         </div>
     </div>
+    <a class="btn btn-primary" href="{{route('main')}}" role="link"><i class="fa fa-arrow-left"></i> К списку анкет</a>
 @endsection
 <script>
 
