@@ -2,7 +2,7 @@
     <div>
 
         <div v-for="item in anketList">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-3 thumb">
+            <div class="col-lg-3 col-md-2 col-sm-2 col-xs-3 thumb">
                 <a :href="/anket/+item.id">
                     <img width="200" height="200" :src="'images/upload/'+item.main_image">
                 </a>
@@ -52,7 +52,7 @@
                 window.onscroll = () => {
                     let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
 
-                    if (bottomOfWindow) {
+                    if (bottomOfWindow && page < numPages) {
                         this.loadNew();
                     }
                 }
@@ -135,7 +135,7 @@
         display: block;
         padding: 20px;
         width: 100%;
-        color: white;
+        color: white !important;
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
         cursor: pointer;
     }
@@ -156,5 +156,9 @@
         /*  position: absolute;*/
         width: 50%;
         margin: 50%;
+    }
+
+    .white:link {
+        color: white;
     }
 </style>
