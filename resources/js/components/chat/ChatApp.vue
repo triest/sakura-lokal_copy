@@ -4,7 +4,7 @@
             <ContactsList :contacts="contacts" @selected="startConversationWith"/>
         </div>
         <div class="col-lg-9">
-            <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
+            <Conversation :contact="selectedContact" :unreaded="unreaded" :messages="messages" @new="saveNewMessage"/>
         </div>
     </div>
 </template>
@@ -72,7 +72,8 @@
                         single.unread += 1;
 
                     return single;
-                })
+                }),
+                    this.unreaded = single.unread;
             }
         },
         components: {Conversation, ContactsList}

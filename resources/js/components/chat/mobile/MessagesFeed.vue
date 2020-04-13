@@ -1,5 +1,6 @@
 <template>
     <div class="feed" ref="feed">
+
         <ul v-if="contact">
             <li v-for="message in messages" :class="`message${message.to == contact.id ? ' sent' : ' received'}`"
                 :key="message.id">

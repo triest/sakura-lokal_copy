@@ -1,5 +1,6 @@
 <template>
     <div class="conversation">
+
         <h1>{{ contact ? contact.name : 'Выберите собеседника' }}</h1>
         <MessagesFeed :contact="contact" :messages="messages"/>
         <div v-if="contact">
@@ -21,6 +22,9 @@
             messages: {
                 type: Array,
                 default: []
+            },
+            unreaded: {
+                type: Number,
             }
         },
         methods: {

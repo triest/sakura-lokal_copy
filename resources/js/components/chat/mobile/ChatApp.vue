@@ -1,7 +1,7 @@
 <template>
     <div class="chat-app"> <!-- lg комп-->
         <button class="btn btn-primary" @click="showContactListFunction()">Показать анкеты</button>
-        <div class="col-lg-9 visible-xs">
+        <div class="col-lg-9  ">
             <contacts-list :contacts="contacts" @selected="startConversationWith"
                            v-if="showContactListCheck()"></contacts-list>
         </div>
@@ -52,9 +52,9 @@
                         this.messages = response.data;
                         this.selectedContact = contact;
                     })
+                this.showContartListVarible = false
             },
             showContactListFunction() {
-                console.log("d");
                 this.showContartListVarible = !this.showContartListVarible;
             },
             showContactList() {
@@ -77,15 +77,18 @@
                         return single;
                     }
 
-                    if (reset)
+                    if (reset) {
                         single.unread = 0;
-                    else
+                    }
+                    else {
                         single.unread += 1;
-
+                        this.unreaded += 1;
+                    }
                     return single;
                 })
             },
             showContactListCheck() {
+                //     this.showContartListVarible=false
                 return this.showContartListVarible;
             }
         },
