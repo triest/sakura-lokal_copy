@@ -10,10 +10,9 @@ class MobileController extends Controller
     public function index(Request $request)
     {
         $agent = new \Jenssegers\Agent\Agent;
-
-
         $result = $agent->isMobile();
-        dd($result);
+
+        return view('mobile.index');
 
     }
 }
