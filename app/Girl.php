@@ -158,7 +158,7 @@ class Girl extends Model
             } elseif ($datediff->h == 1) {
                 $last_login = "час назад";
             } elseif (($datediff->h > 1 && $datediff->h <= 4)
-                || ($datediff->h >= 22 && $datediff >= 23)
+                || ($datediff->h >= 22 && $datediff->h <= 23)
             ) {
                 $last_login = $datediff->h." часа назад";
             } elseif ($datediff->h >= 5 && $datediff->h <= 20) {
