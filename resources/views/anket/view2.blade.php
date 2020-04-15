@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
-            <b>  {{$girl->name}}</b>, {{$girl->age}}
+            <b>  {{$girl->name}}</b>, {{$girl->age}} , {{$girl->city}}
 
             @if(!$girl->isOnline())
                 <small>
@@ -45,18 +45,20 @@
                 @if(auth()->user()->get_id()!=$girl->user_id)
                 @endif
             @endif
+            <p>
+                <a class="button blue" href="{{route('albums',['id'=>$girl->id])}}"> Фотографии</a>
+            </p>
         </div>
     </div>
     <div class="row">
-        <a href="{{route('albums',['id'=>$girl->id])}}"> Фотографии</a>
-        <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
+
+        <div class="col-lg-10 col-md-3 col-sm-3 col-xs-9 box-shadow">
             @if($phone_settings==1 and $phone!=null)
                 <b>Телефон:</b>
                 {{$phone}}
             @elseif($phone_settings==2)
                 @if (Auth::guest())
-                    <b><a href="{{ url('/login') }}">Войдите </a></b> или
-                    <b><a href="{{ url('/join') }}">зарегистрируйтесь</a></b> что-бы смотреть телефон!
+                    <b><a class="customAccessButton" href="{{ url('/login') }}">Войдите </a></b>
                 @else
                     @if($girl->user_id!=auth()->user()->id)
                     @elseif($phone_settings==2 and $girl->user_id=auth()->user()->id)
@@ -77,10 +79,10 @@
             </p>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
+            <div class="col-lg-10 col-md-3 col-sm-3 col-xs-9 box-shadow">
 
                 @if($interes!=null)
-                    <div class="col-lg-4 col-md-3 col-sm-4 col-xs-9 box-shadow">
+                    <div class="col-lg-7 col-md-3 col-sm-4 col-xs-9 box-shadow">
                         @if($interes!=null)
                             <b>Интересы:</b> <br>
                             @foreach($interes as $target)
@@ -90,7 +92,7 @@
                     </div>
                 @endif
                 @if($targets!=null)
-                    <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12 box-shadow">
+                    <div class="col-lg-5 col-md-3 col-sm-6 col-xs-12 box-shadow">
 
                         @if($targets!=null)
                             <b>Цели знакомства:</b> <br>
@@ -102,20 +104,21 @@
                 @endif
             </div>
         </div>
-        <div class="row">
+        <div class="col-lg-7 col-md-3 col-sm-4 col-xs-9 box-shadow">
             @if($girl->height!=null)
-                <p class="card-text"><b>Рост :</b> {{$girl->height}}
-                    @endif
-                    @if($girl->weight!=null)
-                        <b>Вес : </b>{{$girl->weight}}</p>
+                <p class="card-text"><b>Рост :</b> {{$girl->height}} </p>
+            @endif
+            <p class="card-text">
+                @if($girl->weight!=null)
+                    <b>Вес : </b>{{$girl->weight}}
+            </p>
             @endif
             @if ($aperance!=null)
                 <p class="card-text"><b>Внешность :</b></p>
                 <p> {{$aperance->name}}</p>
             @endif
-
-
-
+        </div>
+        <div class="col-lg-7 col-md-3 col-sm-4 col-xs-9 box-shadow">
             @if($region!=null)
                 <b>Регион:</b> <br>
                 {{$region->name}}
@@ -126,7 +129,7 @@
                 <br>
             @endif
         </div>
-        <div class="row">
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12 box-shadow">
 
             @if ($children!=null)
                 <b>Дети:</b> {{$children->name}} <br>
@@ -137,10 +140,14 @@
             @endif
             <br>
         </div>
-        @if(isset($girl->description) && $girl->description!=null)
-            {!!$girl->description  !!}
-        @endif
-        <div class="row">
+        <br>
+        <div class="col-lg-10 col-md-7 col-sm-6 col-xs-12 box-shadow">
+            @if(isset($girl->description) && $girl->description!=null)
+                {!!$girl->description  !!}
+            @endif
+        </div>
+        <br>
+        <div class="col-lg-10 col-md-7 col-sm-6 col-xs-12 box-shadow">
             <p><b>Приватное сообщение</b></p>
             <p class="card-text>">
                 @if($girl->private!=null)
@@ -152,7 +159,7 @@
             @endif
         </div>
     </div>
-    <a class="btn btn-primary" href="{{route('main')}}" role="link"><i class="fa fa-arrow-left"></i> К списку анкет</a>
+    <a class="button blue" href="{{route('main')}}" role="link"><i class="fa fa-arrow-left"></i> К списку анкет</a>
 @endsection
 <script>
 

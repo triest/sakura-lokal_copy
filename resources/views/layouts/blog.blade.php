@@ -10,10 +10,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap core CSS -->
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{asset('css/gallery-grid.css')}}">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Bootstrap core CSS -->
+
+    <!-- custom buttons -->
+    <link href="{{asset('css/buttons.css')}}" rel="stylesheet">
 
     <!--for galeray -->
     <link href="{{asset('css/gallery-grid.css')}}">
@@ -45,8 +49,7 @@
     <meta name="generator" content="Bootply"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Bootstrap twitter bootstrap slider with carousel navigation example."/>
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <link rel="stylesheet" href="css/app.css">
 
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -179,15 +182,14 @@
                 <br>
                 <? $city = \App\City::GetCurrentCity();
                 if ($city != null) {
-                    echo $city->name;
+                    echo "<b>".$city->name."</b>";
                     echo "<br>";
                 }
                 ?>
                 @if (Auth::guest())
-                    <b><a href="{{ url('/login') }}">Войти</a></b><br>
-                    <b><a href="{{ url('/join') }}">Зарегистрироваться</a></b>
+                    <b><a class="button blue" href="{{ url('/login') }}">Войти</a></b><br><br>
+                    <b><a class="button green" href="{{ url('/join') }}">Зарегистрироваться</a></b><br>
                 @else
-
                     <b>{{auth()->user()->name}}</b><br>
                     <b><a href="{{ url('/logout') }}">Выйти</a></b>
                     <br>
@@ -230,7 +232,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 <!--<script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>-->
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
 <!--<script src="http://bootstrap-3.ru/examples/offcanvas/offcanvas.js"></script>-->
 <script src="{{ asset('offcanvas.js') }}"></script>
 </body>
