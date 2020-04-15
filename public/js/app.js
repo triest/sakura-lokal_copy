@@ -1884,7 +1884,8 @@ __webpack_require__.r(__webpack_exports__);
         children: this.select2children,
         targets: this.select2targets
       }).then(function (response) {
-        _this.getSettings();
+          //this.getSettings();
+          _this.$emit('closeSeachModal');
       });
     },
     getSettings: function getSettings() {
@@ -7984,7 +7985,8 @@ __webpack_require__.r(__webpack_exports__);
         children: this.select2children,
         targets: this.select2targets
       }).then(function (response) {
-        _this.getSettings();
+          //this.getSettings();
+          _this.$emit('closeSeachModal');
       });
     },
     getSettings: function getSettings() {
@@ -55990,7 +55992,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                            Найти\n                        "
+                            "\n                            Сохранить\n                        "
                         )
                       ]
                     ),
@@ -63273,7 +63275,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                            Найти\n                        "
+                            "\n                            Сохранить\n                        "
                         )
                       ]
                     ),

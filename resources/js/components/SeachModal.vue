@@ -66,7 +66,7 @@
 
                         <slot name="footer">
                             <button class="btn btn-primary" v-on:click="saveChange()">
-                                Найти
+                                Сохранить
                             </button>
                             <button class="btn btn-secondary" v-on:click="close()">
                                 Закрыть
@@ -112,8 +112,6 @@
 
             },
             saveChange() {
-
-
                 axios.post('/anket2/savesettings', {
                     meet: this.meet,
                     from: this.from,
@@ -122,8 +120,10 @@
                     children: this.select2children,
                     targets: this.select2targets
                 }).then((response) => {
-                    this.getSettings();
+                    //this.getSettings();
+                    this.$emit('closeSeachModal')
                 });
+
             },
             getSettings() {
                 axios.get('anket2/getsrttings')

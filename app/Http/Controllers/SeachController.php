@@ -102,11 +102,14 @@ class SeachController extends Controller
             //        $girls->where('interest_id', $item->id);
         }
 
+        if ($seachSettings->children != null) {
+            $girls->where('children_id', '=', $seachSettings->children);
+        }
 
         $city = City::GetCurrentCity();
 
         if ($city != null) {
-            $girls->where('city_id', $city->id);
+            //     $girls->where('city_id', $city->id);
         }
 
         if (isset($Autchgirls) && $Autchgirls != null) {
