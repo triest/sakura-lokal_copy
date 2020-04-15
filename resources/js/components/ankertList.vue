@@ -166,8 +166,8 @@
         color: black;
         cursor: pointer;
         /*  position: absolute;*/
-        width: 50%;
-        margin: 50%;
+        width: 40%;
+        margin: 40%;
     }
 
     .white:link {

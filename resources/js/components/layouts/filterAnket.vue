@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import seachModal from '../chat/seachModal'
+    import seachModal from '../seachModal'
 
     export default {
 
