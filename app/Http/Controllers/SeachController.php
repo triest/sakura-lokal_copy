@@ -221,9 +221,9 @@ class SeachController extends Controller
 
 
             $targets_array_temp = $sechSettings->target()->get();
+
             $targets_array = array();
             foreach ($targets_array_temp as $item) {
-                //     array_push($targets_array, $item->id);
                 $targets_array[] = $item->id;
             }
 
@@ -260,108 +260,30 @@ class SeachController extends Controller
 
     public function saveSettings(Request $request)
     {
-
-        /*
-              $cookie = null;
-              $userAuth = Auth::user();
-              if ($userAuth != null) {
-                  $user = User::select(['id', 'name'])
-                      ->where('id', $userAuth->id)->first();
-                  //��� �� �����������, �� ������� �� �����.
-                  if ($user != null) {
-                      $anket = Girl::select(['id', 'name'])
-                          ->where('user_id', $user->id)
-                          ->first();
-                      if ($anket == null) {
-                          return false;
-                      }
-                      $seachSettings = $anket->seachsettings()->first();
-                  } else {
-                      $cookie = Cookie::get('seachSettings');
-                      $seachSettings = SearchSettings::select(['*'])
-                          ->where("cookie", "=", $cookie)->first();
-                  }
-              } else {
-                  $cookie = Cookie::get('seachSettings');
-                  if ($cookie != null) {
-                      $seachSettings = SearchSettings::select(['*'])
-                          ->where("cookie", "=", $cookie)->first();
-                  }
-              }
-
-              if (isset($seachSettings) && $seachSettings == null) {
-                  $seachSettings = new SearchSettings();
-                  $seachSettings->girl_id = $anket->id;
-                  $seachSettings->save();
-              } elseif (isset($cookie) && $cookie != null && isset($seachSettings)
-                  && $seachSettings == null
-              ) {
-                  $seachSettings = new SearchSettings();
-                  $seachSettings->cookie = $cookie;
-                  $seachSettings->save();
-              } elseif (!isset($seachSettings) && $cookie == null) {
-                  $seachSettings = new SearchSettings();
-                  $seachSettings->meet = $request->meet;
-                  $seachSettings->age_from = $request->from;
-                  $seachSettings->age_to = $request->to;
-                  $seachSettings->children = $request->children;
-                  // ��� ���������� ����
-                  $value = $this->randomString();
-                  $seachSettings->cookie = $value;
-                  Cookie::queue(Cookie::make('seachSettings', $value, 1140));
-                  $seachSettings->save();
-                  if ($userAuth != null) {
-                      $user = User::select(['id', 'name'])
-                          ->where('id', $userAuth->id)->first();
-                      //��� �� �����������, �� ������� �� �����.
-                      if ($user != null) {
-                          $anket = Girl::select(['id', 'name'])
-                              ->where('user_id', $user->id)
-                              ->first();
-                          if ($anket == null) {
-                              return false;
-                          }
-                          $seachSettings->girl_id = $anket->id;
-                      } else {
-                          $cookie = Cookie::get('seachSettings');
-
-                      }
-                  } else {
-                      $cookie = Cookie::get('seachSettings');
-                      if ($cookie != null) {
-                          $seachSettings = SearchSettings::select([])
-                              ->where("cookie", $cookie)->first();
-                      }
-                  }
-              }
-
-              if (isset($seachSettings) && $seachSettings != null) {
-                  $seachSettings->meet = $request->meet;
-                  $seachSettings->age_from = $request->from;
-                  $seachSettings->age_to = $request->to;
-                  $seachSettings->children = $request->children;
-                  $seachSettings->save();
-              }
-              //������ ��������� ������
-              dump($seachSettings);
-              $selectedTargets = $request->select_target;
-              dump($request);
-
-              foreach ($selectedTargets as $target) {
-                  $setting = new SeachSettingsInterest();
-                  $setting->settings_id = $seachSettings->id;
-                  $setting->setting_name = "target";
-                  $setting->sett_id = $target;
-                  $setting->save();
-              }
-      */
         $seachSettings = SearchSettings::getSeachSettings();
         if ($seachSettings == null) {
             return null;
         }
-        $userAuth = Auth::user();
 
+        if (isset($request->children)) {
+            $seachSettings->children = $request->children;
+        }
 
+        if (isset($request->from)) {
+            $seachSettings->age_from = $request->from;
+        }
+
+        if (isset($request->to)) {
+            $seachSettings->age_to = $request->to;
+        }
+
+        if (isset($request->meet)) {
+            $seachSettings->meet = $request->meet;
+        }
+
+        $seachSettings->save();
+
+        $seachSettings->target()->detach();
         $selectedTargets = $request->targets;
         foreach ($selectedTargets as $item) {
             $target = Target::select(['id', 'name'])->where('id', $item)
@@ -370,7 +292,7 @@ class SeachController extends Controller
                 $seachSettings->target()->save($target);
             }
         }
-
+        $seachSettings->interest()->detach();
         $selectedTargets = $request->interests;
         foreach ($selectedTargets as $item) {
             $target = Interest::select(['id', 'name'])->where('id', $item)

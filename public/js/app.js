@@ -1863,7 +1863,7 @@ __webpack_require__.r(__webpack_exports__);
       children: [],
       select2targets: [],
       select2inters: [],
-      seachSettings: null
+        select2children: null
     };
   },
   methods: {
@@ -1898,9 +1898,8 @@ __webpack_require__.r(__webpack_exports__);
         _this2.interest = res.interests;
         _this2.children = res.chidren;
         _this2.selected_clildren = res.sechSettings.children;
-        _this2.select2children = _this2.selected_clildren;
-        console.log(_this2.selected_clildren);
-        _this2.seachSettings = res;
+          _this2.select2children = res.seachSettings.children;
+          console.log(_this2.select2children);
         _this2.from = res.sechSettings.age_from;
         _this2.to = res.sechSettings.age_to;
         _this2.meet = res.sechSettings.meet;
@@ -7970,7 +7969,7 @@ __webpack_require__.r(__webpack_exports__);
                     children: [],
                     select2targets: [],
                     select2inters: [],
-                    seachSettings: null
+                    select2children: null
                 };
             },
             methods: {
@@ -8006,9 +8005,8 @@ __webpack_require__.r(__webpack_exports__);
                         _this2.interest = res.interests;
                         _this2.children = res.chidren;
                         _this2.selected_clildren = res.sechSettings.children;
-                        _this2.select2children = _this2.selected_clildren;
-                        console.log(_this2.selected_clildren);
-                        _this2.seachSettings = res;
+                        _this2.select2children = res.seachSettings.children;
+                        console.log(_this2.select2children);
                         _this2.from = res.sechSettings.age_from;
                         _this2.to = res.sechSettings.age_to;
                         _this2.meet = res.sechSettings.meet;
@@ -63332,7 +63330,8 @@ render._withStripped = true
         render._withStripped = true
 
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
 /*!********************************************************************!*\
@@ -80086,7 +80085,8 @@ __webpack_require__.r(__webpack_exports__);
         });
 
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\

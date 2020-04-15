@@ -21,14 +21,12 @@ class SearchSettings extends Model
 
     public function target()
     {
-        //return $this->hasOne('App\Target');
         return $this->belongsToMany('App\Target', 'search_target',
             'search_id', 'target_id');
     }
 
     public function interest()
     {
-        //return $this->hasOne('App\Target');
         return $this->belongsToMany('App\Interest', 'search_interest',
             'search_id',
             'interest_id');
@@ -50,7 +48,6 @@ class SearchSettings extends Model
                 if ($anket == null) {
                     return false;
                 }
-                dump($anket);
 
                 $seachSettings = $anket->seachsettings()->first();
 
@@ -103,7 +100,6 @@ class SearchSettings extends Model
                 return $seachSettings;
             } else {
                 $seachSettings = new SearchSettings();
-                //$cookie = AnketController::randomString();
                 $cookie = $_COOKIE["laravel_session"];
                 $seachSettings->cookie = $cookie;
                 $seachSettings->save();

@@ -99,7 +99,7 @@
                 children: [],
                 select2targets: [],
                 select2inters: [],
-                seachSettings: null
+                select2children: null,
             }
         },
         methods: {
@@ -136,9 +136,8 @@
                         this.children = res.chidren;
 
                         this.selected_clildren = res.sechSettings.children;
-                        this.select2children = this.selected_clildren;
-                        console.log(this.selected_clildren)
-                        this.seachSettings = res;
+                        this.select2children = res.seachSettings.children;
+                        console.log(this.select2children);
                         this.from = res.sechSettings.age_from;
                         this.to = res.sechSettings.age_to;
                         this.meet = res.sechSettings.meet;
