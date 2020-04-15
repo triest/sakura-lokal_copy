@@ -4,7 +4,7 @@
         <!--  <button class="btn-primary" v-if="showSendRegButton" v-on:click="sendRequwest()">Попросить открыть анкету
           </button>
           -->
-        <h5 v-if="regStatus=='notreaded' && !showSendRegButton">Пользователь открыл вас свою анкту
+        <h5 v-if="regStatus=='notreaded' && !showSendRegButton">Просьба еще не рассотрена
             <button class="btn btn-primary" v-on:click="withdrawRequwest()">
                 Отозавать заявку
             </button>
@@ -46,7 +46,7 @@
         </div>
         <admin v-if="showAdminModal" :id="user_id" @clouseAdminModal='clouseAdminModal()'></admin>
         <present v-if="showPresentModal" :id="user_id" @closeRequest='close()'></present>
-        <modal v-if="showModal===true" :id="id" v-on:close="showModal = false">></modal>
+        <modal v-if="showModal===true" :user_name="user_name" :id="id" v-on:close="showModal = false">></modal>
     </div>
 </template>
 
@@ -66,6 +66,8 @@
                 type: '',
                 required: true
             },
+
+
         },
         components: {
             Admin,
@@ -77,6 +79,7 @@
             this.isAdminCheck();
             this.getWingk();
 
+            console.log("this.user_id " + this.id);
         },
         data() {
             return {
@@ -171,7 +174,7 @@
                             console.log();
                             //если отправлен, то надо статус показать
                             if (response.data['readed'] == 1) {
-                                // this.regStatus = "notreaded"
+                                this.regStatus = "notreaded"
                                 console.log("readed");
                                 if (response.data['status'] == 'confirmed') {
                                     this.regStatus = "acept";

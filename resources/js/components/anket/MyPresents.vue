@@ -11,7 +11,7 @@
                 <div v-for="present in presents">
                     <b>От:{{present.who_name}}</b><br>
                     <img :src="'presents/upload/'+present.pres_image" height="200">
-                    <button v-on:click="mark_as_readed(present.act_id)">Получен</button>
+                    <button class="btn btn-primary" v-on:click="mark_as_readed(present.act_id)">Получен</button>
                 </div>
             </div>
             <div v-if="currentTab == 'history'">

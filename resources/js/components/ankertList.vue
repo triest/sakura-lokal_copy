@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        <button class="btn btn-primary" v-on:click="openSeachModal()">Настроить поиск</button>
         <div v-for="item in anketList">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-9 box-shadow">
                 <a :href="/anket/+item.id">
@@ -16,10 +16,13 @@
         </div>
         <a class="previous " v-if="page<numPages"><a v-on:click="loadNew">Загрузить еще</a></a>
 
+        <seachModal v-if="seachModal" @closeSeachModal="closeSeachModal()"
+                    @closeNewMessageAlert="closeNewMessageAlert()"></seachModal>
     </div>
 </template>
 
 <script>
+    import SeachModal from './SeachModal'
 
     export default {
         name: 'edit',
@@ -33,8 +36,11 @@
                 page: 1,
                 numPages: null,
                 count: 0,
+                seachModal: false,
+                event: "",
             }
         },
+        components: {SeachModal},
         methods: {
 
             seach() {
@@ -76,7 +82,13 @@
                         this.anketList.push(temp[i]);
                     }
                 })
-            }
+            },
+            closeSeachModal() {
+                this.seachModal = false;
+            },
+            openSeachModal() {
+                this.seachModal = true;
+            },
         }
     }
 </script>
