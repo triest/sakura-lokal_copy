@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Album;
 use App\AlbumPhoto;
 use App\Girl;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use File;
 
 class AlbumController extends Controller
 {
@@ -38,6 +40,11 @@ class AlbumController extends Controller
     public function album($id, $albumid, Request $request)
     {
         $album = Album::select(['id', 'name'])->where('id', $albumid)->first();
+        if ($album == null) {
+            return redirect('/myAnket/'.$id.'/albums/');
+        }
+
+
         if ($album != null) {
             $photos = $album->photos()->get();
         } else {
@@ -138,7 +145,39 @@ class AlbumController extends Controller
         } else {
             return $photo;
         }
+    }
+
+    public function albumDelete($id, $albumid, Request $request)
+    {
+        $user = Auth::user();
+        $user = User::select(['id', 'name'])->where('id', $user->id)->first();
+        $anket = $user->girl()->first();
+
+        $album = Album::select(['id', 'name', 'girl_id'])->where('id', $albumid)
+            ->first();
+        dump($album);
+        if ($album == null) {
+            return response()->json('false');
+        }
+
+        if ($album->girl_id != $anket->id) {
+            return response()->json('false');
+        }
 
 
+        //получаем все фотографии
+        $photos = $album->Photos()->get();
+        foreach ($photos as $photo) {
+            //     $old_image_name = $girl['main_image'];
+            //            $path = base_path().'/public/images/upload/'.$old_image_name;
+            //            File::Delete($path);
+            $path = base_path().'/public/images/albums/'.$photo->name;
+            File::delete($path);
+            $photo->delete();
+        }
+
+        $album->delete();
+
+        return response()->json('true');
     }
 }

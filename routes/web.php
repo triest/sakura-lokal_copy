@@ -22,10 +22,8 @@ Auth::routes();
 
 Route::get('/messages', 'HomeController@index')->name('home');
 
-Route::get('/messages2', 'HomeController@index2')->name('home2');
 
 Route::get('/contacts', 'ContactsController@get');
-Route::get('/contacts2', 'ContactsController@get2');
 Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
 Route::post('/conversation/send', 'ContactsController@send');
 Route::post('/conversation/sendModal', 'ContactsController@sendModal');
@@ -36,10 +34,8 @@ Route::get('/', function () {
     return view('welcome2');
 })->name('welcome');
 
-Route::get('/anket', 'GirlsController@index2');
 
-
-Route::get('/anket2', 'GirlsController@index2')->name('main');
+Route::get('/anket', 'GirlsController@index')->name('main');
 
 Route::get('/seach', 'SeachController@seach');
 

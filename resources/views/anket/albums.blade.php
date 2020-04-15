@@ -26,6 +26,9 @@
     </style>
 
     <div class="card-body" id="myAnketApp">
+        <a class="button blue" role="link" href="{{route('showGirl',['id'=>$id])}}"><i
+                    class="fa fa-arrow-left"></i> Вернуться к анкете</a>
+        <br>
         @if($allowEdit==true)
             <form action="{{route('albumStore',['id'=>$id])}}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
