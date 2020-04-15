@@ -102,11 +102,6 @@ class SeachController extends Controller
             //        $girls->where('interest_id', $item->id);
         }
 
-        //����� ������� �����
-        $count = $girls->count();
-        $num_pages = intval($count / $this->limit);
-
-        /* �����*/
 
         $city = City::GetCurrentCity();
 
@@ -118,6 +113,8 @@ class SeachController extends Controller
             $girls->where('id', '!=', $Autchgirls->id);
         }
 
+        $count = $girls->count();
+        $num_pages = intval($count / $this->limit);
 
         $girls->select('girls.*')->limit($this->limit);
 
@@ -242,7 +239,6 @@ class SeachController extends Controller
             $sechSettings = array();
         }
 
-        //   $sechSettings = (array)$sechSettings;
 
         $seachSettingsArray = array();
         $seachSettingsArray['id'] = $sechSettings->id;

@@ -44,7 +44,6 @@
         methods: {
 
             seach() {
-                console.log("seach");
                 axios.get('/seach').then((response) => {
                     let data = response.data;
                     this.anketList = data.ankets;
@@ -78,13 +77,13 @@
                     let data = response.data;
                     let temp = data.ankets;
                     for (let i = 0; i < temp.length; i++) {
-                        console.log(temp[i]);
                         this.anketList.push(temp[i]);
                     }
                 })
             },
             closeSeachModal() {
                 this.seachModal = false;
+                this.seach();
             },
             openSeachModal() {
                 this.seachModal = true;

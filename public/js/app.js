@@ -3208,7 +3208,6 @@ __webpack_require__.r(__webpack_exports__);
     seach: function seach() {
       var _this = this;
 
-      console.log("seach");
       axios.get('/seach').then(function (response) {
         var data = response.data;
         _this.anketList = data.ankets;
@@ -3242,14 +3241,13 @@ __webpack_require__.r(__webpack_exports__);
         var temp = data.ankets;
 
         for (var i = 0; i < temp.length; i++) {
-          console.log(temp[i]);
-
           _this3.anketList.push(temp[i]);
         }
       });
     },
     closeSeachModal: function closeSeachModal() {
       this.seachModal = false;
+        this.seach();
     },
     openSeachModal: function openSeachModal() {
       this.seachModal = true;
