@@ -33,153 +33,9 @@ use Symfony\Component\Filesystem\Exception\IOException;
 
 class GirlsController extends Controller
 {
-    //
-    function index(Request $request)
-    {
-
-
-        /*
-         *  смотрим фильтр
-         * */
-
-        $userAuth = Auth::user();
-        if ($userAuth != null) {
-            $girls = $userAuth->girl()->get();
-            $girls = $girls[0];
-            //  $seachSettings = SearchSettings::select(['id'])
-            //     ->where("girl_id", "=", $girls->id)->first();
-            $seachSettings = $girls->seachsettings()->first();
-        } else {
-            if (isset($_COOKIE["laravel_session"])) {
-                $cookie = $_COOKIE["laravel_session"];
-                if ($cookie != null) {
-                    $seachSettings = SearchSettings::select(['*'])
-                        ->where("cookie", "=", $cookie)
-                        ->orderBy('updated_at', 'desc')
-                        ->first();
-                }
-            }
-
-        }
-
-        if (!isset($seachSettings) || $seachSettings == null) {
-
-            $girls = Girl::select([
-                'id',
-                'name',
-                'main_image',
-                'sex',
-                'age',
-            ])
-                ->where('banned', '=', '0')
-                //       ->where('sex', '=', $anket->meet)
-                ->orderBy('created_at', 'DESC')
-                ->Paginate(16);
-        } else {
-            $girls = null;
-            // настройки есть, теперь включаем поиск
-            /*
-            $girls = Girl::select([
-                'id',
-                'name',
-                'main_image',
-                'sex',
-                'age',
-            ])
-                ->where('banned', '=', '0')
-                ->orderBy('created_at', 'DESC')
-                ->Paginate(16);*/
-            //     dump($girls);
-            dump($seachSettings);
-            $girls = Girl::where('banned', 0)
-                ->with('target');
-
-
-            //  $girls->leftJoin('girl_target', 'girl_id', 'target_id');
-            //     $girls->leftJoin('girl_interess', 'girl_id', 'interest_id');
-            //$girls->leftJoin('search_target', 'id', 'search_id');
-
-            if ($seachSettings->age_from != null) {
-                $girls->where('age', '>=', $seachSettings->age_from);
-            }
-            if ($seachSettings->age_to != null) {
-                $girls->where('age', '<=', $seachSettings->age_to);
-            }
-            if ($seachSettings->children != null) {
-                $girls->where('children_id', '=', $seachSettings->children);
-            }
-
-            if ($seachSettings->sex != null) {
-                $girls->where('sex', '=', $seachSettings->meet);
-            }
-
-            dump($girls);
-
-            /*
-                        $girls = DB::table('girls');
-                   //     $girls->leftJoin('girl_interess', 'girls.id', '=', 'girl_interess.girl_id');
-
-
-                        if ($seachSettings->age_from != null) {
-                            $girls->where('age', '>=', $seachSettings->age_from);
-                        }
-
-                        if ($seachSettings->age_to != null) {
-                            $girls->where('age', '<=', $seachSettings->age_to);
-                        }
-
-                        if ($seachSettings->children != null) {
-                            $girls->where('children_id', '=', $seachSettings->children);
-                        }
-
-                        if ($seachSettings->sex != null) {
-                            $girls->where('sex', '=', $seachSettings->meet);
-                        }
-            */
-
-            $targets = $seachSettings->target()->get();
-            dump($targets);
-            if ($targets != null) {
-                dump($targets);
-                /*
-                foreach ($targets as $item) {
-                    //     $girls->target()->array_where();
-                    $girls->target()
-                        ->where('girl_target', 'target_id', $item->id);
-                }
-                */
-            }
-
-
-            $girls = $girls->get();
-
-            /*
-             * цели
-             * */
-
-
-            /*
-             * интересы
-             * */
-
-
-            //  $girls = $girls->paginate(16);;
-
-        }
-
-        //dump($girls);
-
-        return view('index')->with([
-            'girls'  => $girls,
-            'events' => null,
-            'city'   => null,
-        ]);
-    }
-
 
     function seach()
     {
-
         $userAuth = Auth::user();
         if ($userAuth != null) {
             $girls = $userAuth->girl()->get();
@@ -221,9 +77,8 @@ class GirlsController extends Controller
         return response()->json($girls);
     }
 
-    function index2(Request $request)
+    function index(Request $request)
     {
-
         return view('index2');
     }
 
