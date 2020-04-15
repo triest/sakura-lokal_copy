@@ -3,32 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="Disable send message on enter button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AlbumController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AlbumController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/ankertList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ankertList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/anket/MyPresents.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/anket/MyPresents.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/anket/Private.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/anket/Private.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/chat/ChatApp2.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/chat/ContactsList2.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/chat/Conversation2.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/chat/MessageComposer2.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/chat/MessagesFeed2.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/chat/mobile/ContactsList.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/chat/mobile/MessageComposer.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/chat/seachModal.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/SeachModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SeachModal.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/filterAnket.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/filterAnket.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/anket/albumPage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/anket/albumPage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/anket/albums.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/anket/albums.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/anket/view2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/anket/view2.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home2.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/index.blade.pjp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index2.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <list id="e00fd772-c180-4ce5-9ed6-9c7a9ef148cf" name="Revert &quot;Fix mobile style for dialog&quot;" comment="Revert &quot;Fix mobile style for dialog&quot;&#10;&#10;This reverts commit 9f7368f">
       <change beforePath="$PROJECT_DIR$/resources/js/components/chat/ChatApp.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/chat/ChatApp.vue" afterDir="false" />
@@ -72,8 +54,17 @@
       <file leaf-file-name="ankertList.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/ankertList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="90" column="14" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="14" />
+            <state relative-caret-position="391">
+              <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index2.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/index2.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -87,7 +78,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SidePanele.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SidePanele.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
@@ -231,7 +222,6 @@
         <option value="$PROJECT_DIR$/resources/js/components/albums/album.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/albums/PhotoModal.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AlbumController.php" />
-        <option value="$PROJECT_DIR$/resources/views/index2.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/chat/MessagesFeed.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/chat/MessageComposer.vue" />
         <option value="$PROJECT_DIR$/app/City.php" />
@@ -269,6 +259,7 @@
         <option value="$PROJECT_DIR$/resources/js/components/SeachModal.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/ankertList.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue" />
+        <option value="$PROJECT_DIR$/resources/views/index2.blade.php" />
       </list>
     </option>
   </component>
@@ -777,21 +768,7 @@
       <workItem from="1586676263371" duration="14466000" />
       <workItem from="1586757284178" duration="26652000" />
       <workItem from="1586843343435" duration="15741000" />
-      <workItem from="1586933668190" duration="15765000" />
-    </task>
-    <task id="LOCAL-00091" summary="Add seach ettings table">
-      <created>1577570654167</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1577570654168</updated>
-    </task>
-    <task id="LOCAL-00092" summary="Fix preselect">
-      <created>1577649363706</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1577649363707</updated>
+      <workItem from="1586933668190" duration="15989000" />
     </task>
     <task id="LOCAL-00093" summary="Add new seach modal to main index.blade.php">
       <created>1577813904240</created>
@@ -1122,7 +1099,21 @@
       <option name="project" value="LOCAL" />
       <updated>1586943191539</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <task id="LOCAL-00140" summary="Add seach modal to main page">
+      <created>1586951857202</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1586951857202</updated>
+    </task>
+    <task id="LOCAL-00141" summary="Fix albums">
+      <created>1586951936905</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1586951936905</updated>
+    </task>
+    <option name="localTasksCounter" value="142" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1158,7 +1149,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1912045000" />
+    <option name="totallyTimeSpent" value="1912269000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1238,8 +1229,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/workbreaks" />
     </ignored-roots>
-    <MESSAGE value="Fix phone settings" />
-    <MESSAGE value="Add PhoneSettings model" />
     <MESSAGE value="Fix git ignore" />
     <MESSAGE value="Fix edit city" />
     <MESSAGE value="Add Album and AlbumPhoto models and migrations" />
@@ -1263,7 +1252,9 @@
     <MESSAGE value="Fix check intervel" />
     <MESSAGE value="Fix anket style for mobile" />
     <MESSAGE value="Fix anket list style for mobile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix anket list style for mobile" />
+    <MESSAGE value="Add seach modal to main page" />
+    <MESSAGE value="Fix albums" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix albums" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1272,7 +1263,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/js/components/chat/mobile/MessageComposer.vue" />
     <entry file="file://$PROJECT_DIR$/resources/js/components/chat/ContactsList.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1569,6 +1559,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+          <folding>
+            <element signature="e#1850#1892#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/SeachModal.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3910">
@@ -1578,18 +1578,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/ankertList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="90" column="14" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="14" />
+        <state relative-caret-position="391">
+          <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue">
+    <entry file="file://$PROJECT_DIR$/resources/views/index2.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-          <folding>
-            <element signature="e#1850#1892#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="153">
+          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
         </state>
       </provider>
     </entry>

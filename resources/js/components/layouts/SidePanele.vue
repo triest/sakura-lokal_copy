@@ -3,7 +3,9 @@
 
         <img height="20" src="/images/heart.png" v-on:mouseover="triger()" v-on:mouseleave="cleare()"> {{likesNunber}}
         <br>
-        <button class="btn btn-primary" v-on:click="openSeachModal()">Настроить поиск</button>
+        <!--
+         <button class="btn btn-primary" v-on:click="openSeachModal()">Настроить поиск</button>
+         -->
         <br>
         <b><a href="/messages">Сообщения
             <div v-if="numberUnreaded>0">({{numberUnreaded}})</div>
@@ -18,6 +20,7 @@
         <b><a class="btn btn-info" href="/mypresents">Мои подарки</a> </b>
         <div v-if="numberApplicationPresents>0"><b>({{numberApplicationPresents}})</b></div>
         <br><br>
+        <!--
         <div v-if="inseach==true">
             <b>Ваша анкета отображаеться в поиске</b>
         </div>
@@ -25,6 +28,7 @@
             <b>Ваша анкета Не отображаеться в поиске</b><br>
             <b><a type="btn primary" href="/power">Поместить анкету в поиск</a></b>
         </div>
+        -->
         <likemodal v-if="showLikeModal" @closeLikeModalEmit='closeLikeModal()'></likemodal>
         <b><a class="btn btn-primary" href="/history">Просмотры моей анкеты</a> </b><br><br>
 
@@ -124,9 +128,6 @@
                         this.showLikeModal = true;
                     }, 1500)
                 },
-                openSeachModal() {
-                    this.seachModal = true;
-                },
 
 
                 cleare() {
@@ -216,9 +217,12 @@
                     this.showAlertModal = false;
                 },
                 closeSeachModal() {
-                    console.log("close");
                     this.seachModal = false;
                 },
+                openSeachModal() {
+                    this.seachModal = true;
+                },
+
             }
     }
 </script>

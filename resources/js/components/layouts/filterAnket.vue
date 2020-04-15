@@ -12,7 +12,7 @@
     import seachModal from '../chat/seachModal'
 
     export default {
-        name: "FilterApp",
+
         props: {
             user: {
                 type: Object,
