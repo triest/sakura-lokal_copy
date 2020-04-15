@@ -10,7 +10,6 @@
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SeachController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SeachController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/SearchSettings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/SearchSettings.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/SeachModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SeachModal.vue" afterDir="false" />
     </list>
@@ -39,19 +38,18 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="832">
-              <caret line="478" lean-forward="true" selection-start-line="478" selection-end-line="478" />
+              <caret line="478" selection-start-line="478" selection-end-line="478" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SeachController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SeachController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SeachController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="611">
-              <caret line="293" column="9" lean-forward="true" selection-start-line="293" selection-start-column="9" selection-end-line="293" selection-end-column="9" />
+            <state relative-caret-position="492">
+              <caret line="254" selection-start-line="254" selection-end-line="254" />
               <folding>
                 <element signature="e#434#3912#0#PHP" />
-                <element signature="e#3919#7521#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -60,26 +58,20 @@
       <file leaf-file-name="SearchSettings.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/SearchSettings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
+            <state relative-caret-position="493">
+              <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+              <folding>
+                <element signature="e#838#3540#0#PHP" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ankertList.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/ankertList.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="150" column="65" selection-start-line="150" selection-start-column="65" selection-end-line="150" selection-end-column="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SeachModal.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SeachModal.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/SeachModal.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="149" column="9" lean-forward="true" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="9" />
+            <state relative-caret-position="209">
+              <caret line="134" column="54" selection-start-line="134" selection-start-column="54" selection-end-line="134" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -128,13 +120,13 @@
       <find>seachModal</find>
       <find>openSeachModal</find>
       <find>seach</find>
-      <find>previous</find>
       <find>getsrttings</find>
       <find>getSettings</find>
       <find>select2children</find>
-      <find>this</find>
-      <find>dump(</find>
       <find>store</find>
+      <find>previous</find>
+      <find>dump(</find>
+      <find>this</find>
     </findStrings>
     <replaceStrings>
       <replace>get_girl_id</replace>
@@ -222,8 +214,8 @@
         <option value="$PROJECT_DIR$/resources/js/components/layouts/SidePanele.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/ankertList.vue" />
         <option value="$PROJECT_DIR$/app/SearchSettings.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/SeachModal.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SeachController.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/SeachModal.vue" />
       </list>
     </option>
   </component>
@@ -740,14 +732,7 @@
       <workItem from="1586676263371" duration="14466000" />
       <workItem from="1586757284178" duration="26652000" />
       <workItem from="1586843343435" duration="15741000" />
-      <workItem from="1586933668190" duration="20648000" />
-    </task>
-    <task id="LOCAL-00097" summary="Fix Filter Enable">
-      <created>1585913119373</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1585913119380</updated>
+      <workItem from="1586933668190" duration="23453000" />
     </task>
     <task id="LOCAL-00098" summary="Add Age filter">
       <created>1585915556675</created>
@@ -1085,7 +1070,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586953021684</updated>
     </task>
-    <option name="localTasksCounter" value="146" />
+    <task id="LOCAL-00146" summary="Add detach for edit settings">
+      <created>1586956764561</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1586956764561</updated>
+    </task>
+    <option name="localTasksCounter" value="147" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1121,7 +1113,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1916928000" />
+    <option name="totallyTimeSpent" value="1919733000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1201,7 +1193,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/workbreaks" />
     </ignored-roots>
-    <MESSAGE value="Fix city" />
     <MESSAGE value="Add Current city to side panele" />
     <MESSAGE value="Add upload photo to album" />
     <MESSAGE value="Add show modal on click" />
@@ -1226,7 +1217,8 @@
     <MESSAGE value="Movie SAeach Modal" />
     <MESSAGE value="Refactoring" />
     <MESSAGE value="Fix seach modal." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix seach modal." />
+    <MESSAGE value="Add detach for edit settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add detach for edit settings" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1507,24 +1499,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/ankertList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="150" column="65" selection-start-line="150" selection-start-column="65" selection-end-line="150" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
           <caret line="579" column="61" selection-start-line="579" selection-start-column="50" selection-end-line="579" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/SeachModal.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="149" column="9" lean-forward="true" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1542,28 +1520,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/SearchSettings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="832">
-          <caret line="478" lean-forward="true" selection-start-line="478" selection-end-line="478" />
+          <caret line="478" selection-start-line="478" selection-end-line="478" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/ankertList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="150" column="65" selection-start-line="150" selection-start-column="65" selection-end-line="150" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/SearchSettings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+          <folding>
+            <element signature="e#838#3540#0#PHP" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SeachController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="293" column="9" lean-forward="true" selection-start-line="293" selection-start-column="9" selection-end-line="293" selection-end-column="9" />
+        <state relative-caret-position="492">
+          <caret line="254" selection-start-line="254" selection-end-line="254" />
           <folding>
             <element signature="e#434#3912#0#PHP" />
-            <element signature="e#3919#7521#0#PHP" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/SeachModal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="134" column="54" selection-start-line="134" selection-start-column="54" selection-end-line="134" selection-end-column="54" />
         </state>
       </provider>
     </entry>

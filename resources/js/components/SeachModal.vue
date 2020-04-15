@@ -100,6 +100,7 @@
                 select2targets: [],
                 select2inters: [],
                 select2children: null,
+                seachSettings: null,
             }
         },
         methods: {
@@ -121,7 +122,6 @@
                     children: this.select2children,
                     targets: this.select2targets
                 }).then((response) => {
-                    //this.$emit('closeSeachModal')
                     this.getSettings();
                 });
             },
@@ -134,13 +134,11 @@
                         this.select2inters = res.selectedInterest;
                         this.interest = res.interests;
                         this.children = res.chidren;
-
-                        this.selected_clildren = res.sechSettings.children;
-                        this.select2children = res.seachSettings.children;
-                        console.log(this.select2children);
-                        this.from = res.sechSettings.age_from;
-                        this.to = res.sechSettings.age_to;
-                        this.meet = res.sechSettings.meet;
+                        this.seachSettings = res.sechSettings;
+                        this.from = this.seachSettings.age_from;
+                        this.to = this.seachSettings.age_to;
+                        this.select2children = this.seachSettings.children;
+                        this.meet = this.seachSettings.meet;
                     })
 
             }

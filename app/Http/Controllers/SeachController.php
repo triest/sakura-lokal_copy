@@ -242,6 +242,17 @@ class SeachController extends Controller
             $sechSettings = array();
         }
 
+        //   $sechSettings = (array)$sechSettings;
+
+        $seachSettingsArray = array();
+        $seachSettingsArray['id'] = $sechSettings->id;
+        $seachSettingsArray['girl_id'] = $sechSettings->girl_id;
+        $seachSettingsArray['meet'] = $sechSettings->meet;
+        $seachSettingsArray['age_from'] = $sechSettings->age_from;
+        $seachSettingsArray['age_to'] = $sechSettings->age_to;
+        $seachSettingsArray['children'] = $sechSettings->children;
+
+
         return \response()->json([
             "anket"            => $anket,
             "targets"          => $targets,
@@ -251,7 +262,7 @@ class SeachController extends Controller
             "apperance"        => $apperance,
             "relations"        => $relations,
             "chidren"          => $chidren,
-            "sechSettings"     => $sechSettings,
+            "sechSettings"     => $seachSettingsArray,
             "smoking"          => $smoking,
 
         ]);
