@@ -2,7 +2,7 @@
     <div>
 
         <div v-for="item in anketList">
-            <div class="col-lg-3 col-md-2 col-sm-2 col-xs-3 thumb">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-9 box-shadow">
                 <a :href="/anket/+item.id">
                     <img width="200" height="200" :src="'images/upload/'+item.main_image">
                 </a>

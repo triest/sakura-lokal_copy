@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link href="{{asset('css/buttons.css')}}" rel="stylesheet">
     <title>{{$title}}</title>
 
     <!-- Scripts -->

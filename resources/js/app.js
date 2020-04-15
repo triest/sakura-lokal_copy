@@ -25,17 +25,16 @@ Vue.use(VueCarousel);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.component('index2', require('./components/index2.vue').default);
 Vue.component('chat-app', require('./components/chat/ChatApp.vue').default);
-Vue.component('chat-app-mobile', require('./components/chat/mobile/ChatApp.vue').default);
-Vue.component('chat-app2', require('./components/chat/ChatApp2.vue').default);
+
+
 Vue.component('conversation', require('./components/chat/Conversation.vue').default);
-Vue.component('conversation-mobile', require('./components/chat/mobile/Conversation.vue').default);
-Vue.component('conversation2', require('./components/chat/Conversation2.vue').default);
+
+
 Vue.component('ContactsList', require('./components/chat/ContactsList.vue').default);
-Vue.component('ContactsList-mobile', require('./components/chat/mobile/ContactsList.vue').default);
-Vue.component('ContactsList2', require('./components/chat/ContactsList2.vue').default);
+
+
 Vue.component('MessagesFeed', require('./components/chat/MessagesFeed.vue').default);
-Vue.component('MessagesFeed-mobile', require('./components/chat/mobile/MessagesFeed.vue').default);
-Vue.component('MessagesFeed2', require('./components/chat/MessagesFeed2.vue').default);
+
 
 Vue.component('side-panel', require('./components/layouts/SidePanele.vue').default);
 Vue.component('side-panel2', require('./components/layouts/SidePanele2.vue').default);
