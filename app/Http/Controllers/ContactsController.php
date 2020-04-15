@@ -42,18 +42,6 @@ class ContactsController extends Controller
         return response()->json($contacts);
     }
 
-    public function get2()
-    {
-        // get all users except the authenticated one
-        // $contacts = User::where('id', '!=', auth()->id())->get();
-        // get a collection of items where sender_id is the user who sent us a message
-        // and messages_count is the number of unread messages we have from him
-        //  $contacts = null;
-        $contacts = DB::select('select * from conversation con left join girls gl on gl.user_id=con.user_two where con.user_one=?',
-            [Auth::user()->id]);
-
-        return response()->json($contacts);
-    }
 
     public function getMessagesFor($id)
     {
@@ -125,18 +113,19 @@ class ContactsController extends Controller
             $id2)->first();
 
         if ($dialog == null) {
-            $dialog3 = new Dialog();
-            $dialog3->my_id = $user->id;
-            $dialog3->other_id = $id2;
-            $dialog3->save();
+            $dialog = new Dialog();
+            $dialog->my_id = $user->id;
+            $dialog->other_id = $id2;
+            $dialog->save();
         }
-        $dialog2 = Dialog::select(['id', 'my_id', 'other_id'])->where('other_id', auth()->id())->where('my_id',
+        $dialog = Dialog::select(['id', 'my_id', 'other_id'])
+            ->where('other_id', auth()->id())->where('my_id',
             $id2)->first();
-        if ($dialog2 == null) {
-            $dialog4 = new Dialog();
-            $dialog4->other_id = $user->id;
-            $dialog4->my_id = $id2;
-            $dialog4->save();
+        if ($dialog == null) {
+            $dialog = new Dialog();
+            $dialog->other_id = $user->id;
+            $dialog->my_id = $id2;
+            $dialog->save();
         }
 
 

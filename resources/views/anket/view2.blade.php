@@ -36,7 +36,8 @@
                 @if(true)
                     <br>
                     <div class="card-body" id="app7">
-                        <privatepanel :id="{{$girl->id}}" :user_id="{{$girl->user_id}}"></privatepanel>
+                        <privatepanel :id="{{$girl->id}}" :user_id="{{$girl->user_id}}"
+                                      :user_name="{{$girl->name}}"></privatepanel>
                     </div>
                 @else
                     <br>
