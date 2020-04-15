@@ -84,14 +84,6 @@ class SeachController extends Controller
         $girls = $girls->leftJoin('girl_interess', 'girls.id', '=',
             'girl_interess.girl_id');
 */
-        if ($seachSettings->age_from != null) {
-            $girls->where('age', '>=', $seachSettings->age_from);
-        }
-
-        if ($seachSettings->age_to != null) {
-            $girls->where('age', '<=', $seachSettings->age_to);
-        }
-
         $targets = $seachSettings->target()->get();
         foreach ($targets as $target) {
             //      $girls->where('target_id', $target->id);
@@ -103,14 +95,27 @@ class SeachController extends Controller
         }
 
         if ($seachSettings->children != null) {
+
+            /*custom seach for shildren */
             $girls->where('children_id', '=', $seachSettings->children);
         }
 
         $city = City::GetCurrentCity();
 
         if ($city != null) {
-            //     $girls->where('city_id', $city->id);
+            //              $girls->where('city_id', $city->id);
         }
+
+
+        if ($seachSettings->age_from != null) {
+            $girls->where('age', '>=', $seachSettings->age_from);
+        }
+
+
+        if ($seachSettings->age_to != null) {
+            $girls->where('age', '<=', $seachSettings->age_to);
+        }
+
 
         if (isset($Autchgirls) && $Autchgirls != null) {
             $girls->where('id', '!=', $Autchgirls->id);
