@@ -7,21 +7,11 @@
       <change beforePath="$PROJECT_DIR$/resources/js/components/chat/mobile/Conversation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/chat/mobile/Conversation.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/chat/mobile/MessagesFeed.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/chat/mobile/MessagesFeed.vue" afterDir="false" />
     </list>
-    <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="Fi seach for children">
+    <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/City.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/City.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Girl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Girl.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LikeCaruselController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LikeCaruselController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/ankertList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ankertList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/anket/Private.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/anket/Private.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/carusel/likeCarusel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/carusel/likeCarusel.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/chat/ModalComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/chat/ModalComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/SidePanele2.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/SidePanele2.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/anket/view2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/anket/view2.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/blog.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="view2.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="view2.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/anket/view2.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="165" column="105" selection-start-line="165" selection-start-column="105" selection-end-line="165" selection-end-column="105" />
+            <state relative-caret-position="182">
+              <caret line="149" column="24" selection-start-line="149" selection-start-column="24" selection-end-line="149" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -47,8 +37,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="571" column="12" selection-start-line="571" selection-start-column="12" selection-end-line="571" selection-end-column="24" />
+            <state relative-caret-position="390">
+              <caret line="575" column="65" selection-start-line="575" selection-start-column="58" selection-end-line="575" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -76,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LikeCaruselController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LikeCaruselController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LikeCaruselController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+            <state relative-caret-position="526">
+              <caret line="144" column="5" selection-start-line="144" selection-start-column="5" selection-end-line="144" selection-end-column="5" />
               <folding>
                 <element signature="e#40#53#0#PHP" expanded="true" />
               </folding>
@@ -88,11 +78,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Like.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Like.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="likeCarusel.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/carusel/likeCarusel.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+            <state relative-caret-position="764">
+              <caret line="75" column="8" lean-forward="true" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
@@ -115,7 +114,8 @@
       <file leaf-file-name="ankertList.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/ankertList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="34">
+              <caret line="2" column="51" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="51" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
@@ -135,7 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Фотог</find>
       <find>вой</find>
       <find>фльл</find>
       <find>Загрузить</find>
@@ -161,10 +160,11 @@
       <find>saveChange</find>
       <find>City</find>
       <find>likeCarusel</find>
-      <find>car</find>
       <find>getAnket</find>
       <find>$girls</find>
+      <find>car</find>
       <find>anketList</find>
+      <find>newLike</find>
     </findStrings>
     <replaceStrings>
       <replace>get_girl_id</replace>
@@ -251,9 +251,9 @@
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/anket/Private.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/chat/ModalComponent.vue" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/LikeCaruselController.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/carusel/likeCarusel.vue" />
         <option value="$PROJECT_DIR$/resources/views/anket/view2.blade.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/carusel/likeCarusel.vue" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/LikeCaruselController.php" />
       </list>
     </option>
   </component>
@@ -812,21 +812,7 @@
       <workItem from="1586843343435" duration="15741000" />
       <workItem from="1586933668190" duration="29047000" />
       <workItem from="1586979133176" duration="1169000" />
-      <workItem from="1587016369617" duration="22595000" />
-    </task>
-    <task id="LOCAL-00103" summary="Add auto load on scroll">
-      <created>1586251577271</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1586251577272</updated>
-    </task>
-    <task id="LOCAL-00104" summary="add load new">
-      <created>1586255611952</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1586255611952</updated>
+      <workItem from="1587016369617" duration="24030000" />
     </task>
     <task id="LOCAL-00105" summary="add load new">
       <created>1586256893208</created>
@@ -1157,7 +1143,21 @@
       <option name="project" value="LOCAL" />
       <updated>1587019153276</updated>
     </task>
-    <option name="localTasksCounter" value="152" />
+    <task id="LOCAL-00152" summary="Fix view and back button">
+      <created>1587047838276</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1587047838276</updated>
+    </task>
+    <task id="LOCAL-00153" summary="Fi seach for children">
+      <created>1587048343540</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1587048343540</updated>
+    </task>
+    <option name="localTasksCounter" value="154" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1193,7 +1193,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1949091000" />
+    <option name="totallyTimeSpent" value="1950526000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1273,7 +1273,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/workbreaks" />
     </ignored-roots>
-    <MESSAGE value="Fix check is online" />
     <MESSAGE value="Fix albums route and anket style" />
     <MESSAGE value="Disable send message on enter button" />
     <MESSAGE value="Add handle error fir get current city" />
@@ -1296,9 +1295,10 @@
     <MESSAGE value="Fix seach settings" />
     <MESSAGE value="Fix ankets and page count" />
     <MESSAGE value="Fix children id and disabke city for test" />
-    <MESSAGE value="Fi seach for children" />
     <MESSAGE value="Fix visable nawbar only mobile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix visable nawbar only mobile" />
+    <MESSAGE value="Fix view and back button" />
+    <MESSAGE value="Fi seach for children" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fi seach for children" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1307,9 +1307,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/seeds/GirlsTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1572,32 +1569,6 @@
     <entry file="file://$PROJECT_DIR$/resources/js/components/anket/myAnket.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="571" column="12" selection-start-line="571" selection-start-column="12" selection-end-line="571" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LikeCaruselController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-          <folding>
-            <element signature="e#40#53#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/ankertList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/anket/view.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1615,20 +1586,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/carusel/likeCarusel.vue">
+    <entry file="file://$PROJECT_DIR$/resources/views/anket/view2.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+        <state relative-caret-position="182">
+          <caret line="149" column="24" selection-start-line="149" selection-start-column="24" selection-end-line="149" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/ankertList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="51" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="51" />
           <folding>
             <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/anket/view2.blade.php">
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="165" column="105" selection-start-line="165" selection-start-column="105" selection-end-line="165" selection-end-column="105" />
+        <state relative-caret-position="390">
+          <caret line="575" column="65" selection-start-line="575" selection-start-column="58" selection-end-line="575" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/carusel/likeCarusel.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="764">
+          <caret line="75" column="8" lean-forward="true" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Like.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LikeCaruselController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="144" column="5" selection-start-line="144" selection-start-column="5" selection-end-line="144" selection-end-column="5" />
+          <folding>
+            <element signature="e#40#53#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

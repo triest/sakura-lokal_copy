@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\City;
 use App\Girl;
+use App\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -121,7 +122,6 @@ class LikeCaruselController extends Controller
 
         $girls->select('girls.*')->limit($this->limit);
 
-
         if (isset($request->page) && $request->page != null
             && intval($request->page) != 1
         ) {
@@ -142,18 +142,15 @@ class LikeCaruselController extends Controller
 
     public function newLike(Request $request)
     {
-
-        $girl = Girl::select(['id', 'name', 'main_image'])
-            ->where('id', $request->anket_id)->first();
         $userAuth = Auth::user();
         if ($userAuth == null) {
             return redirect('login');
         }
         $authGirl = $userAuth->anketisExsis();
-
-        DB::table('like_caruse')->where(
-            ['who_id' => $authGirl->id, 'target_id' => $girl->id]
-        )->update(['like' => 1]);
+        $like = new Like();
+        $like->who_id = $authGirl->id;
+        $like->target_id = $request->anket_id;
+        $like->save();
 
         return response()->json(['ok']);
     }

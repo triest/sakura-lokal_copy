@@ -1,17 +1,20 @@
 <template>
-    <div style="width: 500px;  margin-left: auto;  margin-right: auto;  left: 50%;
+    <div>
+        <div style="width: 500px;  margin-left: auto;  margin-right: auto;  left: 50%;
   top: 50%;">
-        <div v-for="item in anketList">
-            <a :href="/anket/+item.id">
-                <img :src="'images/upload/'+item.main_image">
-            </a>
-            <div class="cell">
-                <div class="cell-overflow">
-                    {{item.name}} {{item.age}}
+            <div v-for="item in anketList">
+                <a :href="/anket/+item.id">
+                    <img :src="'images/upload/'+item.main_image">
+                </a>
+                <div class="cell">
+                    <div class="cell-overflow">
+                        {{item.name}} {{item.age}}
+                    </div>
                 </div>
             </div>
         </div>
-
+        <button class="btn btn-primary" v-on:click="like()">Like</button>
+        <button class="btn btn-danger" v-on:click="dislike()">Like</button>
     </div>
 </template>
 
@@ -34,7 +37,7 @@
                     axios.get('like-carusel/getAnket')
                         .then((response) => {
                             this.anketList = response.data.ankets;
-                            this.girl_id = anketList[0].id;
+                            this.girl_id = this.anketList[0].id;
                             console.log("id ");
                             console.log(this.girl_id);
                         });
@@ -43,7 +46,7 @@
                     console.log("like");
                     axios.get('like-carusel/newLike', {
                         params: {
-                            anket_id: item_id,
+                            anket_id: this.girl_id,
                             action: "like",
                         }
                     })
@@ -54,7 +57,7 @@
                 dislike() {
                     axios.get('like-carusel/newLike', {
                         params: {
-                            anket_id: item_id,
+                            anket_id: this.girl_id,
                             action: "dislike",
                         }
                     })
@@ -70,26 +73,4 @@
 </script>
 
 <style scoped>
-
-    .cell {
-        position: absolute;
-        top: 350px;
-        right: 0;
-        bottom: 300px;
-        left: 0;
-        box-sizing: border-box;
-        display: block;
-        padding: 200px;
-        width: 100%;
-        color: white !important;
-        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    }
-
-    .cell-overflow {
-        box-sizing: border-box;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        color: white;
-    }
 </style>
