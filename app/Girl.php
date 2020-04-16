@@ -110,6 +110,13 @@ class Girl extends Model
         return $this->belongsTo('App\Relationh');
     }
 
+    public function city()
+    {
+        $temp = $this->hasOne('App\City', 'id', 'user_id');
+
+        return $temp;
+    }
+
 
     public function getCity()
     {

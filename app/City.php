@@ -49,4 +49,16 @@ class City extends Model
             return $city;
         }
     }
+
+    public static function get($id)
+    {
+        $city = City::select(['*'])->where('id', $id)->first();
+
+        return $city;
+    }
+
+    public function girl()
+    {
+        return $this->belongsTo('App\Girl', 'city_id');
+    }
 }

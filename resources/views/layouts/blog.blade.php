@@ -116,8 +116,8 @@
 <!-- тут меню -->
 <nav class="navbar hidden-sm hidden-md hidden-lg visable-xs">
     @if (Auth::guest())
-        <b><a class="navbar-brand" href="{{ url('/login') }}">Войти</a></b>
-        <b><a class="navbar-brand" href="{{ url('/join') }}">Зарегистрироваться</a></b>
+        <b><a class="button blue" href="{{ url('/login') }}">Войти</a></b>
+        <b><a class="button green" href="{{ url('/join') }}">Зарегистрироваться</a></b>
     @else
         @if($girl=Auth::user()->anketisExsis()!=null)
         <!-- {{$girl=Auth::user()->anketisExsis()}} -->
@@ -159,7 +159,7 @@
 <div class="col-sm-8">
     <div class="row row-offcanvas row-offcanvas-right">
 
-        <div class="col-sm-7">
+        <div class="col-sm-8">
             <p class="pull-right visible-xs">
                 <!--  <button type="button" class="menuButton" data-toggle="offcanvas"><b>Меню</b></button> -->
                 <button type="button" class="navbar-toggle collapsed js-offcanvas-btn">

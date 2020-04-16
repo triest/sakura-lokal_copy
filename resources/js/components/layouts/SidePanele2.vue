@@ -5,23 +5,15 @@
                 <a href="/myAnket">
                     <img :src="'images/upload/'+mainImage" height="30">
                 </a>
+                <a href="/messages"> <img width="50" height="50" :src="'images/icons/icons8-speech-bubble.svg'">
+                    <div v-if="numberUnreaded>0">({{numberUnreaded}})</div>
+                </a>
+                <a href="/applications"> <img width="50" height="50" :src="'images/icons/lightning-bolt@2x.png'">
+                    <div v-if="numberApplication>0">({{numberApplication}})</div>
+                </a>
+                <likemodal v-if="showLikeModal" @closeLikeModalEmit='closeLikeModal()'></likemodal>
+                <a href="/history"> <img width="50" height="50" :src="'images/icons/eye.png'"></a>
             </p>
-        </div>
-        <div class="navbar-brand">
-            <b><a href="/messages">Сообщения
-                <div v-if="numberUnreaded>0">({{numberUnreaded}})</div>
-            </a>
-            </b>
-        </div>
-        <div class="navbar-brand">
-            <b><a href="/applications">Заявки на открытие
-                <div v-if="numberApplication>0">({{numberApplication}})</div>
-            </a>
-            </b>
-        </div>
-        <div class="navbar-brand">
-            <likemodal v-if="showLikeModal" @closeLikeModalEmit='closeLikeModal()'></likemodal>
-            <b><a class="btn btn-primary" href="/history">Просмотры</a> </b>
         </div>
         <div class="navbar-brand">
             <a class="btn btn-primary" href="/event/requwest/list">Запросы {{unreeadedEventRequwest}}</a>

@@ -66,8 +66,6 @@
                 type: '',
                 required: true
             },
-
-
         },
         components: {
             Admin,
@@ -92,7 +90,8 @@
                 userId: '',
                 isAdmin: false,
                 showAdminModal: false,
-                wink: false
+                wink: false,
+                user_name: ""
             }
         },
         methods: {

@@ -1,35 +1,28 @@
 <template>
     <transition name="modal" @close="showModal = false">
-        <div class="modal-mask">
-            <div class="modal-wrapper">
-                <div class="modal-container">
+        <div class="modal-mask  modal-sm">
+            <div class="modal-dialog">
+                <div class="modal-wrapper">
+                    <div class="modal-container">
 
-                    <div class="modal-header">
-                        <slot name="header">
-                            Введите сообщение для
-                        </slot>
-                    </div>
-
-                    <div class="modal-body">
-                        <slot name="body">
-                            <textarea rows="10" cols="45" v-model="MessageText" name="MessageText"></textarea>
-                            <br>
-                            <button type="button" class="btn btn-secondary" v-on:click="saveChange">Отправить
-                                сообщение
-                            </button>
-                        </slot>
-                    </div>
-
-                    <div class="modal-footer">
-                        <slot name="footer">
-                            <br>
-                            <button class="modal-default-button"  v-on:click="$emit('close')">
-                                Закрыть
-                            </button>
-                        </slot>
+                        <div class="modal-header">
+                            <slot name="header">
+                                Введите сообщение для
+                            </slot>
+                        </div>
+                        <div class="modal-body">
+                            <slot name="body">
+                                <textarea rows="10" cols="45" v-model="MessageText" name="MessageText"></textarea>
+                                <button type="button" class="btn btn-primary" v-on:click="saveChange">Отправить
+                                    сообщение
+                                </button>
+                                <button class="btn btn-secondary" v-on:click="$emit('close')">
+                                    Закрыть
+                                </button>
+                            </slot>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </transition>
@@ -55,18 +48,18 @@
         },
         methods: {
             close() {
-             this.$emit('close')
+                this.$emit('close')
             },
             findUserByid() {
 
             },
             saveChange() {
-             //   console.log(this.MessageText)
+                //   console.log(this.MessageText)
                 axios.post('/conversation/sendModal', {
                     contact_id: this.id,
                     text: this.MessageText
                 }).then((response) => {
-                    this.MessageText="";
+                    this.MessageText = "";
                     this.$emit('close');
                     this.close();
                 });
@@ -85,11 +78,11 @@
     }
 
     .modal-mask {
-        position: fixed;
+        position: absolute;
         z-index: 9998;
         top: 0;
         left: 0;
-        width: 100%;
+        width: 30px;
         height: 100%;
         background-color: rgba(0, 0, 0, .5);
         display: table;
@@ -102,7 +95,7 @@
     }
 
     .modal-container {
-        width: 600px;
+        width: 100%;
         margin: 0px auto;
         padding: 20px 30px;
         background-color: #fff;
@@ -146,5 +139,9 @@
     .modal-leave-active .modal-container {
         -webkit-transform: scale(1.1);
         transform: scale(1.1);
+    }
+
+    translation[name=modal] {
+        background-color: yellow;
     }
 </style>

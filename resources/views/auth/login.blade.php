@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="form-group row mb-0">
-                    <div class="col-md-8 offset-md-4">
+                    <div class="col-md-8 offset-md-4 col-xs-2">
                         <button type="submit" class="btn btn-primary">
                             Войти
                         </button>
@@ -62,6 +62,7 @@
                                 Забыли пароль?
                             </button>
                         @endif
+                        <br> <br>
                         <a class="btn btn-secondary" href="{{route('main')}}" role="link">К списку анкет</a>
                     </div>
                 </div>

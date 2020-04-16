@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="position: center">
         <button class="btn btn-primary" v-on:click="openSeachModal()">Настроить поиск</button>
         <div v-for="item in anketList">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-9 box-shadow">

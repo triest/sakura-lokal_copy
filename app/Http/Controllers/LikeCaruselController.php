@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\City;
 use App\Girl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 
 class LikeCaruselController extends Controller
 {
+    private $limit = 1;
+
     //
     public function index()
     {
@@ -17,75 +20,131 @@ class LikeCaruselController extends Controller
 
     public function getAnket()
     {
+        $girls = null;
+
+        //   return view("search.index");
+
         $userAuth = Auth::user();
-        if ($userAuth == null) {
-            return redirect('login');
-        }
-        $authGirl = $userAuth->anketisExsis();
-        /*
-         * 1. Получаем анкеты, которые меня интересуют.
-         * 2. ПОлучаем тех, кому еще не поставил лайк
-         * 3. Вывыжим
-         *
-         * Таблица с лайками- likes
-         * */
+        if ($userAuth != null) {
+            $Autchgirls = $userAuth->girl()->first();
 
-        //    $ankets = Girl::select()->where('sex', $authGirl->meet)->get();
-        //
-        //  dump($ankets);
-        if ($authGirl->meet != null) {
-            $results = DB::table('girls')->where('sex', $authGirl->meet);
-        }
+            if ($Autchgirls != null) {
+                //  $seachSettings = SearchSettings::select(['id'])
+                //     ->where("girl_id", "=", $girls->id)->first();
+                $seachSettings = $Autchgirls->seachsettings()->first();
+            }
+        } else {
 
-        if ($authGirl->from_age != null) {
-            $results = DB::table('girls')
-                ->where('age', '>=', $authGirl->from_age);
-        }
-
-        if ($authGirl->to_age != null) {
-            $results = DB::table('girls')
-                ->where('age', '<=', $authGirl->to_age);
-        }
-
-
-        $girls = $results->get();
-        $girl = $results->first();
-
-        //теперь смотрим лайки
-        $hasLike = DB::table('like_caruse')->where('who_id', $authGirl->id)
-            ->get();
-        $rezultArray = Array();
-        //хз, как быстро это сделать, попробую в циклт удалить тех, кому уже поставили лайк
-        foreach ($girls as $girl => $key) {
-            foreach ($hasLike as $like) {
-
-                if ($like->target_id == $key->id) {
-
-                } else {
-                    array_push($rezultArray, $key);
+            if (isset($_COOKIE["laravel_session"])) {
+                $cookie = $_COOKIE["laravel_session"];
+                if ($cookie != null) {
+                    $seachSettings = SearchSettings::select(['*'])
+                        ->where("cookie", "=", $cookie)
+                        ->orderBy('updated_at', 'desc')
+                        ->first();
                 }
             }
+
         }
 
-//        dump($rezultArray);
+        if (!isset($seachSettings) || $seachSettings == null) {
 
-        //тут нежно дату просмотра вставлять, в likeCarusel;
-        DB::table('like_caruse')->insert(
-            ['who_id' => $authGirl->id, 'target_id' => $girl]
-        );
+            $girls = DB::table('girls');
+            if (isset($Autchgirls) && $Autchgirls != null) {
+                $girls->where('city_id', '=', $Autchgirls->city_id);
+                //$girls->where('id', '<>', $Autchgirls->id);
+            }
 
-        $girl = Girl::select(['id', 'name', 'main_image'])
-            ->where('id', $girl)->first();
+            $city = City::GetCurrentCity();
 
-        return $girl;
+            if ($city != null) {
+                $girls->where('city_id', $city->id);
+            }
+            $girls = $girls->orderByDesc('created_at')->get();
+            $count = $girls->count();
+            $num_pages = intval($count / $this->limit);
 
+            return response()->json([
+                'ankets'    => $girls,
+                'count'     => $count,
+                'num_pages' => $num_pages,
+            ]);
+
+        }
+
+        $girls = DB::table('girls');
+
+
+        $girls = $girls->leftJoin('like_caruse', 'girls.id', '=',
+            'like_caruse.who_id');
+
+        /*
+        $girls = $girls->leftJoin('girl_interess', 'girls.id', '=',
+            'girl_interess.girl_id');
+*/
+        $targets = $seachSettings->target()->get();
+        foreach ($targets as $target) {
+            //      $girls->where('target_id', $target->id);
+        }
+
+        $interest = $seachSettings->interest()->get();
+        foreach ($interest as $item) {
+            //        $girls->where('interest_id', $item->id);
+        }
+
+        if ($seachSettings->children != null) {
+
+            /*custom seach for shildren */
+            $girls->where('children_id', '=', $seachSettings->children);
+        }
+
+        $city = City::GetCurrentCity();
+
+        if ($city != null) {
+            //              $girls->where('city_id', $city->id);
+        }
+
+        if ($seachSettings->age_from != null) {
+            $girls->where('age', '>=', $seachSettings->age_from);
+        }
+
+        if ($seachSettings->age_to != null) {
+            $girls->where('age', '<=', $seachSettings->age_to);
+        }
+
+        if (isset($Autchgirls) && $Autchgirls != null) {
+            $girls->where('girls.id', '!=', $Autchgirls->id);
+        }
+
+        $count = $girls->count();
+        $num_pages = intval($count / $this->limit);
+
+        $girls->select('girls.*')->limit($this->limit);
+
+
+        if (isset($request->page) && $request->page != null
+            && intval($request->page) != 1
+        ) {
+            $offset = $this->limit * (intval($request->page) - 1);
+            $girls->offset($offset);
+        }
+
+        //  $girls->orderByDesc('created_at');
+
+        $girls = $girls->get();
+
+        return response()->json([
+            'ankets'    => $girls,
+            'count'     => $count,
+            'num_pages' => $num_pages,
+        ]);
     }
 
     public function newLike(Request $request)
     {
 
         $girl = Girl::select(['id', 'name', 'main_image'])
-            ->where('id', $request->girl_id)->first();
+            ->where('id', $request->anket_id)->first();
         $userAuth = Auth::user();
         if ($userAuth == null) {
             return redirect('login');
