@@ -9,8 +9,12 @@
                 <img width="200" height="200" src="<?php echo asset("/images/upload/$girl->main_image")?>">
             </div>
         </div>
-        <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
-            <b>  {{$girl->name}}</b>, {{$girl->age}} , {{$girl->city}}
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-9 box-shadow">
+            <b>  {{$girl->name}}</b>, {{$girl->age}}
+            @if(null!==$girl->city()->first()))
+            ,
+            {{$girl->city()->first()->name}}
+            @endif
 
             @if(!$girl->isOnline())
                 <small>
@@ -36,8 +40,7 @@
                 @if(true)
                     <br>
                     <div class="card-body" id="app7">
-                        <privatepanel :id="{{$girl->id}}" :user_id="{{$girl->user_id}}"
-                                      :user_name="{{$girl->name}}"></privatepanel>
+                        <privatepanel :id="{{$girl->id}}" :user_id="{{$girl->user_id}}"></privatepanel>
                     </div>
                 @else
                     <br>
@@ -160,7 +163,7 @@
             @endif
         </div>
     </div>
-    <a class="button blue" href="{{route('main')}}" role="link"><i class="fa fa-arrow-left"></i> К списку анкет</a>
+    <a class="button blue" href="{{ URL::previous() }}" role="link"><i class="fa fa-arrow-left"></i>Назад</a>
 @endsection
 <script>
 
