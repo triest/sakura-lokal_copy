@@ -114,7 +114,7 @@
 <script src="{{ asset('/js/axios.min.js') }}"></script>
 
 <!-- тут меню -->
-<nav class="navbar visible-sm">
+<nav class="navbar hidden-sm hidden-md hidden-lg visable-xs">
     @if (Auth::guest())
         <b><a class="navbar-brand" href="{{ url('/login') }}">Войти</a></b>
         <b><a class="navbar-brand" href="{{ url('/join') }}">Зарегистрироваться</a></b>
