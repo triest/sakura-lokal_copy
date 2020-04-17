@@ -59422,7 +59422,8 @@ var render = function() {
             loop: true,
             centerMode: true,
             navigationEnabled: false,
-            "navigation-enabled": false
+              "navigation-enabled": true,
+              paginationEnabled: false
           }
         },
         [
