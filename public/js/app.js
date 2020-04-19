@@ -5073,7 +5073,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       mainImage: null,
         girl_id: null,
-        anketList: []
+        anketList: [],
+        item: null
     };
   },
   methods: {
@@ -5081,10 +5082,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('like-carusel/getAnket').then(function (response) {
-          _this.anketList = response.data.ankets;
-          _this.girl_id = _this.anketList[0].id;
-          console.log("id ");
-          console.log(_this.girl_id);
+          _this.item = response.data.ankets;
       });
     },
     like: function like() {
@@ -5093,7 +5091,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log("like");
       axios.get('like-carusel/newLike', {
         params: {
-            anket_id: this.girl_id,
+            anket_id: this.item.id,
             action: "like"
         }
       }).then(function (response) {
@@ -5105,11 +5103,23 @@ __webpack_require__.r(__webpack_exports__);
 
           axios.get('like-carusel/newLike', {
               params: {
-                  anket_id: this.girl_id,
+                  anket_id: this.item.id,
                   action: "dislike"
               }
           }).then(function (response) {
               _this3.getAnket();
+          });
+      },
+      skip: function skip() {
+          var _this4 = this;
+
+          axios.get('like-carusel/newLike', {
+              params: {
+                  anket_id: this.item.id,
+                  action: "skip"
+              }
+          }).then(function (response) {
+              _this4.getAnket();
           });
       }
   }
@@ -5195,7 +5205,7 @@ __webpack_require__.r(__webpack_exports__);
 
         if (reset) single.unread = 0;else single.unread += 1;
         return single;
-      });
+      }), this.unreaded = single.unread;
     }
   },
   components: {
@@ -59507,26 +59517,23 @@ var render = function() {
                     top: "50%"
                 }
             },
-            _vm._l(_vm.anketList, function (item) {
-                return _c("div", [
-                    _c("a", {attrs: {href: /anket/ + item.id}}, [
-                        _c("img", {attrs: {src: "images/upload/" + item.main_image}})
-                    ]),
-                    _vm._v(" "),
-                    _c("div", {staticClass: "cell"}, [
-                        _c("div", {staticClass: "cell-overflow"}, [
-                            _vm._v(
-                                "\n                      " +
-                                _vm._s(item.name) +
-                                " " +
-                                _vm._s(item.age) +
-                                "\n                  "
-                            )
-                        ])
+            [
+                _c("a", {attrs: {href: /anket/ + _vm.item.id}}, [
+                    _c("img", {attrs: {src: "images/upload/" + _vm.item.main_image}})
+                ]),
+                _vm._v(" "),
+                _c("div", {staticClass: "cell"}, [
+                    _c("div", {staticClass: "cell-overflow"}, [
+                        _vm._v(
+                            "\n                      " +
+                            _vm._s(_vm.item.name) +
+                            " " +
+                            _vm._s(_vm.item.age) +
+                            "\n                  "
+                        )
                     ])
                 ])
-      }),
-      0
+            ]
         ),
         _vm._v(" "),
         _c(
@@ -59539,7 +59546,20 @@ var render = function() {
                     }
                 }
             },
-            [_vm._v("Like")]
+            [_vm._v("Нравиться")]
+        ),
+        _vm._v(" "),
+        _c(
+            "button",
+            {
+                staticClass: "btn btn-default",
+                on: {
+                    click: function ($event) {
+                        return _vm.skip()
+                    }
+                }
+            },
+            [_vm._v("Пропустить")]
         ),
         _vm._v(" "),
         _c(
@@ -59552,7 +59572,7 @@ var render = function() {
                     }
                 }
             },
-            [_vm._v("Like")]
+            [_vm._v("Не нравиться")]
         )
     ])
 }
@@ -59596,7 +59616,11 @@ var render = function() {
       { staticClass: "col-lg-9" },
       [
         _c("Conversation", {
-          attrs: { contact: _vm.selectedContact, messages: _vm.messages },
+            attrs: {
+                contact: _vm.selectedContact,
+                unreaded: _vm.unreaded,
+                messages: _vm.messages
+            },
           on: { new: _vm.saveNewMessage }
         })
       ],

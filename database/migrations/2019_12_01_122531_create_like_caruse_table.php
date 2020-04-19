@@ -15,7 +15,7 @@ class CreateLikeCaruseTable extends Migration
     {
         Schema::create('like_caruse', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('who_id')->unsigned()->index();
+            $table->integer('who_id')->unsigned()->nullable()->index();
             $table->integer('target_id')->unsigned()->index();
             $table->boolean('view')->default(0);
             $table->boolean('like')->default(0);

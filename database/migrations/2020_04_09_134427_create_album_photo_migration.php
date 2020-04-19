@@ -16,7 +16,7 @@ class CreateAlbumPhotoMigration extends Migration
         Schema::create('album_photo', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('album_id')->unsigned()->default(null)->nullable();
-            $table->timestamps()->default();
+            $table->timestamps();
         });
     }
 

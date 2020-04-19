@@ -38,17 +38,13 @@
                     axios.get('like-carusel/getAnket')
                         .then((response) => {
                             this.item = response.data.ankets;
-                            this.girl_id = this.anketList.id;
-                            console.log("id ");
-                            console.log(this.girl_id);
-                            console.log(this.anketList)
                         });
                 },
                 like() {
                     console.log("like");
                     axios.get('like-carusel/newLike', {
                         params: {
-                            anket_id: this.girl_id,
+                            anket_id: this.item.id,
                             action: "like",
                         }
                     })
@@ -59,7 +55,7 @@
                 dislike() {
                     axios.get('like-carusel/newLike', {
                         params: {
-                            anket_id: this.girl_id,
+                            anket_id: this.item.id,
                             action: "dislike",
                         }
                     })
@@ -70,7 +66,7 @@
                 skip() {
                     axios.get('like-carusel/newLike', {
                         params: {
-                            anket_id: this.girl_id,
+                            anket_id: this.item.id,
                             action: "skip",
                         }
                     })

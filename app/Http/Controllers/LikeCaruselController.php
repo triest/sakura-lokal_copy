@@ -23,19 +23,30 @@ class LikeCaruselController extends Controller
     public function getAnket()
     {
         $girls = null;
-        
         $userAuth = Auth::user();
         if ($userAuth != null) {
             $Autchgirls = $userAuth->girl()->first();
         }
 
-
-        $girls = collect(DB::select('select girls.id  from girls girls
+        if (isset($Autchgirls) && $Autchgirls != null) {
+            $girls = collect(DB::select('select girls.id  from girls girls
 where girls.id not in (
 select likes.target_id from likes where likes.who_id=?
 )
 order by rand()
 limit 1', [$Autchgirls->id]))->first();
+        } else {
+            $city = City::GetCurrentCity();
+            if ($city == null) {
+                return null;
+            }
+            $girls = collect(DB::select('select girls.id  from girls girls
+where girls.id not in (
+select likes.target_id from likes 
+)
+order by rand()
+limit 1'))->first();
+        }
 
         $girls = $girl = Girl::select([
             'name',
@@ -52,9 +63,11 @@ limit 1', [$Autchgirls->id]))->first();
     public function newLike(Request $request)
     {
         $userAuth = Auth::user();
-        $authGirl = $userAuth->anketisExsis();
+        if ($userAuth != null) {
+            $authGirl = $userAuth->anketisExsis();
+        }
         $like = new Like();
-        if ($authGirl != null) {
+        if (isset($authGirl) && $authGirl != null) {
             $like->who_id = $authGirl->id;
         }
         $like->target_id = $request->anket_id;
