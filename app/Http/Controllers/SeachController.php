@@ -249,13 +249,14 @@ class SeachController extends Controller
 
 
         $seachSettingsArray = array();
-        $seachSettingsArray['id'] = $sechSettings->id;
-        $seachSettingsArray['girl_id'] = $sechSettings->girl_id;
-        $seachSettingsArray['meet'] = $sechSettings->meet;
-        $seachSettingsArray['age_from'] = $sechSettings->age_from;
-        $seachSettingsArray['age_to'] = $sechSettings->age_to;
-        $seachSettingsArray['children'] = $sechSettings->children;
-
+        if (!empty($sechSettings)) {
+            $seachSettingsArray['id'] = $sechSettings->id;
+            $seachSettingsArray['girl_id'] = $sechSettings->girl_id;
+            $seachSettingsArray['meet'] = $sechSettings->meet;
+            $seachSettingsArray['age_from'] = $sechSettings->age_from;
+            $seachSettingsArray['age_to'] = $sechSettings->age_to;
+            $seachSettingsArray['children'] = $sechSettings->children;
+        }
 
         return \response()->json([
             "anket"            => $anket,
