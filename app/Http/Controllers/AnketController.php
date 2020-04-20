@@ -1165,30 +1165,16 @@ class AnketController extends Controller
         $userAuth = Auth::user();
         $authGirl = $user->anketisExsis();
         if ($authGirl == null || $userAuth == null) {
-            return response()->setStatusCode(404);
-        }
-        $targetGirl = Girl::select(['id', 'user_id', 'name', 'sex'])
-            ->where('id', $id)
-            ->first();
-
-        $targetUser = User::select(['id', 'name'])
-            ->where('id', $targetGirl->user_id)->first();
-
-        $rez = DB::table('wink')
-            ->select(DB::raw('*'))
-            ->where('who_id', '=', $userAuth->id)
-            ->where('target_id', '=', $targetUser->id)
-            ->orderByDesc('created_at')
-            ->get();
-        $last_login = $rez[0]->created_at;
-        $mytime = Carbon::now();
-        $last_login = Carbon::createFromFormat('Y-m-d H:i:s', $last_login);
-        $datediff = date_diff($last_login, $mytime);
-        if ($datediff->d > 3 || ($datediff->m >= 1 && $datediff->y >= 1)) {
-            return \response()->json("true");
-        } else {
             return \response()->json("false");
         }
+        $wink = $authGirl->WinkMakeMe()->get();
+        foreach ($wink as $item) {
+            if ($item->target_id == $id) {                    //подмигнул ли я
+                return \response()->json("true");
+            }
+        }
+
+        return \response()->json("false");
     }
 
 

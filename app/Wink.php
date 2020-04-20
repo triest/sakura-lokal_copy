@@ -9,4 +9,5 @@ class Wink extends Model
     //
     protected $table = "wink";
 
+
 }

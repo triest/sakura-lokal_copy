@@ -58,6 +58,16 @@ class Girl extends Model
         return $this->hasOne('App\User', 'id', 'user_id');
     }
 
+    public function WinkForMe()
+    {
+        return $this->hasMany('App\Wink', 'target_id', 'id');
+    }
+
+    public function WinkMakeMe()
+    {
+        return $this->hasMany('App\Wink', 'who_id', 'id');
+    }
+
     public function seachsettings()
     {
         return $this->hasOne('App\SearchSettings');
@@ -378,6 +388,8 @@ class Girl extends Model
             }
         }
     }
+
+
 }
 
 
