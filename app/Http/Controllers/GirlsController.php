@@ -218,8 +218,8 @@ class GirlsController extends Controller
             <operation>SEND</operation>
             </operations>
             <authentification>
-            <username>sakura-city@rambler.ru</username>
-            <password>22d2af28</password>
+            <username>aaaaaaaaaa</username>
+            <password>aaaa@aaa.ru</password>
             </authentification>
             <message>
             <sender>SMS</sender>
