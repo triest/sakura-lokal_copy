@@ -61,4 +61,113 @@ class City extends Model
     {
         return $this->belongsTo('App\Girl', 'city_id');
     }
+
+
+    public function newCity(
+        Request $request
+    ) {
+        $validatedData = $request->validate([
+            'city' => 'required',
+        ]);
+
+        $city = $request->city;
+
+        if ($city == null) {
+            return redirect('/anket');
+        } else {
+            $request->session()->put('city', $request->city);
+
+            return redirect('/anket');
+        }
+
+    }
+
+    public static function checkCity()
+    {
+        if (Auth::user()) {
+            $user = Auth::user()->first();
+
+            $girl = $user->anketisExsis();
+            $girl = Girl::select(['id'])->where('user_id', $user->id)->first();
+
+            if ($girl == null) {
+                return null;
+            } else {
+                $city = $girl->city_id;
+                $city = DB::table('cities')->where('id_city', $city)->first();
+
+                return $city;
+            }
+
+        }
+
+
+        $city = session()->get('city');
+        if ($city != null) {//
+            //dump($city);
+            $city = Session::get('city');
+            try {
+                $city = DB::table('cities')->where('id_city', $city)->first();
+                if ($city == null) {
+                    $girlcController = new GirlsController();
+
+                    return $girlcController->getCityByIpAndRedirect2();
+                }
+            } catch (IOException $e) {
+                return null;
+            }
+            $events = Myevent::select('id', 'name', 'city_id', 'begin', 'end',
+                'place')->where('city_id',
+                $city->id_city)->get();
+
+            return $city;
+        } else {
+            $girlcController = new GirlsController();
+
+            return $girlcController->getCityByIpAndRedirect2();
+        }
+    }
+
+    public static function getCityByIpAndRedirect2()
+    {
+        $ip = GirlsController::getIpStatic();
+        $response = file_get_contents("http://api.sypexgeo.net/json/"
+            .$ip); //запрашиваем местоположение
+        $response = json_decode($response);
+        $name = $response->city->name_ru;
+
+        $cities = DB::table('cities')->where('name', 'like', $name.'%')
+            ->first();
+        $response = file_get_contents("http://api.sypexgeo.net/json/"
+            .$ip); //запрашиваем местоположение
+        $response = json_decode($response);
+
+        return view('confurmCity')->with(['city' => $response]);
+    }
+
+    public function getCityByIpAndRedirect()
+    {
+        $ip = GirlsController::getIpStatic();
+        $response = file_get_contents("http://api.sypexgeo.net/json/"
+            .$ip); //запрашиваем местоположение
+        $response = json_decode($response);
+        $name = $response->city->name_ru;
+
+        $cities = DB::table('cities')->where('name', 'like', $name.'%')
+            ->first();
+        $response = file_get_contents("http://api.sypexgeo.net/json/"
+            .$ip); //запрашиваем местоположение
+        $response = json_decode($response);
+
+        return view('confurmCity')->with(['city' => $response]);
+    }
+
+    public function changeCity()
+    {
+        $city = Session::get('city');
+        $city = DB::table('cities')->where('id_city', $city)->first();
+
+        return view('changeCity')->with(['city' => $city]);
+    }
+
 }
