@@ -201,23 +201,23 @@ Route::get('/getdataforcarousel', 'AnketController@getdataforcarousel');
 //ути администратора
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', 'AdminController@adminPanel')->name('adminPanel');
-    Route::get('/presentsControll', function () {
+    Route::get('/admin/presentsControll', function () {
         return view('admin.presentsControl');
     })->name('presentsControll');
 
-    Route::get('/targetsControll', function () {
+    Route::get('/admin/targetsControll', function () {
         return view('admin.targetsControl');
     })->name('targetsControll');
 
-    Route::get('/interessControll', function () {
+    Route::get('/admin/interessControll', function () {
         return view('admin.interesControl');
     })->name('interetsControll');
 
-    Route::get('/usersControll', function () {
+    Route::get('/admin/usersControll', function () {
         return view('admin.usersControll');
     })->name('usersControll');
 
-    Route::get('/apperanceControll', function () {
+    Route::get('/admin/apperanceControll', function () {
         return view('admin.apperanceControll');
     })->name('apperanceControll');
 
@@ -230,6 +230,8 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::post('/admin/aperance/delete', 'AdminController@aperancedelete');
 
+    Route::post('/admin/target/edit/{id}', 'AdminController@targetedit');
+    Route::post('/admin/target/delete/{id}', 'AdminController@targetdelete');
 
     Route::get('/moneyControll', function () {
         return view('admin.moneyControll');

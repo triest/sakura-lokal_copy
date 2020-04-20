@@ -49,13 +49,11 @@ class AdminController extends Controller
         return response()->json("ok");
     }
 
-    public function edittarget(Request $request)
+    public function targetedit($id, Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'id' => 'required',
-        ]);
-        $target = Target::select(['id', 'name'])->where('id', $request->id)->first();
+
+        $target = Target::select(['id', 'name'])->where('id', $request->id)
+            ->first();
 
         if ($target == null) {
             return response()->json('fail');
@@ -66,12 +64,27 @@ class AdminController extends Controller
         return response()->json("ok");
     }
 
+    public function targetdelete($id, Request $request)
+    {
+
+        $target = Target::select(['id', 'name'])->where('id', $request->id)
+            ->first();
+
+        if ($target == null) {
+            return response()->json(404);
+        }
+        $target->delete();
+
+        return response()->json("ok");
+    }
+
     public function deletetargret(Request $request)
     {
         $validatedData = $request->validate([
             'id' => 'required',
         ]);
-        $target = Target::select(['id', 'name'])->where('id', $request->id)->first();
+        $target = Target::select(['id', 'name'])->where('id', $request->id)
+            ->first();
         $target->delete();
     }
 
@@ -103,9 +116,10 @@ class AdminController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
-            'id' => 'required',
+            'id'   => 'required',
         ]);
-        $target = Interest::select(['id', 'name'])->where('id', $request->id)->first();
+        $target = Interest::select(['id', 'name'])->where('id', $request->id)
+            ->first();
 
         if ($target == null) {
             return response()->json('fail');
@@ -121,7 +135,8 @@ class AdminController extends Controller
         $validatedData = $request->validate([
             'id' => 'required',
         ]);
-        $target = Interest::select(['id', 'name'])->where('id', $request->id)->first();
+        $target = Interest::select(['id', 'name'])->where('id', $request->id)
+            ->first();
         $target->delete();
     }
 
@@ -141,7 +156,8 @@ class AdminController extends Controller
             'id' => 'required',
         ]);
 
-        $girl = Girl::select(['id', 'name', 'user_id', 'banned'])->where('user_id', $request->id)->first();
+        $girl = Girl::select(['id', 'name', 'user_id', 'banned'])
+            ->where('user_id', $request->id)->first();
         //  dump($girl);
         if ($girl->banned == 1) {
             return response()->json("true");
@@ -158,7 +174,8 @@ class AdminController extends Controller
             'id' => 'required',
         ]);
 
-        $girl = Girl::select(['id', 'name', 'user_id', 'banned'])->where('user_id', $request->id)->first();
+        $girl = Girl::select(['id', 'name', 'user_id', 'banned'])
+            ->where('user_id', $request->id)->first();
 
         if ($girl->banned == 1) {
             $girl->banned = 0;
@@ -184,7 +201,8 @@ class AdminController extends Controller
             'begin_search',
             'end_search',
         ])->get();
-        $results = DB::select('select gl.id,u.name,u.money,gl.banned from users u left join girls gl on gl.user_id=u.id');
+        $results
+            = DB::select('select gl.id,u.name,u.money,gl.banned from users u left join girls gl on gl.user_id=u.id');
 
 //        dump($results);
 
@@ -248,9 +266,10 @@ class AdminController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required',
-            'id' => 'required',
+            'id'   => 'required',
         ]);
-        $target = Aperance::select(['id', 'name'])->where('id', $request->id)->first();
+        $target = Aperance::select(['id', 'name'])->where('id', $request->id)
+            ->first();
 
         if ($target == null) {
             return response(404);
@@ -266,7 +285,8 @@ class AdminController extends Controller
         $validatedData = $request->validate([
             'id' => 'required',
         ]);
-        $target = Aperance::select(['id', 'name'])->where('id', $request->id)->first();
+        $target = Aperance::select(['id', 'name'])->where('id', $request->id)
+            ->first();
 
         if ($target == null) {
             return response(404);

@@ -1,33 +1,5 @@
 <template>
     <div>
-        <div id="del-modal" class="modal fade">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        Удалить цель <b>{{name}}</b> ?
-                    </div>
-                    <button type="button" class="btn btn-danger" v-on:click="confurmDelete">Удалить</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                </div>
-            </div>
-        </div>
-        <div id="edit-modal" class="modal fade">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-
-                    </div>
-                    <div class="modal-body">
-                        <label>Название</label>
-                        <input type="text" v-model="item.name">
-                        <br>
-                        <button type="button" class="btn btn-secondary" v-on:click="saveChange">Сохранить</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br><br>
         <label>Создать цель знакоства.<br> После добавления она будет доступна пользователям</label> <br>
         <input type="text" id="name" name="name" v-model="name" placeholder="Введите цель">
         <button v-on:click="createTarget">Создать</button>
@@ -44,22 +16,32 @@
             <tr v-for="target in targets">
                 <td>{{target.name}}</td>
                 <td>
-                    <button class="btn" @click="editWindow(target)"><i class="fa fa-pencil"></i></button>
+                    <button class="btn" v-on:click="editWindow(target.id,target.name)"><i class="fa fa-pencil"></i>
+                    </button>
                 </td>
                 <td>
-                    <button class="btn" @click="deleWindow(target)"><i class="fa fa-trash"></i></button>
+                    <button class="btn" v-on:click="deleWindow(target.id,target.name)"><i class="fa fa-trash"></i>
+                    </button>
                 </td>
             </tr>
             </tbody>
         </table>
+        <modal v-if="showModal" :item_id="item" :item_name="name" v-on:close="showModal = false" @close='close()'>>
+        </modal>
     </div>
 </template>
 
 <script>
+    import modal from './DelModal'
+
     export default {
+        name: "listComponent",
         mounted() {
             console.log("targets");
             this.getTargets();
+        },
+        components: {
+            modal
         },
         data() {
             return {
@@ -67,7 +49,9 @@
                 name: "",
                 id: "",
                 value_input: "",
-                item: ""
+                item: "",
+                isModalVisible: true,
+                showModal: false,
             }
         },
         methods: {
@@ -85,10 +69,12 @@
                 this.item = item;
                 $("#edit-modal").modal('show');
             },
-            deleWindow(item) {
-                this.id = item.id;
-                this.name = item.name;
-                $("#del-modal").modal('show');
+            deleWindow(target, name) {
+                console.log("show");
+                console.log(target)
+                this.item = target;
+                this.name = name;
+                this.showModal = true;
             },
             confurmDelete() {
                 var that = this;
@@ -111,7 +97,6 @@
                 this.getTargets();
                 $("#del-modal").modal('hide');
             },
-
 
 
             createTarget() {
@@ -154,7 +139,10 @@
                     });
                 this.getTargets();
                 $("#edit-modal").modal('show');
-            }
+            },
+            close() {
+                this.showModal = false;
+            },
         }
     }
 </script>
