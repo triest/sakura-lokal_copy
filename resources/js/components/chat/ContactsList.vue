@@ -31,8 +31,8 @@
         methods: {
             selectContact(contact) {
                 this.selected = contact;
-
                 this.$emit('selected', contact);
+
             }
         },
         computed: {

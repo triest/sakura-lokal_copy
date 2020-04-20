@@ -41,13 +41,15 @@
         },
         methods: {
             startConversationWith(contact) {
-                this.updateUnreadCount(contact, true);
+                console.log("start conversation");
+                //     this.updateUnreadCount(contact, true);
 
                 axios.get(`/conversation/${contact.id}`)
                     .then((response) => {
                         this.messages = response.data;
                         this.selectedContact = contact;
                     })
+
             },
             saveNewMessage(message) {
                 this.messages.push(message);
@@ -60,21 +62,22 @@
 
                 this.updateUnreadCount(message.from_contact, false);
             },
-            updateUnreadCount(contact, reset) {
-                this.contacts = this.contacts.map((single) => {
-                    if (single.id !== contact.id) {
-                        return single;
-                    }
+            /*  updateUnreadCount(contact, reset) {
+                  this.contacts = this.contacts.map((single) => {
+                      if (single.id !== contact.id) {
+                          return single;
+                      }
 
-                    if (reset)
-                        single.unread = 0;
-                    else
-                        single.unread += 1;
+                      if (reset)
+                          single.unread = 0;
+                      else
+                          single.unread += 1;
 
-                    return single;
-                }),
-                    this.unreaded = single.unread;
-            }
+                      return single;
+                  }),
+                      this.unreaded = single.unread;
+              }
+              */
         },
         components: {Conversation, ContactsList}
     }
