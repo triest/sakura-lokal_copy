@@ -34,49 +34,6 @@ use Symfony\Component\Filesystem\Exception\IOException;
 class GirlsController extends Controller
 {
 
-    function seach()
-    {
-        $userAuth = Auth::user();
-        if ($userAuth != null) {
-            $girls = $userAuth->girl()->get();
-            $girls = $girls[0];
-            //  $seachSettings = SearchSettings::select(['id'])
-            //     ->where("girl_id", "=", $girls->id)->first();
-            $seachSettings = $girls->seachsettings()->first();
-        } else {
-            if (isset($_COOKIE["laravel_session"])) {
-                $cookie = $_COOKIE["laravel_session"];
-                if ($cookie != null) {
-                    $seachSettings = SearchSettings::select(['*'])
-                        ->where("cookie", "=", $cookie)
-                        ->orderBy('updated_at', 'desc')
-                        ->first();
-                }
-            }
-
-        }
-
-        if (!isset($seachSettings) || $seachSettings == null) {
-
-            $girls = Girl::select([
-                'id',
-                'name',
-                'main_image',
-                'sex',
-                'age',
-            ])
-                ->where('banned', '=', '0')
-                //       ->where('sex', '=', $anket->meet)
-                ->orderBy('created_at', 'DESC')
-                ->Paginate(16);
-        } else {
-            $girls = null;
-        }
-
-
-        return response()->json($girls);
-    }
-
     function index(Request $request)
     {
         return view('index2');
@@ -129,12 +86,6 @@ class GirlsController extends Controller
             $targets = null;
         }
 
-        if ($girl->city_id != null) {
-            $city = DB::table('cities')->where('id_city', '=', $girl->city_id)
-                ->first();
-        } else {
-            $city = null;
-        }
 
         //интересы
         $interes = $girl->interest()->get();
@@ -235,6 +186,8 @@ class GirlsController extends Controller
                 }
             }
         }
+
+
         $phone_settings = $girl->phone_settings;
 
         $phone = null;
@@ -273,12 +226,8 @@ class GirlsController extends Controller
 
         //авв сшен
         if ($girl->city_id != null) {
-            $city = $girl->getCity();/*
-            if ($city != null) {
-                $region = $girl->getRigion($city);
-            } else {
-                $region = null;
-            }*/
+            $city = $girl->city();
+
             $region = null;
         } else {
             $city = null;
@@ -288,7 +237,6 @@ class GirlsController extends Controller
         if (empty ($aperance)) {
             $aperance = null;
         }
-
 
         $relation = $girl->relation()->first();
         if (empty ($relation)) {
@@ -397,12 +345,7 @@ class GirlsController extends Controller
             $targets = null;
         }
 
-        if ($girl->city_id != null) {
-            $city = DB::table('cities')->where('id_city', '=', $girl->city_id)
-                ->first();
-        } else {
-            $city = null;
-        }
+
 
         //интересы
         $interes = $girl->interest()->get();
@@ -537,7 +480,7 @@ class GirlsController extends Controller
 
 
         //время псоледнего захода
-
+        die("d");
 
         //авв сшен
         if ($girl->city_id != null) {
@@ -762,22 +705,6 @@ class GirlsController extends Controller
         }
 
         return null;
-    }
-
-    public function agreeCity(
-        Request $request
-    ) {
-        $cities = DB::table('cities')
-            ->where('name', 'like', $request->city_name.'%')->first();
-        //  dump($cities);
-        $id = $cities->id_city;
-        if ($id == null) {
-            return redirect('/anket');
-        } else {
-            $request->session()->put('city', $id);
-
-            return redirect('/anket');
-        }
     }
 
     public function newCity(
