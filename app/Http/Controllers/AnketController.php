@@ -64,8 +64,8 @@ class AnketController extends Controller
         ) {
             return view("custom.resetSMS2");
         }
-        // dump($user);
-        $phone_setting = collect(DB::select('select * from phone_settings'));
+
+        $phone_setting = PhoneSetting::select(['id', 'name'])->get();
 
 
         $phone = $user->phone;
@@ -425,14 +425,11 @@ class AnketController extends Controller
             }
         }
 
-        DB::table('girls')->where('id', $girl->id)
-            ->update(['age' => $request['age']]);
-        DB::table('girls')->where('id', $girl->id)
-            ->update(['sex' => $request['sex']]);
-        DB::table('girls')->where('id', $girl->id)
-            ->update(['meet' => $request['met']]);
-        DB::table('girls')->where('id', $girl->id)
-            ->update(['description' => $request['description']]);
+        $girl->age = $request->age;
+        $girl->sex = $request->sex;
+        $girl->met = $request->met;
+        $girl->description = $request->description;
+
         if (Input::hasFile('file')) {
             $old_image_name = $girl['main_image'];
             $path = base_path().'/public/images/upload/'.$old_image_name;
@@ -447,8 +444,7 @@ class AnketController extends Controller
             $request->file('file')
                 ->move(base_path().'/public/images/upload/',
                     strtolower($image_new_name.'.'.$image_extension));
-            DB::table('girls')->where('id', $girl->id)
-                ->update(['main_image' => $new_name]);
+            $girl->main_image = $new_name;
             $origin_size = getimagesize($temp_file);
         }
         //тут местоположее
@@ -827,12 +823,6 @@ class AnketController extends Controller
         //интересы
         $interes = $girl->interest()->get();
 
-        //счетчик просмотров
-        $views = $girl->views_all;
-        $views = $views + 1;
-        $girl->views_all = $views;
-
-        $girl->save();
         //get parametr
         $utm_source = null;
         if (request()->has('utm_source')) {
@@ -840,89 +830,7 @@ class AnketController extends Controller
         }
 
         //проверяем, что просматривающий пользователь зареген.
-        if ($AythUser != null) {
-            $user3 = DB::table('user_user')
-                ->where('my_id', $AythUser->id)
-                ->where('other_id', $girl->user_id)->first();
-            if ($user3 != null) {
-                $girl = Girl::select([
-                    'name',
-                    'id',
-                    'description',
-                    'main_image',
-                    'sex',
-                    'meet',
-                    'weight',
-                    'height',
-                    'age',
-                    'status',
-                    'phone',
-                    'country_id',
-                    'region_id',
-                    'city_id',
-                    'banned',
-                    'user_id',
-                    'private',
-                    'phone_settings',
-                    'last_login',
-                    'from_age',
-                    'to_age',
-                    'relation_id',
-                    'smoking_id',
-                ])->where('id', $id)->first();
 
-                $privatephoto = $girl->privatephotos()->get();
-            }
-            $ip = GirlsController::getIp();
-            $ayth_girl = Girl::select('id', 'user_id')
-                ->where('user_id', $AythUser->id)->first();
-            if ($ip != null and $ayth_girl != null) {
-
-                if ($utm_source != null) {
-                    $source_id = DB::table('view_source')
-                        ->where('name', $utm_source)->first();
-
-                    if ($source_id != null) {
-                        DB::table('view_history')->insert([
-                            'girl_id'   => $girl->id,
-                            'ip'        => $ip,
-                            'source_id' => $source_id->id,
-                        ]);
-                    }
-                } else {
-                    $source_id = DB::table('view_source')
-                        ->where('name', $utm_source)->first();
-                    if ($source_id != null) {
-                        DB::table('view_history')->insert([
-                            'girl_id'   => $girl->id,
-                            'ip'        => $ip,
-                            'source_id' => $source_id->id,
-                        ]);
-                        DB::table('view_history')
-                            ->insert(['girl_id' => $girl->id, 'ip' => $ip]);
-                    }
-                }
-            }
-        } else {
-            $ip = $this->getIp();
-            //сохраняем данные просмотра
-            if ($utm_source != null) {
-                $source_id = DB::table('view_source')
-                    ->where('name', $utm_source)->first();
-                if ($source_id != null) {
-                    DB::table('view_history')->insert([
-                        'girl_id'   => $girl->id,
-                        'ip'        => $ip,
-                        'source_id' => $source_id->id,
-                    ]);
-                } else {
-                    DB::table('view_history')->insert([
-                        'girl_id' => $girl->id,
-                        'ip'      => $ip,
-                    ]);
-                }
-            }
-        }
         $phone_settings = $girl->phone_settings;
 
         $phone = null;
@@ -1061,10 +969,7 @@ class AnketController extends Controller
         if ($user == null) {
             return redirect("\login");
         }
-        $anket = Girl::select([
-            'name',
-            'id',
-        ])->where('user_id', $user->id)->first();
+        $anket = $user->girl()->first();
 
         $photos = $anket->photos()->take(5)->get();
 
@@ -1073,54 +978,7 @@ class AnketController extends Controller
         ]);
     }
 
-    public function findcity($name)
-    {
-        //echo $name;
-        $cities = DB::table('cities')->where('name', 'like', $name.'%')->get();
 
-        return response()->json([$cities]);
-    }
-
-    public function findcity2($name)
-    {
-        /*
-         * 1) Ищим по имени в таблице
-         *
-         * 2) Если нет, то шлем запрос на api
-         *
-         * 3) Добавляем в таблицу
-        */
-        $cities = DB::table('cityes_api')->where('name', 'like', '%'.$name.'%')
-            ->get();
-
-
-        if ($cities->isEmpty()) {
-            $response
-                = file_get_contents("https://kladr-api.ru/api.php?contentType=city&withParent=1&limit=10&query=$name");
-            $response = json_decode($response);
-            $result = $response->result;
-
-            $cities = DB::table('cityes_api')
-                ->where('OKATO', 'like', '%'.$result[1]->oktmo.'%')
-                ->get();
-            dump($cities);
-
-            if ($cities->isEmpty()) {
-                DB::table('cityes_api')->insert(
-                    [
-                        'name'          => $result[1]->name,
-                        'OKATO'         => $result[1]->oktmo,
-                        'PARANTS_OKATO' => $result[1]->parents[0]->okato,
-                    ]
-                );
-                $cities = DB::table('cityes_api')
-                    ->where('name', 'like', $name.'%')
-                    ->get();
-            }
-        }
-
-        return response()->json($cities);
-    }
 
     public function seach(Request $request)
     {
@@ -1276,18 +1134,6 @@ class AnketController extends Controller
             return redirect('/anket');
         }
 
-
-        /* $history_today = DB::table('view_history')
-             ->select('girl_id', 'who_id', 'girls.name as name', 'girls.main_image', 'view_history.time', 'girls.age',
-                 'cities.name as city_name', 'girls.city_id')
-             ->where('girl_id', $girl->id)
-             ->where('who_id', '!=', null)
-             ->where('who_id', '!=', $girl->id)
-             ->leftJoin('girls', 'girls.id', '=', 'view_history.who_id')
-             ->leftJoin('cities', 'girls.city_id', '=', 'cities.id_city')
-             ->orderBy('time')
-             //->get()
-             ->paginate(15);*/
         $history_today = DB::select('select * from view_history');
 
 
@@ -1407,166 +1253,9 @@ class AnketController extends Controller
     }
 
 
-    public function getankets(Request $request)
-    {
-        $girls = null;
-        $AythUser = Auth::user();
-        if ($AythUser == null) {
-            $cookie = Cookie::get('seachSettings');
-
-            $seachSettings = SearchSettings::select([
-                'id',
-                'girl_id',
-                'meet',
-                'age_from',
-                'age_to',
-                'children',
-            ])->where('cookie', $cookie)
-                ->first();
-
-        } else {
-            $ayth_girl = Girl::select('id', 'user_id')
-                ->where('user_id', $AythUser->id)->first();
-
-            if ($ayth_girl == null) {
-                return null;
-            }
 
 
-            $seachSettings = $ayth_girl->seachsettings()->first();
-            if ($seachSettings == null) {
-                return null;
-            }
-        }
 
-
-        if (isset($seachSettings) && $seachSettings != null) {
-            $seachSettingInterest
-                = SeachSettingsType::select([
-                'id',
-                'settings_id',
-                'setting_name',
-                'sett_id',
-            ])->where('settings_id',
-                $seachSettings->id)->get();
-
-            //  dump($seachSettingInterest);
-        }
-
-        //dump($seachSettingInterest);
-        //теперь формируем выборку
-        //образец запроса
-        //  $user = collect(DB::select('select * from users where phone like ?',
-        //        [$phone]))->first();
-
-
-        $qwertString
-            = "select * from girls girl left join girl_target girl_target on girl.id=girl_target.girl_id left join girl_interess girl_interest on girl.id=girl_interest.girl_id";
-
-        //
-
-        //        [$phone]))->first();
-
-
-        $where = " where girl.id is not null and girl.user_id is not null";
-        //dump($seachSettings);
-        //возраст
-        if (isset($seachSettings->age_from)
-            && $seachSettings->age_from != null
-        ) {
-            $where .= " and girl.age>=$seachSettings->age_from";
-        }
-
-        if (isset($seachSettings->age_to)
-            && $seachSettings->age_to != null
-        ) {
-            $where .= " and girl.age<=$seachSettings->age_to";
-        }
-        // $where .= " and girl.age BETWEEN $seachSettings->age_from and $seachSettings->age_to";
-
-        $qwertString = $qwertString.$where;
-
-        //   var_dump($qwertString);
-
-        $qwertStringPages = $qwertString;
-
-        $numPages = DB::select($qwertString, []);
-
-
-        $numPages = count($numPages);
-
-        $numPages = round($numPages / 20);
-
-        //dump($request->page);
-        $qwertString = $qwertString." limit 20";
-
-        if (isset($request->page) && intval($request->page) != 1) {
-
-            $offset = (intval($request->page) - 1) * 20;
-            $qwertString = $qwertString." offset ".$offset;
-        }
-        // echo  $qwertString;
-
-        $girls = DB::select($qwertString, []);
-
-
-        return response()->json(['ankets' => $girls, 'numPages' => $numPages]);
-    }
-
-    public function changeFilter(Request $request)
-    {
-        $userAuth = Auth::user();
-        if ($userAuth == null) {
-            return false;
-        }
-        $user = User::select(['id', 'name'])
-            ->where('id', $userAuth->id)->first();
-        if ($user == null) {
-            return false;
-        }
-        $anket = Girl::select(['id', 'name', 'filter_enable'])
-            ->where('user_id', $user->id)
-            ->first();
-        if ($anket == null) {
-            return false;
-        }
-
-
-        if ($anket->filter_enable == 0) {
-            Girl::where('user_id', $user->id)
-                ->update(['filter_enable' => 1]);
-
-            DB::table('girls')->where('user_id', $user->id)
-                ->update(['filter_enable' => 1]);
-        } else {
-            DB::table('girls')->where('user_id', $user->id)
-                ->update(['filter_enable' => 0]);
-        }
-
-
-        return response()->json(['ok']);
-    }
-
-    public function getfilterenable()
-    {
-        $userAuth = Auth::user();
-
-        $user = User::select(['id', 'name'])
-            ->where('id', $userAuth->id)->first();
-        if ($user == null) {
-            return false;
-        }
-        $anket = Girl::select(['id', 'filter_enable'])
-            ->where('user_id', $user->id)
-            ->first();
-
-        if ($anket == null) {
-            return false;
-        }
-
-
-        return response()->json([$anket->filter_enable]);
-    }
 
     public static function randomString()
     {
@@ -1602,20 +1291,7 @@ class AnketController extends Controller
     }
 
 
-    public function albums($id) //get almubs by girl id
-    {
-        if ($id != null) {
-            $girl = Girl::get($id);
-            $albums = $girl->albums()->get();
-        } else {
-            $userAuth = Auth::user();
-            $user = User::select(['id'])->where('id', $userAuth->id)->first();
-            $girl = $user->anketisExsis();
-            $albums = $girl->albums()->get();
-        }
 
-        return $albums;
-    }
 }
 
 

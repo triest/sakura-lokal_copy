@@ -295,7 +295,7 @@ class Girl extends Model
 
                 $privatephoto = $girl->privatephotos()->get();
             }
-            $ip = $this->getIp();
+            $ip = User::getIp();
             $ayth_girl = Girl::select('id', 'user_id')
                 ->where('user_id', $AythUser->id)->first();
             if ($ip != null and $ayth_girl != null) {
@@ -326,7 +326,7 @@ class Girl extends Model
                 }
             }
         } else {
-            $ip = GirlsController::getIp();
+            $ip = User::getIp();
             //сохраняем данные просмотра
             if (isset($utm_source) && $utm_source != null) {
                 $source_id = DB::table('view_source')

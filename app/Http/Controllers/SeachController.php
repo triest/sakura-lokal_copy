@@ -319,4 +319,38 @@ class SeachController extends Controller
 
         return response()->json(['ok']);
     }
+
+    public function changeFilter(Request $request)
+    {
+        $userAuth = Auth::user();
+        if ($userAuth == null) {
+            return false;
+        }
+        $user = User::select(['id', 'name'])
+            ->where('id', $userAuth->id)->first();
+        if ($user == null) {
+            return false;
+        }
+        $anket = Girl::select(['id', 'name', 'filter_enable'])
+            ->where('user_id', $user->id)
+            ->first();
+        if ($anket == null) {
+            return false;
+        }
+
+
+        if ($anket->filter_enable == 0) {
+            Girl::where('user_id', $user->id)
+                ->update(['filter_enable' => 1]);
+
+            DB::table('girls')->where('user_id', $user->id)
+                ->update(['filter_enable' => 1]);
+        } else {
+            DB::table('girls')->where('user_id', $user->id)
+                ->update(['filter_enable' => 0]);
+        }
+
+
+        return response()->json(['ok']);
+    }
 }
