@@ -2,12 +2,15 @@
 
 namespace App;
 
+use App\Http\Controllers\GirlsController;
 use http\Env\Request;
 use Illuminate\Database\Eloquent\Model;
 use App\Myevent;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class Girl extends Model
 {
@@ -112,7 +115,7 @@ class Girl extends Model
 
     public function city()
     {
-        $temp = $this->hasOne('App\City', 'id', 'user_id');
+        $temp = $this->hasOne('App\City', 'id', 'city_id');
 
         return $temp;
     }
@@ -252,7 +255,129 @@ class Girl extends Model
         return true;
     }
 
+    public function saveView()
+    {
+        $AythUser = Auth::user();
+        if (request()->has('utm_source')) {
+            $utm_source = Input::get('utm_source');
+        }
 
+        if ($AythUser != null) {
+            $user3 = DB::table('user_user')
+                ->where('my_id', $AythUser->id)
+                ->where('other_id', $this->user_id)->first();
+            if ($user3 != null) {
+                $girl = Girl::select([
+                    'name',
+                    'id',
+                    'description',
+                    'main_image',
+                    'sex',
+                    'meet',
+                    'weight',
+                    'height',
+                    'age',
+                    'status',
+                    'phone',
+                    'country_id',
+                    'region_id',
+                    'city_id',
+                    'banned',
+                    'user_id',
+                    'private',
+                    'phone_settings',
+                    'last_login',
+                    'from_age',
+                    'to_age',
+                    'relation_id',
+                    'smoking_id',
+                ])->where('id', $this->id)->first();
+
+                $privatephoto = $girl->privatephotos()->get();
+            }
+            $ip = $this->getIp();
+            $ayth_girl = Girl::select('id', 'user_id')
+                ->where('user_id', $AythUser->id)->first();
+            if ($ip != null and $ayth_girl != null) {
+
+                if ($utm_source != null) {
+                    $source_id = DB::table('view_source')
+                        ->where('name', $utm_source)->first();
+
+                    if ($source_id != null) {
+                        DB::table('view_history')->insert([
+                            'girl_id'   => $girl->id,
+                            'ip'        => $ip,
+                            'source_id' => $source_id->id,
+                        ]);
+                    }
+                } else {
+                    $source_id = DB::table('view_source')
+                        ->where('name', $utm_source)->first();
+                    if ($source_id != null) {
+                        DB::table('view_history')->insert([
+                            'girl_id'   => $girl->id,
+                            'ip'        => $ip,
+                            'source_id' => $source_id->id,
+                        ]);
+                        DB::table('view_history')
+                            ->insert(['girl_id' => $girl->id, 'ip' => $ip]);
+                    }
+                }
+            }
+        } else {
+            $ip = GirlsController::getIp();
+            //сохраняем данные просмотра
+            if (isset($utm_source) && $utm_source != null) {
+                $source_id = DB::table('view_source')
+                    ->where('name', $utm_source)->first();
+                if ($source_id != null) {
+                    DB::table('view_history')->insert([
+                        'girl_id'   => $this->id,
+                        'ip'        => $ip,
+                        'source_id' => $source_id->id,
+                    ]);
+                } else {
+                    DB::table('view_history')->insert([
+                        'girl_id' => $this->id,
+                        'ip'      => $ip,
+                    ]);
+                }
+            }
+        }
+    }
+
+
+    public function getPhoneSettings()
+    {
+        $AythUser = Auth::user();
+        $phone_settings = $this->phone_settings;
+        $phone = null;
+        if ($phone_settings == 1) {
+            $phone = $this->phone;
+        } else {
+            if ($AythUser != null) {
+                $auth_girl = Girl::select('id', 'user_id')
+                    ->where('user_id', $AythUser->id)->first();
+                if ($auth_girl != null) {
+                    $girl_in_table = DB::table('girl_open_phone_girl')
+                        ->where('girl_id', $auth_girl->id)
+                        ->where('target_id', $this->id)->first();
+                    if ($girl_in_table != null) {
+                        $girl2 = Girl::select([
+                            'id',
+                            'phone',
+                        ])->where('id', $this->id)->first();;
+                        $phone = $girl2->phone;
+                    } else {
+                        $phone = null;
+                    }
+                } else {
+                    $phone = null;
+                }
+            }
+        }
+    }
 }
 
 

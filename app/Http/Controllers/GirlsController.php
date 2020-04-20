@@ -96,138 +96,17 @@ class GirlsController extends Controller
         $girl->views_all = $views;
 
         $girl->save();
-        //get parametr
         $utm_source = null;
-        if (request()->has('utm_source')) {
-            $utm_source = Input::get('utm_source');
-        }
-
-        //проверяем, что просматривающий пользователь зареген.
-        if ($AythUser != null) {
-            $user3 = DB::table('user_user')
-                ->where('my_id', $AythUser->id)
-                ->where('other_id', $girl->user_id)->first();
-            if ($user3 != null) {
-                $girl = Girl::select([
-                    'name',
-                    'id',
-                    'description',
-                    'main_image',
-                    'sex',
-                    'meet',
-                    'weight',
-                    'height',
-                    'age',
-                    'status',
-                    'phone',
-                    'country_id',
-                    'region_id',
-                    'city_id',
-                    'banned',
-                    'user_id',
-                    'private',
-                    'phone_settings',
-                    'last_login',
-                    'from_age',
-                    'to_age',
-                    'relation_id',
-                    'smoking_id',
-                ])->where('id', $id)->first();
-
-                $privatephoto = $girl->privatephotos()->get();
-            }
-            $ip = $this->getIp();
-            $ayth_girl = Girl::select('id', 'user_id')
-                ->where('user_id', $AythUser->id)->first();
-            if ($ip != null and $ayth_girl != null) {
-
-                if ($utm_source != null) {
-                    $source_id = DB::table('view_source')
-                        ->where('name', $utm_source)->first();
-
-                    if ($source_id != null) {
-                        DB::table('view_history')->insert([
-                            'girl_id'   => $girl->id,
-                            'ip'        => $ip,
-                            'source_id' => $source_id->id,
-                        ]);
-                    }
-                } else {
-                    $source_id = DB::table('view_source')
-                        ->where('name', $utm_source)->first();
-                    if ($source_id != null) {
-                        DB::table('view_history')->insert([
-                            'girl_id'   => $girl->id,
-                            'ip'        => $ip,
-                            'source_id' => $source_id->id,
-                        ]);
-                        DB::table('view_history')
-                            ->insert(['girl_id' => $girl->id, 'ip' => $ip]);
-                    }
-                }
-            }
-        } else {
-            $ip = $this->getIp();
-            //сохраняем данные просмотра
-            if ($utm_source != null) {
-                $source_id = DB::table('view_source')
-                    ->where('name', $utm_source)->first();
-                if ($source_id != null) {
-                    DB::table('view_history')->insert([
-                        'girl_id'   => $girl->id,
-                        'ip'        => $ip,
-                        'source_id' => $source_id->id,
-                    ]);
-                } else {
-                    DB::table('view_history')->insert([
-                        'girl_id' => $girl->id,
-                        'ip'      => $ip,
-                    ]);
-                }
-            }
-        }
-
-
-        $phone_settings = $girl->phone_settings;
-
-        $phone = null;
-        if ($phone_settings == 1) {
-            $phone = $girl->phone;
-        } else {
-            if ($AythUser != null) {
-                $auth_girl = Girl::select('id', 'user_id')
-                    ->where('user_id', $AythUser->id)->first();
-                if ($auth_girl != null) {
-                    $girl_in_table = DB::table('girl_open_phone_girl')
-                        ->where('girl_id', $auth_girl->id)
-                        ->where('target_id', $girl->id)->first();
-                    if ($girl_in_table != null) {
-                        $girl2 = Girl::select([
-                            'id',
-                            'phone',
-                        ])->where('id', $id)->first();;
-                        $phone = $girl2->phone;
-                    } else {
-                        $phone = null;
-                    }
-                } else {
-                    $phone = null;
-                }
-            }
-        }
+        $girl->saveView();
+        $phone_settings = $girl->getPhoneSettings();
 
         if (count($interes) == 0) {
             $interes = null;
         }
 
-
-        //время псоледнего захода
-
-
         //авв сшен
         if ($girl->city_id != null) {
-            $city = $girl->city();
-
+            $city = $girl->city()->first();
             $region = null;
         } else {
             $city = null;
@@ -268,7 +147,7 @@ class GirlsController extends Controller
             'region'         => $region,
             'interes'        => $interes,
             'phone_settings' => $phone_settings,
-            'phone'          => $phone,
+            'phone'          => $girl->phone,
             'last_login'     => $last_login,
             'views'          => $views,
             'aperance'       => $aperance,
@@ -278,24 +157,6 @@ class GirlsController extends Controller
             'prevesion_page' => $url,
         ]);
 
-        return view('anket.view')->with([
-            'girl'           => $girl,
-            'images'         => $images,
-            'privatephotos'  => $privatephoto,
-            'targets'        => $targets,
-            'city'           => $city,
-            'region'         => $region,
-            'interes'        => $interes,
-            'phone_settings' => $phone_settings,
-            'phone'          => $phone,
-            'last_login'     => $last_login,
-            'views'          => $views,
-            'aperance'       => $aperance,
-            'relation'       => $relation,
-            'children'       => $children,
-            'smoking'        => $smoking,
-            'prevesion_page' => $url,
-        ]);
     }
 
 
@@ -344,7 +205,6 @@ class GirlsController extends Controller
         if (count($targets) == 0) {
             $targets = null;
         }
-
 
 
         //интересы
@@ -480,7 +340,6 @@ class GirlsController extends Controller
 
 
         //время псоледнего захода
-        die("d");
 
         //авв сшен
         if ($girl->city_id != null) {
@@ -541,24 +400,6 @@ class GirlsController extends Controller
             'prevesion_page' => $url,
         ]);
 
-        return view('anket.view')->with([
-            'girl'           => $girl,
-            'images'         => $images,
-            'privatephotos'  => $privatephoto,
-            'targets'        => $targets,
-            'city'           => $city,
-            'region'         => $region,
-            'interes'        => $interes,
-            'phone_settings' => $phone_settings,
-            'phone'          => $phone,
-            'last_login'     => $last_login,
-            'views'          => $views,
-            'aperance'       => $aperance,
-            'relation'       => $relation,
-            'children'       => $children,
-            'smoking'        => $smoking,
-            'prevesion_page' => $url,
-        ]);
     }
 
     public function inputPhone(

@@ -11,7 +11,7 @@
         </div>
         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-9 box-shadow">
             <b>  {{$girl->name}}</b>, {{$girl->age}}
-            @if(null!==$girl->city()->first()))
+            @if(null!==$girl->city()->first())
             ,
             {{$girl->city()->first()->name}}
             @endif
