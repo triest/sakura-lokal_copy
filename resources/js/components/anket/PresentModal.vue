@@ -40,14 +40,11 @@
                             </table>
                         </slot>
                     </div>
-
-                    <div class="modal-footer">
-                        <slot name="footer">
-                            <button class="modal-default-button" v-on:click="close()">
-                                Закрыть
-                            </button>
-                        </slot>
-                    </div>
+                    <slot name="footer">
+                        <button class="btn btn-success" v-on:click="close()">
+                            Закрыть
+                        </button>
+                    </slot>
                 </div>
 
             </div>
@@ -65,7 +62,7 @@
         },
         mounted() {
             this.getPresentsList();
-                this.getUserMoney();
+            this.getUserMoney();
         },
         data() {
             return {
@@ -100,7 +97,7 @@
                 )
                     .then((response) => {
                         this.userMoney = response.data.money;
-                        console.log('user money '+this.money)
+                        console.log('user money ' + this.money)
                     })
             }
         }

@@ -32,7 +32,7 @@
                             <li><a class="dropdown-item" v-on:click="showPresentModal=true" alt="Подмигнуть"
                                    style="  cursor: pointer;">Отправить
                                 подарок</a></li>
-                            <li role="separator" class="divider"></li>
+                            <li v-if="showSendRegButton" role="separator" class="divider"></li>
                             <li v-if="showSendRegButton"><a class="dropdown-item" v-on:click="sendRequwest()"
                                                             alt="Подмигнуть" style="  cursor: pointer;">Попросить
                                 открыть анкету</a></li>

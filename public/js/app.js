@@ -4125,9 +4125,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     id: {
@@ -58659,107 +58656,105 @@ var render = function() {
     [
       _c("div", { staticClass: "modal-mask" }, [
         _c("div", { staticClass: "modal-wrapper" }, [
-          _c("div", { staticClass: "modal-container" }, [
             _c(
-              "div",
-              { staticClass: "modal-header" },
-              [_vm._t("header", [_c("b", [_vm._v("Подарки")])])],
-              2
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal-body" },
-              [
-                _vm._t("body", [
-                  _c("table", { staticClass: "table table-condensed" }, [
-                    _c("thead", [
-                      _c("tr", [
-                        _c("th", [_vm._v("Подарок")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Цена")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Изображение")])
-                      ])
-                    ]),
+                "div",
+                {staticClass: "modal-container"},
+                [
+                    _c(
+                        "div",
+                        {staticClass: "modal-header"},
+                        [_vm._t("header", [_c("b", [_vm._v("Подарки")])])],
+                        2
+                    ),
                     _vm._v(" "),
                     _c(
-                      "tbody",
-                      _vm._l(_vm.presents[0], function(present) {
-                        return _c("tr", [
-                          _c("td", [_vm._v(_vm._s(present.name))]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(present.price))]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c("img", {
-                              attrs: {
-                                src: "/presents/upload/" + present.image,
-                                height: "200"
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _vm.userMoney >= present.price
-                            ? _c("td", [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "button btn-primary",
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.givePresent(present.id)
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "Подарить\n                                    "
+                        "div",
+                        {staticClass: "modal-body"},
+                        [
+                            _vm._t("body", [
+                                _c("table", {staticClass: "table table-condensed"}, [
+                                    _c("thead", [
+                                        _c("tr", [
+                                            _c("th", [_vm._v("Подарок")]),
+                                            _vm._v(" "),
+                                            _c("th", [_vm._v("Цена")]),
+                                            _vm._v(" "),
+                                            _c("th", [_vm._v("Изображение")])
+                                        ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                        "tbody",
+                                        _vm._l(_vm.presents[0], function (present) {
+                                            return _c("tr", [
+                                                _c("td", [_vm._v(_vm._s(present.name))]),
+                                                _vm._v(" "),
+                                                _c("td", [_vm._v(_vm._s(present.price))]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                    _c("img", {
+                                                        attrs: {
+                                                            src: "/presents/upload/" + present.image,
+                                                            height: "200"
+                                                        }
+                                                    })
+                                                ]),
+                                                _vm._v(" "),
+                                                _vm.userMoney >= present.price
+                                                    ? _c("td", [
+                                                        _c(
+                                                            "button",
+                                                            {
+                                                                staticClass: "button btn-primary",
+                                                                on: {
+                                                                    click: function ($event) {
+                                                                        return _vm.givePresent(present.id)
+                                                                    }
+                                                                }
+                                                            },
+                                                            [
+                                                                _vm._v(
+                                                                    "Подарить\n                                    "
+                                                                )
+                                                            ]
+                                                        )
+                                                    ])
+                                                    : _c("td", [
+                                                        _c("b", [
+                                                            _vm._v("Недостаточно денег. Пополните счет")
+                                                        ])
+                                                    ])
+                                            ])
+                                        }),
+                                        0
                                     )
-                                  ]
-                                )
-                              ])
-                            : _c("td", [
-                                _c("b", [
-                                  _vm._v("Недостаточно денег. Пополните счет")
                                 ])
-                              ])
-                        ])
-                      }),
-                      0
-                    )
-                  ])
-                ])
-              ],
-              2
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal-footer" },
-              [
-                _vm._t("footer", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "modal-default-button",
-                      on: {
-                        click: function($event) {
-                          return _vm.close()
-                        }
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            Закрыть\n                        "
-                      )
-                    ]
-                  )
-                ])
-              ],
-              2
+                            ])
+                        ],
+                        2
+                    ),
+                    _vm._v(" "),
+                    _vm._t("footer", [
+                        _c(
+                            "button",
+                            {
+                                staticClass: "btn btn-success",
+                                on: {
+                                    click: function ($event) {
+                                        return _vm.close()
+                                    }
+                                }
+                            },
+                            [
+                                _vm._v(
+                                    "\n                        Закрыть\n                    "
+                                )
+                            ]
+                        )
+                    ])
+                ],
+                2
             )
-          ])
         ])
       ])
     ]
@@ -58894,10 +58889,12 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("li", {
-                  staticClass: "divider",
-                  attrs: { role: "separator" }
-                }),
+                  _vm.showSendRegButton
+                      ? _c("li", {
+                          staticClass: "divider",
+                          attrs: {role: "separator"}
+                      })
+                      : _vm._e(),
                 _vm._v(" "),
                 _vm.showSendRegButton
                   ? _c("li", [
