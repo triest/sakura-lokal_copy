@@ -24,7 +24,7 @@
                         </button>
                         <div class="dropdown-menu">
                             <div v-if="wink==false">
-                                <button class="btn btn-success" v-on:click="wink()" alt="Подмигнуть"> Подмигнуть
+                                <button class="btn btn-success" v-on:click="makeWink()" alt="Подмигнуть"> Подмигнуть
                                 </button>
                             </div>
                             <button class="btn btn-success
@@ -123,7 +123,7 @@
                         this.user_id = response.data;
                     })
             },
-            wink() {
+            makeWink() {
                 axios.get('/anket/wink/make', {
                     params: {
                         id: this.id

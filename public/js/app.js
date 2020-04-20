@@ -4314,7 +4314,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.user_id = response.data;
       });
     },
-    wink: function wink() {
+      makeWink: function makeWink() {
       axios.get('/anket/wink/make', {
         params: {
           id: this.id
@@ -58867,7 +58867,7 @@ var render = function() {
                           attrs: { alt: "Подмигнуть" },
                           on: {
                             click: function($event) {
-                              return _vm.wink()
+                                return _vm.makeWink()
                             }
                           }
                         },
