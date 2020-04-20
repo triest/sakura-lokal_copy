@@ -4241,6 +4241,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -58848,11 +58852,12 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "dropdown-menu" }, [
                 _vm.wink == false
-                  ? _c("div", [
+                  ? _c("li", [
                       _c(
-                        "button",
+                        "a",
                         {
-                          staticClass: "btn btn-success",
+                          staticClass: "dropdown-item",
+                          staticStyle: { cursor: "pointer" },
                           attrs: { alt: "Подмигнуть" },
                           on: {
                             click: function($event) {
@@ -58860,42 +58865,61 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v(" Подмигнуть\n                            ")]
+                        [_vm._v("Подмигнуть")]
                       )
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-success\n    ",
-                    attrs: { alt: "Отправить подарок" },
-                    on: {
-                      click: function($event) {
-                        _vm.showPresentModal = true
+                _vm.wink == false
+                  ? _c("li", {
+                      staticClass: "divider",
+                      attrs: { role: "separator" }
+                    })
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("li", [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "dropdown-item",
+                      staticStyle: { cursor: "pointer" },
+                      attrs: { alt: "Подмигнуть" },
+                      on: {
+                        click: function($event) {
+                          _vm.showPresentModal = true
+                        }
                       }
-                    }
-                  },
-                  [_vm._v("Отправить подарок\n                        ")]
-                ),
+                    },
+                    [_vm._v("Отправить\n                            подарок")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", {
+                  staticClass: "divider",
+                  attrs: { role: "separator" }
+                }),
                 _vm._v(" "),
                 _vm.showSendRegButton
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "btn-primary",
-                        on: {
-                          click: function($event) {
-                            return _vm.sendRequwest()
+                  ? _c("li", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "dropdown-item",
+                          staticStyle: { cursor: "pointer" },
+                          attrs: { alt: "Подмигнуть" },
+                          on: {
+                            click: function($event) {
+                              return _vm.sendRequwest()
+                            }
                           }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "Попросить\n                            открыть анкету\n                        "
-                        )
-                      ]
-                    )
+                        },
+                        [
+                          _vm._v(
+                            "Попросить\n                            открыть анкету"
+                          )
+                        ]
+                      )
+                    ])
                   : _vm._e()
               ])
             ])

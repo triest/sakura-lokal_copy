@@ -23,16 +23,20 @@
                             или
                         </button>
                         <div class="dropdown-menu">
-                            <div v-if="wink==false">
-                                <button class="btn btn-success" v-on:click="makeWink()" alt="Подмигнуть"> Подмигнуть
-                                </button>
-                            </div>
-                            <button class="btn btn-success
-        " v-on:click="showPresentModal=true" alt="Отправить подарок">Отправить подарок
-                            </button>
-                            <button class="btn-primary" v-if="showSendRegButton" v-on:click="sendRequwest()">Попросить
-                                открыть анкету
-                            </button>
+
+                            <li v-if="wink==false"><a class="dropdown-item" v-on:click="makeWink()" alt="Подмигнуть"
+                                                      style="  cursor: pointer;">Подмигнуть</a>
+                            </li>
+                            <li  v-if="wink==false" role="separator" class="divider"></li>
+
+                            <li><a class="dropdown-item" v-on:click="showPresentModal=true" alt="Подмигнуть"
+                                   style="  cursor: pointer;">Отправить
+                                подарок</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li v-if="showSendRegButton"><a class="dropdown-item" v-on:click="sendRequwest()"
+                                                            alt="Подмигнуть" style="  cursor: pointer;">Попросить
+                                открыть анкету</a></li>
+
                         </div>
                     </div>
 
