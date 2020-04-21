@@ -226,9 +226,10 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::post('/admin/aperance', 'AdminController@aperancestore');
 
-    Route::post('/admin/aperance/edit', 'AdminController@aperanceedit');
+    Route::post('/admin/aperance/edit/{id}', 'AdminController@aperanceedit');
 
-    Route::post('/admin/aperance/delete', 'AdminController@aperancedelete');
+    Route::post('/admin/aperance/delete/{id}',
+        'AdminController@aperancedelete');
 
     Route::post('/admin/target/edit/{id}', 'AdminController@targetedit');
     Route::post('/admin/target/delete/{id}', 'AdminController@targetdelete');

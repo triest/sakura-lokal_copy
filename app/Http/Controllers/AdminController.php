@@ -262,14 +262,13 @@ class AdminController extends Controller
         return response(200);
     }
 
-    public function aperanceedit(Request $request)
+    public function aperanceedit($id, Request $request)
     {
 
         $validatedData = $request->validate([
             'name' => 'required',
-            'id'   => 'required',
         ]);
-        $target = Aperance::select(['id', 'name'])->where('id', $request->id)
+        $target = Aperance::select(['id', 'name'])->where('id', $id)
             ->first();
 
         if ($target == null) {
@@ -281,12 +280,10 @@ class AdminController extends Controller
         return response(200);
     }
 
-    public function aperancedelete(Request $request)
+    public function aperancedelete($id, Request $request)
     {
-        $validatedData = $request->validate([
-            'id' => 'required',
-        ]);
-        $target = Aperance::select(['id', 'name'])->where('id', $request->id)
+
+        $target = Aperance::select(['id', 'name'])->where('id', $id)
             ->first();
 
         if ($target == null) {
