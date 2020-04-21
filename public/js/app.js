@@ -4528,7 +4528,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _chat_ModalComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../chat/ModalComponent.vue */ "./resources/js/components/chat/ModalComponent.vue");
 /* harmony import */ var _PresentModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PresentModal.vue */ "./resources/js/components/anket/PresentModal.vue");
-/* harmony import */ var _admin_Admin_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../admin/Admin.vue */ "./resources/js/components/admin/Admin.vue");
+        /* harmony import */
+        var _admin_Admin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../admin/Admin */ "./resources/js/components/admin/Admin.vue");
 //
 //
 //
@@ -4585,7 +4586,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 
 
@@ -4601,7 +4601,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   components: {
-    Admin: _admin_Admin_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+      Admin: _admin_Admin__WEBPACK_IMPORTED_MODULE_2__["default"],
     modal: _chat_ModalComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     present: _PresentModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
@@ -56673,14 +56673,14 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn-danger",
+                  staticClass: "btn btn-danger",
                 on: {
                   click: function($event) {
                     _vm.showAdminModal = true
                   }
                 }
               },
-              [_vm._v("Действия администратора")]
+                [_vm._v("Действия администратора1")]
             )
           ])
         : _vm._e(),
@@ -59541,7 +59541,7 @@ var render = function() {
                     {
                       staticClass: "dropdown-item",
                       staticStyle: { cursor: "pointer" },
-                      attrs: { alt: "Подмигнуть" },
+                        attrs: {alt: "Отправить подарок"},
                       on: {
                         click: function($event) {
                           _vm.showPresentModal = true
@@ -59594,7 +59594,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn-danger",
+                  staticClass: "btn btn-danger",
                 on: {
                   click: function($event) {
                     _vm.showAdminModal = true
@@ -59950,14 +59950,14 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn-danger",
+                  staticClass: "btn btn-primary",
                 on: {
                   click: function($event) {
                     _vm.showAdminModal = true
                   }
                 }
               },
-              [_vm._v("Действия администратора")]
+                [_vm._v("Действия администратора1")]
             )
           ])
         : _vm._e(),
@@ -60265,7 +60265,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow" },
+        {staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-9 box-shadow"},
       [
         _c("div", { staticClass: "cell" }, [
           _c(

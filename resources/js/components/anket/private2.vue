@@ -3,7 +3,7 @@
         <h3 v-if="isOpen">У вас открыт доступ к приватной информации!</h3>
         <br>
         <div v-if="isAdmin==true">
-            <button class="btn-danger" v-on:click="showAdminModal=true">Действия администратора</button>
+            <button class="btn btn-primary" v-on:click="showAdminModal=true">Действия администратора1</button>
         </div>
         <admin v-if="showAdminModal" :id="user_id" @clouseAdminModal='clouseAdminModal()'></admin>
         <present v-if="showPresentModal" :id="user_id" @closeRequest='close()'></present>

@@ -12,7 +12,7 @@
         <button class="btn-success" v-on:click="showPresentModal=true">Отправить подарок</button>
         <br>
         <div v-if="isAdmin==true">
-            <button class="btn-danger" v-on:click="showAdminModal=true">Действия администратора</button>
+            <button class="btn btn-danger" v-on:click="showAdminModal=true">Действия администратора1</button>
         </div>
         <admin v-if="showAdminModal" :id="user_id" @clouseAdminModal='clouseAdminModal()'></admin>
         <present v-if="showPresentModal" :id="user_id" @closeRequest='close()'></present>

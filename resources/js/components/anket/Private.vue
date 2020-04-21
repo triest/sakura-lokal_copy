@@ -27,9 +27,9 @@
                             <li v-if="wink==false"><a class="dropdown-item" v-on:click="makeWink()" alt="Подмигнуть"
                                                       style="  cursor: pointer;">Подмигнуть</a>
                             </li>
-                            <li  v-if="wink==false" role="separator" class="divider"></li>
+                            <li v-if="wink==false" role="separator" class="divider"></li>
 
-                            <li><a class="dropdown-item" v-on:click="showPresentModal=true" alt="Подмигнуть"
+                            <li><a class="dropdown-item" v-on:click="showPresentModal=true" alt="Отправить подарок"
                                    style="  cursor: pointer;">Отправить
                                 подарок</a></li>
                             <li v-if="showSendRegButton" role="separator" class="divider"></li>
@@ -46,7 +46,7 @@
 
         <br>
         <div v-if="isAdmin==true">
-            <button class="btn-danger" v-on:click="showAdminModal=true">Действия администратора</button>
+            <button class="btn btn-danger" v-on:click="showAdminModal=true">Действия администратора</button>
         </div>
         <admin v-if="showAdminModal" :id="user_id" @clouseAdminModal='clouseAdminModal()'></admin>
         <present v-if="showPresentModal" :id="user_id" @closeRequest='close()'></present>
@@ -57,7 +57,6 @@
 <script>
     import modal from '../chat/ModalComponent.vue';
     import present from './PresentModal.vue'
-    import admin from '../admin/Admin.vue'
     import Admin from "../admin/Admin";
 
     export default {
