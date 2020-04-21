@@ -48,15 +48,32 @@ order by rand()
 limit 1'))->first();
         }
 
-        $girls = $girl = Girl::select([
+
+        $girls = Girl::select([
             'name',
             'id',
             'age',
             'main_image',
+            'last_login',
+            'city_id',
         ])->where('id', $girls->id)->first();
+        $city = null;
+        if ($girls->city_id != null) {
+            $city = City::get($girls->city_id);
+        }
+        $targets = $girls->target()->get();
+        $interets = $girls->interest()->get();
+
+        $online = $girls->isOnline();
+        $last_login = $girls->lastLoginFormat();
 
         return response()->json([
-            'ankets' => $girls,
+            'ankets'     => $girls,
+            'online'     => $online,
+            'city'       => $city,
+            'targets'    => $targets,
+            'interets'   => $interets,
+            'last_login' => $last_login,
         ]);
     }
 

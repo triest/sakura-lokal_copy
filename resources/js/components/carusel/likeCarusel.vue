@@ -1,20 +1,53 @@
 <template>
-    <div>
-        <div style="width: 500px;  margin-left: auto;  margin-right: auto;  left: 50%;
+    <div class="panel panel-default panel-body">
+
+        <div class="col-lg-8 col-md-3 col-sm-3 col-xs-9 box-shadow">
+            <div style="width: 500px;  margin-left: auto;  margin-right: auto;  left: 50%;
   top: 50%;">
 
                 <a :href="/anket/+item.id">
-                    <img :src="'images/upload/'+item.main_image">
+                    <img :src="'images/upload/'+item.main_image" height="500px" width="350px">
                 </a>
-                <div class="cell">
-                    <div class="cell-overflow">
-                        {{item.name}} {{item.age}}
+
+            </div>
+            <button class="btn btn-primary" v-on:click="like()"
+                    style="position: absolute; margin-top: -50px; margin-left: 5px">
+                Нравиться
+            </button>
+            <button class="btn btn-default" v-on:click="skip()"
+                    style="position: absolute; margin-top: -50px; margin-left: 105px">
+                Пропустить
+            </button>
+            <button class="btn btn-danger" v-on:click="dislike()"
+                    style="position: absolute; margin-top: -50px;  margin-left: 212px">Не
+                нравиться
+            </button>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
+            <div class="cell">
+                <div class="cell-overflow">
+                    <b> {{item.name}}, {{item.age}}</b>
+                    <p>
+                        <small>{{city.name}}</small>
+                    </p>
+                    <p v-if="online=='null'"> {{item.last_login}}
+                    <p v-else>
+                        {{lastLogin}}
+                    </p>
+
+                    <b>Цель знакомства</b>
+                    <div v-for="item in targets">
+                        {{item.name}},
+                    </div>
+
+                    <b>Интересы</b>
+                    <div v-for="item in interets">
+                        {{item.name}},
                     </div>
                 </div>
+            </div>
+
         </div>
-        <button class="btn btn-primary" v-on:click="like()">Нравиться</button>
-        <button class="btn btn-default" v-on:click="skip()">Пропустить</button>
-        <button class="btn btn-danger" v-on:click="dislike()">Не нравиться</button>
     </div>
 </template>
 
@@ -29,7 +62,12 @@
                 mainImage: null,
                 girl_id: null,
                 anketList: [],
-                item: null
+                item: null,
+                online: null,
+                city: null,
+                targets: [],
+                interets: [],
+                lastLogin: null,
             }
         },
         methods:
@@ -38,6 +76,12 @@
                     axios.get('like-carusel/getAnket')
                         .then((response) => {
                             this.item = response.data.ankets;
+                            this.online = response.data.online;
+                            this.city = response.data.city;
+                            this.targets = response.data.targets;
+                            this.interets = response.data.interets;
+                            this.interets = response.data.interets;
+                            this.lastLogin = response.data.lastLogin
                         });
                 },
                 like() {
