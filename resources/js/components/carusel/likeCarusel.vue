@@ -1,7 +1,7 @@
 <template>
     <div class="panel panel-default panel-body">
 
-        <div class="col-lg-8 col-md-3 col-sm-3 col-xs-9 box-shadow">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-5 box-shadow">
             <div style="width: 500px;  margin-left: auto;  margin-right: auto;  left: 50%;
   top: 50%;">
 

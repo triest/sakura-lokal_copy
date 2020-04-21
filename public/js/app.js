@@ -60181,7 +60181,7 @@ var render = function() {
   return _c("div", { staticClass: "panel panel-default panel-body" }, [
     _c(
       "div",
-      { staticClass: "col-lg-8 col-md-3 col-sm-3 col-xs-9 box-shadow" },
+      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-5 box-shadow" },
       [
         _c(
           "div",
