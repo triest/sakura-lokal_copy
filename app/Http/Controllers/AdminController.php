@@ -130,14 +130,15 @@ class AdminController extends Controller
         return response()->json("ok");
     }
 
-    public function deleteinteress(Request $request)
+    public function deleteinteress($id, Request $request)
     {
-        $validatedData = $request->validate([
-            'id' => 'required',
-        ]);
-        $target = Interest::select(['id', 'name'])->where('id', $request->id)
+        $target = Interest::select(['id', 'name'])->where('id', intval($id))
             ->first();
-        $target->delete();
+        if ($target != null) {
+            $target->delete();
+        }
+
+        return response()->json("ok");
     }
 
     public function isAdmin(Request $request)

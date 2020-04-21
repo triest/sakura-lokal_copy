@@ -209,7 +209,7 @@ Route::group(['middleware' => 'admin'], function () {
         return view('admin.targetsControl');
     })->name('targetsControll');
 
-    Route::get('/admin/interessControll', function () {
+    Route::get('/admin/interess', function () {
         return view('admin.interesControl');
     })->name('interetsControll');
 
@@ -247,16 +247,20 @@ Route::group(['middleware' => 'admin'], function () {
     //конец пользователей
     //получаем список интересов
 
-    Route::get('/interess', 'AdminController@getinteresslist')
+    Route::get('admin/interes', 'AdminController@getinteresslist')
         ->middleware('auth', 'admin');
 
-    Route::post('/createinteress', 'AdminController@createinteress')
+    Route::post('admin/interes/create', 'AdminController@createinteress')
         ->middleware('auth', 'admin');
+
+    Route::post('admin/interes/delete/{id}', 'AdminController@deleteinteress')
+        ->middleware('auth');
+
 
     Route::post('/editinteress', 'AdminController@editinteress')
         ->middleware('auth', 'admin');
 
-    Route::post('/deleteinteress', 'AdminController@deleteinteress')
+    Route::delete('/', 'AdminController@deleteinteress')
         ->middleware('auth', 'admin');
 
     Route::get('/bannedorNot', 'AdminController@bannedorNot')

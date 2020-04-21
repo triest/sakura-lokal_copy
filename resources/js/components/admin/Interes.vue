@@ -1,33 +1,5 @@
 <template>
     <div>
-        <div id="del-modal" class="modal fade">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        Удалить интерес <b>{{name}}</b> ?
-                    </div>
-                    <button type="button" class="btn btn-danger" v-on:click="confurmDelete">Удалить</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                </div>
-            </div>
-        </div>
-        <div id="edit-modal" class="modal fade">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-
-                    </div>
-                    <div class="modal-body">
-                        <label>Название</label>
-                        <input type="text" v-model="item.name">
-                        <br>
-                        <button type="button" class="btn btn-secondary" v-on:click="saveChange">Сохранить</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br><br>
         <label>Создать цель знакоства.<br> После добавления она будет доступна пользователям</label> <br>
         <input type="text" id="name" name="name" v-model="name" placeholder="Введите цель">
         <button v-on:click="createTarget">Создать</button>
@@ -44,22 +16,32 @@
             <tr v-for="target in targets">
                 <td>{{target.name}}</td>
                 <td>
-                    <button class="btn" @click="editWindow(target)"><i class="fa fa-pencil"></i></button>
+                    <button class="btn" v-on:click="editWindow(target.id,target.name)"><i class="fa fa-pencil"></i>
+                    </button>
                 </td>
                 <td>
-                    <button class="btn" @click="deleWindow(target)"><i class="fa fa-trash"></i></button>
+                    <button class="btn" v-on:click="deleWindow(target.id,target.name)"><i class="fa fa-trash"></i>
+                    </button>
                 </td>
             </tr>
             </tbody>
         </table>
+        <modal v-if="showModal" :item_id="item" :item_name="name" v-on:close="showModal = false" @close='close()'>>
+        </modal>
     </div>
 </template>
 
 <script>
+    import modal from './DelInteresModal'
+
     export default {
+        name: "listComponent",
         mounted() {
             console.log("targets");
             this.getTargets();
+        },
+        components: {
+            modal
         },
         data() {
             return {
@@ -67,16 +49,17 @@
                 name: "",
                 id: "",
                 value_input: "",
-                item: ""
+                item: "",
+                isModalVisible: true,
+                showModal: false,
             }
         },
         methods: {
             getTargets() {
                 this.targets = null;
-                axios.get('/interess')
+                axios.get('interes')
                     .then((response) => {
                             this.targets = response.data;
-                            console.log(this.targets)
                         }
                     )
             },
@@ -84,19 +67,20 @@
                 this.id = item.id;
                 this.value_input = item.name;
                 this.item = item;
-                console.log(this.id);
                 $("#edit-modal").modal('show');
             },
-            deleWindow(item) {
-                this.id = item.id;
-                this.name = item.name;
-                $("#del-modal").modal('show');
+            deleWindow(target, name) {
+                console.log("show");
+                console.log(target)
+                this.item = target;
+                this.name = name;
+                this.showModal = true;
             },
             confurmDelete() {
                 var that = this;
                 let formData = new FormData();
                 formData.append('id', this.id);
-                axios.post('/deleteinteress', formData,
+                axios.delet('interes/' + this.id, formData,
                     {
                         headers: {
                             'Content-Type': 'multipart/form-data'
@@ -115,12 +99,11 @@
             },
 
 
-
             createTarget() {
                 var that = this;
                 let formData = new FormData();
                 formData.append('name', this.name);
-                axios.post('/createinteress', formData,
+                axios.post('interes/create', formData,
                     {
                         headers: {
                             'Content-Type': 'multipart/form-data'
@@ -137,11 +120,9 @@
                 this.getTargets();
             },
             saveChange() {
-                console.log("change");
                 let formData = new FormData();
                 formData.append('name', this.item.name);
-                formData.append('id', this.id);
-                axios.post('/editinteress', formData,
+                axios.put('/interes/edit/' + this.id, formData,
                     {
                         headers: {
                             'Content-Type': 'multipart/form-data'
@@ -157,7 +138,10 @@
                     });
                 this.getTargets();
                 $("#edit-modal").modal('show');
-            }
+            },
+            close() {
+                this.showModal = false;
+            },
         }
     }
 </script>
