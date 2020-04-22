@@ -264,6 +264,18 @@ class Girl extends Model
         $like->who_id = $whoGirl->id;
         $like->save();
 
+        /*
+         * ищим поставил ли он вам дфйк
+         * */
+
+        $first = Like::select(['id'])->where('who_id', $this->id)
+            ->where('target_id', $whoGirl->id)->first();
+
+        if ($first != null) {
+            $whoGirl->sendMessage("Мы понравились друг другу ");
+            $this->sendMessage("Мы понравились друг другу ");
+        }
+
         return true;
     }
 
