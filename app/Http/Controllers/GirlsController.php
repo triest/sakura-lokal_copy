@@ -36,6 +36,21 @@ class GirlsController extends Controller
 
     function index(Request $request)
     {
+        /*
+         *логика перенаправления на карусель лайков
+         *
+         * 1) Смотрим Cookie
+         * 2) Если нет то ставим
+         * 3) И перенаправляем
+         *
+         * */
+
+        if (!isset($_COOKIE["causel"])) {
+            Cookie::queue("causel", AnketController::randomString(), 10);
+            // return redirect('/');
+        }
+
+
         return view('index2');
     }
 
@@ -246,9 +261,6 @@ class GirlsController extends Controller
         }
         curl_close($Curl);
     }
-
-
-
 
 
     public function filter_enable(Request $request)

@@ -1178,9 +1178,8 @@ class AnketController extends Controller
     }
 
 
-    public static function randomString()
+    public static function randomString($length = 64)
     {
-        $length = 64;
         $chars
             = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $str = "";
