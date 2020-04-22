@@ -157,7 +157,7 @@
     <div class="row row-offcanvas row-offcanvas-right">
 
         <div class="col-sm-8">
-            <p class="pull-right visible-xs">
+            <p class="pull-right visible-xs visible-lg">
                 <!--  <button type="button" class="menuButton" data-toggle="offcanvas"><b>Меню</b></button> -->
                 <button type="button" class="navbar-toggle collapsed js-offcanvas-btn">
                     <span class="sr-only"><a href="{{ url('/logout') }}">Выйти</a></span>
@@ -170,7 +170,7 @@
             </div><!--/row-->
         </div><!--/span-->
         <!--sm- комп -->
-        <div class=" col-sm-3 sidebar-offcanvas   visible-lg" id="sidebar" role="navigation">
+        <div class=" col-sm-3 sidebar-offcanvas  hidden-xs" id="sidebar" role="navigation">
             <div class="card-body">
                 <!-- <p class="pull-right visible-xs visible-sm">
                      <button type="button" class="menuButton" data-toggle="offcanvas"><b>Закрыть</b></button>

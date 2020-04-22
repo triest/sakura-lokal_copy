@@ -3528,6 +3528,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'edit',
@@ -58241,7 +58242,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticStyle: { position: "center" } },
+      {staticStyle: {"margin-left": "auto", "margin-right": "auto"}},
     [
       _c(
         "button",
@@ -58260,7 +58261,7 @@ var render = function() {
         return _c("div", [
           _c(
             "div",
-            { staticClass: "col-lg-3 col-md-3 col-sm-6 col-xs-9 box-shadow" },
+              {staticClass: "col-lg-3 col-md-4 col-sm-6 col-xs-9 box-shadow"},
             [
               _c("a", { attrs: { href: /anket/ + item.id } }, [
                 _c("img", {
@@ -60089,7 +60090,7 @@ var render = function() {
     {
       staticClass: "col-ml-4",
       staticStyle: {
-        width: "500px",
+          width: "414px",
         "margin-left": "auto",
         "margin-right": "auto"
       }

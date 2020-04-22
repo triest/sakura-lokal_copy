@@ -23,7 +23,7 @@
                 нравиться
             </button>
         </div>
-        <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-9 box-shadow">
             <div class="cell">
                 <div class="cell-overflow">
                     <b> {{item.name}}, {{item.age}}</b>
