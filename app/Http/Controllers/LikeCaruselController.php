@@ -99,6 +99,11 @@ limit 1'))->first();
             $like->save();
         }
 
+        $tagretAnket = Girl::get(intval($request->anket_id));
+
+        if ($tagretAnket != null) {
+            $tagretAnket->sendMessage("Вы ком-то понравились");
+        }
 
         return response()->json(['ok']);
     }

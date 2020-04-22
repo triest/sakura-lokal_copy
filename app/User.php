@@ -55,9 +55,11 @@ class User extends Authenticatable
         return $this->id;
     }
 
-    public function finfUserById($id)
+    public static function findById($id)
     {
-        dump($id);
+        $user = User::select(['id', 'name'])->where('id', $id)->first();
+
+        return $user;
     }
 
 

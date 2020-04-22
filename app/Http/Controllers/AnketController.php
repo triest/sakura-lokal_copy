@@ -242,7 +242,7 @@ class AnketController extends Controller
         }
 
 
-        if ($request->has('city')) {
+        if ($request->has('city') && is_numeric($request->city)) {
             $girl->city_id = $request->city;
         }
         $girl->save();

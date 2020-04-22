@@ -16,6 +16,9 @@ class LikeController extends Controller
         $targetGirl = Girl::where('id', $request->girl_id)->first();
 
         $targetGirl->newLike();
+        
+
+        $targetGirl->sendMesage("Вы кому-то понравились");
 
         return response()->json(['ok']);
     }

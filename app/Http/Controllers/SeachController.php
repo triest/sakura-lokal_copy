@@ -99,15 +99,13 @@ class SeachController extends Controller
         }
 
         if ($seachSettings->children != null) {
-
-            /*custom seach for shildren */
             $girls->where('children_id', '=', $seachSettings->children);
         }
 
         $city = City::GetCurrentCity();
 
         if ($city != null) {
-            //              $girls->where('city_id', $city->id);
+            $girls->where('city_id', $city->id);
         }
 
 

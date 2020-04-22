@@ -26,13 +26,15 @@ class ContactsController extends Controller
         //   $contacts = User::where('id', '!=', auth()->id())->get();
         // get a collection of items where sender_id is the user who sent us a message
         // and messages_count is the number of unread messages we have from him
-        $dialogs = Dialog::select('id', 'my_id', 'other_id')->where('my_id', Auth::user()->id)->get();
+        $dialogs = Dialog::select('id', 'my_id', 'other_id')
+            ->where('my_id', Auth::user()->id)->get();
 
         //  dump($dialogs);
         $contacts = [];
         foreach ($dialogs as $dialog) {
             $other = $dialog->other_id;
-            $user = DB::table('users')->join('girls', 'girls.user_id', '=', 'users.id')
+            $user = DB::table('users')
+                ->join('girls', 'girls.user_id', '=', 'users.id')
                 ->select('users.id', 'users.name', 'girls.main_image')
                 ->where('users.id', $other)->first();
             // $user=DB::table('users')->join('gitls')
@@ -45,7 +47,8 @@ class ContactsController extends Controller
 
     public function getMessagesFor($id)
     {
-        Message::where('from', $id)->where('to', auth()->id())->update(['readed' => true]);
+        Message::where('from', $id)->where('to', auth()->id())
+            ->update(['readed' => true]);
         // mark all messages with the selected contact as read
         Message::where('from', $id)->where('to', auth()->id());
         // get all messages between the authenticated user and the selected user
@@ -59,7 +62,7 @@ class ContactsController extends Controller
     {
         $message = Message::create([
             'from' => auth()->id(),
-            'to' => $request->contact_id,
+            'to'   => $request->contact_id,
             'text' => $request->text,
         ]);
 
@@ -90,7 +93,8 @@ class ContactsController extends Controller
 
     public function sendModal(Request $request)
     {
-        $girl = Girl::select(['id', 'user_id'])->where('id', $request->contact_id)->first();
+        $girl = Girl::select(['id', 'user_id'])
+            ->where('id', $request->contact_id)->first();
 
 
         /*  $message = Message::create([
@@ -109,7 +113,8 @@ class ContactsController extends Controller
 
         $user = Auth::user();
         $id2 = $girl->user_id;
-        $dialog = Dialog::select(['id', 'my_id', 'other_id'])->where('my_id', auth()->id())->where('other_id',
+        $dialog = Dialog::select(['id', 'my_id', 'other_id'])
+            ->where('my_id', auth()->id())->where('other_id',
             $id2)->first();
 
         if ($dialog == null) {
@@ -120,7 +125,7 @@ class ContactsController extends Controller
         }
         $dialog = Dialog::select(['id', 'my_id', 'other_id'])
             ->where('other_id', auth()->id())->where('my_id',
-            $id2)->first();
+                $id2)->first();
         if ($dialog == null) {
             $dialog = new Dialog();
             $dialog->other_id = $user->id;
@@ -163,7 +168,8 @@ class ContactsController extends Controller
             ->get();
         $array = [];
         foreach ($request as $item) {
-            $girl = Girl::select(['id', 'name', 'main_image'])->where('user_id', $item->who_id)->first();
+            $girl = Girl::select(['id', 'name', 'main_image'])
+                ->where('user_id', $item->who_id)->first();
             array_push($array, $girl);
         }
 
@@ -312,7 +318,8 @@ class ContactsController extends Controller
         $id = $girl->user_id;
         $auth = Auth::user();
 
-        $girl2 = Girl::select(['name', 'main_image'])->where('user_id', $auth->id)->first();
+        $girl2 = Girl::select(['name', 'main_image'])
+            ->where('user_id', $auth->id)->first();
         $myrequest = new MyRequwest();
         $myrequest->who_id = $auth->id;
         $myrequest->target_id = $id;
@@ -359,7 +366,8 @@ class ContactsController extends Controller
         //   dump($users_id);
         $array = [];
         foreach ($users_id as $item) {
-            $girl = Girl::select(['id', 'name', 'main_image'])->where('user_id', $item->my_id)->first();
+            $girl = Girl::select(['id', 'name', 'main_image'])
+                ->where('user_id', $item->my_id)->first();
             array_push($array, $girl);
         }
 
@@ -374,8 +382,10 @@ class ContactsController extends Controller
         $girl = Girl::select(['id', 'user_id'])->where('id', $id)->first();
         $id = $girl->user_id;
         //dump($id);
-        DB::table('user_user')->where('my_id', '=', $id)->where('other_id', $auth->id)->delete();
-        DB::table('requwest')->where('who_id', '=', $id)->where('target_id', $auth->id)->delete();
+        DB::table('user_user')->where('my_id', '=', $id)
+            ->where('other_id', $auth->id)->delete();
+        DB::table('requwest')->where('who_id', '=', $id)
+            ->where('target_id', $auth->id)->delete();
 
         return response()->json('ok');
     }
@@ -399,7 +409,8 @@ class ContactsController extends Controller
         $id = $request->input('id');
         $auth = Auth::user();
         // dump($auth);
-        $girlAuth = Girl::select(['id', 'name'])->where('user_id', $auth->id)->first();
+        $girlAuth = Girl::select(['id', 'name'])->where('user_id', $auth->id)
+            ->first();
         //  dump($girlAuth);
         $targetGirl = Girl::select(['id', 'name'])->where('id', $id)->first();
         // dump($targetGirl);
@@ -434,7 +445,8 @@ class ContactsController extends Controller
         $AythUser = Auth::user();
 
         // dump($AythUser);
-        $girl2 = Girl::select(['id', 'name', 'main_image'])->where('user_id', $AythUser['id'])->first();
+        $girl2 = Girl::select(['id', 'name', 'main_image'])
+            ->where('user_id', $AythUser['id'])->first();
         $myrequest = new PhoneRequwest();
 
         //  dump($girl2);
@@ -455,13 +467,15 @@ class ContactsController extends Controller
     {
         $AythUser = Auth::user();
         //  dump($AythUser);
-        $girl = Girl::select(['id', 'user_id'])->where('user_id', $AythUser->id)->first();
-         if ($girl == null) {
-             return \response()->json('error');
-         }
-     
+        $girl = Girl::select(['id', 'user_id'])->where('user_id', $AythUser->id)
+            ->first();
+        if ($girl == null) {
+            return \response()->json('error');
+        }
 
-        $req = Phonerequwest::select()->where('target_id', $girl->id)->where('readed', 0)->get();
+
+        $req = Phonerequwest::select()->where('target_id', $girl->id)
+            ->where('readed', 0)->get();
 
         // dump($req);
 
@@ -474,7 +488,8 @@ class ContactsController extends Controller
     {
         $user = Auth();
         $user = Auth::user();
-        $application = Phonerequwest::select('id', 'who_id', 'target_id', 'readed', 'status', 'who_name', 'image',
+        $application = Phonerequwest::select('id', 'who_id', 'target_id',
+            'readed', 'status', 'who_name', 'image',
             'created_at', 'updated_at')
             ->where('id', $request->id)->first();
         if ($application == null) {
@@ -483,8 +498,10 @@ class ContactsController extends Controller
         //иныуке
 
         //girl-open_phone_girl ссылаетьс нв girl_id, а из запроса приходит user_id
-        $girl = Girl::select('id', 'user_id')->where('user_id', $user->getAuthIdentifier())->first();
-        $target = Girl::select('id', 'user_id')->where('user_id', $request->id)->first();
+        $girl = Girl::select('id', 'user_id')
+            ->where('user_id', $user->getAuthIdentifier())->first();
+        $target = Girl::select('id', 'user_id')->where('user_id', $request->id)
+            ->first();
         if ($girl == null) {
             return response()->json('fail');
         } else {
@@ -492,7 +509,10 @@ class ContactsController extends Controller
             $application->readed = 1;
             $application->status = 'accepted';
             $application->save();
-            DB::table('girl_open_phone_girl')->insert(['target_id' => $girl->id, 'girl_id' => $target->id]);
+            DB::table('girl_open_phone_girl')->insert([
+                'target_id' => $girl->id,
+                'girl_id'   => $target->id,
+            ]);
 
             return response()->json('ok');
         }
@@ -500,7 +520,8 @@ class ContactsController extends Controller
 
     public function denidephoneaplication(Request $request)
     {
-        $application = Phonerequwest::select('id', 'who_id', 'target_id', 'readed', 'status', 'who_name', 'image',
+        $application = Phonerequwest::select('id', 'who_id', 'target_id',
+            'readed', 'status', 'who_name', 'image',
             'created_at', 'updated_at')
             ->where('id', $request->id)->first();
         if ($application == null) {
@@ -511,7 +532,39 @@ class ContactsController extends Controller
         $application->save();
 
 
-
     }
 
+    public static function SendMessage($who_id = null, $tagret_id, $text)
+    {
+        $message = Message::create([
+            'from' => auth()->id(),
+            'to'   => $tagret_id,
+            'text' => $text,
+        ]);
+
+
+        $user = Auth::user();
+        $id2 = $tagret_id;
+        $dialog = Dialog::select(['id', 'my_id', 'other_id'])
+            ->where('my_id', $user->id)->where('other_id',
+                $id2)->first();
+        if ($dialog == null) {
+            $dialog3 = new Dialog();
+            $dialog3->my_id = $user->id;
+            $dialog3->other_id = $id2;
+            $dialog3->save();
+        }
+        $dialog2 = Dialog::select(['id', 'my_id', 'other_id'])
+            ->where('other_id', $user->id)->where('my_id',
+                $id2)->first();
+        if ($dialog2 == null) {
+            $dialog4 = new Dialog();
+            $dialog4->other_id = $user->id;
+            $dialog4->my_id = $id2;
+            $dialog4->save();
+        }
+        broadcast(new NewMessage($message));
+
+        return response()->json($message);
+    }
 }

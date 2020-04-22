@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\NewMessage;
 use App\Http\Controllers\GirlsController;
 use http\Env\Request;
 use Illuminate\Database\Eloquent\Model;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Nexmo\Response;
 
 class Girl extends Model
 {
@@ -387,6 +389,46 @@ class Girl extends Model
                 }
             }
         }
+    }
+
+    public function sendMessage($text)
+    {
+        $TargetUser = $this->user()->first();
+        if (auth()->id() == null) {
+            return null;
+        }
+
+        $message = Message::create([
+            'from' => auth()->id(),
+            'to'   => $TargetUser->id,
+            'text' => $text,
+        ]);
+
+
+        $user = Auth::user();
+
+        $id2 = $TargetUser->id;
+        $dialog = Dialog::select(['id', 'my_id', 'other_id'])
+            ->where('my_id', $user->id)->where('other_id',
+                $id2)->first();
+        if ($dialog == null) {
+            $dialog3 = new Dialog();
+            $dialog3->my_id = $user->id;
+            $dialog3->other_id = $id2;
+            $dialog3->save();
+        }
+        $dialog2 = Dialog::select(['id', 'my_id', 'other_id'])
+            ->where('other_id', $user->id)->where('my_id',
+                $id2)->first();
+        if ($dialog2 == null) {
+            $dialog4 = new Dialog();
+            $dialog4->other_id = $user->id;
+            $dialog4->my_id = $id2;
+            $dialog4->save();
+        }
+        broadcast(new NewMessage($message));
+
+        return true;
     }
 
 
