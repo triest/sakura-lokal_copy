@@ -47,7 +47,8 @@ class GirlsController extends Controller
 
         if (!isset($_COOKIE["causel"])) {
             Cookie::queue("causel", AnketController::randomString(), 10);
-            // return redirect('/');
+
+            return redirect('/like-carusel');
         }
 
 
