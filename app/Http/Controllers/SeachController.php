@@ -27,15 +27,11 @@ class SeachController extends Controller
     {
         $girls = null;
 
-        //   return view("search.index");
-
         $userAuth = Auth::user();
         if ($userAuth != null) {
             $Autchgirls = $userAuth->girl()->first();
 
             if ($Autchgirls != null) {
-                //  $seachSettings = SearchSettings::select(['id'])
-                //     ->where("girl_id", "=", $girls->id)->first();
                 $seachSettings = $Autchgirls->seachsettings()->first();
             }
         } else {
@@ -65,9 +61,17 @@ class SeachController extends Controller
             if ($city != null) {
                 $girls->where('city_id', $city->id);
             }
-            $girls = $girls->orderByDesc('created_at')->get();
             $count = $girls->count();
+            if (isset($_GET['page']) && intval($_GET['page']) > 1) {
+                $page = intval($_GET['page']);
+                $offset = $this->limit * ($page);
+                $girls->offset($offset);
+            }
+
             $num_pages = intval($count / $this->limit);
+            $girls->limit($this->limit);
+            $girls->orderByDesc('created_at')->get();
+            $girls = $girls->get();
 
             return response()->json([
                 'ankets'    => $girls,
@@ -127,10 +131,11 @@ class SeachController extends Controller
         $girls->select('girls.*')->limit($this->limit);
 
 
-        if (isset($request->page) && $request->page != null
-            && intval($request->page) != 1
-        ) {
-            $offset = $this->limit * (intval($request->page) - 1);
+        if (isset($_GET['page']) && intval($_GET['page']) > 1) {
+
+            $page = intval($_GET['page']);
+            $offset = $this->limit * ($page);
+
             $girls->offset($offset);
         }
 
