@@ -1,4 +1,4 @@
-@extends('layouts.blog', ['title' => 'Каресель'])
+@extends('layouts.blog', ['title' => 'Карусель'])
 
 @section('content')
     <div class="card-body" id="caruselApp" style="position: center">

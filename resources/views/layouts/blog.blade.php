@@ -186,6 +186,7 @@
                 @if (Auth::guest())
                     <b><a class="button blue" href="{{ url('/login') }}">Войти</a></b><br><br>
                     <b><a class="button green" href="{{ url('/join') }}">Зарегистрироваться</a></b><br>
+                    <b><a class="button blue" href="{{route('main')}}">Поиск</a></b><br><br>
                 @else
                     <b>{{auth()->user()->name}}</b><br>
                     <b><a href="{{ url('/logout') }}">Выйти</a></b>
