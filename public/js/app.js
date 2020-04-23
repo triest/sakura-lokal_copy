@@ -1846,12 +1846,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   name: 'modal',
   mounted: function mounted() {
     this.getSettings();
   },
+
+            /* считаем выделенные*/
+            computed: {
+                countSelectedTargets: function countSelectedTargets() {
+                    return this.select2targets.length;
+                },
+                countSelectedInteres: function countSelectedInteres() {
+                    return this.select2inters.length;
+                },
+                countSelectedChildren: function countSelectedChildren() {
+                }
+            },
   data: function data() {
     return {
       seach: "",
@@ -1864,12 +1885,14 @@ __webpack_require__.r(__webpack_exports__);
       select2targets: [],
       select2inters: [],
       select2children: null,
-      seachSettings: null
+        seachSettings: null,
+        targets_show: false,
+        interes_show: false,
+        children_show: false
     };
   },
   methods: {
     close: function close() {
-      console.log("ren emit");
       this.$emit('closeSeachModal');
     },
     findUserByid: function findUserByid() {},
@@ -1904,7 +1927,20 @@ __webpack_require__.r(__webpack_exports__);
         _this2.select2children = _this2.seachSettings.children;
         _this2.meet = _this2.seachSettings.meet;
       });
-    }
+    },
+      show: function show(input) {
+          if (input == "target") {
+              this.targets_show = !this.targets_show;
+          }
+
+          if (input == "interes") {
+              this.interes_show = !this.interes_show;
+          }
+
+          if (input == "children") {
+              this.children_show = !this.children_show;
+          }
+      }
   }
 });
 
@@ -6037,7 +6073,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     close: function close() {
-      console.log("ren emit");
       this.$emit('closeNewMessageAlert');
     },
     findUserByid: function findUserByid() {},
@@ -8351,12 +8386,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   name: 'modal',
   mounted: function mounted() {
     this.getSettings();
   },
+
+            /* считаем выделенные*/
+            computed: {
+                countSelectedTargets: function countSelectedTargets() {
+                    return this.select2targets.length;
+                },
+                countSelectedInteres: function countSelectedInteres() {
+                    return this.select2inters.length;
+                },
+                countSelectedChildren: function countSelectedChildren() {
+                }
+            },
   data: function data() {
     return {
       seach: "",
@@ -8369,12 +8425,14 @@ __webpack_require__.r(__webpack_exports__);
       select2targets: [],
       select2inters: [],
       select2children: null,
-      seachSettings: null
+        seachSettings: null,
+        targets_show: false,
+        interes_show: false,
+        children_show: false
     };
   },
   methods: {
     close: function close() {
-      console.log("ren emit");
       this.$emit('closeSeachModal');
     },
     findUserByid: function findUserByid() {},
@@ -8409,7 +8467,20 @@ __webpack_require__.r(__webpack_exports__);
         _this2.select2children = _this2.seachSettings.children;
         _this2.meet = _this2.seachSettings.meet;
       });
-    }
+    },
+      show: function show(input) {
+          if (input == "target") {
+              this.targets_show = !this.targets_show;
+          }
+
+          if (input == "interes") {
+              this.interes_show = !this.interes_show;
+          }
+
+          if (input == "children") {
+              this.children_show = !this.children_show;
+          }
+      }
   }
 });
 
@@ -12948,7 +13019,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ntextarea {\n    width: 90%; /* Ширина поля в процентах */\n    height: 200px; /* Высота поля в пикселах */\n    resize: none; /* Запрещаем изменять размер */\n}\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    width: 600px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n}\n.modal-header h3 {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body {\n    margin: 20px 0;\n}\n.modal-default-button {\n    float: right;\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n.modal-enter {\n    opacity: 0;\n}\n.modal-leave-active {\n    opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n.newMessageModal {\n    position: fixed;\n    bottom: 0;\n    right: 0;\n    z-index: 999;\n}\ninput.apple-switch {\n    position: relative;\n    -webkit-appearance: none;\n       -moz-appearance: none;\n            appearance: none;\n    outline: none;\n    width: 50px;\n    height: 30px;\n    background-color: #ffffff;\n    border: 1px solid #D9DADC;\n    border-radius: 50px;\n    box-shadow: inset -20px 0 0 0 #ffffff;\n    transition-duration: 200ms;\n}\ninput.apple-switch:after {\n    content: \"\";\n    position: absolute;\n    top: 1px;\n    left: 1px;\n    width: 26px;\n    height: 13px;\n    background-color: transparent;\n    border-radius: 50%;\n    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);\n}\ninput.apple-switch:checked {\n    border-color: #4ED164;\n    box-shadow: inset 20px 0 0 0 #4ED164;\n}\ninput.apple-switch:checked:after {\n    left: 20px;\n    box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);\n}\n\n", ""]);
+        exports.push([module.i, "\ntextarea {\n    width: 90%; /* Ширина поля в процентах */\n    height: 200px; /* Высота поля в пикселах */\n    resize: none; /* Запрещаем изменять размер */\n}\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    width: 600px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n}\n.modal-header h3 {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body {\n    margin: 20px 0;\n}\n.modal-default-button {\n    float: right;\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n.modal-enter {\n    opacity: 0;\n}\n.modal-leave-active {\n    opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n.newMessageModal {\n    position: fixed;\n    bottom: 0;\n    right: 0;\n    z-index: 999;\n}\ninput.apple-switch {\n    position: relative;\n    -webkit-appearance: none;\n       -moz-appearance: none;\n            appearance: none;\n    outline: none;\n    width: 50px;\n    height: 30px;\n    background-color: #ffffff;\n    border: 1px solid #D9DADC;\n    border-radius: 50px;\n    box-shadow: inset -20px 0 0 0 #ffffff;\n    transition-duration: 200ms;\n}\ninput.apple-switch:after {\n    content: \"\";\n    position: absolute;\n    top: 1px;\n    left: 1px;\n    width: 26px;\n    height: 13px;\n    background-color: transparent;\n    border-radius: 50%;\n    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);\n}\ninput.apple-switch:checked {\n    border-color: #4ED164;\n    box-shadow: inset 20px 0 0 0 #4ED164;\n}\ninput.apple-switch:checked:after {\n    left: 20px;\n    box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);\n}\n.bounce-enter-active {\n    -webkit-animation: bounce-in .5s;\n            animation: bounce-in .5s;\n}\n.bounce-leave-active {\n    animation: bounce-in .5s reverse;\n}\n@-webkit-keyframes bounce-in {\n0% {\n        -webkit-transform: scale(0);\n                transform: scale(0);\n}\n50% {\n        -webkit-transform: scale(1.5);\n                transform: scale(1.5);\n}\n100% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n}\n}\n@keyframes bounce-in {\n0% {\n        -webkit-transform: scale(0);\n                transform: scale(0);\n}\n50% {\n        -webkit-transform: scale(1.5);\n                transform: scale(1.5);\n}\n100% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n}\n}\n.v-fade {\n    transition: all 4s ease-out;\n}\n\n\n", ""]);
 
 // exports
 
@@ -13499,7 +13570,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ntextarea {\n    width: 90%; /* Ширина поля в процентах */\n    height: 200px; /* Высота поля в пикселах */\n    resize: none; /* Запрещаем изменять размер */\n}\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    width: 600px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n}\n.modal-header h3 {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body {\n    margin: 20px 0;\n}\n.modal-default-button {\n    float: right;\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n.modal-enter {\n    opacity: 0;\n}\n.modal-leave-active {\n    opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n.newMessageModal {\n    position: fixed;\n    bottom: 0;\n    right: 0;\n    z-index: 999;\n}\ninput.apple-switch {\n    position: relative;\n    -webkit-appearance: none;\n       -moz-appearance: none;\n            appearance: none;\n    outline: none;\n    width: 50px;\n    height: 30px;\n    background-color: #ffffff;\n    border: 1px solid #D9DADC;\n    border-radius: 50px;\n    box-shadow: inset -20px 0 0 0 #ffffff;\n    transition-duration: 200ms;\n}\ninput.apple-switch:after {\n    content: \"\";\n    position: absolute;\n    top: 1px;\n    left: 1px;\n    width: 26px;\n    height: 13px;\n    background-color: transparent;\n    border-radius: 50%;\n    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);\n}\ninput.apple-switch:checked {\n    border-color: #4ED164;\n    box-shadow: inset 20px 0 0 0 #4ED164;\n}\ninput.apple-switch:checked:after {\n    left: 20px;\n    box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);\n}\n\n", ""]);
+        exports.push([module.i, "\ntextarea {\n    width: 90%; /* Ширина поля в процентах */\n    height: 200px; /* Высота поля в пикселах */\n    resize: none; /* Запрещаем изменять размер */\n}\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    width: 600px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n}\n.modal-header h3 {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body {\n    margin: 20px 0;\n}\n.modal-default-button {\n    float: right;\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n.modal-enter {\n    opacity: 0;\n}\n.modal-leave-active {\n    opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n.newMessageModal {\n    position: fixed;\n    bottom: 0;\n    right: 0;\n    z-index: 999;\n}\ninput.apple-switch {\n    position: relative;\n    -webkit-appearance: none;\n       -moz-appearance: none;\n            appearance: none;\n    outline: none;\n    width: 50px;\n    height: 30px;\n    background-color: #ffffff;\n    border: 1px solid #D9DADC;\n    border-radius: 50px;\n    box-shadow: inset -20px 0 0 0 #ffffff;\n    transition-duration: 200ms;\n}\ninput.apple-switch:after {\n    content: \"\";\n    position: absolute;\n    top: 1px;\n    left: 1px;\n    width: 26px;\n    height: 13px;\n    background-color: transparent;\n    border-radius: 50%;\n    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);\n}\ninput.apple-switch:checked {\n    border-color: #4ED164;\n    box-shadow: inset 20px 0 0 0 #4ED164;\n}\ninput.apple-switch:checked:after {\n    left: 20px;\n    box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);\n}\n.bounce-enter-active {\n    -webkit-animation: bounce-in .5s;\n            animation: bounce-in .5s;\n}\n.bounce-leave-active {\n    animation: bounce-in .5s reverse;\n}\n@-webkit-keyframes bounce-in {\n0% {\n        -webkit-transform: scale(0);\n                transform: scale(0);\n}\n50% {\n        -webkit-transform: scale(1.5);\n                transform: scale(1.5);\n}\n100% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n}\n}\n@keyframes bounce-in {\n0% {\n        -webkit-transform: scale(0);\n                transform: scale(0);\n}\n50% {\n        -webkit-transform: scale(1.5);\n                transform: scale(1.5);\n}\n100% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n}\n}\n.v-fade {\n    transition: all 4s ease-out;\n}\n\n\n", ""]);
 
 // exports
 
@@ -56240,123 +56311,137 @@ var render = function() {
                     { staticClass: "modal-body" },
                     [
                       _vm._t("body", [
-                        _c(
-                          "form",
-                          { attrs: { id: "inputForm", name: "inputForm" } },
-                          [
-                            _c("p", [
+                          _c("p", [
                               _c("label", [_vm._v("Ищу:")]),
                               _vm._v(" "),
                               _c(
-                                "select",
-                                {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.meet,
-                                      expression: "meet"
-                                    }
-                                  ],
-                                  staticClass: "meet",
-                                  attrs: { id: "meet", name: "meet" },
-                                  on: {
-                                    change: function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return val
-                                        })
-                                      _vm.meet = $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("option", { attrs: { value: "famele" } }, [
-                                    _vm._v("Девушку")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", { attrs: { value: "male" } }, [
-                                    _vm._v("Парня")
-                                  ])
-                                ]
+                                  "select",
+                                  {
+                                      directives: [
+                                          {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.meet,
+                                              expression: "meet"
+                                          }
+                                      ],
+                                      staticClass: "meet",
+                                      attrs: {id: "meet", name: "meet"},
+                                      on: {
+                                          change: function ($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                  .call($event.target.options, function (o) {
+                                                      return o.selected
+                                                  })
+                                                  .map(function (o) {
+                                                      var val =
+                                                          "_value" in o ? o._value : o.value
+                                                      return val
+                                                  })
+                                              _vm.meet = $event.target.multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                          }
+                                      }
+                                  },
+                                  [
+                                      _c("option", {attrs: {value: "famele"}}, [
+                                          _vm._v("Девушку")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("option", {attrs: {value: "male"}}, [
+                                          _vm._v("Парня")
+                                      ])
+                                  ]
                               )
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [
                               _c("label", [_vm._v("Возраст:")]),
                               _vm._v(" от "),
                               _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.from,
-                                    expression: "from"
+                                  directives: [
+                                      {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.from,
+                                          expression: "from"
+                                      }
+                                  ],
+                                  staticStyle: {width: "50px"},
+                                  attrs: {
+                                      type: "number",
+                                      name: "from",
+                                      id: "from",
+                                      min: "18",
+                                      onkeypress: "return isNumber(event)"
+                                  },
+                                  domProps: {value: _vm.from},
+                                  on: {
+                                      input: function ($event) {
+                                          if ($event.target.composing) {
+                                              return
+                                          }
+                                          _vm.from = $event.target.value
+                                      }
                                   }
-                                ],
-                                staticStyle: { width: "50px" },
-                                attrs: {
-                                  type: "number",
-                                  name: "from",
-                                  id: "from",
-                                  min: "18",
-                                  onkeypress: "return isNumber(event)"
-                                },
-                                domProps: { value: _vm.from },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.from = $event.target.value
-                                  }
-                                }
                               }),
-                              _vm._v(
-                                "\n                                    до "
-                              ),
+                              _vm._v("\n                                до "),
                               _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.to,
-                                    expression: "to"
+                                  directives: [
+                                      {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.to,
+                                          expression: "to"
+                                      }
+                                  ],
+                                  staticStyle: {width: "50px"},
+                                  attrs: {
+                                      type: "number",
+                                      name: "to",
+                                      id: "to",
+                                      min: "18",
+                                      onkeypress: "return isNumber(event)"
+                                  },
+                                  domProps: {value: _vm.to},
+                                  on: {
+                                      input: function ($event) {
+                                          if ($event.target.composing) {
+                                              return
+                                          }
+                                          _vm.to = $event.target.value
+                                      }
                                   }
-                                ],
-                                staticStyle: { width: "50px" },
-                                attrs: {
-                                  type: "number",
-                                  name: "to",
-                                  id: "to",
-                                  min: "18",
-                                  onkeypress: "return isNumber(event)"
-                                },
-                                domProps: { value: _vm.to },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.to = $event.target.value
-                                  }
-                                }
                               })
-                            ]),
-                            _vm._v(" "),
-                            _c("label", [_vm._v("Цель:")]),
-                            _vm._v(" "),
-                            _vm._l(_vm.targets, function(item) {
-                              return _c("div", [
+                          ]),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("label", [_vm._v("Цель:")]),
+                          _vm._v(" "),
+                          _c(
+                              "button",
+                              {
+                                  staticClass: "btn-default",
+                                  on: {
+                                      click: function ($event) {
+                                          return _vm.show("target")
+                                      }
+                                  }
+                              },
+                              [_vm._v("Цели")]
+                          ),
+                          _vm._v(" "),
+                          _vm.countSelectedTargets > 0
+                              ? _c("b", [
+                                  _vm._v(" " + _vm._s(_vm.countSelectedTargets))
+                              ])
+                              : _vm._e(),
+                          _vm._v(" "),
+                          _vm._l(_vm.targets, function (item) {
+                              return _vm.targets_show
+                                  ? _c("div", {staticClass: "v-fade"}, [
                                 _c("label", { staticClass: "switch" }, [
                                   _c("input", {
                                     directives: [
@@ -56419,17 +56504,44 @@ var render = function() {
                                   )
                                 ]),
                                 _vm._v(
-                                  "\n                                    " +
+                                    "\n                                " +
                                     _vm._s(item.name) +
-                                    "\n\n                                "
+                                    "\n\n                            "
                                 )
                               ])
-                            }),
-                            _vm._v(" "),
-                            _c("label", [_vm._v("Интересы:")]),
-                            _vm._v(" "),
-                            _vm._l(_vm.interest, function(item) {
-                              return _c("div", [
+                                  : _vm._e()
+                          }),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("label", [_vm._v("Интересы:")]),
+                          _vm._v(" "),
+                          _c(
+                              "button",
+                              {
+                                  staticClass: "btn-default",
+                                  on: {
+                                      click: function ($event) {
+                                          return _vm.show("interes")
+                                      }
+                                  }
+                              },
+                              [_vm._v("Цели")]
+                          ),
+                          _vm._v(" "),
+                          _vm.countSelectedInteres > 0
+                              ? _c("b", [
+                                  _vm._v(
+                                      "\n                                " +
+                                      _vm._s(_vm.countSelectedInteres) +
+                                      "\n                            "
+                                  )
+                              ])
+                              : _vm._e(),
+                          _vm._v(" "),
+                          _vm._l(_vm.interest, function (item) {
+                              return _vm.interes_show
+                                  ? _c("div", [
                                 _c("label", { staticClass: "switch" }, [
                                   _c("input", {
                                     directives: [
@@ -56477,17 +56589,44 @@ var render = function() {
                                   _c("span", { staticClass: "slider round" })
                                 ]),
                                 _vm._v(
-                                  "\n                                    " +
+                                    "\n                                " +
                                     _vm._s(item.name) +
-                                    "\n                                "
+                                    "\n                            "
                                 )
                               ])
-                            }),
-                            _vm._v(" "),
-                            _c("label", [_vm._v("Дети:")]),
-                            _vm._v(" "),
-                            _vm._l(_vm.children, function(item) {
-                              return _c("div", [
+                                  : _vm._e()
+                          }),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("label", [_vm._v("Дети:")]),
+                          _vm._v(" "),
+                          _vm.countSelectedChildren > 0
+                              ? _c("b", [
+                                  _vm._v(
+                                      "\n                                " +
+                                      _vm._s(_vm.countSelectedChildren) +
+                                      "\n                            "
+                                  )
+                              ])
+                              : _vm._e(),
+                          _vm._v(" "),
+                          _c(
+                              "button",
+                              {
+                                  staticClass: "btn-default",
+                                  on: {
+                                      click: function ($event) {
+                                          return _vm.show("children")
+                                      }
+                                  }
+                              },
+                              [_vm._v("Цели")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.children, function (item) {
+                              return _vm.children_show
+                                  ? _c("div", [
                                 _c("label", { staticClass: "switch" }, [
                                   _c("input", {
                                     directives: [
@@ -56516,15 +56655,13 @@ var render = function() {
                                   _c("span", { staticClass: "slider round" })
                                 ]),
                                 _vm._v(
-                                  "\n                                    " +
+                                    "\n                                " +
                                     _vm._s(item.name) +
-                                    "\n                                "
+                                    "\n                            "
                                 )
                               ])
-                            })
-                          ],
-                          2
-                        )
+                                  : _vm._e()
+                          })
                       ])
                     ],
                     2
@@ -63781,123 +63918,137 @@ var render = function() {
                     { staticClass: "modal-body" },
                     [
                       _vm._t("body", [
-                        _c(
-                          "form",
-                          { attrs: { id: "inputForm", name: "inputForm" } },
-                          [
-                            _c("p", [
+                          _c("p", [
                               _c("label", [_vm._v("Ищу:")]),
                               _vm._v(" "),
                               _c(
-                                "select",
-                                {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.meet,
-                                      expression: "meet"
-                                    }
-                                  ],
-                                  staticClass: "meet",
-                                  attrs: { id: "meet", name: "meet" },
-                                  on: {
-                                    change: function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return val
-                                        })
-                                      _vm.meet = $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("option", { attrs: { value: "famele" } }, [
-                                    _vm._v("Девушку")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", { attrs: { value: "male" } }, [
-                                    _vm._v("Парня")
-                                  ])
-                                ]
+                                  "select",
+                                  {
+                                      directives: [
+                                          {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.meet,
+                                              expression: "meet"
+                                          }
+                                      ],
+                                      staticClass: "meet",
+                                      attrs: {id: "meet", name: "meet"},
+                                      on: {
+                                          change: function ($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                  .call($event.target.options, function (o) {
+                                                      return o.selected
+                                                  })
+                                                  .map(function (o) {
+                                                      var val =
+                                                          "_value" in o ? o._value : o.value
+                                                      return val
+                                                  })
+                                              _vm.meet = $event.target.multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                          }
+                                      }
+                                  },
+                                  [
+                                      _c("option", {attrs: {value: "famele"}}, [
+                                          _vm._v("Девушку")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("option", {attrs: {value: "male"}}, [
+                                          _vm._v("Парня")
+                                      ])
+                                  ]
                               )
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [
                               _c("label", [_vm._v("Возраст:")]),
                               _vm._v(" от "),
                               _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.from,
-                                    expression: "from"
+                                  directives: [
+                                      {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.from,
+                                          expression: "from"
+                                      }
+                                  ],
+                                  staticStyle: {width: "50px"},
+                                  attrs: {
+                                      type: "number",
+                                      name: "from",
+                                      id: "from",
+                                      min: "18",
+                                      onkeypress: "return isNumber(event)"
+                                  },
+                                  domProps: {value: _vm.from},
+                                  on: {
+                                      input: function ($event) {
+                                          if ($event.target.composing) {
+                                              return
+                                          }
+                                          _vm.from = $event.target.value
+                                      }
                                   }
-                                ],
-                                staticStyle: { width: "50px" },
-                                attrs: {
-                                  type: "number",
-                                  name: "from",
-                                  id: "from",
-                                  min: "18",
-                                  onkeypress: "return isNumber(event)"
-                                },
-                                domProps: { value: _vm.from },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.from = $event.target.value
-                                  }
-                                }
                               }),
-                              _vm._v(
-                                "\n                                    до "
-                              ),
+                              _vm._v("\n                                до "),
                               _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.to,
-                                    expression: "to"
+                                  directives: [
+                                      {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.to,
+                                          expression: "to"
+                                      }
+                                  ],
+                                  staticStyle: {width: "50px"},
+                                  attrs: {
+                                      type: "number",
+                                      name: "to",
+                                      id: "to",
+                                      min: "18",
+                                      onkeypress: "return isNumber(event)"
+                                  },
+                                  domProps: {value: _vm.to},
+                                  on: {
+                                      input: function ($event) {
+                                          if ($event.target.composing) {
+                                              return
+                                          }
+                                          _vm.to = $event.target.value
+                                      }
                                   }
-                                ],
-                                staticStyle: { width: "50px" },
-                                attrs: {
-                                  type: "number",
-                                  name: "to",
-                                  id: "to",
-                                  min: "18",
-                                  onkeypress: "return isNumber(event)"
-                                },
-                                domProps: { value: _vm.to },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.to = $event.target.value
-                                  }
-                                }
                               })
-                            ]),
-                            _vm._v(" "),
-                            _c("label", [_vm._v("Цель:")]),
-                            _vm._v(" "),
-                            _vm._l(_vm.targets, function(item) {
-                              return _c("div", [
+                          ]),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("label", [_vm._v("Цель:")]),
+                          _vm._v(" "),
+                          _c(
+                              "button",
+                              {
+                                  staticClass: "btn-default",
+                                  on: {
+                                      click: function ($event) {
+                                          return _vm.show("target")
+                                      }
+                                  }
+                              },
+                              [_vm._v("Цели")]
+                          ),
+                          _vm._v(" "),
+                          _vm.countSelectedTargets > 0
+                              ? _c("b", [
+                                  _vm._v(" " + _vm._s(_vm.countSelectedTargets))
+                              ])
+                              : _vm._e(),
+                          _vm._v(" "),
+                          _vm._l(_vm.targets, function (item) {
+                              return _vm.targets_show
+                                  ? _c("div", {staticClass: "v-fade"}, [
                                 _c("label", { staticClass: "switch" }, [
                                   _c("input", {
                                     directives: [
@@ -63960,17 +64111,44 @@ var render = function() {
                                   )
                                 ]),
                                 _vm._v(
-                                  "\n                                    " +
+                                    "\n                                " +
                                     _vm._s(item.name) +
-                                    "\n\n                                "
+                                    "\n\n                            "
                                 )
                               ])
-                            }),
-                            _vm._v(" "),
-                            _c("label", [_vm._v("Интересы:")]),
-                            _vm._v(" "),
-                            _vm._l(_vm.interest, function(item) {
-                              return _c("div", [
+                                  : _vm._e()
+                          }),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("label", [_vm._v("Интересы:")]),
+                          _vm._v(" "),
+                          _c(
+                              "button",
+                              {
+                                  staticClass: "btn-default",
+                                  on: {
+                                      click: function ($event) {
+                                          return _vm.show("interes")
+                                      }
+                                  }
+                              },
+                              [_vm._v("Цели")]
+                          ),
+                          _vm._v(" "),
+                          _vm.countSelectedInteres > 0
+                              ? _c("b", [
+                                  _vm._v(
+                                      "\n                                " +
+                                      _vm._s(_vm.countSelectedInteres) +
+                                      "\n                            "
+                                  )
+                              ])
+                              : _vm._e(),
+                          _vm._v(" "),
+                          _vm._l(_vm.interest, function (item) {
+                              return _vm.interes_show
+                                  ? _c("div", [
                                 _c("label", { staticClass: "switch" }, [
                                   _c("input", {
                                     directives: [
@@ -64018,17 +64196,44 @@ var render = function() {
                                   _c("span", { staticClass: "slider round" })
                                 ]),
                                 _vm._v(
-                                  "\n                                    " +
+                                    "\n                                " +
                                     _vm._s(item.name) +
-                                    "\n                                "
+                                    "\n                            "
                                 )
                               ])
-                            }),
-                            _vm._v(" "),
-                            _c("label", [_vm._v("Дети:")]),
-                            _vm._v(" "),
-                            _vm._l(_vm.children, function(item) {
-                              return _c("div", [
+                                  : _vm._e()
+                          }),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("label", [_vm._v("Дети:")]),
+                          _vm._v(" "),
+                          _vm.countSelectedChildren > 0
+                              ? _c("b", [
+                                  _vm._v(
+                                      "\n                                " +
+                                      _vm._s(_vm.countSelectedChildren) +
+                                      "\n                            "
+                                  )
+                              ])
+                              : _vm._e(),
+                          _vm._v(" "),
+                          _c(
+                              "button",
+                              {
+                                  staticClass: "btn-default",
+                                  on: {
+                                      click: function ($event) {
+                                          return _vm.show("children")
+                                      }
+                                  }
+                              },
+                              [_vm._v("Цели")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.children, function (item) {
+                              return _vm.children_show
+                                  ? _c("div", [
                                 _c("label", { staticClass: "switch" }, [
                                   _c("input", {
                                     directives: [
@@ -64057,15 +64262,13 @@ var render = function() {
                                   _c("span", { staticClass: "slider round" })
                                 ]),
                                 _vm._v(
-                                  "\n                                    " +
+                                    "\n                                " +
                                     _vm._s(item.name) +
-                                    "\n                                "
+                                    "\n                            "
                                 )
                               ])
-                            })
-                          ],
-                          2
-                        )
+                                  : _vm._e()
+                          })
                       ])
                     ],
                     2

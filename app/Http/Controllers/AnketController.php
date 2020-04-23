@@ -132,30 +132,10 @@ class AnketController extends Controller
 
 
         if (Input::hasFile('file')) {
-            $image_extension = $request->file('file')
-                ->getClientOriginalExtension();
-            $image_new_name = md5(microtime(true));
-            $temp_file = base_path().'/public/images/upload/'
-                .strtolower($image_new_name.'.'
-                    .$image_extension);// кладем файл с новыс именем
-            $request->file('file')
-                ->move(base_path().'/public/images/upload/',
-                    strtolower($image_new_name.'.'.$image_extension));
-
-            $girl['main_image'] = $image_new_name.'.'.$image_extension;
-            //сохраняем уменьшенную копию
-            $small = base_path().'/public/images/small/'
-                .strtolower($image_new_name.'.'.$image_extension);
-            copy($temp_file, $small);
-
-            $image = new ImageResize($small);
-            $image->resizeToHeight(300);
-            $image->save($small);
+            $girl->updateMainImage($request);
         }
         $girl->save();
 
-
-        // dump($request);
 
         if (Input::hasFile('images')) {
 
@@ -466,42 +446,7 @@ class AnketController extends Controller
         $girl->phone_settings = $request->phone_settings;
         $girl->save();
 
-        //    return $this->girlsEditAuchAnket();
         return redirect('/anket');
-    }
-
-    public function updateMainImage(Request $request)
-    {
-
-        $validatedData = $request->validate([
-            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-        $updateMainImagePrice = DB::table('prices')
-            ->where('price_name', '=', 'update_main_image')->first();
-        $user = Auth::user();
-        $price = $updateMainImagePrice->price;
-
-        $temp = $user->money - intval($price);
-
-        if (Input::hasFile('file') and $temp >= 0) {
-
-            //сохраняем новый файл
-
-            $girl = $user->girl()->first();
-
-            $girl->updateMainImage($request);
-
-            $user->money = $user->money - $price;
-            $user->save();
-
-            return response()->json(['ok']);
-        } else {
-            return response()->json(['no money']);
-        }
-
-        //тут списываем деньгт
-
-
     }
 
     //получаем главное изображение
@@ -511,15 +456,6 @@ class AnketController extends Controller
         $girl = $auth->girl()->first();
 
         return response()->json($girl->main_image);
-    }
-
-    public function getImages(Request $request)
-    {
-        $user = Auth::user();
-        $girl = $user->girl()->first();
-        $images = $girl->photos()->get();
-
-        return response()->json($images);
     }
 
     public function updateGalerayImage(Request $request)
@@ -891,24 +827,7 @@ class AnketController extends Controller
         if ($user == null) {
             return redirect("\login");
         }
-        $anket = Girl::select([
-            'name',
-            'id',
-            'description',
-            'private',
-            'main_image',
-            'sex',
-            'meet',
-            'weight',
-            'height',
-            'age',
-            'country_id',
-            'region_id',
-            'city_id',
-            'banned',
-            'status',
-            'user_id',
-        ])->where('user_id', $user->id)->first();
+        $anket = $user->girl()->first();
 
         $anketTarget = [];
         $targets = $anket->target()->get();
@@ -942,44 +861,10 @@ class AnketController extends Controller
     }
 
 
-    public function seach(Request $request)
-    {
-
-        $who_met = $request->who_met;
-        $with_met = $request->with_met;
-        $girls = Girl::query();
-
-
-        if ($request->has('max_age')) {
-            $girls->where('age', '<=', $request->max_age);
-        }
-
-        if ($request->has('min_age')) {
-            $girls->where('age', '>=', $request->min_age);
-        }
-
-        if ($request->has('with_met')) {
-            $with = $request->with_met;
-            if ($with == "with_famele") {
-                $girls->where('sex', 'famele');
-            } elseif ($with == "with_male") {
-                $girls->where('sex', 'male');
-            }
-
-            $girls->where('age', '>=', $request->min_age);
-        }
-
-        $girls->get();
-
-
-        return response()->json($girls->get());
-    }
-
     public function inseach(Request $request)
     {
         $user = Auth::user();
-        $girl = Girl::select(['id', 'name', 'begin_search', 'end_search'])
-            ->where('user_id', $user->id)->first();
+        $girl = $user->girl()->first();
         $current_date = Carbon::now();
         if ($current_date >= $girl->begin_search and $current_date
             <= $girl->end_search
@@ -1116,6 +1001,9 @@ class AnketController extends Controller
 
     public function winkGet(Request $request)
     {
+        if (!isset($_GET["id"])) {
+            return \response()->json("false");
+        }
         $id = $_GET["id"];
 
         $user = Auth::user();

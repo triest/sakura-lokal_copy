@@ -6,60 +6,69 @@
                     <div class="modal-container">
                         <div class="modal-body">
                             <slot name="body">
-                                <form id="inputForm" name="inputForm">
-                                    <p>
-                                        <label>Ищу:</label>
-                                        <select id="meet" class="meet" name="meet" v-model="meet">
-                                            <option value="famele">Девушку</option>
-                                            <option value="male">Парня</option>
-                                        </select>
-                                    </p>
-                                    <p>
-                                        <label>Возраст:</label> от <input type="number" name="from" id="from" min="18"
-                                                                          v-model="from"
-                                                                          onkeypress="return isNumber(event)"
-                                                                          style="width: 50px">
-                                        до <input type="number" name="to" id="to" min="18"
-                                                  v-model="to"
-                                                  onkeypress="return isNumber(event)" style="width: 50px">
-                                    </p>
+                                <p>
+                                    <label>Ищу:</label>
+                                    <select id="meet" class="meet" name="meet" v-model="meet">
+                                        <option value="famele">Девушку</option>
+                                        <option value="male">Парня</option>
+                                    </select>
+                                </p>
+                                <p>
+                                    <label>Возраст:</label> от <input type="number" name="from" id="from" min="18"
+                                                                      v-model="from"
+                                                                      onkeypress="return isNumber(event)"
+                                                                      style="width: 50px">
+                                    до <input type="number" name="to" id="to" min="18"
+                                              v-model="to"
+                                              onkeypress="return isNumber(event)" style="width: 50px">
+                                </p>
+                                <br>
+                                <label>Цель:</label>
+                                <button class="btn-default" v-on:click='show("target")'>Цели</button>
+                                <b v-if="countSelectedTargets>0"> {{countSelectedTargets}}</b>
 
-                                    <label>Цель:</label>
-                                    <div v-for="item in targets">
-                                        <label class="switch">
-                                            <input type="checkbox" :id="item.id" :value="item.id"
-                                                   v-model="select2targets">
-                                            <label class="onoffswitch-label" for="myonoffswitch">
-                                                <span class="onoffswitch-inner"></span>
-                                                <span class="onoffswitch-switch"></span>
-                                            </label>
+                                <div v-if="targets_show" class="v-fade" v-for="item in targets">
 
+                                    <label class="switch">
+                                        <input type="checkbox" :id="item.id" :value="item.id"
+                                               v-model="select2targets">
+                                        <label class="onoffswitch-label" for="myonoffswitch">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
                                         </label>
-                                        {{item.name}}
 
-                                    </div>
+                                    </label>
+                                    {{item.name}}
 
-                                    <label>Интересы:</label>
+                                </div>
+                                <br>
+                                <label>Интересы:</label>
 
-                                    <div v-for="item in interest">
-                                        <label class="switch">
-                                            <input type="checkbox" :id="item.id" :value="item.id"
-                                                   v-model="select2inters">
-                                            <span class="slider round"></span>
-                                        </label>
-                                        {{item.name}}
-                                    </div>
-
-                                    <label>Дети:</label>
-
-                                    <div v-for="item in children">
-                                        <label class="switch">
-                                            <input type="radio" :value="item.id" v-model="select2children"/>
-                                            <span class="slider round"></span>
-                                        </label>
-                                        {{item.name}}
-                                    </div>
-                                </form>
+                                <button class="btn-default" v-on:click='show("interes")'>Цели</button>
+                                <b v-if="countSelectedInteres>0">
+                                    {{countSelectedInteres}}
+                                </b>
+                                <div v-if="interes_show" v-for="item in interest">
+                                    <label class="switch">
+                                        <input type="checkbox" :id="item.id" :value="item.id"
+                                               v-model="select2inters">
+                                        <span class="slider round"></span>
+                                    </label>
+                                    {{item.name}}
+                                </div>
+                                <br>
+                                <label>Дети:</label>
+                                <b v-if="countSelectedChildren>0">
+                                    {{countSelectedChildren}}
+                                </b>
+                                <button class="btn-default" v-on:click='show("children")'>Цели</button>
+                                <div v-if="children_show" v-for="item in children">
+                                    <label class="switch">
+                                        <input type="radio" :value="item.id" v-model="select2children"/>
+                                        <span class="slider round"></span>
+                                    </label>
+                                    {{item.name}}
+                                </div>
                             </slot>
                         </div>
 
@@ -88,6 +97,19 @@
         mounted() {
             this.getSettings();
         },
+        /* считаем выделенные*/
+        computed: {
+            countSelectedTargets: function () {
+                return this.select2targets.length
+            },
+            countSelectedInteres: function () {
+                return this.select2inters.length
+            },
+            countSelectedChildren: function () {
+
+            }
+
+        },
         data() {
             return {
                 seach: "",
@@ -101,11 +123,13 @@
                 select2inters: [],
                 select2children: null,
                 seachSettings: null,
+                targets_show: false,
+                interes_show: false,
+                children_show: false,
             }
         },
         methods: {
             close() {
-                console.log("ren emit");
                 this.$emit('closeSeachModal')
             },
             findUserByid() {
@@ -141,6 +165,17 @@
                         this.meet = this.seachSettings.meet;
                     })
 
+            },
+            show(input) {
+                if (input == "target") {
+                    this.targets_show = !this.targets_show;
+                }
+                if (input == "interes") {
+                    this.interes_show = !this.interes_show;
+                }
+                if (input == "children") {
+                    this.children_show = !this.children_show;
+                }
             }
 
         },
@@ -259,5 +294,30 @@
         left: 20px;
         box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);
     }
+
+    .bounce-enter-active {
+        animation: bounce-in .5s;
+    }
+
+    .bounce-leave-active {
+        animation: bounce-in .5s reverse;
+    }
+
+    @keyframes bounce-in {
+        0% {
+            transform: scale(0);
+        }
+        50% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .v-fade {
+        transition: all 4s ease-out;
+    }
+
 
 </style>

@@ -20,7 +20,7 @@
                         <div class="modal-footer">
                             <slot name="footer">
                                 <button class="modal-default-button" v-on:click="close()">
-                                    Закрыть
+                                    О©╫О©╫О©╫О©╫О©╫О©╫О©╫
                                 </button>
                             </slot>
                         </div>
@@ -41,13 +41,11 @@
         },
         data() {
             return {
-
                 MessageText: ""
             }
         },
         methods: {
             close() {
-                console.log("ren emit");
                 this.$emit('closeNewMessageAlert')
             },
             findUserByid() {
@@ -72,9 +70,9 @@
 
 <style>
     textarea {
-        width: 90%; /* Ширина поля в процентах */
-        height: 200px; /* Высота поля в пикселах */
-        resize: none; /* Запрещаем изменять размер */
+        width: 90%; /* О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ */
+        height: 200px; /* О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ */
+        resize: none; /* О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ */
     }
 
     .modal-mask {
