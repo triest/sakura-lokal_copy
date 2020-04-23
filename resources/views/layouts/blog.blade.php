@@ -35,16 +35,12 @@
     <!-- Custom styles for this template -->
     <!--  <link href="http://bootstrap-3.ru/examples/offcanvas/offcanvas.css" rel="stylesheet"> -->
 
-    <link rel="icon" href="http://example.com/favicon.png">
-    <link rel='icon' href='favicon.ico' type='image/x-icon' sizes="16x16"/>
+    <link rel="icon" href="<?php echo asset("images/icons/icons/favicon-16x16.png")?>" type="image/x-icon">
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
 
     <link rel="stylesheet" href="css/app.css">
 
