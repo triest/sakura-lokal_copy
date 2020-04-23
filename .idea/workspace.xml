@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SeachController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SeachController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/SeachModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SeachModal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/chat/newMessageModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/chat/newMessageModal.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,6 +19,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="SeachController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SeachController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="121" column="52" selection-start-line="121" selection-start-column="52" selection-end-line="121" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="GirlsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GirlsController.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -45,11 +52,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SeachModal.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SeachModal.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/SeachModal.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="60" column="54" lean-forward="true" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="54" />
+            <state relative-caret-position="221">
+              <caret line="13" column="72" selection-start-line="13" selection-start-column="72" selection-end-line="13" selection-end-column="72" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#p#1;n#form#0;n#slot#0;n#div#0;n#div#0;n#div#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,7 +103,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>like-</find>
       <find>newLike</find>
       <find>Вы ком-то</find>
       <find>$whoGirl</find>
@@ -123,6 +132,7 @@
       <find>countSelectedChildren</find>
       <find>ren emit</find>
       <find>select2children</find>
+      <find>emit</find>
     </findStrings>
     <replaceStrings>
       <replace>get_girl_id</replace>
@@ -202,7 +212,6 @@
         <option value="$PROJECT_DIR$/resources/js/components/ankertList.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/SeachController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/LikeController.php" />
         <option value="$PROJECT_DIR$/app/Like.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -215,6 +224,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/chat/newMessageModal.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/SeachModal.vue" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/SeachController.php" />
       </list>
     </option>
   </component>
@@ -710,14 +720,7 @@
       <workItem from="1587362048216" duration="27992000" />
       <workItem from="1587447878552" duration="16799000" />
       <workItem from="1587534999195" duration="21982000" />
-      <workItem from="1587620997450" duration="18445000" />
-    </task>
-    <task id="LOCAL-00133" summary="Add check mobile">
-      <created>1586764388679</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1586764388679</updated>
+      <workItem from="1587620997450" duration="19216000" />
     </task>
     <task id="LOCAL-00134" summary="Add mobile for  chat">
       <created>1586766430245</created>
@@ -1055,7 +1058,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587632720586</updated>
     </task>
-    <option name="localTasksCounter" value="182" />
+    <task id="LOCAL-00182" summary="Add spoiler and refactor">
+      <created>1587650902016</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1587650902016</updated>
+    </task>
+    <option name="localTasksCounter" value="183" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1091,7 +1101,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2043738000" />
+    <option name="totallyTimeSpent" value="2044509000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1171,7 +1181,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/workbreaks" />
     </ignored-roots>
-    <MESSAGE value="Movie view settings to class" />
     <MESSAGE value="Movie IP settings to class" />
     <MESSAGE value="Refactoring" />
     <MESSAGE value="Create Wink Bilder" />
@@ -1196,7 +1205,8 @@
     <MESSAGE value="Add message about mutual like" />
     <MESSAGE value="Add site icon" />
     <MESSAGE value="Add get($id) function for anket item" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add get($id) function for anket item" />
+    <MESSAGE value="Add spoiler and refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add spoiler and refactor" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1473,13 +1483,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SeachController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="360" lean-forward="true" selection-start-line="360" selection-end-line="360" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/seach/index.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1529,8 +1532,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/SeachModal.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="60" column="54" lean-forward="true" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="54" />
+        <state relative-caret-position="221">
+          <caret line="13" column="72" selection-start-line="13" selection-start-column="72" selection-end-line="13" selection-end-column="72" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#p#1;n#form#0;n#slot#0;n#div#0;n#div#0;n#div#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SeachController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="121" column="52" selection-start-line="121" selection-start-column="52" selection-end-line="121" selection-end-column="52" />
         </state>
       </provider>
     </entry>

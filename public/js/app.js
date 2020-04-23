@@ -56351,6 +56351,10 @@ var render = function() {
                                       _vm._v(" "),
                                       _c("option", {attrs: {value: "male"}}, [
                                           _vm._v("Парня")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("option", {attrs: {value: "nomatter"}}, [
+                                          _vm._v("неважно")
                                       ])
                                   ]
                               )
@@ -56506,7 +56510,7 @@ var render = function() {
                                 _vm._v(
                                     "\n                                " +
                                     _vm._s(item.name) +
-                                    "\n\n                            "
+                                    "\n                            "
                                 )
                               ])
                                   : _vm._e()
@@ -63958,6 +63962,10 @@ var render = function() {
                                       _vm._v(" "),
                                       _c("option", {attrs: {value: "male"}}, [
                                           _vm._v("Парня")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("option", {attrs: {value: "nomatter"}}, [
+                                          _vm._v("неважно")
                                       ])
                                   ]
                               )
@@ -64113,7 +64121,7 @@ var render = function() {
                                 _vm._v(
                                     "\n                                " +
                                     _vm._s(item.name) +
-                                    "\n\n                            "
+                                    "\n                            "
                                 )
                               ])
                                   : _vm._e()

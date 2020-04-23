@@ -118,6 +118,11 @@ class SeachController extends Controller
             $girls->where('age', '<=', $seachSettings->age_to);
         }
 
+        if ($seachSettings->meet != null
+            && $seachSettings->meet != "nomatter"
+        ) {
+            $girls->where('sex', '=', $seachSettings->meet);
+        }
 
         if (isset($Autchgirls) && $Autchgirls != null) {
             $girls->where('id', '!=', $Autchgirls->id);
