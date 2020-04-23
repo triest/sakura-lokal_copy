@@ -32,6 +32,7 @@ class Girl extends Model
 
     public static function get($id)
     {
+
         $anket = Girl::select(['*'])
             ->where('id', $id)
             ->first();
@@ -237,23 +238,7 @@ class Girl extends Model
             return false;
         }
 
-        $whoGirl = Girl::select([
-            'name',
-            'id',
-            'description',
-            'main_image',
-            'sex',
-            'meet',
-            'weight',
-            'height',
-            'age',
-            'country_id',
-            'region_id',
-            'city_id',
-            'banned',
-            'user_id',
-            'status',
-        ])->where('user_id', $user->id)->first();
+        $whoGirl = $user->girl()->first();
 
         if ($whoGirl == null) {
             return false;
@@ -291,31 +276,7 @@ class Girl extends Model
                 ->where('my_id', $AythUser->id)
                 ->where('other_id', $this->user_id)->first();
             if ($user3 != null) {
-                $girl = Girl::select([
-                    'name',
-                    'id',
-                    'description',
-                    'main_image',
-                    'sex',
-                    'meet',
-                    'weight',
-                    'height',
-                    'age',
-                    'status',
-                    'phone',
-                    'country_id',
-                    'region_id',
-                    'city_id',
-                    'banned',
-                    'user_id',
-                    'private',
-                    'phone_settings',
-                    'last_login',
-                    'from_age',
-                    'to_age',
-                    'relation_id',
-                    'smoking_id',
-                ])->where('id', $this->id)->first();
+                $girl = Girl::get($this->id);
 
                 $privatephoto = $girl->privatephotos()->get();
             }

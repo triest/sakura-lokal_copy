@@ -47,8 +47,7 @@ class AnketController extends Controller
     {
         $user = Auth::user();
 
-        $girl = Girl::select(['id', 'name', 'user_id'])
-            ->where('user_id', $user->id)->first();
+        $girl = $user->girl()->first();
         if ($girl != null) {
             return redirect('/edit');
         }
@@ -110,8 +109,7 @@ class AnketController extends Controller
 
         $user = Auth::user();
 
-        $girl = Girl::select('id', 'name', 'user_id')
-            ->where('user_id', $user->id)->first();
+        $girl = $user->girl()->first();
         if ($girl != null) {
             return redirect('/edit');
         }
@@ -269,28 +267,7 @@ class AnketController extends Controller
         if ($user == null) {
             return redirect('/login');
         }
-        $girl = Girl::select([
-            'name',
-            'age',
-            'id',
-            'phone',
-            'description',
-            'main_image',
-            'sex',
-            'meet',
-            'weight',
-            'height',
-            'country_id',
-            'region_id',
-            'city_id',
-            'private',
-            'phone_settings',
-            'from_age',
-            'to_age',
-            'apperance_id',
-            'relation_id',
-            'status',
-        ])->where('user_id', $user->id)->first();
+        $girl = $user->girl()->first();
         if ($girl == null) {
             //  return $this->index();
             return view('anket.404');
@@ -392,18 +369,7 @@ class AnketController extends Controller
         }
 
 
-        $girl = Girl::select([
-            'name',
-            'id',
-            'phone',
-            'description',
-            'private',
-            'main_image',
-            'sex',
-            'meet',
-            'weight',
-            'height',
-        ])->where('user_id', $user->id)->first();
+        $girl = $user->girl()->first();
         if ($girl == null) {
             return redirect('/index');
         }
@@ -521,8 +487,7 @@ class AnketController extends Controller
 
             //сохраняем новый файл
 
-            $girl = Girl::select(['main_image'])
-                ->where('user_id', $user->get_id())->first();
+            $girl = $user->girl()->first();
 
             $girl->updateMainImage($request);
 
@@ -543,8 +508,7 @@ class AnketController extends Controller
     public function getmainImage()
     {
         $auth = Auth::user();
-        $girl = Girl::select(['main_image'])->where('user_id', $auth->id)
-            ->first();
+        $girl = $auth->girl()->first();
 
         return response()->json($girl->main_image);
     }
@@ -552,8 +516,7 @@ class AnketController extends Controller
     public function getImages(Request $request)
     {
         $user = Auth::user();
-        $girl = Girl::select(['id'])->where('user_id', $user->get_id())
-            ->first();
+        $girl = $user->girl()->first();
         $images = $girl->photos()->get();
 
         return response()->json($images);
@@ -614,8 +577,7 @@ class AnketController extends Controller
     public function getPrivateImages(Request $request)
     {
         $user = Auth::user();
-        $girl = Girl::select(['id'])->where('user_id', $user->get_id())
-            ->first();
+        $girl = $user->girl()->first();
         $images = $girl->privatephotos()->get();
 
         return response()->json($images);
@@ -635,8 +597,7 @@ class AnketController extends Controller
                 ->move(base_path().'/public/images/upload/',
                     strtolower($image_new_name.'.'.$image_extension));
             $photo = new Privatephoto();
-            $girl = Girl::select(['id', 'user_id'])
-                ->where('user_id', $user->get_id())->first();
+            $girl = $user->girl()->first();
             $photo['photo_name'] = $image_new_name.'.'.$image_extension;
             $photo = new Privatephoto();
             $photo['photo_name'] = $image_new_name.'.'.$image_extension;

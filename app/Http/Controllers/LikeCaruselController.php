@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\DB;
 
 class LikeCaruselController extends Controller
 {
-    private $limit = 1;
 
     //
     public function index()
@@ -49,14 +48,7 @@ limit 1'))->first();
         }
 
 
-        $girls = Girl::select([
-            'name',
-            'id',
-            'age',
-            'main_image',
-            'last_login',
-            'city_id',
-        ])->where('id', $girls->id)->first();
+        $girls = Girl::get($girls->id);
         $city = null;
         if ($girls->city_id != null) {
             $city = City::get($girls->city_id);
@@ -79,37 +71,8 @@ limit 1'))->first();
 
     public function newLike(Request $request)
     {
-        /*
-        $userAuth = Auth::user();
-        if ($userAuth != null) {
-            $authGirl = $userAuth->anketisExsis();
-        }
-        */
-        /*     $like = new Like();
-             if (isset($authGirl) && $authGirl != null) {
-                 $like->who_id = $authGirl->id;
-             }
-             $like->target_id = $request->anket_id;
-             if (isset($request->action) && $request->action == "like") {
-                 $like->action = 'like';
-                 $like->save();
-             } elseif (isset($request->action) && $request->action == "dislike") {
-                 $like->action = 'dislike';
-                 $like->save();
-             } elseif (isset($request->action) && $request->action == "skip") {
-                 $like->action = 'skip';
-                 $like->save();
-             }
-     /*
-             $tagretAnket = Girl::get(intval($request->anket_id));
-
-             if ($tagretAnket != null) {
-                 $tagretAnket->sendMessage("Вы ком-то понравились");
-             }
-     */
         $girl = Girl::get($request->anket_id);
         $girl->newLike();
-
 
         return response()->json(['ok']);
     }

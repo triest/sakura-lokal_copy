@@ -39,8 +39,14 @@ class User extends Authenticatable
             'remember_token',
         ];
 
-    //проверка есть ли анкета
-    public function anketisExsis()
+    public static function get($id)
+    {
+
+    }
+
+//проверка есть ли анкета
+    public
+    function anketisExsis()
     {
 
         $user_id = Auth::user()->id;
@@ -50,25 +56,30 @@ class User extends Authenticatable
         return $girl;
     }
 
-    public function get_id()
+    public
+    function get_id()
     {
         return $this->id;
     }
 
-    public static function findById($id)
-    {
+    public
+    static function findById(
+        $id
+    ) {
         $user = User::select(['id', 'name'])->where('id', $id)->first();
 
         return $user;
     }
 
 
-    public function isOnline()
+    public
+    function isOnline()
     {
         return \Cache::has('user-is-online-'.$this->id);
     }
 
-    public function get_girl_id()
+    public
+    function get_girl_id()
     {
         $girl = Girl::select('id', 'user_id')->where('user_id', $this->id)
             ->first();
@@ -79,7 +90,8 @@ class User extends Authenticatable
         }
     }
 
-    public static function getautch()
+    public
+    static function getautch()
     {
         $user_id = Auth::user();
         $user = User::select(['id', 'name'])->where('id', $user_id->id)
@@ -88,13 +100,15 @@ class User extends Authenticatable
         return $user;
     }
 
-    public function girl()
+    public
+    function girl()
     {
         return $this->hasOne('App\Girl');
     }
 
 
-    public static function getIpstatic()
+    public
+    static function getIpstatic()
     {
         foreach (
             array(
@@ -123,8 +137,9 @@ class User extends Authenticatable
         return null;
     }
 
-    //get ip
-    public static function getIp()
+//get ip
+    public
+    static function getIp()
     {
         foreach (
             array(

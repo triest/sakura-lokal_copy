@@ -59,34 +59,7 @@ class GirlsController extends Controller
     public function showGirl($id, Request $request)
     {
 
-        $girl = Girl::select([
-            'name',
-            'id',
-            'description',
-            'main_image',
-            'sex',
-            'meet',
-            'weight',
-            'height',
-            'age',
-            'country_id',
-            'region_id',
-            'city_id',
-            'status',
-            'banned',
-            'user_id',
-            'phone',
-            'phone_settings',
-            'status',
-            'views_all',
-            'last_login',
-            'from_age',
-            'to_age',
-            'apperance_id',
-            'relation_id',
-            'children_id',
-            'smoking_id',
-        ])->where('id', $id)->first();
+        $girl = Girl::get($id);
 
         if ($girl == null) {
             return view('anket.404');

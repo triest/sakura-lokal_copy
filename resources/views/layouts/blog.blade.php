@@ -27,79 +27,16 @@
     <!--My custom style -->
     <link href="{{asset('css/style.css')}}">
     <!-- -->
+    <link href="{{asset('css/app.css')}}">
+
+    <link href="{{asset('css/carusel.css')}}">
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css"
           rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
-    <!-- Custom styles for this template -->
-    <!--  <link href="http://bootstrap-3.ru/examples/offcanvas/offcanvas.css" rel="stylesheet"> -->
 
     <link rel="icon" href="<?php echo asset("images/icons/icons/favicon-16x16.png")?>" type="image/x-icon">
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-
-    <link rel="stylesheet" href="css/app.css">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <style>
-        .container {
-            max-width: 1170px;
-            margin: auto;
-        }
-
-        img {
-            max-width: 100%;
-        }
-
-        .received_withd_msg p {
-            background: #ebebeb none repeat scroll 0 0;
-            border-radius: 3px;
-            color: #646464;
-            font-size: 14px;
-            margin: 0;
-            padding: 5px 10px 5px 12px;
-            width: 100%;
-        }
-
-    </style>
-    <style type="text/css">
-        .selected img {
-            opacity: 0.5;
-        }
-
-        .carousel-inner > .item > img, .carousel-inner > .item > a > img {
-            height: 150px;
-            weight: 250px;
-            margin: 0 auto;
-        }
-
-        .slider {
-
-            width: 100px;
-
-        }
-
-        .center-div {
-            position: absolute;
-            margin: auto;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            width: 100px;
-            height: 100px;
-            background-color: #ccc;
-            border-radius: 3px;
-        }
-
-
-    </style>
 
 </head>
 
