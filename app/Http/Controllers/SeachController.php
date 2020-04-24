@@ -142,8 +142,8 @@ class SeachController extends Controller
             $girls->where('girls.id', '!=', $Autchgirls->id);
         }
 
-        //    $count = $girls->count();
-        //  $num_pages = intval($count / $this->limit);
+        $count = $girls->count();
+        $num_pages = intval($count / $this->limit);
 
         $girls->select('girls.*')->limit($this->limit);
 
@@ -161,9 +161,9 @@ class SeachController extends Controller
         $girls = $girls->get();
 
         return response()->json([
-            'ankets' => $girls,
-            //    'count'     => $count,
-            //  'num_pages' => $num_pages,
+            'ankets'    => $girls,
+            'count'     => $count,
+            'num_pages' => $num_pages,
         ]);
     }
 

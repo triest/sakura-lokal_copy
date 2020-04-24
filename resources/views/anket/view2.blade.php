@@ -159,10 +159,9 @@
         </div>
         <br>
         <div class="col-lg-10 col-md-7 col-sm-6 col-xs-12 box-shadow">
-            <p><b>Приватное сообщение</b></p>
             <p class="card-text>">
                 @if($girl->private!=null)
-                    <label>Приватное сообщение:</label>
+                    <label>Приватное сообщение:</label> <br>
                     {!!$girl->private  !!}
             </p>
             @else
