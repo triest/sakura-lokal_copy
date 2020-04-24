@@ -81,11 +81,11 @@ class SeachController extends Controller
         }
 
         $girls = DB::table('girls');
-        $targets = $seachSettings->target()->get();
 
         $interest = $seachSettings->interest()->get();
 
-        if (!empty($interest)) {
+
+        if ($interest->isNotEmpty()) {
             $girls->leftJoin('girl_interess', 'girl_interess.girl_id', '=',
                 'girls.id');
             // надо плдучить массив id штеукуыщцж
@@ -96,6 +96,9 @@ class SeachController extends Controller
 
             $girls->whereIn('girl_interess.interest_id', $interest_array);
         }
+
+        $targets = $seachSettings->target()->get();
+
 
         if ($seachSettings->children != null) {
             $girls->where('children_id', '=', $seachSettings->children);
