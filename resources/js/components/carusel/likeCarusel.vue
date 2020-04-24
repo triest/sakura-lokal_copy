@@ -27,22 +27,24 @@
             <div class="cell">
                 <div class="cell-overflow">
                     <b> {{item.name}}, {{item.age}}</b>
-                    <p>
+                    <p v-if="city!=null">
                         <small>{{city.name}}</small>
                     </p>
                     <p v-if="online=='null'"> {{item.last_login}}
                     <p v-else>
                         {{lastLogin}}
                     </p>
-
-                    <b>Цель знакомства</b>
-                    <div v-for="item in targets">
-                        {{item.name}},
+                    <div v-if="targets.length">
+                        <b>Цель знакомства</b>
+                        <div v-for="item in targets">
+                            {{item.name}},
+                        </div>
                     </div>
-
-                    <b>Интересы</b>
-                    <div v-for="item in interets">
-                        {{item.name}},
+                    <div v-if="interets.length">
+                        <b>Интересы</b>
+                        <div v-for="item in interets">
+                            {{item.name}},
+                        </div>
                     </div>
                 </div>
             </div>
