@@ -7,13 +7,19 @@
         <div id="ankataApp">
             <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
                 <img width="200" height="200" src="<?php echo asset("/images/upload/$girl->main_image")?>">
+                @if(Auth::guest())
+
+                @elseif(Auth::user()->anketisExsis()!=null)
+                    <br>   <br>   <br>   <br>
+                    <like :item_id="{{$girl->id}}"></like>
+                @endif
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-9 box-shadow">
             <b>  {{$girl->name}}</b>, {{$girl->age}}
             @if(null!==$girl->city()->first())
-            ,
-            {{$girl->city()->first()->name}}
+                ,
+                {{$girl->city()->first()->name}}
             @endif
 
             @if(!$girl->isOnline())
@@ -30,6 +36,7 @@
                 </small>
             @else
                 <img width="10" src="<?php echo asset("/images/circle-16.ico")?>" title="В сети">
+
             @endif
             @if ($girl->status!=null)
                 <br>

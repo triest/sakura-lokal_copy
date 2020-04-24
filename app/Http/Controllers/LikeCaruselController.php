@@ -76,4 +76,15 @@ limit 1'))->first();
 
         return response()->json(['ok']);
     }
+
+    public function checkLike(Request $request)
+    {
+        $girl = Girl::get($request->anket_id);
+
+        if ($girl == null) {
+            return response()->json(false);
+        }
+
+        return response()->json($girl->checkLike());
+    }
 }

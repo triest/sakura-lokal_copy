@@ -410,7 +410,25 @@ class Girl extends Model
         return true;
     }
 
+    function checkLike($girl_id = null)
+    {
+        $aythUser = Auth::user();
+        if ($aythUser == null) {
+            return false;
+        }
+        $girl = $aythUser->girl()->first();
+        if ($girl == null) {
+            return false;
+        }
 
+        $like = Like::select(['id'])->where('who_id', $girl->id)
+            ->where('target_id', $this->id)->first();
+        if ($like != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 

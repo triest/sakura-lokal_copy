@@ -124,6 +124,8 @@ Vue.component('album', require('./components/albums/album.vue').default);
 
 Vue.component('view', require('./components/anket/view').default);
 
+Vue.component('like', require('./components/anket/like').default);
+
 window.onload = function () {
     const aperanceApp = new Vue({
         el: '#aperanceApp',

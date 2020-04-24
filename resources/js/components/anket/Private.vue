@@ -223,9 +223,6 @@
             itemClicked: function () {
                 $("#my-modal").modal('show');
             },
-            showModal() {
-                this.isModalVisible = true;
-            },
             closeModal() {
                 this.isModalVisible = false;
             },
