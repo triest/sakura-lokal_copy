@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PhoneController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/SeachModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SeachModal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/anket/Private.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/anket/Private.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome2.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,23 +48,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="web.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="33" column="25" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="25" />
+            <state relative-caret-position="238">
+              <caret line="363" lean-forward="true" selection-start-line="363" selection-end-line="363" />
+              <folding>
+                <element signature="e#391#427#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="welcome2.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/welcome2.blade.php">
+      <file leaf-file-name="PhoneController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PhoneController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="295" column="107" selection-start-line="295" selection-start-column="107" selection-end-line="295" selection-end-column="107" />
-              <folding>
-                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-              </folding>
+            <state relative-caret-position="459">
+              <caret line="27" column="28" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -184,7 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2020_04_20_110616_add_foregin_key_to_city.php" />
         <option value="$PROJECT_DIR$/resources/views/anket/view2.blade.php" />
         <option value="$PROJECT_DIR$/app/City.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AlbumController.php" />
@@ -219,7 +216,6 @@
         <option value="$PROJECT_DIR$/resources/views/likeCarusel.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/ankertList.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/LikeController.php" />
         <option value="$PROJECT_DIR$/app/Like.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -235,6 +231,8 @@
         <option value="$PROJECT_DIR$/resources/js/components/SeachModal.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/anket/Private.vue" />
         <option value="$PROJECT_DIR$/resources/views/welcome2.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PhoneController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
       </list>
     </option>
   </component>
@@ -738,14 +736,7 @@
       <workItem from="1587447878552" duration="16799000" />
       <workItem from="1587534999195" duration="21982000" />
       <workItem from="1587620997450" duration="22755000" />
-      <workItem from="1587708290221" duration="1421000" />
-    </task>
-    <task id="LOCAL-00135" summary="Add hide contact on mobile version">
-      <created>1586772953946</created>
-      <option name="number" value="00135" />
-      <option name="presentableId" value="LOCAL-00135" />
-      <option name="project" value="LOCAL" />
-      <updated>1586772953946</updated>
+      <workItem from="1587708290221" duration="3422000" />
     </task>
     <task id="LOCAL-00136" summary="Fix mobile style for dialog">
       <created>1586782533804</created>
@@ -1083,7 +1074,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587651670453</updated>
     </task>
-    <option name="localTasksCounter" value="184" />
+    <task id="LOCAL-00184" summary="Fix names and add icon to welcome page">
+      <created>1587710199906</created>
+      <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
+      <option name="project" value="LOCAL" />
+      <updated>1587710199907</updated>
+    </task>
+    <option name="localTasksCounter" value="185" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1119,7 +1117,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2049469000" />
+    <option name="totallyTimeSpent" value="2051470000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1199,7 +1197,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/workbreaks" />
     </ignored-roots>
-    <MESSAGE value="Refactoring" />
     <MESSAGE value="Create Wink Bilder" />
     <MESSAGE value="Fix dialog. Count unreadedd not work" />
     <MESSAGE value="Add check wink" />
@@ -1224,29 +1221,16 @@
     <MESSAGE value="Add get($id) function for anket item" />
     <MESSAGE value="Add spoiler and refactor" />
     <MESSAGE value="Fix seach by sex" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix seach by sex" />
+    <MESSAGE value="Fix names and add icon to welcome page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix names and add icon to welcome page" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/routes/web.php</url>
-          <line>37</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="28" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/apperanceControll.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="109" selection-start-line="2" selection-start-column="109" selection-end-line="2" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/adminPanel.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1417,7 +1401,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app.js">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/bootstrap.min.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -1518,13 +1508,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="33" column="25" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/blog.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="397">
@@ -1534,10 +1517,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/welcome2.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="295" column="107" selection-start-line="295" selection-start-column="107" selection-end-line="295" selection-end-column="107" />
+        <state relative-caret-position="408">
+          <caret line="302" column="8" lean-forward="true" selection-start-line="302" selection-start-column="8" selection-end-line="302" selection-end-column="8" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PhoneController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="28" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="363" lean-forward="true" selection-start-line="363" selection-end-line="363" />
+          <folding>
+            <element signature="e#391#427#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
