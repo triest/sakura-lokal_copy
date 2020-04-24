@@ -291,6 +291,8 @@
         }
     </style>
     <meta name="yandex-verification" content="af4168af7d682a89"/>
+    <!--icon -->
+    <link rel="icon" href="<?php echo asset("images/icons/icons/favicon-16x16.png")?>" type="image/x-icon">
 </head>
 <body>
 <div class="flex-center position-ref full-height">

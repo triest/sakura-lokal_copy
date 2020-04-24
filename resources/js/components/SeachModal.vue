@@ -25,7 +25,7 @@
                                 </p>
                                 <br>
                                 <label>Цель:</label>
-                                <button class="btn-default" v-on:click='show("target")'>Цели</button>
+                                <button class="btn-default" v-on:click='show("target")'>выбрать</button>
                                 <b v-if="countSelectedTargets>0"> {{countSelectedTargets}}</b>
 
                                 <div v-if="targets_show" class="v-fade" v-for="item in targets">
@@ -44,7 +44,7 @@
                                 <br>
                                 <label>Интересы:</label>
 
-                                <button class="btn-default" v-on:click='show("interes")'>Цели</button>
+                                <button class="btn-default" v-on:click='show("interes")'>выбрать</button>
                                 <b v-if="countSelectedInteres>0">
                                     {{countSelectedInteres}}
                                 </b>
@@ -61,7 +61,7 @@
                                 <b v-if="countSelectedChildren>0">
                                     {{countSelectedChildren}}
                                 </b>
-                                <button class="btn-default" v-on:click='show("children")'>Цели</button>
+                                <button class="btn-default" v-on:click='show("children")'>выбрать</button>
                                 <div v-if="children_show" v-for="item in children">
                                     <label class="switch">
                                         <input type="radio" :value="item.id" v-model="select2children"/>

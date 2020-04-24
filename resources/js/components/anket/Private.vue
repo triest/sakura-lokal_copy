@@ -4,7 +4,7 @@
         <!--  <button class="btn-primary" v-if="showSendRegButton" v-on:click="sendRequwest()">Попросить открыть анкету
           </button>
           -->
-        <h5 v-if="regStatus=='notreaded' && !showSendRegButton">Просьба еще не рассотрена
+        <h5 v-if="regStatus=='notreaded' && !showSendRegButton">Просьба еще не рассмотрена
             <button class="btn btn-primary" v-on:click="withdrawRequwest()">
                 Отозавать заявку
             </button>

@@ -56434,7 +56434,7 @@ var render = function() {
                                       }
                                   }
                               },
-                              [_vm._v("Цели")]
+                              [_vm._v("выбрать")]
                           ),
                           _vm._v(" "),
                           _vm.countSelectedTargets > 0
@@ -56530,7 +56530,7 @@ var render = function() {
                                       }
                                   }
                               },
-                              [_vm._v("Цели")]
+                              [_vm._v("выбрать")]
                           ),
                           _vm._v(" "),
                           _vm.countSelectedInteres > 0
@@ -56625,7 +56625,7 @@ var render = function() {
                                       }
                                   }
                               },
-                              [_vm._v("Цели")]
+                              [_vm._v("выбрать")]
                           ),
                           _vm._v(" "),
                           _vm._l(_vm.children, function (item) {
@@ -59621,7 +59621,7 @@ var render = function() {
       _vm._v(" "),
       _vm.regStatus == "notreaded" && !_vm.showSendRegButton
         ? _c("h5", [
-            _vm._v("Просьба еще не рассотрена\n        "),
+              _vm._v("Просьба еще не рассмотрена\n        "),
             _c(
               "button",
               {
@@ -64045,7 +64045,7 @@ var render = function() {
                                       }
                                   }
                               },
-                              [_vm._v("Цели")]
+                              [_vm._v("выбрать")]
                           ),
                           _vm._v(" "),
                           _vm.countSelectedTargets > 0
@@ -64141,7 +64141,7 @@ var render = function() {
                                       }
                                   }
                               },
-                              [_vm._v("Цели")]
+                              [_vm._v("выбрать")]
                           ),
                           _vm._v(" "),
                           _vm.countSelectedInteres > 0
@@ -64236,7 +64236,7 @@ var render = function() {
                                       }
                                   }
                               },
-                              [_vm._v("Цели")]
+                              [_vm._v("выбрать")]
                           ),
                           _vm._v(" "),
                           _vm._l(_vm.children, function (item) {
