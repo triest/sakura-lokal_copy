@@ -16,10 +16,11 @@
                                 </p>
                                 <p>
                                     <label>Возраст:</label> от <input type="number" name="from" id="from" min="18"
+                                                                      :max="maxAge"
                                                                       v-model="from"
                                                                       onkeypress="return isNumber(event)"
                                                                       style="width: 50px">
-                                    до <input type="number" name="to" id="to" min="18"
+                                    до <input type="number" name="to" id="to" :min="minAge" :max="100"
                                               v-model="to"
                                               onkeypress="return isNumber(event)" style="width: 50px">
                                 </p>
@@ -107,8 +108,14 @@
             },
             countSelectedChildren: function () {
 
+            },
+            // вычисляем макс
+            minAge: function () {
+                return this.from
+            },
+            maxAge: function () {
+                return this.to
             }
-
         },
         data() {
             return {

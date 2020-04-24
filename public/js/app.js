@@ -1855,6 +1855,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   name: 'modal',
@@ -1871,6 +1872,13 @@ __webpack_require__.r(__webpack_exports__);
                     return this.select2inters.length;
                 },
                 countSelectedChildren: function countSelectedChildren() {
+                },
+                // вычисляем макс
+                minAge: function minAge() {
+                    return this.from;
+                },
+                maxAge: function maxAge() {
+                    return this.to;
                 }
             },
   data: function data() {
@@ -8395,6 +8403,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   name: 'modal',
@@ -8411,6 +8420,13 @@ __webpack_require__.r(__webpack_exports__);
                     return this.select2inters.length;
                 },
                 countSelectedChildren: function countSelectedChildren() {
+                },
+                // вычисляем макс
+                minAge: function minAge() {
+                    return this.from;
+                },
+                maxAge: function maxAge() {
+                    return this.to;
                 }
             },
   data: function data() {
@@ -56378,6 +56394,7 @@ var render = function() {
                                       name: "from",
                                       id: "from",
                                       min: "18",
+                                      max: _vm.maxAge,
                                       onkeypress: "return isNumber(event)"
                                   },
                                   domProps: {value: _vm.from},
@@ -56405,7 +56422,8 @@ var render = function() {
                                       type: "number",
                                       name: "to",
                                       id: "to",
-                                      min: "18",
+                                      min: _vm.minAge,
+                                      max: 100,
                                       onkeypress: "return isNumber(event)"
                                   },
                                   domProps: {value: _vm.to},
@@ -63989,6 +64007,7 @@ var render = function() {
                                       name: "from",
                                       id: "from",
                                       min: "18",
+                                      max: _vm.maxAge,
                                       onkeypress: "return isNumber(event)"
                                   },
                                   domProps: {value: _vm.from},
@@ -64016,7 +64035,8 @@ var render = function() {
                                       type: "number",
                                       name: "to",
                                       id: "to",
-                                      min: "18",
+                                      min: _vm.minAge,
+                                      max: 100,
                                       onkeypress: "return isNumber(event)"
                                   },
                                   domProps: {value: _vm.to},
