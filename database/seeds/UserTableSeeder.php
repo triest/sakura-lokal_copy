@@ -37,7 +37,8 @@ class UserTableSeeder extends Seeder
             $target = App\Target::select(['id'])->where('id', 5)->first();
             $target->save();
             $girl->target()->attach($target);
-            $girl->interest()->save(factory(App\Interest::class)->make());
+
+
             $user->girl()->save($girl);
 
 
