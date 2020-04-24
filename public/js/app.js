@@ -1937,16 +1937,18 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
       show: function show(input) {
-          if (input == "target") {
-              this.targets_show = !this.targets_show;
-          }
+          switch (input) {
+              case "target":
+                  this.targets_show = !this.targets_show;
+                  break;
 
-          if (input == "interes") {
-              this.interes_show = !this.interes_show;
-          }
+              case "interes":
+                  this.interes_show = !this.interes_show;
+                  break;
 
-          if (input == "children") {
-              this.children_show = !this.children_show;
+              case "children":
+                  this.children_show = !this.children_show;
+                  break;
           }
       }
   }
@@ -8485,16 +8487,18 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
       show: function show(input) {
-          if (input == "target") {
-              this.targets_show = !this.targets_show;
-          }
+          switch (input) {
+              case "target":
+                  this.targets_show = !this.targets_show;
+                  break;
 
-          if (input == "interes") {
-              this.interes_show = !this.interes_show;
-          }
+              case "interes":
+                  this.interes_show = !this.interes_show;
+                  break;
 
-          if (input == "children") {
-              this.children_show = !this.children_show;
+              case "children":
+                  this.children_show = !this.children_show;
+                  break;
           }
       }
   }

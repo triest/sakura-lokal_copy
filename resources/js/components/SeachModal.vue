@@ -174,14 +174,16 @@
 
             },
             show(input) {
-                if (input == "target") {
-                    this.targets_show = !this.targets_show;
-                }
-                if (input == "interes") {
-                    this.interes_show = !this.interes_show;
-                }
-                if (input == "children") {
-                    this.children_show = !this.children_show;
+                switch (input) {
+                    case "target":
+                        this.targets_show = !this.targets_show;
+                        break;
+                    case "interes":
+                        this.interes_show = !this.interes_show;
+                        break;
+                    case "children":
+                        this.children_show = !this.children_show;
+                        break;
                 }
             }
 

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/SeachModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SeachModal.vue" afterDir="false" />
     </list>
@@ -41,8 +42,8 @@
       <file leaf-file-name="SeachModal.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/SeachModal.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="116" column="30" selection-start-line="116" selection-start-column="30" selection-end-line="116" selection-end-column="30" />
+            <state relative-caret-position="346">
+              <caret line="187" column="16" selection-start-line="187" selection-start-column="16" selection-end-line="187" selection-end-column="16" />
               <folding>
                 <element signature="n#style#0;n#input#1;n#p#1;n#slot#0;n#div#0;n#div#0;n#div#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
@@ -726,14 +727,7 @@
       <workItem from="1587447878552" duration="16799000" />
       <workItem from="1587534999195" duration="21982000" />
       <workItem from="1587620997450" duration="22755000" />
-      <workItem from="1587708290221" duration="4269000" />
-    </task>
-    <task id="LOCAL-00137" summary="Fix check intervel">
-      <created>1586846603736</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
-      <option name="project" value="LOCAL" />
-      <updated>1586846603739</updated>
+      <workItem from="1587708290221" duration="4712000" />
     </task>
     <task id="LOCAL-00138" summary="Fix anket style for mobile">
       <created>1586942025321</created>
@@ -1071,7 +1065,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587714348654</updated>
     </task>
-    <option name="localTasksCounter" value="186" />
+    <task id="LOCAL-00186" summary="Add correct min and max age">
+      <created>1587715291396</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1587715291396</updated>
+    </task>
+    <option name="localTasksCounter" value="187" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1107,7 +1108,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2052317000" />
+    <option name="totallyTimeSpent" value="2052760000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1187,7 +1188,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/workbreaks" />
     </ignored-roots>
-    <MESSAGE value="Fix dialog. Count unreadedd not work" />
     <MESSAGE value="Add check wink" />
     <MESSAGE value="Fix li style" />
     <MESSAGE value="Fix private list" />
@@ -1212,7 +1212,8 @@
     <MESSAGE value="Fix seach by sex" />
     <MESSAGE value="Fix names and add icon to welcome page" />
     <MESSAGE value="Add PhoneController" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add PhoneController" />
+    <MESSAGE value="Add correct min and max age" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add correct min and max age" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1530,8 +1531,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/SeachModal.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="116" column="30" selection-start-line="116" selection-start-column="30" selection-end-line="116" selection-end-column="30" />
+        <state relative-caret-position="346">
+          <caret line="187" column="16" selection-start-line="187" selection-start-column="16" selection-end-line="187" selection-end-column="16" />
           <folding>
             <element signature="n#style#0;n#input#1;n#p#1;n#slot#0;n#div#0;n#div#0;n#div#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
