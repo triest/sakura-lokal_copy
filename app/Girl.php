@@ -196,9 +196,9 @@ class Girl extends Model
                 $last_login = $datediff->d." дня назад";
             } elseif ($datediff->d >= 7 && $datediff->d <= 13) {
                 $last_login = "неделю назад";
-            } elseif ($datediff->d > 13) {
+            } elseif ($datediff->d > 13 && $datediff->d < 21) {
                 $last_login = "две недели назад";
-            } elseif ($datediff->d > 21) {
+            } elseif ($datediff->d >= 21) {
                 $last_login = "три недели назад";
             }
         } elseif ($datediff->y == 0 && $datediff->m == 1) {
@@ -229,10 +229,11 @@ class Girl extends Model
         //return Cache::has('user-is-online-'.$this->id);
     }
 
-    public function newLike()
+    public function newLike($user = null)
     {
-
-        $user = Auth::user();
+        if ($user == null) {
+            $user = Auth::user();
+        }
 
         if ($user == null) {
             return false;
@@ -364,7 +365,7 @@ class Girl extends Model
         }
     }
 
-    public function sendMessage($text)
+    public function sendMessage($text, $who_girl = null)
     {
         $TargetUser = $this->user()->first();
         if (auth()->id() == null) {
@@ -377,8 +378,11 @@ class Girl extends Model
             'text' => $text,
         ]);
 
-
-        $user = Auth::user();
+        if ($who_girl == null) {
+            $user = Auth::user();
+        } else {
+            $user = $who_girl->user()->first();
+        }
 
         $id2 = $TargetUser->id;
         $dialog = Dialog::select(['id', 'my_id', 'other_id'])
