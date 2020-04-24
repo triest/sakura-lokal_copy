@@ -53,7 +53,6 @@ class SeachController extends Controller
             $girls = DB::table('girls');
             if (isset($Autchgirls) && $Autchgirls != null) {
                 $girls->where('city_id', '=', $Autchgirls->city_id);
-                //$girls->where('id', '<>', $Autchgirls->id);
             }
 
             $city = City::GetCurrentCity();
@@ -82,20 +81,20 @@ class SeachController extends Controller
         }
 
         $girls = DB::table('girls');
-        /*
-        $girls = $girls->leftJoin('girl_target', 'girls.id', '=',
-            'girl_target.girl_id');
-        $girls = $girls->leftJoin('girl_interess', 'girls.id', '=',
-            'girl_interess.girl_id');
-*/
         $targets = $seachSettings->target()->get();
-        foreach ($targets as $target) {
-            //      $girls->where('target_id', $target->id);
-        }
 
         $interest = $seachSettings->interest()->get();
-        foreach ($interest as $item) {
-            //        $girls->where('interest_id', $item->id);
+
+        if (!empty($interest)) {
+            $girls->leftJoin('girl_interess', 'girl_interess.girl_id', '=',
+                'girls.id');
+            // надо плдучить массив id штеукуыщцж
+            $interest_array = array();
+            foreach ($interest as $item) {
+                array_push($interest_array, $item->id);
+            }
+
+            $girls->whereIn('girl_interess.interest_id', $interest_array);
         }
 
         if ($seachSettings->children != null) {
@@ -125,11 +124,11 @@ class SeachController extends Controller
         }
 
         if (isset($Autchgirls) && $Autchgirls != null) {
-            $girls->where('id', '!=', $Autchgirls->id);
+            $girls->where('girls.id', '!=', $Autchgirls->id);
         }
 
-        $count = $girls->count();
-        $num_pages = intval($count / $this->limit);
+        //    $count = $girls->count();
+        //  $num_pages = intval($count / $this->limit);
 
         $girls->select('girls.*')->limit($this->limit);
 
@@ -147,9 +146,9 @@ class SeachController extends Controller
         $girls = $girls->get();
 
         return response()->json([
-            'ankets'    => $girls,
-            'count'     => $count,
-            'num_pages' => $num_pages,
+            'ankets' => $girls,
+            //    'count'     => $count,
+            //  'num_pages' => $num_pages,
         ]);
     }
 
