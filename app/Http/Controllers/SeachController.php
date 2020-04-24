@@ -99,6 +99,18 @@ class SeachController extends Controller
 
         $targets = $seachSettings->target()->get();
 
+        if ($targets->isNotEmpty()) {
+            $girls->leftJoin('girl_target', 'girl_target.girl_id', '=',
+                'girls.id');
+            // надо плдучить массив id штеукуыщцж
+            $interest_array = array();
+            foreach ($targets as $item) {
+                array_push($interest_array, $item->id);
+            }
+
+            $girls->whereIn('girl_target.target_id', $interest_array);
+        }
+
 
         if ($seachSettings->children != null) {
             $girls->where('children_id', '=', $seachSettings->children);

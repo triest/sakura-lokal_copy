@@ -20,8 +20,8 @@
       <file leaf-file-name="SeachController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SeachController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="86" column="24" selection-start-line="86" selection-start-column="24" selection-end-line="86" selection-end-column="24" />
+            <state relative-caret-position="459">
+              <caret line="108" column="13" lean-forward="true" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -614,21 +614,7 @@
       <workItem from="1587447878552" duration="16799000" />
       <workItem from="1587534999195" duration="21982000" />
       <workItem from="1587620997450" duration="22755000" />
-      <workItem from="1587708290221" duration="18306000" />
-    </task>
-    <task id="LOCAL-00143" summary="Movie SAeach Modal">
-      <created>1586952088773</created>
-      <option name="number" value="00143" />
-      <option name="presentableId" value="LOCAL-00143" />
-      <option name="project" value="LOCAL" />
-      <updated>1586952088773</updated>
-    </task>
-    <task id="LOCAL-00144" summary="Refactoring">
-      <created>1586952199088</created>
-      <option name="number" value="00144" />
-      <option name="presentableId" value="LOCAL-00144" />
-      <option name="project" value="LOCAL" />
-      <updated>1586952199088</updated>
+      <workItem from="1587708290221" duration="19636000" />
     </task>
     <task id="LOCAL-00145" summary="Fix seach modal.">
       <created>1586953021684</created>
@@ -959,7 +945,21 @@
       <option name="project" value="LOCAL" />
       <updated>1587726686983</updated>
     </task>
-    <option name="localTasksCounter" value="192" />
+    <task id="LOCAL-00192" summary="Add seach by interess">
+      <created>1587733126376</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
+      <option name="project" value="LOCAL" />
+      <updated>1587733126376</updated>
+    </task>
+    <task id="LOCAL-00193" summary="Work seach by interess">
+      <created>1587733933182</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
+      <option name="project" value="LOCAL" />
+      <updated>1587733933182</updated>
+    </task>
+    <option name="localTasksCounter" value="194" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -995,7 +995,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2066354000" />
+    <option name="totallyTimeSpent" value="2067684000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1075,8 +1075,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/workbreaks" />
     </ignored-roots>
-    <MESSAGE value="Fix interess" />
-    <MESSAGE value="Fix aperence" />
     <MESSAGE value="Fix like carusel" />
     <MESSAGE value="Fix title" />
     <MESSAGE value="Good desctop and phone" />
@@ -1100,7 +1098,9 @@
     <MESSAGE value="Fix seed nd add default vulue for send message" />
     <MESSAGE value="Fix sebd message/ Add dedault value for user" />
     <MESSAGE value="Add check like from anket page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add check like from anket page" />
+    <MESSAGE value="Add seach by interess" />
+    <MESSAGE value="Work seach by interess" />
+    <option name="LAST_COMMIT_MESSAGE" value="Work seach by interess" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1420,8 +1420,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SeachController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="86" column="24" selection-start-line="86" selection-start-column="24" selection-end-line="86" selection-end-column="24" />
+        <state relative-caret-position="459">
+          <caret line="108" column="13" lean-forward="true" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
         </state>
       </provider>
     </entry>
