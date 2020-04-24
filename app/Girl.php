@@ -368,21 +368,23 @@ class Girl extends Model
     public function sendMessage($text, $who_girl = null)
     {
         $TargetUser = $this->user()->first();
-        if (auth()->id() == null) {
-            return null;
-        }
 
-        $message = Message::create([
-            'from' => auth()->id(),
-            'to'   => $TargetUser->id,
-            'text' => $text,
-        ]);
 
         if ($who_girl == null) {
             $user = Auth::user();
         } else {
             $user = $who_girl->user()->first();
         }
+
+        if ($user == null || $TargetUser == null) {
+            return false;
+        }
+
+        $message = Message::create([
+            'from' => $user->id,
+            'to'   => $TargetUser->id,
+            'text' => $text,
+        ]);
 
         $id2 = $TargetUser->id;
         $dialog = Dialog::select(['id', 'my_id', 'other_id'])
