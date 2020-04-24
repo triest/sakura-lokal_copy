@@ -70,10 +70,20 @@
                                     </label>
                                     {{item.name}}
                                 </div>
+                                <br>
+                                <label>Отношения:</label>
+
+                                <button class="btn-default" v-on:click='show("relations")'>выбрать</button>
+                                <div v-if="relation_show" v-for="item in children">
+                                    <label class="switch">
+                                        <input type="radio" :value="item.id" v-model="select2relation"/>
+                                        <span class="slider round"></span>
+                                    </label>
+                                    {{item.name}}
+                                </div>
+
                             </slot>
                         </div>
-
-
                         <slot name="footer">
                             <button class="btn btn-primary" v-on:click="saveChange()">
                                 Сохранить
@@ -82,9 +92,7 @@
                                 Закрыть
                             </button>
                         </slot>
-
                     </div>
-
                 </div>
             </div>
         </transition>
@@ -124,15 +132,18 @@
                 to: "18",
                 targets: "",
                 interest: " ",
+                relation: "",
                 meet: "",
                 children: [],
                 select2targets: [],
                 select2inters: [],
                 select2children: null,
+                select2relation: [],
                 seachSettings: null,
                 targets_show: false,
                 interes_show: false,
                 children_show: false,
+                relation_show: true,
             }
         },
         methods: {
@@ -149,7 +160,8 @@
                     to: this.to,
                     interests: this.select2inters,
                     children: this.select2children,
-                    targets: this.select2targets
+                    targets: this.select2targets,
+                    relation: this.select2relation,
                 }).then((response) => {
                     //this.getSettings();
                     this.$emit('closeSeachModal')
@@ -170,10 +182,12 @@
                         this.to = this.seachSettings.age_to;
                         this.select2children = this.seachSettings.children;
                         this.meet = this.seachSettings.meet;
+                        this.relation = this.seachSettings.relations;
                     })
 
             },
             show(input) {
+                console.log(input);
                 switch (input) {
                     case "target":
                         this.targets_show = !this.targets_show;
@@ -183,6 +197,10 @@
                         break;
                     case "children":
                         this.children_show = !this.children_show;
+                        break;
+
+                    case "relations":
+                        this.relation_show = !this.relation_show;
                         break;
                 }
             }

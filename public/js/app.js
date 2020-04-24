@@ -1856,6 +1856,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   name: 'modal',
@@ -1888,15 +1896,18 @@ __webpack_require__.r(__webpack_exports__);
       to: "18",
       targets: "",
       interest: " ",
+        relation: "",
       meet: "",
       children: [],
       select2targets: [],
       select2inters: [],
       select2children: null,
+        select2relation: [],
         seachSettings: null,
         targets_show: false,
         interes_show: false,
-        children_show: false
+        children_show: false,
+        relation_show: true
     };
   },
   methods: {
@@ -1913,7 +1924,8 @@ __webpack_require__.r(__webpack_exports__);
         to: this.to,
         interests: this.select2inters,
         children: this.select2children,
-        targets: this.select2targets
+          targets: this.select2targets,
+          relation: this.select2relation
       }).then(function (response) {
         //this.getSettings();
         _this.$emit('closeSeachModal');
@@ -1934,9 +1946,12 @@ __webpack_require__.r(__webpack_exports__);
         _this2.to = _this2.seachSettings.age_to;
         _this2.select2children = _this2.seachSettings.children;
         _this2.meet = _this2.seachSettings.meet;
+          _this2.relation = _this2.seachSettings.relations;
       });
     },
       show: function show(input) {
+          console.log(input);
+
           switch (input) {
               case "target":
                   this.targets_show = !this.targets_show;
@@ -1948,6 +1963,10 @@ __webpack_require__.r(__webpack_exports__);
 
               case "children":
                   this.children_show = !this.children_show;
+                  break;
+
+              case "relations":
+                  this.relation_show = !this.relation_show;
                   break;
           }
       }
@@ -4968,7 +4987,8 @@ __webpack_require__.r(__webpack_exports__);
             }
         });
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/anket/myAnket.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************!*\
@@ -5522,6 +5542,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -8487,6 +8509,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   name: 'modal',
@@ -8519,15 +8549,18 @@ __webpack_require__.r(__webpack_exports__);
       to: "18",
       targets: "",
       interest: " ",
+        relation: "",
       meet: "",
       children: [],
       select2targets: [],
       select2inters: [],
       select2children: null,
+        select2relation: [],
         seachSettings: null,
         targets_show: false,
         interes_show: false,
-        children_show: false
+        children_show: false,
+        relation_show: true
     };
   },
   methods: {
@@ -8544,7 +8577,8 @@ __webpack_require__.r(__webpack_exports__);
         to: this.to,
         interests: this.select2inters,
         children: this.select2children,
-        targets: this.select2targets
+          targets: this.select2targets,
+          relation: this.select2relation
       }).then(function (response) {
         //this.getSettings();
         _this.$emit('closeSeachModal');
@@ -8565,9 +8599,12 @@ __webpack_require__.r(__webpack_exports__);
         _this2.to = _this2.seachSettings.age_to;
         _this2.select2children = _this2.seachSettings.children;
         _this2.meet = _this2.seachSettings.meet;
+          _this2.relation = _this2.seachSettings.relations;
       });
     },
       show: function show(input) {
+          console.log(input);
+
           switch (input) {
               case "target":
                   this.targets_show = !this.targets_show;
@@ -8579,6 +8616,10 @@ __webpack_require__.r(__webpack_exports__);
 
               case "children":
                   this.children_show = !this.children_show;
+                  break;
+
+              case "relations":
+                  this.relation_show = !this.relation_show;
                   break;
           }
       }
@@ -56758,15 +56799,71 @@ var render = function() {
                                       }
                                     }
                                   }),
-                                  _vm._v(" "),
-                                  _c("span", { staticClass: "slider round" })
+                                    _vm._v(" "),
+                                    _c("span", {staticClass: "slider round"})
                                 ]),
-                                _vm._v(
-                                    "\n                                " +
-                                    _vm._s(item.name) +
-                                    "\n                            "
-                                )
-                              ])
+                                      _vm._v(
+                                          "\n                                " +
+                                          _vm._s(item.name) +
+                                          "\n                            "
+                                      )
+                                  ])
+                                  : _vm._e()
+                          }),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("label", [_vm._v("Отношения:")]),
+                          _vm._v(" "),
+                          _c(
+                              "button",
+                              {
+                                  staticClass: "btn-default",
+                                  on: {
+                                      click: function ($event) {
+                                          return _vm.show("relations")
+                                      }
+                                  }
+                              },
+                              [_vm._v("выбрать")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.children, function (item) {
+                              return _vm.relation_show
+                                  ? _c("div", [
+                                      _c("label", {staticClass: "switch"}, [
+                                          _c("input", {
+                                              directives: [
+                                                  {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value: _vm.select2relation,
+                                                      expression: "select2relation"
+                                                  }
+                                              ],
+                                              attrs: {type: "radio"},
+                                              domProps: {
+                                                  value: item.id,
+                                                  checked: _vm._q(
+                                                      _vm.select2relation,
+                                                      item.id
+                                                  )
+                                              },
+                                              on: {
+                                                  change: function ($event) {
+                                                      _vm.select2relation = item.id
+                                                  }
+                                              }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("span", { staticClass: "slider round" })
+                                      ]),
+                                      _vm._v(
+                                          "\n                                " +
+                                          _vm._s(item.name) +
+                                          "\n                            "
+                                      )
+                                  ])
                                   : _vm._e()
                           })
                       ])
@@ -60591,58 +60688,69 @@ var render = function() {
         {staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-9 box-shadow"},
       [
         _c("div", { staticClass: "cell" }, [
-          _c(
-            "div",
-            { staticClass: "cell-overflow" },
-            [
-              _c("b", [
-                _vm._v(
-                  " " + _vm._s(_vm.item.name) + ", " + _vm._s(_vm.item.age)
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [_c("small", [_vm._v(_vm._s(_vm.city.name))])]),
-              _vm._v(" "),
-              _vm.online == "null"
-                ? _c("p", [
-                    _vm._v(
-                      " " + _vm._s(_vm.item.last_login) + "\n                  "
+            _c("div", {staticClass: "cell-overflow"}, [
+                _c("b", [
+                    _vm._v(" " + _vm._s(_vm.item.name) + ", " + _vm._s(_vm.item.age))
+                ]),
+                _vm._v(" "),
+                _vm.city != null
+                    ? _c("p", [_c("small", [_vm._v(_vm._s(_vm.city.name))])])
+                    : _vm._e(),
+                _vm._v(" "),
+                _vm.online == "null"
+                    ? _c("p", [
+                        _vm._v(
+                            " " + _vm._s(_vm.item.last_login) + "\n                  "
+                        )
+                    ])
+                    : _c("p", [
+                        _vm._v(
+                            "\n                      " +
+                            _vm._s(_vm.lastLogin) +
+                            "\n                  "
+                        )
+                    ]),
+                _vm._v(" "),
+                _vm.targets.length
+                    ? _c(
+                    "div",
+                    [
+                        _c("b", [_vm._v("Цель знакомства")]),
+                        _vm._v(" "),
+                        _vm._l(_vm.targets, function (item) {
+                            return _c("div", [
+                                _vm._v(
+                                    "\n                          " +
+                                    _vm._s(item.name) +
+                                    ",\n                      "
+                                )
+                            ])
+                        })
+                    ],
+                    2
                     )
-                  ])
-                : _c("p", [
-                    _vm._v(
-                      "\n                      " +
-                        _vm._s(_vm.lastLogin) +
-                        "\n                  "
+                    : _vm._e(),
+                _vm._v(" "),
+                _vm.interets.length
+                    ? _c(
+                    "div",
+                    [
+                        _c("b", [_vm._v("Интересы")]),
+                        _vm._v(" "),
+                        _vm._l(_vm.interets, function (item) {
+                            return _c("div", [
+                                _vm._v(
+                                    "\n                          " +
+                                    _vm._s(item.name) +
+                                    ",\n                      "
+                                )
+                            ])
+                        })
+                    ],
+                    2
                     )
-                  ]),
-              _vm._v(" "),
-              _c("b", [_vm._v("Цель знакомства")]),
-              _vm._v(" "),
-              _vm._l(_vm.targets, function(item) {
-                return _c("div", [
-                  _vm._v(
-                    "\n                      " +
-                      _vm._s(item.name) +
-                      ",\n                  "
-                  )
-                ])
-              }),
-              _vm._v(" "),
-              _c("b", [_vm._v("Интересы")]),
-              _vm._v(" "),
-              _vm._l(_vm.interets, function(item) {
-                return _c("div", [
-                  _vm._v(
-                    "\n                      " +
-                      _vm._s(item.name) +
-                      ",\n                  "
-                  )
-                ])
-              })
-            ],
-            2
-          )
+                    : _vm._e()
+            ])
         ])
       ]
     )
@@ -64433,6 +64541,62 @@ var render = function() {
                                     "\n                            "
                                 )
                               ])
+                                  : _vm._e()
+                          }),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("label", [_vm._v("Отношения:")]),
+                          _vm._v(" "),
+                          _c(
+                              "button",
+                              {
+                                  staticClass: "btn-default",
+                                  on: {
+                                      click: function ($event) {
+                                          return _vm.show("relations")
+                                      }
+                                  }
+                              },
+                              [_vm._v("выбрать")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.children, function (item) {
+                              return _vm.relation_show
+                                  ? _c("div", [
+                                      _c("label", {staticClass: "switch"}, [
+                                          _c("input", {
+                                              directives: [
+                                                  {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value: _vm.select2relation,
+                                                      expression: "select2relation"
+                                                  }
+                                              ],
+                                              attrs: {type: "radio"},
+                                              domProps: {
+                                                  value: item.id,
+                                                  checked: _vm._q(
+                                                      _vm.select2relation,
+                                                      item.id
+                                                  )
+                                              },
+                                              on: {
+                                                  change: function ($event) {
+                                                      _vm.select2relation = item.id
+                                                  }
+                                              }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("span", {staticClass: "slider round"})
+                                      ]),
+                                      _vm._v(
+                                          "\n                                " +
+                                          _vm._s(item.name) +
+                                          "\n                            "
+                                      )
+                                  ])
                                   : _vm._e()
                           })
                       ])
@@ -78755,7 +78919,8 @@ __webpack_require__.r(__webpack_exports__);
         });
 
 
-        /***/ }),
+        /***/
+    }),
 
 /***/ "./resources/js/components/anket/myAnket.vue":
 /*!***************************************************!*\
