@@ -6017,6 +6017,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     contact: {
@@ -61141,13 +61143,24 @@ var render = function() {
                 _c("div", { staticClass: "text2" }, [
                   message.to != _vm.contact.id
                     ? _c("div", { staticClass: "avatar" }, [
-                        _c("img", {
-                          attrs: {
-                            width: "30",
-                            height: "30",
-                            src: "images/upload/" + _vm.contact.main_image
-                          }
-                        })
+                          _c(
+                              "a",
+                              {
+                                  attrs: {
+                                      href: /anket/ + _vm.contact.anket_id,
+                                      target: "_blank"
+                                  }
+                              },
+                              [
+                                  _c("img", {
+                                      attrs: {
+                                          width: "30",
+                                          height: "30",
+                                          src: "images/upload/" + _vm.contact.main_image
+                                      }
+                                  })
+                              ]
+                          )
                       ])
                     : _vm._e()
                 ]),
