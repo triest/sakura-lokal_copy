@@ -74,7 +74,7 @@
                                 <label>Отношения:</label>
 
                                 <button class="btn-default" v-on:click='show("relations")'>выбрать</button>
-                                <div v-if="relation_show" v-for="item in children">
+                                <div v-if="relation_show" v-for="item in relation">
                                     <label class="switch">
                                         <input type="radio" :value="item.id" v-model="select2relation"/>
                                         <span class="slider round"></span>
@@ -143,7 +143,7 @@
                 targets_show: false,
                 interes_show: false,
                 children_show: false,
-                relation_show: true,
+                relation_show: false,
             }
         },
         methods: {

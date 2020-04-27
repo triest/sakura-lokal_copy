@@ -1907,7 +1907,7 @@ __webpack_require__.r(__webpack_exports__);
         targets_show: false,
         interes_show: false,
         children_show: false,
-        relation_show: true
+        relation_show: false
     };
   },
   methods: {
@@ -8560,7 +8560,7 @@ __webpack_require__.r(__webpack_exports__);
         targets_show: false,
         interes_show: false,
         children_show: false,
-        relation_show: true
+        relation_show: false
     };
   },
   methods: {
@@ -56828,7 +56828,7 @@ var render = function() {
                               [_vm._v("выбрать")]
                           ),
                           _vm._v(" "),
-                          _vm._l(_vm.children, function (item) {
+                          _vm._l(_vm.relation, function (item) {
                               return _vm.relation_show
                                   ? _c("div", [
                                       _c("label", {staticClass: "switch"}, [
@@ -56856,7 +56856,7 @@ var render = function() {
                                               }
                                           }),
                                           _vm._v(" "),
-                                          _c("span", { staticClass: "slider round" })
+                                          _c("span", {staticClass: "slider round"})
                                       ]),
                                       _vm._v(
                                           "\n                                " +
@@ -64561,7 +64561,7 @@ var render = function() {
                               [_vm._v("выбрать")]
                           ),
                           _vm._v(" "),
-                          _vm._l(_vm.children, function (item) {
+                          _vm._l(_vm.relation, function (item) {
                               return _vm.relation_show
                                   ? _c("div", [
                                       _c("label", {staticClass: "switch"}, [

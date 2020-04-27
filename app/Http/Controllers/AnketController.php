@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Bilders\WinlBilder;
+use App\City;
 use App\Dialog;
 use App\Events\NewMessage;
 use App\GiftAct;
@@ -285,8 +286,7 @@ class AnketController extends Controller
 
 
         if ($girl->city_id != null) {
-            $city = DB::table('cities')->where('id_city', '=', $girl->city_id)
-                ->first();
+            $city = City::get($girl->city_id);
         } else {
             $city = null;
         }
@@ -340,9 +340,7 @@ class AnketController extends Controller
             'to'          => 'required|numeric|min:18',
             'status'      => 'min:5',
         ]);
-        if (Auth::guest()) {
-            return redirect('/login');
-        }
+
         $user = Auth::user();
         if ($user == null) {
             return redirect('/login');
@@ -366,16 +364,16 @@ class AnketController extends Controller
         if ($request->has('male')) {
             $sex = 'male';
         }
-
-        if ($request->has('city')) {
-            if ($request->city != "-") {
-                $girl->city_id = $request->city;
-            }
-        }
-
+        /*
+                if ($request->has('city')) {
+                    if ($request->city != "-") {
+                        $girl->city_id = $request->city;
+                    }
+                }
+        */
         $girl->age = $request->age;
         $girl->sex = $request->sex;
-        $girl->met = $request->met;
+        $girl->meet = $request->met;
         $girl->description = $request->description;
 
         if (Input::hasFile('file')) {
@@ -436,9 +434,7 @@ class AnketController extends Controller
             }
         }
 
-        if ($request->has('city')) {
-            $girl->city_id = $request->city;
-        }
+
         $girl->save();
 
         $girl->relation_id = $request->realtion;
@@ -712,12 +708,6 @@ class AnketController extends Controller
             $targets = null;
         }
 
-        if ($girl->city_id != null) {
-            $city = DB::table('cities')->where('id_city', '=', $girl->city_id)
-                ->first();
-        } else {
-            $city = null;
-        }
 
         //интересы
         $interes = $girl->interest()->get();
@@ -765,16 +755,22 @@ class AnketController extends Controller
 
         //время псоледнего захода
 
-
         //авв сшен
         if ($girl->city_id != null) {
-            $city = $girl->getCity();
+            $city = $girl->city();
 
             $region = null;
         } else {
             $city = null;
             $region = null;
         }
+
+        $views = $girl->views_all;
+        $views = $views + 1;
+        $girl->views_all = $views;
+
+        $girl->save();
+
         $aperance = $girl->aperance()->first();
         if (empty ($aperance)) {
             $aperance = null;
@@ -801,7 +797,7 @@ class AnketController extends Controller
 
         $url = $request->header('referer');
 
-        return view('anket.view')->with([
+        return view('anket.myAnket')->with([
             'girl'           => $girl,
             'images'         => $images,
             'privatephotos'  => $privatephoto,

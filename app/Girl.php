@@ -134,12 +134,6 @@ class Girl extends Model
     }
 
 
-    public function getCity()
-    {
-        return $city = DB::table('cities')->where('id_city', $this->city_id)
-            ->first();
-    }
-
     public function getRegion($city)
     {
         $region = DB::table('regions')
