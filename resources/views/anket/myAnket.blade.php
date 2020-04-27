@@ -21,7 +21,7 @@
                 ,
                 {{$girl->city()->first()->name}}
             @endif
-            <button class="btn btn-danger" href="{{route("girlsEditAuchAnket")}}">Редактировать</button>
+            <a class="btn btn-danger" href="{{route("girlsEditAuchAnket")}}">Редактировать</a>
             @if(!$girl->isOnline())
                 <small>
                     @if($girl->lastLoginFormat()!="")

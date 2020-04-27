@@ -32,9 +32,8 @@
         <div class="control-group2" ng-class="{true: 'error'}[submitted && form.pas.$invalid]">
             <div class="form-group">
                 <label for="phone">Ваш статус:</label>
-                <input type="text" class="form-control" id="status" name="status"
-                       required></input>
-
+                <textarea class="form-control" rows="2" name="status"
+                          required>{{$girl->status}} </textarea>
             </div>
         </div>
 

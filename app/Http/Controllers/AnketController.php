@@ -375,6 +375,8 @@ class AnketController extends Controller
         $girl->sex = $request->sex;
         $girl->meet = $request->met;
         $girl->description = $request->description;
+        $girl->status = $request->status;
+
 
         if (Input::hasFile('file')) {
             $old_image_name = $girl['main_image'];
