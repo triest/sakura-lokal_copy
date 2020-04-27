@@ -6015,6 +6015,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     contact: {
@@ -13137,7 +13139,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".feed[data-v-26736974] {\n  background: #f0f0f0;\n  height: 100%;\n  max-height: 470px;\n  overflow: scroll;\n  overflow-x: hidden;\n  max-width: 620px;\n}\n.feed ul[data-v-26736974] {\n  list-style-type: none;\n  padding: 5px;\n}\n.feed ul li.message[data-v-26736974] {\n  margin: 10px 0;\n  width: 100%;\n}\n.feed ul li.message .text[data-v-26736974] {\n  max-width: 100px;\n  border-radius: 5px;\n  padding: 12px;\n  display: inline-block;\n}\n.feed ul li.message.received[data-v-26736974] {\n  text-align: right;\n}\n.feed ul li.message.received .text[data-v-26736974] {\n  background: #b2b2b2;\n}\n.feed ul li.message.sent[data-v-26736974] {\n  text-align: left;\n}\n.feed ul li.message.sent .text[data-v-26736974] {\n  background: #81c4f9;\n}\n.avatar[data-v-26736974] {\n  flex: 1;\n  display: flex;\n}\n.avatar img[data-v-26736974] {\n  width: 30px;\n  height: 30px;\n  border-radius: 70%;\n  margin-right: 10px;\n}", ""]);
+exports.push([module.i, ".feed[data-v-26736974] {\n  background: #f0f0f0;\n  height: 100%;\n  max-height: 470px;\n  overflow: scroll;\n  overflow-x: hidden;\n  max-width: 620px;\n}\n.feed ul[data-v-26736974] {\n  list-style-type: none;\n  padding: 5px;\n}\n.feed ul li.message[data-v-26736974] {\n  margin: 10px 0;\n  width: 100%;\n}\n.feed ul li.message .text[data-v-26736974] {\n  max-width: 100px;\n  border-radius: 5px;\n  padding: 12px;\n  display: inline-block;\n}\n.feed ul li.message .text2[data-v-26736974] {\n  max-width: 100px;\n  border-radius: 5px;\n  padding: 12px;\n  display: inline-block;\n}\n.feed ul li.message.received[data-v-26736974] {\n  text-align: right;\n}\n.feed ul li.message.received .text[data-v-26736974] {\n  background: #b2b2b2;\n}\n.feed ul li.message.sent[data-v-26736974] {\n  text-align: left;\n}\n.feed ul li.message.sent .text[data-v-26736974] {\n  background: #81c4f9;\n}\n.avatar[data-v-26736974] {\n  flex: 1;\n  display: flex;\n}\n.avatar img[data-v-26736974] {\n  width: 30px;\n  height: 30px;\n  border-radius: 70%;\n  margin-right: 10px;\n}", ""]);
 
 // exports
 
@@ -61136,7 +61138,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "text" }, [
+                _c("div", { staticClass: "text2" }, [
                   message.to != _vm.contact.id
                     ? _c("div", { staticClass: "avatar" }, [
                         _c("img", {
@@ -61147,7 +61149,10 @@ var render = function() {
                           }
                         })
                       ])
-                    : _vm._e(),
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "text" }, [
                   _vm._v(
                     "\n                " +
                       _vm._s(message.text) +

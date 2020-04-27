@@ -1,15 +1,17 @@
 <template>
     <div class="feed" ref="feed">
         <ul v-if="contact">
-            <li v-for="message in messages" :class="`message${message.to == contact.id ? ' sent' : ' received'}`" :key="message.id">
+            <li v-for="message in messages" :class="`message${message.to == contact.id ? ' sent' : ' received'}`"
+                :key="message.id">
                 <div class="date">
                     {{message.created_at}}
                 </div>
-
-                <div class="text">
+                <div class="text2">
                     <div class="avatar" v-if="message.to != contact.id ">
                         <img width="30" height="30" :src="'images/upload/'+contact.main_image">
                     </div>
+                </div>
+                <div class="text">
                     {{ message.text }}
                 </div>
             </li>
@@ -47,60 +49,67 @@
 </script>
 
 <style lang="scss" scoped>
-.feed {
-    background: #f0f0f0;
-    height: 100%;
-    max-height: 470px;
-    overflow: scroll;
-    overflow-x: hidden;
-    max-width: 620px;
+    .feed {
+        background: #f0f0f0;
+        height: 100%;
+        max-height: 470px;
+        overflow: scroll;
+        overflow-x: hidden;
+        max-width: 620px;
 
-    ul {
-        list-style-type: none;
-        padding: 5px;
+        ul {
+            list-style-type: none;
+            padding: 5px;
 
-        li {
-            &.message {
-                margin: 10px 0;
-                width: 100%;
-
-                .text {
-                    max-width: 100px;
-                    border-radius: 5px;
-                    padding: 12px;
-                    display: inline-block;
-                }
-
-                &.received {
-                    text-align: right;
+            li {
+                &.message {
+                    margin: 10px 0;
+                    width: 100%;
 
                     .text {
-                        background: #b2b2b2;
+                        max-width: 100px;
+                        border-radius: 5px;
+                        padding: 12px;
+                        display: inline-block;
                     }
-                }
 
-                &.sent {
-                    text-align: left;
+                    .text2 {
+                        max-width: 100px;
+                        border-radius: 5px;
+                        padding: 12px;
+                        display: inline-block;
+                    }
 
-                    .text {
-                        background: #81c4f9;
+                    &.received {
+                        text-align: right;
+
+                        .text {
+                            background: #b2b2b2;
+                        }
+                    }
+
+                    &.sent {
+                        text-align: left;
+
+                        .text {
+                            background: #81c4f9;
+                        }
                     }
                 }
             }
         }
     }
-}
 
-.avatar {
-    flex: 1;
-    display: flex;
+    .avatar {
+        flex: 1;
+        display: flex;
 
-    img {
-        width: 30px;
-        height: 30px;
-        border-radius: 70%;
-        margin-right: 10px;
+        img {
+            width: 30px;
+            height: 30px;
+            border-radius: 70%;
+            margin-right: 10px;
+        }
     }
-}
 </style>
 
