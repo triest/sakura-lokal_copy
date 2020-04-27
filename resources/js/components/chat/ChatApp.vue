@@ -40,7 +40,7 @@
                 });
         },
         methods: {
-            startConversationWith(contact) {
+            startConversationWith(contact, image) {
                 console.log("start conversation");
                 //     this.updateUnreadCount(contact, true);
 

@@ -285,11 +285,6 @@ class AnketController extends Controller
         }
 
 
-        if ($girl->city_id != null) {
-            $city = City::get($girl->city_id);
-        } else {
-            $city = null;
-        }
 
         //внешность
         $selected_aperance = Aperance::select('id', 'name')
@@ -371,10 +366,8 @@ class AnketController extends Controller
                     }
                 }
         */
-        $girl->age = $request->age;
         $girl->sex = $request->sex;
         $girl->meet = $request->met;
-        $girl->description = $request->description;
         $girl->status = $request->status;
 
 

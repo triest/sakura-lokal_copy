@@ -137,19 +137,10 @@
             @endforeach
         @endif
 
-        <div id="country">
-            <label>Город</label>
-            <input name="cityname" id="cityname" oninput="findCity2();" type="text"/>
-        </div>
-
-        <label>Город:
-            <select id="city" class="city" style="width: 200px" name="city">
-                <option value="-">-</option>
-            </select>
-        </label>
 
 
-        <!--  <div id="selectCityApp">
+
+    <!--  <div id="selectCityApp">
               <selectcity></selectcity>
           </div>
           -->
@@ -261,8 +252,8 @@
                 )
             });
         </script>
-        <button type="submit" class="btn btn-default">Сохранить изминения</button>
-        <a class="btn btn-primary" href="{{route('myAnket')}}" role="link"
+        <button type="submit" class="btn  btn-primary">Сохранить изминения</button>
+        <a class="btn btn-default" href="{{route('myAnket')}}" role="link"
            onclick=" relocate_home()">Отменить</a>
     </form>
 @endsection

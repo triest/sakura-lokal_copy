@@ -35,7 +35,8 @@ class ContactsController extends Controller
             $other = $dialog->other_id;
             $user = DB::table('users')
                 ->join('girls', 'girls.user_id', '=', 'users.id')
-                ->select('users.id', 'users.name', 'girls.main_image')
+                ->select('users.id', 'users.name', 'girls.main_image',
+                    'girls.id as anket_id')
                 ->where('users.id', $other)->first();
             // $user=DB::table('users')->join('gitls')
             array_push($contacts, $user);

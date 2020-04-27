@@ -7,6 +7,9 @@
                 </div>
 
                 <div class="text">
+                    <div class="avatar" v-if="message.to != contact.id ">
+                        <img width="30" height="30" :src="'images/upload/'+contact.main_image">
+                    </div>
                     {{ message.text }}
                 </div>
             </li>
@@ -85,6 +88,18 @@
                 }
             }
         }
+    }
+}
+
+.avatar {
+    flex: 1;
+    display: flex;
+
+    img {
+        width: 30px;
+        height: 30px;
+        border-radius: 70%;
+        margin-right: 10px;
     }
 }
 </style>
