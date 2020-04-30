@@ -51,7 +51,10 @@ class Girl extends Model
                 'who_id',
                 'target_id', 'status', 'readed')
                 ->where('target_id', $girl->user_id)
-                ->where('who_id', $auth->id)->first();
+                ->where('who_id', $auth->id)
+                ->where('status', 'confirmed')
+                ->first();
+
             if ($myrequest != null && $myrequest->status == "confirmed") {
                 $anket = Girl::select([
                     'name',

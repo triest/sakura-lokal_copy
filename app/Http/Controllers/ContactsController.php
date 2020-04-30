@@ -164,10 +164,11 @@ class ContactsController extends Controller
 
         $user = Auth::user();
         //  $request = collect(DB::select('select * from requwest where target_id=?', [$user->id]));
-        $request = MyRequwest::select('id',
+        $request = MyRequwest::select('requwest.id',
             'who_id',
-            'target_id')
+            'target_id', 'main_image')
             ->where('target_id', $user->id)
+            ->leftJoin('girls', 'girls.user_id', '=', 'who_id')
             ->where('readed', 0)
             ->get();
 
