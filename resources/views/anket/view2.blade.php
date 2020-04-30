@@ -10,12 +10,11 @@
                 @if(Auth::guest())
 
                 @elseif(Auth::user()->anketisExsis()!=null)
-                    <br>   <br>   <br>   <br>
-                    <like :item_id="{{$girl->id}}"></like>
+                    <like :item="{{$girl}}"></like>
                 @endif
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-9 box-shadow">
+        <div class="col-lg-7 col-md-6 col-sm-6 col-xs-9 box-shadow">
             <b>  {{$girl->name}}</b>, {{$girl->age}}
             @if(null!==$girl->city()->first())
                 ,
@@ -39,18 +38,21 @@
 
             @endif
             @if ($girl->status!=null)
-                <br>
-                {{$girl->status}}
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {{$girl->status}}
+                    </div>
+                </div>
             @endif
             @if (Auth::guest())
             @else
                 @if(true)
-                    <br>
+
                     <div class="card-body" id="app7">
                         <privatepanel :id="{{$girl->id}}" :user_id="{{$girl->user_id}}"></privatepanel>
                     </div>
                 @else
-                    <br>
+
                     <a class="btn btn-primary" href="{{route('girlsEditAuchAnket')}}"> Редактировать анкету</a>
                 @endif
                 @if(auth()->user()->get_id()!=$girl->user_id)

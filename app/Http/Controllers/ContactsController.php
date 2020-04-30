@@ -22,10 +22,7 @@ class ContactsController extends Controller
 {
     public function get()
     {
-        // get all users except the authenticated one
-        //   $contacts = User::where('id', '!=', auth()->id())->get();
-        // get a collection of items where sender_id is the user who sent us a message
-        // and messages_count is the number of unread messages we have from him
+
         $dialogs = Dialog::select('id', 'my_id', 'other_id')
             ->where('my_id', Auth::user()->id)->get();
 
@@ -382,7 +379,6 @@ class ContactsController extends Controller
         $auth = Auth::user();
         $girl = Girl::select(['id', 'user_id'])->where('id', $id)->first();
         $id = $girl->user_id;
-        //dump($id);
         DB::table('requwest')->where('who_id', '=', $id)
             ->where('target_id', $auth->id)->delete();
 
@@ -399,7 +395,6 @@ class ContactsController extends Controller
         } else {
             return null;
         }
-        // return  response()->json($id);
     }
 
     public function getsendregphoneornot(Request $request)

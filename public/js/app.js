@@ -4931,11 +4931,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    item_id: {
-      type: '',
-      required: true
+      item: {
+          type: Object,
+          required: false
     },
     autch_id: {
       id: {
@@ -4950,8 +4954,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    console.log("like 1");
-    console.log(this.item_id);
     this.checkLike();
   },
   methods: {
@@ -4960,12 +4962,9 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/like-carusel/checkLike', {
         params: {
-          anket_id: this.item_id
+            anket_id: this.item.id
         }
       }).then(function (response) {
-        console.log("response1");
-        console.log(response.data);
-
         if (response.data == true) {
           _this.sendedLike = true;
         } else {
@@ -4974,10 +4973,9 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     like: function like() {
-      console.log("like");
       axios.get('/like-carusel/newLike', {
         params: {
-          anket_id: this.item_id,
+            anket_id: this.item.id,
           action: "like"
         }
       }).then(function (response) {});
@@ -60134,7 +60132,17 @@ var render = function() {
             [_vm._v("\n            Нравиться\n        ")]
           )
         ])
-      : _c("div", [_vm._v("\n        Вам нравиться эта анкета\n    ")])
+        : _c("div", [
+            _c("div", {staticClass: "panel panel-default"}, [
+                _c("div", {staticClass: "panel-body"}, [
+                    _vm._v(
+                        "\n                Вам нравиться " +
+                        _vm._s(_vm.item.name) +
+                        "\n            "
+                    )
+                ])
+            ])
+        ])
   ])
 }
 var staticRenderFns = []

@@ -7,7 +7,11 @@
             </button>
         </div>
         <div v-else>
-            Вам нравиться эта анкета
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Вам нравиться {{item.name}}
+                </div>
+            </div>
         </div>
     </div>
 
@@ -16,9 +20,9 @@
 <script>
     export default {
         props: {
-            item_id: {
-                type: '',
-                required: true
+            item: {
+                type: Object,
+                required: false
             },
             autch_id: {
                 id: {
@@ -34,20 +38,15 @@
 
         },
         mounted() {
-            console.log("like 1");
-            console.log(this.item_id);
             this.checkLike()
         },
         methods: {
             checkLike() {
                 axios.get('/like-carusel/checkLike', {
                     params: {
-                        anket_id: this.item_id
+                        anket_id: this.item.id
                     }
                 }).then((response) => {
-                    console.log("response1");
-                    console.log(response.data);
-
                     if (response.data == true) {
                         this.sendedLike = true;
                     } else {
@@ -56,10 +55,9 @@
                 });
             },
             like() {
-                console.log("like");
                 axios.get('/like-carusel/newLike', {
                     params: {
-                        anket_id: this.item_id,
+                        anket_id: this.item.id,
                         action: "like",
                     }
                 })
