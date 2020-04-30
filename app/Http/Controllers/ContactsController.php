@@ -169,7 +169,7 @@ class ContactsController extends Controller
             'target_id', 'main_image')
             ->where('target_id', $user->id)
             ->leftJoin('girls', 'girls.user_id', '=', 'who_id')
-            ->where('readed', 0)
+            ->where('statas', "notreaded")
             ->get();
 
         return response()->json($request);;
@@ -217,7 +217,6 @@ class ContactsController extends Controller
             'target_id', 'status', 'readed')->where('target_id', $auth->id)
             ->where('who_id', $user_id)
             ->first();
-
         //ставим статус закрыто
         $myrequest->readed = 1;
         $myrequest->status = 'rejected';
@@ -228,11 +227,6 @@ class ContactsController extends Controller
 
     public function makeAccess(Request $request)
     {
-        $auth = Auth::user();
-        /*  $girl = Girl::select(['id', 'user_id'])->where('id', $request->get('id'))
-              ->first();
-          $id = $girl->user_id;
-        */
         //получаем запрос
         $myrequest = MyRequwest::select('id',
             'who_id',
@@ -241,7 +235,7 @@ class ContactsController extends Controller
             ->first();
 
         //ставим статус закрыто
-        $myrequest->readed = 1;
+        //  $myrequest->readed = 1;
         $myrequest->status = 'confirmed';
         $myrequest->save();
         DB::table('user_user')
@@ -249,6 +243,10 @@ class ContactsController extends Controller
                 'other_id' => $myrequest->target_id,
                 'my_id'    => $myrequest->who_id,
             ]);
+
+        /*
+         * уведомление об открытии
+        */
 
         return response()->json(['ok']);
     }
@@ -362,19 +360,18 @@ class ContactsController extends Controller
     {
         $auth = Auth::user();
 
-        $users_id = Useruser::select('id', 'my_id', 'other_id')->where(
-            'other_id',
-            $auth->id
-        )->get();//поулчаем список пользоваьедей, у которых доступ к моей анкете
+        //поулчаем список пользоваьедей, у которых доступ к моей анкете
+        $requwest = collect(DB::select('select r.who_id as "id" from requwest r 
+                      where r.target_id=? and r.status="confirmed"',
+            [$auth->id]))->all();
 
         //   dump($users_id);
         $array = [];
-        foreach ($users_id as $item) {
+        foreach ($requwest as $item) {
             $girl = Girl::select(['id', 'name', 'main_image'])
-                ->where('user_id', $item->my_id)->first();
+                ->where('user_id', $item->id)->first();
             array_push($array, $girl);
         }
-
         return $array;
     }
 
@@ -386,8 +383,6 @@ class ContactsController extends Controller
         $girl = Girl::select(['id', 'user_id'])->where('id', $id)->first();
         $id = $girl->user_id;
         //dump($id);
-        DB::table('user_user')->where('my_id', '=', $id)
-            ->where('other_id', $auth->id)->delete();
         DB::table('requwest')->where('who_id', '=', $id)
             ->where('target_id', $auth->id)->delete();
 

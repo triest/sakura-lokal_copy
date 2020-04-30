@@ -285,7 +285,6 @@ class AnketController extends Controller
         }
 
 
-
         //внешность
         $selected_aperance = Aperance::select('id', 'name')
             ->where('id', $girl->apperance_id)->first();
@@ -878,12 +877,21 @@ class AnketController extends Controller
             ->where('readed', 0)->get();
         $countGift = count($gift);
         //запросы
-        $myrequest = MyRequwest::select('id',
-            'who_id',
-            'target_id', 'status', 'readed')->where('target_id', $user->id)
-            ->where('readed', 0)
-            ->get();
-        $countRequwest = count($myrequest);
+        /*    $myrequest = MyRequwest::select('id',
+                'who_id',1
+                'target_id', 'status', 'readed')->where('target_id', $user->id)
+                ->where('readed', 0)
+                ->orWhere('status',"notreaded")
+                ->get();*/
+        $myrequest
+            = collect(DB::select('select * from requwest where (who_id=? and status<>"not_readed" and "readed"=0) or (target_id=? and status="not_readed" )',
+            [$user->id, $user->id]))->all();
+
+        if ($myrequest != null) {
+            $countRequwest = count($myrequest);
+        } else {
+            $countRequwest = 0;
+        }
         $id = $user->get_girl_id();
         $nmberLikes = DB::table('likes')->where('target_id', $id)->get()
             ->count();
