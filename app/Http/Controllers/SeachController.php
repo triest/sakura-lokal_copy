@@ -36,8 +36,8 @@ class SeachController extends Controller
             }
         } else {
 
-            if (isset($_COOKIE["laravel_session"])) {
-                $cookie = $_COOKIE["laravel_session"];
+            if (isset($_COOKIE["seachSettings"])) {
+                $cookie = $_COOKIE["seachSettings"];
                 if ($cookie != null) {
                     $seachSettings = SearchSettings::select(['*'])
                         ->where("cookie", "=", $cookie)
@@ -219,9 +219,10 @@ class SeachController extends Controller
                 'children',
             ])->where('girl_id', $anket->id)->first();
         } else {
-            $cookie = Cookie::get('seachSettings');
             if (isset($_COOKIE["seachSettings"])) {
                 $cookie = $_COOKIE["seachSettings"];
+            } else {
+                $cookie = null;
             }
 
             if ($cookie != null) {
@@ -299,6 +300,8 @@ class SeachController extends Controller
     public function saveSettings(Request $request)
     {
         $seachSettings = SearchSettings::getSeachSettings();
+
+
         if ($seachSettings == null) {
             return null;
         }
