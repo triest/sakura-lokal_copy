@@ -70,16 +70,18 @@ class ContactsController extends Controller
 
         $user = Auth::user();
         $id2 = $request->contact_id;
-        $dialog = Dialog::select(['id', 'my_id', 'other_id'])->where('my_id', $user->id)->where('other_id',
-            $id2)->first();
+        $dialog = Dialog::select(['id', 'my_id', 'other_id'])
+            ->where('my_id', $user->id)->where('other_id',
+                $id2)->first();
         if ($dialog == null) {
             $dialog3 = new Dialog();
             $dialog3->my_id = $user->id;
             $dialog3->other_id = $id2;
             $dialog3->save();
         }
-        $dialog2 = Dialog::select(['id', 'my_id', 'other_id'])->where('other_id', $user->id)->where('my_id',
-            $id2)->first();
+        $dialog2 = Dialog::select(['id', 'my_id', 'other_id'])
+            ->where('other_id', $user->id)->where('my_id',
+                $id2)->first();
         if ($dialog2 == null) {
             $dialog4 = new Dialog();
             $dialog4->other_id = $user->id;
@@ -116,7 +118,7 @@ class ContactsController extends Controller
         $id2 = $girl->user_id;
         $dialog = Dialog::select(['id', 'my_id', 'other_id'])
             ->where('my_id', auth()->id())->where('other_id',
-            $id2)->first();
+                $id2)->first();
 
         if ($dialog == null) {
             $dialog = new Dialog();
@@ -164,17 +166,12 @@ class ContactsController extends Controller
         //  $request = collect(DB::select('select * from requwest where target_id=?', [$user->id]));
         $request = MyRequwest::select('id',
             'who_id',
-            'target_id')->where('target_id', $user->id)
+            'target_id')
+            ->where('target_id', $user->id)
             ->where('readed', 0)
             ->get();
-        $array = [];
-        foreach ($request as $item) {
-            $girl = Girl::select(['id', 'name', 'main_image'])
-                ->where('user_id', $item->who_id)->first();
-            array_push($array, $girl);
-        }
 
-        return $array;
+        return response()->json($request);;
     }
 
     //запросы для меня
@@ -230,22 +227,27 @@ class ContactsController extends Controller
 
     public function makeAccess(Request $request)
     {
-        $id = $request->input('id');
         $auth = Auth::user();
-        $girl = Girl::select(['id', 'user_id'])->where('id', $id)->first();
-        $id = $girl->user_id;
+        /*  $girl = Girl::select(['id', 'user_id'])->where('id', $request->get('id'))
+              ->first();
+          $id = $girl->user_id;
+        */
         //получаем запрос
         $myrequest = MyRequwest::select('id',
             'who_id',
-            'target_id', 'status', 'readed')->where('target_id', $auth->id)
-            ->where('who_id', $id)
+            'target_id', 'status', 'readed')
+            ->where('id', intval($request->get('id')))
             ->first();
+
         //ставим статус закрыто
         $myrequest->readed = 1;
         $myrequest->status = 'confirmed';
         $myrequest->save();
         DB::table('user_user')
-            ->insert(['other_id' => $auth->id, 'my_id' => $id]);
+            ->insert([
+                'other_id' => $myrequest->target_id,
+                'my_id'    => $myrequest->who_id,
+            ]);
 
         return response()->json(['ok']);
     }

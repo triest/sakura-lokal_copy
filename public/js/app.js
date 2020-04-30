@@ -3767,6 +3767,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -3820,12 +3826,12 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.getApplications();
     },
-    getNewApplication: function getNewApplication(user_id) {
+      getNewApplication: function getNewApplication(application) {
       var _this4 = this;
 
       axios.get('/application/make', {
         params: {
-          id: user_id
+            id: application
         }
       }).then(function (response) {
         if (response.data == 'ok') {
@@ -4770,9 +4776,7 @@ __webpack_require__.r(__webpack_exports__);
 
         if (data_response == "not") {
           _this4.showSendRegButton = true;
-          console.log("not");
         } else {
-          console.log("true");
           _this4.showSendRegButton = false;
           console.log(); //если отправлен, то надо статус показать
 
@@ -58776,7 +58780,11 @@ var render = function() {
                         }
                       })
                     ]),
-                    _vm._v(" "),
+                      _vm._v(
+                          "\n                    " +
+                          _vm._s(application.id) +
+                          "\n                    "
+                      ),
                     _c("div", { staticClass: "contact" }, [
                       _c("p", { staticClass: "name" }, [
                         _vm._v(_vm._s(application.name))
@@ -58786,25 +58794,35 @@ var render = function() {
                     _c(
                       "button",
                       {
+                          staticClass: "btn btn-primary",
                         on: {
                           click: function($event) {
                             return _vm.getNewApplication(application.id)
                           }
                         }
                       },
-                      [_vm._v("Предоставить доступ")]
+                        [
+                            _vm._v(
+                                "Предоставить\n                        доступ\n                    "
+                            )
+                        ]
                     ),
                     _vm._v(" "),
                     _c(
                       "button",
                       {
+                          staticClass: "btn btn-danger",
                         on: {
                           click: function($event) {
                             return _vm.denideNewApplication(application.id)
                           }
                         }
                       },
-                      [_vm._v("Закрыть доступ")]
+                        [
+                            _vm._v(
+                                "Закрыть\n                        доступ\n                    "
+                            )
+                        ]
                     )
                   ])
                 })
@@ -58833,7 +58851,11 @@ var render = function() {
                           height: "150"
                         }
                       }),
-                      _vm._v(" "),
+                        _vm._v(
+                            "\n                        " +
+                            _vm._s(application.id) +
+                            "\n                        "
+                        ),
                       _c("br"),
                       _c("b", [
                         _c(

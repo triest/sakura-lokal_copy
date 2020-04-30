@@ -20,11 +20,16 @@
                         <div class="avatar">
                             <img :src="'images/upload/'+application.main_image" :alt="application.name" height="150">
                         </div>
+                        {{application.id}}
                         <div class="contact">
                             <p class="name">{{ application.name }}</p>
                         </div>
-                        <button v-on:click="getNewApplication(application.id)">Предоставить доступ</button>
-                        <button v-on:click="denideNewApplication(application.id)">Закрыть доступ</button>
+                        <button class="btn btn-primary" v-on:click="getNewApplication(application.id)">Предоставить
+                            доступ
+                        </button>
+                        <button class="btn btn-danger" v-on:click="denideNewApplication(application.id)">Закрыть
+                            доступ
+                        </button>
                     </div>
                 </div>
 
@@ -37,6 +42,7 @@
                         <div class="avatar">
                             <img :src="'images/upload/'+application.main_image" :alt="application.who_name"
                                  height="150">
+                            {{application.id}}
                             <br><b><a :href="'anket/'+application.id"> {{application.name}}</a></b>
                             <div v-if="application.status==null">Не рассмотрен</div>
                             <div v-if="application.status=='confirmed'">Подтвержден</div>
@@ -141,10 +147,10 @@
                         });
                     this.getApplications();
                 },
-                getNewApplication(user_id) {
+                getNewApplication(application) {
                     axios.get('/application/make', {
                         params: {
-                            id: user_id
+                            id: application
                         }
                     })
                         .then((response) => {

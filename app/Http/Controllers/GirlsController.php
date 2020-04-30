@@ -68,6 +68,7 @@ class GirlsController extends Controller
 
         $AythUser = Auth::user();
 
+
         $privatephoto = null;
 
         $targets = $girl->target()->get();

@@ -33,12 +33,108 @@ class Girl extends Model
     public static function get($id)
     {
 
-        $anket = Girl::select(['*'])
+        $anket = Girl::select(['id', 'user_id'])
             ->where('id', $id)
             ->first();
 
+        /**/
+        $user = Auth::user();
+        if ($user != null) {
+            $user3 = DB::table('user_user')
+                ->where('my_id', $user->id)
+                ->where('other_id', $anket->user_id)->first();
+
+            $girl = Girl::select('id', 'user_id')->where('id', $id)->first();
+            $auth = Auth::user();
+
+            $myrequest = MyRequwest::select('id',
+                'who_id',
+                'target_id', 'status', 'readed')
+                ->where('target_id', $girl->user_id)
+                ->where('who_id', $auth->id)->first();
+            if ($myrequest != null && $myrequest->status == "confirmed") {
+                $anket = Girl::select([
+                    'name',
+                    'id',
+                    'description',
+                    'main_image',
+                    'sex',
+                    'meet',
+                    'weight',
+                    'height',
+                    'age',
+                    'status',
+                    'phone',
+                    'country_id',
+                    'region_id',
+                    'city_id',
+                    'banned',
+                    'user_id',
+                    'private',
+                    'phone_settings',
+                    'last_login',
+                    'from_age',
+                    'to_age',
+                    'relation_id',
+                    'smoking_id',
+                ])->where('id', $id)->first();
+
+            } else {
+                $anket = Girl::select([
+                    'name',
+                    'id',
+                    'description',
+                    'main_image',
+                    'sex',
+                    'meet',
+                    'weight',
+                    'height',
+                    'age',
+                    'status',
+                    'phone',
+                    'country_id',
+                    'region_id',
+                    'city_id',
+                    'banned',
+                    'user_id',
+                    'phone_settings',
+                    'last_login',
+                    'from_age',
+                    'to_age',
+                    'relation_id',
+                    'smoking_id',
+                ])->where('id', $id)->first();
+            }
+        } else {
+            $anket = Girl::select([
+                'name',
+                'id',
+                'description',
+                'main_image',
+                'sex',
+                'meet',
+                'weight',
+                'height',
+                'age',
+                'status',
+                'phone',
+                'country_id',
+                'region_id',
+                'city_id',
+                'banned',
+                'user_id',
+                'phone_settings',
+                'last_login',
+                'from_age',
+                'to_age',
+                'relation_id',
+                'smoking_id',
+            ])->where('id', $id)->first();
+        }
+
         return $anket;
     }
+
 
     public function photos()
     {

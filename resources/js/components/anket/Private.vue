@@ -167,10 +167,9 @@
                         data_response = response.data;
                         if (data_response == "not") {
                             this.showSendRegButton = true;
-                            console.log("not")
                         }
                         else {
-                            console.log("true");
+
 
                             this.showSendRegButton = false;
                             console.log();
