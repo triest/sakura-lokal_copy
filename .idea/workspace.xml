@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/SearchSettings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/SearchSettings.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/anket/like.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/anket/like.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/anket/view2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/anket/view2.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/SeachModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SeachModal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ankertList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ankertList.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,77 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="like.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/anket/like.vue">
+      <file leaf-file-name="Album.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Album.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="10" selection-end-column="40" />
-              <folding>
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view2.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/anket/view2.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="59" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SeachController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SeachController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="382" selection-start-line="382" selection-end-line="382" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GirlsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GirlsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="80" column="15" selection-start-line="80" selection-start-column="15" selection-end-line="80" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Application.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/anket/Application.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="172" column="44" selection-start-line="172" selection-start-column="32" selection-end-line="172" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SidePanele2.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/SidePanele2.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="78" column="58" selection-start-line="78" selection-start-column="58" selection-end-line="78" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="69" column="60" selection-start-line="69" selection-start-column="48" selection-end-line="69" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PhoneController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PhoneController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+            <state relative-caret-position="102">
+              <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -98,17 +32,26 @@
       <file leaf-file-name="AnketController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="861" column="26" selection-start-line="861" selection-start-column="26" selection-end-line="861" selection-end-column="26" />
+            <state relative-caret-position="306">
+              <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContactsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContactsController.php">
+      <file leaf-file-name="SeachModal.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/SeachModal.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="510">
+              <caret line="77" column="46" selection-start-line="77" selection-start-column="46" selection-end-line="77" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchSettings.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/SearchSettings.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="290">
+              <caret line="94" column="21" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -125,21 +68,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>regStatus</find>
-      <find>who</find>
-      <find>/application/get</find>
-      <find>private/requwest/send</find>
-      <find>getApplication</find>
-      <find>showGirl</find>
-      <find>getalldataforsidepanel</find>
-      <find>readed</find>
-      <find>se</find>
-      <find>Просьбы предоставить доступ</find>
-      <find>applications</find>
-      <find>'/application/get</find>
-      <find>notr</find>
-      <find>seachSettings</find>
-      <find>getap</find>
       <find>whohaveaccesstomyanket</find>
       <find>whoHavaAccessToMyAnket</find>
       <find>collect(</find>
@@ -155,6 +83,21 @@
       <find>item_id</find>
       <find>item_name</find>
       <find>like</find>
+      <find>Route</find>
+      <find>Model</find>
+      <find>sav</find>
+      <find>save()</find>
+      <find>select(</find>
+      <find>$table</find>
+      <find>find</find>
+      <find>select</find>
+      <find>syncOriginal</find>
+      <find>save</find>
+      <find>insert</find>
+      <find>where(array</find>
+      <find>builder</find>
+      <find>relation_show</find>
+      <find>relation</find>
     </findStrings>
     <replaceStrings>
       <replace>get_girl_id</replace>
@@ -176,12 +119,12 @@
       <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat\resources\js\components</dir>
       <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat\app\Http\Controllers</dir>
       <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat\</dir>
-      <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat\app</dir>
-      <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat</dir>
       <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat\resources\views</dir>
       <dir>W:\domains\new_chat\chat\app\Http\Controllers</dir>
       <dir>W:\domains\new_chat\chat\</dir>
       <dir>W:\domains\new_chat\chat</dir>
+      <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat</dir>
+      <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat\app</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -216,7 +159,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2020_04_22_105706_create_cookie_table.php" />
         <option value="$PROJECT_DIR$/app/Cookie.php" />
         <option value="$PROJECT_DIR$/resources/views/likeCarusel.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/ankertList.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/LikeController.php" />
         <option value="$PROJECT_DIR$/app/Like.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -231,14 +173,12 @@
         <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/LikeCaruselController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/carusel/likeCarusel.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/SeachModal.vue" />
         <option value="$PROJECT_DIR$/resources/views/anket/myAnket.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/anket/edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/chat/Conversation.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/chat/ChatApp.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/chat/ContactsList.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/chat/MessagesFeed.vue" />
-        <option value="$PROJECT_DIR$/app/SearchSettings.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SeachController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/GirlsController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/anket/Application.vue" />
@@ -249,6 +189,9 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/anket/like.vue" />
         <option value="$PROJECT_DIR$/resources/views/anket/view2.blade.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/ankertList.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/SeachModal.vue" />
+        <option value="$PROJECT_DIR$/app/SearchSettings.php" />
       </list>
     </option>
   </component>
@@ -392,15 +335,13 @@
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
@@ -424,27 +365,7 @@
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="anket" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -462,7 +383,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../testmidle" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../cusommvc" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -751,14 +672,12 @@
       <workItem from="1587739386882" duration="2299000" />
       <workItem from="1587799936230" duration="598000" />
       <workItem from="1587969610489" duration="13449000" />
-      <workItem from="1588226509099" duration="25472000" />
-    </task>
-    <task id="LOCAL-00158" summary="Movie IP settings to class">
-      <created>1587371825729</created>
-      <option name="number" value="00158" />
-      <option name="presentableId" value="LOCAL-00158" />
-      <option name="project" value="LOCAL" />
-      <updated>1587371825729</updated>
+      <workItem from="1588226509099" duration="27289000" />
+      <workItem from="1588263320060" duration="101000" />
+      <workItem from="1588322291329" duration="2296000" />
+      <workItem from="1588364233827" duration="1993000" />
+      <workItem from="1588524831396" duration="3119000" />
+      <workItem from="1588887479825" duration="613000" />
     </task>
     <task id="LOCAL-00159" summary="Refactoring">
       <created>1587373246559</created>
@@ -1096,7 +1015,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588252457264</updated>
     </task>
-    <option name="localTasksCounter" value="207" />
+    <task id="LOCAL-00207" summary="Fix anket status on blade">
+      <created>1588258108867</created>
+      <option name="number" value="00207" />
+      <option name="presentableId" value="LOCAL-00207" />
+      <option name="project" value="LOCAL" />
+      <updated>1588258108867</updated>
+    </task>
+    <option name="localTasksCounter" value="208" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1132,11 +1058,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2112980000" />
+    <option name="totallyTimeSpent" value="2122919000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="13" />
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5005208" side_tool="true" weight="0.38859555" />
@@ -1150,7 +1075,6 @@
       <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.22447917" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="0" />
-      <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49947917" weight="0.32946146" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="10" weight="0.4" />
@@ -1163,6 +1087,7 @@
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="File Transfer" order="0" sideWeight="0.48541668" visible="true" weight="0.32946146" />
+      <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49947917" weight="0.32946146" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1212,7 +1137,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/workbreaks" />
     </ignored-roots>
-    <MESSAGE value="Add get($id) function for anket item" />
     <MESSAGE value="Add spoiler and refactor" />
     <MESSAGE value="Fix seach by sex" />
     <MESSAGE value="Fix names and add icon to welcome page" />
@@ -1237,7 +1161,8 @@
     <MESSAGE value="Fix private logick" />
     <MESSAGE value="Fix open anket logick" />
     <MESSAGE value="Fix see requwests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix see requwests" />
+    <MESSAGE value="Fix anket status on blade" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix anket status on blade" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1246,89 +1171,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/welcome2.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="302" column="8" lean-forward="true" selection-start-line="302" selection-start-column="8" selection-end-line="302" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/EventStatusSeeder.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/AperanceTableSeeder.php" />
-    <entry file="file://$PROJECT_DIR$/database/seeds/AddSmokingSeeder.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/AddRelationsSeeder.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/AddChildrenSeeder.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/ApperanceSeeder.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/ViewSourceSeeder.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/TableTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="11" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="32" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="504" column="43" lean-forward="true" selection-start-line="504" selection-start-column="43" selection-end-line="504" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/factories/TargetFactory.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/factories/InterestFactory.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/UserTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Interest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="33" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Target.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Wink.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/InteresSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="126" column="51" selection-start-line="126" selection-start-column="51" selection-end-line="126" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/delModal.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1371,20 +1213,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2176">
           <caret line="129" column="14" selection-start-line="129" selection-start-column="14" selection-end-line="129" selection-end-column="14" />
-          <folding>
-            <element signature="n#style#0;n#button#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/SeachModal.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="78" column="63" selection-start-line="78" selection-start-column="63" selection-end-line="78" selection-end-column="63" />
-          <folding>
-            <element signature="n#style#0;n#input#1;n#p#1;n#slot#0;n#div#0;n#div#0;n#div#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1420,9 +1248,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#309#351#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1447,13 +1272,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/ankertList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="64" column="25" lean-forward="true" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LikeCaruselController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1465,19 +1283,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#40#53#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/SearchSettings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
-          <folding>
-            <element signature="e#2433#3689#0#PHP" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1485,13 +1290,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="164" column="18" lean-forward="true" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Girl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="204" selection-start-line="204" selection-end-line="204" />
         </state>
       </provider>
     </entry>
@@ -1504,7 +1302,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SeachController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
+        <state relative-caret-position="6222">
           <caret line="382" selection-start-line="382" selection-end-line="382" />
         </state>
       </provider>
@@ -1516,24 +1314,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="861" column="26" selection-start-line="861" selection-start-column="26" selection-end-line="861" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/anket/Application.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="172" column="44" selection-start-line="172" selection-start-column="32" selection-end-line="172" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="69" column="60" selection-start-line="69" selection-start-column="48" selection-end-line="69" selection-end-column="60" />
+        <state relative-caret-position="2924">
+          <caret line="178" column="44" selection-start-line="178" selection-start-column="32" selection-end-line="178" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1546,7 +1330,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/layouts/SidePanele2.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
+        <state relative-caret-position="1292">
           <caret line="78" column="58" selection-start-line="78" selection-start-column="58" selection-end-line="78" selection-end-column="58" />
         </state>
       </provider>
@@ -1554,17 +1338,189 @@
     <entry file="file://$PROJECT_DIR$/resources/js/components/anket/like.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="10" selection-end-column="40" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/anket/view2.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="59" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
+        <state relative-caret-position="221">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/ankertList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2924">
+          <caret line="172" column="15" selection-start-line="172" selection-start-column="15" selection-end-line="172" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/http-foundation/Request.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="651" column="27" selection-start-line="651" selection-start-column="27" selection-end-line="651" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Http/Request.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6902">
+          <caret line="414" column="27" selection-start-line="414" selection-start-column="27" selection-end-line="414" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Girl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Cookie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/PhoneSetting.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="29" lean-forward="true" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Grammars/Grammar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="862">
+          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/RouteServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Facades/Route.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="16" column="5" selection-start-line="16" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasAttributes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="997" column="32" selection-start-line="997" selection-start-column="20" selection-end-line="997" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="856" column="23" selection-start-line="856" selection-start-column="23" selection-end-line="856" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/SqlServerProcessor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="862">
+          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/ConnectionInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Album.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="1037" column="74" selection-start-line="1037" selection-start-column="74" selection-end-line="1037" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="2950" column="30" lean-forward="true" selection-start-line="2950" selection-start-column="30" selection-end-line="2950" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Connection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="1068" column="20" selection-start-line="1068" selection-start-column="20" selection-end-line="1068" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnketController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/SeachModal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="77" column="46" selection-start-line="77" selection-start-column="46" selection-end-line="77" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/SearchSettings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="94" column="21" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
         </state>
       </provider>
     </entry>

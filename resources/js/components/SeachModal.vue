@@ -59,27 +59,36 @@
                                 </div>
                                 <br>
                                 <label>Дети:</label>
-                                <b v-if="countSelectedChildren>0">
-                                    {{countSelectedChildren}}
-                                </b>
                                 <button class="btn-default" v-on:click='show("children")'>выбрать</button>
-                                <div v-if="children_show" v-for="item in children">
-                                    <label class="switch">
-                                        <input type="radio" :value="item.id" v-model="select2children"/>
-                                        <span class="slider round"></span>
-                                    </label>
-                                    {{item.name}}
+                                <b v-if="countSelectedChildren">Выбранн</b>
+                                <div v-if="children_show">
+                                    <input type="radio" :value="0" v-model="select2children"/>
+                                    Не важно
+                                    <span class="slider round"></span>
+                                    <div v-for="item in children">
+                                        <label class="switch">
+                                            <input type="radio" :value="item.id" v-model="select2children"/>
+                                            <span class="slider round"></span>
+                                        </label>
+                                        {{item.name}}
+                                    </div>
                                 </div>
                                 <br>
                                 <label>Отношения:</label>
 
                                 <button class="btn-default" v-on:click='show("relations")'>выбрать</button>
-                                <div v-if="relation_show" v-for="item in relation">
-                                    <label class="switch">
-                                        <input type="radio" :value="item.id" v-model="select2relation"/>
-                                        <span class="slider round"></span>
-                                    </label>
-                                    {{item.name}}
+
+                                <div v-if="relation_show">
+                                    <input type="radio" :value="0" v-model="select2relation"/>
+                                    Не важно
+                                    <span class="slider round"></span>
+                                    <div v-for="item in relation">
+                                        <label class="switch">
+                                            <input type="radio" :value="item.id" v-model="select2relation"/>
+                                            <span class="slider round"></span>
+                                        </label>
+                                        {{item.name}}
+                                    </div>
                                 </div>
 
                             </slot>
@@ -115,6 +124,13 @@
                 return this.select2inters.length
             },
             countSelectedChildren: function () {
+                if (this.select2children != null) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+            countSelectedRelation: function () {
 
             },
             // вычисляем макс
@@ -182,8 +198,9 @@
                         this.to = this.seachSettings.age_to;
                         this.select2children = this.seachSettings.children;
                         this.meet = this.seachSettings.meet;
-                        this.relation = this.seachSettings.relations;
-                    })
+                        this.relation = res.relations;
+                    }).then(console.log(this.relation))
+
 
             },
             show(input) {
@@ -200,6 +217,7 @@
                         break;
 
                     case "relations":
+                        console.log("res");
                         this.relation_show = !this.relation_show;
                         break;
                 }

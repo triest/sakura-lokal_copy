@@ -92,6 +92,7 @@ class SearchSettings extends Model
                     'age_to',
                     'age_from',
                     'children',
+                    ''
                 ])
                     ->orderBy('created_at', 'desc')
                     ->where("cookie", "=", $_COOKIE["seachSettings"])->first();

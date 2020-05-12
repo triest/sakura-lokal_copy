@@ -16,6 +16,9 @@
                     </div>
                 </div>
             </div>
+            <div class="notfound" v-if="!anketList.length">
+                Анкет не найденно
+            </div>
             <br>
             <seachModal v-if="seachModal" @closeSeachModal="closeSeachModal()"
                         @closeNewMessageAlert="closeNewMessageAlert()"></seachModal>
@@ -174,5 +177,9 @@
 
     .white:link {
         color: white;
+    }
+
+    .notfound {
+
     }
 </style>

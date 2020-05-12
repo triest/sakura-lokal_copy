@@ -1864,6 +1864,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   name: 'modal',
@@ -1879,7 +1888,14 @@ __webpack_require__.r(__webpack_exports__);
     countSelectedInteres: function countSelectedInteres() {
       return this.select2inters.length;
     },
-    countSelectedChildren: function countSelectedChildren() {},
+    countSelectedChildren: function countSelectedChildren() {
+      if (this.select2children != null) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    countSelectedRelation: function countSelectedRelation() {},
     // вычисляем макс
     minAge: function minAge() {
       return this.from;
@@ -1945,8 +1961,8 @@ __webpack_require__.r(__webpack_exports__);
         _this2.to = _this2.seachSettings.age_to;
         _this2.select2children = _this2.seachSettings.children;
         _this2.meet = _this2.seachSettings.meet;
-        _this2.relation = _this2.seachSettings.relations;
-      });
+        _this2.relation = res.relations;
+      }).then(console.log(this.relation));
     },
     show: function show(input) {
       console.log(input);
@@ -1965,6 +1981,7 @@ __webpack_require__.r(__webpack_exports__);
           break;
 
         case "relations":
+          console.log("res");
           this.relation_show = !this.relation_show;
           break;
       }
@@ -3599,6 +3616,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'edit',
@@ -3826,12 +3846,12 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.getApplications();
     },
-      getNewApplication: function getNewApplication(application) {
+    getNewApplication: function getNewApplication(application) {
       var _this4 = this;
 
       axios.get('/application/make', {
         params: {
-            id: application
+          id: application
         }
       }).then(function (response) {
         if (response.data == 'ok') {
@@ -4937,9 +4957,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-      item: {
-          type: Object,
-          required: false
+    item: {
+      type: Object,
+      required: false
     },
     autch_id: {
       id: {
@@ -4962,7 +4982,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/like-carusel/checkLike', {
         params: {
-            anket_id: this.item.id
+          anket_id: this.item.id
         }
       }).then(function (response) {
         if (response.data == true) {
@@ -4975,7 +4995,7 @@ __webpack_require__.r(__webpack_exports__);
     like: function like() {
       axios.get('/like-carusel/newLike', {
         params: {
-            anket_id: this.item.id,
+          anket_id: this.item.id,
           action: "like"
         }
       }).then(function (response) {});
@@ -8519,6 +8539,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   name: 'modal',
@@ -8534,7 +8563,14 @@ __webpack_require__.r(__webpack_exports__);
     countSelectedInteres: function countSelectedInteres() {
       return this.select2inters.length;
     },
-    countSelectedChildren: function countSelectedChildren() {},
+    countSelectedChildren: function countSelectedChildren() {
+      if (this.select2children != null) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    countSelectedRelation: function countSelectedRelation() {},
     // вычисляем макс
     minAge: function minAge() {
       return this.from;
@@ -8600,8 +8636,8 @@ __webpack_require__.r(__webpack_exports__);
         _this2.to = _this2.seachSettings.age_to;
         _this2.select2children = _this2.seachSettings.children;
         _this2.meet = _this2.seachSettings.meet;
-        _this2.relation = _this2.seachSettings.relations;
-      });
+        _this2.relation = res.relations;
+      }).then(console.log(this.relation));
     },
     show: function show(input) {
       console.log(input);
@@ -8620,6 +8656,7 @@ __webpack_require__.r(__webpack_exports__);
           break;
 
         case "relations":
+          console.log("res");
           this.relation_show = !this.relation_show;
           break;
       }
@@ -13314,7 +13351,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n*[data-v-19f1f812] {\n    box-sizing: border-box;\n}\n.circle[data-v-19f1f812]:before {\n    content: ' \\25CF';\n    font-size: 20px;\n    margin: 0 auto;\n    position: absolute;\n    bottom: 0;\n    background: rgb(0, 0, 0); /* Fallback color */\n    background: rgba(145, 100, 153, 0); /* Black background with 0.5 opacity */\n    color: #20f100;\n    width: 100%;\n    padding: 10px;\n}\nbody[data-v-19f1f812] {\n    font-family: Arial;\n    font-size: 17px;\n}\n.container[data-v-19f1f812] {\n    position: relative;\n    max-width: 800px;\n    margin: 0 auto;\n}\n.container img[data-v-19f1f812] {\n    vertical-align: middle;\n}\n.container .content[data-v-19f1f812] {\n    position: absolute;\n    bottom: 0;\n    background: rgb(0, 0, 0); /* Fallback color */\n    background: rgba(0, 0, 0, 0); /* Black background with 0.5 opacity */\n    color: #f1f1f1;\n    width: 100%;\n    padding: 0px;\n    margin: 115px;\n}\n.cell[data-v-19f1f812] {\n    position: absolute;\n    top: 120px;\n    right: 0;\n    bottom: 30px;\n    left: 0;\n    box-sizing: border-box;\n    display: block;\n    padding: 20px;\n    width: 100%;\n    color: white !important;\n    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;\n    cursor: pointer;\n}\n.cell-overflow[data-v-19f1f812] {\n    box-sizing: border-box;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    color: white;\n    cursor: pointer;\n}\n.previous[data-v-19f1f812] {\n    cursor: pointer;\n    margin-left: 50%;\n}\n.white[data-v-19f1f812]:link {\n    color: white;\n}\n", ""]);
+exports.push([module.i, "\n*[data-v-19f1f812] {\n    box-sizing: border-box;\n}\n.circle[data-v-19f1f812]:before {\n    content: ' \\25CF';\n    font-size: 20px;\n    margin: 0 auto;\n    position: absolute;\n    bottom: 0;\n    background: rgb(0, 0, 0); /* Fallback color */\n    background: rgba(145, 100, 153, 0); /* Black background with 0.5 opacity */\n    color: #20f100;\n    width: 100%;\n    padding: 10px;\n}\nbody[data-v-19f1f812] {\n    font-family: Arial;\n    font-size: 17px;\n}\n.container[data-v-19f1f812] {\n    position: relative;\n    max-width: 800px;\n    margin: 0 auto;\n}\n.container img[data-v-19f1f812] {\n    vertical-align: middle;\n}\n.container .content[data-v-19f1f812] {\n    position: absolute;\n    bottom: 0;\n    background: rgb(0, 0, 0); /* Fallback color */\n    background: rgba(0, 0, 0, 0); /* Black background with 0.5 opacity */\n    color: #f1f1f1;\n    width: 100%;\n    padding: 0px;\n    margin: 115px;\n}\n.cell[data-v-19f1f812] {\n    position: absolute;\n    top: 120px;\n    right: 0;\n    bottom: 30px;\n    left: 0;\n    box-sizing: border-box;\n    display: block;\n    padding: 20px;\n    width: 100%;\n    color: white !important;\n    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;\n    cursor: pointer;\n}\n.cell-overflow[data-v-19f1f812] {\n    box-sizing: border-box;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    color: white;\n    cursor: pointer;\n}\n.previous[data-v-19f1f812] {\n    cursor: pointer;\n    margin-left: 50%;\n}\n.white[data-v-19f1f812]:link {\n    color: white;\n}\n.notfound[data-v-19f1f812] {\n}\n", ""]);
 
 // exports
 
@@ -56750,16 +56787,6 @@ var render = function() {
                         _vm._v(" "),
                         _c("label", [_vm._v("Дети:")]),
                         _vm._v(" "),
-                        _vm.countSelectedChildren > 0
-                          ? _c("b", [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(_vm.countSelectedChildren) +
-                                  "\n                            "
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
                         _c(
                           "button",
                           {
@@ -56773,44 +56800,81 @@ var render = function() {
                           [_vm._v("выбрать")]
                         ),
                         _vm._v(" "),
-                        _vm._l(_vm.children, function(item) {
-                          return _vm.children_show
-                            ? _c("div", [
-                                _c("label", { staticClass: "switch" }, [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.select2children,
-                                        expression: "select2children"
-                                      }
-                                    ],
-                                    attrs: { type: "radio" },
-                                    domProps: {
-                                      value: item.id,
-                                      checked: _vm._q(
-                                        _vm.select2children,
-                                        item.id
-                                      )
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        _vm.select2children = item.id
-                                      }
+                        _vm.countSelectedChildren
+                          ? _c("b", [_vm._v("Выбранн")])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.children_show
+                          ? _c(
+                              "div",
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.select2children,
+                                      expression: "select2children"
                                     }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("span", { staticClass: "slider round" })
-                                ]),
+                                  ],
+                                  attrs: { type: "radio" },
+                                  domProps: {
+                                    value: 0,
+                                    checked: _vm._q(_vm.select2children, 0)
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.select2children = 0
+                                    }
+                                  }
+                                }),
                                 _vm._v(
-                                  "\n                                " +
-                                    _vm._s(item.name) +
-                                    "\n                            "
-                                )
-                              ])
-                            : _vm._e()
-                        }),
+                                  "\n                                Не важно\n                                "
+                                ),
+                                _c("span", { staticClass: "slider round" }),
+                                _vm._v(" "),
+                                _vm._l(_vm.children, function(item) {
+                                  return _c("div", [
+                                    _c("label", { staticClass: "switch" }, [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.select2children,
+                                            expression: "select2children"
+                                          }
+                                        ],
+                                        attrs: { type: "radio" },
+                                        domProps: {
+                                          value: item.id,
+                                          checked: _vm._q(
+                                            _vm.select2children,
+                                            item.id
+                                          )
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            _vm.select2children = item.id
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("span", {
+                                        staticClass: "slider round"
+                                      })
+                                    ]),
+                                    _vm._v(
+                                      "\n                                    " +
+                                        _vm._s(item.name) +
+                                        "\n                                "
+                                    )
+                                  ])
+                                })
+                              ],
+                              2
+                            )
+                          : _vm._e(),
                         _vm._v(" "),
                         _c("br"),
                         _vm._v(" "),
@@ -56829,44 +56893,77 @@ var render = function() {
                           [_vm._v("выбрать")]
                         ),
                         _vm._v(" "),
-                        _vm._l(_vm.relation, function(item) {
-                          return _vm.relation_show
-                            ? _c("div", [
-                                _c("label", { staticClass: "switch" }, [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.select2relation,
-                                        expression: "select2relation"
-                                      }
-                                    ],
-                                    attrs: { type: "radio" },
-                                    domProps: {
-                                      value: item.id,
-                                      checked: _vm._q(
-                                        _vm.select2relation,
-                                        item.id
-                                      )
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        _vm.select2relation = item.id
-                                      }
+                        _vm.relation_show
+                          ? _c(
+                              "div",
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.select2relation,
+                                      expression: "select2relation"
                                     }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("span", { staticClass: "slider round" })
-                                ]),
+                                  ],
+                                  attrs: { type: "radio" },
+                                  domProps: {
+                                    value: 0,
+                                    checked: _vm._q(_vm.select2relation, 0)
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.select2relation = 0
+                                    }
+                                  }
+                                }),
                                 _vm._v(
-                                  "\n                                " +
-                                    _vm._s(item.name) +
-                                    "\n                            "
-                                )
-                              ])
-                            : _vm._e()
-                        })
+                                  "\n                                Не важно\n                                "
+                                ),
+                                _c("span", { staticClass: "slider round" }),
+                                _vm._v(" "),
+                                _vm._l(_vm.relation, function(item) {
+                                  return _c("div", [
+                                    _c("label", { staticClass: "switch" }, [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.select2relation,
+                                            expression: "select2relation"
+                                          }
+                                        ],
+                                        attrs: { type: "radio" },
+                                        domProps: {
+                                          value: item.id,
+                                          checked: _vm._q(
+                                            _vm.select2relation,
+                                            item.id
+                                          )
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            _vm.select2relation = item.id
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("span", {
+                                        staticClass: "slider round"
+                                      })
+                                    ]),
+                                    _vm._v(
+                                      "\n                                    " +
+                                        _vm._s(item.name) +
+                                        "\n                                "
+                                    )
+                                  ])
+                                })
+                              ],
+                              2
+                            )
+                          : _vm._e()
                       ])
                     ],
                     2
@@ -58641,6 +58738,12 @@ var render = function() {
           ])
         }),
         _vm._v(" "),
+        !_vm.anketList.length
+          ? _c("div", { staticClass: "notfound" }, [
+              _vm._v("\n            Анкет не найденно\n        ")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
         _c("br"),
         _vm._v(" "),
         _vm.seachModal
@@ -58778,11 +58881,11 @@ var render = function() {
                         }
                       })
                     ]),
-                      _vm._v(
-                          "\n                    " +
-                          _vm._s(application.id) +
-                          "\n                    "
-                      ),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(application.id) +
+                        "\n                    "
+                    ),
                     _c("div", { staticClass: "contact" }, [
                       _c("p", { staticClass: "name" }, [
                         _vm._v(_vm._s(application.name))
@@ -58792,35 +58895,35 @@ var render = function() {
                     _c(
                       "button",
                       {
-                          staticClass: "btn btn-primary",
+                        staticClass: "btn btn-primary",
                         on: {
                           click: function($event) {
                             return _vm.getNewApplication(application.id)
                           }
                         }
                       },
-                        [
-                            _vm._v(
-                                "Предоставить\n                        доступ\n                    "
-                            )
-                        ]
+                      [
+                        _vm._v(
+                          "Предоставить\n                        доступ\n                    "
+                        )
+                      ]
                     ),
                     _vm._v(" "),
                     _c(
                       "button",
                       {
-                          staticClass: "btn btn-danger",
+                        staticClass: "btn btn-danger",
                         on: {
                           click: function($event) {
                             return _vm.denideNewApplication(application.id)
                           }
                         }
                       },
-                        [
-                            _vm._v(
-                                "Закрыть\n                        доступ\n                    "
-                            )
-                        ]
+                      [
+                        _vm._v(
+                          "Закрыть\n                        доступ\n                    "
+                        )
+                      ]
                     )
                   ])
                 })
@@ -58849,11 +58952,11 @@ var render = function() {
                           height: "150"
                         }
                       }),
-                        _vm._v(
-                            "\n                        " +
-                            _vm._s(application.id) +
-                            "\n                        "
-                        ),
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(application.id) +
+                          "\n                        "
+                      ),
                       _c("br"),
                       _c("b", [
                         _c(
@@ -60132,16 +60235,16 @@ var render = function() {
             [_vm._v("\n            Нравиться\n        ")]
           )
         ])
-        : _c("div", [
-            _c("div", {staticClass: "panel panel-default"}, [
-                _c("div", {staticClass: "panel-body"}, [
-                    _vm._v(
-                        "\n                Вам нравиться " +
-                        _vm._s(_vm.item.name) +
-                        "\n            "
-                    )
-                ])
+      : _c("div", [
+          _c("div", { staticClass: "panel panel-default" }, [
+            _c("div", { staticClass: "panel-body" }, [
+              _vm._v(
+                "\n                Вам нравиться " +
+                  _vm._s(_vm.item.name) +
+                  "\n            "
+              )
             ])
+          ])
         ])
   ])
 }
@@ -61173,24 +61276,24 @@ var render = function() {
                 _c("div", { staticClass: "text2" }, [
                   message.to != _vm.contact.id
                     ? _c("div", { staticClass: "avatar" }, [
-                          _c(
-                              "a",
-                              {
-                                  attrs: {
-                                      href: /anket/ + _vm.contact.anket_id,
-                                      target: "_blank"
-                                  }
-                              },
-                              [
-                                  _c("img", {
-                                      attrs: {
-                                          width: "30",
-                                          height: "30",
-                                          src: "images/upload/" + _vm.contact.main_image
-                                      }
-                                  })
-                              ]
-                          )
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href: /anket/ + _vm.contact.anket_id,
+                              target: "_blank"
+                            }
+                          },
+                          [
+                            _c("img", {
+                              attrs: {
+                                width: "30",
+                                height: "30",
+                                src: "images/upload/" + _vm.contact.main_image
+                              }
+                            })
+                          ]
+                        )
                       ])
                     : _vm._e()
                 ]),
@@ -64529,16 +64632,6 @@ var render = function() {
                         _vm._v(" "),
                         _c("label", [_vm._v("Дети:")]),
                         _vm._v(" "),
-                        _vm.countSelectedChildren > 0
-                          ? _c("b", [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(_vm.countSelectedChildren) +
-                                  "\n                            "
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
                         _c(
                           "button",
                           {
@@ -64552,44 +64645,81 @@ var render = function() {
                           [_vm._v("выбрать")]
                         ),
                         _vm._v(" "),
-                        _vm._l(_vm.children, function(item) {
-                          return _vm.children_show
-                            ? _c("div", [
-                                _c("label", { staticClass: "switch" }, [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.select2children,
-                                        expression: "select2children"
-                                      }
-                                    ],
-                                    attrs: { type: "radio" },
-                                    domProps: {
-                                      value: item.id,
-                                      checked: _vm._q(
-                                        _vm.select2children,
-                                        item.id
-                                      )
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        _vm.select2children = item.id
-                                      }
+                        _vm.countSelectedChildren
+                          ? _c("b", [_vm._v("Выбранн")])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.children_show
+                          ? _c(
+                              "div",
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.select2children,
+                                      expression: "select2children"
                                     }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("span", { staticClass: "slider round" })
-                                ]),
+                                  ],
+                                  attrs: { type: "radio" },
+                                  domProps: {
+                                    value: 0,
+                                    checked: _vm._q(_vm.select2children, 0)
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.select2children = 0
+                                    }
+                                  }
+                                }),
                                 _vm._v(
-                                  "\n                                " +
-                                    _vm._s(item.name) +
-                                    "\n                            "
-                                )
-                              ])
-                            : _vm._e()
-                        }),
+                                  "\n                                Не важно\n                                "
+                                ),
+                                _c("span", { staticClass: "slider round" }),
+                                _vm._v(" "),
+                                _vm._l(_vm.children, function(item) {
+                                  return _c("div", [
+                                    _c("label", { staticClass: "switch" }, [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.select2children,
+                                            expression: "select2children"
+                                          }
+                                        ],
+                                        attrs: { type: "radio" },
+                                        domProps: {
+                                          value: item.id,
+                                          checked: _vm._q(
+                                            _vm.select2children,
+                                            item.id
+                                          )
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            _vm.select2children = item.id
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("span", {
+                                        staticClass: "slider round"
+                                      })
+                                    ]),
+                                    _vm._v(
+                                      "\n                                    " +
+                                        _vm._s(item.name) +
+                                        "\n                                "
+                                    )
+                                  ])
+                                })
+                              ],
+                              2
+                            )
+                          : _vm._e(),
                         _vm._v(" "),
                         _c("br"),
                         _vm._v(" "),
@@ -64608,44 +64738,77 @@ var render = function() {
                           [_vm._v("выбрать")]
                         ),
                         _vm._v(" "),
-                        _vm._l(_vm.relation, function(item) {
-                          return _vm.relation_show
-                            ? _c("div", [
-                                _c("label", { staticClass: "switch" }, [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.select2relation,
-                                        expression: "select2relation"
-                                      }
-                                    ],
-                                    attrs: { type: "radio" },
-                                    domProps: {
-                                      value: item.id,
-                                      checked: _vm._q(
-                                        _vm.select2relation,
-                                        item.id
-                                      )
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        _vm.select2relation = item.id
-                                      }
+                        _vm.relation_show
+                          ? _c(
+                              "div",
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.select2relation,
+                                      expression: "select2relation"
                                     }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("span", { staticClass: "slider round" })
-                                ]),
+                                  ],
+                                  attrs: { type: "radio" },
+                                  domProps: {
+                                    value: 0,
+                                    checked: _vm._q(_vm.select2relation, 0)
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.select2relation = 0
+                                    }
+                                  }
+                                }),
                                 _vm._v(
-                                  "\n                                " +
-                                    _vm._s(item.name) +
-                                    "\n                            "
-                                )
-                              ])
-                            : _vm._e()
-                        })
+                                  "\n                                Не важно\n                                "
+                                ),
+                                _c("span", { staticClass: "slider round" }),
+                                _vm._v(" "),
+                                _vm._l(_vm.relation, function(item) {
+                                  return _c("div", [
+                                    _c("label", { staticClass: "switch" }, [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.select2relation,
+                                            expression: "select2relation"
+                                          }
+                                        ],
+                                        attrs: { type: "radio" },
+                                        domProps: {
+                                          value: item.id,
+                                          checked: _vm._q(
+                                            _vm.select2relation,
+                                            item.id
+                                          )
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            _vm.select2relation = item.id
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("span", {
+                                        staticClass: "slider round"
+                                      })
+                                    ]),
+                                    _vm._v(
+                                      "\n                                    " +
+                                        _vm._s(item.name) +
+                                        "\n                                "
+                                    )
+                                  ])
+                                })
+                              ],
+                              2
+                            )
+                          : _vm._e()
                       ])
                     ],
                     2
