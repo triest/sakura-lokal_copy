@@ -946,7 +946,7 @@ class AnketController extends Controller
         }
 
         $history_today
-            = DB::select('select  gl.id,gl.name,gl.age,gl.main_image,his.time,gl.city_id,citye.name as `city_name` from view_history his left JOIN girls gl on gl.id=his.who_id left join cities citye on citye.id_city=gl.city_id where girl_id=:girl_id and who_id!=:girl_id2 ORDER BY his.time DESC',
+            = DB::select('select  gl.id,gl.name,gl.age,gl.main_image,his.time,gl.city_id,citye.name as `city_name` from view_history his left JOIN girls gl on gl.id=his.who_id left join cityes_api citye on citye.id=gl.city_id where girl_id=:girl_id and who_id!=:girl_id2 ORDER BY his.time DESC',
             ['girl_id' => $girl->id, 'girl_id2' => $girl->id]);
 
 
