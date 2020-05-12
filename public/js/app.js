@@ -62070,9 +62070,7 @@ var render = function() {
                   ),
                   _c("br"),
                   _vm._v(
-                    "\n                Статус: " +
-                      _vm._s(event.status_name) +
-                      " "
+                    "\n                " + _vm._s(event.status_name) + " "
                   ),
                   _c("br"),
                   _vm._v(" "),
@@ -62080,7 +62078,7 @@ var render = function() {
                     "a",
                     {
                       attrs: {
-                        type: "button",
+                        type: "btn btn-primary",
                         href: "event/singup/" + event.id
                       }
                     },

@@ -75,7 +75,7 @@
 </div>
 <div class="col-sm-2">
     <eventinmycityside></eventinmycityside>
-    <!--
+
     <div id="test">
         <div class="card " style="width: 25rem; background-color: #eeeeee;
              border: 1px solid transparent;
@@ -86,7 +86,7 @@
             </div>
         </div>
     </div>
-    -->
+
 </div>
 <div class="col-sm-8">
     <div class="row row-offcanvas row-offcanvas-right">

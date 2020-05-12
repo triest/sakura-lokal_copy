@@ -7,8 +7,8 @@
                     <b>{{event.name}}</b> <br>
                     Место:{{event.place}} <br>
                     Дата: {{event.begin}} <br>
-                    Статус: {{event.status_name}} <br>
-                    <a type="button" v-bind:href="'event/singup/'+event.id">Записаться!</a>
+                    {{event.status_name}} <br>
+                    <a type="btn btn-primary" v-bind:href="'event/singup/'+event.id">Записаться!</a>
                 </slide>
             </carousel>
         </div>
