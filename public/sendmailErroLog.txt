@@ -1,4 +1,4 @@
-2020-04-08 09:23:13triest21@gmail.comSwift_TransportException: Expected response code 250 but got code "530", with message "530 5.7.1 Authentication required
+2020-05-12 14:48:16triest21@gmail.comSwift_TransportException: Expected response code 250 but got code "530", with message "530 5.7.1 Authentication required
 " in W:\domains\new_chat\chat\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\AbstractSmtpTransport.php:457
 Stack trace:
 #0 W:\domains\new_chat\chat\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\AbstractSmtpTransport.php(341): Swift_Transport_AbstractSmtpTransport->assertResponseCode('530 5.7.1 Authe...', Array)
@@ -29,7 +29,7 @@ Stack trace:
 #25 W:\domains\new_chat\chat\vendor\laravel\framework\src\Illuminate\Bus\Dispatcher.php(73): Illuminate\Bus\Dispatcher->dispatchToQueue(Object(App\Jobs\SendMessageAboutEvent))
 #26 W:\domains\new_chat\chat\vendor\laravel\framework\src\Illuminate\Foundation\Bus\PendingDispatch.php(112): Illuminate\Bus\Dispatcher->dispatch(Object(App\Jobs\SendMessageAboutEvent))
 #27 W:\domains\new_chat\chat\vendor\laravel\framework\src\Illuminate\Foundation\Bus\Dispatchable.php(16): Illuminate\Foundation\Bus\PendingDispatch->__destruct()
-#28 W:\domains\new_chat\chat\app\Http\Controllers\CustomUserController.php(72): App\Jobs\SendMessageAboutEvent::dispatch('New User wqqwwq...', 'triest21@gmail....', 'wqqwwqqw', 'new user')
+#28 W:\domains\new_chat\chat\app\Http\Controllers\CustomUserController.php(72): App\Jobs\SendMessageAboutEvent::dispatch('New User ntcn', 'triest21@gmail....', 'ntcn', 'new user')
 #29 [internal function]: App\Http\Controllers\CustomUserController->join(Object(Illuminate\Http\Request))
 #30 W:\domains\new_chat\chat\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(54): call_user_func_array(Array, Array)
 #31 W:\domains\new_chat\chat\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('join', Array)

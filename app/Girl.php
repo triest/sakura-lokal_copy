@@ -244,6 +244,10 @@
         public function updateMainImage($request)
         {
             $image_new_name = $this->main_image;
+            if ($image_new_name == null) {
+                $image_new_name = md5(microtime(true));
+                $this->main_image = $image_new_name;
+            }
             $temp_file = base_path() . '/public/images/upload/'
                     . strtolower($image_new_name);// кладем файл с новыс именем
             $request->file('file')

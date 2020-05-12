@@ -71,8 +71,10 @@
 </div>
 
 <div class="col-sm-1">
+    <eventinmycityside></eventinmycityside>
 </div>
 <div class="col-sm-2">
+    <eventinmycityside></eventinmycityside>
     <!--
     <div id="test">
         <div class="card " style="width: 25rem; background-color: #eeeeee;
@@ -112,7 +114,7 @@
                 <br>
                 <? $city = \App\City::GetCurrentCity();
                 if ($city != null) {
-                    echo "<b>".$city->name."</b>";
+                    echo "<b>" . $city->name . "</b>";
                     echo "<br>";
                 }
                 ?>
@@ -134,9 +136,8 @@
                             <side-panel :user="{{auth()->user()}}"></side-panel>
                         </div>
 
-                        <b>
-                            <button class="btn btn-outline-primary" href="{{route('myevent')}}">Мои события</button>
-                        </b>
+
+                        <b><a class="btn btn-primary" href="{{route('myevent')}}">Мои события</a> </b>
 
                     @else
                         <br>

@@ -34,35 +34,35 @@
                 <font color="red"><p>  {{$errors->first('cityname')}}</p></font>
             @endif
 
-
+        <!--
             <label>Выбирите из списка:
                 <select id="city" class="city" style="width: 200px" name="city" required>
                 </select>
             </label>
             @if($errors->has('city'))
-                <font color="red"><p>  {{$errors->first('city')}}</p></font>
+            <font color="red"><p>  {{$errors->first('city')}}</p></font>
             @endif
 
-            <script>
-                function findCity() {
-                    var inputcity = document.getElementById('cityname').value;
-                    console.log(inputcity);
-                    var x = document.getElementById("city");
-                    var option = document.createElement("option");
-                    axios.get('/findcity/' + inputcity, {
-                        params: {}
-                    })
-                        .then((response) => {
-                            var data = response.data;
-                            $('#city').empty();
-                            for (var i = 0; i <= data[0].length; i++) {
+                <script>
+                    function findCity() {
+                        var inputcity = document.getElementById('cityname').value;
+                        console.log(inputcity);
+                        var x = document.getElementById("city");
+                        var option = document.createElement("option");
+                        axios.get('/findcity/' + inputcity, {
+                            params: {}
+                        })
+                            .then((response) => {
+                                var data = response.data;
+                                $('#city').empty();
+                                for (var i = 0; i <= data[0].length; i++) {
                                 $('#city').append('<option value="' + data[0][i].id_city + '">' + data[0][i].name + '</option>');
                             }
                         });
                 }
 
             </script>
-
+-->
             <br>
             <label for="title">Место:</label>
             <input type="text" class="form-control" id="place" name="place" value="{{ old('place') }}"

@@ -4,7 +4,6 @@
     @if($today!=null)
         Сегодня
         <br>
-
         <?php $count = 0 ?>
         @foreach($today as $item)
             <div class="row">
@@ -14,7 +13,7 @@
                     </a>
                 </div>
                 <div class="col-sm-4">
-                    <a href="{{route('showGirl',['id'=>$item->id,'utm_source'=>'who_see'])}}">
+                    <a target="_blank" href="{{route('showGirl',['id'=>$item->id,'utm_source'=>'who_see'])}}">
                         <h2>{{$item->name}}</h2>
                     </a>
                     <h4>{{$item->city_name}}</h4>
@@ -23,7 +22,6 @@
                 </div>
             </div>
         @endforeach
-
     @endif
 
     <br>

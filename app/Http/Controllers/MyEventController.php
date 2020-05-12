@@ -122,9 +122,6 @@ class MyEventController extends Controller
             'city'        => 'required',
         ]);
 
-
-        //  die();
-
         $event = new Myevent();
         $event->name = $request->name;
         $event->description = $request->description;
@@ -225,7 +222,7 @@ left join event_statys statys on myevents.status_id=statys.id left join
         ]);
     }
 
-    public function inmycity(Request $request)
+    public static function inmycity(Request $request)
     {
 
         $user = Auth::user();
