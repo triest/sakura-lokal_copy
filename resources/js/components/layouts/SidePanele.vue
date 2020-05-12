@@ -31,8 +31,9 @@
         -->
         <likemodal v-if="showLikeModal" @closeLikeModalEmit='closeLikeModal()'></likemodal>
         <b><a class="btn btn-primary" href="/history">Просмотры моей анкеты</a> </b><br><br>
-
-        Запросы на мои события: {{unreeadedEventRequwest}}
+        <div v-if="unreeadedEventRequwest>0" class="event-requwest">
+            <b>Запросы на мои события:{{unreeadedEventRequwest}}</b>
+        </div>
         <div v-if="unreeadedEventRequwest>0">
             <a class="btn btn-primary" href="/event/requwest/list">Смотреть запросы</a>
         </div>
@@ -224,5 +225,10 @@
         top: -100px !important;
         left: -100px !important;
         background-color: yellow !important;
+    }
+
+    .event-requwest {
+        color: red;
+
     }
 </style>

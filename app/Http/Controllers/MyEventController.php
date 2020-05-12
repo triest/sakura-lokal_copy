@@ -4,6 +4,7 @@
 
     use App\City;
     use App\Events\Newevent;
+    use App\Events\NewMessage;
     use App\Girl;
     use App\Jobs\SendMessageAboutEvent;
     use App\Jobs\SendSMSAboutEvent;
@@ -379,6 +380,11 @@ left join event_statys statys on myevents.status_id=statys.id left join
 
             $rez = $event->makeRequwest($girl);
 
+            $user = User::getautch();
+
+           // $eventEvent = new Newevent($user);
+           // broadcast(new Newevent($eventEvent));
+
             $eventOwgene = Girl::select(['id', 'user_id'])
                     ->where('id', $event->organizer_id)->first();
             //  $user = $eventOwgene->user()->get();
@@ -476,6 +482,12 @@ left join event_statys statys on myevents.status_id=statys.id left join
             //id запрома
             $reqid = $request->reqid;
 
+            /*
+             * создам событие
+             *
+             * */
+
+
             $event = Myevent::select('id')->where('id', $eventid);
             if ($event == null) {
                 return response()->json('notevent');
@@ -488,6 +500,11 @@ left join event_statys statys on myevents.status_id=statys.id left join
             if ($req == null) {
                 return response()->json('notreq');
             }
+
+            $user = User::getautch();
+
+            $eventEvent = new Newevent(null, $user);
+            broadcast(new Newevent($eventEvent));
 
 
             if ($action == 'accept') {

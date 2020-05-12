@@ -15,7 +15,7 @@
         //организатор
         public function organizer()
         {
-            return $this->hasOne('App\Girl');
+            return $this->belongsTo('App\Girl');
         }
 
         //учстники
@@ -82,11 +82,6 @@
             $eventreq->event_id = $this->id;
             $eventreq->status = 'unread';
             $eventreq->save();
-            $eventOwgene = Girl::select(['id', 'user_id'])
-                    ->where('id', $this->organizer_id)->first();
-            //  $user = $eventOwgene->user()->get();
-            $user = User::select(['id'])->where('id', $eventOwgene->user_id)
-                    ->first();
             $organizer = $this->organizer()->first();
             if ($organizer != null) {
                 new Newevent($organizer);

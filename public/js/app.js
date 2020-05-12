@@ -7590,6 +7590,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -13655,7 +13656,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.newmessagemodalclass[data-v-58c5b509] {\n    position: absolute !important;\n    top: -100px !important;\n    left: -100px !important;\n    background-color: yellow !important;\n}\n", ""]);
+exports.push([module.i, "\n.newmessagemodalclass[data-v-58c5b509] {\n    position: absolute !important;\n    top: -100px !important;\n    left: -100px !important;\n    background-color: yellow !important;\n}\n.event-requwest[data-v-58c5b509] {\n    color: red;\n}\n", ""]);
 
 // exports
 
@@ -63706,11 +63707,17 @@ var render = function() {
       _vm._m(2),
       _c("br"),
       _c("br"),
-      _vm._v(
-        "\n\n    Запросы на мои события: " +
-          _vm._s(_vm.unreeadedEventRequwest) +
-          "\n    "
-      ),
+      _vm._v(" "),
+      _vm.unreeadedEventRequwest > 0
+        ? _c("div", { staticClass: "event-requwest" }, [
+            _c("b", [
+              _vm._v(
+                "Запросы на мои события:" + _vm._s(_vm.unreeadedEventRequwest)
+              )
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
       _vm.unreeadedEventRequwest > 0
         ? _c("div", [
             _c(
