@@ -4,6 +4,7 @@ namespace App;
 
 use App\Events\Newevent;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Myevent extends Model
 {
