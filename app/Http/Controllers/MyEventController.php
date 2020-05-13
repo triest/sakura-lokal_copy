@@ -170,7 +170,7 @@
                 return null;
             }
             $events
-                    = collect(DB::select('select myevents.id,myevents.name,event_statys.name as `event_statys`,city.id_city,city.name as \'city_name\',myevents.begin, myevents.place,myevents.created_at,myevents.updated_at from myevents  left join event_statys on myevents.status_id=event_statys.id left join cities city on myevents.city_id=city.id_city'));
+                    = collect(DB::select('select myevents.id,myevents.name,event_statys.name as `event_statys`,city.id,city.name as \'city_name\',myevents.begin, myevents.place,myevents.created_at,myevents.updated_at from myevents  left join event_statys on myevents.status_id=event_statys.id left join cityes_api city on myevents.city_id=city.id'));
 
             return response()->json(["events" => $events]);
         }
@@ -278,7 +278,7 @@ left join event_statys statys on myevents.status_id=statys.id left join
                         $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`,event_req.status as `requwest_status`	             
                 from myevents myev left join events_participants evpart on myev.id=evpart.myevent_id left join event_statys status on status.id=myev.status_id 
                 left join event_requwest event_req on myev.id=event_req.event_id
-                 where myev.city_id=? and  myev.begin>now()', [$city_id]));
+                 where myev.city_id=? and  myev.begin>now() and event_req.girl_id=?', [$city_id, $girl->id]));
                     } else {
                         $ip = GirlsController::getIpStatic();
                         $response
@@ -291,8 +291,8 @@ left join event_statys statys on myevents.status_id=statys.id left join
                                 ->first();
                         $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`	             
                 from myevents myev left join events_participants evpart on myev.id=evpart.myevent_id left join event_statys status on status.id=myev.status_id 
-                 where myev.city_id=?  and myev.begin>now()',
-                                [$cities->id_city]));
+                 where myev.city_id=?  and myev.begin>now()  and event_req.girl_id=?',
+                                [$cities->id_city, $girl->id]));
 
                         return response()->json($events);
                     }
