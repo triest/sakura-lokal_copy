@@ -327,8 +327,7 @@
                 $seachSettings->meet = $request->meet;
             }
 
-
-            if (isset($request->relation)) {
+            if (isset($request->relation) && !empty($request->relation)) {
                 $seachSettings->relation = $request->relation;
             }
 
