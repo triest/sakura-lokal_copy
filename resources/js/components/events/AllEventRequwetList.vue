@@ -70,7 +70,7 @@
                     <td>{{event.statys_name}}</td>
                     <h5 v-if="event.req_status=='unread'"><b>
                         <p><a class="btn btn-primary" @click="accept(event.id,event.req_id,)">
-                            Принять
+                            Принять1
                         </a></p>
                         <p>
                             <a class="btn btn-danger" @click="reject(event.id,event.req_id)">
@@ -135,11 +135,9 @@
                 this.accepted = null;
                 this.rejected = null;
                 this.unredded = null;
-                let id = 1;
                 axios.get('/event/accept', {
                         params: {
                             eventid: event_id,
-                            useris: id,
                             action: 'accept',
                             reqid: requwest_id,
                         }

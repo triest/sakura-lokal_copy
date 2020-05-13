@@ -39,8 +39,6 @@
         </div>
 
         <alertmodal v-if="showAlertModal" :event="event" @closeAlert="clouseAlertModal()"></alertmodal>
-
-
     </div>
 </template>
 

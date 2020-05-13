@@ -24,13 +24,9 @@
          */
         public function __construct($organizer = null, $particicator = null)
         {
-            //
-            if ($organizer != null) {
-                $this->eventrequwest = $organizer;
-            }
-            if ($particicator != null) {
-                $this->partifocator = $particicator;
-            }
+            $this->eventrequwest = $organizer;
+            $this->partifocator = $particicator;
+
         }
 
         /**
@@ -57,11 +53,6 @@
          */
         public function broadcastWith()
         {
-            if ($this->eventrequwest != null) {
-                $this->eventrequwest->load('who');
-            } elseif ($this->partifocator != null) {
-                $this->partifocator->load('target');
-            }
             return ["eventreq" => $this->eventrequwest];
         }
     }

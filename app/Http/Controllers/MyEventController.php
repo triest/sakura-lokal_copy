@@ -382,8 +382,8 @@ left join event_statys statys on myevents.status_id=statys.id left join
 
             $user = User::getautch();
 
-           // $eventEvent = new Newevent($user);
-           // broadcast(new Newevent($eventEvent));
+            // $eventEvent = new Newevent($user);
+            // broadcast(new Newevent($eventEvent));
 
             $eventOwgene = Girl::select(['id', 'user_id'])
                     ->where('id', $event->organizer_id)->first();
@@ -487,12 +487,15 @@ left join event_statys statys on myevents.status_id=statys.id left join
              *
              * */
 
+            $eventRequwest = Eventrequwest::select(['*'])->where('id', $reqid)->first();
+
 
             $event = Myevent::select('id')->where('id', $eventid);
             if ($event == null) {
                 return response()->json('notevent');
             }
-            $girl = Girl::select('id')->where('id', $id);
+            $girl = Girl::select('*')->where('id', $eventRequwest->girl_id)->first();
+
             if ($girl == null) {
                 return response()->json('notgirl');
             }
@@ -501,10 +504,10 @@ left join event_statys statys on myevents.status_id=statys.id left join
                 return response()->json('notreq');
             }
 
-            $user = User::getautch();
+            $user = $girl->user()->first();
 
             $eventEvent = new Newevent(null, $user);
-            broadcast(new Newevent($eventEvent));
+            broadcast($eventEvent);
 
 
             if ($action == 'accept') {

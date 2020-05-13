@@ -45,7 +45,7 @@
                         ->where('other_id', $anket->user_id)->first();
 
                 $girl = Girl::select('id', 'user_id')->where('id', $id)->first();
-                $auth = Auth::user();
+                $auth = $user;
 
                 $myrequest = MyRequwest::select('id',
                         'who_id',

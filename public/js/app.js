@@ -6562,11 +6562,9 @@ __webpack_require__.r(__webpack_exports__);
       this.accepted = null;
       this.rejected = null;
       this.unredded = null;
-      var id = 1;
       axios.get('/event/accept', {
         params: {
           eventid: event_id,
-          useris: id,
           action: 'accept',
           reqid: requwest_id
         }
@@ -7545,8 +7543,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _likes_LikeModal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../likes/LikeModal */ "./resources/js/components/likes/LikeModal.vue");
 /* harmony import */ var _layouts_AlertModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../layouts/AlertModal */ "./resources/js/components/layouts/AlertModal.vue");
-//
-//
 //
 //
 //
@@ -61902,7 +61898,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                        Принять\n                    "
+                                  "\n                        Принять1\n                    "
                                 )
                               ]
                             )
