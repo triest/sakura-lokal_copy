@@ -8,7 +8,12 @@
                     Место:{{event.place}} <br>
                     Дата: {{event.begin}} <br>
                     {{event.status_name}} <br>
-                    <a type="btn btn-primary" v-bind:href="'event/singup/'+event.id">Записаться!</a>
+                    <div v-if="event.requwest_status=='accept'">
+                        <b>Вы записаны на это мероприятие</b>
+                    </div>
+                    <div v-else>
+                        <a type="btn btn-primary" v-bind:href="'event/singup/'+event.id">Записаться!</a>
+                    </div>
                 </slide>
             </carousel>
         </div>

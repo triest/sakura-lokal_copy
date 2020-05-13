@@ -232,12 +232,25 @@ left join event_statys statys on myevents.status_id=statys.id left join
                 $response = json_decode($response);
                 $name = $response->city->name_ru;
 
+                $user = Auth::user();
+                $girl = $user->anketisExsis();
+
                 $cities = DB::table('cities')->where('name', 'like', $name . '%')
                         ->first();
-                $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`	             
+
+                if ($girl == null) {
+                    $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`	             
                 from myevents myev left join events_participants evpart on myev.id=evpart.myevent_id left join event_statys status on status.id=myev.status_id 
+                left join event_requwest event_req on myev.id=event_req.event_id
                  where myev.city_id=? and  myev.begin>now()',
-                        [$cities->id_city]));
+                            [$cities->id_city]));
+                } else {
+                    $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`,event_req.status as `requwest_status`	             
+                from myevents myev left join events_participants evpart on myev.id=evpart.myevent_id left join event_statys status on status.id=myev.status_id 
+                left join event_requwest event_req on myev.id=event_req.event_id
+                 where myev.city_id=? and  myev.begin>now()',
+                            [$cities->id_city]));
+                }
 
                 return response()->json($events);
             } else {
@@ -250,8 +263,9 @@ left join event_statys statys on myevents.status_id=statys.id left join
                     $name = $response->city->name_ru;
                     $cities = DB::table('cities')->where('name', 'like', $name . '%')
                             ->first();
-                    $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`	             
+                    $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`,event_req.status as `requwest_status`	             
                 from myevents myev left join events_participants evpart on myev.id=evpart.myevent_id left join event_statys status on status.id=myev.status_id 
+                left join event_requwest event_req on myev.id=event_req.event_id
                  where myev.city_id=? and  myev.begin>now()',
                             [$cities->id_city]));
 
@@ -261,9 +275,10 @@ left join event_statys statys on myevents.status_id=statys.id left join
                             ->where('user_id', $user->id)->first();
                     $city_id = $girl->city_id;
                     if ($city_id != null) {
-                        $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`	             
+                        $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`,event_req.status as `requwest_status`	             
                 from myevents myev left join events_participants evpart on myev.id=evpart.myevent_id left join event_statys status on status.id=myev.status_id 
-                 where myev.city_id=? and myev.begin>now()', [$city_id]));
+                left join event_requwest event_req on myev.id=event_req.event_id
+                 where myev.city_id=? and  myev.begin>now()', [$city_id]));
                     } else {
                         $ip = GirlsController::getIpStatic();
                         $response

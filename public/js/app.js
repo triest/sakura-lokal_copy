@@ -6650,6 +6650,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("event in my my city side");
@@ -62225,16 +62230,22 @@ var render = function() {
                   ),
                   _c("br"),
                   _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        type: "btn btn-primary",
-                        href: "event/singup/" + event.id
-                      }
-                    },
-                    [_vm._v("Записаться!")]
-                  )
+                  event.requwest_status == "accept"
+                    ? _c("div", [
+                        _c("b", [_vm._v("Вы записаны на это мероприятие")])
+                      ])
+                    : _c("div", [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              type: "btn btn-primary",
+                              href: "event/singup/" + event.id
+                            }
+                          },
+                          [_vm._v("Записаться!")]
+                        )
+                      ])
                 ])
               }),
               1
