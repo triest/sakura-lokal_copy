@@ -90,11 +90,13 @@
                 .listen('Newevent', (e) => {
                     console.log('NewRequwestEvent');
                 });
+            /*
             Echo.private(`App.User.${this.user.id}`)
                 .listen('Newevent', (e) => {
                     console.log("new Event");
                     this.getNumberUnreadedEventRequwest();
                 });
+                */
         },
         methods:
             {

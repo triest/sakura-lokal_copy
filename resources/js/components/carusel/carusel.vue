@@ -32,19 +32,39 @@
                 </div>
             </slide>
         </carousel>
+
+        <!--Здесь будут увдомления -->
     </div>
 </template>
 
 <script>
 
     export default {
+        props: {
+            user: {
+                type: Object,
+                required: false
+            }
+        },
         data() {
             return {
                 imagesList: []
             };
         },
         mounted() {
-            this.getmainImage()
+            Echo.private(`App.User.${this.user.id}`)
+                .listen('Newevent', (e) => {
+                    console.log(e.eventreq)
+                    console.log(e)
+                    console.log("new Event22");
+                    axios.get('/events/')
+                        .then((response) => {
+                            this.numberUnreaded = response.data;
+                        });
+                    alert("Вы приглашены на мнроприятие! http://newchat/myevent#")
+                });
+            this.getmainImage();
+
         },
         methods:
             {

@@ -66,7 +66,7 @@
 
 <div class="card-body" id="app2">
     <div class="row" style="position: center">
-        <carusel></carusel>
+        <carusel :user="{{auth()->user()}}"></carusel>
     </div>
 </div>
 

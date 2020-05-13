@@ -5526,21 +5526,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    user: {
+      type: Object,
+      required: false
+    }
+  },
   data: function data() {
     return {
       imagesList: []
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
+    Echo.private("App.User.".concat(this.user.id)).listen('Newevent', function (e) {
+      console.log(e.eventreq);
+      console.log(e);
+      console.log("new Event22");
+      axios.get('/events/').then(function (response) {
+        _this.numberUnreaded = response.data;
+      });
+      alert("Вы приглашены на мнроприятие! http://newchat/myevent#");
+    });
     this.getmainImage();
   },
   methods: {
     getmainImage: function getmainImage() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get('/getdataforcarousel').then(function (response) {
-        _this.imagesList = response.data;
+        _this2.imagesList = response.data;
       });
     }
   }
@@ -7647,8 +7666,6 @@ __webpack_require__.r(__webpack_exports__);
       console.log('NewRequwestEvent');
     });
     Echo.private("App.User.".concat(this.user.id)).listen('Newevent', function (e) {
-      console.log("new Event");
-
       _this.getNumberUnreadedEventRequwest();
     });
   },
@@ -7853,11 +7870,13 @@ __webpack_require__.r(__webpack_exports__);
     Echo.private("eventsrequwest.".concat(this.user.id)).listen('Newevent', function (e) {
       console.log('NewRequwestEvent');
     });
-    Echo.private("App.User.".concat(this.user.id)).listen('Newevent', function (e) {
-      console.log("new Event");
-
-      _this.getNumberUnreadedEventRequwest();
-    });
+    /*
+    Echo.private(`App.User.${this.user.id}`)
+        .listen('Newevent', (e) => {
+            console.log("new Event");
+            this.getNumberUnreadedEventRequwest();
+        });
+        */
   },
   methods: {
     triger: function triger() {

@@ -24,8 +24,8 @@
          */
         public function __construct($organizer = null, $particicator = null)
         {
-            $this->eventrequwest = $organizer;
-            $this->partifocator = $particicator;
+                $this->eventrequwest = $organizer;
+                $this->partifocator = $particicator;
 
         }
 
