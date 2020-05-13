@@ -511,6 +511,12 @@
             }
         }
 
+        public function read_notification($statys = 'accept')
+        {
+            return $req = Eventrequwest::select(['*'])->where('girl_id', '=', $this->id)->where('status', '=',
+                    $statys)->where('read_accept_notification', '=', 0)->get();
+        }
+
     }
 
 

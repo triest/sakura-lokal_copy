@@ -19,4 +19,6 @@ class Eventrequwest extends Model
     {
         return $this->hasOne('App\Myevent', 'event_id', 'id');
     }
+
+
 }

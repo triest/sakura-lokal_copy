@@ -88,8 +88,9 @@
             }
         }
 
-        public static function myparticipation($girl)
+        public static function myparticipation($girl, $set_readed = false)
         {
+
             $event = collect(DB::select('SELECT myeven.id,myeven.name,myeven.place,myeven.begin,status.name as statys_name,eventreq.status as req_status
             FROM `event_requwest` `eventreq` 
             LEFT JOIN `myevents` `myeven` ON
@@ -97,6 +98,15 @@
             left join event_statys status on status.id=myeven.status_id 
               WHERE `eventreq`.`girl_id`=?',
                     [$girl->id]));
+
+            /*
+             *
+             * */
+            //ставим отметку, что прочитанно
+            if ($set_readed) {
+                DB::table('event_requwest')->where('girl_id', $girl->id)->update(['read_accept_notification'=> 1]);
+            }
+
 
             return $event;
         }

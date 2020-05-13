@@ -39,6 +39,10 @@
         </div>
 
         <alertmodal v-if="showAlertModal" :event="event" @closeAlert="clouseAlertModal()"></alertmodal>
+
+        <div class="event-requwest" v-if="count_accept_notification>0">
+            Ваша заявка на мероприятие принята!
+        </div>
     </div>
 </template>
 
@@ -71,7 +75,8 @@
                 showAlertModal: false,
                 event: "",
                 showNemMessageModal: false,
-                filter_enable: false
+                filter_enable: false,
+                count_accept_notification: 0
             }
                 ;
         },
@@ -179,6 +184,7 @@
                             this.numberUnreaded = data.countMessages;
                             this.numberApplication = data.countRequwest;
                             this.filter_enable = data.filter.filter_enable;
+                            this.count_accept_notification = data.countAccept_notification;
                         });
                 },
                 clouseLikeModal() {

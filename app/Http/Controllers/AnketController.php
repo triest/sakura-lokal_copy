@@ -6,6 +6,7 @@
     use App\Bilders\WinlBilder;
     use App\City;
     use App\Dialog;
+    use App\Eventrequwest;
     use App\Events\NewMessage;
     use App\GiftAct;
     use App\Girl;
@@ -905,12 +906,21 @@
             $filter = Girl::select('filter_enable')->where('id', $id)
                     ->first();
 
+            /*
+             * получаем число непрочитанных уведомлений о принятии
+             * */
+
+            $userauch = User::getautch();
+            $girl = $userauch->girl()->first();
+            $countAccept_notification = $girl->read_notification()->count();
+
             return response()->json([
                     "countMessages" => $countMessage,
                     "countGift" => $countGift,
                     "countRequwest" => $countRequwest,
                     "likeNumber" => $nmberLikes,
                     "filter" => $filter->filter_enable,
+                    "countAccept_notification" => $countAccept_notification,
             ]);
         }
 

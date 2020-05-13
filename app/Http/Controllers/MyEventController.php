@@ -595,7 +595,12 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
                 return 502;
             }
 
-            $event = Myevent::myparticipation($girl);
+
+            if ($request->has('myparticipation') && $request->get('myparticipation') == '1') {
+                $event = Myevent::myparticipation($girl);
+            } else {
+                $event = Myevent::myparticipation($girl, true);
+            }
 
             return response()->json($event);
         }

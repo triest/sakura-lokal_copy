@@ -32,12 +32,13 @@
                 </div>
             </slide>
         </carousel>
-
+        <eventmodal v-if="showEventmodal" @close="clouseModal()"></eventmodal>
         <!--Здесь будут увдомления -->
     </div>
 </template>
 
 <script>
+    import eventmodal from '../events/EventModal'
 
     export default {
         props: {
@@ -48,8 +49,12 @@
         },
         data() {
             return {
-                imagesList: []
+                imagesList: [],
+                showEventmodal: false
             };
+        },
+        components: {
+            eventmodal,
         },
         mounted() {
             Echo.private(`App.User.${this.user.id}`)
@@ -61,7 +66,7 @@
                         .then((response) => {
                             this.numberUnreaded = response.data;
                         });
-                    alert("Вы приглашены на мнроприятие! http://newchat/myevent#")
+                    this.showEventmodal = true;
                 });
             this.getmainImage();
 
@@ -73,6 +78,9 @@
                         .then((response) => {
                             this.imagesList = response.data;
                         });
+                },
+                clouseModal() {
+                    this.showEventmodal = false;
                 }
             }
     };
