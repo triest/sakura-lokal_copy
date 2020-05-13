@@ -3,7 +3,9 @@
     namespace App;
 
     use App\Events\Newevent;
+    use App\Http\Controllers\GirlsController;
     use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\DB;
 
     class Myevent extends Model
@@ -104,7 +106,7 @@
              * */
             //ставим отметку, что прочитанно
             if ($set_readed) {
-                DB::table('event_requwest')->where('girl_id', $girl->id)->update(['read_accept_notification'=> 1]);
+                DB::table('event_requwest')->where('girl_id', $girl->id)->update(['read_accept_notification' => 1]);
             }
 
 
@@ -116,4 +118,64 @@
 
         }
 
+        public static function inMyCity()
+        {
+
+            $user = Auth::user();
+            if ($user == null) {
+                $city = City::GetCurrentCity();
+                $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`	             
+                from myevents myev left join events_participants evpart on myev.id=evpart.myevent_id left join event_statys status on status.id=myev.status_id 
+                left join event_requwest event_req on myev.id=event_req.event_id
+                 where myev.city_id=? and  myev.begin>now()',
+                        [$city->id]));
+                return $events;
+            } else {
+                $girl = $user->anketisExsis();
+                if ($girl == null) {
+                    $ip = GirlsController::getIpStatic();
+                    $response = file_get_contents("http://api.sypexgeo.net/json/"
+                            . $ip); //запрашиваем местоположение
+                    $response = json_decode($response);
+                    $name = $response->city->name_ru;
+                    $cities = DB::table('cities')->where('name', 'like', $name . '%')
+                            ->first();
+                    $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`,event_req.status as `requwest_status`	             
+                from myevents myev left join events_participants evpart on myev.id=evpart.myevent_id left join event_statys status on status.id=myev.status_id 
+                left join event_requwest event_req on myev.id=event_req.event_id
+                 where myev.city_id=? and  myev.begin>now()',
+                            [$cities->id_city]));
+
+                    return $events;
+                } else {
+                    $girl = Girl::select('id', 'name', 'city_id')
+                            ->where('user_id', $user->id)->first();
+                    $city_id = $girl->city_id;
+                    if ($city_id != null) {
+                        $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`,event_req.status as `requwest_status`	             
+                from myevents myev left join events_participants evpart on myev.id=evpart.myevent_id left join event_statys status on status.id=myev.status_id 
+                left join event_requwest event_req on myev.id=event_req.event_id
+                 where myev.city_id=? and  myev.begin>now()', [$city_id]));
+                        return $events;
+                    } else {
+                        $ip = GirlsController::getIpStatic();
+                        $response
+                                = file_get_contents("http://api.sypexgeo.net/json/"
+                                . $ip); //запрашиваем местоположение
+                        $response = json_decode($response);
+                        $name = $response->city->name_ru;
+                        $cities = DB::table('cities')
+                                ->where('name', 'like', $name . '%')
+                                ->first();
+                        $events = collect(DB::select('select myev.id,myev.name,myev.begin,myev.end,myev.status_id,myev.place,myev.status_id,status.name as `status_name`	             
+                from myevents myev left join events_participants evpart on myev.id=evpart.myevent_id left join event_statys status on status.id=myev.status_id 
+                 where myev.city_id=?  and myev.begin>now()  and event_req.girl_id=?',
+                                [$cities->id_city, $girl->id]));
+
+                        return $events;
+                    }
+
+                }
+            }
+        }
     }
