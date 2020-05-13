@@ -203,10 +203,10 @@ left join event_statys statys on myevents.status_id=statys.id left join
         public function viewmyevent($id)
         {
             $events = collect(DB::select('select myevents.id as `id`, myevents.name,myevents.description,
-myevents.begin,myevents.end_applications,city.id_city,city.name as \'city_name\',myevents.status_id as `status_id`, 
+myevents.begin,myevents.end_applications,city.id as `id_city`,city.name as \'city_name\',myevents.status_id as `status_id`, 
 myevents.place,myevents.created_at,myevents.updated_at,statys.name as \'status_name\'  from myevents  
 left join event_statys statys on myevents.status_id=statys.id left join
- cities city on myevents.city_id=city.id_city where myevents.id=?',
+ cityes_api city on myevents.city_id=city.id where myevents.id=?',
                     [$id]));
             $events = $events[0];
 
