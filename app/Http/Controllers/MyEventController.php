@@ -226,6 +226,7 @@ left join event_statys statys on myevents.status_id=statys.id left join
             if ($request->city) {
                 $city = City::get(intval($request->get('city')));
                 $events = Myevent::inMyCity($city);
+
                 $partificator = null;
                 $partifucationArray = array();
                 foreach ($events as $item) {
@@ -238,9 +239,6 @@ left join event_statys statys on myevents.status_id=statys.id left join
             } else {
                 return response()->json();
             }
-
-            return response()->json($events);
-
         }
 
 

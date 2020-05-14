@@ -6714,9 +6714,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     city: {
@@ -6730,7 +6727,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       eventList: "",
-      partification: ""
+      partification: "",
+      add: false
     };
   },
   methods: {
@@ -6747,6 +6745,22 @@ __webpack_require__.r(__webpack_exports__);
         _this.eventList = response.data.events;
         _this.partification = response.data.partification;
       });
+    },
+    checkRequsest: function checkRequsest(event_id) {
+      console.log("event_id");
+      console.log(event_id);
+
+      for (var i = 0; i < this.partification.length; i++) {
+        if (typeof this.partification[i][0] === "undefined") {
+          return false;
+        }
+
+        if (this.partification[i][0].event_id === event_id) {
+          return true;
+        }
+      }
+
+      return false;
     }
   }
 });
@@ -62410,74 +62424,47 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "eventPanel" }, [
-    _vm.eventList.length
-      ? _c(
-          "div",
-          [
-            _c(
-              "carousel",
-              {
-                attrs: {
-                  "per-page": 1,
-                  "mouse-drag": false,
-                  autoplay: true,
-                  loop: true,
-                  navigationEnabled: true
-                }
-              },
-              _vm._l(_vm.eventList, function(event) {
-                return _c("slide", { key: event.id }, [
-                  _c("b", [_vm._v(_vm._s(event.name))]),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(
-                    "\n                Место:" + _vm._s(event.place) + " "
-                  ),
-                  _c("br"),
-                  _vm._v(
-                    "\n                Дата: " + _vm._s(event.begin) + " "
-                  ),
-                  _c("br"),
-                  _vm._v(
-                    "\n                " + _vm._s(event.status_name) + " "
-                  ),
-                  _c("br"),
-                  _vm._v(" "),
-                  event.requwest_status == "accept"
-                    ? _c("div", [
-                        _c("b", [_vm._v("Вы записаны на это мероприятие")])
-                      ])
-                    : _c("div", [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-primary",
-                            attrs: { href: "event/singup/" + event.id }
-                          },
-                          [_vm._v("Записаться!")]
-                        )
-                      ])
-                ])
-              }),
-              1
-            )
-          ],
-          1
-        )
-      : _c("div", [
-          _c("p", [_vm._v("Нет событий")]),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-primary",
-              attrs: { type: "button", href: "/myevent/store" }
-            },
-            [_vm._v("Создать событие")]
-          )
-        ])
-  ])
+  return _c(
+    "div",
+    { staticClass: "eventPanel" },
+    [
+      _c(
+        "carousel",
+        {
+          attrs: {
+            "per-page": 1,
+            "mouse-drag": false,
+            autoplay: true,
+            loop: true,
+            navigationEnabled: true
+          }
+        },
+        _vm._l(_vm.eventList, function(event) {
+          return _c("slide", { key: event.id }, [
+            _c("b", [_vm._v(_vm._s(event.name))]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v("\n            Место:" + _vm._s(event.place) + " "),
+            _c("br"),
+            _vm._v("\n            Дата: " + _vm._s(event.begin) + " "),
+            _c("br"),
+            _vm._v("\n            " + _vm._s(event.status_name) + " "),
+            _c("br"),
+            _vm._v(
+              "\n            " +
+                _vm._s(_vm.checkRequsest(event.id)) +
+                "\n            "
+            ),
+            _vm.checkRequsest(event.id) === true
+              ? _c("div", [_vm._v("\n                да\n            ")])
+              : _c("div", [_vm._v("\n                нет\n            ")])
+          ])
+        }),
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
