@@ -517,6 +517,11 @@
                     $statys)->where('read_accept_notification', '=', 0)->get();
         }
 
+        public static function getAuth()
+        {
+            $aythUser = Auth::user();
+            return $aythUser->girl()->first();
+        }
     }
 
 

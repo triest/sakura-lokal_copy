@@ -25,11 +25,11 @@
     <!--end for faleray -->
 
     <!--My custom style -->
-    <link href="{{asset('css/style.css')}}">
+    <link href="{{asset('css/style.css')}}" type="text/css">
     <!-- -->
-    <link href="{{asset('css/app.css')}}">
+    <link href="{{asset('css/app.css')}}" type="text/css">
 
-    <link href="{{asset('css/carusel.css')}}">
+    <link href="{{asset('css/carusel.css')}}" type="text/css">
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css"
@@ -42,6 +42,7 @@
 
 <body>
 <script src="{{ asset('/js/axios.min.js') }}"></script>
+<? $city = \App\City::GetCurrentCity(); ?>
 
 <!-- тут меню -->
 <nav class="navbar hidden-sm hidden-md hidden-lg visable-xs">
@@ -65,14 +66,11 @@
 
 
 <div class="card-body" id="app2">
-    <div class="row" style="position: center">
-        <carusel :user="{{auth()->user()}}"></carusel>
+    <div class="row">
+        <carusel></carusel>
     </div>
 </div>
 
-<div class="col-sm-1">
-    <eventinmycityside></eventinmycityside>
-</div>
 <div class="col-sm-2">
     <div id="test">
         <div class="card " style="width: 25rem; background-color: #eeeeee;
@@ -80,7 +78,9 @@
              border-color: #666869;
 ">
             <div id="eventinmycityapp">
-                <eventinmycityside></eventinmycityside>
+                <div>
+                    <eventinmycityside2 :city="{{$city}}"></eventinmycityside2>
+                </div>
             </div>
         </div>
     </div>
@@ -110,7 +110,7 @@
                  </p>
                  -->
                 <br>
-                <? $city = \App\City::GetCurrentCity();
+                <?
                 if ($city != null) {
                     echo "<b>" . $city->name . "</b>";
                     echo "<br>";

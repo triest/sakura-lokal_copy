@@ -221,10 +221,25 @@ left join event_statys statys on myevents.status_id=statys.id left join
             ]);
         }
 
-        public static function inmycity(Request $request)
+        public function inmycity(Request $request)
         {
+            if ($request->city) {
+                $city = City::get(intval($request->get('city')));
+                $events = Myevent::inMyCity($city);
+                $partificator = null;
+                $partifucationArray = array();
+                foreach ($events as $item) {
+                    $partificator = $item->checkUserPartification();
+                    if ($partificator != false) {
+                        array_push($partifucationArray, $partificator);
+                    }
+                }
+                return response()->json(["events" => $events, "partification" => $partifucationArray]);
+            } else {
+                return response()->json();
+            }
 
-        return response()->json(Myevent::inMyCity());
+            return response()->json($events);
 
         }
 

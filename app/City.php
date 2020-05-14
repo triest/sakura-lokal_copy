@@ -201,7 +201,6 @@
                 $cities = DB::table('cityes_api')
                         ->where('OKATO', 'like', '%' . $result[1]->oktmo . '%')
                         ->get();
-                dump($cities);
 
                 if ($cities->isEmpty()) {
                     DB::table('cityes_api')->insert(
@@ -219,6 +218,5 @@
 
             return response()->json($cities);
         }
-
 
     }

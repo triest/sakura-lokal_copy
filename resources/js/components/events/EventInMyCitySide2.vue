@@ -1,7 +1,7 @@
 <template>
     <div class="eventPanel">
         <div v-if="eventList.length">
-            <carousel :per-page="1" :mouse-drag="false" :autoplay="true" :loop="true" :centerMode="true"
+            <carousel :per-page="1" :mouse-drag="false" :autoplay="true" :loop="true"
                       :navigationEnabled="true">
                 <slide v-for="event in eventList" :key="event.id">
                     <b>{{event.name}}</b> <br>
@@ -26,22 +26,29 @@
 
 <script>
     export default {
+        props: {
+            city: {
+                type: Object,
+                default: null
+            }
+        },
         mounted() {
-            console.log("event in my my city side");
-            this.getEvents();
+            this.getEvents()
         },
         data() {
             return {
-                eventList: ""
+                eventList: "",
+                partification: "",
             };
         },
         methods: {
             getEvents() {
                 console.log("get events");
-                axios.get('/events/inmycity', {}
+                axios.get('/events/inmycity', {params: {type: "json", city: this.city.id}}
                 )
                     .then((response) => {
-                        this.eventList = response.data;
+                        this.eventList = response.data.events;
+                        this.partification = response.data.partification;
                     });
             }
         }

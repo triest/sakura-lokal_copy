@@ -57,17 +57,19 @@
             eventmodal,
         },
         mounted() {
-            Echo.private(`App.User.${this.user.id}`)
-                .listen('Newevent', (e) => {
-                    console.log(e.eventreq)
-                    console.log(e)
-                    console.log("new Event22");
-                    axios.get('/events/')
-                        .then((response) => {
-                            this.numberUnreaded = response.data;
-                        });
-                    this.showEventmodal = true;
-                });
+            if (typeof this.user !== 'undefined') {
+                Echo.private(`App.User.${this.user.id}`)
+                    .listen('Newevent', (e) => {
+                        console.log(e.eventreq)
+                        console.log(e)
+                        console.log("new Event22");
+                        axios.get('/events/')
+                            .then((response) => {
+                                this.numberUnreaded = response.data;
+                            });
+                        this.showEventmodal = true;
+                    });
+            }
             this.getmainImage();
 
         },
