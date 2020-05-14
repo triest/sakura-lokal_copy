@@ -8,14 +8,20 @@
                 Место:{{event.place}} <br>
                 Дата: {{event.begin}} <br>
                 {{event.status_name}} <br>
-                {{checkRequsest(event.id)}}
-                <div v-if="checkRequsest(event.id)===true">
-                    да
+                <div v-if="checkRequsest(event.id)!==false">
+                    <div v-if="checkRequsest(event.id)=='accept'">
+                        <a class="btn btn-primary" v-bind:href="'event/singup/'+event.id"> Заявка принята</a>
+                    </div>
+                    <div v-if="checkRequsest(event.id)=='denide'">
+                        <a class="btn btn-primary" v-bind:href="'event/singup/'+event.id">Заявка отклонена</a>
+                    </div>
+                    <div v-if="checkRequsest(event.id)=='unreaded'">
+                        <a class="btn btn-primary" v-bind:href="'event/singup/'+event.id">аявка не прочитанна</a>
+                    </div>
                 </div>
                 <div v-else>
-                    нет
+                    <a class="btn btn-primary" v-bind:href="'event/singup/'+event.id">Записаться!</a>
                 </div>
-
             </slide>
         </carousel>
     </div>
@@ -58,7 +64,7 @@
                     }
 
                     if (this.partification[i][0].event_id === event_id) {
-                        return true;
+                        return this.partification[i][0].status;
                     }
                 }
 
@@ -73,6 +79,6 @@
 
 <style scoped>
     .eventPanel {
-        max-width: 100px;
+        /* max-width: 100px;*/
     }
 </style>
