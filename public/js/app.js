@@ -6807,6 +6807,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     city: {
@@ -62681,6 +62682,8 @@ var render = function() {
         },
         _vm._l(_vm.eventList, function(event) {
           return _c("slide", { key: event.id }, [
+            _c("div", { staticClass: "col-sm-1" }),
+            _vm._v(" "),
             _c("b", [_vm._v(_vm._s(event.name))]),
             _vm._v(" "),
             _c("br"),

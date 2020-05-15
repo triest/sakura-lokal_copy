@@ -4,6 +4,7 @@
         <carousel :per-page="1" :mouse-drag="false" :autoplay="true" :loop="true"
                   :navigationEnabled="true">
             <slide v-for="event in eventList" :key="event.id">
+                <div class="col-sm-1"></div>
                 <b>{{event.name}}</b> <br>
                 Место:{{event.place}} <br>
                 Дата: {{event.begin}} <br>
