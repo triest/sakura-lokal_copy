@@ -6638,11 +6638,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   components: {},
@@ -62309,147 +62304,172 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._v("\n    Принятых заявок:\n    " + _vm._s(_vm.countaccepted) + " "),
-    _c("br"),
-    _vm._v(
-      "\n    Максимальное число заявок: " + _vm._s(_vm.max_people) + "\n\n    "
-    ),
-    _vm.countaccepted == _vm.max_people
-      ? _c("div", [_c("b", [_vm._v(" Максимальное число участников! ")])])
-      : _vm._e(),
-    _vm._v(" "),
-    _c("ul", { staticClass: "nav nav-tabs" }, [
-      _c(
-        "li",
-        {
-          attrs: { role: "presentation" },
-          on: {
-            click: function($event) {
-              _vm.currentTab = "myRequwest"
-            }
-          }
-        },
-        [_vm._m(0)]
+  return _c(
+    "div",
+    { staticClass: "col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow" },
+    [
+      _vm._v("\n    Принятых заявок:\n    " + _vm._s(_vm.countaccepted) + " "),
+      _c("br"),
+      _vm._v(
+        "\n    Максимальное число заявок: " +
+          _vm._s(_vm.max_people) +
+          "\n\n    "
       ),
+      _vm.countaccepted == _vm.max_people
+        ? _c("div", [_c("b", [_vm._v(" Максимальное число участников! ")])])
+        : _vm._e(),
       _vm._v(" "),
-      _c(
-        "li",
-        {
-          attrs: { role: "presentation" },
-          on: {
-            click: function($event) {
-              _vm.currentTab = "RequwestToMyEvent"
+      _c("ul", { staticClass: "nav nav-tabs" }, [
+        _c(
+          "li",
+          {
+            attrs: { role: "presentation" },
+            on: {
+              click: function($event) {
+                _vm.currentTab = "myRequwest"
+              }
             }
-          }
-        },
-        [_vm._m(1)]
-      )
-    ]),
-    _vm._v(" "),
-    _vm.currentTab == "myRequwest"
-      ? _c("div", [
-          _c("table", { staticClass: "table table-condensed" }, [
-            _vm._m(2),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.myrequwests, function(event) {
-                return _c("tr", [
-                  _c("td", [
-                    _c("a", { attrs: { href: "/event/singup/" + event.id } }, [
-                      _vm._v(_vm._s(event.name))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(event.city_name))]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v(_vm._s(event.place))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(event.begin))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(event.statys_name))]),
-                  _vm._v(" "),
-                  event.req_status == "unread"
-                    ? _c("div", [_c("td", [_vm._v("Заявка не прочитанна")])])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  event.req_status == "accept"
-                    ? _c("div", [_c("td", [_vm._v("Заявка принята")])])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  event.req_status == "denide"
-                    ? _c("div", [_c("td", [_vm._v("Заявка отклонена")])])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(event.created_at))])
-                ])
-              }),
-              0
-            )
+          },
+          [_vm._m(0)]
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            attrs: { role: "presentation" },
+            on: {
+              click: function($event) {
+                _vm.currentTab = "RequwestToMyEvent"
+              }
+            }
+          },
+          [_vm._m(1)]
+        )
+      ]),
+      _vm._v(" "),
+      _vm.currentTab == "myRequwest"
+        ? _c("div", [
+            _c("table", { staticClass: "table table-condensed" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.myrequwests, function(event) {
+                  return _c("tr", [
+                    _c("td", [
+                      _c(
+                        "a",
+                        { attrs: { href: "/event/singup/" + event.id } },
+                        [_vm._v(_vm._s(event.name))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(event.city_name))]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v(_vm._s(event.place))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(event.begin))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(event.statys_name))]),
+                    _vm._v(" "),
+                    event.req_status == "unread"
+                      ? _c("div", [_c("td", [_vm._v("Заявка не прочитанна")])])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    event.req_status == "accept"
+                      ? _c("div", [_c("td", [_vm._v("Заявка принята")])])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    event.req_status == "denide"
+                      ? _c("div", [_c("td", [_vm._v("Заявка отклонена")])])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(event.created_at))])
+                  ])
+                }),
+                0
+              )
+            ])
           ])
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.currentTab == "RequwestToMyEvent"
-      ? _c("div", [
-          _c("table", { staticClass: "table table-condensed" }, [
-            _vm._m(3),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.requwesttomyevent, function(event) {
-                return _c("tr", [
-                  _c("td", [
-                    _c("a", { attrs: { href: "/myevent/" + event.id } }, [
-                      _vm._v(_vm._s(event.name))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(event.city_name))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("a", { attrs: { href: "/anket/" + event.girl_id } }, [
-                      _vm._v(_vm._s(event.girl_name))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("img", {
-                      attrs: {
-                        src: "/images/upload/" + event.girl_main_image,
-                        height: "100"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(event.place))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(event.statys_name))]),
-                  _vm._v(" "),
-                  event.req_status == "unread"
-                    ? _c("h5", [
-                        _c("b", [
-                          _c("p", [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "btn btn-primary",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.accept(event.id, event.req_id)
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.currentTab == "RequwestToMyEvent"
+        ? _c("div", [
+            _c("table", { staticClass: "table table-condensed" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.requwesttomyevent, function(event) {
+                  return _c("tr", [
+                    _c("td", [
+                      _c("a", { attrs: { href: "/myevent/" + event.id } }, [
+                        _vm._v(_vm._s(event.name))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("a", { attrs: { href: "/anket/" + event.girl_id } }, [
+                        _c("img", {
+                          attrs: {
+                            src: "/images/upload/" + event.girl_main_image,
+                            height: "100"
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(event.place))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(event.statys_name))]),
+                    _vm._v(" "),
+                    event.req_status == "unread"
+                      ? _c("h5", [
+                          _c("b", [
+                            _c("p", [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.accept(event.id, event.req_id)
+                                    }
                                   }
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                        Принять1\n                    "
-                                )
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        Принять1\n                    "
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.reject(event.id, event.req_id)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                            Отклонить\n                        "
+                                  )
+                                ]
+                              )
+                            ])
+                          ])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    event.req_status == "accept"
+                      ? _c("h5", [
+                          _c("b", [
                             _c(
                               "a",
                               {
@@ -62462,47 +62482,24 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                            Отклонить\n                        "
+                                  "\n                        Отклонить\n                    "
                                 )
                               ]
                             )
                           ])
                         ])
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  event.req_status == "accept"
-                    ? _c("h5", [
-                        _c("b", [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "btn btn-danger",
-                              on: {
-                                click: function($event) {
-                                  return _vm.reject(event.id, event.req_id)
-                                }
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                        Отклонить\n                    "
-                              )
-                            ]
-                          )
-                        ])
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(event.created_at))])
-                ])
-              }),
-              0
-            )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(event.created_at))])
+                  ])
+                }),
+                0
+              )
+            ])
           ])
-        ])
-      : _vm._e()
-  ])
+        : _vm._e()
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -62545,17 +62542,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th"),
-        _vm._v(" "),
-        _c("th", [_vm._v("Город")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Место события")]),
+        _c("th", [_vm._v("Событие")]),
         _vm._v(" "),
         _c("th", [_vm._v("Дата события")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Статус события")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Создано")])
+        _c("th", [_vm._v("Статус события")])
       ])
     ])
   }

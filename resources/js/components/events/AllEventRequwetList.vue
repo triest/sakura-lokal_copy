@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
         Принятых заявок:
         {{countaccepted}} <br>
         Максимальное число заявок: {{max_people}}
@@ -51,21 +51,16 @@
             <table class="table table-condensed">
                 <thead>
                 <tr>
-                    <th></th>
-                    <th>Город</th>
-                    <th>Место события</th>
+                    <th>Событие</th>
                     <th>Дата события</th>
                     <th>Статус события</th>
-                    <th>Создано</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr v-for="event in requwesttomyevent">
                     <!--  <a :href="'/anket/'+like.id"> -->
                     <td><a :href="'/myevent/' +event.id">{{event.name}}</a></td>
-                    <td>{{event.city_name}}</td>
-                    <td><a :href="'/anket/' +event.girl_id">{{event.girl_name}}</a></td>
-                    <td><img :src="'/images/upload/'+event.girl_main_image" height="100"></td>
+                    <td><a :href="'/anket/' +event.girl_id"><img :src="'/images/upload/'+event.girl_main_image" height="100"></a></td>
                     <td>{{event.place}}</td>
                     <td>{{event.statys_name}}</td>
                     <h5 v-if="event.req_status=='unread'"><b>
