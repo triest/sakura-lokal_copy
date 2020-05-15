@@ -3,16 +3,16 @@
         <div class="navbar-brand">
             <p v-if="mainImage!=null">
                 <a href="/myAnket">
-                    <img :src="'images/upload/'+mainImage" height="30">
+                    <img :src="'/images/upload/'+mainImage" height="30">
                 </a>
-                <a href="/messages"> <img width="50" height="50" :src="'images/icons/icons8-speech-bubble.svg'">
+                <a href="/messages"> <img width="50" height="40" :src="'/images/icons/icons8-speech-bubble.svg'">
                     <div v-if="numberUnreaded>0">({{numberUnreaded}})</div>
                 </a>
-                <a href="/applications"> <img width="50" height="50" :src="'images/icons/lightning-bolt@2x.png'">
+                <a href="/applications"> <img width="50" height="40" :src="'/images/icons/lightning-bolt@2x.png'">
                     <div v-if="numberApplication>0">({{numberApplication}})</div>
                 </a>
                 <likemodal v-if="showLikeModal" @closeLikeModalEmit='closeLikeModal()'></likemodal>
-                <a href="/history"> <img width="50" height="50" :src="'images/icons/eye.png'"></a>
+                <a href="/history"> <img width="50" height="40" :src="'/images/icons/eye.png'"></a>
             </p>
         </div>
         <div class="navbar-brand">

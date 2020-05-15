@@ -113,6 +113,7 @@ Vue.component('all-event-requwet-list', require('./components/events/AllEventReq
 Vue.component('seach', require('./components/seach/index').default);
 
 Vue.component('carusel', require('./components/carusel/carusel').default);
+Vue.component('carusel-mobile', require('./components/carusel/carusel-mobile').default);
 
 Vue.component('likeCarusel', require('./components/carusel/likeCarusel').default);
 

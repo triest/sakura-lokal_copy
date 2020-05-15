@@ -463,7 +463,7 @@ Route::get('/listrequwest', 'MyEventController@listrequwest')
 
 //присоединиться к событию
 Route::get('event/singup/{id}', 'MyEventController@singup')->name('viewmyevent')
-    ->middleware('auth', 'anketExist');
+    ->middleware('auth');
 
 //события с моим участием
 Route::get('event/myparticipation', 'MyEventController@myparticipation')

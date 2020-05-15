@@ -54,9 +54,7 @@
         <!-- {{$girl=Auth::user()->anketisExsis()}} -->
             <div class="navbar-brand" id="sidePanelApp2">
                 <side-panel2 :user="{{auth()->user()}}"></side-panel2>
-
             </div>
-
         @else
             <b class="navbar-brand"><a class="btn btn-primary" href="{{route('createGirlPage')}}">Создать анкету</a>
             </b>
@@ -67,7 +65,11 @@
 
 <div class="card-body" id="app2">
     <div class="row">
-        <carusel></carusel>
+        @if ($agent->isMobile())
+
+        @else
+            <carusel></carusel>
+        @endif
     </div>
 </div>
 

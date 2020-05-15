@@ -16,7 +16,7 @@
                         <a class="btn btn-primary" v-bind:href="'event/singup/'+event.id">Заявка отклонена</a>
                     </div>
                     <div v-if="checkRequsest(event.id)=='unreaded'">
-                        <a class="btn btn-primary" v-bind:href="'event/singup/'+event.id">аявка не прочитанна</a>
+                        <a class="btn btn-primary" v-bind:href="'event/singup/'+event.id">Заявка не прочитана</a>
                     </div>
                 </div>
                 <div v-else>
