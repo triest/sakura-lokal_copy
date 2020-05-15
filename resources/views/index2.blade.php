@@ -3,7 +3,6 @@
 @section('content')
 
     <div id="anketListApp">
-
         <anketlist></anketlist>
     </div>
 

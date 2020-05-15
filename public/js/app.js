@@ -7087,10 +7087,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   components: {},
@@ -62922,117 +62918,119 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("ul", { staticClass: "nav nav-tabs" }, [
-      _c(
-        "li",
-        {
-          attrs: { role: "presentation" },
-          on: {
-            click: function($event) {
-              _vm.currentTab = "createmy"
+  return _c(
+    "div",
+    { staticClass: "col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow" },
+    [
+      _c("ul", { staticClass: "nav nav-tabs" }, [
+        _c(
+          "li",
+          {
+            attrs: { role: "presentation" },
+            on: {
+              click: function($event) {
+                _vm.currentTab = "createmy"
+              }
             }
-          }
-        },
-        [_vm._m(0)]
-      ),
-      _vm._v(" "),
-      _c(
-        "li",
-        {
-          attrs: { role: "presentation" },
-          on: {
-            click: function($event) {
-              _vm.currentTab = "participation"
+          },
+          [_vm._m(0)]
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            attrs: { role: "presentation" },
+            on: {
+              click: function($event) {
+                _vm.currentTab = "participation"
+              }
             }
-          }
-        },
-        [_vm._m(1)]
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "tab-content" }, [
-      _vm.currentTab == "createmy"
-        ? _c("div", [
-            _c("table", { staticClass: "table table-condensed" }, [
-              _vm._m(2),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.events, function(event) {
-                  return _c("tr", [
-                    _c("td", [
-                      _c("a", { attrs: { href: "/myevent/" + event.id } }, [
-                        _vm._v(_vm._s(event.name))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(event.city_name))]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v(_vm._s(event.place))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(event.begin))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(event.event_statys))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(event.created_at))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(event.updated_at))])
-                  ])
-                }),
-                0
-              )
-            ])
-          ])
-        : _vm._e(),
+          },
+          [_vm._m(1)]
+        )
+      ]),
       _vm._v(" "),
-      _vm.currentTab == "participation"
-        ? _c("div", [
-            _c("table", { staticClass: "table table-condensed" }, [
-              _vm._m(3),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.myparticipationList, function(event) {
-                  return _c("tr", [
-                    _c("td", [
-                      _c(
-                        "a",
-                        { attrs: { href: "/event/singup/" + event.id } },
-                        [_vm._v(_vm._s(event.name))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(event.city_name))]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v(_vm._s(event.place))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(event.begin))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(event.statys_name))]),
-                    _vm._v(" "),
-                    event.req_status == "unread"
-                      ? _c("div", [_c("td", [_vm._v("Заявка не прочитанна")])])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    event.req_status == "accept"
-                      ? _c("div", [_c("td", [_vm._v("Заявка принята")])])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    event.req_status == "denide"
-                      ? _c("div", [_c("td", [_vm._v("Заявка отклонена")])])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(event.created_at))])
-                  ])
-                }),
-                0
-              )
+      _c("div", { staticClass: "tab-content" }, [
+        _vm.currentTab == "createmy"
+          ? _c("div", [
+              _c("table", { staticClass: "table table-condensed" }, [
+                _vm._m(2),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.events, function(event) {
+                    return _c("tr", [
+                      _c("td", [
+                        _c("a", { attrs: { href: "/myevent/" + event.id } }, [
+                          _vm._v(_vm._s(event.name))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(event.city_name))]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v(_vm._s(event.place))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(event.begin))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(event.event_statys))])
+                    ])
+                  }),
+                  0
+                )
+              ])
             ])
-          ])
-        : _vm._e()
-    ])
-  ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.currentTab == "participation"
+          ? _c("div", [
+              _c("table", { staticClass: "table table-condensed" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.myparticipationList, function(event) {
+                    return _c("tr", [
+                      _c("td", [
+                        _c(
+                          "a",
+                          { attrs: { href: "/event/singup/" + event.id } },
+                          [_vm._v(_vm._s(event.name))]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(event.city_name))]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v(_vm._s(event.place))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(event.begin))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(event.statys_name))]),
+                      _vm._v(" "),
+                      event.req_status == "unread"
+                        ? _c("div", [
+                            _c("td", [_vm._v("Заявка не прочитанна")])
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      event.req_status == "accept"
+                        ? _c("div", [_c("td", [_vm._v("Заявка принята")])])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      event.req_status == "denide"
+                        ? _c("div", [_c("td", [_vm._v("Заявка отклонена")])])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(event.created_at))])
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ])
+          : _vm._e()
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -63065,11 +63063,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Дата события")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Статус события")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Создано")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Изменено")])
+        _c("th", [_vm._v("Статус события")])
       ])
     ])
   },

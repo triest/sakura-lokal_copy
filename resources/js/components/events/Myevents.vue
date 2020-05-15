@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div  class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
         <ul class="nav nav-tabs">
             <li role="presentation" @click="currentTab = 'createmy'"><a href="#"><b>Созданные мной</b></a></li>
             <li role="presentation" @click="currentTab = 'participation'"><a href="#"><b>С моим участием</b></a></li>
@@ -14,8 +14,6 @@
                         <th>Место события</th>
                         <th>Дата события</th>
                         <th>Статус события</th>
-                        <th>Создано</th>
-                        <th>Изменено</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -26,8 +24,6 @@
                         <th>{{event.place}}</th>
                         <td>{{event.begin}}</td>
                         <td>{{event.event_statys}}</td>
-                        <td>{{event.created_at}}</td>
-                        <td>{{event.updated_at}}</td>
                     </tr>
                     </tbody>
                 </table>
