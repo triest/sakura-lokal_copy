@@ -522,6 +522,17 @@
             $aythUser = Auth::user();
             return $aythUser->girl()->first();
         }
+
+        public function sendMail($message, $blade)
+        {
+            $user = $this->user()->first();
+            if ($user != null) {
+                $user->sendmail($message, $blade,$user);
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
 
