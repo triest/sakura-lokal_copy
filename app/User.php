@@ -2,6 +2,7 @@
 
     namespace App;
 
+    use App\Jobs\SendMessage;
     use Illuminate\Filesystem\Cache;
     use Illuminate\Notifications\Notifiable;
     use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -182,35 +183,8 @@
                 return false;
             }
 
+            SendMessage::dispatch($mail, $anket, $message, $type)->delay(100);
 
-
-            switch ($type) {
-                case 'newMessage':
-                    try {
-                        Mail::send('email.newMessage',
-                                [
-                                        'text' => $message,
-                                        'anket' => $anket
-                                ],
-                                function ($message) use ($mail) {
-                                    $message
-                                            ->to($mail, 'some guy')
-                                            //->from('newmail.sm@yandex.ru')
-                                            ->from('sakura-testmail@sakura-city.info')
-                                            ->subject('У вас новое сообщение');
-
-                                });
-                    } catch
-                    (\Exception $exception) {
-                        echo '<br>';
-                        echo 'error:';
-                        echo '<br>';
-                        echo $exception->getMessage();
-                        return false;
-                    }
-            }
-
-            return true;
         }
 
     }
