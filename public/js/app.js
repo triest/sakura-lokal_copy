@@ -8067,6 +8067,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -64547,9 +64550,10 @@ var render = function() {
               _c("a", { attrs: { href: "/messages" } }, [
                 _c("img", {
                   attrs: {
+                      title: "Сообщения",
                     width: "50",
                     height: "40",
-                    src: "/images/icons/icons8-speech-bubble.svg"
+                      src: "/images/new_icon/message.svg"
                   }
                 }),
                 _vm._v(" "),
@@ -64561,9 +64565,10 @@ var render = function() {
               _c("a", { attrs: { href: "/applications" } }, [
                 _c("img", {
                   attrs: {
+                      title: "Запросы",
                     width: "50",
                     height: "40",
-                    src: "/images/icons/lightning-bolt@2x.png"
+                      src: "/images/new_icon/lightning.png"
                   }
                 }),
                 _vm._v(" "),
@@ -64584,30 +64589,23 @@ var render = function() {
                   })
                 : _vm._e(),
               _vm._v(" "),
-              _c("a", { attrs: { href: "/history" } }, [
+                _c("a", {attrs: {href: "/event/requwest/list"}}, [
                 _c("img", {
                   attrs: {
                     width: "50",
                     height: "40",
-                    src: "/images/icons/eye.png"
+                      src: "/images/new_icon/event.svg"
                   }
-                })
-              ])
+                }),
+                    _vm._v(" "),
+                    _vm.unreeadedEventRequwest
+                        ? _c("b", [_vm._v(" " + _vm._s(_vm.unreeadedEventRequwest))])
+                        : _vm._e()
+                ])
             ],
-            1
+          1
           )
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "navbar-brand" }, [
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { href: "/event/requwest/list" }
-        },
-        [_vm._v("Запросы " + _vm._s(_vm.unreeadedEventRequwest))]
-      )
+          : _vm._e()
     ])
   ])
 }

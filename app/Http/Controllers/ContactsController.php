@@ -106,14 +106,6 @@
             $girl = Girl::select(['id', 'user_id'])
                     ->where('id', $request->contact_id)->first();
 
-
-            /*  $message = Message::create([
-            /*  $message = Message::create([
-                  'from' => auth()->id(),
-                  'to' => $girl->user_id,
-                  'text' => $request->text,
-              ]);
-            */
             $message = new Message();
             $message->from = auth()->id();
             $message->to = $girl->user_id;
@@ -171,7 +163,6 @@
             //просмотр запросов
 
             $user = Auth::user();
-            //  $request = collect(DB::select('select * from requwest where target_id=?', [$user->id]));
             $request = MyRequwest::select('requwest.id',
                     'who_id',
                     'target_id', 'main_image')
@@ -189,24 +180,12 @@
             //просмотр запросов
 
             $user = Auth::user();
-            //  $request = collect(DB::select('select * from requwest where target_id=?', [$user->id]));
-            /* $request = MyRequwest::select('id',
-                 'who_id',
-                 'target_id', 'who_name', 'image', 'status', 'readed')->where('who_id', $user->id)
-                 //->where('readed', 0)
-                 ->get();*/
 
-            /* $request = DB::table('requwest')->join('girls', 'girls.user_id', '=', 'users.id')
-                 ->select('users.id','users.name','girls.main_image')
-                 ->where('who_id', $user->id)->first();*/
             $requwest = collect(DB::select('select r.id,r.status,r.created_at,u.name,g.main_image from requwest r 
                     left join users u on u.id=r.target_id
                     left join girls g on u.id=g.user_id
                       where r.who_id=?', [$user->id]));
 
-            // $array = [];
-
-            //  return response()->json(, $request);
             return $requwest;
         }
 

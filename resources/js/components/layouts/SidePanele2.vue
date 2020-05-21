@@ -5,18 +5,21 @@
                 <a href="/myAnket">
                     <img :src="'/images/upload/'+mainImage" height="30">
                 </a>
-                <a href="/messages"> <img width="50" height="40" :src="'/images/icons/icons8-speech-bubble.svg'">
+                <a href="/messages"> <img title="Сообщения" width="50" height="40"
+                                          :src="'/images/new_icon/message.svg'">
                     <div v-if="numberUnreaded>0">({{numberUnreaded}})</div>
                 </a>
-                <a href="/applications"> <img width="50" height="40" :src="'/images/icons/lightning-bolt@2x.png'">
+                <a href="/applications"> <img title="Запросы" width="50" height="40"
+                                              :src="'/images/new_icon/lightning.png'">
                     <div v-if="numberApplication>0">({{numberApplication}})</div>
                 </a>
                 <likemodal v-if="showLikeModal" @closeLikeModalEmit='closeLikeModal()'></likemodal>
-                <a href="/history"> <img width="50" height="40" :src="'/images/icons/eye.png'"></a>
+                <!--  <a href="/history"> <img width="50" height="40" :src="'/images/new_icon/event.svg'"></a>-->
+
+                <a href="/event/requwest/list"><img width="50" height="40"
+                                                    :src="'/images/new_icon/event.svg'">
+                    <b v-if="unreeadedEventRequwest"> {{unreeadedEventRequwest}}</b></a>
             </p>
-        </div>
-        <div class="navbar-brand">
-            <a class="btn btn-primary" href="/event/requwest/list">Запросы {{unreeadedEventRequwest}}</a>
         </div>
     </div>
 </template>
