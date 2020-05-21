@@ -8070,6 +8070,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -13895,7 +13897,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.eventPanel[data-v-47489380] {\n    /* max-width: 100px;*/\n}\n", ""]);
+exports.push([module.i, "\n.eventPanel[data-v-47489380] {\n    max-width: 250px;\n}\n", ""]);
 
 // exports
 
@@ -62670,7 +62672,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "eventPanel" },
     [
       _c(
         "carousel",
@@ -62680,7 +62681,8 @@ var render = function() {
             "mouse-drag": false,
             autoplay: true,
             loop: true,
-            navigationEnabled: true
+            navigationEnabled: true,
+            paginationEnabled: false
           }
         },
         _vm._l(_vm.eventList, function(event) {
@@ -62694,9 +62696,9 @@ var render = function() {
             _c("br"),
             _vm._v("\n            Дата: " + _vm._s(event.begin) + " "),
             _c("br"),
-            _vm._v("\n            " + _vm._s(event.status_name) + " "),
-            _c("br"),
-            _vm._v(" "),
+            _vm._v(
+              "\n            " + _vm._s(event.status_name) + "\n            "
+            ),
             _vm.checkRequsest(event.id) !== false
               ? _c("div", [
                   _vm.checkRequsest(event.id) == "accept"
@@ -64550,10 +64552,10 @@ var render = function() {
               _c("a", { attrs: { href: "/messages" } }, [
                 _c("img", {
                   attrs: {
-                      title: "Сообщения",
+                    title: "Сообщения",
                     width: "50",
                     height: "40",
-                      src: "/images/new_icon/message.svg"
+                    src: "/images/new_icon/message.svg"
                   }
                 }),
                 _vm._v(" "),
@@ -64565,10 +64567,10 @@ var render = function() {
               _c("a", { attrs: { href: "/applications" } }, [
                 _c("img", {
                   attrs: {
-                      title: "Запросы",
+                    title: "Запросы",
                     width: "50",
                     height: "40",
-                      src: "/images/new_icon/lightning.png"
+                    src: "/images/new_icon/lightning.png"
                   }
                 }),
                 _vm._v(" "),
@@ -64589,23 +64591,35 @@ var render = function() {
                   })
                 : _vm._e(),
               _vm._v(" "),
-                _c("a", {attrs: {href: "/event/requwest/list"}}, [
+              _c("a", { attrs: { href: "/event/requwest/list" } }, [
                 _c("img", {
                   attrs: {
                     width: "50",
                     height: "40",
-                      src: "/images/new_icon/event.svg"
+                    src: "/images/new_icon/event.svg"
                   }
                 }),
-                    _vm._v(" "),
-                    _vm.unreeadedEventRequwest
-                        ? _c("b", [_vm._v(" " + _vm._s(_vm.unreeadedEventRequwest))])
-                        : _vm._e()
+                _vm._v(" "),
+                _vm.unreeadedEventRequwest
+                  ? _c("b", [_vm._v(" " + _vm._s(_vm.unreeadedEventRequwest))])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("b", [
+                _c("a", { attrs: { href: "/anket" } }, [
+                  _c("img", {
+                    attrs: {
+                      width: "50",
+                      height: "40",
+                      src: "/images/new_icon/search.svg"
+                    }
+                  })
                 ])
+              ])
             ],
-          1
+            1
           )
-          : _vm._e()
+        : _vm._e()
     ])
   ])
 }

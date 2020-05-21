@@ -19,6 +19,8 @@
                 <a href="/event/requwest/list"><img width="50" height="40"
                                                     :src="'/images/new_icon/event.svg'">
                     <b v-if="unreeadedEventRequwest"> {{unreeadedEventRequwest}}</b></a>
+                <b><a href="/anket"><img width="50" height="40"
+                                         :src="'/images/new_icon/search.svg'"></a> </b>
             </p>
         </div>
     </div>

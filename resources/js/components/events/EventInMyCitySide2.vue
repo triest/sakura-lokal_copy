@@ -1,14 +1,14 @@
 <template>
-    <div class="eventPanel">
+    <div>
 
         <carousel :per-page="1" :mouse-drag="false" :autoplay="true" :loop="true"
-                  :navigationEnabled="true">
+                  :navigationEnabled="true" :paginationEnabled="false">
             <slide v-for="event in eventList" :key="event.id">
                 <div class="col-sm-1"></div>
                 <b>{{event.name}}</b> <br>
                 Место:{{event.place}} <br>
                 Дата: {{event.begin}} <br>
-                {{event.status_name}} <br>
+                {{event.status_name}}
                 <div v-if="checkRequsest(event.id)!==false">
                     <div v-if="checkRequsest(event.id)=='accept'">
                         <a class="btn btn-primary" v-bind:href="'event/singup/'+event.id"> Заявка принята</a>
@@ -80,6 +80,6 @@
 
 <style scoped>
     .eventPanel {
-        /* max-width: 100px;*/
+        max-width: 250px;
     }
 </style>

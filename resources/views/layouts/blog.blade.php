@@ -73,17 +73,15 @@
     </div>
 </div>
 
-<div class="col-sm-2">
-    <div id="test" class="card " style="width: 25rem; background-color: #eeeeee;
+<div class="col-sm-1">
+    <div id="eventinmycityapp" style="width: 25rem; background-color: #eeeeee;
              border: 1px solid transparent;
              border-color: #666869;
 ">
-        <div id="eventinmycityapp">
-            <div>
-                <eventinmycityside2 :city="{{$city}}"></eventinmycityside2>
-            </div>
-        </div>
+        <eventinmycityside2 :city="{{$city}}"></eventinmycityside2>
     </div>
+</div>
+<div class="col-sm-1">
 </div>
 <div class="col-sm-8">
     <div class="row row-offcanvas row-offcanvas-right">
@@ -111,7 +109,7 @@
                 <br>
                 <?
                 if ($city != null) {
-                    echo "<b>" . $city->name . "</b>";
+                    echo "<b>".$city->name."</b>";
                     echo "<br>";
                 }
                 ?>
