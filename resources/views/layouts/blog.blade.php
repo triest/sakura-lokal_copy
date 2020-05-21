@@ -106,19 +106,19 @@
                      <button type="button" class="menuButton" data-toggle="offcanvas"><b>Закрыть</b></button>
                  </p>
                  -->
-                <br>
-                <?
-                if ($city != null) {
-                    echo "<b>".$city->name."</b>";
-                    echo "<br>";
-                }
-                ?>
+
                 @if (Auth::guest())
                     <b><a class="button blue" href="{{ url('/login') }}">Войти</a></b><br><br>
                     <b><a class="button green" href="{{ url('/join') }}">Зарегистрироваться</a></b><br>
                     <b><a class="button blue" href="{{route('main')}}">Поиск</a></b><br><br>
                 @else
                     <b>{{auth()->user()->name}}</b><br>
+                    <?
+                    if ($city != null) {
+                        echo $city->name;
+                        echo "<br>";
+                    }
+                    ?>
                     <b><a href="{{ url('/logout') }}">Выйти</a></b>
                     <br>
                     @if($girl=Auth::user()->anketisExsis()!=null)
@@ -146,8 +146,11 @@
                         <br>
                     @endif
                     <br>
-                    <b><a class="btn btn-success" href="{{route('main')}}">На главную</a> </b>
-
+                    <?
+                    if($_SERVER['REQUEST_URI'] != "/anket"){
+                    ?>
+                    <b><a class="btn btn-success" href="{{route('main')}}">Поиск</a> </b>
+                    <? } ?>
                 @endif
             </div>
         </div>

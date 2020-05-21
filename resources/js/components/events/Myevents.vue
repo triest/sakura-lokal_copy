@@ -1,5 +1,5 @@
 <template>
-    <div  class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
+    <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow" style=" margin-left: auto;margin-right: auto">
         <ul class="nav nav-tabs">
             <li role="presentation" @click="currentTab = 'createmy'"><a href="#"><b>Созданные мной</b></a></li>
             <li role="presentation" @click="currentTab = 'participation'"><a href="#"><b>С моим участием</b></a></li>

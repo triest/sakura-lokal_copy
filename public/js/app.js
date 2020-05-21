@@ -62919,7 +62919,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow" },
+      {
+          staticClass: "col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow",
+          staticStyle: {"margin-left": "auto", "margin-right": "auto"}
+      },
     [
       _c("ul", { staticClass: "nav nav-tabs" }, [
         _c(
