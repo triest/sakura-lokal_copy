@@ -38,6 +38,8 @@
         {
             //
             $mail = $this->mail;
+            $anket = $this->anket;
+            $city = $this->anket->city()->first();
             switch ($this->type) {
                 case 'newMessage':
                     try {
@@ -46,10 +48,9 @@
                                         'text' => $this->message,
                                         'anket' => $this->anket
                                 ],
-                                function ($message) use ($mail) {
+                            function ($message) use ($mail, $anket, $city) {
                                     $message
-                                            ->to($mail, 'some guy')
-                                            //->from('newmail.sm@yandex.ru')
+                                        ->to($mail, $anket->name)
                                             ->from('sakura-testmail@sakura-city.info')
                                             ->subject('У вас новое сообщение');
 

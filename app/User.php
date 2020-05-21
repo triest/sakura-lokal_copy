@@ -172,19 +172,23 @@
 
         public function sendmail($message, $blade, $fromUser = null, $type = 'newMessage')
         {
-            $anket = $this->anketisExsis();
+            switch ($type) {
+                case "newMessage":
+                    $anket = $this->anketisExsis();
 
+                    if ($fromUser == null || $anket == null) {
+                        return false;
+                    }
+                    $mail = $this->email;
+                    if ($mail == null) {
+                        return false;
+                    }
 
-            if ($fromUser == null) {
-                return false;
+                    SendMessage::dispatch($mail, $anket, $message, $type)
+                        ->delay(100);
+                    break;
+
             }
-            $mail = $this->email;
-            if ($mail == null) {
-                return false;
-            }
-
-            SendMessage::dispatch($mail, $anket, $message, $type)->delay(100);
-
         }
 
     }
