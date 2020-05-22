@@ -3,7 +3,7 @@
         <div style="margin-left: auto;   margin-right: auto">
             <button class="btn btn-primary" v-on:click="openSeachModal()">Настроить поиск</button>
             <div v-for="item in anketList">
-                <!--ipad md  -->
+                <!--ipad в горизонтальном виде md  -->
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 box-shadow">
                     <a :href="/anket/+item.id">
                         <img width="200" height="200" :src="'images/upload/'+item.main_image">

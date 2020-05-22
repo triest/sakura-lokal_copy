@@ -4,8 +4,7 @@
     <list default="true" id="bc0512e8-00a1-4fda-b4b5-25f066571cf0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/events/Myevents.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/events/Myevents.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/event/myevent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/event/myevent.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ankertList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ankertList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/blog.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,72 +18,30 @@
     <pharConfigPath />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
+            <state relative-caret-position="7174">
               <caret line="431" column="49" selection-start-line="431" selection-start-column="42" selection-end-line="431" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyEventController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="30" column="30" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="blog.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="blog.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/blog.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="574">
-              <caret line="149" column="48" selection-start-line="149" selection-start-column="48" selection-end-line="149" selection-end-column="48" />
+            <state relative-caret-position="510">
+              <caret line="107" column="20" selection-start-line="107" selection-start-column="20" selection-end-line="107" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+      <file leaf-file-name="ankertList.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/ankertList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="114" column="57" selection-start-line="114" selection-start-column="57" selection-end-line="114" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myevent.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/event/myevent.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="carusel.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/carusel/carusel.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="55" lean-forward="true" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Myevents.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/events/Myevents.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -101,7 +58,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>save()</find>
       <find>select(</find>
       <find>$table</find>
       <find>find</find>
@@ -131,6 +87,7 @@
       <find>eventinmycityside2</find>
       <find>eventPanel</find>
       <find>myevent</find>
+      <find>login</find>
     </findStrings>
     <replaceStrings>
       <replace>get_girl_id</replace>
@@ -151,7 +108,6 @@
       <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat\</dir>
       <dir>W:\domains\new_chat\chat\app\Http\Controllers</dir>
       <dir>W:\domains\new_chat\chat\</dir>
-      <dir>W:\domains\new_chat\chat</dir>
       <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat</dir>
       <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat\app</dir>
       <dir>G:\Документы\Программы\openSerwer\Open Server 5.2.9\OSPanel\domains\new_chat\chat\resources\views</dir>
@@ -159,6 +115,7 @@
       <dir>W:\domains\new_chat\chat\resources\views</dir>
       <dir>W:\domains\new_chat\chat\app</dir>
       <dir>W:\domains\new_chat\chat\app\Http</dir>
+      <dir>W:\domains\new_chat\chat</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -212,7 +169,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/AnketController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/anket/like.vue" />
         <option value="$PROJECT_DIR$/resources/views/anket/view2.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/ankertList.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/SeachModal.vue" />
         <option value="$PROJECT_DIR$/app/SearchSettings.php" />
         <option value="$PROJECT_DIR$/resources/views/email/newMessage.blade.php" />
@@ -226,6 +182,7 @@
         <option value="$PROJECT_DIR$/resources/js/components/events/Myevents.vue" />
         <option value="$PROJECT_DIR$/resources/views/event/myevent.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/blog.blade.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/ankertList.vue" />
       </list>
     </option>
   </component>
@@ -365,53 +322,6 @@
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="factories" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-              <item name="new_icon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -426,14 +336,6 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="events" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
@@ -779,14 +681,8 @@
       <workItem from="1588887479825" duration="613000" />
       <workItem from="1589969206517" duration="8926000" />
       <workItem from="1590048639188" duration="583000" />
-      <workItem from="1590049229202" duration="17703000" />
-    </task>
-    <task id="LOCAL-00162" summary="Add check wink">
-      <created>1587382991656</created>
-      <option name="number" value="00162" />
-      <option name="presentableId" value="LOCAL-00162" />
-      <option name="project" value="LOCAL" />
-      <updated>1587382991656</updated>
+      <workItem from="1590049229202" duration="20491000" />
+      <workItem from="1590126734191" duration="3269000" />
     </task>
     <task id="LOCAL-00163" summary="Fix li style">
       <created>1587386630088</created>
@@ -1124,7 +1020,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590067273671</updated>
     </task>
-    <option name="localTasksCounter" value="211" />
+    <task id="LOCAL-00211" summary="fix side panel style">
+      <created>1590070879105</created>
+      <option name="number" value="00211" />
+      <option name="presentableId" value="LOCAL-00211" />
+      <option name="project" value="LOCAL" />
+      <updated>1590070879105</updated>
+    </task>
+    <option name="localTasksCounter" value="212" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1160,7 +1063,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2150131000" />
+    <option name="totallyTimeSpent" value="2156188000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1171,14 +1074,13 @@
       <window_info anchor="bottom" id="Migrations" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="3" sideWeight="0.49947917" weight="0.30200633" />
-      <window_info id="npm" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="9" sideWeight="0.4984375" weight="0.32946146" />
+      <window_info id="npm" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.32312566" />
       <window_info anchor="right" id="Remote Host" order="1" weight="0.052604165" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.33177084" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.33802083" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="0" />
-      <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49947917" weight="0.32946146" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="10" weight="0.4" />
@@ -1191,6 +1093,7 @@
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="File Transfer" order="0" sideWeight="0.48541668" visible="true" weight="0.32946146" />
+      <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49947917" weight="0.32946146" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1240,7 +1143,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/workbreaks" />
     </ignored-roots>
-    <MESSAGE value="Add PhoneController" />
     <MESSAGE value="Add correct min and max age" />
     <MESSAGE value="Switch if to switch" />
     <MESSAGE value="Add interest seeder" />
@@ -1265,7 +1167,8 @@
     <MESSAGE value="Fix send mail about new message" />
     <MESSAGE value="Fix mobile style bar" />
     <MESSAGE value="Fix mobile style event side panel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix mobile style event side panel" />
+    <MESSAGE value="fix side panel style" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix side panel style" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1274,13 +1177,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/SqlServerProcessor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="862">
-          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/ConnectionInterface.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1367,13 +1263,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/anket/view2.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="23" lean-forward="true" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/anket/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1717">
@@ -1385,6 +1274,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2516">
           <caret line="181" column="21" selection-start-line="181" selection-start-column="21" selection-end-line="181" selection-end-column="21" />
+          <folding>
+            <element signature="e#49#76#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1399,6 +1291,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1836">
           <caret line="151" column="37" selection-start-line="151" selection-start-column="11" selection-end-line="151" selection-end-column="37" />
+          <folding>
+            <element signature="e#1351#2473#0#PHP" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1406,13 +1301,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="222" column="17" selection-start-line="222" selection-start-column="17" selection-end-line="222" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/ankertList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="88" column="18" selection-start-line="88" selection-start-column="18" selection-end-line="90" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1533,9 +1421,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
-          <folding>
-            <element signature="e#1256#1298#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1555,29 +1440,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="7174">
           <caret line="431" column="49" selection-start-line="431" selection-start-column="42" selection-end-line="431" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MyEventController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
+        <state relative-caret-position="204">
           <caret line="30" column="30" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
+        <state relative-caret-position="1938">
           <caret line="114" column="57" selection-start-line="114" selection-start-column="57" selection-end-line="114" selection-end-column="57" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/carusel/carusel.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="55" lean-forward="true" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
+        <state relative-caret-position="85">
+          <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
           <folding>
             <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
@@ -1594,17 +1479,38 @@
     <entry file="file://$PROJECT_DIR$/resources/js/components/events/Myevents.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
-          <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
           <folding>
             <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/anket/view2.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="73" column="68" selection-start-line="73" selection-start-column="68" selection-end-line="73" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="70" column="65" selection-start-line="70" selection-start-column="65" selection-end-line="70" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/blog.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="149" column="48" selection-start-line="149" selection-start-column="48" selection-end-line="149" selection-end-column="48" />
+        <state relative-caret-position="510">
+          <caret line="107" column="20" selection-start-line="107" selection-start-column="20" selection-end-line="107" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/ankertList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
         </state>
       </provider>
     </entry>

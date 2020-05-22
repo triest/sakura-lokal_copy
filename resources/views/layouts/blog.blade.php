@@ -86,7 +86,7 @@
 <div class="col-sm-8">
     <div class="row row-offcanvas row-offcanvas-right">
 
-        <div class="col-sm-8">
+        <div class="col-sm-10">
             <p class="pull-right visible-xs visible-lg">
                 <!--  <button type="button" class="menuButton" data-toggle="offcanvas"><b>Меню</b></button> -->
                 <button type="button" class="navbar-toggle collapsed js-offcanvas-btn">
@@ -100,7 +100,7 @@
             </div><!--/row-->
         </div><!--/span-->
         <!--sm- комп -->
-        <div class=" col-sm-3 sidebar-offcanvas  hidden-xs" id="sidebar" role="navigation">
+        <div class=" col-sm-2 sidebar-offcanvas  hidden-xs" id="sidebar" role="navigation">
             <div class="card-body">
                 <!-- <p class="pull-right visible-xs visible-sm">
                      <button type="button" class="menuButton" data-toggle="offcanvas"><b>Закрыть</b></button>
