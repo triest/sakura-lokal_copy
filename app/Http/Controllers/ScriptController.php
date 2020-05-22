@@ -131,9 +131,9 @@ class ScriptController extends Controller
             if ($item[0]["ankets"]->isEmpty()) {
                 continue;              //пропускаем если нет новых анкет
             }
-            dump($item[0]);
+
             $user = $item[0]["who"]->user()->first();
-            dump($user);
+
             if ($user == null) {
                 continue;
             }

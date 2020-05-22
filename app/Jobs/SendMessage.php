@@ -47,7 +47,7 @@ class SendMessage implements ShouldQueue
         $anket = $this->anket;
         $city = $this->anket->city()->first();
         $ankets = $this->ankets;
-        dump($ankets);
+    
 
         switch ($this->type) {
             case 'newMessage':
