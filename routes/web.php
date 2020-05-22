@@ -565,4 +565,4 @@ Route::get('/filter_enable', 'GirlsController@filter_enable')
 Route::get('/city_test', 'CityController@GetCurrentCity');
 
 
-Route::get('/mobile', 'MobileController@index');
+Route::get('/scripts/newInMySeach', 'ScriptController@newInMySeach');

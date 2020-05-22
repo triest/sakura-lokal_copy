@@ -15,7 +15,7 @@
             <div v-if="numberApplication>0">({{numberApplication}})</div>
         </a>
         </b>
-
+        <br>
         <b><a class="btn btn-primary" href="/power">Поднять анкету</a> </b><br><br>
         <b><a class="btn btn-info" href="/mypresents">Мои подарки</a> </b>
         <div v-if="numberApplicationPresents>0"><b>({{numberApplicationPresents}})</b></div>
