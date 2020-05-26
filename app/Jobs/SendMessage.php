@@ -47,7 +47,7 @@ class SendMessage implements ShouldQueue
         $anket = $this->anket;
         $city = $this->anket->city()->first();
         $ankets = $this->ankets;
-    
+
 
         switch ($this->type) {
             case 'newMessage':
@@ -82,6 +82,25 @@ class SendMessage implements ShouldQueue
                             ->subject('У вас новое сообщение');
 
                     });
+
+            case 'anketViews':
+                if ($this->ankets == null) {
+                    return;
+                }
+
+                Mail::send('email.anketViews',
+                    [
+                        'text'   => $this->message,
+                        'ankets' => $this->ankets,
+                    ],
+                    function ($message) use ($mail, $anket, $city, $ankets) {
+                        $message
+                            ->to($mail, $anket->name)
+                            ->from('sakura-testmail@sakura-city.info')
+                            ->subject('У вас новое сообщение');
+
+                    });
+
 
         }
 

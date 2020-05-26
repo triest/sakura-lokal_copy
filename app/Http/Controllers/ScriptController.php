@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Girl;
 use App\SearchSettings;
+use App\View;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -150,6 +153,46 @@ class ScriptController extends Controller
 
     public function viewToday(Request $request)
     {
+        $view_history = View::select(['*']);
+        $today = Carbon::now()->startOfDay()->toDateTimeString();
+        $yesterday = Carbon::yesterday()->startOfDay()->toDateTimeString();
+        $view_history->where('time', '>', $yesterday);
+        $view_history->where('time', '<=', $today);
+
+        $view_history->select('girl_id')->distinct();
+
+        $view_history = $view_history->get();
+
+        $sendArray = array();
+        foreach ($view_history as $item) {
+            $view_history2 = View::select(['*'])
+                ->where('girl_id', $item->girl_id);
+
+            $today = Carbon::now()->startOfDay()->toDateTimeString();
+
+            $yesterday = Carbon::yesterday()->startOfDay()->toDateTimeString();
+
+            $view_history2->where('time', '>', $yesterday);
+            $view_history2->where('time', '<=', $today);
+            $view_history2 = $view_history2->get();
+            //  $view_history2->where('girl_id', $item->target_id);
+            $temp_array = array();
+
+            foreach ($view_history2 as $viewItem) {
+                array_push($temp_array, $viewItem->who()->first());
+            }
+
+            $anket = Girl::get(intval($item->girl_id));
+
+            $user = $anket->user()->first();
+            if ($user == null) {
+                continue;
+            }
+            $user->sendmail('Просмотры вашей анкеты за сутки', null, null,
+                'anketViews', $temp_array);
+
+        }
+
 
     }
 
