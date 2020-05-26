@@ -15,6 +15,9 @@ class ScriptController extends Controller
         /*
          *  1) Выбираем все настройк
          * */
+
+        $this->saveScriptRun("newInMySeach");
+
         $seach_settings = SearchSettings::select(['*'])->get();
 
         //   $anketsWhoSeach = $seach_settings->girls()->get(); // получаем анкеты
@@ -125,7 +128,6 @@ class ScriptController extends Controller
         }
 
         // В цикле отправляем
-
         foreach ($result_array as $item) {
 
             if ($item[0]["ankets"]->isEmpty()) {
@@ -142,5 +144,19 @@ class ScriptController extends Controller
         }
 
 
+    }
+
+    //просмотры за сутки
+
+    public function viewToday(Request $request)
+    {
+
+    }
+
+    public function saveScriptRun($script)
+    {
+        DB::table('script_run_history')->insert(
+            ['script' => $script]
+        );
     }
 }

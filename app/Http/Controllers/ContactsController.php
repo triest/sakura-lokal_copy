@@ -6,7 +6,6 @@
     use App\Events\newApplication;
     use App\Girl;
     use App\MyRequwest;
-    use App\Useruser;
     use App\Dialog;
     use Illuminate\Http\Request;
     use App\User;
