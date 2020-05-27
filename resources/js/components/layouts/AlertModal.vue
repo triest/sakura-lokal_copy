@@ -11,17 +11,19 @@
                             <p>Не пропустите! </p>
                             <img :src="'images/events/'+event[0].photo_name" height="200">
                             <p>Организатор:<a :href="'/anket/'+event[0].girl_id">{{event[0].girl_name}}</a></p>
-                            <button class="btn-primary" v-on:click="alert_reciver()">Напоминание прочитанно. Больше не
+                            <button class="btn btn-primary" v-on:click="alert_reciver()">Напоминание прочитанно. Больше
+                                не
                                 напоминать
                             </button>
-                            <button class="btn-primary" v-on:click="alert_late()">Напоминание позже</button>
+                            <br>
+                            <button class="btn btn-secondary" v-on:click="alert_late()">Напоминание позже</button>
 
                         </slot>
                     </div>
 
                     <div class="modal-footer">
                         <slot name="footer">
-                        
+
                         </slot>
                     </div>
                 </div>
@@ -61,7 +63,7 @@
 
             },
             alert_reciver() {
-                axios.get('event/reminders/recived', {
+                axios.get('/event/reminders/recived', {
                     params: {
                         girl_id: this.girlid,
                         action: "alert_recived",

@@ -567,3 +567,6 @@ Route::get('/city_test', 'CityController@GetCurrentCity');
 
 Route::get('/scripts/newInMySeach', 'ScriptController@newInMySeach');
 Route::get('/scripts/viewToday', 'ScriptController@viewToday');
+
+
+Route::get('/scripts/viewToday', 'ScriptController@viewToday');

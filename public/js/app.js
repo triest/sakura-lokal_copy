@@ -7635,6 +7635,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     event: {
@@ -7662,7 +7664,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     close: function close() {},
     alert_reciver: function alert_reciver() {
-      axios.get('event/reminders/recived', {
+      axios.get('/event/reminders/recived', {
         params: {
           girl_id: this.girlid,
           action: "alert_recived",
@@ -62919,10 +62921,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-      {
-          staticClass: "col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow",
-          staticStyle: {"margin-left": "auto", "margin-right": "auto"}
-      },
+    {
+      staticClass: "col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow",
+      staticStyle: { "margin-left": "auto", "margin-right": "auto" }
+    },
     [
       _c("ul", { staticClass: "nav nav-tabs" }, [
         _c(
@@ -64170,7 +64172,7 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "btn-primary",
+                      staticClass: "btn btn-primary",
                       on: {
                         click: function($event) {
                           return _vm.alert_reciver()
@@ -64179,15 +64181,17 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "Напоминание прочитанно. Больше не\n                            напоминать\n                        "
+                        "Напоминание прочитанно. Больше\n                            не\n                            напоминать\n                        "
                       )
                     ]
                   ),
                   _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
                   _c(
                     "button",
                     {
-                      staticClass: "btn-primary",
+                      staticClass: "btn btn-secondary",
                       on: {
                         click: function($event) {
                           return _vm.alert_late()
@@ -64411,8 +64415,8 @@ var render = function() {
             : _vm._e()
         ])
       ]),
-        _vm._v(" "),
-        _c("br"),
+      _vm._v(" "),
+      _c("br"),
       _vm._v(" "),
       _vm._m(0),
       _c("br"),
