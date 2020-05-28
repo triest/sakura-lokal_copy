@@ -241,12 +241,18 @@ class User extends Authenticatable
                     ->delay(100);
                 break;
             case "event_accept":
-                /*$anket = $this->anketisExsis();
 
-                if ($anket == null) {
+                $mail = $this->email;
+
+                if ($mail == null) {
                     return false;
                 }
-*/
+
+                SendMessage::dispatch($mail, null, null, $type, null,
+                    $event);
+                break;
+
+            case "event_denide":
 
                 $mail = $this->email;
 

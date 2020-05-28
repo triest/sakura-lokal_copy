@@ -428,6 +428,20 @@ left join event_statys statys on myevents.status_id=statys.id left join
             = collect(DB::select('select girl.id,girl.name,girl.age,req.status,girl.main_image,req.id as `req_id` from event_requwest req left join girls girl on req.girl_id=girl.id where event_id=? and req.status="denide"',
             [$request->eventid]));
 
+
+        $girl = Girl::select('*')->where('id', $unreaded[0]->id)
+            ->first();
+
+        if ($girl != null) {
+            $user = $girl->user()->first();
+
+
+            $event = Myevent::get($request->eventid);
+            $user->sendmail("Ваша заявка отклонена", null, null, "event_denide",
+                null,
+                $event);
+        }
+
         return response()->json($unreaded);
     }
 

@@ -144,6 +144,22 @@ class SendMessage implements ShouldQueue
                     });
 
                 break;
+
+            case 'event_denide':
+                $event = $this->events;
+
+                Mail::send('email.event_denide',
+                    [
+                        'event' => $event,
+                    ],
+                    function ($message) use ($mail, $event) {
+                        $message
+                            ->to($mail, $event->name)
+                            ->from('sakura-testmail@sakura-city.info')
+                            ->subject('Ваша заявка  на участие в событии принята');
+                    });
+
+                break;
         }
 
     }

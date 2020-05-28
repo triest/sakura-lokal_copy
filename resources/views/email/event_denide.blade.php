@@ -6,7 +6,7 @@
 <body>
 
 <table>
-    Ваша заявка на событие принята!
+    Ваша заявка на событие отклонена!
     <tr>
         {{$event->title}}
         <a class="btn btn-primary" href="{{route('viewmyevent',['id'=>$event->id])}}" role="link"

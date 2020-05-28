@@ -173,4 +173,9 @@ class Myevent extends Model
 
         return $partificatpr;
     }
+
+    public static function get($id)
+    {
+        return Myevent::select(['*'])->where('id', $id)->first();
+    }
 }
