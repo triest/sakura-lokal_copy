@@ -2,7 +2,7 @@
     <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
         Принятых заявок:
         {{countaccepted}} <br>
-        Максимальное число заявок: {{max_people}}
+        Максимальное число заявок1: {{max_people}}
 
         <div v-if="countaccepted==max_people">
             <b> Максимальное число участников! </b>

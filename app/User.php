@@ -239,8 +239,23 @@ class User extends Authenticatable
                 SendMessage::dispatch($mail, $anket, $message, $type, $ankets,
                     $event)
                     ->delay(100);
+                break;
+            case "event_accept":
+                /*$anket = $this->anketisExsis();
 
+                if ($anket == null) {
+                    return false;
+                }
+*/
 
+                $mail = $this->email;
+
+                if ($mail == null) {
+                    return false;
+                }
+
+                SendMessage::dispatch($mail, null, null, $type, null,
+                    $event);
                 break;
         }
     }

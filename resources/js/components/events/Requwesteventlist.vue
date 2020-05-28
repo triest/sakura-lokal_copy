@@ -1,8 +1,8 @@
 <template>
     <div>
-        Принятых заявок:
+        <b>Принятых заявок:</b>
         {{countaccepted}} <br>
-        Максимальное число заявок: {{max_people}}
+        <b>Максимальное число заявок:</b> {{max_people}}
 
         <div v-if="countaccepted==max_people">
             <b> Максимальное число участников! </b>

@@ -173,6 +173,7 @@
     .previous {
         cursor: pointer;
         margin-left: 50%;
+
     }
 
     .white:link {

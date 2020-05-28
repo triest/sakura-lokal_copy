@@ -47,7 +47,11 @@ class SendMessage implements ShouldQueue
         //
         $mail = $this->mail;
         $anket = $this->anket;
-        $city = $this->anket->city()->first();
+        if ($this->anket != null) {
+            $city = $this->anket->city()->first();
+        } else {
+            $city = null;
+        }
         $ankets = $this->ankets;
 
 
@@ -110,7 +114,7 @@ class SendMessage implements ShouldQueue
                 }
                 $events = $this->events;
                 $anket = $this->anket;
-                dump($events);
+
 
                 Mail::send('email.eventsToday',
                     [
@@ -125,7 +129,21 @@ class SendMessage implements ShouldQueue
                     });
 
                 break;
+            case 'event_accept':
+                $event = $this->events;
 
+                Mail::send('email.eventsAccept',
+                    [
+                        'event' => $event,
+                    ],
+                    function ($message) use ($mail, $event) {
+                        $message
+                            ->to($mail, $event->name)
+                            ->from('sakura-testmail@sakura-city.info')
+                            ->subject('Ваша заявка  на участие в событии принята');
+                    });
+
+                break;
         }
 
     }

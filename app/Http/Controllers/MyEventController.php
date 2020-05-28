@@ -448,7 +448,7 @@ left join event_statys statys on myevents.status_id=statys.id left join
             ->first();
 
 
-        $event = Myevent::select('id')->where('id', $eventid);
+        $event = Myevent::select('*')->where('id', $eventid)->first();
         if ($event == null) {
             return response()->json('notevent');
         }
@@ -479,6 +479,12 @@ left join event_statys statys on myevents.status_id=statys.id left join
                 ->where('id', $reqid)
                 ->update(['status' => 'denide']);
         }
+
+
+        //отправить сообщение и уведомление по почте
+        $user->sendmail("Ваша заявка принята", null, null, "event_accept", null,
+            $event);
+
 
         return response(200);
 

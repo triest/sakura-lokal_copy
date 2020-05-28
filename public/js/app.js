@@ -62316,7 +62316,7 @@ var render = function() {
       _vm._v("\n    Принятых заявок:\n    " + _vm._s(_vm.countaccepted) + " "),
       _c("br"),
       _vm._v(
-        "\n    Максимальное число заявок: " +
+          "\n    Максимальное число заявок1: " +
           _vm._s(_vm.max_people) +
           "\n\n    "
       ),
@@ -63111,15 +63111,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._v(
-      "\n        Принятых заявок:\n        " + _vm._s(_vm.countaccepted) + " "
-    ),
+      _c("b", [_vm._v("Принятых заявок:")]),
+      _vm._v("\n        " + _vm._s(_vm.countaccepted) + " "),
     _c("br"),
-    _vm._v(
-      "\n        Максимальное число заявок: " +
-        _vm._s(_vm.max_people) +
-        "\n\n        "
-    ),
+      _vm._v(" "),
+      _c("b", [_vm._v("Максимальное число заявок:")]),
+      _vm._v(" " + _vm._s(_vm.max_people) + "\n\n        "),
     _vm.countaccepted == _vm.max_people
       ? _c("div", [_c("b", [_vm._v(" Максимальное число участников! ")])])
       : _vm._e(),

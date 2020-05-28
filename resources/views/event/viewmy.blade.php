@@ -16,7 +16,6 @@
                 <p>Заявки принимаються до: {{$event->end_applications}}</p>
                 Статус: {{$event->status_name}} <br>
                 <p>Описание:< {{$event->description}} </p>
-                Список подавших заявку:
                 <div id="requwesteventlistapp">
                     <requwesteventlist eventid="{{$event->id}}"></requwesteventlist>
                 </div>
