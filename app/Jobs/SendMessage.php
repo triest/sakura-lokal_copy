@@ -13,7 +13,7 @@ class SendMessage implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $mail, $anket, $type, $message, $ankets;
+    protected $mail, $anket, $type, $message, $ankets, $events;
 
     /**
      * Create a new job instance.
@@ -25,7 +25,8 @@ class SendMessage implements ShouldQueue
         $anket,
         $message,
         $type = 'newMessage',
-        $ankets = null
+        $ankets = null,
+        $events = null
     ) {
         //
         $this->mail = $mail;
@@ -33,6 +34,7 @@ class SendMessage implements ShouldQueue
         $this->type = $type;
         $this->message = $message;
         $this->ankets = $ankets;
+        $this->events = $events;
     }
 
     /**
@@ -82,7 +84,7 @@ class SendMessage implements ShouldQueue
                             ->subject('У вас новое сообщение');
 
                     });
-
+                break;
             case 'anketViews':
                 if ($this->ankets == null) {
                     return;
@@ -101,6 +103,28 @@ class SendMessage implements ShouldQueue
 
                     });
 
+            case 'event-today':
+                ;
+                if ($this->events == null) {
+                    return;
+                }
+                $events = $this->events;
+                $anket = $this->anket;
+                dump($events);
+
+                Mail::send('email.eventsToday',
+                    [
+                        'events' => $events,
+                    ],
+                    function ($message) use ($mail, $anket) {
+                        $message
+                            ->to($mail, $anket->name)
+                            ->from('sakura-testmail@sakura-city.info')
+                            ->subject('У вас новое сообщение');
+
+                    });
+
+                break;
 
         }
 

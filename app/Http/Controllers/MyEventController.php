@@ -612,7 +612,7 @@ WHERE `myeven`.`organizer_id`=? and `eventreq`.`status`=\'unread\'',
         if ($user == null) {
             return 502;
         }
-        $girl = $user->anketisExsis()->first();
+        $girl = $user->girl()->first();
 
         if ($girl == null) {
             return 404;

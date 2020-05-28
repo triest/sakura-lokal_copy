@@ -48,7 +48,7 @@
         },
         methods: {
             getEvents() {
-                console.log("get events");
+                console.log("get events1");
                 axios.get('/events/inmycity', {params: {type: "json", city: this.city.id}}
                 )
                     .then((response) => {
@@ -57,8 +57,6 @@
                     });
             },
             checkRequsest(event_id) {
-                console.log("event_id");
-                console.log(event_id);
                 for (let i = 0; i < this.partification.length; i++) {
                     if (typeof this.partification[i][0] === "undefined") {
                         return false;

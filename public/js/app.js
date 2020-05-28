@@ -6829,7 +6829,7 @@ __webpack_require__.r(__webpack_exports__);
     getEvents: function getEvents() {
       var _this = this;
 
-      console.log("get events");
+        console.log("get events1");
       axios.get('/events/inmycity', {
         params: {
           type: "json",
@@ -6841,9 +6841,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     checkRequsest: function checkRequsest(event_id) {
-      console.log("event_id");
-      console.log(event_id);
-
       for (var i = 0; i < this.partification.length; i++) {
         if (typeof this.partification[i][0] === "undefined") {
           return false;

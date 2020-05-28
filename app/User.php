@@ -174,7 +174,8 @@ class User extends Authenticatable
         $blade,
         $fromUser = null,
         $type = 'newMessage',
-        $ankets = null
+        $ankets = null,
+        $event = null
     ) {
         switch ($type) {
             case "newMessage":
@@ -221,6 +222,26 @@ class User extends Authenticatable
 
                 SendMessage::dispatch($mail, $anket, $message, $type, $ankets)
                     ->delay(100);
+
+                break;
+            case  "event-today":
+                $anket = $this->anketisExsis();
+
+                if ($anket == null) {
+                    return false;
+                }
+
+                $mail = $this->email;
+                if ($mail == null) {
+                    return false;
+                }
+
+                SendMessage::dispatch($mail, $anket, $message, $type, $ankets,
+                    $event)
+                    ->delay(100);
+
+
+                break;
         }
     }
 

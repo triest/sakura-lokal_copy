@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Eventrequwest;
 use App\Girl;
+use App\Myevent;
 use App\SearchSettings;
 use App\View;
 use Carbon\Carbon;
@@ -191,6 +193,49 @@ class ScriptController extends Controller
             $user->sendmail('Просмотры вашей анкеты за сутки', null, null,
                 'anketViews', $temp_array);
 
+        }
+    }
+
+    public function eventToday(Request $request)
+    {
+        $today = Carbon::now()->startOfDay()->toDateTimeString();
+
+        $yesterday = Carbon::now()->endOfDay()->toDateTimeString();
+
+        //напоминание о событиях в которых я участвую сегодня
+        //получаем все события
+        $events = Myevent::select('*')->where('begin', '<=', $yesterday);
+        $events->where('begin', '>=', $today);
+        $events = $events->get();
+
+
+        foreach ($events as $event) {
+            // получаем запросы
+            $eventReqwests = Eventrequwest::select(['*'])
+                ->where('event_id', $event->id)
+                ->where('status', 'accept')
+                ->get();
+            if ($eventReqwests == null || empty($eventReqwests)) {
+                continue;
+            }
+            foreach ($eventReqwests as $item) {
+                $who = $item->who()->first();
+                $target = $item->target()->first();
+                //   dump($who);
+                // dump($target);
+                if ($who == null || $target == null) {
+                    continue;
+                }
+
+                $user = $who->user()->first();
+                if ($user == null) {
+                    continue;
+                }
+
+                $user->sendmail('Просмотры вашей анкеты за сутки', null, null,
+                    'event-today', null, $target);
+
+            }
         }
 
 

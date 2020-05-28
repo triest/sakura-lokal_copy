@@ -569,4 +569,4 @@ Route::get('/scripts/newInMySeach', 'ScriptController@newInMySeach');
 Route::get('/scripts/viewToday', 'ScriptController@viewToday');
 
 
-Route::get('/scripts/viewToday', 'ScriptController@viewToday');
+Route::get('/scripts/event-today', 'ScriptController@eventToday');

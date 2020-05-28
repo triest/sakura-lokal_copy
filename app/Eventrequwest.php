@@ -12,12 +12,12 @@ class Eventrequwest extends Model
 
     public function who()
     {
-        return $this->hasOne('App\Girl', 'girl_id', 'id');
+        return $this->hasOne('App\Girl', 'id', 'girl_id');
     }
 
     public function target()
     {
-        return $this->hasOne('App\Myevent', 'event_id', 'id');
+        return $this->hasOne('App\Myevent', 'id', 'event_id');
     }
 
 
