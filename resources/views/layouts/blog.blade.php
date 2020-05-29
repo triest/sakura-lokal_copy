@@ -78,7 +78,11 @@
              border: 1px solid transparent;
              border-color: #666869;
 ">
+        <? if (isset($girl)){ ?>
+        <eventinmycityside2 :city="{{$city}}" :auch_anket="{{$girl}}"></eventinmycityside2>
+        <? }else {?>
         <eventinmycityside2 :city="{{$city}}"></eventinmycityside2>
+        <? } ?>
     </div>
 </div>
 <div class="col-sm-1">
@@ -110,7 +114,14 @@
                 @if (Auth::guest())
                     <b><a class="button blue" href="{{ url('/login') }}">Войти</a></b><br><br>
                     <b><a class="button green" href="{{ url('/join') }}">Зарегистрироваться</a></b><br>
-                    <b><a class="button blue" href="{{route('main')}}">Поиск</a></b><br><br>
+                    <b><a class="button blue" href="{{route('main')}}">Поиск</a></b>
+                    <?
+                    if ($city != null) {
+                        echo "<b>".$city->name;
+                        echo "</b>;";
+                    }
+                    ?>
+                    <br><br>
                 @else
                     <b>{{auth()->user()->name}}</b><br>
                     <?

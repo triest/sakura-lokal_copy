@@ -6808,6 +6808,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     city: {
@@ -62669,93 +62674,113 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "carousel",
-        {
-          attrs: {
-            "per-page": 1,
-            "mouse-drag": false,
-            autoplay: true,
-            loop: true,
-            navigationEnabled: true,
-            paginationEnabled: false
-          }
-        },
-        _vm._l(_vm.eventList, function(event) {
-          return _c("slide", { key: event.id }, [
-            _c("div", { staticClass: "col-sm-1" }),
-            _vm._v(" "),
-            _c("b", [_vm._v(_vm._s(event.name))]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v("\n            Место:" + _vm._s(event.place) + " "),
-            _c("br"),
-            _vm._v("\n            Дата: " + _vm._s(event.begin) + " "),
-            _c("br"),
-            _vm._v(
-              "\n            " + _vm._s(event.status_name) + "\n            "
-            ),
-            _vm.checkRequsest(event.id) !== false
-              ? _c("div", [
-                  _vm.checkRequsest(event.id) == "accept"
-                    ? _c("div", [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-primary",
-                            attrs: { href: "event/singup/" + event.id }
-                          },
-                          [_vm._v(" Заявка принята")]
-                        )
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.checkRequsest(event.id) == "denide"
-                    ? _c("div", [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-primary",
-                            attrs: { href: "event/singup/" + event.id }
-                          },
-                          [_vm._v("Заявка отклонена")]
-                        )
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.checkRequsest(event.id) == "unreaded"
-                    ? _c("div", [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-primary",
-                            attrs: { href: "event/singup/" + event.id }
-                          },
-                          [_vm._v("Заявка не прочитана")]
-                        )
-                      ])
-                    : _vm._e()
-                ])
-              : _c("div", [
-                  _c(
+    return _c("div", [
+        _vm.eventList.length
+            ? _c(
+            "div",
+            [
+                _c(
+                    "carousel",
+                    {
+                        attrs: {
+                            "per-page": 1,
+                            "mouse-drag": false,
+                            autoplay: true,
+                            loop: true,
+                            navigationEnabled: true,
+                            paginationEnabled: false
+                        }
+                    },
+                    _vm._l(_vm.eventList, function (event) {
+                        return _c("slide", {key: event.id}, [
+                            _c("div", {staticClass: "col-sm-1"}),
+                            _vm._v(" "),
+                            _c("b", [_vm._v(_vm._s(event.name))]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(
+                                "\n                Место:" + _vm._s(event.place) + " "
+                            ),
+                            _c("br"),
+                            _vm._v(
+                                "\n                Дата: " + _vm._s(event.begin) + " "
+                            ),
+                            _c("br"),
+                            _vm._v(
+                                "\n                " +
+                                _vm._s(event.status_name) +
+                                "\n                "
+                            ),
+                            _vm.checkRequsest(event.id) !== false
+                                ? _c("div", [
+                                    _vm.checkRequsest(event.id) == "accept"
+                                        ? _c("div", [
+                                            _c(
+                                                "a",
+                                                {
+                                                    staticClass: "btn btn-primary",
+                                                    attrs: {href: "event/singup/" + event.id}
+                                                },
+                                                [_vm._v(" Заявка принята")]
+                                            )
+                                        ])
+                                        : _vm._e(),
+                                    _vm._v(" "),
+                                    _vm.checkRequsest(event.id) == "denide"
+                                        ? _c("div", [
+                                            _c(
+                                                "a",
+                                                {
+                                                    staticClass: "btn btn-primary",
+                                                    attrs: {href: "event/singup/" + event.id}
+                                                },
+                                                [_vm._v("Заявка отклонена")]
+                                            )
+                                        ])
+                                        : _vm._e(),
+                                    _vm._v(" "),
+                                    _vm.checkRequsest(event.id) == "unreaded"
+                                        ? _c("div", [
+                                            _c(
+                                                "a",
+                                                {
+                                                    staticClass: "btn btn-primary",
+                                                    attrs: {href: "event/singup/" + event.id}
+                                                },
+                                                [_vm._v("Заявка не прочитана")]
+                                            )
+                                        ])
+                                        : _vm._e()
+                                ])
+                                : _c("div", [
+                                    _c(
+                                        "a",
+                                        {
+                                            staticClass: "btn btn-primary",
+                                            attrs: {href: "event/singup/" + event.id}
+                                        },
+                                        [_vm._v("Записаться!")]
+                                    )
+                                ])
+                        ])
+                    }),
+                    1
+                )
+            ],
+            1
+            )
+            : _c("div", [
+                _vm._v("\n        Событий в вашем городе нет.\n        "),
+                _c(
                     "a",
                     {
-                      staticClass: "btn btn-primary",
-                      attrs: { href: "event/singup/" + event.id }
+                        staticClass: "btn btn-primary",
+                        attrs: {href: "myevent/store"}
                     },
-                    [_vm._v("Записаться!")]
-                  )
-                ])
-          ])
-        }),
-        1
-      )
-    ],
-    1
-  )
+                    [_vm._v("Создать событие!")]
+                )
+            ])
+    ])
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -57,6 +57,7 @@
                         <button type="submit" class="btn btn-primary">
                             Войти
                         </button>
+                        <b><a class="button green" href="{{ url('/join') }}">Зарегистрироваться</a></b>
                         @if (Route::has('password.request'))
                             <button class="btn btn-secondary" href="{{ route('password.request') }}">
                                 Забыли пароль?
