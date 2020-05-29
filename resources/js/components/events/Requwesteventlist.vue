@@ -58,7 +58,7 @@
             <div v-if="currentTab == 'accepted'">
                 <div v-for="requwest in accepted">
 
-                    <div class="col-lg-4 col-md-3 col-sm-5 col-xs-9 box-shadow">
+                    <div>
                         <div class="card  border-dark" style="width: 18rem; background-color: #eeeeee;
              border: 1px solid transparent;
              border-color: #666869;

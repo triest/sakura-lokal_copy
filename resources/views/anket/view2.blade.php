@@ -155,20 +155,29 @@
         </div>
         <br>
         <div class="col-lg-10 col-md-7 col-sm-6 col-xs-12 box-shadow">
-            @if(isset($girl->description) && $girl->description!=null)
-                {!!$girl->description  !!}
-            @endif
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @if(isset($girl->description) && $girl->description!=null)
+                        {!!$girl->description  !!}
+                    @endif
+                </div>
+            </div>
         </div>
         <br>
         <div class="col-lg-10 col-md-7 col-sm-6 col-xs-12 box-shadow">
-            <p class="card-text>">
-                @if($girl->private!=null)
-                    <label>Приватное сообщение:</label> <br>
-                    {!!$girl->private  !!}
-            </p>
-            @else
-                Вы не можете смотреть приватное сообщение. Попросите пользователя открыть анкету
-            @endif
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @if($girl->private!=null)
+
+                        <label>Приватное сообщение:</label> <br>
+                        {!!$girl->private  !!}
+
+                    @else
+                        Вы не можете смотреть приватное сообщение. Попросите пользователя открыть анкету
+                    @endif
+                </div>
+            </div>
         </div>
     </div>
     <a class="button blue" href="{{ URL::previous() }}" role="link"><i class="fa fa-arrow-left"></i>Назад</a>

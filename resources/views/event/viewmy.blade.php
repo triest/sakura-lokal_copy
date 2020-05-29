@@ -1,7 +1,7 @@
 @extends('layouts.blog', ['title' => 'Мои события'])
 @section('content')
     <div class="row">
-        <div class="col-lg-4 col-md-3 col-sm-3 col-xs-9 box-shadow">
+        <div class="col-lg-6 col-md-6 col-sm-3 col-xs-9 box-shadow">
             <div class="card  border-dark" <!--style="width: 60rem; background-color: #eeeeee;
              border: 1px solid transparent;
              border-color: #666869; -->

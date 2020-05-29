@@ -118,7 +118,7 @@
                     <?
                     if ($city != null) {
                         echo "<b>".$city->name;
-                        echo "</b>;";
+                        echo "</b>";
                     }
                     ?>
                     <br><br>
