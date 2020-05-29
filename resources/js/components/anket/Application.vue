@@ -38,13 +38,12 @@
                         Мои запросы на открытие анкеты:
                     </b>
                     <div v-for="application in myapplications">
-
                         <div class="avatar">
                             <img :src="'images/upload/'+application.main_image" :alt="application.who_name"
                                  height="150">
                             {{application.id}}
                             <br><b><a :href="'anket/'+application.id"> {{application.name}}</a></b>
-                            <div v-if="application.status==null">Не рассмотрен</div>
+                            <div v-if="application.status=='notreaded'">Не рассмотрен</div>
                             <div v-if="application.status=='confirmed'">Подтвержден</div>
                             <div v-if="application.status=='denide'">Отклонен</div>
                         </div>
@@ -126,7 +125,6 @@
                 getMyApplications() {
                     axios.get('/application/get/my')
                         .then((response) => {
-                            this.myapplications = null;
                             this.myapplications = response.data;
                         })
                 },

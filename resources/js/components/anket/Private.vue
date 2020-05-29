@@ -6,7 +6,7 @@
           -->
         <h5 v-if="regStatus=='notreaded' && !showSendRegButton">Просьба еще не рассмотрена
             <button class="btn btn-primary" v-on:click="withdrawRequwest()">
-                Отозавать заявку
+                Отозвать заявку
             </button>
         </h5>
         <h5 v-if="regStatus=='acept'">Пользователь открыл Вам свою анкету</h5>

@@ -891,7 +891,7 @@
                     ->orWhere('status',"notreaded")
                     ->get();*/
             $myrequest
-                    = collect(DB::select('select * from requwest where (who_id=? and status<>"not_readed" and "readed"=0) or (target_id=? and status="not_readed" )',
+                = collect(DB::select('select * from requwest where (who_id=? and status<>"not_readed" and "readed"=1) or (target_id=? and status="not_readed" )',
                     [$user->id, $user->id]))->all();
 
             if ($myrequest != null) {
