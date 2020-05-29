@@ -163,14 +163,14 @@ class ContactsController extends Controller
 
         $user = Auth::user();
         $request = MyRequwest::select('requwest.id',
-            'who_id',
-            'target_id', 'main_image')
+            'requwest.who_id',
+            'requwest.target_id', 'main_image')
             ->where('target_id', $user->id)
             ->leftJoin('girls', 'girls.user_id', '=', 'who_id')
-            ->where('statas', "notreaded")
+            ->where('requwest.status', "notreaded")
             ->get();
 
-        return response()->json($request);;
+        return response()->json($request);
     }
 
     //запросы для меня
